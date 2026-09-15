@@ -27,6 +27,13 @@ const list = computed<Paper[]>(() => {
 
 const primary = (p: Paper) => (props.mode === 'listen' ? listenUrl(p.slug) : vocabUrl(p.slug))
 const shortCat = (c: string) => c.split(/[\s/]+/)[0]
+
+// 整框点击 → 跳到当前模式对应的学习页（vocab 模式即词表页）
+function openCard(p: Paper, e: MouseEvent) {
+  const t = e.target as HTMLElement | null
+  if (t && t.closest('a')) return            // 名称 / 词表 / 听力 链接自己处理，避免重复跳转
+  window.location.href = primary(p)          // 整页跳转，避开 VitePress SPA 路由拦截
+}
 </script>
 
 <!--
@@ -64,7 +71,7 @@ const shortCat = (c: string) => c.split(/[\s/]+/)[0]
     </div>
 
     <div class="dr-grid">
-      <article v-for="p in list" :key="p.slug" class="dr-card">
+      <article v-for="p in list" :key="p.slug" class="dr-card" @click="openCard(p, $event)">
         <div class="dr-card-r1">
           <a class="dr-card-nm" :href="primary(p)" target="_self">{{ p.name }}</a>
           <span class="dr-card-yr">{{ p.year }}</span>

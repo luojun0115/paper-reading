@@ -132,5 +132,5 @@ export const THEMES = [
   }
 ]
 
-export const DEFAULT_THEME = 'paper'
+export const DEFAULT_THEME = 'matcha'
 export const STORAGE_KEY = 'deepread:theme'
