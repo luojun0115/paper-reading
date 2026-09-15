@@ -11,6 +11,7 @@ const themeBootScript = `(function(){var k='${DEFAULT_THEME}';try{var s=localSto
 
 export default defineConfig({
   lang: 'zh-CN',
+  base: '/paper-reading/', // GitHub Pages 项目页子路径，必须与仓库名一致，否则资源 404
   title: '深读馆',
   titleTemplate: ':title · 深读馆 DeepRead',
   description: '一篇论文，四种读法 —— 单词 · 听力 · 朗读 · 讲解',
