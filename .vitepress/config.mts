@@ -3,6 +3,9 @@ import { THEMES, DEFAULT_THEME, STORAGE_KEY } from './theme/theme-defs.mjs'
 
 const KEYS = THEMES.map((t: { key: string }) => t.key)
 
+// GitHub Pages 项目页子路径：改仓库名时必须同步改这里
+const BASE = '/paper-reading/'
+
 /**
  * 首屏防闪白：在 <head> 里、样式之前就把 data-theme 定下来。
  * 否则刷新时先渲染默认主题再跳到用户所选，会闪一下。
@@ -11,7 +14,7 @@ const themeBootScript = `(function(){var k='${DEFAULT_THEME}';try{var s=localSto
 
 export default defineConfig({
   lang: 'zh-CN',
-  base: '/paper-reading/', // GitHub Pages 项目页子路径，必须与仓库名一致，否则资源 404
+  base: BASE,
   title: '深读馆',
   titleTemplate: ':title · 深读馆 DeepRead',
   description: '一篇论文，四种读法 —— 单词 · 听力 · 朗读 · 讲解',
@@ -22,7 +25,7 @@ export default defineConfig({
   srcExclude: ['README.md', 'docs/**', 'design/**', 'scripts/**', 'data/**', 'agent.md', 'AGENTS.md', 'CLAUDE.md'],
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${BASE}favicon.svg` }],
     ['meta', { name: 'theme-color', content: '#b35400' }],
     ['script', {}, themeBootScript]
   ],

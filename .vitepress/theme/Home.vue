@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import PaperGrid from './PaperGrid.vue'
 import { STATS } from './papers'
+import { withBase } from 'vitepress'
 
 const zones = [
   {
-    icon: '📖', name: '单词区', en: 'VOCABULARY', href: '/vocab/',
+    icon: '📖', name: '单词区', en: 'VOCABULARY', href: withBase('/vocab/'),
     desc: '按章节分组的核心词汇，标注四级 / 六级 / 考研 / 考博 / 托福 / GRE。',
     badge: `${STATS.vocabPages} 份词表`, soon: false
   },
   {
-    icon: '🎧', name: '听力区', en: 'LISTENING', href: '/listen/',
+    icon: '🎧', name: '听力区', en: 'LISTENING', href: withBase('/listen/'),
     desc: '自动逐词连播，先听后现，收藏与自测循环。',
     badge: `${STATS.listenPages} 条连播`, soon: false
   },
   {
-    icon: '🎬', name: '朗读区', en: 'READING', href: '/reading/',
+    icon: '🎬', name: '朗读区', en: 'READING', href: withBase('/reading/'),
     desc: '逐页带读视频：原文高亮 + 逐词跟读 + 章节进度条。',
     badge: '筹备中', soon: true
   },
   {
-    icon: '🎓', name: '讲解区', en: 'EXPLAIN', href: '/explain/',
+    icon: '🎓', name: '讲解区', en: 'EXPLAIN', href: withBase('/explain/'),
     desc: '论文精读讲解，逐节拆解动机、方法与结论。',
     badge: '筹备中', soon: true
   }
