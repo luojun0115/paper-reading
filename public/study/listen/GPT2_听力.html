@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GPT2_论文词汇_听力</title>
+<style>
+:root{--bg:#101319;--panel:#181c25;--card:#1d2230;--line:#2a3040;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#ff8c00;--accd:#eb6900;--red:#d33a31}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:16px/1.6 -apple-system,"PingFang SC","Segoe UI",sans-serif;min-height:100vh}
+.wrap{max-width:880px;margin:0 auto;padding:28px 20px 60px}
+.ptitle{font-size:12.5px;color:var(--dim);font-style:italic;margin-bottom:4px}
+h1{font-size:26px;margin-bottom:18px}
+h1 b{color:var(--acc)}
+.sec{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.sec h3{font-size:13px;color:var(--dim);font-weight:600;letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.sec h3 .mini{font-size:12px;font-weight:400}
+button{cursor:pointer;font:inherit}
+.chip{display:inline-block;padding:5px 13px;margin:0 8px 8px 0;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--dim);font-size:14px}
+.chip.on{color:#fff;border-color:var(--acc);background:rgba(255,140,0,.14)}
+.chip .n{opacity:.55;font-size:12px;margin-left:4px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.opt{padding:7px 16px;border-radius:10px;border:1.5px solid var(--line);background:transparent;color:var(--dim);font-size:14px}
+.opt.on{color:#fff;border-color:var(--acc);background:rgba(255,140,0,.14)}
+select{background:var(--card);color:var(--tx);border:1.5px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:14px}
+#start{width:100%;margin-top:4px;padding:14px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--acc),var(--accd));color:#fff;font-size:17px;font-weight:700}
+#cnt{color:var(--dim);font-size:13px}
+.srcState{font-size:12px;color:var(--dim)}
+
+/* ================= 网易云黑胶播放器 ================= */
+/* ---- 品牌角标（风格致敬） ---- */
+.brandmark{position:absolute;left:28px;bottom:14px;display:flex;align-items:center;gap:9px;opacity:.92;pointer-events:none;z-index:5}
+.brandmark .ai{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.brandmark .bn{font-size:14px;font-weight:700;letter-spacing:1px;line-height:1.15}
+.brandmark .bn i{display:block;font-style:normal;font-weight:400;font-size:9px;letter-spacing:2px;opacity:.5}
+[data-theme="cinema"] .brandmark,[data-theme="glass"] .brandmark,[data-theme="neon"] .brandmark{display:none}
+@media (max-width:620px){.brandmark{display:none}}
+#toast{position:absolute;bottom:175px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.74);color:#fff;padding:9px 20px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9}
+#toast.on{opacity:1}
+#player{position:fixed;inset:0;display:none;overflow:hidden;background:#171114}
+#player.on{display:block}
+#nbg{position:absolute;inset:-120px;filter:blur(90px) saturate(1.1);opacity:.55;transition:background 1.2s ease}
+#nshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,4,.25),rgba(10,5,4,.12) 34%,rgba(8,4,3,.6) 92%)}
+.ntop{position:absolute;top:16px;left:0;right:0;display:flex;align-items:flex-start;padding:0 34px}
+.nico{background:transparent;border:none;color:rgba(255,255,255,.85);font-size:27px;line-height:1;padding:6px}
+.nico:hover{color:#fff}
+.ntitles{flex:1;padding:0 18px;text-align:center}
+#tword{font-size:16px;font-weight:600;color:rgba(255,255,255,.6);line-height:1.2;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tsub{font-size:15px;color:rgba(255,255,255,.55);margin-top:2px}
+/* 唱盘 */
+.vinylwrap{position:absolute;top:70px;left:calc(50% - 220px);width:440px;height:440px;transform:scale(.6);transform-origin:top center}
+.rotor{position:absolute;inset:0;border-radius:50%;animation:spin 16s linear infinite;animation-play-state:paused}
+#player.playing .rotor{animation-play-state:running}
+@keyframes spin{to{transform:rotate(360deg)}}
+.disc{position:absolute;inset:30px;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#0b0b0e 0 2px,#151518 2px 5px);box-shadow:0 24px 70px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.1),inset 0 0 60px rgba(0,0,0,.55)}
+#cover{position:absolute;inset:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(0,0,0,.35),0 8px 30px rgba(0,0,0,.45);transition:background 1.2s ease}
+#cletter{font-size:118px;font-weight:900;color:rgba(25,10,4,.82);transition:opacity .3s}
+/* 唱针（不随盘转）：pivot 在 (190,-90)，暂停时抬起 */
+.needlebox{position:absolute;inset:0;transform-origin:190px -90px;transition:transform .8s cubic-bezier(.3,1.25,.5,1);pointer-events:none}
+#player.paused .needlebox{transform:rotate(-33deg)}
+.nseg1{position:absolute;left:186px;top:-78px;width:11px;height:180px;border-radius:6px;background:linear-gradient(90deg,#f2f2f5,#b9b9c2);box-shadow:0 3px 10px rgba(0,0,0,.4);transform:rotate(-14deg);transform-origin:6px 8px}
+.nseg2{position:absolute;left:231px;top:99px;width:13px;height:130px;border-radius:7px;background:linear-gradient(90deg,#ececf0,#c7c7cf);transform:rotate(55deg);transform-origin:5px 6px;box-shadow:0 3px 10px rgba(0,0,0,.45)}
+.npivot{position:absolute;left:178px;top:-90px;width:22px;height:22px;border-radius:50%;background:#f4f4f7;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+/* 歌词区 */
+.nlyr{position:absolute;left:0;right:0;top:336px;bottom:auto;text-align:center;transition:filter .4s,opacity .4s}
+.nlyr.hiddenl{filter:blur(9px);opacity:.35}
+#bigword{font-size:clamp(54px,8.2vw,102px);font-weight:800;color:#fff;line-height:1.12;letter-spacing:.5px;word-break:break-word;text-shadow:0 4px 40px rgba(0,0,0,.45)}
+#ipa{color:rgba(255,255,255,.8);font-size:29px;font-family:Georgia,serif;margin-top:12px}
+#ipa .p{color:rgba(255,255,255,.48);font-size:20px;font-family:-apple-system,sans-serif}
+#mean{color:#fff;font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-top:10px}
+#ex{color:rgba(255,255,255,.55);font-size:20px;font-style:italic;margin-top:14px}
+/* 图标排 */
+.nicons{position:absolute;left:0;right:0;bottom:140px;text-align:center}
+.nico2{font-size:25px;margin:0 26px;cursor:pointer;color:rgba(255,255,255,.85);user-select:none}
+.nico2.dim{color:rgba(255,255,255,.55)}
+.nico2.fav{color:var(--red);text-shadow:0 0 16px rgba(211,58,49,.5)}
+.nico2:hover{color:#fff}
+.nico2.fav:hover{color:var(--red)}
+#starBtn.on{color:#ffd76a !important;text-shadow:0 0 14px rgba(255,215,106,.55)}
+/* 进度 */
+.nprog{position:absolute;bottom:108px;left:64px;right:64px;display:flex;align-items:center;gap:14px}
+.nprog span{color:rgba(255,255,255,.55);font-size:14px;min-width:44px}
+.nprog span:last-child{text-align:right}
+.nbar{flex:1;height:2.5px;background:rgba(255,255,255,.25);border-radius:99px;position:relative}
+#nfill{position:absolute;left:0;top:0;height:100%;background:#fff;border-radius:99px;width:0}
+#nknob{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 1px 6px rgba(0,0,0,.5);left:0}
+/* 控制行 */
+.nctrl{position:absolute;bottom:8px;left:110px;right:110px;display:flex;align-items:center;justify-content:space-between}
+.nplay{width:74px;height:74px;border-radius:50%;border:2.5px solid #fff;background:transparent;color:#fff;font-size:21px;display:inline-flex;align-items:center;justify-content:center}
+.nplay:hover{transform:scale(1.05)}
+.nctrl .nico{font-size:28px}
+#ordBtn{font-size:16px;min-width:86px}
+#skipBtn{font-size:16px}
+#replayBtn{font-size:16px}
+@media (max-width:620px){
+  .vinylwrap{transform:scale(.5);top:56px}
+  .nlyr{top:300px}
+  .nctrl{left:40px;right:40px}
+  .nprog{left:34px;right:34px}
+}
+
+/* ---- 级别徽章 ---- */
+.badges{margin-bottom:18px}
+.b{display:inline-block;font-size:13px;font-weight:800;padding:3px 12px;border-radius:8px;color:#111;margin:0 4px}
+.lv4{background:#4da3ff}.lv6{background:#b07cff}.lvk{background:#ff8c00}.lvp{background:#ff5d5d}
+.ovt{background:#39d0d8}.ovg{background:#e06bd6}
+[data-theme="netease"] .badges{display:none}
+
+/* ---- 主题：影院黑 ---- */
+[data-theme] .vinylwrap{display:none}
+[data-theme="netease"] .vinylwrap{display:block}
+[data-theme="cinema"] .nicons,[data-theme="neon"] .nicons,[data-theme="ttplayer"] .nicons,[data-theme="ttpod"] .nicons,[data-theme="kugou"] .nicons,[data-theme="kuwo"] .nicons{display:none}
+[data-theme="cinema"] #nbg{background:radial-gradient(120% 90% at 50% 38%,#171c2a 0%,#0a0d14 62%,#05070b 100%);filter:none;opacity:1}
+[data-theme="cinema"] #nshade{background:linear-gradient(180deg,rgba(0,0,0,.22),transparent 32%,rgba(0,0,0,.38))}
+[data-theme="cinema"] #tword{letter-spacing:3px;text-transform:uppercase;font-size:15px}
+[data-theme="cinema"] .nlyr{top:50%;transform:translateY(-54%)}
+[data-theme="cinema"] #bigword{font-size:clamp(64px,11vw,150px);text-shadow:0 0 80px rgba(255,140,0,.28)}
+[data-theme="cinema"] #player.playing #bigword{text-shadow:0 0 90px rgba(255,140,0,.5),0 0 30px rgba(255,140,0,.32)}
+[data-theme="cinema"] #ipa{color:#ff9d2e}
+[data-theme="cinema"] .nprog{top:50px;bottom:auto;left:0;right:0;padding:0 44px}
+[data-theme="cinema"] .nprog span{visibility:hidden}
+[data-theme="cinema"] .nctrl{bottom:44px}
+
+/* ---- 主题：玻璃拟态 ---- */
+[data-theme="glass"] #nbg{background:linear-gradient(135deg,#1b1140 0%,#2a1a5e 40%,#0f2a5c 100%);filter:none;opacity:1}
+[data-theme="glass"] #nbg::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(255,110,60,.4);filter:blur(120px);top:-120px;left:-80px}
+[data-theme="glass"] #nbg::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(70,140,255,.45);filter:blur(130px);bottom:-120px;right:-60px}
+[data-theme="glass"] #nshade{background:none}
+[data-theme="glass"] .nlyr{top:50%;left:50%;right:auto;transform:translate(-50%,-54%);width:min(800px,92vw);background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);backdrop-filter:blur(24px);border-radius:44px;padding:42px 52px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+[data-theme="glass"] .nlyr.hiddenl{filter:none;opacity:1}
+[data-theme="glass"] .nlyr.hiddenl #bigword{filter:blur(12px);opacity:.4}
+[data-theme="glass"] .nlyr.hiddenl #mean,#player .nlyr.hiddenl #ipa{filter:blur(9px);opacity:.4}
+[data-theme="glass"] .nlyr.hiddenl #ex{visibility:hidden}
+[data-theme="glass"] .badges .b{padding:5px 16px;border-radius:999px;font-size:14px}
+[data-theme="glass"] .badges .b+ .b{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff}
+[data-theme="glass"] #ipa{display:inline-block;padding:7px 22px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28)}
+[data-theme="glass"] #bigword{text-shadow:0 4px 30px rgba(120,80,255,.5)}
+
+/* ---- 主题：霓虹终端 ---- */
+[data-theme="neon"] #nbg{background:#050807;filter:none;opacity:1}
+[data-theme="neon"] #nshade{background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 4px)}
+[data-theme="neon"] .nlyr,[data-theme="neon"] #tword,[data-theme="neon"] .nico,[data-theme="neon"] .nplay{font-family:"SF Mono",Menlo,Consolas,monospace}
+[data-theme="neon"] .nlyr{top:50%;transform:translateY(-54%)}
+[data-theme="neon"] #bigword{color:#3dff8f;text-shadow:0 0 26px rgba(61,255,143,.85),0 0 90px rgba(61,255,143,.4)}
+[data-theme="neon"] #player.playing #bigword::after{content:"▌";animation:neonblink 1s steps(2,start) infinite}
+@keyframes neonblink{to{visibility:hidden}}
+[data-theme="neon"] #ipa{color:#ffb02e;text-shadow:0 0 16px rgba(255,176,46,.6);font-family:inherit}
+[data-theme="neon"] #mean{color:#d8ffe9}
+[data-theme="neon"] #ex{color:#5f8f74;font-family:inherit}
+[data-theme="neon"] .badges{color:#ffb02e;font-size:14px;letter-spacing:4px}
+[data-theme="neon"] .badges .b{background:none;color:#ffb02e;padding:0;font-size:14px;letter-spacing:3px}
+[data-theme="neon"] #nfill,#neon #nknob{background:#3dff8f}
+[data-theme="neon"] #nfill{box-shadow:0 0 12px rgba(61,255,143,.8)}
+[data-theme="neon"] #nknob{background:#3dff8f;box-shadow:0 0 10px rgba(61,255,143,.8)}
+[data-theme="neon"] .nplay{border-color:#3dff8f;color:#3dff8f}
+[data-theme="neon"] .nico{color:rgba(61,255,143,.85)}
+[data-theme="neon"] .nico:hover{color:#3dff8f}
+[data-theme="neon"] .nico2{color:rgba(61,255,143,.85)}
+[data-theme="neon"] .nico2.dim{color:rgba(61,255,143,.5)}
+[data-theme="neon"] .nico2.fav{color:#3dff8f;text-shadow:0 0 16px rgba(61,255,143,.5)}
+
+/* ---- 主题：天天动听（桌面歌词绿字） ---- */
+[data-theme="ttpod"] #nbg{background:radial-gradient(90% 60% at 50% 10%,#123039 0%,#081318 55%,#04070a 100%);filter:none;opacity:1}
+[data-theme="ttpod"] #nshade{background:none}
+[data-theme="ttpod"] .nicons{display:none}
+[data-theme="ttpod"] .nlyr{top:50%;transform:translateY(-54%)}
+[data-theme="ttpod"] #bigword{color:#8dff5e;-webkit-text-stroke:1.5px rgba(0,0,0,.85);text-shadow:0 3px 0 rgba(0,0,0,.55),0 0 26px rgba(141,255,94,.4)}
+[data-theme="ttpod"] #ipa{color:#39c6cf;font-family:"SF Mono",Menlo,monospace}
+[data-theme="ttpod"] #nfill{background:#39c6cf;box-shadow:0 0 10px rgba(57,198,207,.8)}
+[data-theme="ttpod"] #nknob{background:#eafffb;width:14px;height:14px}
+[data-theme="ttpod"] .nplay{background:#0e2b31;border-color:#39c6cf;color:#8dff5e}
+
+/* ---- 主题：千千静听（XP 面板 + LED 歌词 + 均衡器） ---- */
+[data-theme="ttplayer"] #nbg{background:linear-gradient(180deg,#5c6672,#39424c);filter:none;opacity:1}
+[data-theme="ttplayer"] #nshade{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.5))}
+[data-theme="ttplayer"] .ntop{background:linear-gradient(180deg,#6f9fd8,#3b6fb0);border-radius:10px 10px 0 0;margin:30px 120px 0;padding:10px 24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 8px 24px rgba(0,0,0,.35)}
+[data-theme="ttplayer"] .nico{color:#fff}
+[data-theme="ttplayer"] .nicons{display:none}
+[data-theme="ttplayer"] .nlyr{top:190px}
+[data-theme="ttplayer"] #bigword{font-family:"SF Mono",Menlo,monospace;color:#ffb200;text-shadow:0 0 18px rgba(255,178,0,.55);font-size:clamp(44px,6.6vw,84px);letter-spacing:2px}
+[data-theme="ttplayer"] #ipa{color:#9fb4c8;font-family:"SF Mono",Menlo,monospace}
+[data-theme="ttplayer"] #mean{color:#e8eef5}
+[data-theme="ttplayer"] #ex{color:#8b98a6}
+[data-theme="ttplayer"] .badges .b{background:#1d2733;color:#ffd76a;border-radius:3px}
+[data-theme="ttplayer"] .eqrow{position:absolute;left:0;right:0;top:540px;display:flex;justify-content:center;gap:22px;height:56px;align-items:flex-end}
+[data-theme="ttplayer"] .eqrow i{width:10px;height:56px;border-radius:3px;position:relative;background:linear-gradient(180deg,#101418,#05070a);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+[data-theme="ttplayer"] .eqrow i::after{content:"";position:absolute;left:-3px;width:16px;height:10px;border-radius:2px;background:linear-gradient(180deg,#ffd76a,#e89b00);top:var(--e,42%)}
+[data-theme="ttplayer"] #player.playing .eqrow i::after{animation:eqbob 1.1s ease-in-out infinite alternate}
+[data-theme="ttplayer"] .eqrow i:nth-child(2)::after{animation-delay:.14s}
+[data-theme="ttplayer"] .eqrow i:nth-child(3)::after{animation-delay:.28s}
+[data-theme="ttplayer"] .eqrow i:nth-child(4)::after{animation-delay:.07s}
+[data-theme="ttplayer"] .eqrow i:nth-child(5)::after{animation-delay:.34s}
+[data-theme="ttplayer"] .eqrow i:nth-child(6)::after{animation-delay:.2s}
+[data-theme="ttplayer"] .eqrow i:nth-child(7)::after{animation-delay:.42s}
+[data-theme="ttplayer"] .eqrow i:nth-child(8)::after{animation-delay:.1s}
+@keyframes eqbob{from{top:12%}to{top:68%}}
+[data-theme="ttplayer"] .nprog{bottom:104px}
+[data-theme="ttplayer"] #nbar{height:12px;border-radius:4px;background:repeating-linear-gradient(90deg,#0c1013 0 6px,#131a20 6px 8px);overflow:hidden}
+[data-theme="ttplayer"] #nfill{background:linear-gradient(180deg,#ffd76a,#e89b00)}
+[data-theme="ttplayer"] #nknob{width:8px;height:18px;border-radius:2px;background:#f4f4f7}
+[data-theme="ttplayer"] .nprog span{color:#c8d2dc}
+[data-theme="ttplayer"] .nctrl{bottom:16px}
+[data-theme="ttplayer"] .nplay{background:linear-gradient(180deg,#f0f3f7,#c2ccd8);border:1px solid #8a94a2;color:#1d2733;border-radius:8px}
+
+/* ---- 主题：QQ 音乐 ---- */
+[data-theme="qq"] #nbg{background:radial-gradient(80% 60% at 50% 30%,#17222b,#0b1116 70%);filter:none;opacity:1}
+[data-theme="qq"] #nbg::after{content:"";position:absolute;inset:0;background:radial-gradient(50% 36% at 50% 34%,rgba(49,194,124,.18),transparent 72%)}
+[data-theme="qq"] #nshade{background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.45))}
+[data-theme="qq"] .nlyr{top:50%;transform:translateY(-52%)}
+[data-theme="qq"] #ipa{color:#31c27c}
+[data-theme="qq"] .nico2.fav{color:#31c27c;text-shadow:0 0 14px rgba(49,194,124,.5)}
+[data-theme="qq"] .nplay{border-color:#31c27c;color:#31c27c}
+[data-theme="qq"] #nfill{background:#31c27c}
+[data-theme="qq"] #nknob{background:#31c27c}
+[data-theme="qq"] #bigword{text-shadow:0 4px 34px rgba(49,194,124,.35)}
+
+/* ---- 主题：酷狗音乐（蓝色圆环进度） ---- */
+[data-theme="kugou"] #nbg{background:linear-gradient(160deg,#06263f,#0a3a5c 55%,#04121f);filter:none;opacity:1}
+[data-theme="kugou"] #nshade{background:radial-gradient(60% 40% at 50% 18%,rgba(53,186,250,.28),transparent 70%)}
+[data-theme="kugou"] .nicons{display:none}
+[data-theme="kugou"] .nlyr{top:50%;transform:translateY(-54%)}
+[data-theme="kugou"] #ipa{color:#7fd0ff}
+[data-theme="kugou"] #mean{color:#eaf6ff}
+[data-theme="kugou"] .nplay{width:88px;height:88px;border:none;background:conic-gradient(#35bafa var(--kp,0%),rgba(255,255,255,.16) 0);color:#fff;font-size:19px;position:relative}
+[data-theme="kugou"] .nplay::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#0a2033}
+[data-theme="kugou"] .nplay span{position:relative;z-index:1}
+[data-theme="kugou"] #nfill{background:#35bafa}
+[data-theme="kugou"] #nknob{background:#35bafa}
+
+/* ---- 主题：酷我音乐（金黄圆角） ---- */
+[data-theme="kuwo"] #nbg{background:radial-gradient(100% 70% at 50% 0%,#3a2a12 0%,#1c1207 60%,#0c0805 100%);filter:none;opacity:1}
+[data-theme="kuwo"] .nicons{display:none}
+[data-theme="kuwo"] .nlyr{top:50%;transform:translateY(-54%)}
+[data-theme="kuwo"] #ipa{color:#ffce3f}
+[data-theme="kuwo"] .nplay{border:none;background:linear-gradient(135deg,#ffd94d,#ffaa00);color:#3a2a00;border-radius:22px;width:84px;font-weight:800;box-shadow:0 10px 30px rgba(255,180,0,.35)}
+[data-theme="kuwo"] #nfill{background:#ffce3f}
+[data-theme="kuwo"] #nknob{background:#ffce3f}
+
+/* ---- 主题：虾米音乐（白底橙） ---- */
+[data-theme="xiami"] #nbg{background:linear-gradient(180deg,#ffffff,#f2f3f7);filter:none;opacity:1}
+[data-theme="xiami"] #nshade{background:none}
+[data-theme="xiami"] #tword{color:#6a707d}
+[data-theme="xiami"] .nico{color:#555}
+[data-theme="xiami"] .nico:hover{color:#1c1c22}
+[data-theme="xiami"] .nico2{color:#777}
+[data-theme="xiami"] .nico2.fav{color:#ff5a1f;text-shadow:none}
+[data-theme="xiami"] .nlyr{top:50%;transform:translateY(-54%)}
+[data-theme="xiami"] #bigword{color:#1c1c22;text-shadow:none}
+[data-theme="xiami"] #ipa{color:#ff5a1f}
+[data-theme="xiami"] #mean{color:#1c1c22}
+[data-theme="xiami"] #ex{color:#8a8f9c}
+[data-theme="xiami"] .nplay{border:2.5px solid #ff5a1f;color:#ff5a1f}
+[data-theme="xiami"] #nbar{background:rgba(0,0,0,.12)}
+[data-theme="xiami"] #nfill{background:#ff5a1f}
+[data-theme="xiami"] #nknob{background:#ff5a1f}
+[data-theme="xiami"] .nprog span{color:#9aa0ab}
+
+/* ---- 主题：Spotify ---- */
+[data-theme="spotify"] #nbg{background:linear-gradient(180deg,#1f1f1f 0%,#121212 60%);filter:none;opacity:1}
+[data-theme="spotify"] #nbg::before{content:"";position:absolute;inset:0;background:radial-gradient(46% 30% at 50% 26%,rgba(29,185,84,.3),transparent 72%)}
+[data-theme="spotify"] #nshade{background:none}
+[data-theme="spotify"] .nlyr{top:50%;transform:translateY(-54%)}
+[data-theme="spotify"] #bigword{letter-spacing:-1px;font-weight:900}
+[data-theme="spotify"] #ipa{color:#1db954}
+[data-theme="spotify"] .nico2.fav{color:#1db954;text-shadow:none}
+[data-theme="spotify"] .nplay{background:#fff;color:#121212;border:none}
+[data-theme="spotify"] #nfill{background:#1db954}
+[data-theme="spotify"] #nknob{background:#fff}
+
+/* ---- 主题：频谱律动（底部频谱柱上下跳动） ---- */
+.specrow,.fallpool,.ripplebox,.notepool{display:none;pointer-events:none}
+[data-theme="spectrum"] .specrow{display:flex;align-items:flex-end;gap:6px;position:absolute;left:40px;right:40px;bottom:128px;height:110px;opacity:.9}
+[data-theme="spectrum"] .specrow i{flex:1;height:100%;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#63f5d2,#2a8ad4);transform-origin:bottom;transform:scaleY(.12)}
+[data-theme="spectrum"] #player.playing .specrow i{animation-name:barDance;animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate}
+@keyframes barDance{from{transform:scaleY(.1)}to{transform:scaleY(1)}}
+[data-theme="spectrum"] #nbg{background:radial-gradient(100% 70% at 50% 20%,#160b2e 0%,#0a0616 60%,#040209 100%);filter:none;opacity:1}
+[data-theme="spectrum"] #nshade{background:none}
+[data-theme="spectrum"] .nicons{display:none}
+[data-theme="spectrum"] .nlyr{top:50%;transform:translateY(-58%)}
+[data-theme="spectrum"] #bigword{color:#eafcf7;text-shadow:0 0 34px rgba(99,245,210,.4)}
+[data-theme="spectrum"] #ipa{color:#63f5d2}
+[data-theme="spectrum"] .nplay{border-color:#63f5d2;color:#63f5d2}
+[data-theme="spectrum"] #nfill{background:#63f5d2}
+[data-theme="spectrum"] #nknob{background:#63f5d2}
+[data-theme="spectrum"] .nico{color:rgba(99,245,210,.8)}
+[data-theme="spectrum"] .nico:hover{color:#63f5d2}
+
+/* ---- 主题：瀑布歌词（唱过的词向上流走） ---- */
+[data-theme="waterfall"] #nbg{background:linear-gradient(180deg,#0d1b2a 0%,#071018 70%,#04080d 100%);filter:none;opacity:1}
+[data-theme="waterfall"] #nbg::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 90px)}
+[data-theme="waterfall"] #nshade{background:none}
+[data-theme="waterfall"] .fallpool{display:block;position:absolute;inset:0;overflow:hidden}
+[data-theme="waterfall"] .fallpool .fchip{position:absolute;top:64%;left:50%;color:rgba(255,255,255,.55);font-size:26px;font-weight:700;white-space:nowrap;animation:fallUp 5.5s linear forwards}
+@keyframes fallUp{from{transform:translate(-50%,30px);opacity:.85}to{transform:translate(-50%,-300px);opacity:0}}
+[data-theme="waterfall"] .nlyr{top:50%;transform:translateY(-52%)}
+[data-theme="waterfall"] #bigword{text-shadow:0 4px 40px rgba(90,160,255,.35)}
+[data-theme="waterfall"] #ipa{color:#5aa0ff}
+
+/* ---- 主题：声波涟漪（单词周围水波扩散） ---- */
+[data-theme="ripple"] #nbg{background:radial-gradient(90% 70% at 50% 40%,#0e2233 0%,#050b12 70%);filter:none;opacity:1}
+[data-theme="ripple"] #nshade{background:none}
+[data-theme="ripple"] .nicons{display:none}
+[data-theme="ripple"] .ripplebox{display:block;position:absolute;left:50%;top:44%;width:0;height:0}
+[data-theme="ripple"] .ripplebox i{position:absolute;left:-150px;top:-150px;width:300px;height:300px;border:2px solid rgba(120,190,255,.5);border-radius:50%;opacity:0}
+[data-theme="ripple"] #player.playing .ripplebox i{animation:ripR 2.8s ease-out infinite}
+[data-theme="ripple"] .ripplebox i:nth-child(2){animation-delay:.95s}
+[data-theme="ripple"] .ripplebox i:nth-child(3){animation-delay:1.9s}
+@keyframes ripR{0%{transform:scale(.42);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+[data-theme="ripple"] .nlyr{top:50%;transform:translateY(-52%)}
+[data-theme="ripple"] #bigword{text-shadow:0 0 44px rgba(120,190,255,.45)}
+[data-theme="ripple"] #ipa{color:#78beff}
+[data-theme="ripple"] .nplay{border-color:#78beff;color:#78beff}
+[data-theme="ripple"] #nfill{background:#78beff}
+[data-theme="ripple"] #nknob{background:#78beff}
+
+/* ---- 主题：音符上浮（♪♫ 飘起） ---- */
+[data-theme="notes"] #nbg{background:linear-gradient(180deg,#1c1207 0%,#0b0704 70%);filter:none;opacity:1}
+[data-theme="notes"] #nshade{background:none}
+[data-theme="notes"] .notepool{display:block;position:absolute;inset:0;overflow:hidden}
+[data-theme="notes"] .notepool .nt{position:absolute;bottom:-40px;color:#ffd76a;text-shadow:0 0 14px rgba(255,215,106,.5);animation:noteRise 6s linear forwards}
+@keyframes noteRise{0%{transform:translateY(0) rotate(-8deg);opacity:0}12%{opacity:.85}100%{transform:translateY(-560px) rotate(16deg);opacity:0}}
+[data-theme="notes"] .nlyr{top:50%;transform:translateY(-52%)}
+[data-theme="notes"] #ipa{color:#ffd76a}
+[data-theme="notes"] .nplay{border-color:#ffd76a;color:#ffd76a}
+[data-theme="notes"] #nfill{background:#ffd76a}
+[data-theme="notes"] #nknob{background:#ffd76a}
+</style>
+</head>
+<body data-theme="netease">
+<div class="wrap" id="setup">
+  <div class="ptitle"><i>Language Models are Unsupervised Multitask Learners · GPT-2 · OpenAI, 2019</i></div>
+  <h1>🎧 <b>单词连播</b> <span style="font-size:14px;color:var(--dim);font-weight:400">独立听力页</span></h1>
+
+  <div class="sec">
+    <h3>朗读范围 <span class="mini" id="cnt"></span></h3>
+    <div style="margin-bottom:6px;color:var(--dim);font-size:13px">级别</div>
+    <div id="lvChips" class="row"></div>
+    <div style="margin:10px 0 6px;color:var(--dim);font-size:13px">章节 <button class="chip" style="padding:2px 10px;font-size:12px" id="secAll">全选</button></div>
+    <div id="secChips" class="row"></div>
+  </div>
+
+  <div class="sec">
+    <h3>播放方式</h3>
+    <div class="row" style="margin-bottom:10px">
+      <span style="color:var(--dim);font-size:14px">顺序</span>
+      <button class="opt on" data-order="seq">顺序</button>
+      <button class="opt" data-order="rand">随机</button>
+      <span style="color:var(--dim);font-size:14px;margin-left:14px">停顿</span>
+      <button class="opt on" data-pause="2000">2s</button>
+      <button class="opt" data-pause="4000">4s</button>
+      <button class="opt" data-pause="6000">6s</button>
+    </div>
+    <div class="row">
+      <span style="color:var(--dim);font-size:14px">显示</span>
+      <button class="opt on" data-mode="full">全显</button>
+      <button class="opt" data-mode="reveal">先听后现</button>
+      <button class="opt" id="zhBtn" title="读完单词后用中文音色读一遍释义">朗读中文释义</button>
+      <button class="opt" id="exBtn" title="读完单词（和中文）后用英文源朗读原文例句">朗读英文例句</button>
+      <span style="color:var(--dim);font-size:14px;margin-left:14px">音色</span>
+      <select id="voiceSel"></select>
+      <span class="srcState" id="srcState"></span>
+      <span style="color:var(--dim);font-size:12px">（源失败自动换源；有道提供英/美两种发音）</span>
+      <span style="color:var(--dim);font-size:14px;margin-left:14px">太简单</span>
+      <button class="opt on" id="useSkipBtn" title="朗读时自动跳过已标记的词">跳过已掌握词</button>
+      <span id="skipCnt" style="color:var(--dim);font-size:13px">已跳过 0 词</span>
+      <button class="opt" id="clearSkipBtn">清空跳过</button>
+    </div>
+  </div>
+
+  <button id="start">▶ 开始连播</button>
+</div>
+
+<div id="player">
+  <div id="nbg"></div>
+  <div id="nshade"></div>
+  <div class="ntop">
+    <button class="nico" id="backBtn" title="返回设置 (Esc)">←</button>
+    <div class="ntitles"><div id="tword"></div></div>
+    <button class="nico" id="replayBtn" title="重听当前词">⤴</button>
+  </div>
+  <div class="vinylwrap" id="vwrap" title="点击重听当前词">
+    <div class="rotor">
+      <div class="disc"></div>
+      <div id="cover"><span id="cletter">A</span></div>
+    </div>
+    <div class="needlebox">
+      <div class="nseg1"></div>
+      <div class="nseg2"></div>
+      <div class="npivot"></div>
+    </div>
+  </div>
+  <div class="nlyr" id="lyrics">
+    <div class="badges" id="badges"></div>
+    <div id="bigword"></div>
+    <div id="ipa"></div>
+    <div id="mean"></div>
+    <div id="ex"></div>
+  </div>
+  <div class="nicons">
+    <span class="nico2" id="favBtn" title="收藏">❤</span>
+    <span class="nico2 dim">⤓</span>
+    <span class="nico2 dim" id="starBtn" title="太简单？标记后不再朗读（再点取消）">☆</span>
+    <span class="nico2 dim">⋯</span>
+  </div>
+  <div class="eqrow" id="eqrow"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="nprog">
+    <span id="tel">0:00</span>
+    <div class="nbar"><i id="nfill"></i><b id="nknob"></b></div>
+    <span id="ttot">0:00</span>
+  </div>
+  <div class="specrow" id="specrow"><i style="animation-delay:-0.00s;animation-duration:0.46s"></i><i style="animation-delay:-0.37s;animation-duration:0.75s"></i><i style="animation-delay:-0.11s;animation-duration:0.54s"></i><i style="animation-delay:-0.48s;animation-duration:0.83s"></i><i style="animation-delay:-0.22s;animation-duration:0.62s"></i><i style="animation-delay:-0.59s;animation-duration:0.91s"></i><i style="animation-delay:-0.33s;animation-duration:0.70s"></i><i style="animation-delay:-0.07s;animation-duration:0.49s"></i><i style="animation-delay:-0.44s;animation-duration:0.78s"></i><i style="animation-delay:-0.18s;animation-duration:0.57s"></i><i style="animation-delay:-0.55s;animation-duration:0.86s"></i><i style="animation-delay:-0.29s;animation-duration:0.65s"></i><i style="animation-delay:-0.03s;animation-duration:0.94s"></i><i style="animation-delay:-0.40s;animation-duration:0.73s"></i><i style="animation-delay:-0.14s;animation-duration:0.52s"></i><i style="animation-delay:-0.51s;animation-duration:0.81s"></i><i style="animation-delay:-0.25s;animation-duration:0.60s"></i><i style="animation-delay:-0.62s;animation-duration:0.89s"></i><i style="animation-delay:-0.36s;animation-duration:0.68s"></i><i style="animation-delay:-0.10s;animation-duration:0.47s"></i><i style="animation-delay:-0.47s;animation-duration:0.76s"></i><i style="animation-delay:-0.21s;animation-duration:0.55s"></i><i style="animation-delay:-0.58s;animation-duration:0.84s"></i><i style="animation-delay:-0.32s;animation-duration:0.63s"></i><i style="animation-delay:-0.06s;animation-duration:0.92s"></i><i style="animation-delay:-0.43s;animation-duration:0.71s"></i></div>
+  <div class="fallpool" id="fallpool"></div>
+  <div class="ripplebox" id="ripplebox"><i></i><i></i><i></i></div>
+  <div class="notepool" id="notepool"></div>
+  <div id="toast"></div>
+  <div class="brandmark" id="brandmark" title="音乐播放器风格致敬 · 非官方"></div>
+  <div class="nctrl">
+    <button class="nico" id="ordBtn" title="切换 顺序/随机">⟳ 顺序</button>
+    <button class="nico" id="prev2" title="上一个 (←)">⏮</button>
+    <button class="nplay" id="pp2" title="播放/暂停 (空格)"><span id="pp2t">❚❚</span></button>
+    <button class="nico" id="next2" title="下一个 (→)">⏭</button>
+    <button class="nico" id="skipBtn" title="认识此词：加入跳过并到下一个 (S)">✓ 认识</button>
+    <button class="nico" id="listBtn" title="退出播放 (Esc)">☰</button>
+  </div>
+</div>
+
+<script>
+const DATA = [{"sec": "Abstract · 摘要", "short": "Abstract", "icon": "A", "words": [{"w": "supervise", "ipa": "ˈsuːpərvaɪz", "pos": "v.", "lv": "6", "m": "监督（ supervise learning 监督学习）", "ex": "are typically approached with supervised learning on task-specific datasets"}, {"w": "explicit", "ipa": "ɪkˈsplɪsɪt", "pos": "adj.", "lv": "6", "m": "明确的，显式的", "ex": "language models begin to learn these tasks without any explicit supervision"}, {"w": "condition", "ipa": "kənˈdɪʃn", "pos": "v.", "lv": "4", "m": "以…为条件；条件于", "ex": "When conditioned on a document plus questions, the answers generated by the language model reach 55 F1"}, {"w": "baseline", "ipa": "ˈbeɪslaɪn", "pos": "n.", "lv": "p", "m": "基线（系统）", "ex": "matching or exceeding the performance of 3 out of 4 baseline systems"}, {"w": "exceed", "ipa": "ɪkˈsiːd", "pos": "v.", "lv": "4", "m": "超过，超出", "ex": "matching or exceeding the performance of 3 out of 4 baseline systems"}, {"w": "capacity", "ipa": "kəˈpæsəti", "pos": "n.", "lv": "4", "m": "容量；（模型）能力", "ex": "The capacity of the language model is essential to the success of zero-shot task transfer"}, {"w": "essential", "ipa": "ɪˈsenʃl", "pos": "adj.", "lv": "4", "m": "必不可少的", "ex": "The capacity of the language model is essential to the success of zero-shot task transfer"}, {"w": "transfer", "ipa": "trænsˈfɜːr", "pos": "n./v.", "lv": "4", "m": "迁移；转移", "ex": "The capacity of the language model is essential to the success of zero-shot task transfer"}, {"w": "parameter", "ipa": "pəˈræmɪtər", "pos": "n.", "lv": "6", "m": "参数", "ex": "GPT-2 is a 1.5B parameter Transformer"}, {"w": "coherent", "ipa": "koʊˈhɪrənt", "pos": "adj.", "lv": "6", "m": "连贯的", "ex": "Samples from the model reﬂect these improvements and contain coherent paragraphs of text"}, {"w": "promising", "ipa": "ˈprɑːmɪsɪŋ", "pos": "adj.", "lv": "4", "m": "有前景的", "ex": "a promising path towards building language processing systems"}, {"w": "demonstration", "ipa": "ˌdemənˈstreɪʃn", "pos": "n.", "lv": "6", "m": "示范；演示实例", "ex": "learn to perform tasks from their naturally occurring demonstrations"}, {"w": "supervised", "ipa": "suːˈpɜːrvɪzd", "pos": "adj.", "lv": "p", "m": "有监督的", "ex": "are typically approached with supervised learning on task-specific datasets"}, {"w": "explicitly", "ipa": "ɪkˈsplɪsɪtli", "pos": "adv.", "lv": "4", "m": "明确地", "ex": "begin to learn these tasks without any explicit supervision"}]}, {"sec": "1. Introduction · 引言", "short": "Intro", "icon": "1", "words": [{"w": "brittle", "ipa": "ˈbrɪtl", "pos": "adj.", "lv": "4", "m": "脆弱的，不鲁棒的", "ex": "Yet these systems are brittle and sensitive to slight changes in the data distribution"}, {"w": "distribution", "ipa": "ˌdɪstrɪˈbjuːʃn", "pos": "n.", "lv": "4", "m": "分布", "ex": "sensitive to slight changes in the data distribution and task specification"}, {"w": "competent", "ipa": "ˈkɑːmpɪtənt", "pos": "adj.", "lv": "4", "m": "胜任的，能干的", "ex": "Current systems are better characterized as narrow experts rather than competent generalists"}, {"w": "generalist", "ipa": "ˈdʒenrəlɪst", "pos": "n.", "lv": "p", "m": "通才，多面手", "ex": "narrow experts rather than competent generalists"}, {"w": "dominant", "ipa": "ˈdɑːmɪnənt", "pos": "adj.", "lv": "4", "m": "占主导地位的", "ex": "The dominant approach to creating ML systems is to collect a dataset of training examples"}, {"w": "imitate", "ipa": "ˈɪmɪteɪt", "pos": "v.", "lv": "4", "m": "模仿", "ex": "train a system to imitate these behaviors"}, {"w": "erratic", "ipa": "ɪˈrætɪk", "pos": "adj.", "lv": "p", "m": "飘忽不定的，反复无常的", "ex": "the often erratic behavior of captioning models"}, {"w": "caption", "ipa": "ˈkæpʃn", "pos": "n.", "lv": "6", "m": "（图片）说明文字；字幕", "ex": "the often erratic behavior of captioning models"}, {"w": "classifier", "ipa": "ˈklæsɪfaɪər", "pos": "n.", "lv": "p", "m": "分类器", "ex": "image classiﬁers on the diversity and variety of possible inputs"}, {"w": "shortcoming", "ipa": "ˈʃɔːrtkʌmɪŋ", "pos": "n.", "lv": "4", "m": "缺点，不足之处", "ex": "highlights some of the short-comings of this approach"}, {"w": "suspicion", "ipa": "səˈspɪʃn", "pos": "n.", "lv": "4", "m": "怀疑，猜疑", "ex": "Our suspicion is that the prevalence of single task training is a major contributor"}, {"w": "prevalence", "ipa": "ˈprevələns", "pos": "n.", "lv": "6", "m": "盛行，普遍存在", "ex": "the prevalence of single task training on single domain datasets"}, {"w": "generalization", "ipa": "ˌdʒenrələˈzeɪʃn", "pos": "n.", "lv": "4", "m": "泛化；概括", "ex": "a major contributor to the lack of generalization observed in current systems"}, {"w": "robust", "ipa": "roʊˈbʌst", "pos": "adj.", "lv": "6", "m": "鲁棒的，稳健的", "ex": "Progress towards robust systems with current architectures"}, {"w": "benchmark", "ipa": "ˈbentʃmɑːrk", "pos": "n.", "lv": "p", "m": "基准（测试）", "ex": "several benchmarks have been proposed such as GLUE and decaNLP"}, {"w": "nascent", "ipa": "ˈnæsnt", "pos": "adj.", "lv": "p", "ov": "g", "m": "初生的，新兴的", "ex": "multitask training in NLP is still nascent"}, {"w": "modest", "ipa": "ˈmɑːdɪst", "pos": "adj.", "lv": "4", "m": "适度的，不大的", "ex": "Recent work reports modest performance improvements"}, {"w": "ambitious", "ipa": "æmˈbɪʃəs", "pos": "adj.", "lv": "4", "m": "雄心勃勃的", "ex": "the two most ambitious efforts to date have trained on a total of 10 and 17 pairs"}, {"w": "motivate", "ipa": "ˈmoʊtɪveɪt", "pos": "v.", "lv": "4", "m": "成为…的动机；促使", "ex": "This motivates exploring additional setups for performing multitask learning"}, {"w": "fine-tune", "ipa": "ˌfaɪnˈtuːn", "pos": "v.", "lv": "p", "m": "微调", "ex": "utilize a combination of pre-training and supervised ﬁne-tuning"}, {"w": "recurrent", "ipa": "rɪˈkɜːrənt", "pos": "adj.", "lv": "p", "m": "循环的，递归的（RNN）", "ex": "the contextual representations of recurrent networks were transferred"}, {"w": "contextual", "ipa": "kənˈtekstʃuəl", "pos": "adj.", "lv": "p", "m": "上下文的", "ex": "the contextual representations of recurrent networks were transferred"}, {"w": "sentiment", "ipa": "ˈsentɪmənt", "pos": "n.", "lv": "6", "m": "情感，情绪", "ex": "such as commonsense reasoning and sentiment analysis"}, {"w": "commonsense", "ipa": "ˌkɑːmənˈsens", "pos": "n./adj.", "lv": "6", "m": "常识（的）", "ex": "such as commonsense reasoning and sentiment analysis"}, {"w": "downstream", "ipa": "ˈdaʊnstriːm", "pos": "adj.", "lv": "p", "m": "下游的", "ex": "language models can perform down-stream tasks in a zero-shot setting"}, {"w": "sensitive", "ipa": "ˈsensətɪv", "pos": "adj.", "lv": "4", "m": "敏感的", "ex": "sensitive to slight changes in the data distribution"}, {"w": "narrow", "ipa": "ˈnæroʊ", "pos": "adj.", "lv": "4", "m": "狭隘的，狭窄的", "ex": "Current systems are better characterized as narrow experts"}, {"w": "pre-training", "ipa": "priːˈtreɪnɪŋ", "pos": "n.", "lv": "p", "m": "预训练", "ex": "utilize a combination of pre-training and supervised fine-tuning"}, {"w": "flexible", "ipa": "ˈfleksəbl", "pos": "adj.", "lv": "4", "m": "灵活的", "ex": "a long history with a trend towards more flexible forms of transfer"}, {"w": "sufficient", "ipa": "səˈfɪʃnt", "pos": "adj.", "lv": "4", "m": "足够的", "ex": "transferring many self-attention blocks is sufficient"}, {"w": "specification", "ipa": "/ˌspesɪfɪˈkeɪʃn/", "pos": "n.", "lv": "6", "m": "规范，规格", "ex": "task specification"}, {"w": "multitask", "ipa": "/ˈmʌltɪtæsk/", "pos": "adj.", "lv": "p", "m": "多任务的", "ex": "Multitask learning is a promising framework"}, {"w": "framework", "ipa": "/ˈfreɪmwɜːrk/", "pos": "n.", "lv": "4", "m": "框架", "ex": "a promising framework for improving general performance"}, {"w": "meta-learning", "ipa": "/ˌmetə ˈlɜːrnɪŋ/", "pos": "n.", "lv": "p", "m": "元学习", "ex": "From a meta-learning perspective"}, {"w": "brute force", "ipa": "/bruːt fɔːrs/", "pos": "n.", "lv": "p", "m": "暴力穷举", "ex": "brute force our way there with current techniques"}]}, {"sec": "2. Approach · 方法", "short": "Approach", "icon": "2", "words": [{"w": "frame", "ipa": "freɪm", "pos": "v.", "lv": "4", "m": "表述；框定", "ex": "Language modeling is usually framed as unsupervised distribution estimation"}, {"w": "sequence", "ipa": "ˈsiːkwəns", "pos": "n.", "lv": "4", "m": "序列", "ex": "variable length sequences of symbols"}, {"w": "factorize", "ipa": "ˈfæktəraɪz", "pos": "v.", "lv": "p", "m": "（因式）分解", "ex": "it is common to factorize the joint probabilities over symbols"}, {"w": "conditional", "ipa": "kənˈdɪʃənl", "pos": "adj.", "lv": "6", "m": "条件的", "ex": "the product of conditional probabilities"}, {"w": "tractable", "ipa": "ˈtræktəbl", "pos": "adj.", "lv": "p", "m": "可处理的，易驾驭的", "ex": "This approach allows for tractable sampling from and estimation of p(x)"}, {"w": "estimation", "ipa": "ˌestɪˈmeɪʃn", "pos": "n.", "lv": "p", "m": "估计", "ex": "unsupervised distribution estimation from a set of examples"}, {"w": "expressiveness", "ipa": "ɪkˈspresɪvnəs", "pos": "n.", "lv": "4", "m": "表达力", "ex": "signiﬁcant improvements in the expressiveness of models"}, {"w": "probabilistic", "ipa": "ˌprɑːbəbəˈlɪstɪk", "pos": "adj.", "lv": "p", "m": "概率（论）的", "ex": "Learning to perform a single task can be expressed in a probabilistic framework"}, {"w": "formalize", "ipa": "ˈfɔːrməlaɪz", "pos": "v.", "lv": "p", "m": "形式化", "ex": "This has been variously formalized in multitask and meta-learning settings", "ov": "t"}, {"w": "exemplify", "ipa": "ɪɡˈzemplɪfaɪ", "pos": "v.", "lv": "6", "m": "例证，是…的典型", "ex": "as exempliﬁed in McCann et al. (2018), language provides a ﬂexible way to specify tasks"}, {"w": "infer", "ipa": "ɪnˈfɜːr", "pos": "v.", "lv": "4", "m": "推断", "ex": "to infer and perform many different tasks on examples with this type of format"}, {"w": "convergence", "ipa": "kənˈvɜːrdʒəns", "pos": "n.", "lv": "p", "m": "收敛", "ex": "optimize the unsupervised objective to convergence"}, {"w": "restrictive", "ipa": "rɪˈstrɪktɪv", "pos": "adj.", "lv": "6", "m": "限制性的", "ex": "While dialog is an attractive approach, we worry it is overly restrictive"}, {"w": "passive", "ipa": "ˈpæsɪv", "pos": "adj.", "lv": "4", "m": "被动的", "ex": "information that is passively available without the need for interactive communication"}, {"w": "speculation", "ipa": "ˌspekjuˈleɪʃn", "pos": "n.", "lv": "p", "m": "推测，猜测", "ex": "Our speculation is that a language model with sufﬁcient capacity will begin to learn", "ov": "g"}, {"w": "procurement", "ipa": "prəˈkjʊrmənt", "pos": "n.", "lv": "p", "m": "获得，取得", "ex": "in order to better predict them, regardless of their method of procurement"}]}, {"sec": "2.1. Training Dataset · 训练数据集", "short": "Dataset", "icon": "2.1", "words": [{"w": "scrape", "ipa": "skreɪp", "pos": "n.", "lv": "4", "m": "（网页）抓取数据", "ex": "A promising source of diverse and nearly unlimited text is web scrapes such as Common Crawl"}, {"w": "archive", "ipa": "ˈɑːrkaɪv", "pos": "n.", "lv": "4", "m": "档案，存档", "ex": "While these archives are many orders of magnitude larger than current language modeling datasets"}, {"w": "magnitude", "ipa": "ˈmæɡnɪtuːd", "pos": "n.", "lv": "6", "m": "量级；大小", "ex": "these archives are many orders of magnitude larger"}, {"w": "unintelligible", "ipa": "ˌʌnɪnˈtelɪdʒəbl", "pos": "adj.", "lv": "p", "m": "难以理解的", "ex": "documents whose content are mostly unintelligible"}, {"w": "subsample", "ipa": "ˈsʌbsɑːmpl", "pos": "n.", "lv": "p", "m": "子样本", "ex": "best results were achieved using a small subsample of Common Crawl"}, {"w": "pragmatic", "ipa": "præɡˈmætɪk", "pos": "adj.", "lv": "6", "m": "务实的，实用的", "ex": "While this is a pragmatic approach to improve performance on a speciﬁc task"}, {"w": "assumption", "ipa": "əˈsʌmpʃn", "pos": "n.", "lv": "4", "m": "假设，假定", "ex": "we want to avoid making assumptions about the tasks to be performed ahead of time"}, {"w": "curate", "ipa": "ˈkjʊreɪt", "pos": "v.", "lv": "p", "m": "（人工）筛选，精选", "ex": "we only scraped web pages which have been curated/ﬁltered by humans"}, {"w": "exceptionally", "ipa": "ɪkˈsepʃənəli", "pos": "adv.", "lv": "4", "m": "格外地，极其", "ex": "Manually ﬁltering a full web scrape would be exceptionally expensive"}, {"w": "heuristic", "ipa": "hjʊˈrɪstɪk", "pos": "n./adj.", "lv": "p", "m": "启发式（方法）", "ex": "This can be thought of as a heuristic indicator for whether other users found the link interesting"}, {"w": "de-duplication", "ipa": "diːˌduːplɪˈkeɪʃn", "pos": "n.", "lv": "p", "m": "去重", "ex": "after de-duplication and some heuristic based cleaning"}, {"w": "overlap", "ipa": "ˌoʊvərˈlæp", "pos": "n./v.", "lv": "6", "m": "重叠", "ex": "could complicate analysis due to overlapping training data with test evaluation tasks"}, {"w": "inference", "ipa": "ˈɪnfərəns", "pos": "n.", "lv": "4", "m": "推理，推断", "ex": "begin to learn to infer and perform the tasks"}, {"w": "unsupervised", "ipa": "ˌʌnsəˈpɜːrvɪzd", "pos": "adj.", "lv": "p", "m": "无监督的", "ex": "it will be, in effect, performing unsupervised multitask learning"}, {"w": "demonstrably", "ipa": "dɪˈmɑːnstrəbli", "pos": "adv.", "lv": "p", "m": "可证明地", "ex": "are now demonstrably smaller than those demonstrated by the model"}, {"w": "curated", "ipa": "/kjʊˈreɪtɪd/", "pos": "adj.", "lv": "p", "m": "精心策划的", "ex": "web pages which have been curated/filtered by humans"}, {"w": "intelligible", "ipa": "/ɪnˈtelɪdʒəbl/", "pos": "adj.", "lv": "6", "m": "可理解的", "ex": "a large amount of documents whose content are mostly unintelligible"}]}, {"sec": "2.2. Input Representation · 输入表示", "short": "Input Rep", "icon": "2.2", "words": [{"w": "pre-processing", "ipa": "priːˈprɑːsesɪŋ", "pos": "n.", "lv": "p", "m": "预处理", "ex": "Current large scale LMs include pre-processing steps such as lowercasing"}, {"w": "tokenization", "ipa": "ˌtoʊkənəˈzeɪʃn", "pos": "n.", "lv": "p", "m": "词元化，分词", "ex": "lowercasing, tokenization, and out-of-vocabulary tokens"}, {"w": "restrict", "ipa": "rɪˈstrɪkt", "pos": "v.", "lv": "4", "m": "限制", "ex": "which restrict the space of model-able strings"}, {"w": "elegantly", "ipa": "ˈelɪɡəntli", "pos": "adv.", "lv": "4", "m": "优雅地，巧妙地", "ex": "processing Unicode strings as a sequence of UTF-8 bytes elegantly fulﬁlls this requirement"}, {"w": "fulfill", "ipa": "fʊlˈfɪl", "pos": "v.", "lv": "4", "m": "满足，履行", "ex": "elegantly fulﬁlls this requirement"}, {"w": "competitive", "ipa": "kəmˈpetətɪv", "pos": "adj.", "lv": "4", "m": "有竞争力的", "ex": "current byte-level LMs are not competitive with word-level LMs on large scale datasets"}, {"w": "interpolate", "ipa": "ɪnˈtɜːrpəleɪt", "pos": "v.", "lv": "p", "m": "插值；介于…之间", "ex": "effectively interpolates between word level inputs and character level inputs", "ov": "g"}, {"w": "prohibitively", "ipa": "prəˈhɪbətɪvli", "pos": "adv.", "lv": "4", "m": "（高得）令人望而却步地", "ex": "This is prohibitively large compared to the 32,000 to 64,000 token vocabularies"}, {"w": "vocabulary", "ipa": "vəˈkæbjəleri", "pos": "n.", "lv": "4", "m": "词汇（表）", "ex": "This would result in a base vocabulary of over 130,000"}, {"w": "greedy", "ipa": "ˈɡriːdi", "pos": "adj.", "lv": "4", "m": "贪婪的", "ex": "BPE using a greedy frequency based heuristic for building the token vocabulary"}, {"w": "allocation", "ipa": "ˌæləˈkeɪʃn", "pos": "n.", "lv": "p", "m": "分配", "ex": "a sub-optimal allocation of limited vocabulary slots and model capacity"}, {"w": "fragmentation", "ipa": "fræɡmenˈteɪʃn", "pos": "n.", "lv": "p", "m": "碎片化", "ex": "adding only minimal fragmentation of words across multiple vocab tokens"}, {"w": "empirical", "ipa": "ɪmˈpɪrɪkl", "pos": "adj.", "lv": "6", "m": "经验的，实证的", "ex": "combine the empirical beneﬁts of word-level LMs"}, {"w": "generality", "ipa": "ˌdʒenəˈræləti", "pos": "n.", "lv": "p", "m": "通用性，普遍性", "ex": "with the generality of byte-level approaches"}, {"w": "optimal", "ipa": "ˈɑːptɪml", "pos": "adj.", "lv": "6", "m": "最优的", "ex": "results in sub-optimal merges"}, {"w": "frequency", "ipa": "ˈfriːkwənsi", "pos": "n.", "lv": "4", "m": "频率", "ex": "BPE using a greedy frequency based heuristic"}, {"w": "interpolates", "ipa": "ɪnˈtɜːrpəleɪts", "pos": "v.", "lv": "p", "m": "插值", "ex": "which effectively interpolates between word level inputs for frequent symbol sequences", "ov": "g"}, {"w": "compress", "ipa": "/kəmˈpres/", "pos": "v.", "lv": "4", "m": "压缩", "ex": "significantly improves the compression efficiency"}]}, {"sec": "2.3. Model · 模型", "short": "Model", "icon": "2.3", "words": [{"w": "modification", "ipa": "ˌmɑːdɪfɪˈkeɪʃn", "pos": "n.", "lv": "6", "m": "修改，改进", "ex": "The model largely follows the details of the OpenAI GPT model with a few modiﬁcations"}, {"w": "initialization", "ipa": "ɪˌnɪʃələˈzeɪʃn", "pos": "n.", "lv": "p", "m": "初始化", "ex": "A modiﬁed initialization which accounts for the accumulation on the residual path"}, {"w": "residual", "ipa": "rɪˈzɪdʒuəl", "pos": "adj.", "lv": "6", "m": "残差的，剩余的", "ex": "similar to a pre-activation residual network"}, {"w": "accumulation", "ipa": "əˌkjuːmjəˈleɪʃn", "pos": "n.", "lv": "p", "ov": "t", "m": "累积", "ex": "accounts for the accumulation on the residual path with model depth"}, {"w": "approximately", "ipa": "əˈprɑːksɪmətli", "pos": "adv.", "lv": "4", "m": "大约", "ex": "We trained and benchmarked four LMs with approximately log-uniformly spaced sizes"}, {"w": "equivalent", "ipa": "ɪˈkwɪvələnt", "pos": "adj.", "lv": "4", "m": "等价的，相当的", "ex": "The smallest model is equivalent to the original GPT"}, {"w": "manually", "ipa": "ˈmænjuəli", "pos": "adv.", "lv": "4", "m": "人工地，手动地", "ex": "The learning rate of each model was manually tuned for the best perplexity"}, {"w": "perplexity", "ipa": "pərˈpleksəti", "pos": "n.", "lv": "p", "m": "困惑度（语言模型评价指标）", "ex": "manually tuned for the best perplexity on a 5% held-out sample of WebText", "ov": "g"}, {"w": "held-out", "ipa": "ˌheld ˈaʊt", "pos": "adj.", "lv": "p", "m": "留出（作验证/测试）的", "ex": "the best perplexity on a 5% held-out sample of WebText"}, {"w": "underfit", "ipa": "ˌʌndərˈfɪt", "pos": "v.", "lv": "p", "m": "欠拟合", "ex": "All models still underﬁt WebText"}, {"w": "Transformer", "ipa": "trænsˈfɔːrmər", "pos": "n.", "lv": "p", "m": "Transformer架构", "ex": "Our largest model, GPT-2, is a 1.5B parameter Transformer"}, {"w": "attenuation", "ipa": "əˌtenjuˈeɪʃn", "pos": "n.", "lv": "p", "m": "衰减", "ex": "which are attenuated through a learned linear projection", "ov": "g"}, {"w": "normalization", "ipa": "ˌnɔːrməlaɪˈzeɪʃn", "pos": "n.", "lv": "6", "m": "归一化", "ex": "normalized residual connections"}, {"w": "parameterization", "ipa": "pəˌræmətəraɪˈzeɪʃn", "pos": "n.", "lv": "p", "m": "参数化", "ex": "we observed a performance gap in our own attempts to train"}, {"w": "granularity", "ipa": "ˌɡrænjuˈlærəti", "pos": "n.", "lv": "p", "m": "粒度", "ex": "allows modeling the joint distribution over characters"}, {"w": "minibatch", "ipa": "ˈmɪnibætʃ", "pos": "n.", "lv": "p", "m": "小批量", "ex": "we used minibatch gradient descent"}, {"w": "gradient", "ipa": "ˈɡreɪdiənt", "pos": "n.", "lv": "6", "m": "梯度", "ex": "minibatch gradient descent with a learning rate cosine annealing schedule"}, {"w": "annealing", "ipa": "əˈnelɪŋ", "pos": "n.", "lv": "p", "m": "退火", "ex": "a learning rate cosine annealing schedule", "ov": "g"}, {"w": "regularization", "ipa": "ˌreɡjələraɪˈzeɪʃn", "pos": "n.", "lv": "p", "m": "正则化", "ex": "gradient norm clipping at 1"}, {"w": "reservoir", "ipa": "ˈrezərvwɑːr", "pos": "n.", "lv": "4", "m": "存储库", "ex": "sampled from a reservoir of 3.2B tokens"}, {"w": "architecture", "ipa": "/ˈɑːrkɪtektʃər/", "pos": "n.", "lv": "4", "m": "架构", "ex": "We use a Transformer based architecture for our LMs"}]}, {"sec": "3.1. Language Modeling · 语言建模", "short": "LangModel", "icon": "3.1", "words": [{"w": "domain", "ipa": "doʊˈmeɪn", "pos": "n.", "lv": "6", "m": "领域", "ex": "how WebText LM's perform at zero-shot domain transfer"}, {"w": "lossy", "ipa": "ˈlɔːsi", "pos": "adj.", "lv": "p", "m": "有损的", "ex": "does not require lossy pre-processing or tokenization"}, {"w": "canonical", "ipa": "kəˈnɑːnɪkl", "pos": "adj.", "lv": "p", "ov": "g", "m": "规范的，典型的", "ex": "the average negative log probability per canonical prediction unit"}, {"w": "aggressively", "ipa": "əˈɡresɪvli", "pos": "adv.", "lv": "4", "m": "激进地", "ex": "having to predict aggressively standardized text"}, {"w": "artifact", "ipa": "ˈɑːrtɪfækt", "pos": "n.", "lv": "p", "m": "伪迹；（处理引入的）瑕疵", "ex": "tokenization artifacts such as disconnected punctuation and contractions"}, {"w": "punctuation", "ipa": "ˌpʌŋktʃuˈeɪʃn", "pos": "n.", "lv": "p", "m": "标点符号", "ex": "tokenization artifacts such as disconnected punctuation and contractions"}, {"w": "contraction", "ipa": "kənˈtrækʃn", "pos": "n.", "lv": "6", "m": "缩略形式（如 don't）", "ex": "disconnected punctuation and contractions"}, {"w": "invertible", "ipa": "ɪnˈvɜːrtəbl", "pos": "adj.", "lv": "p", "m": "可逆的", "ex": "We report our main results in Table 3 using invertible de-tokenizers"}, {"w": "adaptation", "ipa": "ˌædæpˈteɪʃn", "pos": "n.", "lv": "6", "m": "适应", "ex": "they can be thought of as a simple form of domain adaptation"}, {"w": "destructive", "ipa": "dɪˈstrʌktɪv", "pos": "adj.", "lv": "6", "m": "破坏性的", "ex": "having some of the most destructive pre-processing"}, {"w": "shuffle", "ipa": "ˈʃʌfl", "pos": "v.", "lv": "p", "m": "打乱（顺序）", "ex": "1BW's sentence level shufﬂing removes all long-range structure"}, {"w": "dependency", "ipa": "dɪˈpendənsi", "pos": "n.", "lv": "p", "m": "依赖关系", "ex": "datasets created to measure long-term dependencies like LAMBADA"}, {"w": "zero-shot", "ipa": "ˈzɪəroʊʃɑːt", "pos": "adj.", "lv": "p", "m": "零样本的", "ex": "improving the state of the art on 7 out of the 8 datasets in a zero-shot setting"}, {"w": "state-of-the-art", "ipa": "steɪt əv ði ɑːrt", "pos": "adj.", "lv": "p", "m": "最先进的", "ex": "achieves state of the art results on 7 out of 8 tested language modeling datasets"}, {"w": "fine-tuning", "ipa": "faɪn ˈtuːnɪŋ", "pos": "n.", "lv": "p", "m": "微调", "ex": "utilize a combination of pre-training and supervised fine-tuning"}, {"w": "invariant", "ipa": "/ɪnˈveriənt/", "pos": "adj.", "lv": "p", "m": "不变的", "ex": "invertible de-tokenizers which remove tokenization artifacts"}, {"w": "de-tokenizer", "ipa": "/diːˈtoʊkənaɪzər/", "pos": "n.", "lv": "p", "m": "反分词器", "ex": "using invertible de-tokenizers"}, {"w": "domain adaptation", "ipa": "/doʊˈmeɪn ˌædəpˈteɪʃn/", "pos": "n.", "lv": "p", "m": "领域适应", "ex": "they can be thought of as a simple form of domain adaptation"}, {"w": "aggressive", "ipa": "/əˈɡresɪv/", "pos": "adj.", "lv": "4", "m": "激进的，严格的", "ex": "predicting aggressively standardized text"}, {"w": "pronoun", "ipa": "/ˈproʊnaʊn/", "pos": "n.", "lv": "4", "m": "代词", "ex": "common pronoun appearing in the context"}, {"w": "discourse", "ipa": "/ˈdɪskɔːrs/", "pos": "n.", "lv": "6", "m": "话语，语篇", "ex": "a question that depends on conversation history"}, {"w": "retrieve", "ipa": "/rɪˈtriːv/", "pos": "v.", "lv": "6", "m": "检索", "ex": "GPT-2 often uses simple retrieval based heuristics"}]}, {"sec": "3.2–3.3. CBT & LAMBADA · 儿童书测试与LAMBADA", "short": "CBT/LAMB", "icon": "3.2", "words": [{"w": "category", "ipa": "ˈkætəɡɔːri", "pos": "n.", "lv": "4", "m": "类别", "ex": "the performance of LMs on different categories of words"}, {"w": "entity", "ipa": "ˈentəti", "pos": "n.", "lv": "6", "m": "实体", "ex": "named entities, nouns, verbs, and prepositions"}, {"w": "preposition", "ipa": "ˌprepəˈzɪʃn", "pos": "n.", "lv": "4", "m": "介词", "ex": "named entities, nouns, verbs, and prepositions"}, {"w": "metric", "ipa": "ˈmetrɪk", "pos": "n.", "lv": "4", "m": "指标", "ex": "Rather than reporting perplexity as an evaluation metric, CBT reports accuracy"}, {"w": "cloze", "ipa": "kloʊz", "pos": "n.", "lv": "p", "m": "填空（测试）", "ex": "accuracy on an automatically constructed cloze test"}, {"w": "omit", "ipa": "əˈmɪt", "pos": "v.", "lv": "4", "m": "省略，遗漏", "ex": "to predict which of 10 possible choices for an omitted word is correct"}, {"w": "steadily", "ipa": "ˈstedəli", "pos": "adv.", "lv": "p", "m": "稳步地", "ex": "performance steadily improves as model size is increased", "ov": "t"}, {"w": "validation", "ipa": "ˌvælɪˈdeɪʃn", "pos": "n.", "lv": "6", "m": "验证", "ex": "we report results on the validation set which has no signiﬁcant overlap"}, {"w": "continuation", "ipa": "kənˌtɪnjuˈeɪʃn", "pos": "n.", "lv": "p", "m": "延续，接续", "ex": "most predictions are valid continuations of the sentence"}, {"w": "constraint", "ipa": "kənˈstreɪnt", "pos": "n.", "lv": "6", "m": "约束，限制条件", "ex": "the additional useful constraint that the word must be the ﬁnal of the sentence"}, {"w": "approximation", "ipa": "əˌprɑːksɪˈmeɪʃn", "pos": "n.", "lv": "p", "m": "近似", "ex": "Adding a stop-word ﬁlter as an approximation to this", "ov": "t"}, {"w": "restriction", "ipa": "rɪˈstrɪkʃn", "pos": "n.", "lv": "4", "m": "限制", "ex": "this restriction is harmful rather than helpful since 19% of answers are not in context"}, {"w": "entropy", "ipa": "ˈentrəpi", "pos": "n.", "lv": "p", "m": "熵", "ex": "The Winograd Schema challenge was constructed to measure the capability"}]}, {"sec": "3.4–3.5. Winograd & Reading Comprehension · 常识推理与阅读理解", "short": "Winograd", "icon": "3.4", "words": [{"w": "ambiguity", "ipa": "ˌæmbɪˈɡjuːəti", "pos": "n.", "lv": "6", "m": "歧义", "ex": "measuring its ability to resolve ambiguities in text"}, {"w": "resolve", "ipa": "rɪˈzɑːlv", "pos": "v.", "lv": "4", "m": "解决，消解", "ex": "measuring its ability to resolve ambiguities in text"}, {"w": "resolution", "ipa": "ˌrezəˈluːʃn", "pos": "n.", "lv": "4", "m": "解析；解决", "ex": "predicting the resolution of the ambiguity with higher probability"}, {"w": "formulation", "ipa": "ˌfɔːrmjuˈleɪʃn", "pos": "n.", "lv": "6", "m": "表述方式，公式化", "ex": "We follow their problem formulation"}, {"w": "contextualize", "ipa": "kənˈtekstʃuəlaɪz", "pos": "v.", "lv": "p", "m": "结合背景理解", "ex": "we recommend reading Trichelair et al. (2018) to help contextualize this result"}, {"w": "dialogue", "ipa": "ˈdaɪəlɔːɡ", "pos": "n.", "lv": "p", "m": "对话", "ex": "paired with natural language dialogues between a question asker and a question answerer"}, {"w": "comprehension", "ipa": "ˌkɑːmprɪˈhenʃn", "pos": "n.", "lv": "4", "m": "理解（力）", "ex": "CoQA tests reading comprehension capabilities"}, {"w": "decode", "ipa": "ˌdiːˈkoʊd", "pos": "v.", "lv": "6", "m": "解码", "ex": "Greedy decoding from GPT-2 when conditioned on a document"}, {"w": "inspection", "ipa": "ɪnˈspekʃn", "pos": "n.", "lv": "4", "m": "检查，审视", "ex": "some inspection of its answers and errors suggests GPT-2 often uses simple retrieval based heuristics"}, {"w": "retrieval", "ipa": "rɪˈtriːvl", "pos": "n.", "lv": "p", "m": "检索", "ex": "GPT-2 often uses simple retrieval based heuristics"}]}, {"sec": "3.6. Summarization · 摘要生成", "short": "Summary", "icon": "3.6", "words": [{"w": "induce", "ipa": "ɪnˈduːs", "pos": "v.", "lv": "4", "m": "诱发，引出", "ex": "To induce summarization behavior we add the text TL;DR: after the article"}, {"w": "abstractive", "ipa": "æbˈstræktɪv", "pos": "adj.", "lv": "p", "m": "生成式的（摘要）", "ex": "encourages more abstractive summaries than greedy decoding"}, {"w": "repetition", "ipa": "ˌrepəˈtɪʃn", "pos": "n.", "lv": "4", "m": "重复", "ex": "reduces repetition and encourages more abstractive summaries"}, {"w": "qualitatively", "ipa": "ˈkwɑːlɪteɪtɪvli", "pos": "adv.", "lv": "6", "m": "定性地", "ex": "While qualitatively the generations resemble summaries"}, {"w": "resemble", "ipa": "rɪˈzembl", "pos": "v.", "lv": "4", "m": "类似于，像", "ex": "While qualitatively the generations resemble summaries"}, {"w": "confuse", "ipa": "kənˈfjuːz", "pos": "v.", "lv": "4", "m": "混淆", "ex": "they often focus on recent content from the article or confuse speciﬁc details"}, {"w": "aggregate", "ipa": "ˈæɡrɪɡət", "pos": "adj.", "lv": "6", "m": "总计的，整体的", "ex": "drops by 6.4 points on the aggregate metric when the task hint is removed"}, {"w": "hint", "ipa": "hɪnt", "pos": "n.", "lv": "4", "m": "提示", "ex": "drops by 6.4 points on the aggregate metric when the task hint is removed"}, {"w": "invoke", "ipa": "ɪnˈvoʊk", "pos": "v.", "lv": "p", "m": "调用，唤起", "ex": "demonstrates the ability to invoke task speciﬁc behavior in a language model"}, {"w": "neural", "ipa": "ˈnʊrəl", "pos": "adj.", "lv": "6", "m": "神经（网络）的", "ex": "only begin to approach the performance of classic neural baselines"}, {"w": "leveraging", "ipa": "/ˈlevərɪdʒɪŋ/", "pos": "v.", "lv": "p", "m": "利用", "ex": "GPT-2 is able to leverage its very strong English language model"}]}, {"sec": "3.7–3.8. Translation & QA · 翻译与问答", "short": "Trans/QA", "icon": "3.7", "words": [{"w": "substitution", "ipa": "ˌsʌbstɪˈtuːʃn", "pos": "n.", "lv": "6", "m": "替换", "ex": "slightly worse than a word-by-word substitution with a bilingual lexicon"}, {"w": "bilingual", "ipa": "ˌbaɪˈlɪŋɡwəl", "pos": "adj.", "lv": "6", "m": "双语的", "ex": "a word-by-word substitution with a bilingual lexicon"}, {"w": "lexicon", "ipa": "ˈleksɪkɑːn", "pos": "n.", "lv": "p", "ov": "g", "m": "词库，词典", "ex": "a word-by-word substitution with a bilingual lexicon"}, {"w": "leverage", "ipa": "ˈlevərɪdʒ", "pos": "v.", "lv": "p", "m": "利用", "ex": "GPT-2 is able to leverage its very strong English language model"}, {"w": "deliberately", "ipa": "dɪˈlɪbərətli", "pos": "adv.", "lv": "4", "m": "故意地", "ex": "we deliberately removed non-English webpages from WebText as a ﬁltering step"}, {"w": "monolingual", "ipa": "ˌmɑːnəˈlɪŋɡwəl", "pos": "adj.", "lv": "p", "m": "单语的", "ex": "approximately 500x smaller than the monolingual French corpus"}, {"w": "corpus", "ipa": "ˈkɔːrpəs", "pos": "n.", "lv": "p", "m": "语料库", "ex": "the monolingual French corpus common in prior unsupervised machine translation research"}, {"w": "showcase", "ipa": "ˈʃoʊkeɪs", "pos": "v.", "lv": "6", "m": "展示", "ex": "Previous showcasing of this behavior in neural systems"}, {"w": "qualitative", "ipa": "ˈkwɑːlɪteɪtɪv", "pos": "adj.", "lv": "6", "m": "定性的", "ex": "reported qualitative results due to the lack of high-quality evaluation datasets"}, {"w": "quantitatively", "ipa": "ˈkwɑːntɪteɪtɪvli", "pos": "adv.", "lv": "6", "m": "定量地", "ex": "a promising resource to test this more quantitatively"}, {"w": "seed", "ipa": "siːd", "pos": "v.", "lv": "4", "m": "（用示例）预设，铺垫", "ex": "the context of the language model is seeded with example question answer pairs"}, {"w": "calibrated", "ipa": "ˈkælɪbreɪtɪd", "pos": "adj.", "lv": "p", "m": "校准的", "ex": "The probability GPT-2 assigns to its generated answers is well calibrated"}, {"w": "trivia", "ipa": "ˈtrɪviə", "pos": "n.", "lv": "p", "m": "冷知识，琐事", "ex": "who previously thought of himself as good at random trivia"}, {"w": "hybridize", "ipa": "ˈhaɪbrɪdaɪz", "pos": "v.", "lv": "p", "m": "混合，融合", "ex": "systems which hybridize information retrieval with extractive document question answering"}, {"w": "extractive", "ipa": "ɪkˈstræktɪv", "pos": "adj.", "lv": "p", "m": "抽取式的", "ex": "hybridize information retrieval with extractive document question answering"}, {"w": "context", "ipa": "ˈkɑːntekst", "pos": "n.", "lv": "4", "m": "上下文", "ex": "conditioned on a document, the history of the associated conversation"}, {"w": "prompt", "ipa": "prɑːmpt", "pos": "n.", "lv": "4", "m": "提示", "ex": "We use a version of the dataset without preprocessing"}, {"w": "prevalent", "ipa": "ˈprevələnt", "pos": "adj.", "lv": "6", "m": "普遍的，流行的", "ex": "and is more prevalent in non-LM formulations"}, {"w": "translation", "ipa": "trænzˈleɪʃn", "pos": "n.", "lv": "4", "m": "翻译", "ex": "The diversity of tasks the model is able to perform in a zero-shot setting"}, {"w": "incremental", "ipa": "ˌɪŋkrəˈmentl", "pos": "adj.", "lv": "p", "m": "增量的", "ex": "incremental in the English to French direction"}, {"w": "translationese", "ipa": "trænzˌleɪʃəˈniːz", "pos": "n.", "lv": "p", "m": "翻译腔", "ex": "GPT-2 outputs translationese"}, {"w": "degraded", "ipa": "dɪˈɡreɪdɪd", "pos": "adj.", "lv": "p", "m": "退化的", "ex": "performance is similarly degraded"}, {"w": "context-free", "ipa": "ˈkɑːntekst friː", "pos": "adj.", "lv": "p", "m": "无上下文的", "ex": "a context-free model trained on WebText"}, {"w": "factoid", "ipa": "/ˈfæktɔɪd/", "pos": "adj.", "lv": "p", "m": "事实型的", "ex": "factoid-style questions"}, {"w": "exact match", "ipa": "/ɪɡˈzækt mætʃ/", "pos": "n.", "lv": "p", "m": "精确匹配", "ex": "evaluated by the exact match metric"}]}, {"sec": "4. Generalization vs Memorization · 泛化与记忆", "short": "Gen/Mem", "icon": "4", "words": [{"w": "duplicate", "ipa": "ˈduːplɪkət", "pos": "n./adj.", "lv": "6", "m": "复制品；重复的", "ex": "common image datasets contain a non-trivial amount of near-duplicate images"}, {"w": "memorization", "ipa": "ˌmemərəˈzeɪʃn", "pos": "n.", "lv": "p", "m": "记忆，死记硬背", "ex": "whether the performance of WebText LMs is attributable to memorization"}, {"w": "recall", "ipa": "ˈriːkɔːl", "pos": "n.", "lv": "4", "m": "召回率；回忆", "ex": "To improve recall, strings were normalized to contain only lower-cased alphanumeric words"}, {"w": "normalize", "ipa": "ˈnɔːrməlaɪz", "pos": "v.", "lv": "p", "m": "归一化，规范化", "ex": "strings were normalized to contain only lower-cased alphanumeric words"}, {"w": "alphanumeric", "ipa": "ˌælfənuˈmerɪk", "pos": "adj.", "lv": "p", "m": "字母数字的", "ex": "only lower-cased alphanumeric words with a single space as a delimiter"}, {"w": "delimiter", "ipa": "dɪˈlɪmɪtər", "pos": "n.", "lv": "p", "m": "分隔符", "ex": "with a single space as a delimiter"}, {"w": "verify", "ipa": "ˈverɪfaɪ", "pos": "v.", "lv": "4", "m": "核实，验证", "ex": "We further veriﬁed the low false positive rate by generating 1M strings"}, {"w": "phrase", "ipa": "freɪz", "pos": "n.", "lv": "4", "m": "短语", "ex": "manual inspection of the overlaps shows many common phrases"}, {"w": "spurious", "ipa": "ˈspjʊriəs", "pos": "adj.", "lv": "p", "m": "虚假的，伪造的", "ex": "Of these, 2 were spurious matches"}, {"w": "paragraph", "ipa": "ˈpærəɡræf", "pos": "n.", "lv": "4", "m": "段落", "ex": "editors reusing some paragraphs across multiple articles with a shared theme"}, {"w": "attributable", "ipa": "əˈtrɪbjətəbl", "pos": "adj.", "lv": "p", "m": "可归因于…的", "ex": "determining whether the performance of WebText LMs is attributable to memorization"}, {"w": "quantify", "ipa": "ˈkwɑːntɪfaɪ", "pos": "v.", "lv": "6", "m": "量化", "ex": "Understanding and quantifying how highly similar text impacts performance"}, {"w": "fuzzy", "ipa": "ˈfʌzi", "pos": "adj.", "lv": "p", "m": "模糊（匹配）的", "ex": "Better de-duplication techniques such as scalable fuzzy matching"}, {"w": "sanity", "ipa": "ˈsænəti", "pos": "n.", "lv": "6", "m": "心智健全；sanity check 合理性检查", "ex": "as an important veriﬁcation step and sanity check"}, {"w": "unicorn", "ipa": "ˈjuːnɪkɔːrn", "pos": "n.", "lv": "p", "m": "独角兽", "ex": "GPT-2 is also able to write news articles about the discovery of talking unicorns"}, {"w": "phenomena", "ipa": "fəˈnɑːmɪnə", "pos": "n.", "lv": "p", "m": "现象", "ex": "a similar phenomena could be happening with WebText"}, {"w": "Bloom filter", "ipa": "bluːm ˈfɪltər", "pos": "n.", "lv": "p", "m": "布隆过滤器", "ex": "We created Bloom filters containing 8-grams of WebText training set tokens"}, {"w": "false positive", "ipa": "fɑːls pɑːzətɪv", "pos": "n.", "lv": "p", "m": "假阳性", "ex": "the false positive rate is upper bounded by 1/10^8"}, {"w": "normalized", "ipa": "ˈnɔːrməlaɪzd", "pos": "adj.", "lv": "p", "m": "归一化的", "ex": "strings were normalized to contain only lower-cased alphanumeric words"}, {"w": "bloom filter", "ipa": "/bluːm ˈfɪltər/", "pos": "n.", "lv": "p", "m": "布隆过滤器", "ex": "We created Bloom filters containing 8-grams of WebText training set tokens"}, {"w": "deduplication", "ipa": "/ˌdiːdjuːplɪˈkeɪʃn/", "pos": "n.", "lv": "p", "m": "去重", "ex": "n-gram overlap based de-duplication"}, {"w": "sanity check", "ipa": "/ˈsænɪti tʃek/", "pos": "n.", "lv": "p", "m": "健全性检查", "ex": "an important verification step and sanity check"}]}, {"sec": "4+. Robustness & Analysis · 鲁棒性与分析", "short": "Robust", "icon": "4+", "words": [{"w": "out-of-distribution", "ipa": "aʊt əv dɪstrɪˈbjuːʃn", "pos": "adj.", "lv": "p", "m": "分布外的", "ex": "the model to be capable of handling out of distribution contexts"}, {"w": "phenomenon", "ipa": "fəˈnɑːmɪnən", "pos": "n.", "lv": "4", "m": "现象", "ex": "a similar phenomena could be happening with WebText"}, {"w": "predictable", "ipa": "prɪˈdɪktəbl", "pos": "adj.", "lv": "4", "m": "可预测的", "ex": "deep learning scaling is predictable"}, {"w": "scaling", "ipa": "ˈskeɪlɪŋ", "pos": "n.", "lv": "4", "m": "缩放", "ex": "deep learning scaling is predictable"}, {"w": "representations", "ipa": "ˌreprɪzenˈteɪʃnz", "pos": "n.", "lv": "6", "m": "表示，表征", "ex": "the contextual representations of recurrent networks were transferred"}, {"w": "transferability", "ipa": "ˌtrænsfərəˈbɪləti", "pos": "n.", "lv": "p", "m": "可迁移性", "ex": "studied the transfer performance of representations learned"}, {"w": "numerous", "ipa": "ˈnuːmərəs", "pos": "adj.", "lv": "4", "m": "众多的", "ex": "numerous other efforts have studied transfer learning for NLP"}]}, {"sec": "5. Related Work · 相关工作", "short": "Related", "icon": "5", "words": [{"w": "thorough", "ipa": "ˈθɜːroʊ", "pos": "adj.", "lv": "4", "m": "彻底的，全面的", "ex": "conducted a thorough analysis of how the performance of various deep learning models changes"}, {"w": "noisy", "ipa": "ˈnɔɪzi", "pos": "adj.", "lv": "4", "m": "噪声大的", "ex": "Our experiments, while much noisier across tasks, suggest similar trends hold"}, {"w": "regime", "ipa": "reɪˈʒiːm", "pos": "n.", "lv": "6", "m": "区间，状态（1B+ 参数量级）", "ex": "continue into the 1B+ parameter regime"}, {"w": "functionality", "ipa": "ˌfʌŋkʃəˈnæləti", "pos": "n.", "lv": "p", "m": "功能", "ex": "Interesting learned functionality in generative models has been documented before"}, {"w": "inspirational", "ipa": "ˌɪnspəˈreɪʃənl", "pos": "adj.", "lv": "p", "m": "启发灵感的", "ex": "More inspirational to our work was the observation of Liu et al. (2018)"}, {"w": "extensive", "ipa": "ɪkˈstensɪv", "pos": "adj.", "lv": "4", "m": "大量的，广泛的", "ex": "There has been extensive work on pre-training methods for language tasks"}, {"w": "influential", "ipa": "ˌɪnfluˈenʃl", "pos": "adj.", "lv": "4", "m": "有影响力的", "ex": "An inﬂuential early work on deep representation learning for text"}, {"w": "derive", "ipa": "dɪˈraɪv", "pos": "v.", "lv": "4", "m": "推导出，源自", "ex": "the use of representations derived from machine translation models"}, {"w": "supplement", "ipa": "ˈsʌplɪment", "pos": "v.", "lv": "4", "m": "补充", "ex": "creating a much larger training dataset out of Project Gutenberg to supplement the standard training dataset"}, {"w": "representation", "ipa": "/ˌreprɪzenˈteɪʃn/", "pos": "n.", "lv": "6", "m": "表示", "ex": "understanding the representations of both supervised and unsupervised pre-training methods"}, {"w": "compositionality", "ipa": "/kəmˌpɒzɪˈʃənəlɪti/", "pos": "n.", "lv": "p", "m": "组合性", "ex": "Distributed representations of words and phrases and their compositionality"}, {"w": "initialize", "ipa": "/ɪˈnɪʃəlaɪz/", "pos": "v.", "lv": "p", "m": "初始化", "ex": "initialized with pre-trained language models as encoders and decoders"}, {"w": "unidirectional", "ipa": "/ˌjuːnɪdəˈrekʃənl/", "pos": "adj.", "lv": "p", "m": "单向的", "ex": "the inefficiencies of uni-directional representations"}, {"w": "overcome", "ipa": "/ˌoʊvərˈkʌm/", "pos": "v.", "lv": "4", "m": "克服", "ex": "is sufficient to overcome the inefficiencies of uni-directional representations"}]}, {"sec": "6–7. Discussion & Conclusion · 讨论与结论", "short": "Discuss", "icon": "6", "words": [{"w": "dedicate", "ipa": "ˈdedɪkeɪt", "pos": "v.", "lv": "6", "m": "致力于；专用于", "ex": "Much research has been dedicated to learning, understanding, and critically evaluating the representations"}, {"w": "critically", "ipa": "ˈkrɪtɪkli", "pos": "adv.", "lv": "4", "m": "批判性地", "ex": "learning, understanding, and critically evaluating the representations"}, {"w": "widespread", "ipa": "ˈwaɪdspred", "pos": "adj.", "lv": "4", "m": "普遍的", "ex": "help explain the widespread success of pre-training techniques"}, {"w": "rudimentary", "ipa": "ˌruːdɪˈmentri", "pos": "adj.", "lv": "p", "m": "初步的，简单的", "ex": "its performance is still only rudimentary according to quantitative metrics"}, {"w": "suggestive", "ipa": "səˈdʒestɪv", "pos": "adj.", "lv": "6", "m": "启发性（暗示性）的", "ex": "While suggestive as a research result, the zero-shot performance of GPT-2 is still far from use-able"}, {"w": "undoubtedly", "ipa": "ʌnˈdaʊtɪdli", "pos": "adv.", "lv": "4", "m": "毫无疑问地", "ex": "There are undoubtedly many practical tasks where the performance of GPT-2 is still no better than random"}, {"w": "trivial", "ipa": "ˈtrɪviəl", "pos": "adj.", "lv": "6", "m": "琐碎的，微不足道的", "ex": "language models only begin to outperform trivial baselines when they have sufﬁcient capacity"}, {"w": "ceiling", "ipa": "ˈsiːlɪŋ", "pos": "n.", "lv": "4", "m": "上限，天花板", "ex": "it is not clear where the ceiling is with ﬁnetuning"}, {"w": "departure", "ipa": "dɪˈpɑːrtʃər", "pos": "n.", "lv": "4", "m": "背离，偏离", "ex": "a signiﬁcant departure from the extractive pointer network based outputs"}, {"w": "inefficiency", "ipa": "ˌɪnɪˈfɪʃnsi", "pos": "n.", "lv": "p", "m": "低效", "ex": "overcome the inefﬁciencies of uni-directional representations"}, {"w": "diverse", "ipa": "daɪˈvɜːrs", "pos": "adj.", "lv": "4", "m": "多样的", "ex": "When a large language model is trained on a sufﬁciently large and diverse dataset"}, {"w": "sufficiently", "ipa": "səˈfɪʃntli", "pos": "adv.", "lv": "4", "m": "足够地", "ex": "a sufﬁciently large and diverse dataset"}, {"w": "maximize", "ipa": "ˈmæksɪmaɪz", "pos": "v.", "lv": "p", "m": "最大化", "ex": "models trained to maximize the likelihood of a sufﬁciently varied text corpus"}, {"w": "likelihood", "ipa": "ˈlaɪklihʊd", "pos": "n.", "lv": "6", "m": "可能性", "ex": "to maximize the likelihood of a sufﬁciently varied text corpus"}, {"w": "surprising", "ipa": "sərˈpraɪzɪŋ", "pos": "adj.", "lv": "6", "m": "令人惊讶的", "ex": "begin to learn how to perform a surprising amount of tasks"}, {"w": "supervision", "ipa": "/ˌsuːpərˈvɪʒn/", "pos": "n.", "lv": "4", "m": "监督", "ex": "without the need for explicit supervision"}]}, {"sec": "8. Appendix A: Samples · 附录：生成样本", "short": "Appendix", "icon": "8", "words": [{"w": "complement", "ipa": "ˈkɑːmplɪment", "pos": "v.", "lv": "4", "m": "补充", "ex": "To complement the reported perplexity gains of bigger LMs on WebText"}, {"w": "unseen", "ipa": "ˌʌnˈsiːn", "pos": "adj.", "lv": "p", "m": "未见过的（数据）", "ex": "completions of the smallest WebText LM and GPT-2 on random unseen WebText test set articles", "ov": "t"}, {"w": "memorize", "ipa": "ˈmeməraɪz", "pos": "v.", "lv": "4", "m": "记住，背下", "ex": "We observe some memorizing behavior in GPT-2 on longer strings that are repeated many times"}, {"w": "quote", "ipa": "kwoʊt", "pos": "n.", "lv": "4", "m": "引语，名言", "ex": "repeated many times in the dataset such as famous quotes or speeches"}, {"w": "recover", "ipa": "rɪˈkʌvər", "pos": "v.", "lv": "4", "m": "复原，重现", "ex": "an argmax decode from GPT-2 recovers the speech"}, {"w": "drift", "ipa": "drɪft", "pos": "v.", "lv": "4", "m": "漂移，（逐渐）跑偏", "ex": "the model copies the speech for awhile before drifting"}, {"w": "albeit", "ipa": "ɔːlˈbiːɪt", "pos": "conj.", "lv": "p", "m": "尽管，虽然", "ex": "the model copies the speech for awhile before drifting, albeit in a similar style"}, {"w": "truncate", "ipa": "ˈtrʌŋkeɪt", "pos": "v.", "lv": "p", "m": "截断", "ex": "with top-k truncated random sampling with k = 40", "ov": "g"}, {"w": "median", "ipa": "ˈmiːdiən", "pos": "n.", "lv": "p", "m": "中位数", "ex": "whereas the median for test set is 2.6% overlap"}, {"w": "diversity", "ipa": "daɪˈvɜːrsəti", "pos": "n.", "lv": "4", "m": "多样性", "ex": "displays widening diversity once it drifts"}, {"w": "robustness", "ipa": "roʊˈbʌstnəs", "pos": "n.", "lv": "p", "m": "鲁棒性", "ex": "We ﬁnd the model to be capable of handling out of distribution contexts"}, {"w": "capable", "ipa": "ˈkeɪpəbl", "pos": "adj.", "lv": "4", "m": "有能力的", "ex": "We ﬁnd the model to be capable of handling out of distribution contexts"}, {"w": "memorizing", "ipa": "ˈmeməraɪzɪŋ", "pos": "v.", "lv": "4", "m": "记忆", "ex": "We observe some memorizing behavior in GPT-2 on longer strings"}, {"w": "truncation", "ipa": "trʌŋˈkeɪʃn", "pos": "n.", "lv": "p", "m": "截断", "ex": "even when sampling without truncation"}, {"w": "quintessentially", "ipa": "ˌkwɪntəˈsenʃəli", "pos": "adv.", "lv": "p", "m": "典型地", "ex": "describes a quintessentially interesting research direction"}]}];
+
+/* 展开成朗读清单（扁平队列）——网页播放与后期视频渲染共用同一数据结构 */
+const ITEMS=[];
+DATA.forEach(s=>s.words.forEach(w=>ITEMS.push({
+  w:w.w,ipa:w.ipa,pos:w.pos,m:w.m,ex:w.ex,lv:w.lv,ov:w.ov||"",
+  sec:s.sec,short:s.short,icon:s.icon,paper:s.paper||""
+})));
+const LVN={4:"四级",6:"六级",k:"考研",p:"考博"},LVC={4:"lv4",6:"lv6",k:"lvk",p:"lvp"};
+
+/* ---- 朗读：多源在线 TTS 自动降级（有道美音/英音、百度、谷歌）----
+   注：StreamElements(Polly) 匿名接口已 401 关停，故移除 ---- */
+const SRC_NAME={yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"};
+const ALL_SRC=["yd1","yd0","bd","gg"];
+const ONLINE_VOICES=[["yd1","美式 · 有道（推荐）"],["yd0","英式 · 有道"],["bd","百度翻译 · 女声"],["mute","🔇 不朗读"]];
+let ONLINE="yd1";
+let SRC_ORDER=["yd1","yd0","bd","gg"];
+let audio=null;
+function applyVoiceOrder(){
+  const i=ALL_SRC.indexOf(ONLINE);
+  SRC_ORDER=i<0?ALL_SRC.slice():ALL_SRC.slice(i).concat(ALL_SRC.slice(0,i));
+}
+function ttsURL(src,t,zh){
+  const q=encodeURIComponent(t);
+  if(zh){ // 中文释义：有道词典源不支持中文，落到百度/谷歌
+    if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=zh&text=${q}&spd=5&source=web`;
+    return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh&q=${q}`;
+  }
+  if(src==="yd1")return `https://dict.youdao.com/dictvoice?type=1&audio=${q}`;
+  if(src==="yd0")return `https://dict.youdao.com/dictvoice?type=0&audio=${q}`;
+  if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=en&text=${q}&spd=5&source=web`;
+  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${q}`;
+}
+let saying=0,audioFrac=0;
+function updateFrac(f){audioFrac=Math.max(0,Math.min(1,f));updateBar();}
+function sayWord(t,onend,kind="word"){ // kind: "word"=全部源 "zh"=中文(百度/谷歌) "sent"=英文整句(百度/谷歌，有道不支持整句)
+  if(ONLINE==="mute"){try{if(audio){audio.pause();audio=null}}catch(e){}return false}
+  const my=++saying;
+  const order=kind==="word"?SRC_ORDER:["bd","gg"];
+  trySrc(0,t,my,onend,kind,order);
+  return true;
+}
+function trySrc(i,t,my,onend,kind,order){
+  if(my!==saying){return}
+  if(i>=order.length){ // 无可用源：当作播完处理，流程不卡死
+    const sl=document.getElementById("srcLive");if(sl&&kind==="word")sl.textContent="（无可用源）";
+    if(onend)setTimeout(()=>{if(my===saying)onend()},600);
+    return;
+  }
+  const src=order[i];
+  const st=document.getElementById("srcState");
+  const sl=document.getElementById("srcLive");
+  if(kind==="word"){const nm=SRC_NAME[src]||src;
+    if(st)st.textContent="源:"+nm;
+    if(sl)sl.textContent="· 源:"+nm;}
+  try{if(audio){audio.pause();audio=null}}catch(e){}
+  const a=new Audio(ttsURL(src,t,kind==="zh"));
+  let ok=false,advanced=false,done=false;
+  const advance=()=>{ if(!ok&&!advanced&&my===saying){advanced=true;trySrc(i+1,t,my,onend,kind,order);} };
+  const finish=()=>{ if(!done&&my===saying){done=true;updateFrac(1);if(onend)onend();} };
+  a.addEventListener("playing",()=>{ok=true;});
+  a.addEventListener("timeupdate",()=>{ if(my===saying&&a.duration){updateFrac(a.currentTime/a.duration);} });
+  a.addEventListener("ended",finish);
+  a.addEventListener("error",advance);
+  audio=a;
+  a.play().catch(advance);
+  setTimeout(()=>{ if(!ok&&my===saying&&a.paused)advance(); },2500);
+}
+function stopAudio(){saying++;try{if(audio){audio.pause();audio=null}}catch(e){}}
+
+/* ---- 设置 ---- */
+const S={lv:new Set(["4","6","k","p"]),sec:new Set(DATA.map(s=>s.sec)),order:"seq",pause:2000,mode:"full",zh:false,ex:false,useskip:true};
+try{const c=JSON.parse(localStorage.getItem("listen_cfg")||"{}");
+  if(c.lv)S.lv=new Set(c.lv); if(c.sec)S.sec=new Set(c.sec);
+  if(c.order)S.order=c.order; if(c.pause)S.pause=c.pause; if(c.mode)S.mode=c.mode;
+  if(typeof c.zh==="boolean")S.zh=c.zh;
+  if(typeof c.ex==="boolean")S.ex=c.ex;
+  if(typeof c.useskip==="boolean")S.useskip=c.useskip;
+  if(typeof c.voice==="string"&&["yd1","yd0","bd","gg","mute"].includes(c.voice))ONLINE=c.voice;
+}catch(e){}
+applyVoiceOrder();
+function saveCfg(){try{localStorage.setItem("listen_cfg",JSON.stringify({lv:[...S.lv],sec:[...S.sec],order:S.order,pause:S.pause,mode:S.mode,zh:S.zh,ex:S.ex,useskip:S.useskip,voice:ONLINE}))}catch(e){}}
+let skips=new Set(); // 已掌握（太简单）的词，全局按词存储
+try{skips=new Set(JSON.parse(localStorage.getItem("vocab_skip")||"[]"))}catch(e){}
+function saveSkips(){try{localStorage.setItem("vocab_skip",JSON.stringify([...skips]))}catch(e){}}
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function renderChips(){
+  const lc={};ITEMS.forEach(w=>lc[w.lv]=(lc[w.lv]||0)+1);
+  document.getElementById("lvChips").innerHTML=["4","6","k","p"].map(l=>
+    `<button class="chip ${S.lv.has(l)?"on":""}" data-lv="${l}">${LVN[l]}<span class="n">${lc[l]||0}</span></button>`).join("");
+  const merged=ITEMS.some(w=>w.paper);
+  if(merged){
+    const groups={};DATA.forEach(s=>{(groups[s.paper||"未命名词库"]=groups[s.paper||"未命名词库"]||[]).push(s)});
+    document.getElementById("secChips").innerHTML=Object.keys(groups).map(p=>{
+      const n=groups[p].reduce((a,s)=>a+s.words.length,0);
+      const on=groups[p].every(s=>S.sec.has(s.sec));
+      const nm=p.length>20?p.slice(0,20)+"…":p;
+      return `<button class="chip ${on?"on":""}" data-pap="${esc(p)}">${esc(nm)}<span class="n">${n}</span></button>`;
+    }).join("");
+  }else{
+    document.getElementById("secChips").innerHTML=DATA.map(s=>
+      `<button class="chip ${S.sec.has(s.sec)?"on":""}" data-sec="${esc(s.sec)}">${esc(s.icon+" "+s.short)}<span class="n">${s.words.length}</span></button>`).join("");
+  }
+  document.getElementById("cnt").textContent=`· 已选 ${queue0().length} / ${ITEMS.length} 词`;
+  const sc=document.getElementById("skipCnt");if(sc)sc.textContent=`已跳过 ${skips.size} 词`;
+}
+function updateSkipCnt(){renderChips();}
+function queue0(){return ITEMS.filter(w=>S.lv.has(w.lv)&&S.sec.has(w.sec)&&!(S.useskip&&skips.has(w.w)))}
+document.getElementById("lvChips").onclick=e=>{const b=e.target.closest("[data-lv]");if(!b)return;
+  const l=b.dataset.lv; S.lv.has(l)?S.lv.delete(l):S.lv.add(l); saveCfg();renderChips();};
+document.getElementById("secChips").onclick=e=>{const b=e.target.closest("[data-sec],[data-pap]");if(!b)return;
+  if(b.dataset.pap){
+    const secs=DATA.filter(s=>(s.paper||"未命名词库")===b.dataset.pap).map(s=>s.sec);
+    const all=secs.every(k=>S.sec.has(k));
+    secs.forEach(k=>all?S.sec.delete(k):S.sec.add(k));
+  }else{
+    const k=b.dataset.sec; S.sec.has(k)?S.sec.delete(k):S.sec.add(k);
+  }
+  saveCfg();renderChips();};
+document.getElementById("secAll").onclick=()=>{S.sec=new Set(DATA.map(s=>s.sec));saveCfg();renderChips();};
+document.querySelectorAll("[data-order]").forEach(b=>b.onclick=()=>{S.order=b.dataset.order;syncOpts();saveCfg();});
+document.querySelectorAll("[data-pause]").forEach(b=>b.onclick=()=>{S.pause=+b.dataset.pause;saveCfg();syncOpts();});
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{S.mode=b.dataset.mode;syncOpts();saveCfg();});
+function syncOpts(){
+  document.querySelectorAll("[data-order]").forEach(b=>b.classList.toggle("on",b.dataset.order===S.order));
+  document.querySelectorAll("[data-pause]").forEach(b=>b.classList.toggle("on",+b.dataset.pause===S.pause));
+  document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("on",b.dataset.mode===S.mode));
+  document.getElementById("zhBtn").classList.toggle("on",S.zh);
+  document.getElementById("exBtn").classList.toggle("on",S.ex);
+  document.getElementById("useSkipBtn").classList.toggle("on",S.useskip);
+}
+
+/* ---- 音色选择 + 中文释义 ---- */
+const vs=document.getElementById("voiceSel");
+vs.innerHTML=ONLINE_VOICES.map(([v,l])=>`<option value="${v}">${l}</option>`).join("");
+vs.value=ONLINE;
+vs.onchange=()=>{ONLINE=vs.value;applyVoiceOrder();saveCfg();
+  if(ONLINE!=="mute")sayWord("Hello, let us learn new words together.");};
+document.getElementById("zhBtn").onclick=()=>{S.zh=!S.zh;syncOpts();saveCfg();
+  if(S.zh)sayWord("语料库",null,"zh");};
+document.getElementById("exBtn").onclick=()=>{S.ex=!S.ex;syncOpts();saveCfg();
+  if(S.ex)sayWord("The quick brown fox jumps over the lazy dog.",null,"sent");};
+document.getElementById("useSkipBtn").onclick=()=>{S.useskip=!S.useskip;syncOpts();saveCfg();renderChips();
+  toast(S.useskip?"已开启：朗读时跳过已掌握词":"已关闭：已掌握词也会朗读");};
+document.getElementById("clearSkipBtn").onclick=()=>{
+  if(!skips.size){toast("跳过列表是空的");return}
+  if(confirm("确定清空全部 "+skips.size+" 个已跳过的单词？（之后会重新朗读）")){
+    skips.clear();saveSkips();renderChips();toast("已清空跳过列表");}};
+const stripPos=m=>m.replace(/^[a-z./]+\s*/,"");
+
+/* ---- 收藏 ---- */
+let favs=new Set();
+try{favs=new Set(JSON.parse(localStorage.getItem("vocab_fav")||"[]"))}catch(e){}
+function saveFavs(){try{localStorage.setItem("vocab_fav",JSON.stringify([...favs]))}catch(e){}}
+
+/* ---- 播放器 ---- */
+let queue=[],qi=0,playing=false,timer=null,toastTimer=null,noteTimer=null,prevW=null;
+function stopFx(){if(noteTimer){clearInterval(noteTimer);noteTimer=null}
+  const pool=$("notepool");if(pool)pool.innerHTML="";}
+function fxSpawnNote(){if(document.body.dataset.theme!=="notes")return;
+  const pool=$("notepool");if(!pool)return;
+  const n=document.createElement("span");n.className="nt";
+  n.textContent=["♪","♫","♩"][Math.floor(Math.random()*3)];
+  n.style.left=(8+Math.random()*84)+"%";n.style.fontSize=(18+Math.random()*18)+"px";
+  n.style.animationDuration=(4.5+Math.random()*2.5).toFixed(2)+"s";
+  pool.appendChild(n);setTimeout(()=>n.remove(),7400);}
+function fxStart(){stopFx();
+  if(document.body.dataset.theme==="notes")noteTimer=setInterval(fxSpawnNote,780);}
+function fxSpawnChip(t){if(document.body.dataset.theme!=="waterfall")return;
+  const pool=$("fallpool");if(!pool)return;
+  const c=document.createElement("span");c.className="fchip";c.textContent=t;
+  pool.appendChild(c);setTimeout(()=>c.remove(),5800);}
+function fxInitBars(){if(document.body.dataset.theme!=="spectrum")return;
+  document.querySelectorAll("#specrow i").forEach(b=>{b.style.animationDuration=(0.5+Math.random()*0.5).toFixed(2)+"s";b.style.animationDelay=(-Math.random()).toFixed(2)+"s";});}
+function toast(msg){const t=$("toast");if(!t)return;t.textContent=msg;t.classList.add("on");
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("on"),1400);}
+const $=id=>document.getElementById(id);
+const P=()=>$("player");
+function clearTimer(){if(timer){clearTimeout(timer);timer=null}}
+function fmt(t){t=Math.max(0,Math.round(t));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")}
+function perWord(){return 1.6+(S.zh?1.4:0)+(S.ex?3.8:0)+S.pause/1000}
+function updateBar(){
+  if(!queue.length)return;
+  const pct=Math.min(100,(qi+audioFrac)/queue.length*100);
+  $("nfill").style.width=pct+"%";$("nknob").style.left=pct+"%";
+  P().style.setProperty("--kp",pct.toFixed(1)+"%");
+  $("tel").textContent=fmt(qi*perWord()+audioFrac*1.6);
+  $("ttot").textContent=fmt(queue.length*perWord());
+}
+function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
+function buildQueue(){
+  queue=queue0();
+  if(S.order==="rand"){for(let i=queue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[queue[i],queue[j]]=[queue[j],queue[i]]}}
+}
+function startPlayer(){
+  if(!queue0().length)return;
+  buildQueue();qi=0;playing=true;
+  $("setup").style.display="none";P().classList.add("on");
+  fxStart();playCurrent();
+}
+function backToSetup(){clearTimer();stopAudio();stopFx();playing=false;P().classList.remove("on","playing","paused");$("setup").style.display="";updateBar();}
+function renderPlayer(w,hidden){
+  $("tword").innerHTML=`${w.paper?esc(w.paper)+" · ":""}${esc(w.sec)} · ${LVN[w.lv]} · 第 ${qi+1}/${queue.length} 词 <span id="srcLive" style="color:rgba(255,255,255,.4);font-size:13px"></span>`;
+  const H=hue(w.w);
+  if(document.body.dataset.theme==="netease")$("nbg").style.background=`linear-gradient(175deg,hsl(${H} 62% 42%),hsl(${(H+38)%360} 55% 26%) 58%,#150d0c 96%)`;
+  else $("nbg").style.background="";
+  if(document.body.dataset.theme==="netease")$("cover").style.background=`linear-gradient(140deg,hsl(${H} 85% 60%),hsl(${(H+32)%360} 82% 50%) 60%,hsl(${(H+55)%360} 70% 42%))`;
+  $("cletter").textContent=hidden?"♪":w.w[0].toUpperCase();
+  $("cletter").style.opacity=hidden?".55":"1";
+  const bw=$("bigword");bw.textContent=hidden?"♪ ♪ ♪":w.w;bw.style.opacity=hidden?".4":"1";
+  $("ipa").innerHTML=`/${esc(w.ipa)}/ <span class="p">${esc(w.pos)}</span>`;
+  $("mean").textContent=w.m;
+  $("ex").textContent=`“${w.ex}”`;
+  $("lyrics").classList.toggle("hiddenl",!!hidden);
+  $("bigword").classList.toggle("hiddenl",!!hidden);
+  if(prevW&&prevW!==w.w)fxSpawnChip(prevW);
+  prevW=w.w;
+  const bg=$("badges");
+  if(bg)bg.innerHTML=`<span class="b ${LVC[w.lv]}">${LVN[w.lv]}</span>`+(w.ov?`<span class="b ${w.ov==="t"?"ovt":"ovg"}">${w.ov==="t"?"雅思托福":"GRE"}</span>`:"");
+  $("favBtn").classList.toggle("fav",favs.has(w.w));
+  const pt=$("pp2t");if(pt)pt.textContent=playing?"❚❚":"▶";
+  const ob=$("ordBtn");if(ob)ob.textContent=S.order==="rand"?"🔀 随机":"⟳ 顺序";
+  const sb=$("skipBtn");if(sb)sb.style.display=SHOW_SKIP?"":"none";
+  const st=$("starBtn");
+  if(st){const on=skips.has(w.w);st.textContent=on?"★":"☆";st.classList.toggle("on",on);st.title=on?"已标记太简单（点此取消）":"太简单？标记后不再朗读";}
+  updateBar();
+}
+function playCurrent(){
+  clearTimer();stopAudio();audioFrac=0;
+  const w=queue[qi];if(!w)return;
+  const hide=playing&&S.mode==="reveal";
+  renderPlayer(w,hide);
+  P().classList.toggle("playing",playing);
+  P().classList.toggle("paused",!playing);
+  if(!playing)return;
+  const ended=()=>{
+    if(S.mode==="reveal")renderPlayer(w,false);
+    const go=()=>{timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent();},S.pause)};
+    const afterZh=()=>{
+      if(S.ex){
+        timer=setTimeout(()=>{
+          const ok=sayWord(w.ex,go,"sent");
+          if(ok===false)go();
+        },500);
+      }else go();
+    };
+    if(S.zh){
+      timer=setTimeout(()=>{
+        const ok=sayWord(stripPos(w.m),afterZh,"zh");
+        if(ok===false)afterZh();
+      },450);
+    }else afterZh();
+  };
+  const ok=sayWord(w.w,ended);
+  if(ok===false){ // 无音频：按固定节奏走
+    if(S.mode==="reveal")renderPlayer(w,false);
+    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent();},Math.max(S.pause,1200));
+  }
+}
+function nav(d){qi=(qi+d+queue.length)%queue.length;playing=true;playCurrent();}
+function togglePause(){
+  playing=!playing;
+  if(playing){fxStart();playCurrent();}
+  else{clearTimer();stopAudio();stopFx();P().classList.remove("playing");P().classList.add("paused");renderPlayer(queue[qi],false);}
+}
+$("start").onclick=startPlayer;
+$("pp2").onclick=togglePause;
+$("prev2").onclick=()=>nav(-1);
+$("next2").onclick=()=>nav(1);
+$("backBtn").onclick=backToSetup;
+$("skipBtn").onclick=()=>{const w=queue[qi];if(!w)return;
+  skips.add(w.w);saveSkips();updateSkipCnt();
+  queue.splice(qi,1);toast("已掌握，不再朗读「"+w.w+"」");
+  if(!queue.length){backToSetup();return}
+  if(qi>=queue.length)qi=0;
+  playCurrent();};
+$("starBtn").onclick=()=>{const w=queue[qi];if(!w)return;
+  if(skips.has(w.w)){skips.delete(w.w);saveSkips();renderPlayer(w,false);toast("已取消标记，「"+w.w+"」恢复朗读");}
+  else{skips.add(w.w);saveSkips();renderPlayer(w,false);
+    const tip=S.useskip?"已标记太简单，不再朗读":"已标记太简单（提示：请在播放方式开启「跳过已掌握词」）";
+    toast(tip+"「"+w.w+"」");}
+  updateSkipCnt();};
+$("listBtn").onclick=backToSetup;
+$("replayBtn").onclick=()=>{playing=true;playCurrent();};
+$("vwrap").onclick=()=>{playing=true;playCurrent();};
+$("ordBtn").onclick=()=>{S.order=S.order==="seq"?"rand":"seq";syncOpts();saveCfg();
+  const w=queue[qi];buildQueue();qi=Math.max(0,queue.indexOf(w));
+  $("ordBtn").textContent=S.order==="rand"?"🔀 随机":"⟳ 顺序";
+  toast(S.order==="rand"?"已切换为随机播放":"已切换为顺序播放");};
+$("favBtn").onclick=()=>{const w=queue[qi];if(!w)return;
+  favs.has(w.w)?favs.delete(w.w):favs.add(w.w);saveFavs();
+  $("favBtn").classList.toggle("fav",favs.has(w.w));};
+document.addEventListener("keydown",e=>{
+  if(!P().classList.contains("on"))return;
+  if(e.code==="Space"){e.preventDefault();togglePause()}
+  else if(e.key==="ArrowRight")nav(1);
+  else if(e.key==="ArrowLeft")nav(-1);
+  else if((e.key==="s"||e.key==="S")&&SHOW_SKIP){$("skipBtn").click()}
+  else if(e.key==="Escape")backToSetup();
+});
+
+const BRANDS={
+ netease:{n:"网易云音乐",c:"#ff7a7a",bg:"#d33a31",ch:"云"},
+ qq:{n:"QQ音乐",c:"#31c27c",bg:"#31c27c",ch:"Q"},
+ kugou:{n:"酷狗音乐",c:"#5ec5ff",bg:"linear-gradient(135deg,#35bafa,#1877c9)",ch:"K"},
+ kuwo:{n:"酷我音乐",c:"#ffce3f",bg:"#ffce3f",ch:"酷",dark:true},
+ xiami:{n:"虾米音乐",c:"#ff5a1f",bg:"#ff5a1f",ch:"✕"},
+ spotify:{n:"Spotify",c:"#1db954",bg:"#1db954",ch:"♫"},
+ ttpod:{n:"天天动听",c:"#39c6cf",bg:"#0e2b31",ch:"听",bord:"#39c6cf"},
+ ttplayer:{n:"千千静听",c:"#ffb200",bg:"#3b6fb0",ch:"千"}
+};
+let SHOW_BRAND=0;
+let SHOW_SKIP=0;
+function renderBrand(){
+  const th=document.body.dataset.theme,b=BRANDS[th],el=$("brandmark");
+  if(!el)return;
+  if(!SHOW_BRAND||!b){el.style.display="none";return}
+  el.style.display="flex";
+  el.innerHTML=`<span class="ai" style="background:${b.bg};color:${b.dark?"#3a2a00":"#fff"}${b.bord?";border:1.5px solid "+b.bord:""}">${b.ch}</span>`
+    +`<span class="bn" style="color:${b.c}">${b.n}<i>风格致敬</i></span>`;
+}
+renderChips();syncOpts();updateBar();renderBrand();fxInitBars();
+</script>
+</body>
+</html>

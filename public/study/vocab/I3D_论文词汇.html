@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I3D 论文核心词汇</title>
+<style>
+:root{--c4:#3b82f6;--c6:#8b5cf6;--ckaon:#f59e0b;--cphd:#ef4444;--ct:#0d9488;--cg:#d946ef}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;transition:background .3s,color .3s}
+.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:4px;color:#fff;vertical-align:2px;margin-left:6px;font-style:normal;flex:none;white-space:nowrap}
+.tag.t4{background:var(--c4)}.tag.t6{background:var(--c6)}.tag.tk{background:var(--ckaon)}.tag.tp{background:var(--cphd)}
+.tag.tt{background:var(--ct)}.tag.tg{background:var(--cg)}
+.ipa{font-family:"SF Mono",Menlo,monospace;font-size:.82em;font-weight:400;opacity:.62;margin-left:6px}
+
+
+/* 论文原标题小字 */
+.ptitle{font-size:12.5px;letter-spacing:.3px;margin-top:6px}
+.ptitle i{font-family:Georgia,serif}
+.theme-mag .ptitle{color:#999;text-transform:none}
+.theme-dark .ptitle{color:#6e7681}
+.theme-paper .ptitle{color:#a09578}
+.theme-fresh .ptitle{color:#9ca3af}
+body.lv-mode .ptitle{color:#7d8590}
+
+/* 预览工具条 */
+.toolbar{position:fixed;right:16px;bottom:16px;z-index:99;display:flex;flex-direction:column;gap:8px;background:rgba(20,22,30,.88);padding:12px;border-radius:14px;backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.toolbar .row{display:flex;gap:6px}
+.toolbar button{border:none;cursor:pointer;padding:7px 12px;border-radius:8px;font-size:12.5px;background:#3a3f4d;color:#cbd2e0;transition:.15s}
+.toolbar button:hover{background:#4a5164}
+.toolbar button.on{background:#fff;color:#111;font-weight:600}
+.toolbar .lbl{font-size:10px;color:#8a93a6;text-align:left;margin:2px 0 -2px 2px}
+
+/* ---------- A 纸质阅读 ---------- */
+body.theme-paper{background:#faf6ee;color:#2c2a25}
+.theme-paper .wrap{max-width:880px;margin:0 auto;padding:56px 24px 140px}
+.theme-paper .hero h1{font-family:Georgia,"Songti SC",serif;font-size:34px}
+.theme-paper .hero p{color:#8a8272;margin:10px 0 42px;font-size:14px}
+.theme-paper .sec{margin-bottom:44px}
+.theme-paper .sec>h2{font-family:Georgia,"Songti SC",serif;font-size:20px;padding-left:14px;border-left:4px solid #b08d4f;margin-bottom:18px}
+.theme-paper .word{display:flex;gap:14px;padding:14px 16px;border-bottom:1px dashed #ddd2bc;align-items:baseline}
+.theme-paper .word:hover{background:#f3ecdc}
+.theme-paper .w{font-family:Georgia,serif;font-size:19px;font-weight:700;min-width:250px}
+.theme-paper .pos{color:#a09578;font-size:13px;margin-right:6px}
+.theme-paper .m{color:#4a463c;font-size:15px}
+.theme-paper .ex{margin-left:auto;max-width:270px;font-size:12.5px;color:#9a8f76;font-style:italic;text-align:right}
+.theme-paper .from{display:block;font-size:11px;color:#b3a888;font-style:normal;margin-top:3px}
+
+/* ---------- B 暗色科技 ---------- */
+body.theme-dark{background:#0d1117;color:#e6edf3}
+.theme-dark .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 140px}
+.theme-dark .hero h1{font-family:"SF Mono",Menlo,monospace;font-size:26px}
+.theme-dark .hero h1::before{content:"$ ";color:#3fb950}
+.theme-dark .hero p{color:#7d8590;margin:10px 0 40px;font-size:14px;font-family:Menlo,monospace}
+.theme-dark .sec>h2{font-size:15px;font-family:Menlo,monospace;color:#58a6ff;padding:10px 16px;background:#161b22;border:1px solid #30363d;border-radius:8px 8px 0 0;margin-bottom:-1px}
+.theme-dark .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px;background:#161b22;border:1px solid #30363d;border-radius:0 0 8px 8px}
+.theme-dark .card{background:#0d1117;border:1px solid #30363d;border-left:4px solid #58a6ff;border-radius:6px;padding:15px 17px;transition:.2s;cursor:pointer;font-family:Menlo,monospace}
+.theme-dark .card:hover{border-color:#58a6ff;box-shadow:0 0 14px rgba(88,166,255,.25);transform:translateY(-2px)}
+.theme-dark .w{font-family:Menlo,monospace;font-size:17px;color:#79c0ff}
+.theme-dark .ipa{color:#7ee787;opacity:.9}
+.theme-dark .m{color:#8b949e;font-size:13.5px;margin-top:7px;line-height:1.55}
+.theme-dark .ex{font-size:12px;color:#6e7681;margin-top:8px;border-top:1px solid #21262d;padding-top:8px;font-style:italic}
+.theme-dark .from{color:#484f58;font-size:11px;margin-top:4px}
+
+/* ---------- C 清新卡片 ---------- */
+body.theme-fresh{background:linear-gradient(160deg,#eef4ff 0%,#f6f0ff 50%,#fff7ec 100%);color:#1f2430}
+.theme-fresh .wrap{max-width:1020px;margin:0 auto;padding:56px 24px 140px}
+.theme-fresh .hero h1{font-size:32px;font-weight:800;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.theme-fresh .hero p{color:#6b7280;margin:10px 0 40px;font-size:14px}
+.theme-fresh .sec>h2{font-size:19px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.theme-fresh .sec>h2 .n{width:30px;height:30px;border-radius:10px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.theme-fresh .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.theme-fresh .card{background:rgba(255,255,255,.82);backdrop-filter:blur(6px);border-radius:18px;padding:17px 19px 15px;box-shadow:0 3px 14px rgba(80,80,140,.09);transition:.2s;cursor:pointer;border-top:5px solid #dbe3f5}
+.theme-fresh .card.lv4{border-top-color:#3b82f6}.theme-fresh .card.lv6{border-top-color:#8b5cf6}
+.theme-fresh .card.lvk{border-top-color:#f59e0b}.theme-fresh .card.lvp{border-top-color:#ef4444}
+.theme-fresh .card .w{display:inline-block;background:#f3f5fb;border-radius:8px;padding:2px 10px}
+.theme-fresh .card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(80,80,140,.16)}
+.theme-fresh .w{font-size:18px;font-weight:700}
+.theme-fresh .m{color:#4b5563;font-size:14px;margin-top:6px;line-height:1.55}
+.theme-fresh .ex{color:#9ca3af;font-size:12.5px;margin-top:8px}
+.theme-fresh .from{color:#b6bcc9;font-size:11.5px;margin-top:4px}
+
+/* ---------- D 杂志表格（宽松版） ---------- */
+body.theme-mag{background:#fff;color:#111}
+.theme-mag .wrap{max-width:960px;margin:0 auto;padding:52px 28px 140px}
+.theme-mag .hero{border-bottom:3px solid #111;padding-bottom:16px;margin-bottom:10px}
+.theme-mag .hero h1{font-family:"Songti SC",Georgia,serif;font-size:38px;font-weight:900}
+.theme-mag .hero p{color:#888;font-size:13.5px;margin-top:8px}
+.theme-mag .sec>h2{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#c2410c;margin:44px 0 8px;border-bottom:1px solid #e5e5e5;padding-bottom:8px}
+.theme-mag table{width:100%;border-collapse:collapse}
+.theme-mag td{padding:16px 12px;border-bottom:1px solid #f0f0f0;font-size:15.5px;line-height:1.65;vertical-align:top}
+.theme-mag tr:hover td{background:#fff8f3}
+.theme-mag .w{font-weight:700;font-size:17px;width:300px}
+.theme-mag .lv{width:60px}
+.theme-mag .lv b{font-size:11.5px;padding:3px 0;display:block;text-align:center;border-radius:3px;color:#fff;font-weight:600}
+.theme-mag .m{color:#3d3d3d}
+.theme-mag .ex{color:#9a9a9a;font-size:13px;font-style:italic}
+.theme-mag .from{display:block;color:#c9c9c9;font-size:11.5px;font-style:normal;margin-top:4px}
+
+/* ---------- 按级别：学习模式同款暗色大页 ---------- */
+body.lv-mode{background:#0b0e13 !important}
+body.lv-mode .hero h1,body.lv-mode .hero p{color:#e8ecf3}
+body.lv-mode .hero p{color:#7d8590}
+.lvslide{background:#101318;color:#e8ecf3;border-radius:20px;padding:26px 32px 22px;margin-bottom:26px;border-top:6px solid var(--c4)}
+.lvslide.l6{border-top-color:var(--c6)}.lvslide.lk{border-top-color:var(--ckaon)}.lvslide.lp{border-top-color:var(--cphd)}
+.lvslide.lt{border-top-color:var(--ct)}.lvslide.lg{border-top-color:var(--cg)}
+.lvslide .ltitle{font-size:26px;font-weight:800;font-family:Georgia,serif;display:flex;align-items:baseline;gap:14px}
+.lvslide .ltitle small{font-size:14px;color:#7d8590;font-family:Menlo,monospace;font-weight:400}
+.lvslide .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px 0 8px}
+.lvslide .lcard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:15px 17px;cursor:pointer;transition:.15s}
+.lvslide .lcard:hover{border-color:#79c0ff;transform:translateY(-2px)}
+.lvslide .lcard .w{font-size:19px;font-weight:700;font-family:Georgia,serif}
+.lvslide .lcard .ipa{font-family:Menlo,monospace;font-size:13px;color:#7ee787;margin-left:8px}
+.lvslide .lcard .m{color:#aeb6c4;font-size:14px;margin-top:7px;line-height:1.55}
+.lvslide .lcard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:7px}
+.lvslide .lcard .from{color:#4d5563;font-size:11px;margin-top:6px}
+
+
+/* ---------- 白天 / 夜晚 ---------- */
+body.lv-mode:not(.night){background:#eef1f6 !important}
+body.lv-mode:not(.night) .hero h1{color:#1f2430}
+body.lv-mode:not(.night) .hero p{color:#6b7280}
+body.lv-mode:not(.night) .lvslide{background:#fff;color:#1f2430;box-shadow:0 4px 18px rgba(80,80,140,.10)}
+body.lv-mode:not(.night) .lvslide .lcard{background:#f7f9fd;border-color:#e4e9f3}
+body.lv-mode:not(.night) .lvslide .lcard:hover{border-color:#3b82f6}
+body.lv-mode:not(.night) .lvslide .lcard .m{color:#4b5563}
+body.lv-mode:not(.night) .lvslide .lcard .ex{color:#98a0ae}
+body.lv-mode:not(.night) .lvslide .lcard .from{color:#b3bac6}
+body.lv-mode:not(.night) .lvslide .lcard .ipa{color:#0a7d33}
+body.night.theme-mag{background:#0d1117;color:#e6edf3}
+body.night.theme-mag .hero{border-bottom-color:#e6edf3}
+body.night.theme-mag .hero p{color:#8b949e}
+body.night.theme-mag .sec>h2{color:#fbbf24;border-bottom-color:#30363d}
+body.night.theme-mag td{border-bottom-color:#1c2230}
+body.night.theme-mag tr:hover td{background:#161b22}
+body.night.theme-mag .m{color:#c9d1d9}
+body.night.theme-mag .ex{color:#8b949e}
+body.night.theme-mag .from{color:#57606a}
+body.night.theme-mag .w{color:#e6edf3}
+body.night.theme-mag .ptitle{color:#8b949e}
+body.night.theme-mag .ipa{opacity:.55}
+#study.day{background:#f5f7fa;color:#1f2430}
+#study.day .scard{background:#fff;border-color:#e4e9f3}
+#study.day .scard .m{color:#4b5563}
+#study.day .scard .ex{color:#98a0ae}
+#study.day .scard:hover{border-color:#3b82f6}
+#study.day .sfoot{color:#98a0ae;border-top-color:#e6e9f0}
+#study.day .snav button,#study.day #sClose{background:#fff;color:#1f2430;border-color:#d7dce6}
+#study.day .sfoot kbd{background:#e8ecf3;color:#1f2430}
+
+/* ---------- 学习模式（PPT 按章节翻页） ---------- */
+#study{position:fixed;inset:0;z-index:200;display:none;background:#101318;color:#e8ecf3;flex-direction:column}
+#study.on{display:flex}
+#study .sprog{height:4px;background:#262c38}
+#study .sprog i{display:block;height:100%;background:linear-gradient(90deg,#58a6ff,#8b5cf6);width:0;transition:width .25s}
+#study .sbody{flex:1;overflow:auto;padding:20px 40px}
+#study .stitle{font-size:24px;font-weight:800;font-family:Georgia,serif;padding:6px 4px 2px}
+#study .stitle small{color:#5b6472;font-size:14px;font-family:Menlo,monospace;font-weight:400;margin-left:12px}
+#study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:16px 2px 30px}
+#study .scard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s}
+#study .scard:hover{border-color:#58a6ff;transform:translateY(-2px)}
+#study .scard .w{font-size:22px;font-weight:700;font-family:Georgia,serif}
+#study .scard .ipa{color:#7ee787;font-size:14px;margin-left:8px}
+#study .scard .m{color:#aeb6c4;font-size:14.5px;margin-top:8px;line-height:1.55}
+#study .scard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:6px}
+#study .sfoot{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;color:#5b6472;font-size:13px;border-top:1px solid #1d232e}
+#study .sfoot kbd{background:#262c38;border-radius:5px;padding:2px 8px;margin:0 2px;font-family:Menlo,monospace;font-size:12px}
+#study .snav{display:flex;gap:10px;align-items:center}
+#study .snav button{border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;padding:8px 18px;cursor:pointer;font-size:14px}
+#study .snav button:hover{border-color:#58a6ff}
+#study .snav button:disabled{opacity:.35;cursor:default}
+</style>
+</head>
+<body class="theme-mag">
+<div class="wrap">
+  <div class="hero">
+    <h1>I3D 论文核心词汇</h1>
+    <div class="ptitle"><i>Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset · I3D · CVPR 2017</i></div>
+    <p>全篇 10 页 · 108词 · 四级/六级/考研/考博/雅思托福/GRE</p>
+  </div>
+  <div id="app"></div>
+</div>
+
+<div class="toolbar">
+  <div class="lbl">视图</div>
+  <div class="row">
+    <button id="v-sec" class="on">按章节</button>
+    <button id="v-lv">按级别综合</button>
+    <button id="v-study">▶ 学习模式</button>
+  </div>
+  <div class="lbl">白天 / 夜晚</div>
+  <div class="row">
+    <button id="dn-day">☀ 白天</button>
+    <button id="dn-night">🌙 夜晚</button>
+  </div>
+  <div class="lbl">朗读声音 · Polly</div>
+  <div class="row"><select id="voiceSel" style="flex:1;border:none;border-radius:8px;padding:7px 8px;background:#3a3f4d;color:#cbd2e0;font-size:12.5px;outline:none"></select><span id="srcState" style="align-self:center;font-size:10.5px;color:#8a93a6;min-width:34px;text-align:center"></span></div>
+</div>
+
+<div id="study">
+  <div class="sprog"><i id="sbar"></i></div>
+  <button id="sClose" title="退出学习模式 (Esc)" style="position:absolute;top:14px;right:18px;z-index:5;border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;width:34px;height:34px;font-size:16px;cursor:pointer">✕</button>
+  <div class="sbody"><div id="sPage"></div></div>
+  <div class="sfoot">
+    <span><kbd>空格</kbd>/<kbd>→</kbd> 下一页 &nbsp; <kbd>←</kbd> 上一页 &nbsp; 点单词发音 &nbsp; <kbd>Esc</kbd> 退出</span>
+    <div class="snav">
+      <span id="sIdx">0 / 0</span>
+      <button id="sPrev">← 上一页</button>
+      <button id="sNext">下一页 →</button>
+      <button id="sExit" style="border-color:#5b3a3a">退出</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// lv: 4=四级 6=六级 k=考研 p=考博；ipa 为美式音标
+const DATA = [
+ {
+  "sec": "Abstract · 摘要",
+  "short": "Abstract",
+  "icon": "A",
+  "words": [
+   {
+    "w": "paucity",
+    "ipa": "ˈpɔːsəti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "缺乏，不足",
+    "ex": "The paucity of videos in current action classification datasets has made it difficult to identify good video architectures."
+   },
+   {
+    "w": "benchmark",
+    "ipa": "ˈbentʃmɑːrk",
+    "pos": "n.",
+    "lv": "p",
+    "m": "基准，基准测试",
+    "ex": "Most methods obtain similar performance on existing small-scale benchmarks."
+   },
+   {
+    "w": "spatio-temporal",
+    "ipa": "/ˌspeɪʃiəʊˈtempərəl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "时空的",
+    "ex": "Making it possible to learn seamless spatio-temporal feature extractors from video."
+   },
+   {
+    "w": "inflation",
+    "ipa": "/ɪnˈfleɪʃən/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "膨胀，扩展",
+    "ex": "A new Two-Stream Inflated 3D ConvNet (I3D) that is based on 2D ConvNet inflation."
+   },
+   {
+    "w": "seamless",
+    "ipa": "ˈsiːmləs",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无缝的",
+    "ex": "Making it possible to learn seamless spatio-temporal feature extractors from video."
+   },
+   {
+    "w": "leverage",
+    "ipa": "ˈlevərɪdʒ",
+    "pos": "v.",
+    "lv": "p",
+    "m": "利用，借助",
+    "ex": "Leveraging successful ImageNet architecture designs and even their parameters."
+   },
+   {
+    "w": "considerably",
+    "ipa": "/kənˈsɪdərəbli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "相当大地",
+    "ex": "I3D models considerably improve upon the state-of-the-art in action classification."
+   },
+   {
+    "w": "pre-training",
+    "ipa": "/priːˈtreɪnɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "预训练",
+    "ex": "After pre-training on Kinetics, I3D models considerably improve upon the state-of-the-art."
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "Intro",
+  "icon": "1",
+  "words": [
+   {
+    "w": "architectures",
+    "ipa": "ˈɑːrkɪtektʃərz",
+    "pos": "n.",
+    "lv": "4",
+    "m": "架构，体系结构",
+    "ex": "Deep architectures trained on the 1000 images of 1000 categories can be used for other tasks."
+   },
+   {
+    "w": "domain",
+    "ipa": "/doʊˈmeɪn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "领域，域",
+    "ex": "It is an open question whether training on a sufficiently large dataset will give a similar boost in a different domain."
+   },
+   {
+    "w": "commensurate",
+    "ipa": "/kəˈmenʃərət/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "相称的，相当的",
+    "ex": "Improvements in the deep architecture immediately fed through to commensurate improvements in PASCAL VOC performance."
+   },
+   {
+    "w": "commensurate",
+    "ipa": "/kəˈmenʃərət/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "相称的，相当的",
+    "ex": "Improvements in the deep architecture immediately fed through to commensurate improvements in PASCAL VOC performance."
+   },
+   {
+    "w": "sufﬁcing",
+    "ipa": "/səˈfaɪsɪŋ/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "足够，足以",
+    "ex": "There have been numerous examples of ImageNet trained architectures warm starting or sufficing entirely for other tasks."
+   },
+   {
+    "w": "segmentation",
+    "ipa": "/ˌseɡmenˈteɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "分割，切分",
+    "ex": "There have been numerous examples of ImageNet trained architectures for segmentation, depth prediction, pose estimation."
+   },
+   {
+    "w": "ambiguity",
+    "ipa": "/ˌæmbɪˈɡjuːəti/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "歧义，模糊性",
+    "ex": "Actions can be ambiguous in individual frames, but the limitations of existing datasets has meant that the best-performing video architectures do not depart significantly from single-image analysis."
+   },
+   {
+    "w": "depict",
+    "ipa": "/dɪˈpɪkt/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "描绘，描述",
+    "ex": "The limitations of existing action recognition datasets has meant that the best-performing video architectures do not depart significantly from single-image analysis."
+   },
+   {
+    "w": "recurrent",
+    "ipa": "/rɪˈkʌrənt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "循环的，递归的",
+    "ex": "Optical flow algorithms are in some sense recurrent, performing iterative optimization for the flow fields."
+   },
+   {
+    "w": "propagation",
+    "ipa": "/ˌprɒpəˈɡeɪʃən/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "传播",
+    "ex": "In the case of 2D ConvNets, how information is propagated across frames."
+   },
+   {
+    "w": "discriminative",
+    "ipa": "/dɪˈskrɪmɪnətɪv/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有区分力的",
+    "ex": "There may be opportunities for future research on integrating some form of motion stabilization into these architectures."
+   },
+   {
+    "w": "discern",
+    "ipa": "/dɪˈsɜːrn/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "辨别，识别",
+    "ex": "We often struggled with our own eyes to discern actions from flow alone in Kinetics."
+   },
+   {
+    "w": "prone",
+    "ipa": "/proʊn/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "倾向于",
+    "ex": "The flow stream seems much less prone to overfitting."
+   },
+   {
+    "w": "fidelity",
+    "ipa": "/fɪˈdeləti/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "保真度",
+    "ex": "The flow stream carries optimized, smooth flow information."
+   }
+  ]
+ },
+ {
+  "sec": "2. Action Classification Architectures · 动作分类架构",
+  "short": "Architectures",
+  "icon": "2",
+  "words": [
+   {
+    "w": "convolutional",
+    "ipa": "/kənvəˈluːʃənl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "卷积的",
+    "ex": "Some of the major differences in current video architectures are whether the convolutional layers use 2D or 3D kernels."
+   },
+   {
+    "w": "aggregation",
+    "ipa": "/ˌæɡrɪˈɡeɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "聚合，汇总",
+    "ex": "Feature aggregation over time is one way to propagate information across frames.",
+    "ov": "g"
+   },
+   {
+    "w": "parameterization",
+    "ipa": "/pəˌræmɪtəraɪˈzeɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "参数化",
+    "ex": "Due to the high-dimensionality of their parameterization and the lack of labeled video data, previous 3D ConvNets have been relatively shallow."
+   },
+   {
+    "w": "shallow",
+    "ipa": "/ˈʃæloʊ/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "浅的（网络层）",
+    "ex": "Previous 3D ConvNets have been relatively shallow, up to 8 layers."
+   },
+   {
+    "w": "backbone",
+    "ipa": "ˈbækbəʊn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "骨干网络",
+    "ex": "Our experimental strategy assumes a common ImageNet pre-trained image classification architecture as backbone."
+   },
+   {
+    "w": "trivially",
+    "ipa": "/ˈtrɪviəli/",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "简单地，轻易地",
+    "ex": "Very deep image classification networks can be trivially inflated into spatio-temporal feature extractors."
+   },
+   {
+    "w": "receptive",
+    "ipa": "/rɪˈseptɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "感受野的",
+    "ex": "The size of feature receptive fields is shaped by temporal stride and pooling operators."
+   },
+   {
+    "w": "momentum",
+    "ipa": "/məˈmentəm/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "动量（优化算法）",
+    "ex": "Training on videos used standard SGD with momentum set to 0.9."
+   },
+   {
+    "w": "augmentation",
+    "ipa": "/ˌɔːɡmenˈteɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "增强，扩充",
+    "ex": "Data augmentation is known to be of crucial importance for the performance of deep architectures.",
+    "ov": "g"
+   }
+  ]
+ },
+ {
+  "sec": "2.1. The Old I: ConvNet+LSTM · 旧方法一",
+  "short": "ConvNet+LSTM",
+  "icon": "2.1",
+  "words": [
+   {
+    "w": "recurrent",
+    "ipa": "/rɪˈkʌrənt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "循环的",
+    "ex": "In theory, a more satisfying approach is to add a recurrent layer to the model, such as an LSTM."
+   },
+   {
+    "w": "encode",
+    "ipa": "/ɪnˈkoʊd/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "编码",
+    "ex": "An LSTM can encode state, and capture temporal ordering and long range dependencies."
+   },
+   {
+    "w": "dependency",
+    "ipa": "/dɪˈpendənsi/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "依赖关系",
+    "ex": "An LSTM can capture temporal ordering and long range dependencies."
+   },
+   {
+    "w": "subsample",
+    "ipa": "/ˈsʌbsɑːmpəl/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "子采样，降采样",
+    "ex": "Input video frames are sub-sampled by keeping one out of every 5."
+   },
+   {
+    "w": "footprint",
+    "ipa": "ˈfʊtprɪnt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "占用量，足迹",
+    "ex": "The full temporal footprint of all models is given in table 1."
+   },
+   {
+    "w": "unfold",
+    "ipa": "/ʌnˈfoʊld/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "展开",
+    "ex": "It is also expensive to train as it requires unrolling the network through multiple frames for backpropagation-through-time."
+   }
+  ]
+ },
+ {
+  "sec": "2.2. The Old II: 3D ConvNets · 旧方法二",
+  "short": "3D ConvNets",
+  "icon": "2.2",
+  "words": [
+   {
+    "w": "hierarchical",
+    "ipa": "/ˌhaɪəˈrɑːrkɪkl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "层次化的",
+    "ex": "They directly create hierarchical representations of spatio-temporal data."
+   },
+   {
+    "w": "custom",
+    "ipa": "ˈkʌstəm",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "自定义的",
+    "ex": "Previous work has defined relatively shallow custom architectures and trained them from scratch."
+   },
+   {
+    "w": "scratch",
+    "ipa": "/skrætʃ/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "零基础",
+    "ex": "Previous work has defined relatively shallow custom architectures and trained them from scratch."
+   },
+   {
+    "w": "stride",
+    "ipa": "/straɪd/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "步幅（卷积/池化）",
+    "ex": "We use a temporal stride of 2 instead of 1 in the first pooling layer."
+   },
+   {
+    "w": "batch",
+    "ipa": "/bætʃ/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "批（训练批次）",
+    "ex": "This reduces the memory footprint and allows for bigger batches."
+   },
+   {
+    "w": "tying",
+    "ipa": "ˈtaɪɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "绑定，共享",
+    "ex": "There is no weight tying in fully connected layers."
+   }
+  ]
+ },
+ {
+  "sec": "2.3. The Old III: Two-Stream Networks · 旧方法三",
+  "short": "Two-Stream",
+  "icon": "2.3",
+  "words": [
+   {
+    "w": "optical",
+    "ipa": "ˈɑːptɪkl/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "光学的",
+    "ex": "A stack of 10 externally computed optical flow frames is passed through two replicas of an ImageNet pre-trained ConvNet."
+   },
+   {
+    "w": "stream",
+    "ipa": "/striːm/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "流，通道",
+    "ex": "The flow stream has an adapted input convolutional layer with twice as many input channels as flow frames."
+   },
+   {
+    "w": "replica",
+    "ipa": "/ˈreplɪkə/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "副本，复制品",
+    "ex": "Two replicas of an ImageNet pre-trained ConvNet are used for the two-stream network."
+   },
+   {
+    "w": "adapted",
+    "ipa": "/əˈdæptɪd/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "适配的，改编的",
+    "ex": "The flow stream has an adapted input convolutional layer."
+   },
+   {
+    "w": "fusing",
+    "ipa": "ˈfjuːzɪŋ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "融合",
+    "ex": "A recent extension fuses the spatial and flow streams after the last network convolutional layer."
+   },
+   {
+    "w": "augmentation",
+    "ipa": "/ˌɔːɡmenˈteɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "增强",
+    "ex": "This was shown to get very high performance while requiring less test time augmentation.",
+    "ov": "g"
+   },
+   {
+    "w": "snippet",
+    "ipa": "ˈsnɪpɪt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "片段，剪辑",
+    "ex": "The inputs to the network are 5 consecutive RGB frames and the corresponding optical flow snippets."
+   },
+   {
+    "w": "consecutive",
+    "ipa": "/kənˈsekjətɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "连续的",
+    "ex": "The inputs to the network are 5 consecutive RGB frames sampled 10 frames apart."
+   }
+  ]
+ },
+ {
+  "sec": "2.4. The New: Two-Stream Inflated 3D ConvNets · 新方法",
+  "short": "I3D",
+  "icon": "2.4",
+  "words": [
+   {
+    "w": "inflate",
+    "ipa": "/ɪnˈfleɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "膨胀，扩展",
+    "ex": "We propose to simply convert successful image classification models into 3D ConvNets by inflating filters and pooling kernels."
+   },
+   {
+    "w": "cubic",
+    "ipa": "ˈkjuːbɪk",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "立方的",
+    "ex": "Filters are typically square and we just make them cubic — N×N filters become N×N×N."
+   },
+   {
+    "w": "bootstrap",
+    "ipa": "ˈbuːtstræp",
+    "pos": "v.",
+    "lv": "p",
+    "m": "引导，自举",
+    "ex": "One may also want to bootstrap parameters from the pre-trained ImageNet models."
+   },
+   {
+    "w": "boring",
+    "ipa": "ˈbɔːrɪŋ/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "无聊的，单调的",
+    "ex": "An image can be converted into a boring video by copying it repeatedly into a video sequence."
+   },
+   {
+    "w": "linearity",
+    "ipa": "/ˌlɪniˈærəti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "线性",
+    "ex": "Thanks to linearity, the convolutional filter response is the same for boring videos and original images."
+   },
+   {
+    "w": "non-linearity",
+    "ipa": "/ˌnɒnlɪniˈærəti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "非线性",
+    "ex": "The outputs of pointwise non-linearity layers are the same as for the 2D case."
+   },
+   {
+    "w": "pointwise",
+    "ipa": "ˈpɔɪntwaɪz",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "逐点的",
+    "ex": "The outputs of pointwise non-linearity layers are the same as for the 2D case."
+   },
+   {
+    "w": "receptive",
+    "ipa": "/rɪˈseptɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "感受野的",
+    "ex": "The size of feature receptive fields is shaped by temporal stride and pooling operators."
+   },
+   {
+    "w": "conflate",
+    "ipa": "/kənˈfleɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "混淆，合并",
+    "ex": "If it grows too quickly in time relative to space, it may conflate edges from different objects."
+   },
+   {
+    "w": "disc",
+    "ipa": "/dɪsk/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "光盘，磁盘",
+    "ex": "The conv1 filters of the trained models are shown in figure 4."
+   },
+   {
+    "w": "temporal",
+    "ipa": "ˈtempərəl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "时间的，时序的",
+    "ex": "A symmetric receptive field is not necessarily optimal when also considering time."
+   },
+   {
+    "w": "kernel",
+    "ipa": "ˈkɜːrnl",
+    "pos": "n.",
+    "lv": "6",
+    "m": "核（卷积核）",
+    "ex": "Filters and pooling kernels of very deep image classification ConvNets are expanded into 3D."
+   },
+   {
+    "w": "endow",
+    "ipa": "/ɪnˈdaʊ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "赋予",
+    "ex": "We endow filters with an additional temporal dimension by inflating 2D ConvNets into 3D."
+   },
+   {
+    "w": "rescale",
+    "ipa": "/ˌriːˈskeɪl/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "重新缩放",
+    "ex": "The 2D filter weights are repeated N times along the time dimension and rescaled by dividing by N."
+   }
+  ]
+ },
+ {
+  "sec": "2.5. Implementation Details · 实现细节",
+  "short": "Implementation",
+  "icon": "2.5",
+  "words": [
+   {
+    "w": "synchronous",
+    "ipa": "/ˈsɪŋkrənəs/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "同步的",
+    "ex": "Training on videos used standard SGD with synchronous parallelization across 32 GPUs.",
+    "ov": "g"
+   },
+   {
+    "w": "parallelization",
+    "ipa": "/ˌpærəlelaɪˈzeɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "并行化",
+    "ex": "Training used synchronous parallelization across 32 GPUs for all models."
+   },
+   {
+    "w": "saturated",
+    "ipa": "/ˈsætʃəreɪtɪd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "饱和的",
+    "ex": "We used a 10x reduction of learning rate when validation loss saturated.",
+    "ov": "g"
+   },
+   {
+    "w": "crop",
+    "ipa": "/krɑːp/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "裁剪",
+    "ex": "During training we used random cropping both spatially and temporally."
+   },
+   {
+    "w": "flip",
+    "ipa": "/flɪp/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "翻转",
+    "ex": "We also applied random left-right flipping consistently for each video during training."
+   },
+   {
+    "w": "convolutionally",
+    "ipa": "/kənvəˈluːʃənəli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "以卷积方式",
+    "ex": "During test time the models are applied convolutionally over the whole video."
+   },
+   {
+    "w": "photometric",
+    "ipa": "/ˌfoʊtəˈmetrɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "光度的",
+    "ex": "Better performance could be obtained by adding additional augmentation, such as photometric, during training."
+   }
+  ]
+ },
+ {
+  "sec": "3. The Kinetics Dataset · Kinetics数据集",
+  "short": "Kinetics",
+  "icon": "3",
+  "words": [
+   {
+    "w": "dataset",
+    "ipa": "/ˈdeɪtəset/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "数据集",
+    "ex": "The Kinetics dataset is focused on human actions rather than activities or events."
+   },
+   {
+    "w": "fine-grained",
+    "ipa": "/ˌfaɪnˈɡreɪnd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "细粒度的",
+    "ex": "Some actions are fine grained and require temporal reasoning to distinguish."
+   },
+   {
+    "w": "reasoning",
+    "ipa": "ˈriːzənɪŋ/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推理",
+    "ex": "Some actions are fine grained and require temporal reasoning to distinguish, for example different types of swimming."
+   },
+   {
+    "w": "untrimmed",
+    "ipa": "/ʌnˈtrɪmd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "未裁剪的",
+    "ex": "The clips last around 10s, and there are no untrimmed videos."
+   },
+   {
+    "w": "singular",
+    "ipa": "ˈsɪŋɡjələr/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "单个的，单一的",
+    "ex": "Person Actions (singular), e.g. drawing, drinking, laughing, punching."
+   }
+  ]
+ },
+ {
+  "sec": "4. Experimental Comparison · 实验对比",
+  "short": "Comparison",
+  "icon": "4",
+  "words": [
+   {
+    "w": "accuracy",
+    "ipa": "/ˈækjərəsi/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "准确率",
+    "ex": "Table 2 shows the classification accuracy when training and testing on different datasets."
+   },
+   {
+    "w": "modality",
+    "ipa": "/məˈdæləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "模态",
+    "ex": "I3D models do best in all datasets, with either RGB, flow, or RGB+flow modalities."
+   },
+   {
+    "w": "consistently",
+    "ipa": "/kənˈsɪstəntli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "一致地",
+    "ex": "The ranking of the different architectures is mostly consistent across datasets."
+   },
+   {
+    "w": "discriminative",
+    "ipa": "/dɪˈskrɪmɪnətɪv/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有区分力的",
+    "ex": "It seems plausible that the RGB stream has more discriminative information."
+   },
+   {
+    "w": "discern",
+    "ipa": "/dɪˈsɜːrn/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "辨别",
+    "ex": "We often struggled with our own eyes to discern actions from flow alone in Kinetics."
+   },
+   {
+    "w": "receptive",
+    "ipa": "/rɪˈseptɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "感受野的",
+    "ex": "The I3D model can probably be explained by its much longer temporal receptive field."
+   },
+   {
+    "w": "discriminative",
+    "ipa": "/dɪˈskrɪmɪnətɪv/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有区分力的",
+    "ex": "It seems plausible that the RGB stream has more discriminative information."
+   }
+  ]
+ },
+ {
+  "sec": "5. Feature Evaluation · 特征评估",
+  "short": "Features",
+  "icon": "5",
+  "words": [
+   {
+    "w": "generalizability",
+    "ipa": "/ˌdʒenərəlaɪzəˈbɪləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "泛化能力",
+    "ex": "We investigate the generalizability of the networks trained on Kinetics."
+   },
+   {
+    "w": "freeze",
+    "ipa": "/friːz/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "冻结",
+    "ex": "We freeze the network weights and use the network to produce features for unseen videos."
+   },
+   {
+    "w": "softmax",
+    "ipa": "ˈsɒftmæks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "Softmax（归一化指数函数）",
+    "ex": "We train multi-way soft-max classifiers for the classes of UCF-101/HMDB-51."
+   },
+   {
+    "w": "fine-tune",
+    "ipa": "/ˌfaɪnˈtjuːn/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "微调",
+    "ex": "We fine-tune each network for the UCF-101/HMDB-51 classes."
+   },
+   {
+    "w": "transferability",
+    "ipa": "/ˌtrænsfɜːrəˈbɪləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可迁移性",
+    "ex": "One explanation for the significant better transferability of features of I3D models is their high temporal resolution."
+   },
+   {
+    "w": "overfitting",
+    "ipa": "/ˌoʊvərˈfɪtɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "过拟合",
+    "ex": "The flow stream seems much less prone to overfitting."
+   },
+   {
+    "w": "resolution",
+    "ipa": "/ˌrezəˈluːʃən/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分辨率",
+    "ex": "One explanation is their high temporal resolution — they are trained on 64-frame video snippets at 25 fps."
+   },
+   {
+    "w": "fine-grained",
+    "ipa": "/ˌfaɪnˈɡreɪnd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "细粒度的",
+    "ex": "It makes it possible for them to capture fine-grained temporal structure of actions."
+   },
+   {
+    "w": "prone",
+    "ipa": "/proʊn/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "易于……的",
+    "ex": "The flow stream seems much less prone to overfitting."
+   }
+  ]
+ },
+ {
+  "sec": "5.1. State-of-the-Art Comparison · 最新方法对比",
+  "short": "SOTA",
+  "icon": "5.1",
+  "words": [
+   {
+    "w": "ensemble",
+    "ipa": "/ɪnˈsɑːmbl/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "集成，组合",
+    "ex": "The difference between Kinetics pre-trained I3D models and prior 3D ConvNets (C3D) is even larger, even when ensembled."
+   },
+   {
+    "w": "trajectory",
+    "ipa": "/trəˈdʒektəri/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "轨迹",
+    "ex": "The best performing method uses ResNet-50 models on RGB and optical flow streams, combined with the dense trajectories model.",
+    "ov": "g"
+   },
+   {
+    "w": "misclassification",
+    "ipa": "/ˌmɪsklæsɪfɪˈkeɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "误分类",
+    "ex": "The overall performance corresponds to 63% and 35% misclassification reductions respectively."
+   },
+   {
+    "w": "exemplify",
+    "ipa": "/ɪɡˈzemplɪfaɪ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "举例说明",
+    "ex": "This demonstrates transfer learning from one dataset to another for a similar task."
+   },
+   {
+    "w": "complement",
+    "ipa": "ˈkɑːmplɪment",
+    "pos": "v.",
+    "lv": "4",
+    "m": "补充，互补",
+    "ex": "Either of our RGB-I3D or RGB-Flow models alone outperforms all previous published performance."
+   },
+   {
+    "w": "benchmark",
+    "ipa": "ˈbentʃmɑːrk",
+    "pos": "v.",
+    "lv": "p",
+    "m": "作为基准",
+    "ex": "We benchmarked our methods using the mean accuracy over the three standard train/test splits."
+   },
+   {
+    "w": "published",
+    "ipa": "ˈpʌblɪʃt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "已发表的",
+    "ex": "Either of our RGB-I3D or RGB-Flow models alone outperforms all previous published performance."
+   }
+  ]
+ },
+ {
+  "sec": "6. Discussion · 讨论",
+  "short": "Discussion",
+  "icon": "6",
+  "words": [
+   {
+    "w": "facilitate",
+    "ipa": "/fəˈsɪlɪteɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "促进，使便利",
+    "ex": "We plan to make publicly available I3D models to facilitate research in this area."
+   },
+   {
+    "w": "comprehensive",
+    "ipa": "/ˌkɑːmprɪˈhensɪv/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "全面的，综合的",
+    "ex": "We did not perform a comprehensive exploration of architectures."
+   },
+   {
+    "w": "imaginative",
+    "ipa": "/ɪˈmædʒɪnətɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "富有想象力的",
+    "ex": "Recent works have proposed imaginative methods for determining the spatial and temporal extent of actors."
+   },
+   {
+    "w": "analogy",
+    "ipa": "/əˈnælədʒi/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "类比",
+    "ex": "By making analogies between actions and transformations."
+   },
+   {
+    "w": "intermediate",
+    "ipa": "/ˌɪntərˈmiːdiət/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "中间的",
+    "ex": "Recent works have proposed methods for determining the spatial and temporal extent of actors."
+   },
+   {
+    "w": "tube",
+    "ipa": "/tuːb/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "管道（动作管道）",
+    "ex": "For example we have not employed action tubes or attention mechanisms to focus on the human actors."
+   },
+   {
+    "w": "attentive",
+    "ipa": "/əˈtentɪv/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "专注的，注意的",
+    "ex": "Recent works have proposed imaginative methods incorporating linked object detections in time."
+   },
+   {
+    "w": "pragmatic",
+    "ipa": "/præɡˈmætɪk/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "务实的",
+    "ex": "We plan to make publicly available I3D models trained on the official Kinetics dataset's release."
+   }
+  ]
+ }
+];
+const LVCLS={"4":"t4","6":"t6","k":"tk","p":"tp","t":"tt","g":"tg"};
+const LVNAME={"4":"四级","6":"六级","k":"考研","p":"考博","t":"雅思 · 托福","g":"GRE"};
+const LVSHORT={"4":"4","6":"6","k":"考研","p":"考博","t":"托福","g":"GRE"};
+const LVORDER=["4","6","k","p","t","g"];
+
+let mode="sec";
+let theme="theme-mag"; // 章节视图固定杂志风；按级别视图固定暗色大页
+
+function cardHTML(x,sec){
+  const from = mode==="lv" ? `<div class="from">出自 ${sec}</div>` : "";
+  if(theme==="theme-paper"){
+    return `<div class="word"><span class="w">${x.w}<span class="ipa">/${x.ipa}/</span><i class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</i></span>
+      <span><span class="pos">${x.pos}</span><span class="m">${x.m}</span>${from}</span>
+      <span class="ex">${x.ex}</span></div>`;
+  }
+  if(theme==="theme-mag") return "";
+  return `<div class="card lv${x.lv}" data-say="${x.w}"><span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</span>
+    <div class="m">${x.pos} ${x.m}</div><div class="ex">${x.ex}</div>${from}</div>`;
+}
+function magRow(x,sec){
+  return `<tr data-say="${x.w}"><td class="w">${x.w}<span class="ipa">/${x.ipa}/</span></td>
+    <td class="lv"><b class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</b></td>
+    <td class="m">${x.pos} ${x.m}${mode==="lv"?`<span class="from">出自 ${sec}</span>`:""}</td>
+    <td class="ex">${x.ex}</td></tr>`;
+}
+function groupHTML(title,icon,inner){
+  if(theme==="theme-mag") return `<div class="sec"><h2>${title}</h2><table>${inner}</table></div>`;
+  if(theme==="theme-dark"||theme==="theme-fresh")
+    return `<div class="sec"><h2>${theme==="theme-dark"?"":"<span class='n'>"+icon+"</span>"}${title}</h2><div class="grid">${inner}</div></div>`;
+  return `<div class="sec"><h2>${title}</h2>${inner}</div>`;
+}
+function render(){
+  document.body.classList.toggle("lv-mode",mode==="lv");
+  if(mode==="sec")document.body.className="theme-mag";
+  const app=document.getElementById("app");
+  let html="";
+  if(mode==="sec"){
+    for(const s of DATA){
+      html += theme==="theme-mag"
+        ? groupHTML(s.sec,s.icon,s.words.map(x=>magRow(x,s.short)).join(""))
+        : groupHTML(s.sec,s.icon,s.words.map(x=>cardHTML(x,s.short)).join(""));
+    }
+  }else{
+    // 学习模式同款暗色大页：每个级别一块
+    const dot={4:"var(--c4)",6:"var(--c6)",k:"var(--ckaon)",p:"var(--cphd)",t:"var(--ct)",g:"var(--cg)"};
+    html=LVORDER.map(lv=>{
+      const items=[];
+      DATA.forEach(s=>s.words.forEach(x=>{if(x.lv===lv||x.ov===lv)items.push([x.ov===lv?{...x,lv:x.ov}:x,s.short])}));
+      items.sort((a,b)=>a[0].w.localeCompare(b[0].w));
+      const cls={4:"",6:"l6",k:"lk",p:"lp",t:"lt",g:"lg"}[lv];
+      return `<div class="lvslide ${cls}">
+        <div class="ltitle"><span style="color:${dot[lv]}">${LVNAME[lv]}</span>词汇<small>${items.length} words · 按字母排序 · 悬停看原文例句 · 点击发音</small></div>
+        <div class="sgrid">${items.map(([x,sec])=>`
+          <div class="lcard" data-say="${x.w}">
+            <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span>
+            <div class="m">${x.pos} ${x.m}</div>
+            <div class="ex">${x.ex}</div>
+            <div class="from">出自 ${sec}</div>
+          </div>`).join("")}</div></div>`;
+    }).join("");
+  }
+  app.innerHTML=html;
+}
+function syncToolbar(){
+  document.getElementById("v-sec").classList.toggle("on",mode==="sec");
+  document.getElementById("v-lv").classList.toggle("on",mode==="lv");
+}
+document.getElementById("v-sec").onclick=()=>{mode="sec";theme="theme-mag";document.body.className="theme-mag";syncToolbar();render();};
+document.getElementById("v-lv").onclick=()=>{mode="lv";syncToolbar();render();};
+
+// 朗读：在线 TTS 多源自动降级（Polly → 百度 → 谷歌），选音色只对 Polly 源生效
+const ALL_SRC=["yd1","yd0","bd","gg"];
+const ONLINE_VOICES=[["yd1","美式 · 有道（推荐）"],["yd0","英式 · 有道"],["bd","百度翻译 · 女声"],["mute","🔇 不朗读"]];
+let ONLINE="yd1";try{const sv=localStorage.getItem("vocab_voice");if(sv&&["yd1","yd0","bd","gg","mute"].includes(sv))ONLINE=sv;}catch(e){}
+let SRC_ORDER=["yd1","yd0","bd","gg"],srcIdx=0; // 当前可用的源
+function applyVoiceOrder(){const i=ALL_SRC.indexOf(ONLINE);SRC_ORDER=i<0?ALL_SRC.slice():ALL_SRC.slice(i).concat(ALL_SRC.slice(0,i));}
+applyVoiceOrder();
+let audio=null;
+function ttsURL(src,t){
+  const q=encodeURIComponent(t);
+  if(src==="yd1")return `https://dict.youdao.com/dictvoice?type=1&audio=${q}`;
+  if(src==="yd0")return `https://dict.youdao.com/dictvoice?type=0&audio=${q}`;
+  if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=en&text=${q}&spd=5&source=web`;
+  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${q}`;
+}
+function fillVoiceSel(){
+  const sel=document.getElementById("voiceSel");if(!sel)return;
+  sel.innerHTML=`<option value="mute" ${ONLINE==="mute"?"selected":""}>🔇 不朗读</option>`+ONLINE_VOICES.map(([v,l])=>`<option value="${v}" ${ONLINE===v?"selected":""}>${l}</option>`).join("");
+  const st=document.getElementById("srcState");
+  if(st)st.textContent={yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[SRC_ORDER[srcIdx]]||"";
+}
+fillVoiceSel();
+let saying=0; // 防并发
+function say(t){
+  if(ONLINE==="mute"){try{if(audio){audio.pause();audio=null}}catch(e){}return}
+  const my=++saying;
+  trySrc(0,t,my);
+}
+function trySrc(i,t,my){
+  if(my!==saying)return;
+  if(i>=SRC_ORDER.length){const st=document.getElementById("srcState");if(st)st.textContent="无可用源";return}
+  const src=SRC_ORDER[i];
+  const st=document.getElementById("srcState");
+  if(st)st.textContent="尝试"+({yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[src]);
+  try{if(audio){audio.pause();audio=null}}catch(e){}
+  const a=new Audio(ttsURL(src,t));
+  let ok=false,advanced=false;
+  const advance=()=>{ if(!ok&&!advanced&&my===saying){advanced=true;trySrc(i+1,t,my);} };
+  a.addEventListener("playing",()=>{ok=true;
+    if(srcIdx!==i){srcIdx=i;fillVoiceSel();} // 记住能用的源
+  });
+  a.addEventListener("error",advance);
+  audio=a;
+  a.play().catch(advance);
+  setTimeout(()=>{ if(!ok&&my===saying&&a.paused)advance(); },2500);
+}
+document.getElementById("voiceSel").addEventListener("change",e=>{
+  ONLINE=e.target.value; applyVoiceOrder(); // 换音色重新从头试源
+  if(ONLINE!=="mute") say("Hello, let us learn new words together.");
+});
+/* ---- 白天 / 夜晚 ---- */
+let night=false;
+try{night=(localStorage.getItem("vocab_dn")||"day")==="night"}catch(e){night=false}
+function applyDN(){
+  document.body.classList.toggle("night",night);
+  document.getElementById("dn-day").classList.toggle("on",!night);
+  document.getElementById("dn-night").classList.toggle("on",night);
+  if(typeof studyEl!=="undefined"&&studyEl)studyEl.classList.toggle("day",!night);
+}
+document.getElementById("dn-day").onclick=()=>{night=false;try{localStorage.setItem("vocab_dn","day")}catch(e){};applyDN();};
+document.getElementById("dn-night").onclick=()=>{night=true;try{localStorage.setItem("vocab_dn","night")}catch(e){};applyDN();};
+document.getElementById("app").addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+
+/* ---------- 学习模式：按章节分页的 PPT 翻页 ---------- */
+const PER_PAGE = 12; // 每页最多词数，放不下自动续页
+let slides=[],si=0;
+function buildSlides(){
+  slides=[];
+  for(const s of DATA){
+    for(let i=0;i<s.words.length;i+=PER_PAGE){
+      slides.push({sec:s.sec,page:Math.floor(i/PER_PAGE)+1,
+        pages:Math.ceil(s.words.length/PER_PAGE),words:s.words.slice(i,i+PER_PAGE)});
+    }
+  }
+}
+const studyEl=document.getElementById("study");
+let open=false;
+function showSlide(){
+  const sl=slides[si];
+  const title=sl.pages>1 ? `${sl.sec}（第 ${sl.page}/${sl.pages} 页）` : sl.sec;
+  document.getElementById("sPage").innerHTML =
+    `<div class="stitle">${title}<small>${sl.words.length} words</small></div>
+     <div class="sgrid">${sl.words.map(x=>`
+       <div class="scard" data-say="${x.w}">
+         <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}" style="font-size:11px;padding:2px 8px">${LVSHORT[x.lv]}</span>
+         <div class="m">${x.pos} ${x.m}</div>
+         <div class="ex">${x.ex}</div>
+       </div>`).join("")}</div>`;
+  document.getElementById("sIdx").textContent=(si+1)+" / "+slides.length;
+  document.getElementById("sbar").style.width=((si+1)/slides.length*100)+"%";
+  document.getElementById("sPrev").disabled=si===0;
+  document.getElementById("sNext").disabled=si===slides.length-1;
+  studyEl.querySelector(".sbody").scrollTop=0;
+}
+function studyOpen(){ buildSlides(); si=0; open=true; studyEl.classList.add("on"); applyDN(); showSlide(); }
+function studyClose(){ open=false; studyEl.classList.remove("on"); }
+function next(){ if(si<slides.length-1){ si++; showSlide(); } }
+function prev(){ if(si>0){ si--; showSlide(); } }
+document.getElementById("v-study").onclick=()=>open?studyClose():studyOpen();
+document.getElementById("sClose").onclick=studyClose;
+document.getElementById("sExit").onclick=studyClose;
+document.getElementById("sNext").onclick=next;
+document.getElementById("sPrev").onclick=prev;
+studyEl.addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+document.addEventListener("keydown",e=>{
+  if(!open) return;
+  if(e.code==="Space"||e.key==="ArrowRight"||e.key==="PageDown"){ e.preventDefault(); next(); }
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){ prev(); }
+  else if(e.key==="Escape"){ studyClose(); }
+});
+applyDN(); syncToolbar(); render();
+</script>
+</body>
+</html>

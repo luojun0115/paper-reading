@@ -1,0 +1,1003 @@
+[
+ {
+  "sec": "Abstract · 摘要",
+  "short": "Abstract",
+  "icon": "A",
+  "words": [
+   {
+    "w": "classify",
+    "ipa": "/ˈklæsɪfaɪ/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "分类，归类",
+    "ex": "We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images."
+   },
+   {
+    "w": "considerably",
+    "ipa": "/kənˈsɪdərəbli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "相当大地，显著地",
+    "ex": "which is considerably better than the previous state-of-the-art."
+   },
+   {
+    "w": "consist",
+    "ipa": "/kənˈsɪst/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "由……组成",
+    "ex": "The neural network consists of five convolutional layers."
+   },
+   {
+    "w": "saturating",
+    "ipa": "/ˈsætʃəreɪtɪŋ/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "饱和的",
+    "ex": "we used non-saturating neurons and a very efficient GPU implementation."
+   },
+   {
+    "w": "regularization",
+    "ipa": "/ˌreɡjələraɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "正则化",
+    "ex": "we employed a recently-developed regularization method called dropout."
+   },
+   {
+    "w": "effective",
+    "ipa": "/ɪˈfektɪv/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有效的",
+    "ex": "dropout that proved to be very effective."
+   },
+   {
+    "w": "resolution",
+    "ipa": "/ˌrezəˈluːʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分辨率；解决",
+    "ex": "We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images."
+   },
+   {
+    "w": "parameter",
+    "ipa": "/pəˈræmɪtər/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "参数",
+    "ex": "The neural network, which has 60 million parameters and 650,000 neurons."
+   },
+   {
+    "w": "convolution",
+    "ipa": "/ˌkɑːnvəˈluːʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "卷积",
+    "ex": "To make training faster, we used non-saturating neurons and a very efficient GPU implementation of the convolution operation."
+   },
+   {
+    "w": "overfitting",
+    "ipa": "/ˌoʊvərˈfɪtɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "过拟合",
+    "ex": "To reduce overfitting in the fully-connected layers we employed a recently-developed regularization method called 'dropout'."
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "Intro",
+  "icon": "1",
+  "words": [
+   {
+    "w": "variability",
+    "ipa": "/ˌveəriəˈbɪləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "变异性，可变性",
+    "ex": "objects in realistic settings exhibit considerable variability.",
+    "ov": "g"
+   },
+   {
+    "w": "augmented",
+    "ipa": "/ɔːɡˈmentɪd/",
+    "pos": "v.",
+    "lv": "k",
+    "m": "增强，扩大",
+    "ex": "especially if they are augmented with label-preserving transformations."
+   },
+   {
+    "w": "prohibitively",
+    "ipa": "/prəˈhɪbɪtɪvli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "令人望而却步地",
+    "ex": "they have still been prohibitively expensive to apply in large scale."
+   },
+   {
+    "w": "facilitate",
+    "ipa": "/fəˈsɪlɪteɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "促进，使便利",
+    "ex": "current GPUs are powerful enough to facilitate the training of interestingly-large CNNs."
+   },
+   {
+    "w": "inherent",
+    "ipa": "/ɪnˈhɪərənt/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "内在的，固有的",
+    "ex": "a highly-optimized GPU implementation of 2D convolution and all the other operations inherent in training."
+   },
+   {
+    "w": "severe",
+    "ipa": "/sɪˈvɪər/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "严重的，严峻的",
+    "ex": "recent datasets such as ImageNet contain enough labeled examples to train such models without severe overfitting."
+   },
+   {
+    "w": "inferior",
+    "ipa": "/ɪnˈfɪəriər/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "较差的，次等的",
+    "ex": "removing any convolutional layer resulted in inferior performance."
+   },
+   {
+    "w": "tolerate",
+    "ipa": "/ˈtɒləreɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "容忍，忍受",
+    "ex": "by the amount of training time that we are willing to tolerate."
+   },
+   {
+    "w": "compensate",
+    "ipa": "/ˈkɒmpenseɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "补偿，弥补",
+    "ex": "our model should also have lots of prior knowledge to compensate for all the data we don't have."
+   },
+   {
+    "w": "essential",
+    "ipa": "/ɪˈsenʃl/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "必要的，本质的",
+    "ex": "Current approaches to object recognition make essential use of machine learning methods."
+   },
+   {
+    "w": "capacity",
+    "ipa": "/kəˈpæsəti/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "容量；能力",
+    "ex": "To learn about thousands of objects from millions of images, we need a model with a large learning capacity."
+   },
+   {
+    "w": "complexity",
+    "ipa": "/kəmˈpleksəti/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "复杂性",
+    "ex": "However, the immense complexity of the object recognition task means that this problem cannot be specified even by a dataset as large as ImageNet."
+   },
+   {
+    "w": "assumption",
+    "ipa": "/əˈsʌmpʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "假设，假定",
+    "ex": "They also make strong and mostly correct assumptions about the nature of images."
+   },
+   {
+    "w": "stationarity",
+    "ipa": "/ˌsteɪʃəˈnerəti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "平稳性",
+    "ex": "They also make strong and mostly correct assumptions about the nature of images (namely, stationarity of statistics and locality of pixel dependencies)."
+   },
+   {
+    "w": "locality",
+    "ipa": "/loʊˈkæləti/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "局部性",
+    "ex": "They also make strong and mostly correct assumptions about the nature of images (namely, stationarity of statistics and locality of pixel dependencies)."
+   },
+   {
+    "w": "feedforward",
+    "ipa": "/ˈfiːdˌfɔːrwərd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "前馈的",
+    "ex": "Thus, compared to standard feedforward neural networks with similarly-sized layers, CNNs have much fewer connections and parameters."
+   }
+  ]
+ },
+ {
+  "sec": "2. The Dataset · 数据集",
+  "short": "Dataset",
+  "icon": "2",
+  "words": [
+   {
+    "w": "consist",
+    "ipa": "/kənˈsɪst/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "由……组成",
+    "ex": "ImageNet is a dataset of over 15 million labeled high-resolution images belonging to roughly 22,000 categories."
+   },
+   {
+    "w": "crowd-sourcing",
+    "ipa": "/kraʊd ˈsɔːrsɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "众包",
+    "ex": "labeled by human labelers using Amazon's Mechanical Turk crowd-sourcing tool."
+   },
+   {
+    "w": "subset",
+    "ipa": "/ˈsʌbset/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "子集",
+    "ex": "ILSVRC uses a subset of ImageNet with roughly 1000 images in each of 1000 categories."
+   },
+   {
+    "w": "customary",
+    "ipa": "/ˈkʌstəməri/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "惯例的，通常的",
+    "ex": "On ImageNet, it is customary to report two error rates."
+   },
+   {
+    "w": "equivalent",
+    "ipa": "/ɪˈkwɪvələnt/",
+    "pos": "adj./n.",
+    "lv": "4",
+    "m": "等价的，等同的",
+    "ex": "the top-5 error rate is the fraction of test images for which the correct label is not in the top 5 predicted labels."
+   },
+   {
+    "w": "dimensionality",
+    "ipa": "/dɪˌmenʃəˈnæləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "维度",
+    "ex": "ImageNet consists of variable-resolution images, while our system requires a constant input dimensionality."
+   },
+   {
+    "w": "downsample",
+    "ipa": "/ˌdaʊnˈsæmpl/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "下采样",
+    "ex": "Therefore, we down-sampled the images to a fixed resolution of 256 × 256."
+   },
+   {
+    "w": "rescale",
+    "ipa": "/ˌriːˈskeɪl/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "重新缩放",
+    "ex": "Given a rectangular image, we first rescaled the image such that the shorter side was of length 256."
+   }
+  ]
+ },
+ {
+  "sec": "3.1 ReLU Nonlinearity · ReLU非线性",
+  "short": "ReLU",
+  "icon": "3.1",
+  "words": [
+   {
+    "w": "nonlinearity",
+    "ipa": "/ˌnɒnˌlɪnɪˈærɪti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "非线性",
+    "ex": "In terms of training time with gradient descent, these saturating nonlinearities are much slower."
+   },
+   {
+    "w": "saturating",
+    "ipa": "/ˈsætʃəreɪtɪŋ/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "饱和的",
+    "ex": "these saturating nonlinearities are much slower than the non-saturating nonlinearity."
+   },
+   {
+    "w": "gradient",
+    "ipa": "/ˈɡreɪdiənt/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "梯度",
+    "ex": "In terms of training time with gradient descent, these saturating nonlinearities are much slower."
+   },
+   {
+    "w": "descent",
+    "ipa": "/dɪˈsent/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "下降",
+    "ex": "In terms of training time with gradient descent, these saturating nonlinearities are much slower."
+   },
+   {
+    "w": "equivalent",
+    "ipa": "/ɪˈkwɪvələnt/",
+    "pos": "adj./n.",
+    "lv": "4",
+    "m": "等价的",
+    "ex": "Deep convolutional neural networks with ReLUs train several times faster than their equivalents with tanh units."
+   },
+   {
+    "w": "rectified",
+    "ipa": "/ˈrektɪfaɪd/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "修正的",
+    "ex": "we refer to neurons with this nonlinearity as Rectified Linear Units (ReLUs)."
+   },
+   {
+    "w": "influence",
+    "ipa": "/ˈɪnfluəns/",
+    "pos": "n./v.",
+    "lv": "4",
+    "m": "影响",
+    "ex": "Faster learning has a great influence on the performance of large models trained on large datasets."
+   },
+   {
+    "w": "multinomial",
+    "ipa": "/ˌmʌltiˈnoʊmiəl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "多项式的",
+    "ex": "Our network maximizes the multinomial logistic regression objective."
+   },
+   {
+    "w": "softmax",
+    "ipa": "/ˈsɒftmɑːks/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "softmax函数",
+    "ex": "The output of the last fully-connected layer is fed to a 1000-way softmax which produces a distribution over the 1000 class labels."
+   }
+  ]
+ },
+ {
+  "sec": "3.2 Training on Multiple GPUs · 多GPU训练",
+  "short": "Multi-GPU",
+  "icon": "3.2",
+  "words": [
+   {
+    "w": "parallelization",
+    "ipa": "/ˌpærəlelaɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "并行化",
+    "ex": "Current GPUs are particularly well-suited to cross-GPU parallelization."
+   },
+   {
+    "w": "kernel",
+    "ipa": "/ˈkɜːrnl/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "卷积核",
+    "ex": "the kernels of layer 3 take input from all kernel maps in layer 2."
+   },
+   {
+    "w": "cross-validation",
+    "ipa": "/krɒs ˌvælɪˈdeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "交叉验证",
+    "ex": "Choosing the pattern of connectivity is a problem for cross-validation."
+   },
+   {
+    "w": "architect",
+    "ipa": "/ˈɑːrkɪtekt/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "架构，设计",
+    "ex": "This allows us to precisely tune the amount of computation."
+   }
+  ]
+ },
+ {
+  "sec": "3.3 Local Response Normalization · 局部响应归一化",
+  "short": "LRN",
+  "icon": "3.3",
+  "words": [
+   {
+    "w": "generalization",
+    "ipa": "/ˌdʒenrəlaɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "泛化",
+    "ex": "we still find that the following local normalization scheme aids generalization."
+   },
+   {
+    "w": "normalization",
+    "ipa": "/ˌnɔːrməlaɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "归一化",
+    "ex": "This sort of response normalization implements a form of lateral inhibition."
+   },
+   {
+    "w": "inhibition",
+    "ipa": "/ˌɪnhɪˈbɪʃn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "抑制",
+    "ex": "This sort of response normalization implements a form of lateral inhibition inspired by real neurons."
+   },
+   {
+    "w": "lateral",
+    "ipa": "/ˈlætərəl/",
+    "pos": "adj.",
+    "lv": "k",
+    "m": "侧面的，横向的",
+    "ex": "This sort of response normalization implements a form of lateral inhibition."
+   },
+   {
+    "w": "contrast",
+    "ipa": "/ˈkɒntræst/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "对比度",
+    "ex": "This scheme bears some resemblance to the local contrast normalization scheme of Jarrett et al."
+   },
+   {
+    "w": "brightness",
+    "ipa": "/ˈbraɪtnəs/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "亮度",
+    "ex": "ours would be more correctly termed brightness normalization."
+   },
+   {
+    "w": "adjacent",
+    "ipa": "/əˈdʒeɪsnt/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "相邻的",
+    "ex": "the sum runs over n adjacent kernel maps at the same spatial position."
+   },
+   {
+    "w": "arbitrary",
+    "ipa": "/ˈɑːrbɪtreri/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "任意的",
+    "ex": "The ordering of the kernel maps is of course arbitrary and determined before training begins."
+   },
+   {
+    "w": "hyperparameter",
+    "ipa": "/ˌhaɪpərˈpærəmɪtər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超参数",
+    "ex": "The constants k, n, alpha, and beta are hyper-parameters whose values are determined using a validation set."
+   }
+  ]
+ },
+ {
+  "sec": "3.4 Overlapping Pooling · 重叠池化",
+  "short": "Pooling",
+  "icon": "3.4",
+  "words": [
+   {
+    "w": "pooling",
+    "ipa": "/ˈpuːlɪŋ/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "池化",
+    "ex": "Pooling layers in CNNs summarize the outputs of neighboring groups of neurons."
+   },
+   {
+    "w": "overlapping",
+    "ipa": "/ˌoʊvərˈlæpɪŋ/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "重叠的",
+    "ex": "If we set s < z, we obtain overlapping pooling.",
+    "ov": "t"
+   },
+   {
+    "w": "summarize",
+    "ipa": "/ˈsʌməraɪz/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "汇总，总结",
+    "ex": "Pooling layers in CNNs summarize the outputs of neighboring groups of neurons in the same kernel map."
+   },
+   {
+    "w": "neighborhood",
+    "ipa": "/ˈneɪbərhʊd/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "邻域",
+    "ex": "each summarizing a neighborhood of size z by z centered at the location of the pooling unit."
+   },
+   {
+    "w": "dimension",
+    "ipa": "/dɪˈmenʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "维度",
+    "ex": "which produces output of equivalent dimensions."
+   }
+  ]
+ },
+ {
+  "sec": "3.5 Overall Architecture · 总体架构",
+  "short": "Architecture",
+  "icon": "3.5",
+  "words": [
+   {
+    "w": "delineation",
+    "ipa": "/dɪˌlɪnɪˈeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "划分，勾画",
+    "ex": "An illustration of the architecture of our CNN, explicitly showing the delineation of responsibilities between the two GPUs."
+   },
+   {
+    "w": "intervening",
+    "ipa": "/ˌɪntərˈviːnɪŋ/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "介于中间的",
+    "ex": "The third, fourth, and fifth convolutional layers are connected to one another without any intervening pooling or normalization layers."
+   },
+   {
+    "w": "convolutional",
+    "ipa": "/ˌkɒnvəˈluːʃənl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "卷积的",
+    "ex": "the first five are convolutional and the remaining three are fully-connected."
+   },
+   {
+    "w": "contiguous",
+    "ipa": "/kənˈtɪɡjuəs/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "相邻的，连续的",
+    "ex": "the second convolutional layer takes as input the output of the first convolutional layer and filters it with 256 kernels."
+   },
+   {
+    "w": "affine",
+    "ipa": "/əˈfaɪn/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "仿射的",
+    "ex": "The first convolutional layer filters the 224 by 224 by 3 input image with 96 kernels of size 11 by 11 by 3."
+   }
+  ]
+ },
+ {
+  "sec": "4.1 Data Augmentation · 数据增强",
+  "short": "Augment",
+  "icon": "4.1",
+  "words": [
+   {
+    "w": "augmentation",
+    "ipa": "/ˌɔːɡmenˈteɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "增强，扩大",
+    "ex": "We employ two distinct forms of data augmentation.",
+    "ov": "g"
+   },
+   {
+    "w": "artificially",
+    "ipa": "/ˌɑːrtɪˈfɪʃəli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "人工地，人为地",
+    "ex": "The easiest and most common method to reduce overfitting is to artificially enlarge the dataset."
+   },
+   {
+    "w": "transformation",
+    "ipa": "/ˌtrænsfərˈmeɪʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "变换，转化",
+    "ex": "using label-preserving transformations."
+   },
+   {
+    "w": "reflection",
+    "ipa": "/rɪˈflekʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "反射，镜像",
+    "ex": "generating image translations and horizontal reflections."
+   },
+   {
+    "w": "interdependent",
+    "ipa": "/ˌɪntərdɪˈpendənt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "相互依赖的",
+    "ex": "the resulting training examples are, of course, highly inter-dependent."
+   },
+   {
+    "w": "substantial",
+    "ipa": "/səbˈstænʃl/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "大量的，实质的",
+    "ex": "Without this scheme, our network suffers from substantial overfitting."
+   },
+   {
+    "w": "principal",
+    "ipa": "/ˈprɪnsəpl/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "主要的，首要的",
+    "ex": "The principal component analysis scheme approximately captures an important property of natural images."
+   },
+   {
+    "w": "covariance",
+    "ipa": "/koʊˈveəriəns/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "协方差",
+    "ex": "the 3 by 3 covariance matrix of RGB pixel values."
+   },
+   {
+    "w": "invariant",
+    "ipa": "/ɪnˈveəriənt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "不变的",
+    "ex": "object identity is invariant to changes in the intensity and color of the illumination."
+   },
+   {
+    "w": "eigenvalue",
+    "ipa": "/ˈaɪɡənˌvæljuː/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "特征值",
+    "ex": "with magnitudes proportional to the corresponding eigenvalues."
+   },
+   {
+    "w": "eigenvector",
+    "ipa": "/ˈaɪɡənˌvektər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "特征向量",
+    "ex": "pi and lambda-i are ith eigenvector and eigenvalue of the 3 by 3 covariance matrix."
+   },
+   {
+    "w": "extraction",
+    "ipa": "/ɪkˈstrækʃn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "提取",
+    "ex": "We do this by extracting random 224 × 224 patches (and their horizontal reflections) from the 256×256 images."
+   }
+  ]
+ },
+ {
+  "sec": "4.2 Dropout · Dropout技术",
+  "short": "Dropout",
+  "icon": "4.2",
+  "words": [
+   {
+    "w": "dropout",
+    "ipa": "/ˈdrɒpaʊt/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "丢弃法（正则化技术）",
+    "ex": "The recently-introduced technique, called dropout, consists of setting to zero the output of each hidden neuron with probability 0.5."
+   },
+   {
+    "w": "co-adaptation",
+    "ipa": "/koʊ ˌædæpˈteɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "协同适应",
+    "ex": "This technique reduces complex co-adaptations of neurons."
+   },
+   {
+    "w": "robust",
+    "ipa": "/roʊˈbʌst/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "鲁棒的，稳健的",
+    "ex": "it is forced to learn more robust features that are useful in conjunction with many different random subsets."
+   },
+   {
+    "w": "geometric",
+    "ipa": "/ˌdʒiːəˈmetrɪk/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "几何的",
+    "ex": "multiply their outputs by 0.5, which is a reasonable approximation to taking the geometric mean."
+   },
+   {
+    "w": "exponentially",
+    "ipa": "/ˌekspəˈnenʃəli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "指数地",
+    "ex": "a reasonable approximation to taking the geometric mean of the predictive distributions produced by the exponentially-many dropout networks."
+   },
+   {
+    "w": "converge",
+    "ipa": "/kənˈvɜːrdʒ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "收敛",
+    "ex": "Dropout roughly doubles the number of iterations required to converge."
+   }
+  ]
+ },
+ {
+  "sec": "5. Details of Learning · 学习细节",
+  "short": "Learning",
+  "icon": "5",
+  "words": [
+   {
+    "w": "stochastic",
+    "ipa": "/stəˈkæstɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "随机的",
+    "ex": "We trained our models using stochastic gradient descent."
+   },
+   {
+    "w": "momentum",
+    "ipa": "/məˈmentəm/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "动量",
+    "ex": "with a batch size of 128 examples, momentum of 0.9, and weight decay of 0.0005."
+   },
+   {
+    "w": "decay",
+    "ipa": "/dɪˈkeɪ/",
+    "pos": "n./v.",
+    "lv": "4",
+    "m": "衰减",
+    "ex": "momentum of 0.9, and weight decay of 0.0005."
+   },
+   {
+    "w": "regularizer",
+    "ipa": "/ˈreɡjəlaɪzər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "正则化项",
+    "ex": "weight decay here is not merely a regularizer: it reduces the model's training error."
+   },
+   {
+    "w": "termination",
+    "ipa": "/ˌtɜːrmɪˈneɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "终止",
+    "ex": "the learning rate was divided by 10 when the validation error rate stopped improving.",
+    "ov": "t"
+   },
+   {
+    "w": "initialization",
+    "ipa": "/ɪˌnɪʃəlaɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "初始化",
+    "ex": "We initialized the weights in each layer from a zero-mean Gaussian distribution with standard deviation 0.01."
+   },
+   {
+    "w": "bias",
+    "ipa": "/ˈbaɪəs/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "偏置",
+    "ex": "We initialized the neuron biases in the second, fourth, and fifth convolutional layers, and in the fully-connected hidden layers, to the constant 1."
+   },
+   {
+    "w": "convergence",
+    "ipa": "/kənˈvɜːrdʒəns/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "收敛",
+    "ex": "This schedule was chosen by training on the validation set and then simply running until convergence."
+   },
+   {
+    "w": "heuristic",
+    "ipa": "/hjʊˈrɪstɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "启发式的",
+    "ex": "The heuristic which we followed was to divide the learning rate by 10 when the validation error rate stopped improving."
+   }
+  ]
+ },
+ {
+  "sec": "6. Results · 实验结果",
+  "short": "Results",
+  "icon": "6",
+  "words": [
+   {
+    "w": "sparse",
+    "ipa": "/spɑːrs/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "稀疏的",
+    "ex": "The best performance was achieved with an approach that averages the predictions produced from six sparse-coding models."
+   },
+   {
+    "w": "average",
+    "ipa": "/ˈævərɪdʒ/",
+    "pos": "v./n.",
+    "lv": "4",
+    "m": "平均",
+    "ex": "Averaging the predictions of five similar CNNs gives an error rate of 16.4%."
+   },
+   {
+    "w": "fine-tuning",
+    "ipa": "/faɪn ˈtuːnɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "微调",
+    "ex": "and then fine-tuning it on ILSVRC-2012 gives an error rate of 16.6%."
+   },
+   {
+    "w": "qualitatively",
+    "ipa": "/ˈkwɒlɪteɪtɪvli/",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "定性地",
+    "ex": "In the left panel of Figure 4 we qualitatively assess what the network has learned."
+   },
+   {
+    "w": "activation",
+    "ipa": "/ˌæktɪˈveɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "激活",
+    "ex": "consider the feature activations induced by an image at the last, 4096-dimensional hidden layer."
+   },
+   {
+    "w": "separation",
+    "ipa": "/ˌsepəˈreɪʃn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "分离，间距",
+    "ex": "If two images produce feature activation vectors with a small Euclidean separation."
+   },
+   {
+    "w": "retrieval",
+    "ipa": "/rɪˈtriːvl/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "检索",
+    "ex": "This should produce a much better image retrieval method."
+   },
+   {
+    "w": "semantic",
+    "ipa": "/sɪˈmæntɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "语义的",
+    "ex": "whether or not they are semantically similar."
+   },
+   {
+    "w": "qualitative",
+    "ipa": "/ˈkwɑːlɪteɪtɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "定性的",
+    "ex": "6.1 Qualitative Evaluations"
+   },
+   {
+    "w": "specialization",
+    "ipa": "/ˌspeʃəlɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "专门化，特化",
+    "ex": "Notice the specialization exhibited by the two GPUs, a result of the restricted connectivity described in Section 3.5.",
+    "ov": "g"
+   },
+   {
+    "w": "agnostic",
+    "ipa": "/æɡˈnɑːstɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "不可知的；无关的",
+    "ex": "The kernels on GPU 1 are largely color-agnostic, while the kernels on GPU 2 are largely color-specific."
+   },
+   {
+    "w": "Euclidean",
+    "ipa": "/juːˈklɪdiən/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "欧几里得的",
+    "ex": "If two images produce feature activation vectors with a small Euclidean separation, we can say that the higher levels of the neural network consider them to be similar."
+   },
+   {
+    "w": "auto-encoder",
+    "ipa": "/ˌɔːtoʊ ɪnˈkoʊdər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "自编码器",
+    "ex": "Computing similarity by using Euclidean distance between two 4096-dimensional, real-valued vectors is inefficient, but it could be made efficient by training an auto-encoder to compress these vectors to short binary codes."
+   }
+  ]
+ },
+ {
+  "sec": "7. Discussion · 讨论",
+  "short": "Discussion",
+  "icon": "7",
+  "words": [
+   {
+    "w": "record-breaking",
+    "ipa": "/ˈrekɔːrd breɪkɪŋ/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "破纪录的",
+    "ex": "a large, deep convolutional neural network is capable of achieving record-breaking results."
+   },
+   {
+    "w": "unsupervised",
+    "ipa": "/ˌʌnsəˈpɜːrvɪzd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无监督的",
+    "ex": "we did not use any unsupervised pre-training even though we expect that it will help."
+   },
+   {
+    "w": "degrade",
+    "ipa": "/dɪˈɡreɪd/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "退化，下降",
+    "ex": "our network's performance degrades if a single convolutional layer is removed."
+   },
+   {
+    "w": "computationally",
+    "ipa": "/ˌkɒmpjuːˈteɪʃənəli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "计算上",
+    "ex": "if we obtain enough computational power to significantly increase the size of the network.",
+    "ov": "g"
+   },
+   {
+    "w": "sparsity",
+    "ipa": "/ˈspærsɪti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "稀疏性",
+    "ex": "We also wonder how much our network's performance would improve if we used sparse connections between adjacent neurons."
+   },
+   {
+    "w": "supervised",
+    "ipa": "/sərˈvɑːrdɪst/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有监督的",
+    "ex": "Our results show that a large, deep convolutional neural network is capable of achieving record-breaking results on a highly challenging dataset using purely supervised learning."
+   },
+   {
+    "w": "infero-temporal",
+    "ipa": "/ˈɪnfəroʊˈtempərəl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "下颞叶的",
+    "ex": "Ultimately we would like to use very large and deep convolutional nets on video sequences where the temporal structure provides very helpful information that is missing or far less obvious in static images."
+   }
+  ]
+ }
+]

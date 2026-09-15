@@ -1,0 +1,22 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"discriminatively","ipa":"dɪˈskrɪmɪnətɪvli","pos":"adv.","lv":"p","m":"判别式地（训练）","ex":"architectures of discriminatively trained deep Convolutional Networks"},
+ {"w":"complementary","ipa":"ˌkɑːmplɪˈmentri","pos":"adj.","lv":"6","ov":"t","m":"互补的","ex":"capture the complementary information on appearance from still frames and motion"},
+ {"w":"appearance","ipa":"əˈpɪrəns","pos":"n.","lv":"4","m":"外观","ex":"complementary information on appearance from still frames"},
+ {"w":"temporal","ipa":"ˈtempərəl","pos":"adj.","lv":"6","m":"时序的","ex":"incorporates spatial and temporal networks"},
+ {"w":"incorporate","ipa":"ɪnˈkɔːrpəreɪt","pos":"v.","lv":"6","ov":"t","m":"融合，纳入","ex":"a two-stream ConvNet architecture which incorporates spatial and temporal networks"},
+ {"w":"optical ﬂow","ipa":"ˈɑːptɪkl floʊ","pos":"n.","lv":"p","m":"光流","ex":"a ConvNet trained on multi-frame dense optical ﬂow"},
+ {"w":"in spite of","ipa":"ɪn spaɪt əv","pos":"phr.","lv":"4","m":"尽管","ex":"achieve very good performance in spite of limited training data"},
+ {"w":"margin","ipa":"ˈmɑːrdʒən","pos":"n.","lv":"6","m":"幅度","ex":"It also exceeds by a large margin previous attempts"}
+]},
+{"sec":"1. Introduction · 引言","short":"Intro","icon":"1","words":[
+ {"w":"challenging","ipa":"ˈtʃælɪndʒɪŋ","pos":"adj.","lv":"4","m":"有挑战性的","ex":"Recognition of human actions in videos is a challenging task"},
+ {"w":"component","ipa":"kəmˈpoʊnənt","pos":"n.","lv":"4","m":"组成部分","ex":"the temporal component of videos provides an additional clue"},
+ {"w":"clue","ipa":"kluː","pos":"n.","lv":"4","m":"线索","ex":"provides an additional (and important) clue for recognition"},
+ {"w":"reliably","ipa":"rɪˈlaɪəbli","pos":"adv.","lv":"6","m":"可靠地","ex":"a number of actions can be reliably recognised based on the motion information"},
+ {"w":"augmentation","ipa":"ˌɔːɡmenˈteɪʃn","pos":"n.","lv":"p","m":"（数据）增强","ex":"video provides natural data augmentation (jittering)"},
+ {"w":"jittering","ipa":"ˈdʒɪtərɪŋ","pos":"n.","lv":"p","m":"抖动","ex":"natural data augmentation (jittering)"},
+ {"w":"stacked","ipa":"stækt","pos":"adj.","lv":"6","m":"堆叠的","ex":"by using stacked video frames as input to the network"},
+ {"w":"stream","ipa":"striːm","pos":"n.","lv":"4","m":"流（双流）","ex":"a different architecture based on two separate recognition streams"}
+]}
+]

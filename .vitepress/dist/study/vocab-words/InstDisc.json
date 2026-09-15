@@ -1,0 +1,19 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"annotated","ipa":"ˈænəteɪtɪd","pos":"adj.","lv":"k","m":"带标注的","ex":"Neural net classiﬁers trained on data with annotated class labels"},
+ {"w":"apparent","ipa":"əˈpærənt","pos":"adj.","lv":"6","m":"表面的，明显的","ex":"can also capture apparent visual similarity among categories"},
+ {"w":"conventional","ipa":"kənˈvenʃənl","pos":"adj.","lv":"6","m":"常规的","ex":"beyond the conventional domain of supervised learning"},
+ {"w":"merely","ipa":"ˈmɪrli","pos":"adv.","lv":"6","m":"仅仅","ex":"by merely asking the feature to be discriminative of individual instances"},
+ {"w":"discriminative","ipa":"dɪˈskrɪmɪnətɪv","pos":"adj.","lv":"p","m":"判别性的","ex":"asking the feature to be discriminative of individual instances"},
+ {"w":"formulate","ipa":"ˈfɔːrmjuleɪt","pos":"v.","lv":"p","m":"表述为，公式化","ex":"We formulate this intuition as a non-parametric classiﬁcation problem"},
+ {"w":"intuition","ipa":"ˌɪntuˈɪʃn","pos":"n.","lv":"6","m":"直觉","ex":"We formulate this intuition"},
+ {"w":"non-parametric","ipa":"nɑːn ˌpærəˈmetrɪk","pos":"adj.","lv":"p","m":"非参数的","ex":"a non-parametric classiﬁcation problem at the instance-level"},
+ {"w":"estimation","ipa":"ˌestɪˈmeɪʃn","pos":"n.","lv":"6","m":"估计","ex":"use noise-contrastive estimation to tackle the computational challenges"},
+ {"w":"tackle","ipa":"ˈtækl","pos":"v.","lv":"6","m":"解决，应对","ex":"to tackle the computational challenges imposed by the large number of instance classes"},
+ {"w":"impose","ipa":"ɪmˈpoʊz","pos":"v.","lv":"6","m":"施加，带来","ex":"challenges imposed by the large number of instance classes"},
+ {"w":"surpass","ipa":"sərˈpæs","pos":"v.","lv":"6","m":"超过","ex":"our method surpasses the state-of-the-art on ImageNet classiﬁcation"},
+ {"w":"margin","ipa":"ˈmɑːrdʒən","pos":"n.","lv":"6","m":"幅度","ex":"surpasses the state-of-the-art by a large margin"},
+ {"w":"remarkable","ipa":"rɪˈmɑːrkəbl","pos":"adj.","lv":"6","m":"非凡的","ex":"Our method is also remarkable for consistency"},
+ {"w":"consistency","ipa":"kənˈsɪstənsi","pos":"n.","lv":"6","m":"一致性","ex":"Our method is also remarkable for consistency under transfer"}
+]}
+]

@@ -1,0 +1,23 @@
+[
+{"sec":"Abstract/1. Introduction · 摘要与引言","short":"Intro","icon":"1","words":[
+ {"w":"herd","ipa":"hɜːrd","pos":"n.","lv":"6","m":"群（the Llama 3 Herd 模型群）","ex":"The Llama 3 Herd of Models"},
+ {"w":"foundation model","ipa":"faʊnˈdeɪʃn ˈmɑːdl","pos":"n.","lv":"p","m":"基础模型","ex":"Modern artiﬁcial intelligence systems are powered by foundation models"},
+ {"w":"natively","ipa":"ˈneɪtɪvli","pos":"adv.","lv":"p","m":"原生地","ex":"a herd of language models that natively support multilinguality, coding, reasoning"},
+ {"w":"multilinguality","ipa":"ˌmʌltiˈlɪŋɡwæləti","pos":"n.","lv":"p","m":"多语能力","ex":"natively support multilinguality, coding, reasoning, and tool usage"},
+ {"w":"extensive","ipa":"ɪkˈstensɪv","pos":"adj.","lv":"4","m":"大量的","ex":"This paper presents an extensive empirical evaluation of Llama 3"},
+ {"w":"plethora","ipa":"ˈpleθərə","pos":"n.","lv":"p","ov":"g","m":"大量，过多","ex":"delivers comparable quality to leading language models on a plethora of tasks"},
+ {"w":"compositional","ipa":"ˌkɑːmpəˈzɪʃənl","pos":"adj.","lv":"p","m":"组合式的","ex":"integrate image, video, and speech capabilities via a compositional approach"},
+ {"w":"competitively","ipa":"kəmˈpetətɪvli","pos":"adv.","lv":"6","m":"有竞争力地","ex":"performs competitively with the state-of-the-art on image, video, and speech recognition"},
+ {"w":"massive","ipa":"ˈmæsɪv","pos":"adj.","lv":"4","m":"大规模的","ex":"the model is trained at massive scale using straightforward tasks"},
+ {"w":"straightforward","ipa":"ˌstreɪtˈfɔːrwərd","pos":"adj.","lv":"6","m":"简单直接的","ex":"trained at massive scale using straightforward tasks such as next-word prediction"},
+ {"w":"align","ipa":"əˈlaɪn","pos":"v.","lv":"6","m":"对齐","ex":"the model is tuned to follow instructions, align with human preferences"},
+ {"w":"lever","ipa":"ˈlevər","pos":"n.","lv":"6","ov":"g","m":"杠杆（关键抓手）","ex":"there are three key levers in the development of high-quality foundation models"},
+ {"w":"quantity","ipa":"ˈkwɑːntəti","pos":"n.","lv":"4","m":"数量","ex":"we improved both the quantity and quality of the data"},
+ {"w":"curation","ipa":"kjʊˈreɪʃn","pos":"n.","lv":"p","m":"精选，策展","ex":"more careful pre-processing and curation pipelines for pre-training data"},
+ {"w":"rigorous","ipa":"ˈrɪɡərəs","pos":"adj.","lv":"6","m":"严格的","ex":"more rigorous quality assurance and ﬁltering approaches"},
+ {"w":"assurance","ipa":"əˈʃʊrəns","pos":"n.","lv":"6","m":"保障","ex":"rigorous quality assurance and ﬁltering approaches"},
+ {"w":"corpus","ipa":"ˈkɔːrpəs","pos":"n.","lv":"k","m":"语料库","ex":"We pre-train Llama 3 on a corpus of about 15T multilingual tokens"},
+ {"w":"ﬂagship","ipa":"ˈflæɡʃɪp","pos":"adj.","lv":"p","m":"旗舰的","ex":"our ﬂagship language model was pre-trained using 3.8 × 10^25 FLOPs"},
+ {"w":"brevity","ipa":"ˈbrevəti","pos":"n.","lv":"p","m":"简洁（for brevity 为简洁起见）","ex":"we will refer to as Llama 3 throughout for brevity"}
+]}
+]
