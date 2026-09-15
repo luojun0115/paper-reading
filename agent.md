@@ -80,3 +80,12 @@ git push -u origin build     # 触发 GitHub Actions 部署
 
 ## 十、后续规则
 用户新增规则直接写到对应小节（或新建小节），AI 工具自动遵循。
+
+## 十一、数据导入位置与构建陷阱（重点，易踩坑）
+
+- 词汇页 / 听力页 / 词表 **不在本仓库内**：生成工具产出在仓库外层同级目录 `papers/vocab-html`、`papers/vocab-listen`、`papers/vocab-words`（本仓库位于 `papers/paper-reading/`，相对即 `../vocab-html` 等）。它们从不会自动进 git，必须按第三节 SOP 手动 `cp` 进 `public/study/vocab|listen|vocab-words` 并 commit，否则仓库里只有空骨架、线上 404。
+- ⚠️ 致命陷阱：若 `public/study` 为空就 `npm run build`，生成的 `.vitepress/dist` 不含任何词汇页 → 本地 `dist/index.html` 与线上 GitHub Pages 都打不开词表（404）。**务必先 `cp` 数据、再 build。**
+- ⚠️ 导入时只 `cp *.html` 和 `*.json`，**不要连 `vocab-html` 里的 `README_*.md` 一起搬进 `public/study/vocab`**：VitePress 会把它当页面渲染，并因引用图片（如 `imgs/sora.jpg`）报 `Rollup failed to resolve import` 导致构建失败。
+- 本机若装了腾讯云 Coding Copilot 插件，`npm run build` 可能在最后清理 `.vitepress/.temp` 时因 safe-delete 批量删除保护（`SAFE_DELETE_BULK_CONFIRM_REQUIRED`）报错退出。此时 dist 已生成完毕，属误报，直接 `git add -f .vitepress/dist && commit && push` 即可；CI 端无此插件，构建正常。
+- 本地预览构建产物：直接浏览器打开 `.vitepress/dist/index.html`（file://），不是 `npm run dev` 临时地址。
+- 一句话：原始数据从没"丢"过，只是没进库；导入 + 重建即可恢复。
