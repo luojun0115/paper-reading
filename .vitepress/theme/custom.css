@@ -1,0 +1,302 @@
+/* ==========================================================================
+   深读馆 DeepRead · 站点样式
+   主题变量块由 scripts/gen-theme-css.mjs 生成（themes.generated.css），
+   这里只做「主题变量 → VitePress 变量」的映射 + 自有组件样式。
+   ========================================================================== */
+
+/* ---------- 1. 把 --dr-* 接到 VitePress 的 --vp-* 上，让默认主题跟着换肤 ---------- */
+html[data-theme] {
+  --vp-c-bg: var(--dr-bg);
+  --vp-c-bg-alt: var(--dr-bg2);
+  --vp-c-bg-elv: var(--dr-panel);
+  --vp-c-bg-soft: var(--dr-bg2);
+
+  --vp-c-text-1: var(--dr-ink);
+  --vp-c-text-2: var(--dr-ink2);
+  --vp-c-text-3: var(--dr-ink2);
+
+  --vp-c-divider: var(--dr-line);
+  --vp-c-border: var(--dr-line);
+  --vp-c-gutter: var(--dr-line);
+
+  --vp-c-brand-1: var(--dr-accent);
+  --vp-c-brand-2: var(--dr-accent);
+  --vp-c-brand-3: var(--dr-accent);
+  --vp-c-brand-soft: var(--dr-asoft);
+
+  --vp-c-default-1: var(--dr-ink2);
+  --vp-c-default-2: var(--dr-line);
+  --vp-c-default-3: var(--dr-bg2);
+  --vp-c-default-soft: var(--dr-bg2);
+
+  --vp-button-brand-bg: var(--dr-accent);
+  --vp-button-brand-text: var(--dr-on);
+  --vp-button-brand-border: var(--dr-accent);
+  --vp-button-brand-hover-bg: var(--dr-accent2);
+  --vp-button-brand-hover-border: var(--dr-accent2);
+  --vp-button-brand-hover-text: var(--dr-on);
+  --vp-button-brand-active-bg: var(--dr-accent2);
+
+  --vp-code-block-bg: var(--dr-bg2);
+  --vp-nav-bg-color: var(--dr-panel);
+  --vp-sidebar-bg-color: var(--dr-bg);
+
+  --vp-font-family-base: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --vp-layout-max-width: 1440px;
+}
+
+html { background: var(--dr-bg); }
+body {
+  background: var(--dr-bg);
+  color: var(--dr-ink);
+  font-family: var(--vp-font-family-base);
+}
+::selection { background: var(--dr-accent); color: var(--dr-on); }
+
+/* 顶栏与导航 */
+.VPNav { background: var(--dr-panel); border-bottom: var(--dr-bw) solid var(--dr-line); }
+.VPNavBar .divider { background: var(--dr-line); }
+.VPNavBarMenuLink.active, .VPNavBarMenuLink:hover { color: var(--dr-accent); }
+.VPNavBarTitle .title { font-family: var(--dr-hf); letter-spacing: var(--dr-hlet); font-weight: 800; }
+.VPLocalNav { border-bottom: var(--dr-bw) solid var(--dr-line); background: var(--dr-panel); }
+.VPFooter { border-top: var(--dr-bw) solid var(--dr-line); background: var(--dr-panel); }
+
+/*
+  论文库类页面（pageClass: wide）需要更宽的栅格。
+  注意：VitePress 自带的宽度规则带了作用域属性，形如
+  .VPDoc:not(.has-sidebar) .content[data-v-e6f2a212]{max-width:784px}
+  权重是 (0,4,0)，普通规则盖不过；而且那个 data-v hash 会随版本变，
+  不能照抄。所以这里用 !important，并且只对 .wide 页面生效
+  —— 说明文页面（朗读区/讲解区）保持默认的行宽。
+*/
+.wide .VPDoc .container { max-width: 1304px !important; }
+.wide .VPDoc .content { max-width: 1304px !important; }
+.wide .VPDoc .content-container { max-width: 1240px !important; }
+
+.VPDoc h1 { font-family: var(--dr-hf); letter-spacing: var(--dr-hlet); }
+.VPDoc .content-container { font-size: 15px; }
+
+/* ---------- 2. 主题切换器 ---------- */
+.dr-switch { position: relative; display: flex; align-items: center; margin-left: 8px; }
+.dr-switch-btn {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  width: 34px; height: 34px; padding: 0;
+  border: var(--dr-bw) solid var(--dr-line); border-radius: 99px;
+  background: transparent; color: var(--dr-ink2); cursor: pointer;
+  transition: border-color .16s, color .16s, background .16s;
+}
+.dr-switch-btn:hover { border-color: var(--dr-accent); color: var(--dr-accent); }
+.dr-switch-btn.on { background: var(--dr-accent); border-color: var(--dr-accent); color: var(--dr-on); }
+.dr-switch-dot {
+  position: absolute; top: -2px; right: -2px; width: 9px; height: 9px; border-radius: 99px;
+  background: var(--dr-accent2); border: 1.5px solid var(--dr-panel);
+}
+
+.dr-switch-panel {
+  position: absolute; top: 44px; right: 0; z-index: 60;
+  width: 268px; padding: 8px;
+  background: var(--dr-panel); color: var(--dr-ink);
+  border: var(--dr-bw) solid var(--dr-line);
+  border-radius: calc(var(--dr-r) + 2px);
+  box-shadow: 0 16px 40px rgba(10, 20, 40, .22);
+}
+.dr-sp-head { font-size: 10.5px; font-weight: 700; letter-spacing: .6px; color: var(--dr-ink2); padding: 6px 9px 8px; }
+.dr-sp-item {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 7px 9px; border: 0; border-radius: calc(var(--dr-r) - 4px);
+  background: transparent; color: inherit; font: inherit; font-size: 13px;
+  text-align: left; cursor: pointer; transition: background .12s;
+}
+.dr-sp-item:hover { background: var(--dr-bg2); }
+.dr-sp-item.on { background: var(--dr-asoft); color: var(--dr-accent); font-weight: 700; }
+.dr-sp-dots { display: flex; gap: 2px; flex: none; }
+.dr-sp-dots i { width: 9px; height: 9px; border-radius: 99px; display: block; border: 1px solid rgba(0, 0, 0, .12); }
+.dr-sp-name { flex: 1; }
+.dr-sp-en { font-family: "SF Mono", Menlo, monospace; font-size: 9px; letter-spacing: .4px; color: var(--dr-ink2); }
+.dr-sp-k { font-family: "SF Mono", Menlo, monospace; font-size: 10px; color: var(--dr-ink2); opacity: .55; }
+.dr-sp-foot { font-size: 10.5px; color: var(--dr-ink2); padding: 8px 9px 4px; border-top: 1px dashed var(--dr-line); margin-top: 6px; }
+
+/* ---------- 3. 首页 ---------- */
+.dr-home { padding-bottom: 40px; }
+.dr-hero {
+  padding: 58px 24px 44px; text-align: center;
+  background-image: var(--dr-tex); background-size: var(--dr-tsize);
+}
+.dr-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 600; color: var(--dr-accent);
+  background: var(--dr-asoft); border: var(--dr-bw) solid var(--dr-line);
+  padding: 5px 13px; border-radius: 99px; margin-bottom: 20px; letter-spacing: .3px;
+}
+.dr-home .dr-h1 {
+  font-family: var(--dr-hf); letter-spacing: var(--dr-hlet);
+  font-size: 46px; line-height: 1.16; font-weight: 800; margin: 0;
+}
+.dr-h1 em { font-style: normal; color: var(--dr-accent); }
+/*
+  标题下方的编辑装饰线（杂志风用）。
+  默认 --dr-hrule / --dr-hrulem 都是 0px → 伪元素高 0、边距 0，完全不可见也不占高度，
+  所以这条规则对所有主题都无副作用；只有把变量设为非零的主题会显示出来。
+*/
+.dr-home .dr-h1::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: var(--dr-hrule);
+  margin: var(--dr-hrulem) auto 0;
+  background: var(--dr-accent);
+}
+.dr-home .dr-lead { font-size: 15px; color: var(--dr-ink2); margin: 16px 0 0; line-height: 1.75; }
+.dr-lead b { color: var(--dr-ink); font-weight: 600; }
+.dr-stats { display: flex; justify-content: center; gap: 34px; margin-top: 28px; flex-wrap: wrap; }
+.dr-stats div { text-align: center; }
+.dr-stats b { display: block; font-family: var(--dr-hf); font-size: 25px; font-weight: 800; letter-spacing: var(--dr-hlet); }
+.dr-stats span { font-size: 11.5px; color: var(--dr-ink2); }
+
+.dr-sect { padding: 6px 24px 30px; max-width: 1240px; margin: 0 auto; }
+.dr-home .dr-sect-title {
+  font-size: 12.5px; font-weight: 600; letter-spacing: .6px; color: var(--dr-ink2);
+  margin: 18px 0 10px; padding: 0; border: 0;
+  display: flex; align-items: center; gap: 10px;
+}
+.dr-home .dr-sect-title::after { content: ""; flex: 1; height: 1px; background: var(--dr-line); }
+
+/*
+  为什么下面这些自有链接类都写成两段式（.dr-home / .dr-lib 前缀）：
+  VitePress 有一条 .vp-doc a{font-weight:500;color:var(--vp-c-brand-1);text-decoration:underline}，
+  权重 (0,1,1)，会盖掉单类名 (0,1,0) 的 .dr-card-nm / .dr-zone / .dr-pill。
+  症状：区卡片标题与论文名被染成主题主色、字重掉到 500、还多出一条下划线。
+  加一层父级前缀把权重提到 (0,2,0) 即可，别用 !important（说明文页面的链接要保持 VitePress 默认样式）。
+*/
+.dr-zones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.dr-home .dr-zone {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  padding: 12px 13px 11px; text-decoration: none; color: inherit;
+  background: var(--dr-panel); border: var(--dr-bw) solid var(--dr-line);
+  border-radius: var(--dr-r); box-shadow: var(--dr-glow);
+  transition: transform .18s, border-color .18s;
+}
+.dr-home a.dr-zone:hover { transform: translateY(-2px); border-color: var(--dr-accent); }
+.dr-zone.soon { cursor: default; }
+.dr-zone-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--dr-accent); }
+.dr-zone.soon .dr-zone-bar { background: var(--dr-line); }
+.dr-zone-i { font-size: 16px; line-height: 1; display: block; margin-bottom: 6px; }
+.dr-zone-n { font-family: var(--dr-hf); letter-spacing: var(--dr-hlet); font-size: 15px; line-height: 1.3; font-weight: 700; }
+.dr-zone-e { font-family: "SF Mono", Menlo, monospace; font-size: 10px; line-height: 1.4; letter-spacing: .6px; color: var(--dr-ink2); margin-top: 3px; }
+.dr-zone-d { font-size: 11.5px; line-height: 1.55; color: var(--dr-ink2); margin-top: 7px; margin-bottom: 8px; }
+.dr-zone-b {
+  display: inline-block; align-self: flex-start;
+  margin-top: auto; padding: 2px 9px; border-radius: 99px; line-height: 1.5;
+  font-size: 10.5px; font-weight: 700; color: var(--dr-accent); background: var(--dr-asoft);
+}
+.dr-zone-b.soon { color: var(--dr-ink2); background: var(--dr-bg2); }
+
+/* ---------- 4. 论文库 ---------- */
+.dr-lib { padding: 0 24px; max-width: 1240px; margin: 0 auto; }
+.dr-lib-bar { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+.dr-chips { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; min-width: 260px; }
+.dr-chip {
+  font: inherit; font-size: 12px; font-weight: 600;
+  padding: 5px 12px; border-radius: 99px; cursor: pointer;
+  border: var(--dr-bw) solid var(--dr-line); background: var(--dr-panel); color: var(--dr-ink2);
+  transition: border-color .15s, color .15s, background .15s;
+}
+.dr-chip span { opacity: .55; margin-left: 5px; font-family: "SF Mono", Menlo, monospace; font-size: 10.5px; }
+.dr-chip:hover { border-color: var(--dr-accent); color: var(--dr-accent); }
+.dr-chip.on { background: var(--dr-accent); border-color: var(--dr-accent); color: var(--dr-on); }
+.dr-chip.on span { opacity: .8; }
+
+.dr-search {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 12px; border: var(--dr-bw) solid var(--dr-line);
+  border-radius: 99px; background: var(--dr-bg2); color: var(--dr-ink2);
+}
+.dr-search input {
+  border: 0; outline: 0; background: transparent; color: var(--dr-ink);
+  font: inherit; font-size: 12.5px; width: 190px;
+}
+.dr-search input::placeholder { color: var(--dr-ink2); opacity: .8; }
+.dr-search input::-webkit-search-cancel-button { filter: grayscale(1); }
+
+.dr-lib .dr-count { font-size: 12px; color: var(--dr-ink2); margin: 10px 0 14px; }
+.dr-lib .dr-count b { color: var(--dr-accent); }
+.dr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.dr-card {
+  padding: 14px 15px;
+  background: var(--dr-panel); border: var(--dr-bw) solid var(--dr-line);
+  border-radius: var(--dr-r); box-shadow: var(--dr-glow);
+  transition: transform .18s, border-color .18s;
+}
+.dr-card:hover { transform: translateY(-2px); border-color: var(--dr-accent); }
+.dr-card-r1 { display: flex; align-items: baseline; gap: 8px; }
+.dr-lib .dr-card-nm {
+  font-family: var(--dr-hf); letter-spacing: var(--dr-hlet);
+  font-size: 14.5px; font-weight: 700; color: inherit; text-decoration: none;
+}
+.dr-lib .dr-card-nm:hover { color: var(--dr-accent); }
+.dr-card-yr { font-family: "SF Mono", Menlo, monospace; font-size: 11px; color: var(--dr-ink2); }
+.dr-card-cat {
+  margin-left: auto; padding: 1.5px 8px; white-space: nowrap;
+  font-size: 10px; color: var(--dr-ink2);
+  border: var(--dr-bw) solid var(--dr-line); border-radius: 99px;
+}
+.dr-card-ttl {
+  font-size: 11.5px; line-height: 1.5; color: var(--dr-ink2); margin-top: 7px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 34px;
+}
+.dr-card-bd { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--dr-line); }
+.dr-lib .dr-pill {
+  font-size: 10.5px; font-weight: 600; padding: 2.5px 9px; border-radius: 99px;
+  background: var(--dr-asoft); color: var(--dr-accent);
+  text-decoration: none; transition: filter .15s;
+}
+.dr-lib a.dr-pill:hover { filter: brightness(.93); }
+.dr-lib .dr-pill.pri { background: var(--dr-accent); color: var(--dr-on); }
+.dr-lib .dr-pill.off { background: var(--dr-bg2); color: var(--dr-ink2); opacity: .7; }
+.dr-lib .dr-empty { text-align: center; color: var(--dr-ink2); font-size: 13px; padding: 40px 0; }
+
+/* ---------- 5. 各区页面的页头 ---------- */
+.dr-page-head {
+  padding: 30px 0 6px;
+  background-image: var(--dr-tex); background-size: var(--dr-tsize);
+}
+.dr-page-head .dr-ph-kicker { font-family: "SF Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: .8px; color: var(--dr-accent); }
+.vp-doc .dr-page-head h1 { margin: 2px 0 0; }
+.vp-doc .dr-page-head p { color: var(--dr-ink2); font-size: 14px; line-height: 1.75; margin: 10px 0 0; }
+.dr-page-head .dr-ph-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.dr-page-head .dr-ph-actions a {
+  font-size: 12px; font-weight: 600; padding: 6px 13px; border-radius: 99px;
+  border: var(--dr-bw) solid var(--dr-line); background: var(--dr-panel);
+  color: var(--dr-ink2); text-decoration: none; transition: .15s;
+}
+.dr-page-head .dr-ph-actions a:hover { border-color: var(--dr-accent); color: var(--dr-accent); }
+
+.dr-soon {
+  margin: 26px 0 10px; padding: 30px 26px;
+  background: var(--dr-panel); border: var(--dr-bw) dashed var(--dr-line);
+  border-radius: var(--dr-r); text-align: center;
+}
+.dr-soon .dr-soon-i { font-size: 30px; }
+.vp-doc .dr-soon h3 { font-family: var(--dr-hf); font-size: 17px; margin: 12px 0 6px; border: 0; padding: 0; }
+.vp-doc .dr-soon p { color: var(--dr-ink2); font-size: 13px; line-height: 1.8; margin: 0; }
+.vp-doc .dr-soon ul { display: inline-block; text-align: left; margin: 14px 0 0; padding: 0; list-style: none; }
+.vp-doc .dr-soon li { font-size: 12.5px; color: var(--dr-ink2); line-height: 2; }
+.vp-doc .dr-soon li::before { content: "□ "; color: var(--dr-accent); font-weight: 700; }
+
+/* ---------- 6. 响应式 ---------- */
+@media (max-width: 1100px) {
+  .dr-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .dr-zones { grid-template-columns: repeat(2, 1fr); }
+  .dr-h1 { font-size: 34px; }
+  .dr-hero { padding: 40px 18px 32px; }
+  .dr-sect, .dr-lib { padding-left: 16px; padding-right: 16px; }
+}
+@media (max-width: 640px) {
+  .dr-grid, .dr-zones { grid-template-columns: 1fr; }
+  .dr-switch-panel { width: min(268px, calc(100vw - 32px)); }
+}

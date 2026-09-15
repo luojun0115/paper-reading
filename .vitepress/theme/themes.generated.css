@@ -1,0 +1,242 @@
+/* 自动生成，请勿手改 —— 改 .vitepress/theme/theme-defs.mjs 后跑 node scripts/gen-theme-css.mjs */
+/* 深读馆 DeepRead · 10 套主题 · 生成于 2026-09-14 16:58:19 */
+
+/* 1. 纸墨书房 / PAPER STUDY (浅色) */
+html[data-theme='paper'] {
+  color-scheme: light;
+  --dr-bg: #faf8f4;
+  --dr-bg2: #f4eee5;
+  --dr-panel: #ffffff;
+  --dr-ink: #241f1a;
+  --dr-ink2: #6d6357;
+  --dr-line: #e9e0d2;
+  --dr-accent: #b35400;
+  --dr-asoft: #fdf3e7;
+  --dr-accent2: #1f6f5c;
+  --dr-on: #ffffff;
+  --dr-hf: "Songti SC","Source Han Serif SC",Georgia,serif;
+  --dr-hlet: 0.2px;
+  --dr-r: 12px;
+  --dr-bw: 1px;
+  --dr-tex: none;
+  --dr-tsize: 26px 26px;
+  --dr-glow: 0 1px 2px rgba(80,60,30,.05);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 2. 舊報铅字 / NEWSPRINT (浅色) */
+html[data-theme='newsprint'] {
+  color-scheme: light;
+  --dr-bg: #f5f1e6;
+  --dr-bg2: #ece6d6;
+  --dr-panel: #fffdf6;
+  --dr-ink: #16150f;
+  --dr-ink2: #6a6455;
+  --dr-line: #d8cfb8;
+  --dr-accent: #a5271d;
+  --dr-asoft: #f7e7e2;
+  --dr-accent2: #2f4858;
+  --dr-on: #ffffff;
+  --dr-hf: "Songti SC","Source Han Serif SC",Georgia,serif;
+  --dr-hlet: 0;
+  --dr-r: 2px;
+  --dr-bw: 1.5px;
+  --dr-tex: repeating-linear-gradient(rgba(90,80,55,.045) 0 1px, transparent 1px 7px);
+  --dr-tsize: auto;
+  --dr-glow: none;
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 3. 珊瑚奶油 / CORAL CREAM (浅色) */
+html[data-theme='coral'] {
+  color-scheme: light;
+  --dr-bg: #fff8f4;
+  --dr-bg2: #ffefe7;
+  --dr-panel: #ffffff;
+  --dr-ink: #2c1f19;
+  --dr-ink2: #8d7266;
+  --dr-line: #f6e0d4;
+  --dr-accent: #e85f42;
+  --dr-asoft: #ffe9e2;
+  --dr-accent2: #2a9d8f;
+  --dr-on: #ffffff;
+  --dr-hf: "Yuanti SC","PingFang SC",-apple-system,sans-serif;
+  --dr-hlet: -0.2px;
+  --dr-r: 18px;
+  --dr-bw: 1px;
+  --dr-tex: radial-gradient(rgba(232,95,66,.13) 1.2px, transparent 1.3px);
+  --dr-tsize: 15px 15px;
+  --dr-glow: 0 2px 9px rgba(232,95,66,.10);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 4. 抹茶纸笺 / MATCHA NOTE (浅色) */
+html[data-theme='matcha'] {
+  color-scheme: light;
+  --dr-bg: #f4f7ef;
+  --dr-bg2: #e9f0e0;
+  --dr-panel: #ffffff;
+  --dr-ink: #1e2a19;
+  --dr-ink2: #67735d;
+  --dr-line: #dde6d2;
+  --dr-accent: #4f7d3a;
+  --dr-asoft: #ecf4e4;
+  --dr-accent2: #b8860b;
+  --dr-on: #ffffff;
+  --dr-hf: "Songti SC","Source Han Serif SC",Georgia,serif;
+  --dr-hlet: 0.3px;
+  --dr-r: 14px;
+  --dr-bw: 1px;
+  --dr-tex: repeating-linear-gradient(transparent 0 25px, rgba(79,125,58,.085) 25px 26px);
+  --dr-tsize: auto;
+  --dr-glow: 0 1px 3px rgba(60,90,50,.06);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 5. 靛蓝学报 / ACADEMIC INDIGO (浅色) */
+html[data-theme='indigo'] {
+  color-scheme: light;
+  --dr-bg: #f6f8fc;
+  --dr-bg2: #eaf0fa;
+  --dr-panel: #ffffff;
+  --dr-ink: #111a2e;
+  --dr-ink2: #5a6b86;
+  --dr-line: #dde5f2;
+  --dr-accent: #2c4f9e;
+  --dr-asoft: #eef2fd;
+  --dr-accent2: #0e7490;
+  --dr-on: #ffffff;
+  --dr-hf: "PingFang SC",-apple-system,sans-serif;
+  --dr-hlet: -0.4px;
+  --dr-r: 6px;
+  --dr-bw: 1px;
+  --dr-tex: linear-gradient(rgba(44,79,158,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(44,79,158,.055) 1px, transparent 1px);
+  --dr-tsize: 26px 26px;
+  --dr-glow: 0 1px 3px rgba(20,40,90,.07);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 6. 薰衣草夜读 / LAVENDER DUSK (浅色) */
+html[data-theme='lavender'] {
+  color-scheme: light;
+  --dr-bg: #f8f6fd;
+  --dr-bg2: #efeafa;
+  --dr-panel: #ffffff;
+  --dr-ink: #221c33;
+  --dr-ink2: #6f6689;
+  --dr-line: #e7e1f5;
+  --dr-accent: #6d5ae0;
+  --dr-asoft: #f0ecfd;
+  --dr-accent2: #c2410c;
+  --dr-on: #ffffff;
+  --dr-hf: "PingFang SC",-apple-system,sans-serif;
+  --dr-hlet: -0.3px;
+  --dr-r: 16px;
+  --dr-bw: 1px;
+  --dr-tex: radial-gradient(900px 300px at 50% -90px, rgba(109,90,224,.15), transparent 70%);
+  --dr-tsize: auto;
+  --dr-glow: 0 2px 10px rgba(109,90,224,.09);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 7. 暗夜工坊 / DARK LAB (深色) */
+html[data-theme='lab'] {
+  color-scheme: dark;
+  --dr-bg: #0d1117;
+  --dr-bg2: #12181f;
+  --dr-panel: #161d26;
+  --dr-ink: #e6edf3;
+  --dr-ink2: #8b949e;
+  --dr-line: #232c38;
+  --dr-accent: #34d399;
+  --dr-asoft: #10241d;
+  --dr-accent2: #60a5fa;
+  --dr-on: #06231a;
+  --dr-hf: "SF Mono",Menlo,monospace;
+  --dr-hlet: -0.2px;
+  --dr-r: 6px;
+  --dr-bw: 1px;
+  --dr-tex: none;
+  --dr-tsize: auto;
+  --dr-glow: 0 1px 3px rgba(0,0,0,.45);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 8. 深墨蓝夜 / INK NIGHT (深色) */
+html[data-theme='inknight'] {
+  color-scheme: dark;
+  --dr-bg: #0f1620;
+  --dr-bg2: #141d29;
+  --dr-panel: #18222f;
+  --dr-ink: #e8eef7;
+  --dr-ink2: #93a3b8;
+  --dr-line: #24313f;
+  --dr-accent: #f2b705;
+  --dr-asoft: #2b2411;
+  --dr-accent2: #38bdf8;
+  --dr-on: #2b1d00;
+  --dr-hf: "PingFang SC",-apple-system,sans-serif;
+  --dr-hlet: -0.3px;
+  --dr-r: 10px;
+  --dr-bw: 1px;
+  --dr-tex: radial-gradient(820px 260px at 22% -70px, rgba(242,183,5,.12), transparent 70%);
+  --dr-tsize: auto;
+  --dr-glow: 0 2px 9px rgba(0,0,0,.42);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 9. 赛博霓虹 / CYBER NEON (深色) */
+html[data-theme='neon'] {
+  color-scheme: dark;
+  --dr-bg: #090c14;
+  --dr-bg2: #0f1522;
+  --dr-panel: #131a29;
+  --dr-ink: #eaeefb;
+  --dr-ink2: #8b96b5;
+  --dr-line: #1f2942;
+  --dr-accent: #ff3d8b;
+  --dr-asoft: #2a0f20;
+  --dr-accent2: #22d3ee;
+  --dr-on: #1a0210;
+  --dr-hf: "SF Mono",Menlo,monospace;
+  --dr-hlet: -0.2px;
+  --dr-r: 12px;
+  --dr-bw: 1px;
+  --dr-tex: linear-gradient(rgba(34,211,238,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,61,139,.055) 1px, transparent 1px);
+  --dr-tsize: 28px 28px;
+  --dr-glow: 0 0 0 1px rgba(255,61,139,.10), 0 6px 20px rgba(255,61,139,.12);
+  --dr-hrule: 0px;
+  --dr-hrulem: 0px;
+}
+
+/* 0. 杂志内页 / EDITORIAL (浅色) */
+html[data-theme='magazine'] {
+  color-scheme: light;
+  --dr-bg: #fcfcfc;
+  --dr-bg2: #f4f4f5;
+  --dr-panel: #ffffff;
+  --dr-ink: #0a0a0a;
+  --dr-ink2: #767676;
+  --dr-line: #e4e4e4;
+  --dr-accent: #e5006d;
+  --dr-asoft: #fdeef4;
+  --dr-accent2: #141414;
+  --dr-on: #ffffff;
+  --dr-hf: "Baskerville","Hoefler Text",Georgia,"PingFang SC",-apple-system,sans-serif;
+  --dr-hlet: -0.4px;
+  --dr-r: 0px;
+  --dr-bw: 1px;
+  --dr-tex: none;
+  --dr-tsize: auto;
+  --dr-glow: none;
+  --dr-hrule: 4px;
+  --dr-hrulem: 20px;
+}

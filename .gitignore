@@ -1,3 +1,9 @@
 imgs/*.png
 .DS_Store
 convert.sh
+
+# 深读馆站点（本仓库仅作内容底座，站点产物不进上游仓库）
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+public/study/
