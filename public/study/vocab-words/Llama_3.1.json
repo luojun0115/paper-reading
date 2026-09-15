@@ -1,0 +1,362 @@
+[
+  {
+    "sec": "1 Introduction · 引言",
+    "short": "Intro",
+    "icon": "1",
+    "words": [
+      {
+        "w": "foundation model",
+        "ipa": "/faʊnˈdeɪʃn ˈmɑːdl/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "基础模型",
+        "ex": "Modern artificial intelligence (AI) systems are powered by foundation models."
+      },
+      {
+        "w": "dense",
+        "ipa": "/dens/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "稠密的",
+        "ex": "Our largest model is a dense Transformer with 405B parameters."
+      },
+      {
+        "w": "multilinguality",
+        "ipa": "/ˌmʌltɪlɪŋˈɡwɑːləti/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "多语言能力",
+        "ex": "The Llama 3 Herd of models natively supports multilinguality, coding, reasoning, and tool usage."
+      },
+      {
+        "w": "pre-training",
+        "ipa": "/priːˈtreɪnɪŋ/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "预训练",
+        "ex": "We pre-train Llama 3 on a corpus of about 15T tokens."
+      },
+      {
+        "w": "post-training",
+        "ipa": "/poʊstˈtreɪnɪŋ/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "后训练",
+        "ex": "At this post-training stage, we also integrate new capabilities."
+      },
+      {
+        "w": "token",
+        "ipa": "/ˈtoʊkən/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "令牌，词元",
+        "ex": "We pre-train a model with 405B parameters on 15.6T tokens."
+      }
+    ]
+  },
+  {
+    "sec": "2 General Overview · 总体概述",
+    "short": "Overview",
+    "icon": "2",
+    "words": [
+      {
+        "w": "supervised finetuning",
+        "ipa": "/ˈsuːpərvaɪzd ˈfaɪntjuːnɪŋ/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "有监督微调",
+        "ex": "Each round involves supervised finetuning (SFT) on instruction tuning data."
+      },
+      {
+        "w": "preference optimization",
+        "ipa": "/prɪˈfɜːrəns ˌɑːptɪməˈzeɪʃn/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "偏好优化",
+        "ex": "We align the model with human feedback using Direct Preference Optimization (DPO)."
+      },
+      {
+        "w": "encoder",
+        "ipa": "/ɪnˈkoʊdər/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "编码器",
+        "ex": "We train separate encoders for images and speech."
+      },
+      {
+        "w": "adapter",
+        "ipa": "/əˈdæptər/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "适配器",
+        "ex": "We train an adapter that integrates the pre-trained image encoder into the pre-trained language model."
+      },
+      {
+        "w": "cross-attention",
+        "ipa": "/krɔːs əˈtenʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "交叉注意力",
+        "ex": "The adapter consists of a series of cross-attention layers."
+      }
+    ]
+  },
+  {
+    "sec": "3 Pre-Training · 预训练",
+    "short": "Pre-Training",
+    "icon": "3",
+    "words": [
+      {
+        "w": "de-duplication",
+        "ipa": "/diːˌdjuːplɪˈkeɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "去重",
+        "ex": "We apply several de-duplication methods and data cleaning mechanisms."
+      },
+      {
+        "w": "heuristic",
+        "ipa": "/hjuːˈrɪstɪk/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "启发式的",
+        "ex": "We develop heuristics to remove additional low-quality documents."
+      },
+      {
+        "w": "tokenizer",
+        "ipa": "/ˈtoʊkənaɪzər/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "分词器",
+        "ex": "We use the existing pretrained generative language model as a starting point for our tokenizer."
+      },
+      {
+        "w": "GQA",
+        "ipa": "/dʒiː kjuː eɪ/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "分组查询注意力",
+        "ex": "We use grouped query attention (GQA) with 8 key-value heads to improve inference speed."
+      },
+      {
+        "w": "scaling law",
+        "ipa": "/ˈskeɪlɪŋ lɔː/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "缩放定律",
+        "ex": "We use scaling laws to determine the optimal model size."
+      },
+      {
+        "w": "compute-optimal",
+        "ipa": "/kəmˈpjuːt ˈɑːptɪməl/",
+        "pos": "adj.",
+        "lv": "p",
+        "m": "计算最优的",
+        "ex": "Our flagship model is an approximately compute-optimal size for our training budget."
+      }
+    ]
+  },
+  {
+    "sec": "4 Post-Training · 后训练",
+    "short": "Post-Training",
+    "icon": "4",
+    "words": [
+      {
+        "w": "instruction tuning",
+        "ipa": "/ɪnˈstrʌkʃn ˈtuːnɪŋ/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "指令微调",
+        "ex": "We align the model with human feedback in several rounds of instruction tuning."
+      },
+      {
+        "w": "rejection sampling",
+        "ipa": "/rɪˈdʒekʃn ˈsæmplɪŋ/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "拒绝采样",
+        "ex": "We adopt a relatively simple post-training procedure based on supervised finetuning, rejection sampling, and DPO."
+      },
+      {
+        "w": "DPO",
+        "ipa": "/diː piː oʊ/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "直接偏好优化",
+        "ex": "We use Direct Preference Optimization (DPO) for alignment."
+      },
+      {
+        "w": "reward model",
+        "ipa": "/rɪˈwɔːrd ˈmɑːdl/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "奖励模型",
+        "ex": "We train a reward model to score responses."
+      },
+      {
+        "w": "safety alignment",
+        "ipa": "/ˈseɪfti əˈlaɪnmənt/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "安全对齐",
+        "ex": "Safety mitigations are also incorporated into the model at the post-training stage."
+      }
+    ]
+  },
+  {
+    "sec": "5 Results · 结果",
+    "short": "Results",
+    "icon": "5",
+    "words": [
+      {
+        "w": "benchmark",
+        "ipa": "/ˈbentʃmɑːrk/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "基准测试",
+        "ex": "We evaluate the performance of Llama 3 on a plethora of benchmark datasets."
+      },
+      {
+        "w": "MMLU",
+        "ipa": "/em em el juː/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "大规模多任务语言理解",
+        "ex": "Llama 3 achieves strong performance on MMLU."
+      },
+      {
+        "w": "human evaluation",
+        "ipa": "/ˈhjuːmən ɪˌvæljuˈeɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "人工评估",
+        "ex": "We perform extensive human evaluations that compare Llama 3 with competing models."
+      },
+      {
+        "w": "state-of-the-art",
+        "ipa": "/steɪt əv ði ɑːrt/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "最先进的",
+        "ex": "Our flagship model performs on par with leading language models."
+      }
+    ]
+  },
+  {
+    "sec": "6 Safety · 安全",
+    "short": "Safety",
+    "icon": "6",
+    "words": [
+      {
+        "w": "harmlessness",
+        "ipa": "/ˈhɑːmləsnəs/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "无害性",
+        "ex": "Llama 3 delivers a much better balance between helpfulness and harmlessness."
+      },
+      {
+        "w": "adversarial",
+        "ipa": "/ˌædvərˈseəriəl/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "对抗的",
+        "ex": "We incorporate adversarial and borderline examples into our preference data."
+      },
+      {
+        "w": "Llama Guard",
+        "ipa": "/ˈlɑːmə ɡɑːrd/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "Llama Guard安全模型",
+        "ex": "We publicly release Llama Guard 3 model for input and output safety."
+      },
+      {
+        "w": "hazard",
+        "ipa": "/ˈhæzərd/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "危害",
+        "ex": "We train on the 13 hazard categories listed in the AI Safety taxonomy."
+      }
+    ]
+  },
+  {
+    "sec": "7 Inference · 推理",
+    "short": "Inference",
+    "icon": "7",
+    "words": [
+      {
+        "w": "pipeline parallelism",
+        "ipa": "/paɪpˈlaɪn ˈpærəlelɪzəm/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "流水线并行",
+        "ex": "We use pipeline parallelism to split the model across multiple GPUs."
+      },
+      {
+        "w": "tensor parallelism",
+        "ipa": "/ˈtenər ˈpærəlelɪzəm/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "张量并行",
+        "ex": "We use tensor parallelism to split individual layers across GPUs."
+      },
+      {
+        "w": "KV cache",
+        "ipa": "/keɪ viː kæʃ/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "键值缓存",
+        "ex": "The KV cache stores previously computed key and value tensors."
+      },
+      {
+        "w": "throughput",
+        "ipa": "/ˈθruːpʊt/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "吞吐量",
+        "ex": "We optimize for throughput during inference."
+      }
+    ]
+  },
+  {
+    "sec": "8 Multimodal · 多模态",
+    "short": "Multimodal",
+    "icon": "8",
+    "words": [
+      {
+        "w": "vision encoder",
+        "ipa": "/ˈvɪʒn ɪnˈkoʊdər/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "视觉编码器",
+        "ex": "We train our image encoder on large amounts of image-text pairs."
+      },
+      {
+        "w": "speech encoder",
+        "ipa": "/spiːtʃ ɪnˈkoʊdər/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "语音编码器",
+        "ex": "Our speech encoder is a Conformer model with 1B parameters."
+      },
+      {
+        "w": "Conformer",
+        "ipa": "/kənˈfɔːrmər/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "Conformer模型",
+        "ex": "Our speech encoder is a Conformer (Gulati et al., 2020) model."
+      },
+      {
+        "w": "self-supervised",
+        "ipa": "/self səˈpɜːrvɪzd/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "自监督的",
+        "ex": "We use the self-supervised BEST-RQ algorithm to pre-train the speech encoder."
+      }
+    ]
+  }
+]

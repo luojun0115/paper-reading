@@ -1,0 +1,28 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"conceptually","ipa":"kənˈseptʃuəli","pos":"adv.","lv":"p","m":"概念上","ex":"a conceptually simple, ﬂexible, and general framework"},
+ {"w":"instance","ipa":"ˈɪnstəns","pos":"n.","lv":"4","m":"实例（instance segmentation 实例分割）","ex":"a general framework for object instance segmentation"},
+ {"w":"simultaneously","ipa":"ˌsaɪmlˈteɪniəsli","pos":"adv.","lv":"6","m":"同时地","ex":"efﬁciently detects objects in an image while simultaneously generating a high-quality segmentation mask"},
+ {"w":"branch","ipa":"bræntʃ","pos":"n.","lv":"4","m":"分支","ex":"adding a branch for predicting an object mask in parallel with the existing branch"},
+ {"w":"overhead","ipa":"ˈoʊvərhed","pos":"n.","lv":"k","m":"额外开销","ex":"adds only a small overhead to Faster R-CNN, running at 5 fps"},
+ {"w":"estimate","ipa":"ˈestɪmeɪt","pos":"v.","lv":"6","m":"估计","ex":"allowing us to estimate human poses in the same framework"},
+ {"w":"track","ipa":"træk","pos":"n.","lv":"4","m":"赛道，项目","ex":"top results in all three tracks of the COCO suite of challenges"},
+ {"w":"baseline","ipa":"ˈbeɪslaɪn","pos":"n.","lv":"6","ov":"t","m":"基线","ex":"will serve as a solid baseline and help ease future research"}
+]},
+{"sec":"1. Introduction · 引言","short":"Intro","icon":"1","words":[
+ {"w":"community","ipa":"kəˈmjuːnəti","pos":"n.","lv":"4","m":"社区","ex":"The vision community has rapidly improved object detection"},
+ {"w":"respectively","ipa":"rɪˈspektɪvli","pos":"adv.","lv":"6","m":"分别地","ex":"frameworks for object detection and semantic segmentation, respectively"},
+ {"w":"intuitive","ipa":"ɪnˈtuːɪtɪv","pos":"adj.","lv":"6","m":"直观的","ex":"These methods are conceptually intuitive"},
+ {"w":"ﬂexibility","ipa":"ˌfleksəˈbɪləti","pos":"n.","lv":"6","m":"灵活性","ex":"offer ﬂexibility and robustness"},
+ {"w":"robustness","ipa":"roʊˈbʌstnəs","pos":"n.","lv":"p","m":"鲁棒性","ex":"offer ﬂexibility and robustness, together with fast training and inference time"},
+ {"w":"comparably","ipa":"ˈkɑːmpərəbli","pos":"adv.","lv":"6","m":"同样地","ex":"develop a comparably enabling framework for instance segmentation"},
+ {"w":"enabling","ipa":"ɪˈneɪblɪŋ","pos":"adj.","lv":"6","m":"使能的，强力支撑的","ex":"a comparably enabling framework for instance segmentation"}
+]},
+{"sec":"3–4. Architecture & Experiments · 架构与实验","short":"Arch","icon":"3","words":[
+ {"w":"quantize","ipa":"ˈkwɑːntaɪz","pos":"v.","lv":"p","m":"量化","ex":"RoIPool... performs coarse spatial quantization for feature extraction"},
+ {"w":"aligned","ipa":"əˈlaɪnd","pos":"adj.","lv":"k","m":"对齐的（RoIAlign）","ex":"To ﬁx the misalignment, we propose a simple, quantization-free layer, called RoIAlign"},
+ {"w":"misalignment","ipa":"ˌmɪsəˈlaɪnmənt","pos":"n.","lv":"p","m":"未对准","ex":"properly aligning the extracted features with the input"},
+ {"w":"bin","ipa":"bɪn","pos":"n.","lv":"p","m":"分箱，子区域","ex":"the RoI is subdivided into spatial bins which are themselves quantized"},
+ {"w":"multinomial","ipa":"ˌmʌltɪˈnoʊmiəl","pos":"adj.","lv":"p","m":"多项的","ex":"using a per-pixel softmax and a multinomial loss"}
+]}
+]

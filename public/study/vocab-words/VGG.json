@@ -1,0 +1,308 @@
+[
+  {
+    "sec": "Abstract · 摘要",
+    "short": "Abstract",
+    "icon": "A",
+    "words": [
+      {
+        "w": "investigate",
+        "ipa": "/ɪnˈvestɪɡeɪt/",
+        "pos": "v.",
+        "lv": "6",
+        "m": "调查，研究",
+        "ex": "In this work we investigate the effect of the convolutional network depth on its accuracy."
+      },
+      {
+        "w": "accuracy",
+        "ipa": "/ˈækjərəsi/",
+        "pos": "n.",
+        "lv": "4",
+        "m": "准确性，精确度",
+        "ex": "In this work we investigate the effect of the convolutional network depth on its accuracy."
+      },
+      {
+        "w": "thorough",
+        "ipa": "/ˈθɜːroʊ/",
+        "pos": "adj.",
+        "lv": "6",
+        "m": "彻底的，全面的",
+        "ex": "Our main contribution is a thorough evaluation of networks of increasing depth."
+      },
+      {
+        "w": "configuration",
+        "ipa": "/kənˌfɪɡjəˈreɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "配置，结构",
+        "ex": "Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3 × 3) convolution filters."
+      },
+      {
+        "w": "significant",
+        "ipa": "/sɪɡˈnɪfɪkənt/",
+        "pos": "adj.",
+        "lv": "4",
+        "m": "显著的，重要的",
+        "ex": "These findings were the basis of our ImageNet Challenge 2014 submission, where our team secured the first and the second places."
+      },
+      {
+        "w": "generalise",
+        "ipa": "/ˈdʒenərəlaɪz/",
+        "pos": "v.",
+        "lv": "k",
+        "m": "概括，推广",
+        "ex": "We also show that our representations generalise well to other datasets, where they achieve state-of-the-art results."
+      },
+      {
+        "w": "facilitate",
+        "ipa": "/fəˈsɪlɪteɪt/",
+        "pos": "v.",
+        "lv": "k",
+        "m": "促进，使便利",
+        "ex": "We have made our two best-performing ConvNet models publicly available to facilitate further research."
+      }
+    ]
+  },
+  {
+    "sec": "1. Introduction · 引言",
+    "short": "Intro",
+    "icon": "1",
+    "words": [
+      {
+        "w": "repository",
+        "ipa": "/rɪˈpɑːzətɔːri/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "仓库，知识库",
+        "ex": "Convolutional networks have recently enjoyed a great success in large-scale image and video recognition which has become possible due to the large public image repositories."
+      },
+      {
+        "w": "testbed",
+        "ipa": "/ˈtestbed/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "测试平台",
+        "ex": "An important role in the advance of deep visual recognition architectures has been played by the ImageNet Large-Scale Visual Recognition Challenge (ILSVRC), which has served as a testbed."
+      },
+      {
+        "w": "receptive",
+        "ipa": "/rɪˈseptɪv/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "感受的",
+        "ex": "The best-performing submissions to the ILSVRC-2013 utilised smaller receptive window size and smaller stride of the first convolutional layer."
+      },
+      {
+        "w": "stride",
+        "ipa": "/straɪd/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "步幅，步长",
+        "ex": "The best-performing submissions to the ILSVRC-2013 utilised smaller receptive window size and smaller stride of the first convolutional layer."
+      },
+      {
+        "w": "feasible",
+        "ipa": "/ˈfiːzəbl/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "可行的",
+        "ex": "We steadily increase the depth of the network by adding more convolutional layers, which is feasible due to the use of very small (3 × 3) convolution filters."
+      }
+    ]
+  },
+  {
+    "sec": "2. ConvNet Configurations · 卷积网络配置",
+    "short": "Config",
+    "icon": "2",
+    "words": [
+      {
+        "w": "generic",
+        "ipa": "/dʒəˈnerɪk/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "通用的，一般的",
+        "ex": "In this section, we first describe a generic layout of our ConvNet configurations."
+      },
+      {
+        "w": "receptive field",
+        "ipa": "/rɪˈseptɪv fiːld/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "感受野",
+        "ex": "We use very small 3 × 3 receptive fields throughout the whole net, which are convolved with the input at every pixel."
+      },
+      {
+        "w": "discriminative",
+        "ipa": "/dɪˌskrɪmɪˈneɪtɪv/",
+        "pos": "adj.",
+        "lv": "p",
+        "m": "有区分能力的",
+        "ex": "We incorporate three non-linear rectification layers instead of a single one, which makes the decision function more discriminative."
+      },
+      {
+        "w": "parametrised",
+        "ipa": "/pəˈræmətraɪzd/",
+        "pos": "adj.",
+        "lv": "p",
+        "m": "参数化的",
+        "ex": "The stack is parametrised by 3 × 3²C² = 27C² weights."
+      },
+      {
+        "w": "projection",
+        "ipa": "/prəˈdʒekʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "投影；预测",
+        "ex": "The 1 × 1 convolution is essentially a linear projection onto the space of the same dimensionality."
+      }
+    ]
+  },
+  {
+    "sec": "3. Classification Framework · 分类框架",
+    "short": "Framework",
+    "icon": "3",
+    "words": [
+      {
+        "w": "optimise",
+        "ipa": "/ˈɑːptɪmaɪz/",
+        "pos": "v.",
+        "lv": "k",
+        "m": "优化",
+        "ex": "The ConvNet training procedure generally follows Krizhevsky et al. (2012), namely, the training is carried out by optimising the multinomial logistic regression objective."
+      },
+      {
+        "w": "momentum",
+        "ipa": "/moʊˈmentəm/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "动量",
+        "ex": "The training was carried out by optimising the multinomial logistic regression objective using mini-batch gradient descent with momentum."
+      },
+      {
+        "w": "converge",
+        "ipa": "/kənˈvɜːrdʒ/",
+        "pos": "v.",
+        "lv": "k",
+        "m": "收敛",
+        "ex": "The learning was stopped after 370K iterations (74 epochs). We conjecture that in spite of the larger number of parameters and the greater depth of our nets compared to Krizhevsky et al. (2012), the nets required less epochs to converge."
+      },
+      {
+        "w": "initialisation",
+        "ipa": "/ɪˌnɪʃəlaɪˈzeɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "初始化",
+        "ex": "The initialisation of the network weights is important, since bad initialisation can stall learning due to the instability of gradient in deep nets."
+      },
+      {
+        "w": "instability",
+        "ipa": "/ɪnˈstəbɪləti/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "不稳定性",
+        "ex": "Bad initialisation can stall learning due to the instability of gradient in deep nets."
+      },
+      {
+        "w": "circumvent",
+        "ipa": "/ˌsɜːrkəmˈvent/",
+        "pos": "v.",
+        "lv": "p",
+        "m": "规避，绕过",
+        "ex": "To circumvent this problem, we began with training the configuration A, shallow enough to be trained with random initialisation."
+      },
+      {
+        "w": "isotropic",
+        "ipa": "/ˌaɪsəˈtrɑːpɪk/",
+        "pos": "adj.",
+        "lv": "p",
+        "m": "各向同性的",
+        "ex": "Let S be the smallest side of an isotropically-rescaled training image, from which the ConvNet input is cropped."
+      },
+      {
+        "w": "parallelism",
+        "ipa": "/ˈpærəlelɪzəm/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "并行性",
+        "ex": "Multi-GPU training exploits data parallelism, and is carried out by splitting each batch of training images into several GPU batches, processed in parallel on each GPU."
+      }
+    ]
+  },
+  {
+    "sec": "4. Classification Experiments · 分类实验",
+    "short": "Experiments",
+    "icon": "4",
+    "words": [
+      {
+        "w": "complementarity",
+        "ipa": "/ˌkɑːmplɪmenˈtærəti/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "互补性",
+        "ex": "We also assess the complementarity of the two evaluation techniques by averaging their soft-max outputs."
+      },
+      {
+        "w": "ensemble",
+        "ipa": "/ɑːnˈsɑːmbl/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "集成，集合",
+        "ex": "The resulting ensemble of 7 networks has 7.3% ILSVRC test error."
+      },
+      {
+        "w": "saturate",
+        "ipa": "/ˈsætʃəreɪt/",
+        "pos": "v.",
+        "lv": "k",
+        "m": "饱和",
+        "ex": "The error rate of our architecture saturates when the depth reaches 19 layers, but even deeper models might be beneficial for larger datasets."
+      },
+      {
+        "w": "jittering",
+        "ipa": "/ˈdʒɪtərɪŋ/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "抖动",
+        "ex": "Scale jittering at training time leads to significantly better results than training on images with fixed smallest side."
+      },
+      {
+        "w": "complementary",
+        "ipa": "/ˌkɑːmplɪˈmentəri/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "互补的",
+        "ex": "Using multiple crops performs slightly better than dense evaluation, and the two approaches are indeed complementary, as their combination outperforms each of them."
+      }
+    ]
+  },
+  {
+    "sec": "5. Conclusion · 结论",
+    "short": "Conclusion",
+    "icon": "5",
+    "words": [
+      {
+        "w": "conventional",
+        "ipa": "/kənˈvenʃənl/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "传统的，常规的",
+        "ex": "State-of-the-art performance on the ImageNet challenge dataset can be achieved using a conventional ConvNet architecture with substantially increased depth."
+      },
+      {
+        "w": "pipeline",
+        "ipa": "/ˈpaɪplaɪn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "流水线，管道",
+        "ex": "Our models generalise well to a wide range of tasks and datasets, matching or outperforming more complex recognition pipelines built around less deep image representations."
+      },
+      {
+        "w": "confirm",
+        "ipa": "/kənˈfɜːrm/",
+        "pos": "v.",
+        "lv": "4",
+        "m": "确认，证实",
+        "ex": "Our results yet again confirm the importance of depth in visual representations."
+      }
+    ]
+  }
+]

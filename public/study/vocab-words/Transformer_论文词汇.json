@@ -1,0 +1,1382 @@
+[
+ {
+  "sec": "Abstract · 摘要",
+  "short": "Abstract",
+  "icon": "A",
+  "words": [
+   {
+    "w": "dominant",
+    "ipa": "ˈdɑːmɪnənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "占主导地位的",
+    "ex": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks"
+   },
+   {
+    "w": "transduction",
+    "ipa": "trænsˈdʌkʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "转导（序列到序列的转换）",
+    "ex": "The dominant sequence transduction models"
+   },
+   {
+    "w": "recurrent",
+    "ipa": "rɪˈkɜːrənt",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "循环的（RNN）",
+    "ex": "based on complex recurrent or convolutional neural networks"
+   },
+   {
+    "w": "convolution",
+    "ipa": "ˌkɑːnvəˈluːʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "卷积",
+    "ex": "based on complex recurrent or convolutional neural networks"
+   },
+   {
+    "w": "mechanism",
+    "ipa": "ˈmekənɪzəm",
+    "pos": "n.",
+    "lv": "4",
+    "m": "机制",
+    "ex": "connect the encoder and decoder through an attention mechanism"
+   },
+   {
+    "w": "solely",
+    "ipa": "ˈsoʊlli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "仅仅，完全地",
+    "ex": "based solely on attention mechanisms"
+   },
+   {
+    "w": "dispense",
+    "ipa": "dɪˈspens",
+    "pos": "v.",
+    "lv": "6",
+    "m": "摒弃（dispense with）；分发",
+    "ex": "dispensing with recurrence and convolutions entirely"
+   },
+   {
+    "w": "superior",
+    "ipa": "suːˈpɪriər",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "更优的，占优的",
+    "ex": "these models to be superior in quality"
+   },
+   {
+    "w": "significantly",
+    "ipa": "sɪɡˈnɪfɪkəntli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "显著地",
+    "ex": "requiring signiﬁcantly less time to train"
+   },
+   {
+    "w": "parallelizable",
+    "ipa": "ˌpærəlelˈaɪzəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可并行的",
+    "ex": "while being more parallelizable"
+   },
+   {
+    "w": "ensemble",
+    "ipa": "ɑːnˈsɑːmbl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "集成（模型）",
+    "ex": "improving over the existing best results, including ensembles, by over 2 BLEU"
+   },
+   {
+    "w": "establish",
+    "ipa": "ɪˈstæblɪʃ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "确立，建立",
+    "ex": "our model establishes a new single-model state-of-the-art BLEU score of 41.8"
+   },
+   {
+    "w": "fraction",
+    "ipa": "ˈfrækʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "小部分",
+    "ex": "a small fraction of the training costs of the best models from the literature"
+   },
+   {
+    "w": "generalize",
+    "ipa": "ˈdʒenrəlaɪz",
+    "pos": "v.",
+    "lv": "6",
+    "m": "泛化",
+    "ex": "the Transformer generalizes well to other tasks"
+   },
+   {
+    "w": "constituency",
+    "ipa": "kənˈstɪtʃuənsi",
+    "pos": "n.",
+    "lv": "p",
+    "m": "选区；成分（constituency parsing 成分句法分析）",
+    "ex": "applying it successfully to English constituency parsing"
+   },
+   {
+    "w": "recurrence",
+    "ipa": "/rɪˈkɜːrəns/",
+    "pos": "n.",
+    "m": "循环，递归",
+    "ex": "We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.",
+    "lv": "6"
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "Intro",
+  "icon": "1",
+  "words": [
+   {
+    "w": "numerous",
+    "ipa": "ˈnuːmərəs",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "众多的",
+    "ex": "Numerous efforts have since continued to push the boundaries"
+   },
+   {
+    "w": "boundary",
+    "ipa": "ˈbaʊndri",
+    "pos": "n.",
+    "lv": "4",
+    "m": "边界",
+    "ex": "push the boundaries of recurrent language models and encoder-decoder architectures"
+   },
+   {
+    "w": "gated",
+    "ipa": "ˈɡeɪtɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "门控的",
+    "ex": "long short-term memory and gated recurrent neural networks in particular"
+   },
+   {
+    "w": "inherently",
+    "ipa": "ɪnˈhɪrəntli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "固有地",
+    "ex": "This inherently sequential nature precludes parallelization within training examples"
+   },
+   {
+    "w": "preclude",
+    "ipa": "prɪˈkluːd",
+    "pos": "v.",
+    "lv": "6",
+    "m": "排除，妨碍",
+    "ex": "This inherently sequential nature precludes parallelization within training examples"
+   },
+   {
+    "w": "constraint",
+    "ipa": "kənˈstreɪnt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "约束，限制",
+    "ex": "as memory constraints limit batching across examples"
+   },
+   {
+    "w": "fundamental",
+    "ipa": "ˌfʌndəˈmentl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "根本的",
+    "ex": "The fundamental constraint of sequential computation, however, remains"
+   },
+   {
+    "w": "integral",
+    "ipa": "ˈɪntɪɡrəl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "不可或缺的",
+    "ex": "Attention mechanisms have become an integral part of compelling sequence modeling"
+   },
+   {
+    "w": "compelling",
+    "ipa": "kəmˈpelɪŋ",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "令人信服的，出色的",
+    "ex": "an integral part of compelling sequence modeling and transduction models"
+   },
+   {
+    "w": "conjunction",
+    "ipa": "kənˈdʒʌŋkʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "结合（in conjunction with 与…连用）",
+    "ex": "such attention mechanisms are used in conjunction with a recurrent network"
+   },
+   {
+    "w": "eschew",
+    "ipa": "esˈtʃuː",
+    "pos": "v.",
+    "lv": "p",
+    "m": "避开，摒弃",
+    "ex": "a model architecture eschewing recurrence and instead relying entirely on an attention mechanism"
+   },
+   {
+    "w": "firmly",
+    "ipa": "/ˈfɜːrmli/",
+    "pos": "adv.",
+    "m": "坚定地，稳固地",
+    "ex": "Recurrent neural networks, long short-term memory and gated recurrent neural networks in particular, have been firmly established as state of the art.",
+    "lv": "4"
+   },
+   {
+    "w": "factor",
+    "ipa": "/ˈfæktər/",
+    "pos": "v.",
+    "m": "把…分解为因子",
+    "ex": "Recurrent models typically factor computation along the symbol positions of the input and output sequences.",
+    "lv": "4"
+   },
+   {
+    "w": "parallelization",
+    "ipa": "/ˌpærəlelaɪˈzeɪʃən/",
+    "pos": "n.",
+    "m": "并行化",
+    "ex": "This inherently sequential nature precludes parallelization within training examples.",
+    "lv": "p"
+   },
+   {
+    "w": "batching",
+    "ipa": "/ˈbætʃɪŋ/",
+    "pos": "n.",
+    "m": "批处理",
+    "ex": "Memory constraints limit batching across examples.",
+    "lv": "6"
+   },
+   {
+    "w": "factorization",
+    "ipa": "/ˌfæktəraɪˈzeɪʃən/",
+    "pos": "n.",
+    "m": "因式分解",
+    "ex": "Recent work has achieved significant improvements in computational efficiency through factorization tricks.",
+    "lv": "p"
+   },
+   {
+    "w": "dependency",
+    "ipa": "/dɪˈpendənsi/",
+    "pos": "n.",
+    "m": "依赖，依赖关系",
+    "ex": "Allowing modeling of dependencies without regard to their distance in the input or output sequences.",
+    "lv": "p"
+   },
+   {
+    "w": "relying",
+    "ipa": "/rɪˈlaɪɪŋ/",
+    "pos": "v.",
+    "m": "依赖，依靠",
+    "ex": "A model architecture eschewing recurrence and instead relying entirely on an attention mechanism.",
+    "lv": "4"
+   }
+  ]
+ },
+ {
+  "sec": "2. Background · 背景",
+  "short": "Background",
+  "icon": "2",
+  "words": [
+   {
+    "w": "foundation",
+    "ipa": "faʊnˈdeɪʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "基础",
+    "ex": "also forms the foundation of the Extended Neural GPU"
+   },
+   {
+    "w": "arbitrary",
+    "ipa": "ˈɑːrbətreri",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "任意的",
+    "ex": "relate signals from two arbitrary input or output positions"
+   },
+   {
+    "w": "representation",
+    "ipa": "ˌreprɪzenˈteɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "表示",
+    "ex": "computing hidden representations in parallel for all input and output positions"
+   },
+   {
+    "w": "resolution",
+    "ipa": "ˌrezəˈluːʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分辨率",
+    "ex": "albeit at the cost of reduced effective resolution due to averaging attention-weighted positions"
+   },
+   {
+    "w": "counteract",
+    "ipa": "ˌkaʊntərˈækt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "抵消，对抗",
+    "ex": "an effect we counteract with Multi-Head Attention"
+   },
+   {
+    "w": "entailment",
+    "ipa": "ɪnˈteɪlmənt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "蕴含（关系）",
+    "ex": "textual entailment and learning task-independent sentence representations"
+   },
+   {
+    "w": "abstractive",
+    "ipa": "æbˈstræktɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "生成式的（摘要）",
+    "ex": "reading comprehension, abstractive summarization, textual entailment"
+   },
+   {
+    "w": "logarithmically",
+    "ipa": "/ˌlɒɡəˈrɪðmɪkli/",
+    "pos": "adv.",
+    "m": "对数地",
+    "ex": "Linearly for ConvS2S and logarithmically for ByteNet.",
+    "lv": "p"
+   },
+   {
+    "w": "albeit",
+    "ipa": "/ɔːlˈbiːɪt/",
+    "pos": "conj.",
+    "m": "尽管，虽然",
+    "ex": "This is reduced to a constant number of operations, albeit at the cost of reduced effective resolution.",
+    "lv": "p"
+   },
+   {
+    "w": "intra-attention",
+    "ipa": "/ˈɪntrə əˈtenʃən/",
+    "pos": "n.",
+    "m": "内部注意力",
+    "ex": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions of a single sequence.",
+    "lv": "p"
+   },
+   {
+    "w": "comprehension",
+    "ipa": "/ˌkɒmprɪˈhenʃən/",
+    "pos": "n.",
+    "m": "理解，阅读理解",
+    "ex": "Self-attention has been used successfully in a variety of tasks including reading comprehension.",
+    "lv": "4"
+   },
+   {
+    "w": "representations",
+    "ipa": "/ˌreprɪzenˈteɪʃənz/",
+    "pos": "n.",
+    "m": "表示，表征",
+    "ex": "Computing hidden representations in parallel for all input and output positions.",
+    "lv": "6"
+   }
+  ]
+ },
+ {
+  "sec": "3.1. Encoder and Decoder Stacks · 编码器与解码器",
+  "short": "Enc/Dec",
+  "icon": "3.1",
+  "words": [
+   {
+    "w": "auto-regressive",
+    "ipa": "ˌɔːtoʊ rɪˈɡresɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "自回归的",
+    "ex": "the model is auto-regressive, consuming the previously generated symbols as additional input"
+   },
+   {
+    "w": "consume",
+    "ipa": "kənˈsuːm",
+    "pos": "v.",
+    "lv": "4",
+    "m": "消耗",
+    "ex": "consuming the previously generated symbols as additional input"
+   },
+   {
+    "w": "identical",
+    "ipa": "aɪˈdentɪkl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "完全相同的",
+    "ex": "The encoder is composed of a stack of N = 6 identical layers"
+   },
+   {
+    "w": "employ",
+    "ipa": "ɪmˈplɔɪ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "采用",
+    "ex": "We employ a residual connection around each of the two sub-layers"
+   },
+   {
+    "w": "facilitate",
+    "ipa": "fəˈsɪlɪteɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "促进，使便利",
+    "ex": "To facilitate these residual connections"
+   },
+   {
+    "w": "dimension",
+    "ipa": "daɪˈmenʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "维度",
+    "ex": "produce outputs of dimension dmodel = 512"
+   },
+   {
+    "w": "insert",
+    "ipa": "ɪnˈsɜːrt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "插入",
+    "ex": "the decoder inserts a third sub-layer"
+   },
+   {
+    "w": "subsequent",
+    "ipa": "ˈsʌbsɪkwənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "后续的",
+    "ex": "to prevent positions from attending to subsequent positions"
+   },
+   {
+    "w": "offset",
+    "ipa": "ˈɔːfset",
+    "pos": "n.",
+    "lv": "6",
+    "m": "偏移量",
+    "ex": "the output embeddings are offset by one position"
+   },
+   {
+    "w": "mask",
+    "ipa": "mæsk",
+    "pos": "v./n.",
+    "lv": "4",
+    "m": "掩码；屏蔽",
+    "ex": "This masking ensures that the predictions for position i can depend only on the known outputs"
+   },
+   {
+    "w": "encoder",
+    "ipa": "/ɪnˈkoʊdər/",
+    "pos": "n.",
+    "m": "编码器",
+    "ex": "The encoder maps an input sequence of symbol representations to a sequence of continuous representations.",
+    "lv": "p"
+   },
+   {
+    "w": "decoder",
+    "ipa": "/dɪˈkoʊdər/",
+    "pos": "n.",
+    "m": "解码器",
+    "ex": "Given z, the decoder then generates an output sequence of symbols one element at a time.",
+    "lv": "p"
+   },
+   {
+    "w": "sub-layer",
+    "ipa": "/ˈsʌb ˌleɪər/",
+    "pos": "n.",
+    "m": "子层",
+    "ex": "Each layer has two sub-layers. The first is a multi-head self-attention mechanism.",
+    "lv": "p"
+   },
+   {
+    "w": "residual",
+    "ipa": "/rɪˈzɪdʒuəl/",
+    "pos": "adj.",
+    "m": "残差的",
+    "ex": "We employ a residual connection around each of the two sub-layers, followed by layer normalization.",
+    "lv": "6"
+   },
+   {
+    "w": "normalization",
+    "ipa": "/ˌnɔːrməlaɪˈzeɪʃən/",
+    "pos": "n.",
+    "m": "归一化",
+    "ex": "We employ a residual connection around each of the two sub-layers, followed by layer normalization.",
+    "lv": "6"
+   },
+   {
+    "w": "embedding",
+    "ipa": "/ɪmˈbedɪŋ/",
+    "pos": "n.",
+    "m": "嵌入",
+    "ex": "All sub-layers in the model, as well as the embedding layers, produce outputs of dimension dmodel = 512.",
+    "lv": "p"
+   },
+   {
+    "w": "masking",
+    "ipa": "/ˈmæskɪŋ/",
+    "pos": "n.",
+    "m": "掩码",
+    "ex": "This masking, combined with the fact that the output embeddings are offset by one position.",
+    "lv": "4"
+   },
+   {
+    "w": "position-wise",
+    "ipa": "/pəˈzɪʃən waɪz/",
+    "pos": "adj.",
+    "m": "逐位置的",
+    "ex": "Each of the layers in our encoder and decoder contains a fully connected feed-forward network, which is applied to each position separately and identically.",
+    "lv": "p"
+   },
+   {
+    "w": "kernel",
+    "ipa": "/ˈkɜːrnl/",
+    "pos": "n.",
+    "m": "核，内核",
+    "ex": "Another way of describing this is as two convolutions with kernel size 1.",
+    "lv": "6"
+   },
+   {
+    "w": "token",
+    "ipa": "/ˈtoʊkən/",
+    "pos": "n.",
+    "m": "词元，标记",
+    "ex": "We use learned embeddings to convert the input tokens and output tokens to vectors of dimension dmodel.",
+    "lv": "6"
+   },
+   {
+    "w": "probabilities",
+    "ipa": "/ˌprɑːbəˈbɪlətiz/",
+    "pos": "n.",
+    "m": "概率",
+    "ex": "We use the usual learned linear transformation and softmax function to convert the decoder output to predicted next-token probabilities.",
+    "lv": "4"
+   },
+   {
+    "w": "pre-softmax",
+    "ipa": "/priː ˈsɑːftmæks/",
+    "pos": "adj.",
+    "m": "Softmax之前的",
+    "ex": "We share the same weight matrix between the two embedding layers and the pre-softmax linear transformation.",
+    "lv": "p"
+   },
+   {
+    "w": "matrix",
+    "ipa": "/ˈmeɪtrɪks/",
+    "pos": "n.",
+    "m": "矩阵",
+    "ex": "We share the same weight matrix between the two embedding layers and the pre-softmax linear transformation.",
+    "lv": "p"
+   }
+  ]
+ },
+ {
+  "sec": "3.2. Attention · 注意力机制",
+  "short": "Attention",
+  "icon": "3.2",
+  "words": [
+   {
+    "w": "compatibility",
+    "ipa": "kəmˌpætəˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "兼容性；相容性",
+    "ex": "the weight assigned to each value is computed by a compatibility function",
+    "ov": "g"
+   },
+   {
+    "w": "corresponding",
+    "ipa": "ˌkɔːrəˈspɑːndɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "对应的",
+    "ex": "the query with the corresponding key"
+   },
+   {
+    "w": "simultaneously",
+    "ipa": "ˌsaɪmlˈteɪniəsli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "同时地",
+    "ex": "we compute the attention function on a set of queries simultaneously"
+   },
+   {
+    "w": "additive",
+    "ipa": "ˈædətɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "加性的",
+    "ex": "The two most commonly used attention functions are additive attention"
+   },
+   {
+    "w": "multiplicative",
+    "ipa": "ˌmʌltɪˈplɪkətɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "乘性的",
+    "ex": "dot-product (multiplicative) attention",
+    "ov": "t"
+   },
+   {
+    "w": "theoretical",
+    "ipa": "ˌθiːəˈretɪkl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "理论的",
+    "ex": "While the two are similar in theoretical complexity"
+   },
+   {
+    "w": "variance",
+    "ipa": "ˈveriəns",
+    "pos": "n.",
+    "lv": "6",
+    "m": "方差",
+    "ex": "independent random variables with mean 0 and variance 1"
+   },
+   {
+    "w": "magnitude",
+    "ipa": "ˈmæɡnɪtuːd",
+    "pos": "n.",
+    "lv": "6",
+    "m": "量级；大小",
+    "ex": "the dot products grow large in magnitude"
+   },
+   {
+    "w": "gradient",
+    "ipa": "ˈɡreɪdiənt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "梯度",
+    "ex": "pushing the softmax function into regions where it has extremely small gradients"
+   },
+   {
+    "w": "suspect",
+    "ipa": "səˈspekt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "怀疑，猜想",
+    "ex": "We suspect that for large values of dk, the dot products grow large in magnitude"
+   },
+   {
+    "w": "beneficial",
+    "ipa": "ˌbenɪˈfɪʃl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有益的",
+    "ex": "we found it beneﬁcial to linearly project the queries, keys and values"
+   },
+   {
+    "w": "yield",
+    "ipa": "jiːld",
+    "pos": "v.",
+    "lv": "4",
+    "m": "产生，输出",
+    "ex": "perform the attention function in parallel, yielding dv-dimensional output values"
+   },
+   {
+    "w": "concatenate",
+    "ipa": "kənˈkætɪneɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "拼接，级联",
+    "ex": "These are concatenated and once again projected",
+    "ov": "g"
+   },
+   {
+    "w": "subspace",
+    "ipa": "ˈsʌbpeɪs",
+    "pos": "n.",
+    "lv": "p",
+    "m": "子空间",
+    "ex": "attend to information from different representation subspaces at different positions"
+   },
+   {
+    "w": "inhibit",
+    "ipa": "ɪnˈhɪbɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "抑制",
+    "ex": "With a single attention head, averaging inhibits this"
+   },
+   {
+    "w": "mimic",
+    "ipa": "ˈmɪmɪk",
+    "pos": "v.",
+    "lv": "6",
+    "m": "模仿",
+    "ex": "This mimics the typical encoder-decoder attention mechanisms"
+   },
+   {
+    "w": "preserve",
+    "ipa": "prɪˈzɜːrv",
+    "pos": "v.",
+    "lv": "4",
+    "m": "保持，保留",
+    "ex": "to preserve the auto-regressive property"
+   },
+   {
+    "w": "scaled",
+    "ipa": "/skeɪld/",
+    "pos": "adj.",
+    "m": "缩放的",
+    "ex": "We call our particular attention Scaled Dot-Product Attention.",
+    "lv": "p"
+   },
+   {
+    "w": "dot-product",
+    "ipa": "/dɑːt ˈprɑːdʌkt/",
+    "pos": "n.",
+    "m": "点积",
+    "ex": "We compute the dot products of the query with all keys, divide each by √dk.",
+    "lv": "p"
+   },
+   {
+    "w": "softmax",
+    "ipa": "/ˈsɑːftmæks/",
+    "pos": "n.",
+    "m": "Softmax函数",
+    "ex": "Apply a softmax function to obtain the weights on the values.",
+    "lv": "p"
+   },
+   {
+    "w": "projection",
+    "ipa": "/prəˈdʒekʃən/",
+    "pos": "n.",
+    "m": "投影",
+    "ex": "We found it beneficial to linearly project the queries, keys and values h times with different, learned linear projections.",
+    "lv": "p"
+   },
+   {
+    "w": "concatenated",
+    "ipa": "/kənˈkætəneɪtɪd/",
+    "pos": "v.",
+    "m": "拼接",
+    "ex": "These are concatenated and once again projected, resulting in the final values.",
+    "lv": "p"
+   },
+   {
+    "w": "subspaces",
+    "ipa": "/ˈsʌbspeɪsɪz/",
+    "pos": "n.",
+    "m": "子空间",
+    "ex": "Multi-head attention allows the model to jointly attend to information from different representation subspaces.",
+    "lv": "p"
+   },
+   {
+    "w": "positional",
+    "ipa": "/pəˈzɪʃənl/",
+    "pos": "adj.",
+    "m": "位置的",
+    "ex": "In order for the model to make use of the order of the sequence, we must inject some information about the relative or absolute position of the tokens.",
+    "lv": "p"
+   },
+   {
+    "w": "sinusoidal",
+    "ipa": "/ˌsɪnjuˈeɪɪdəl/",
+    "pos": "adj.",
+    "m": "正弦的",
+    "ex": "In this work, we use sine and cosine functions of different frequencies.",
+    "lv": "p"
+   }
+  ]
+ },
+ {
+  "sec": "3.3–3.5. FFN, Embeddings & Positional Encoding · 前馈网络与位置编码",
+  "short": "FFN/PE",
+  "icon": "3.3",
+  "words": [
+   {
+    "w": "transformation",
+    "ipa": "ˌtrænsfərˈmeɪʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "变换",
+    "ex": "two linear transformations with a ReLU activation in between"
+   },
+   {
+    "w": "activation",
+    "ipa": "ˌæktɪˈveɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "激活（函数）",
+    "ex": "two linear transformations with a ReLU activation in between"
+   },
+   {
+    "w": "dimensionality",
+    "ipa": "dɪˌmenʃəˈnæləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "维度",
+    "ex": "The dimensionality of input and output is dmodel = 512"
+   },
+   {
+    "w": "inject",
+    "ipa": "ɪnˈdʒekt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "注入",
+    "ex": "we must inject some information about the relative or absolute position of the tokens"
+   },
+   {
+    "w": "frequency",
+    "ipa": "ˈfriːkwənsi",
+    "pos": "n.",
+    "lv": "4",
+    "m": "频率",
+    "ex": "we use sine and cosine functions of different frequencies"
+   },
+   {
+    "w": "sinusoid",
+    "ipa": "ˈsaɪnəsɔɪd",
+    "pos": "n.",
+    "lv": "p",
+    "m": "正弦曲线",
+    "ex": "each dimension of the positional encoding corresponds to a sinusoid"
+   },
+   {
+    "w": "geometric",
+    "ipa": "ˌdʒiːəˈmetrɪk",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "几何的",
+    "ex": "The wavelengths form a geometric progression from 2π to 10000 · 2π"
+   },
+   {
+    "w": "progression",
+    "ipa": "prəˈɡreʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "级数；进展",
+    "ex": "The wavelengths form a geometric progression"
+   },
+   {
+    "w": "hypothesize",
+    "ipa": "haɪˈpɑːθəsaɪz",
+    "pos": "v.",
+    "lv": "p",
+    "m": "假设，推测",
+    "ex": "we hypothesized it would allow the model to easily learn to attend by relative positions"
+   },
+   {
+    "w": "extrapolate",
+    "ipa": "ɪkˈstræpəleɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "外推",
+    "ex": "it may allow the model to extrapolate to sequence lengths longer than the ones encountered during training"
+   }
+  ]
+ },
+ {
+  "sec": "4. Why Self-Attention · 为什么用自注意力",
+  "short": "Why SA",
+  "icon": "4",
+  "words": [
+   {
+    "w": "desiderata",
+    "ipa": "ˌdezɪdəˈrɑːtə",
+    "pos": "n.",
+    "lv": "p",
+    "m": "必要条件，追求目标",
+    "ex": "Motivating our use of self-attention we consider three desiderata"
+   },
+   {
+    "w": "complexity",
+    "ipa": "kəmˈpleksəti",
+    "pos": "n.",
+    "lv": "6",
+    "m": "复杂度",
+    "ex": "One is the total computational complexity per layer"
+   },
+   {
+    "w": "traverse",
+    "ipa": "trəˈvɜːrs",
+    "pos": "v.",
+    "lv": "6",
+    "m": "穿过，遍历",
+    "ex": "the paths forward and backward signals have to traverse in the network"
+   },
+   {
+    "w": "neighborhood",
+    "ipa": "ˈneɪbərhʊd",
+    "pos": "n.",
+    "lv": "4",
+    "m": "邻域",
+    "ex": "restricted to considering only a neighborhood of size r in the input sequence"
+   },
+   {
+    "w": "dilated",
+    "ipa": "daɪˈleɪtɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "膨胀的（空洞卷积）",
+    "ex": "O(logk(n)) in the case of dilated convolutions"
+   },
+   {
+    "w": "separable",
+    "ipa": "ˈsepərəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可分离的",
+    "ex": "Separable convolutions, however, decrease the complexity considerably",
+    "ov": "t"
+   },
+   {
+    "w": "considerably",
+    "ipa": "kənˈsɪdərəbli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "相当地",
+    "ex": "decrease the complexity considerably"
+   },
+   {
+    "w": "interpretable",
+    "ipa": "ɪnˈtɜːrprətəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可解释的",
+    "ex": "self-attention could yield more interpretable models"
+   },
+   {
+    "w": "exhibit",
+    "ipa": "ɪɡˈzɪbɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "表现出",
+    "ex": "many appear to exhibit behavior related to the syntactic and semantic structure"
+   },
+   {
+    "w": "syntactic",
+    "ipa": "sɪnˈtæktɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "句法的",
+    "ex": "behavior related to the syntactic and semantic structure of the sentences"
+   },
+   {
+    "w": "semantic",
+    "ipa": "sɪˈmæntɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "语义的",
+    "ex": "behavior related to the syntactic and semantic structure of the sentences"
+   },
+   {
+    "w": "path length",
+    "ipa": "/pæθ leŋθ/",
+    "pos": "n.",
+    "m": "路径长度",
+    "ex": "The third is the path length between long-range dependencies in the network.",
+    "lv": "p"
+   },
+   {
+    "w": "hyperparameters",
+    "ipa": "/ˌhaɪpərpəˈræmɪtərz/",
+    "pos": "n.",
+    "m": "超参数",
+    "ex": "For our base models using the hyperparameters described throughout the paper, each training step took about 0.4 seconds.",
+    "lv": "p"
+   },
+   {
+    "w": "vocabulary",
+    "ipa": "/voʊˈkæbjəleri/",
+    "pos": "n.",
+    "m": "词表，词汇表",
+    "ex": "Sentences were encoded using byte-pair encoding, which has a shared source-target vocabulary of about 37000 tokens.",
+    "lv": "4"
+   },
+   {
+    "w": "subword",
+    "ipa": "/ˈsʌbwɜːrd/",
+    "pos": "n.",
+    "m": "子词",
+    "ex": "Split tokens into a 32000 word-piece vocabulary.",
+    "lv": "p"
+   },
+   {
+    "w": "learning rate",
+    "ipa": "/ˈlɜːrnɪŋ reɪt/",
+    "pos": "n.",
+    "m": "学习率",
+    "ex": "We varied the learning rate over the course of training.",
+    "lv": "p"
+   },
+   {
+    "w": "warmup",
+    "ipa": "/ˈwɔːrmʌp/",
+    "pos": "n.",
+    "m": "预热，热身",
+    "ex": "This corresponds to increasing the learning rate linearly for the first warmup_steps training steps.",
+    "lv": "p"
+   },
+   {
+    "w": "overfitting",
+    "ipa": "/ˌoʊvərˈfɪtɪŋ/",
+    "pos": "n.",
+    "m": "过拟合",
+    "ex": "Dropout is very helpful in avoiding over-fitting.",
+    "lv": "p"
+   },
+   {
+    "w": "label smoothing",
+    "ipa": "/ˈleɪbəl ˈsmuːðɪŋ/",
+    "pos": "n.",
+    "m": "标签平滑",
+    "ex": "During training, we employed label smoothing of value ϵls = 0.1.",
+    "lv": "p"
+   }
+  ]
+ },
+ {
+  "sec": "5. Training · 训练",
+  "short": "Training",
+  "icon": "5",
+  "words": [
+   {
+    "w": "approximate",
+    "ipa": "əˈprɑːksɪmət",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "近似的",
+    "ex": "Sentence pairs were batched together by approximate sequence length"
+   },
+   {
+    "w": "hyperparameter",
+    "ipa": "ˌhaɪpərpəˈræmɪtər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超参数",
+    "ex": "For our base models using the hyperparameters described throughout the paper"
+   },
+   {
+    "w": "optimizer",
+    "ipa": "ˈɑːptɪmaɪzər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "优化器",
+    "ex": "We used the Adam optimizer"
+   },
+   {
+    "w": "vary",
+    "ipa": "ˈveri",
+    "pos": "v.",
+    "lv": "4",
+    "m": "变化，调整",
+    "ex": "We varied the learning rate over the course of training"
+   },
+   {
+    "w": "linearly",
+    "ipa": "ˈlɪniərli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "线性地",
+    "ex": "increasing the learning rate linearly for the ﬁrst warmup_steps training steps"
+   },
+   {
+    "w": "proportionally",
+    "ipa": "prəˈpɔːrʃənəli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "成比例地",
+    "ex": "decreasing it thereafter proportionally to the inverse square root of the step number"
+   },
+   {
+    "w": "inverse",
+    "ipa": "ˌɪnˈvɜːrs",
+    "pos": "adj.",
+    "lv": "k",
+    "m": "逆的，反向的",
+    "ex": "proportionally to the inverse square root of the step number"
+   },
+   {
+    "w": "regularization",
+    "ipa": "ˌreɡjələrəˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "正则化",
+    "ex": "We employ three types of regularization during training"
+   },
+   {
+    "w": "dropout",
+    "ipa": "ˈdrɑːpaʊt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "丢弃法（dropout）",
+    "ex": "We apply dropout to the output of each sub-layer"
+   },
+   {
+    "w": "smoothing",
+    "ipa": "ˈsmuːðɪŋ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "平滑",
+    "ex": "we employed label smoothing of value ϵls = 0.1"
+   },
+   {
+    "w": "perplexity",
+    "ipa": "pərˈpleksəti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "困惑度",
+    "ex": "This hurts perplexity, as the model learns to be more unsure",
+    "ov": "g"
+   },
+   {
+    "w": "BLEU",
+    "ipa": "/bluː/",
+    "pos": "n.",
+    "m": "BLEU评分",
+    "ex": "Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task.",
+    "lv": "p"
+   },
+   {
+    "w": "outperform",
+    "ipa": "/ˌaʊtpərˈfɔːrm/",
+    "pos": "v.",
+    "m": "胜过，优于",
+    "ex": "The big transformer model outperforms the best previously reported models.",
+    "lv": "6"
+   },
+   {
+    "w": "state-of-the-art",
+    "ipa": "/steɪt əv ði ɑːrt/",
+    "pos": "adj.",
+    "m": "最先进的",
+    "ex": "Establishing a new state-of-the-art BLEU score of 28.4.",
+    "lv": "p"
+   },
+   {
+    "w": "beam search",
+    "ipa": "/biːm sɜːrtʃ/",
+    "pos": "n.",
+    "m": "束搜索",
+    "ex": "We used beam search with a beam size of 4 and length penalty α = 0.6.",
+    "lv": "p"
+   },
+   {
+    "w": "floating point",
+    "ipa": "/ˈfloʊtɪŋ pɔɪnt/",
+    "pos": "n.",
+    "m": "浮点数",
+    "ex": "We estimate the number of floating point operations used to train a model.",
+    "lv": "p"
+   }
+  ]
+ },
+ {
+  "sec": "6. Results · 结果",
+  "short": "Results",
+  "icon": "6",
+  "words": [
+   {
+    "w": "configuration",
+    "ipa": "kənˌfɪɡjəˈreɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "配置",
+    "ex": "The conﬁguration of this model is listed in the bottom line of Table 3"
+   },
+   {
+    "w": "surpass",
+    "ipa": "sərˈpæs",
+    "pos": "v.",
+    "lv": "4",
+    "m": "超过",
+    "ex": "Even our base model surpasses all previously published models and ensembles"
+   },
+   {
+    "w": "checkpoint",
+    "ipa": "ˈtʃekpɔɪnt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "检查点",
+    "ex": "a single model obtained by averaging the last 5 checkpoints"
+   },
+   {
+    "w": "interval",
+    "ipa": "ˈɪntərvl",
+    "pos": "n.",
+    "lv": "4",
+    "m": "间隔",
+    "ex": "which were written at 10-minute intervals"
+   },
+   {
+    "w": "inference",
+    "ipa": "ˈɪnfərəns",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推断",
+    "ex": "We set the maximum output length during inference"
+   },
+   {
+    "w": "terminate",
+    "ipa": "ˈtɜːrmɪneɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "终止",
+    "ex": "but terminate early when possible"
+   },
+   {
+    "w": "penalty",
+    "ipa": "ˈpenəlti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "惩罚",
+    "ex": "We used beam search with a beam size of 4 and length penalty α = 0.6"
+   },
+   {
+    "w": "sophisticated",
+    "ipa": "səˈfɪstɪkeɪtɪd",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "复杂的，精密的",
+    "ex": "a more sophisticated compatibility function than dot product may be beneﬁcial"
+   },
+   {
+    "w": "variation",
+    "ipa": "veriˈeɪʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "变体，变化",
+    "ex": "Variations on the Transformer architecture"
+   },
+   {
+    "w": "overfit",
+    "ipa": "ˌoʊvərˈfɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "过拟合",
+    "ex": "dropout is very helpful in avoiding over-ﬁtting"
+   },
+   {
+    "w": "estimate",
+    "ipa": "ˈestɪmeɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "估计",
+    "ex": "We estimate the number of ﬂoating point operations used to train a model"
+   },
+   {
+    "w": "sustained",
+    "ipa": "səˈsteɪnd",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "持续的",
+    "ex": "an estimate of the sustained single-precision ﬂoating-point capacity of each GPU"
+   },
+   {
+    "w": "regime",
+    "ipa": "reɪˈʒiːm",
+    "pos": "n.",
+    "lv": "6",
+    "m": "区间，情境（小数据场景）",
+    "ex": "have not been able to attain state-of-the-art results in small-data regimes"
+   },
+   {
+    "w": "attain",
+    "ipa": "əˈteɪn",
+    "pos": "v.",
+    "lv": "4",
+    "m": "达到",
+    "ex": "have not been able to attain state-of-the-art results in small-data regimes"
+   },
+   {
+    "w": "semi-supervised",
+    "ipa": "ˌsemi ˈsuːpərvaɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "半监督的",
+    "ex": "We also trained it in a semi-supervised setting"
+   },
+   {
+    "w": "ablation",
+    "ipa": "/əˈbleɪʃən/",
+    "pos": "n.",
+    "m": "消融实验",
+    "ex": "To evaluate the importance of different components of the Transformer, we varied our base model in different ways.",
+    "lv": "p"
+   },
+   {
+    "w": "discriminative",
+    "ipa": "/dɪˈskrɪmɪnətɪv/",
+    "pos": "adj.",
+    "m": "判别式的",
+    "ex": "We trained a 4-layer transformer on the Wall Street Journal portion of the Penn Treebank.",
+    "lv": "p"
+   }
+  ]
+ },
+ {
+  "sec": "7. Conclusion · 结论",
+  "short": "Conclusion",
+  "icon": "7",
+  "words": [
+   {
+    "w": "modality",
+    "ipa": "moʊˈdæləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "模态",
+    "ex": "to problems involving input and output modalities other than text"
+   },
+   {
+    "w": "sequential",
+    "ipa": "sɪˈkwenʃl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "顺序的，串行的",
+    "ex": "Making generation less sequential is another research goals of ours",
+    "ov": "g"
+   },
+   {
+    "w": "grateful",
+    "ipa": "ˈɡreɪtfl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "感激的",
+    "ex": "We are grateful to Nal Kalchbrenner and Stephan Gouws"
+   },
+   {
+    "w": "fruitful",
+    "ipa": "ˈfruːtfl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "富有成效的",
+    "ex": "for their fruitful comments, corrections and inspiration"
+   },
+   {
+    "w": "inspiration",
+    "ipa": "ˌɪnspəˈreɪʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "灵感",
+    "ex": "for their fruitful comments, corrections and inspiration"
+   },
+   {
+    "w": "modalities",
+    "ipa": "/moʊˈdælətiz/",
+    "pos": "n.",
+    "m": "模态",
+    "ex": "We plan to extend the Transformer to problems involving input and output modalities other than text.",
+    "lv": "p"
+   },
+   {
+    "w": "restricted",
+    "ipa": "/rɪˈstrɪktɪd/",
+    "pos": "adj.",
+    "m": "受限的",
+    "ex": "We plan to investigate local, restricted attention mechanisms to efficiently handle large inputs and outputs such as images, audio and video.",
+    "lv": "4"
+   }
+  ]
+ }
+]

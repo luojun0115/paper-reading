@@ -1,0 +1,1316 @@
+[
+ {
+  "sec": "Abstract · 摘要",
+  "short": "摘要",
+  "icon": "Abs",
+  "words": [
+   {
+    "w": "framework",
+    "ipa": "ˈfreɪmwɜːrk",
+    "pos": "n.",
+    "lv": "4",
+    "m": "框架，体系",
+    "ex": "We propose a new framework for estimating generative models via an adversarial process."
+   },
+   {
+    "w": "adversarial",
+    "ipa": "ˌædvərˈseriəl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "对抗性的",
+    "ex": "We propose a new framework for estimating generative models via an adversarial process."
+   },
+   {
+    "w": "generative",
+    "ipa": "ˈdʒenərətɪv",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "生成的",
+    "ex": "We simultaneously train two models: a generative model G that captures the data distribution."
+   },
+   {
+    "w": "discriminative",
+    "ipa": "dɪˈskrɪmɪnətɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "判别的",
+    "ex": "A discriminative model D that estimates the probability that a sample came from the training data."
+   },
+   {
+    "w": "simultaneously",
+    "ipa": "ˌsaɪmlˈteɪniəsli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "同时地",
+    "ex": "We simultaneously train two models."
+   },
+   {
+    "w": "distinguishable",
+    "ipa": "dɪˈstɪŋɡwɪʃəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可区分的",
+    "ex": "The counterfeits are indistinguishable from the genuine articles."
+   },
+   {
+    "w": "qualitative",
+    "ipa": "ˈkwɑːləteɪtɪv",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "定性的",
+    "ex": "Qualitative and quantitative evaluation of the generated samples."
+   },
+   {
+    "w": "quantitative",
+    "ipa": "ˈkwɑːntəteɪtɪv",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "定量的",
+    "ex": "Qualitative and quantitative evaluation of the generated samples."
+   },
+   {
+    "w": "perceptron",
+    "ipa": "pərˈseptɑːn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "感知机",
+    "ex": "G and D are defined by multilayer perceptrons."
+   },
+   {
+    "w": "backpropagation",
+    "ipa": "ˌbækprɒpəˈɡeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "反向传播",
+    "ex": "The entire system can be trained with backpropagation."
+   },
+   {
+    "w": "inference",
+    "ipa": "ˈɪnfərəns",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推理，推断",
+    "ex": "No approximate inference or Markov chains are necessary."
+   },
+   {
+    "w": "approximate",
+    "ipa": "əˈprɑːksɪmət",
+    "pos": "adj./v.",
+    "lv": "4",
+    "m": "近似的/近似",
+    "ex": "No approximate inference or Markov chains are necessary."
+   },
+   {
+    "w": "demonstrate",
+    "ipa": "ˈdemənstreɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "证明，展示",
+    "ex": "Experiments demonstrate the potential of the framework."
+   },
+   {
+    "w": "capture",
+    "ipa": "ˈkæptʃər",
+    "pos": "v.",
+    "lv": "4",
+    "m": "捕获，捕捉",
+    "ex": "A generative model G that captures the data distribution."
+   },
+   {
+    "w": "probability",
+    "ipa": "ˌprɑːbəˈbɪləti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "概率",
+    "ex": "Estimates the probability that a sample came from the training data rather than G."
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "引言",
+  "icon": "1",
+  "words": [
+   {
+    "w": "hierarchical",
+    "ipa": "ˌhaɪəˈrɑːrkɪkl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "分层的，等级的",
+    "ex": "Discover rich, hierarchical models that represent probability distributions."
+   },
+   {
+    "w": "distribution",
+    "ipa": "ˌdɪstrɪˈbjuːʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分布，分配",
+    "ex": "Models that represent probability distributions over the kinds of data encountered."
+   },
+   {
+    "w": "striking",
+    "ipa": "ˈstraɪkɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "显著的，引人注目的",
+    "ex": "The most striking successes in deep learning have involved discriminative models."
+   },
+   {
+    "w": "sensory",
+    "ipa": "ˈsensəri",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "感觉的，感官的",
+    "ex": "Map a high-dimensional, rich sensory input to a class label."
+   },
+   {
+    "w": "intractable",
+    "ipa": "ɪnˈtræktəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "难处理的，棘手的",
+    "ex": "Due to the difficulty of approximating many intractable probabilistic computations."
+   },
+   {
+    "w": "sidestep",
+    "ipa": "ˈsaɪdstep",
+    "pos": "v.",
+    "lv": "p",
+    "m": "回避，绕开",
+    "ex": "We propose a new generative model estimation procedure that sidesteps these difficulties."
+   },
+   {
+    "w": "counterfeiter",
+    "ipa": "ˈkaːntərfɪtər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "伪造者",
+    "ex": "The generative model can be thought of as analogous to a team of counterfeiters."
+   },
+   {
+    "w": "indistinguishable",
+    "ipa": "ˌɪndɪˈstɪŋɡwɪʃəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无法区分的",
+    "ex": "Until the counterfeits are indistinguishable from the genuine articles."
+   },
+   {
+    "w": "optimization",
+    "ipa": "ˌɑːptɪməˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "优化",
+    "ex": "This framework can yield specific training algorithms for many kinds of model and optimization.",
+    "ov": "t"
+   },
+   {
+    "w": "propagation",
+    "ipa": "ˌprɑːpəˈɡeɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "传播",
+    "ex": "Sample from the generative model using only forward propagation."
+   },
+   {
+    "w": "distinguish",
+    "ipa": "dɪˈstɪŋɡwɪʃ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "区分，辨别",
+    "ex": "A discriminative model that learns to determine whether a sample is from the model distribution."
+   },
+   {
+    "w": "genuine",
+    "ipa": "ˈdʒenjuɪn",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "真正的，真品的",
+    "ex": "Until the counterfeits are indistinguishable from the genuine articles."
+   },
+   {
+    "w": "counterfeit",
+    "ipa": "ˈkaːntərfɪt",
+    "pos": "adj./n.",
+    "lv": "p",
+    "m": "伪造的/赝品",
+    "ex": "Trying to produce fake currency and use it without detection."
+   },
+   {
+    "w": "analogous",
+    "ipa": "əˈnæləɡəs",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "类似的，相似的",
+    "ex": "The generative model can be thought of as analogous to a team of counterfeiters."
+   },
+   {
+    "w": "gradient",
+    "ipa": "ˈɡreɪdiənt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "梯度，斜率",
+    "ex": "Deep generative models have had less of an impact due to the difficulty of approximating intractable computations."
+   },
+   {
+    "w": "dropout",
+    "ipa": "ˈdrɑːpɑːt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "随机丢弃",
+    "ex": "These striking successes have primarily been based on the backpropagation and dropout algorithms."
+   },
+   {
+    "w": "encounter",
+    "ipa": "ɪnˈkaʊntər",
+    "pos": "v.",
+    "lv": "4",
+    "m": "遇到，遭遇",
+    "ex": "Probability distributions over the kinds of data encountered in artificial intelligence applications."
+   },
+   {
+    "w": "leverage",
+    "ipa": "ˈlevərɪdʒ",
+    "pos": "v.",
+    "lv": "p",
+    "m": "利用，发挥",
+    "ex": "Due to difficulty of leveraging the benefits of piecewise linear units in the generative context."
+   },
+   {
+    "w": "piecewise",
+    "ipa": "ˈpiːswaɪz",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "分段的",
+    "ex": "Using piecewise linear units which have a particularly well-behaved gradient."
+   },
+   {
+    "w": "well-behaved",
+    "ipa": "ˌwel bɪˈheɪvd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "行为良好的",
+    "ex": "Piecewise linear units which have a particularly well-behaved gradient."
+   },
+   {
+    "w": "high-dimensional",
+    "ipa": "ˌhaɪ daɪˈmɛnʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "高维的",
+    "ex": "Map a high-dimensional, rich sensory input to a class label."
+   },
+   {
+    "w": "class label",
+    "ipa": "klæs ˈleɪbl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "类别标签",
+    "ex": "Map a high-dimensional, rich sensory input to a class label."
+   },
+   {
+    "w": "impact",
+    "ipa": "ˈɪmpækt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "影响，作用",
+    "ex": "Deep generative models have had less of an impact."
+   },
+   {
+    "w": "artificial intelligence",
+    "ipa": "ˌɑːrtɪˈfɪʃl ɪnˈtelɪdʒəns",
+    "pos": "n.",
+    "lv": "p",
+    "m": "人工智能",
+    "ex": "Probability distributions over the kinds of data encountered in artificial intelligence applications."
+   },
+   {
+    "w": "procedure",
+    "ipa": "prəˈsiːdʒər",
+    "pos": "n.",
+    "lv": "4",
+    "m": "程序，过程",
+    "ex": "We propose a new generative model estimation procedure."
+   },
+   {
+    "w": "waveform",
+    "ipa": "/ˈweɪvfɔːrm/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "波形",
+    "ex": "The promise of deep learning is to discover rich, hierarchical models that represent probability distributions over the kinds of data encountered in artificial intelligence applications, such as natural images, audio waveforms containing speech, and symbols in natural language corpora."
+   }
+  ]
+ },
+ {
+  "sec": "2. Related work · 相关工作",
+  "short": "相关工作",
+  "icon": "2",
+  "words": [
+   {
+    "w": "latent",
+    "ipa": "ˈleɪnt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "潜在的，隐含的",
+    "ex": "An alternative to directed graphical models with latent variables."
+   },
+   {
+    "w": "undirected",
+    "ipa": "ˌʌndərˈdaɪktɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无向的",
+    "ex": "Undirected graphical models with latent variables, such as restricted Boltzmann machines.",
+    "ov": "g"
+   },
+   {
+    "w": "partition",
+    "ipa": "pɑːrˈtɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "分区，分割",
+    "ex": "This quantity (the partition function) and its gradient are intractable."
+   },
+   {
+    "w": "hybrid",
+    "ipa": "ˈhaɪbrɪd",
+    "pos": "adj./n.",
+    "lv": "p",
+    "m": "混合的/混合物",
+    "ex": "Deep belief networks are hybrid models containing a single undirected layer."
+   },
+   {
+    "w": "tractable",
+    "ipa": "ˈtræktəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "易处理的",
+    "ex": "It is not even possible to derive a tractable unnormalized probability density."
+   },
+   {
+    "w": "specify",
+    "ipa": "ˈspesɪfaɪ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "指定，明确",
+    "ex": "Both of these require the learned probability density to be analytically specified."
+   },
+   {
+    "w": "normalization",
+    "ipa": "ˌnɔːrmələˈzeɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "归一化",
+    "ex": "Both require the learned probability density to be analytically specified up to a normalization constant."
+   },
+   {
+    "w": "variational",
+    "ipa": "ˌveriˈeɪʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "变分的",
+    "ex": "Auto-encoding variational Bayes and stochastic backpropagation."
+   },
+   {
+    "w": "stochastic",
+    "ipa": "stəˈkæstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "随机的",
+    "ex": "Stochastic backpropagation and approximate inference in deep generative models."
+   },
+   {
+    "w": "parameterized",
+    "ipa": "pəˈræmətərˌaɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "参数化的",
+    "ex": "One can be seen as defining a parameterized Markov chain."
+   },
+   {
+    "w": "prominent",
+    "ipa": "ˈprɑːmɪnənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "突出的，著名的",
+    "ex": "Prominent recent work in this area includes the generative stochastic network framework."
+   },
+   {
+    "w": "interaction",
+    "ipa": "ˌɪntərˈækʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "交互，相互作用",
+    "ex": "The interactions within such models are represented as the product of unnormalized potential functions."
+   },
+   {
+    "w": "unnormalized",
+    "ipa": "ˌʌnˈnɔːrməlaɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "未归一化的",
+    "ex": "The interactions are represented as the product of unnormalized potential functions."
+   },
+   {
+    "w": "potential",
+    "ipa": "pəˈtenʃl",
+    "pos": "adj./n.",
+    "lv": "4",
+    "m": "潜在的/势能",
+    "ex": "The interactions are represented as the product of unnormalized potential functions."
+   },
+   {
+    "w": "analytically",
+    "ipa": "ˌænəˈlɪtɪkli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "解析地",
+    "ex": "Both require the learned probability density to be analytically specified."
+   },
+   {
+    "w": "numerous",
+    "ipa": "ˈnuːmərəs",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "众多的，许多的",
+    "ex": "Restricted Boltzmann machines and their numerous variants."
+   },
+   {
+    "w": "dramatically",
+    "ipa": "drəˈmætɪkli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "戏剧性地",
+    "ex": "Learning slows dramatically after the model has learned even an approximately correct distribution."
+   },
+   {
+    "w": "feedback",
+    "ipa": "ˈfiːdbæk",
+    "pos": "n.",
+    "lv": "4",
+    "m": "反馈",
+    "ex": "Adversarial nets do not require feedback loops during generation."
+   },
+   {
+    "w": "approximate",
+    "ipa": "əˈprɑːksɪmət",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "近似的",
+    "ex": "A fast approximate layer-wise training criterion exists."
+   },
+   {
+    "w": "criterion",
+    "ipa": "kraɪˈtɪriən",
+    "pos": "n.",
+    "lv": "6",
+    "m": "准则，标准",
+    "ex": "A fast approximate layer-wise training criterion exists."
+   },
+   {
+    "w": "adversary",
+    "ipa": "/ˈædvərseri/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "对手，敌手",
+    "ex": "The minimax game has the following value function."
+   },
+   {
+    "w": "equilibrium",
+    "ipa": "/ˌiːkwɪˈlɪbriəm/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "平衡",
+    "ex": "When both G and D have enough capacity, the training procedure converges to the point where G reproduces the training data distribution and D cannot distinguish between training data and samples from G."
+   }
+  ]
+ },
+ {
+  "sec": "3. Adversarial nets · 对抗网络",
+  "short": "对抗网络",
+  "icon": "3",
+  "words": [
+   {
+    "w": "differentiable",
+    "ipa": "dɪˈfɜːrənʃəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可微分的",
+    "ex": "G is a differentiable function represented by a multilayer perceptron."
+   },
+   {
+    "w": "scalar",
+    "ipa": "ˈskeɪlər",
+    "pos": "n./adj.",
+    "lv": "6",
+    "m": "标量",
+    "ex": "D(x) represents a single scalar."
+   },
+   {
+    "w": "minimax",
+    "ipa": "ˈmɪnɪmæks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "极大极小",
+    "ex": "D and G play the following two-player minimax game."
+   },
+   {
+    "w": "convergence",
+    "ipa": "kənˈvɜːrdʒəns",
+    "pos": "n.",
+    "lv": "p",
+    "m": "收敛",
+    "ex": "Then pg converges to pdata."
+   },
+   {
+    "w": "saturate",
+    "ipa": "ˈsætʃəreɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "使饱和",
+    "ex": "Log(1 − D(G(z))) saturates."
+   },
+   {
+    "w": "gradient",
+    "ipa": "ˈɡreɪdiənt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "梯度，斜率",
+    "ex": "This objective function results in the same fixed point but provides much stronger gradients."
+   },
+   {
+    "w": "fixed point",
+    "ipa": "fɪst pɔɪnt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "不动点，定点",
+    "ex": "This objective function results in the same fixed point of the dynamics of G and D."
+   },
+   {
+    "w": "dynamics",
+    "ipa": "daɪˈnæmɪks",
+    "pos": "n.",
+    "lv": "4",
+    "m": "动力学，动态",
+    "ex": "This objective function results in the same fixed point of the dynamics of G and D."
+   },
+   {
+    "w": "minibatch",
+    "ipa": "ˈmɪniˌbætʃ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "小批量",
+    "ex": "Sample minibatch of m noise samples from noise prior."
+   },
+   {
+    "w": "hyperparameter",
+    "ipa": "ˌhaɪpərpəˈræmɪtər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超参数",
+    "ex": "The number of steps to apply to the discriminator is a hyperparameter."
+   },
+   {
+    "w": "ascending",
+    "ipa": "əˈsendɪŋ",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "上升的",
+    "ex": "Update the discriminator by ascending its stochastic gradient."
+   },
+   {
+    "w": "descending",
+    "ipa": "dɪˈsendɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "下降的",
+    "ex": "Update the generator by descending its stochastic gradient."
+   },
+   {
+    "w": "momentum",
+    "ipa": "moʊˈmentəm",
+    "pos": "n.",
+    "lv": "6",
+    "m": "动量，势头",
+    "ex": "The gradient-based updates can use any standard gradient-based learning rule. We used momentum."
+   },
+   {
+    "w": "prohibitive",
+    "ipa": "proʊˈhɪbətɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "禁止的，过高的",
+    "ex": "Optimizing D to completion in the inner loop of training is computationally prohibitive.",
+    "ov": "g"
+   },
+   {
+    "w": "game",
+    "ipa": "ɡeɪm",
+    "pos": "n.",
+    "lv": "4",
+    "m": "博弈，游戏",
+    "ex": "D and G play the following two-player minimax game with value function V(G, D)."
+   },
+   {
+    "w": "objective",
+    "ipa": "əbˈdʒektɪv",
+    "pos": "adj./n.",
+    "lv": "4",
+    "m": "客观的/目标",
+    "ex": "This objective function results in the same fixed point of the dynamics of G and D."
+   },
+   {
+    "w": "noise",
+    "ipa": "nɔɪz",
+    "pos": "n.",
+    "lv": "4",
+    "m": "噪声",
+    "ex": "Sample minibatch of m noise samples from noise prior."
+   },
+   {
+    "w": "prior",
+    "ipa": "ˈpraɪər",
+    "pos": "adj./n.",
+    "lv": "4",
+    "m": "先验的/先验",
+    "ex": "Sample minibatch of m noise samples from noise prior pz(z)."
+   },
+   {
+    "w": "saturated",
+    "ipa": "ˈsætʃəreɪtɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "饱和的",
+    "ex": "The gradient of the log function saturates when D is close to optimal.",
+    "ov": "g"
+   },
+   {
+    "w": "iterative",
+    "ipa": "ˈɪtərətɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "迭代的",
+    "ex": "We must implement the game using an iterative, numerical approach."
+   },
+   {
+    "w": "pretrain",
+    "ipa": "/priːˈtreɪn/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "预训练",
+    "ex": "We pre-train a GAN on MNIST, Toronto Face Database, and CIFAR-10."
+   }
+  ]
+ },
+ {
+  "sec": "4. Theoretical results · 理论结果",
+  "short": "理论结果",
+  "icon": "4",
+  "words": [
+   {
+    "w": "optimal",
+    "ipa": "ˈɑːptɪml",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "最优的",
+    "ex": "We first consider the optimal discriminator D for any given generator G."
+   },
+   {
+    "w": "divergence",
+    "ipa": "daɪˈvɜːrdʒəns",
+    "pos": "n.",
+    "lv": "p",
+    "m": "散度，差异",
+    "ex": "We recognize the Jensen–Shannon divergence between the model's distribution and the data generating process."
+   },
+   {
+    "w": "non-negative",
+    "ipa": "ˌnɑːn ˈneɡətɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "非负的",
+    "ex": "The Jensen–Shannon divergence between two distributions is always non-negative."
+   },
+   {
+    "w": "convex",
+    "ipa": "ˈkɑːnveks",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "凸的",
+    "ex": "Note that U(pg, D) is convex in pg."
+   },
+   {
+    "w": "capacity",
+    "ipa": "kəˈpæsəti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "容量，能力",
+    "ex": "If G and D have enough capacity."
+   },
+   {
+    "w": "theoretical",
+    "ipa": "ˌθiəˈretɪkl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "理论的",
+    "ex": "Theoretical results show the global minimum of the virtual training criterion."
+   },
+   {
+    "w": "global",
+    "ipa": "ˈɡloʊbl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "全局的",
+    "ex": "The global minimum of the virtual training criterion C(G) is achieved."
+   },
+   {
+    "w": "minimum",
+    "ipa": "ˈmɪnɪməm",
+    "pos": "n.",
+    "lv": "4",
+    "m": "最小值",
+    "ex": "The global minimum of the virtual training criterion C(G) is achieved if and only if pg = pdata."
+   },
+   {
+    "w": "subderivative",
+    "ipa": "ˌsʌbdəˈrɪvətɪv",
+    "pos": "n.",
+    "lv": "p",
+    "m": "次导数",
+    "ex": "The subderivatives of a supremum of convex functions include the derivative of the function."
+   },
+   {
+    "w": "supremum",
+    "ipa": "suːˈpriːməm",
+    "pos": "n.",
+    "lv": "p",
+    "m": "上确界",
+    "ex": "The subderivatives of a supremum of convex functions include the derivative of the function."
+   },
+   {
+    "w": "derivative",
+    "ipa": "dəˈrɪvətɪv",
+    "pos": "n.",
+    "lv": "p",
+    "m": "导数，微分",
+    "ex": "The subderivatives of a supremum of convex functions include the derivative."
+   },
+   {
+    "w": "unbiased",
+    "ipa": "ʌnˈbaɪəst",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "无偏的",
+    "ex": "The estimator is shown to be consistent and asymptotically unbiased."
+   },
+   {
+    "w": "asymptotically",
+    "ipa": "ˌæsɪmpˈtɑːtɪkli",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "渐近地",
+    "ex": "The estimator is shown to be consistent and asymptotically unbiased."
+   },
+   {
+    "w": "consistent",
+    "ipa": "kənˈsɪstənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "一致的，连贯的",
+    "ex": "The estimator is shown to be consistent and asymptotically unbiased."
+   },
+   {
+    "w": "exponential",
+    "ipa": "ɪkˌspoʊnenʃəl",
+    "pos": "adj./n.",
+    "lv": "p",
+    "m": "指数的",
+    "ex": "The exponential KL divergence term dominates."
+   },
+   {
+    "w": "theorem",
+    "ipa": "ˈθiːrəm",
+    "pos": "n.",
+    "lv": "6",
+    "m": "定理",
+    "ex": "Theorem 1: The global minimum of the virtual training criterion C(G) is achieved if and only if pg = pdata."
+   },
+   {
+    "w": "proposition",
+    "ipa": "ˌprɑːpəˈzɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "命题",
+    "ex": "Proposition 1: For G fixed, the optimal discriminator D is..."
+   },
+   {
+    "w": "Kullback-Leibler",
+    "ipa": "ˈkʊlbæk ˈlaɪblər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "KL散度",
+    "ex": "Where KL is the Kullback-Leibler divergence."
+   },
+   {
+    "w": "Jensen-Shannon",
+    "ipa": "ˈdʒɛnsən ˈʃænən",
+    "pos": "n.",
+    "lv": "p",
+    "m": "JS散度",
+    "ex": "We recognize the Jensen-Shannon divergence between the model's distribution and the data generating process."
+   },
+   {
+    "w": "value function",
+    "ipa": "ˈvæljuː ˈfʌŋkʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "价值函数",
+    "ex": "D and G play the following two-player minimax game with value function V(G, D)."
+   },
+   {
+    "w": "markov chain",
+    "ipa": "/ˈmɑːrkəv tʃeɪn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "马尔可夫链",
+    "ex": "There is no need for any Markov chains or unrolled approximate inference networks during either training or generation of samples."
+   },
+   {
+    "w": "lower bound",
+    "ipa": "/ˈloʊər baʊnd/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "下界",
+    "ex": "GANs do not require an approximation of the variational lower bound."
+   }
+  ]
+ },
+ {
+  "sec": "5. Experiments · 实验",
+  "short": "实验",
+  "icon": "5",
+  "words": [
+   {
+    "w": "Parzen window",
+    "ipa": "ˈpɑːrtsən ˈwɪndoʊ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "帕森窗口",
+    "ex": "Parzen window-based log-likelihood estimates."
+   },
+   {
+    "w": "log-likelihood",
+    "ipa": "lɑːɡ laɪkliˈhʊd",
+    "pos": "n.",
+    "lv": "p",
+    "m": "对数似然",
+    "ex": "The reported numbers on MNIST are the mean log-likelihood of samples."
+   },
+   {
+    "w": "cross-validate",
+    "ipa": "krɑːs ˈvælədeɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "交叉验证",
+    "ex": "The width of the Gaussians was obtained by cross validation on the validation set."
+   },
+   {
+    "w": "interpolation",
+    "ipa": "ɪnˌtɜːrprəˈleɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "插值",
+    "ex": "Digits obtained by linearly interpolating between coordinates in z space.",
+    "ov": "g"
+   },
+   {
+    "w": "visualization",
+    "ipa": "ˌvɪʒuələˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可视化",
+    "ex": "Visualization of samples from the model."
+   },
+   {
+    "w": "memorize",
+    "ipa": "ˈmeməraɪz",
+    "pos": "v.",
+    "lv": "4",
+    "m": "记忆，背诵",
+    "ex": "The rightmost column shows the nearest training example to demonstrate that the model has not memorized the training set."
+   },
+   {
+    "w": "cherry-pick",
+    "ipa": "ˈtʃeri pɪk",
+    "pos": "v.",
+    "lv": "p",
+    "m": "精心挑选",
+    "ex": "Samples are fair random draws, not cherry-picked."
+   },
+   {
+    "w": "competitive",
+    "ipa": "kəmˈpetətɪv",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有竞争力的",
+    "ex": "These samples are at least competitive with the better generative models."
+   },
+   {
+    "w": "highlight",
+    "ipa": "ˈhaɪlaɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "突出，强调",
+    "ex": "Highlight the potential of the adversarial framework."
+   },
+   {
+    "w": "variance",
+    "ipa": "ˈveriəns",
+    "pos": "n.",
+    "lv": "6",
+    "m": "方差，变异性",
+    "ex": "This method of estimating the likelihood has somewhat high variance."
+   },
+   {
+    "w": "dimensional",
+    "ipa": "daɪˈmɛnʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "维度的",
+    "ex": "Does not perform well in high dimensional spaces."
+   },
+   {
+    "w": "density",
+    "ipa": "ˈdensəti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "密度",
+    "ex": "Parzen density estimation."
+   },
+   {
+    "w": "exemplify",
+    "ipa": "ɪɡˈzemplɪfaɪ",
+    "pos": "v.",
+    "lv": "6",
+    "m": "举例说明",
+    "ex": "Exemplify the approach through qualitative and quantitative evaluation."
+   },
+   {
+    "w": "estimate",
+    "ipa": "ˈestɪmeɪt",
+    "pos": "v./n.",
+    "lv": "4",
+    "m": "估计，估算",
+    "ex": "Estimating generative models via an adversarial process."
+   },
+   {
+    "w": "quantify",
+    "ipa": "ˈkwɑːntɪfaɪ",
+    "pos": "v.",
+    "lv": "6",
+    "m": "量化",
+    "ex": "Quantitative evaluation of the generated samples."
+   },
+   {
+    "w": "nearest",
+    "ipa": "ˈniːərɪst",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "最近的",
+    "ex": "The rightmost column shows the nearest training example."
+   },
+   {
+    "w": "procedure",
+    "ipa": "prəˈsiːdʒər",
+    "pos": "n.",
+    "lv": "4",
+    "m": "程序，步骤",
+    "ex": "We propose a new generative model estimation procedure."
+   },
+   {
+    "w": "procedure",
+    "ipa": "prəˈsiːdʒər",
+    "pos": "n.",
+    "lv": "4",
+    "m": "程序，过程",
+    "ex": "This procedure was introduced in Breuleux et al."
+   },
+   {
+    "w": "prohibitively",
+    "ipa": "proʊˈhɪbətɪvli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "令人望而却步地",
+    "ex": "Optimizing D to completion is computationally prohibitive."
+   },
+   {
+    "w": "observed",
+    "ipa": "əbˈzɜːrvd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "观测到的",
+    "ex": "Learning slows after the model has learned over a small subset of the observed variables."
+   }
+  ]
+ },
+ {
+  "sec": "6. Advantages and disadvantages · 优缺点",
+  "short": "优缺点",
+  "icon": "6",
+  "words": [
+   {
+    "w": "synchronize",
+    "ipa": "ˈsɪŋkrənaɪz",
+    "pos": "v.",
+    "lv": "p",
+    "m": "同步",
+    "ex": "D must be synchronized well with G during training.",
+    "ov": "g"
+   },
+   {
+    "w": "collapse",
+    "ipa": "kəˈlæps",
+    "pos": "v./n.",
+    "lv": "4",
+    "m": "崩溃，坍缩",
+    "ex": "G collapses too many values of z to the same value of x."
+   },
+   {
+    "w": "diversity",
+    "ipa": "daɪˈvɜːrsəti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "多样性",
+    "ex": "Not enough diversity to model pdata."
+   },
+   {
+    "w": "efficiency",
+    "ipa": "ɪˈfɪʃnsi",
+    "pos": "n.",
+    "lv": "4",
+    "m": "效率",
+    "ex": "Training could be accelerated greatly by devising better methods."
+   },
+   {
+    "w": "explicitly",
+    "ipa": "ɪkˈsplɪsɪtli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "明确地，显式地",
+    "ex": "There is no explicit representation of pg(x)."
+   },
+   {
+    "w": "represent",
+    "ipa": "ˌreprɪˈzent",
+    "pos": "v.",
+    "lv": "4",
+    "m": "表示，代表",
+    "ex": "There is no explicit representation of pg(x)."
+   },
+   {
+    "w": "viability",
+    "ipa": "ˌvaɪəˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可行性",
+    "ex": "This paper has demonstrated the viability of the adversarial modeling framework.",
+    "ov": "t"
+   },
+   {
+    "w": "accelerate",
+    "ipa": "əkˈseləreɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "加速",
+    "ex": "Training could be accelerated greatly by devising better methods."
+   },
+   {
+    "w": "devising",
+    "ipa": "dɪˈvaɪzɪŋ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "设计，发明",
+    "ex": "Training could be accelerated greatly by devising better methods."
+   },
+   {
+    "w": "determining",
+    "ipa": "dɪˈtɜːrmɪnɪŋ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "确定",
+    "ex": "Determining better distributions to sample z from during training."
+   },
+   {
+    "w": "labeled",
+    "ipa": "ˈleɪbld",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有标签的",
+    "ex": "Features from the discriminator could improve performance of classifiers when limited labeled data is available."
+   },
+   {
+    "w": "explicit",
+    "ipa": "ɪkˈsplɪsɪt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "明确的，显式的",
+    "ex": "There is no explicit representation of pg(x)."
+   },
+   {
+    "w": "tradeoff",
+    "ipa": "ˈtreɪdɔːf",
+    "pos": "n.",
+    "lv": "6",
+    "m": "权衡，折中",
+    "ex": "Enforced tradeoff between mixing and power of reconstruction generation."
+   },
+   {
+    "w": "representation",
+    "ipa": "ˌreprɪzenˈteɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "表示，表达",
+    "ex": "There is no explicit representation of pg(x)."
+   },
+   {
+    "w": "representation",
+    "ipa": "ˌreprɪzenˈteɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "表征，呈现",
+    "ex": "The discriminator's learned representation could improve classifiers."
+   }
+  ]
+ },
+ {
+  "sec": "7. Conclusions and future work · 结论与展望",
+  "short": "结论",
+  "icon": "7",
+  "words": [
+   {
+    "w": "viability",
+    "ipa": "ˌvaɪəˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可行性",
+    "ex": "This paper has demonstrated the viability of the adversarial modeling framework.",
+    "ov": "t"
+   },
+   {
+    "w": "demonstrate",
+    "ipa": "ˈdemənstreɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "证明，展示",
+    "ex": "This paper has demonstrated the viability of the adversarial modeling framework."
+   },
+   {
+    "w": "supervised",
+    "ipa": "səˈpɜːrvɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有监督的",
+    "ex": "Semi-supervised learning: features from the discriminator could improve classifiers."
+   },
+   {
+    "w": "semi-supervised",
+    "ipa": "ˌsemi səˈpɜːrvɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "半监督的",
+    "ex": "Semi-supervised learning: features from the discriminator could improve classifiers."
+   },
+   {
+    "w": "conditional",
+    "ipa": "kənˈdɪʃənl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "条件的",
+    "ex": "One can approximately model all conditionals p(xS | xS̸)."
+   },
+   {
+    "w": "deterministic",
+    "ipa": "dɪˌtɜːrməˈnɪstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "确定性的",
+    "ex": "A stochastic extension of the deterministic MP-DBM."
+   },
+   {
+    "w": "share",
+    "ipa": "ʃer",
+    "pos": "v.",
+    "lv": "k",
+    "m": "共享",
+    "ex": "Training a family of conditional models that share parameters."
+   },
+   {
+    "w": "parameter",
+    "ipa": "pəˈræmɪtər",
+    "pos": "n.",
+    "lv": "6",
+    "m": "参数",
+    "ex": "Training a family of conditional models that share parameters."
+   },
+   {
+    "w": "suggesting",
+    "ipa": "səˈdʒestɪŋ",
+    "pos": "v.",
+    "lv": "p",
+    "m": "表明，建议",
+    "ex": "Suggesting that these research directions could prove useful."
+   },
+   {
+    "w": "proven",
+    "ipa": "ˈpruːvn",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "被证明的",
+    "ex": "These research directions could prove useful."
+   },
+   {
+    "w": "unconditional",
+    "ipa": "ˌʌnkənˈdɪʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无条件的",
+    "ex": "Unconditional generative models can model all conditionals."
+   },
+   {
+    "w": "reconstruct",
+    "ipa": "ˌriːkənˈstrʌkt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "重建，重构",
+    "ex": "Enforced tradeoff between mixing and power of reconstruction generation."
+   },
+   {
+    "w": "sampling",
+    "ipa": "ˈsæmplɪŋ",
+    "pos": "n./v.",
+    "lv": "4",
+    "m": "采样",
+    "ex": "Sampling from the generative model."
+   },
+   {
+    "w": "synchronization",
+    "ipa": "ˌsɪŋkrənəˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "同步",
+    "ex": "Synchronizing the discriminator with the generator.",
+    "ov": "g"
+   },
+   {
+    "w": "reconstruction",
+    "ipa": "ˌriːkənˈstrʌkʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "重建，重构",
+    "ex": "Enforced tradeoff between mixing and power of reconstruction generation.",
+    "ov": "t"
+   }
+  ]
+ }
+]

@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViT 论文核心词汇</title>
+<style>
+:root{--c4:#3b82f6;--c6:#8b5cf6;--ckaon:#f59e0b;--cphd:#ef4444;--ct:#0d9488;--cg:#d946ef}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;transition:background .3s,color .3s}
+.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:4px;color:#fff;vertical-align:2px;margin-left:6px;font-style:normal;flex:none;white-space:nowrap}
+.tag.t4{background:var(--c4)}.tag.t6{background:var(--c6)}.tag.tk{background:var(--ckaon)}.tag.tp{background:var(--cphd)}
+.tag.tt{background:var(--ct)}.tag.tg{background:var(--cg)}
+.ipa{font-family:"SF Mono",Menlo,monospace;font-size:.82em;font-weight:400;opacity:.62;margin-left:6px}
+
+
+/* 论文原标题小字 */
+.ptitle{font-size:12.5px;letter-spacing:.3px;margin-top:6px}
+.ptitle i{font-family:Georgia,serif}
+.theme-mag .ptitle{color:#999;text-transform:none}
+.theme-dark .ptitle{color:#6e7681}
+.theme-paper .ptitle{color:#a09578}
+.theme-fresh .ptitle{color:#9ca3af}
+body.lv-mode .ptitle{color:#7d8590}
+
+/* 预览工具条 */
+.toolbar{position:fixed;right:16px;bottom:16px;z-index:99;display:flex;flex-direction:column;gap:8px;background:rgba(20,22,30,.88);padding:12px;border-radius:14px;backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.toolbar .row{display:flex;gap:6px}
+.toolbar button{border:none;cursor:pointer;padding:7px 12px;border-radius:8px;font-size:12.5px;background:#3a3f4d;color:#cbd2e0;transition:.15s}
+.toolbar button:hover{background:#4a5164}
+.toolbar button.on{background:#fff;color:#111;font-weight:600}
+.toolbar .lbl{font-size:10px;color:#8a93a6;text-align:left;margin:2px 0 -2px 2px}
+
+/* ---------- A 纸质阅读 ---------- */
+body.theme-paper{background:#faf6ee;color:#2c2a25}
+.theme-paper .wrap{max-width:880px;margin:0 auto;padding:56px 24px 140px}
+.theme-paper .hero h1{font-family:Georgia,"Songti SC",serif;font-size:34px}
+.theme-paper .hero p{color:#8a8272;margin:10px 0 42px;font-size:14px}
+.theme-paper .sec{margin-bottom:44px}
+.theme-paper .sec>h2{font-family:Georgia,"Songti SC",serif;font-size:20px;padding-left:14px;border-left:4px solid #b08d4f;margin-bottom:18px}
+.theme-paper .word{display:flex;gap:14px;padding:14px 16px;border-bottom:1px dashed #ddd2bc;align-items:baseline}
+.theme-paper .word:hover{background:#f3ecdc}
+.theme-paper .w{font-family:Georgia,serif;font-size:19px;font-weight:700;min-width:250px}
+.theme-paper .pos{color:#a09578;font-size:13px;margin-right:6px}
+.theme-paper .m{color:#4a463c;font-size:15px}
+.theme-paper .ex{margin-left:auto;max-width:270px;font-size:12.5px;color:#9a8f76;font-style:italic;text-align:right}
+.theme-paper .from{display:block;font-size:11px;color:#b3a888;font-style:normal;margin-top:3px}
+
+/* ---------- B 暗色科技 ---------- */
+body.theme-dark{background:#0d1117;color:#e6edf3}
+.theme-dark .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 140px}
+.theme-dark .hero h1{font-family:"SF Mono",Menlo,monospace;font-size:26px}
+.theme-dark .hero h1::before{content:"$ ";color:#3fb950}
+.theme-dark .hero p{color:#7d8590;margin:10px 0 40px;font-size:14px;font-family:Menlo,monospace}
+.theme-dark .sec>h2{font-size:15px;font-family:Menlo,monospace;color:#58a6ff;padding:10px 16px;background:#161b22;border:1px solid #30363d;border-radius:8px 8px 0 0;margin-bottom:-1px}
+.theme-dark .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px;background:#161b22;border:1px solid #30363d;border-radius:0 0 8px 8px}
+.theme-dark .card{background:#0d1117;border:1px solid #30363d;border-left:4px solid #58a6ff;border-radius:6px;padding:15px 17px;transition:.2s;cursor:pointer;font-family:Menlo,monospace}
+.theme-dark .card:hover{border-color:#58a6ff;box-shadow:0 0 14px rgba(88,166,255,.25);transform:translateY(-2px)}
+.theme-dark .w{font-family:Menlo,monospace;font-size:17px;color:#79c0ff}
+.theme-dark .ipa{color:#7ee787;opacity:.9}
+.theme-dark .m{color:#8b949e;font-size:13.5px;margin-top:7px;line-height:1.55}
+.theme-dark .ex{font-size:12px;color:#6e7681;margin-top:8px;border-top:1px solid #21262d;padding-top:8px;font-style:italic}
+.theme-dark .from{color:#484f58;font-size:11px;margin-top:4px}
+
+/* ---------- C 清新卡片 ---------- */
+body.theme-fresh{background:linear-gradient(160deg,#eef4ff 0%,#f6f0ff 50%,#fff7ec 100%);color:#1f2430}
+.theme-fresh .wrap{max-width:1020px;margin:0 auto;padding:56px 24px 140px}
+.theme-fresh .hero h1{font-size:32px;font-weight:800;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.theme-fresh .hero p{color:#6b7280;margin:10px 0 40px;font-size:14px}
+.theme-fresh .sec>h2{font-size:19px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.theme-fresh .sec>h2 .n{width:30px;height:30px;border-radius:10px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.theme-fresh .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.theme-fresh .card{background:rgba(255,255,255,.82);backdrop-filter:blur(6px);border-radius:18px;padding:17px 19px 15px;box-shadow:0 3px 14px rgba(80,80,140,.09);transition:.2s;cursor:pointer;border-top:5px solid #dbe3f5}
+.theme-fresh .card.lv4{border-top-color:#3b82f6}.theme-fresh .card.lv6{border-top-color:#8b5cf6}
+.theme-fresh .card.lvk{border-top-color:#f59e0b}.theme-fresh .card.lvp{border-top-color:#ef4444}
+.theme-fresh .card .w{display:inline-block;background:#f3f5fb;border-radius:8px;padding:2px 10px}
+.theme-fresh .card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(80,80,140,.16)}
+.theme-fresh .w{font-size:18px;font-weight:700}
+.theme-fresh .m{color:#4b5563;font-size:14px;margin-top:6px;line-height:1.55}
+.theme-fresh .ex{color:#9ca3af;font-size:12.5px;margin-top:8px}
+.theme-fresh .from{color:#b6bcc9;font-size:11.5px;margin-top:4px}
+
+/* ---------- D 杂志表格（宽松版） ---------- */
+body.theme-mag{background:#fff;color:#111}
+.theme-mag .wrap{max-width:960px;margin:0 auto;padding:52px 28px 140px}
+.theme-mag .hero{border-bottom:3px solid #111;padding-bottom:16px;margin-bottom:10px}
+.theme-mag .hero h1{font-family:"Songti SC",Georgia,serif;font-size:38px;font-weight:900}
+.theme-mag .hero p{color:#888;font-size:13.5px;margin-top:8px}
+.theme-mag .sec>h2{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#c2410c;margin:44px 0 8px;border-bottom:1px solid #e5e5e5;padding-bottom:8px}
+.theme-mag table{width:100%;border-collapse:collapse}
+.theme-mag td{padding:16px 12px;border-bottom:1px solid #f0f0f0;font-size:15.5px;line-height:1.65;vertical-align:top}
+.theme-mag tr:hover td{background:#fff8f3}
+.theme-mag .w{font-weight:700;font-size:17px;width:300px}
+.theme-mag .lv{width:60px}
+.theme-mag .lv b{font-size:11.5px;padding:3px 0;display:block;text-align:center;border-radius:3px;color:#fff;font-weight:600}
+.theme-mag .m{color:#3d3d3d}
+.theme-mag .ex{color:#9a9a9a;font-size:13px;font-style:italic}
+.theme-mag .from{display:block;color:#c9c9c9;font-size:11.5px;font-style:normal;margin-top:4px}
+
+/* ---------- 按级别：学习模式同款暗色大页 ---------- */
+body.lv-mode{background:#0b0e13 !important}
+body.lv-mode .hero h1,body.lv-mode .hero p{color:#e8ecf3}
+body.lv-mode .hero p{color:#7d8590}
+.lvslide{background:#101318;color:#e8ecf3;border-radius:20px;padding:26px 32px 22px;margin-bottom:26px;border-top:6px solid var(--c4)}
+.lvslide.l6{border-top-color:var(--c6)}.lvslide.lk{border-top-color:var(--ckaon)}.lvslide.lp{border-top-color:var(--cphd)}
+.lvslide.lt{border-top-color:var(--ct)}.lvslide.lg{border-top-color:var(--cg)}
+.lvslide .ltitle{font-size:26px;font-weight:800;font-family:Georgia,serif;display:flex;align-items:baseline;gap:14px}
+.lvslide .ltitle small{font-size:14px;color:#7d8590;font-family:Menlo,monospace;font-weight:400}
+.lvslide .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px 0 8px}
+.lvslide .lcard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:15px 17px;cursor:pointer;transition:.15s}
+.lvslide .lcard:hover{border-color:#79c0ff;transform:translateY(-2px)}
+.lvslide .lcard .w{font-size:19px;font-weight:700;font-family:Georgia,serif}
+.lvslide .lcard .ipa{font-family:Menlo,monospace;font-size:13px;color:#7ee787;margin-left:8px}
+.lvslide .lcard .m{color:#aeb6c4;font-size:14px;margin-top:7px;line-height:1.55}
+.lvslide .lcard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:7px}
+.lvslide .lcard .from{color:#4d5563;font-size:11px;margin-top:6px}
+
+
+/* ---------- 白天 / 夜晚 ---------- */
+body.lv-mode:not(.night){background:#eef1f6 !important}
+body.lv-mode:not(.night) .hero h1{color:#1f2430}
+body.lv-mode:not(.night) .hero p{color:#6b7280}
+body.lv-mode:not(.night) .lvslide{background:#fff;color:#1f2430;box-shadow:0 4px 18px rgba(80,80,140,.10)}
+body.lv-mode:not(.night) .lvslide .lcard{background:#f7f9fd;border-color:#e4e9f3}
+body.lv-mode:not(.night) .lvslide .lcard:hover{border-color:#3b82f6}
+body.lv-mode:not(.night) .lvslide .lcard .m{color:#4b5563}
+body.lv-mode:not(.night) .lvslide .lcard .ex{color:#98a0ae}
+body.lv-mode:not(.night) .lvslide .lcard .from{color:#b3bac6}
+body.lv-mode:not(.night) .lvslide .lcard .ipa{color:#0a7d33}
+body.night.theme-mag{background:#0d1117;color:#e6edf3}
+body.night.theme-mag .hero{border-bottom-color:#e6edf3}
+body.night.theme-mag .hero p{color:#8b949e}
+body.night.theme-mag .sec>h2{color:#fbbf24;border-bottom-color:#30363d}
+body.night.theme-mag td{border-bottom-color:#1c2230}
+body.night.theme-mag tr:hover td{background:#161b22}
+body.night.theme-mag .m{color:#c9d1d9}
+body.night.theme-mag .ex{color:#8b949e}
+body.night.theme-mag .from{color:#57606a}
+body.night.theme-mag .w{color:#e6edf3}
+body.night.theme-mag .ptitle{color:#8b949e}
+body.night.theme-mag .ipa{opacity:.55}
+#study.day{background:#f5f7fa;color:#1f2430}
+#study.day .scard{background:#fff;border-color:#e4e9f3}
+#study.day .scard .m{color:#4b5563}
+#study.day .scard .ex{color:#98a0ae}
+#study.day .scard:hover{border-color:#3b82f6}
+#study.day .sfoot{color:#98a0ae;border-top-color:#e6e9f0}
+#study.day .snav button,#study.day #sClose{background:#fff;color:#1f2430;border-color:#d7dce6}
+#study.day .sfoot kbd{background:#e8ecf3;color:#1f2430}
+
+/* ---------- 学习模式（PPT 按章节翻页） ---------- */
+#study{position:fixed;inset:0;z-index:200;display:none;background:#101318;color:#e8ecf3;flex-direction:column}
+#study.on{display:flex}
+#study .sprog{height:4px;background:#262c38}
+#study .sprog i{display:block;height:100%;background:linear-gradient(90deg,#58a6ff,#8b5cf6);width:0;transition:width .25s}
+#study .sbody{flex:1;overflow:auto;padding:20px 40px}
+#study .stitle{font-size:24px;font-weight:800;font-family:Georgia,serif;padding:6px 4px 2px}
+#study .stitle small{color:#5b6472;font-size:14px;font-family:Menlo,monospace;font-weight:400;margin-left:12px}
+#study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:16px 2px 30px}
+#study .scard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s}
+#study .scard:hover{border-color:#58a6ff;transform:translateY(-2px)}
+#study .scard .w{font-size:22px;font-weight:700;font-family:Georgia,serif}
+#study .scard .ipa{color:#7ee787;font-size:14px;margin-left:8px}
+#study .scard .m{color:#aeb6c4;font-size:14.5px;margin-top:8px;line-height:1.55}
+#study .scard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:6px}
+#study .sfoot{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;color:#5b6472;font-size:13px;border-top:1px solid #1d232e}
+#study .sfoot kbd{background:#262c38;border-radius:5px;padding:2px 8px;margin:0 2px;font-family:Menlo,monospace;font-size:12px}
+#study .snav{display:flex;gap:10px;align-items:center}
+#study .snav button{border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;padding:8px 18px;cursor:pointer;font-size:14px}
+#study .snav button:hover{border-color:#58a6ff}
+#study .snav button:disabled{opacity:.35;cursor:default}
+</style>
+</head>
+<body class="theme-mag">
+<div class="wrap">
+  <div class="hero">
+    <h1>ViT 论文核心词汇</h1>
+    <div class="ptitle"><i>An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale · ICLR 2021</i></div>
+    <p>全篇 22 页 · 180词 · 四级/六级/考研/考博/雅思托福/GRE</p>
+  </div>
+  <div id="app"></div>
+</div>
+
+<div class="toolbar">
+  <div class="lbl">视图</div>
+  <div class="row">
+    <button id="v-sec" class="on">按章节</button>
+    <button id="v-lv">按级别综合</button>
+    <button id="v-study">▶ 学习模式</button>
+  </div>
+  <div class="lbl">白天 / 夜晚</div>
+  <div class="row">
+    <button id="dn-day">☀ 白天</button>
+    <button id="dn-night">🌙 夜晚</button>
+  </div>
+  <div class="lbl">朗读声音 · Polly</div>
+  <div class="row"><select id="voiceSel" style="flex:1;border:none;border-radius:8px;padding:7px 8px;background:#3a3f4d;color:#cbd2e0;font-size:12.5px;outline:none"></select><span id="srcState" style="align-self:center;font-size:10.5px;color:#8a93a6;min-width:34px;text-align:center"></span></div>
+</div>
+
+<div id="study">
+  <div class="sprog"><i id="sbar"></i></div>
+  <button id="sClose" title="退出学习模式 (Esc)" style="position:absolute;top:14px;right:18px;z-index:5;border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;width:34px;height:34px;font-size:16px;cursor:pointer">✕</button>
+  <div class="sbody"><div id="sPage"></div></div>
+  <div class="sfoot">
+    <span><kbd>空格</kbd>/<kbd>→</kbd> 下一页 &nbsp; <kbd>←</kbd> 上一页 &nbsp; 点单词发音 &nbsp; <kbd>Esc</kbd> 退出</span>
+    <div class="snav">
+      <span id="sIdx">0 / 0</span>
+      <button id="sPrev">← 上一页</button>
+      <button id="sNext">下一页 →</button>
+      <button id="sExit" style="border-color:#5b3a3a">退出</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// lv: 4=四级 6=六级 k=考研 p=考博；ipa 为美式音标
+const DATA = [
+ {
+  "sec": "Abstract · 摘要",
+  "short": "Abstract",
+  "icon": "A",
+  "words": [
+   {
+    "w": "architecture",
+    "ipa": "ˈɑːrkɪtektʃər",
+    "pos": "n.",
+    "lv": "4",
+    "m": "架构，体系结构",
+    "ex": "While the Transformer architecture has become the de-facto standard."
+   },
+   {
+    "w": "de-facto",
+    "ipa": "diː ˈfæktoʊ",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "事实上的",
+    "ex": "become the de-facto standard for natural language processing tasks."
+   },
+   {
+    "w": "conjunction",
+    "ipa": "kənˈdʒʌŋkʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "结合，连接",
+    "ex": "attention is either applied in conjunction with convolutional networks."
+   },
+   {
+    "w": "convolutional",
+    "ipa": "ˌkɑːnvəˈluːʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "卷积的",
+    "ex": "used to replace certain components of convolutional networks."
+   },
+   {
+    "w": "benchmarks",
+    "ipa": "ˈbentʃmɑːrks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "基准测试",
+    "ex": "transferred to multiple image recognition benchmarks."
+   },
+   {
+    "w": "substantially",
+    "ipa": "səbˈstænʃəli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "大量地",
+    "ex": "requiring substantially fewer computational resources to train."
+   },
+   {
+    "w": "attains",
+    "ipa": "əˈteɪnz",
+    "pos": "v.",
+    "lv": "4",
+    "m": "达到",
+    "ex": "ViT attains excellent results compared to state-of-the-art CNNs."
+   },
+   {
+    "w": "transformer",
+    "ipa": "/trænsˈfɔːrmər/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "变换器，变压器",
+    "ex": "While the Transformer architecture has become the de-facto standard for natural language processing tasks, its applications to computer vision remain limited."
+   },
+   {
+    "w": "reliance",
+    "ipa": "/rɪˈlaɪəns/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "依赖，信赖",
+    "ex": "We show that this reliance on CNNs is not necessary and a pure transformer applied directly to sequences of image patches can perform very well."
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "Intro",
+  "icon": "1",
+  "words": [
+   {
+    "w": "scalability",
+    "ipa": "ˌskeɪləˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可扩展性",
+    "ex": "Thanks to Transformers' computational efficiency and scalability."
+   },
+   {
+    "w": "unprecedented",
+    "ipa": "ʌnˈpresɪdentɪd",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "前所未有的",
+    "ex": "train models of unprecedented size, with over 100B parameters."
+   },
+   {
+    "w": "dominant",
+    "ipa": "ˈdɑːmɪnənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "占主导地位的",
+    "ex": "convolutional architectures remain dominant."
+   },
+   {
+    "w": "equivariance",
+    "ipa": "ɪˌkwɪvəˈriəns",
+    "pos": "n.",
+    "lv": "p",
+    "m": "等变性",
+    "ex": "translation equivariance are baked into each layer."
+   },
+   {
+    "w": "locality",
+    "ipa": "loʊˈkæləti",
+    "pos": "n.",
+    "lv": "6",
+    "m": "局部性",
+    "ex": "locality, two-dimensional neighborhood structure, and translation equivariance."
+   },
+   {
+    "w": "inductive",
+    "ipa": "ɪnˈdʌktɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "归纳的",
+    "ex": "Transformers lack some of the inductive biases inherent to CNNs.",
+    "ov": "t"
+   },
+   {
+    "w": "discouraging",
+    "ipa": "dɪsˈkɜːrɪdʒɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "令人沮丧的",
+    "ex": "This seemingly discouraging outcome may be expected."
+   },
+   {
+    "w": "modest",
+    "ipa": "ˈmɑːdɪst",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "适度的",
+    "ex": "these models yield modest accuracies below ResNets."
+   },
+   {
+    "w": "insufficient",
+    "ipa": "ˌɪnsəˈfɪʃnt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "不足的",
+    "ex": "do not generalize well when trained on insufficient amounts of data."
+   },
+   {
+    "w": "modifications",
+    "ipa": "ˌmɑːdɪfɪˈkeɪʃnz",
+    "pos": "n.",
+    "lv": "6",
+    "m": "修改",
+    "ex": "with the fewest possible modifications."
+   },
+   {
+    "w": "embeddings",
+    "ipa": "ɪmˈbedɪŋz",
+    "pos": "n.",
+    "lv": "p",
+    "m": "嵌入向量",
+    "ex": "provide the sequence of linear embeddings of these patches."
+   },
+   {
+    "w": "tokens",
+    "ipa": "ˈtoʊkənz",
+    "pos": "n.",
+    "lv": "6",
+    "m": "词元，标记",
+    "ex": "patches are treated the same way as tokens in an NLP application."
+   },
+   {
+    "w": "supervised",
+    "ipa": "sərˈvɪzɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有监督的",
+    "ex": "We train the model on image classification in supervised fashion."
+   },
+   {
+    "w": "regularization",
+    "ipa": "ˌreɡjələrɪˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "正则化",
+    "ex": "without strong regularization."
+   },
+   {
+    "w": "saturating",
+    "ipa": "ˈsætʃəreɪtɪŋ",
+    "pos": "v.",
+    "lv": "6",
+    "m": "饱和",
+    "ex": "there is still no sign of saturating performance."
+   },
+   {
+    "w": "trumps",
+    "ipa": "trʌmps",
+    "pos": "v.",
+    "lv": "p",
+    "m": "胜过",
+    "ex": "large scale training trumps inductive bias."
+   },
+   {
+    "w": "inherent",
+    "ipa": "ɪnˈhɪrənt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "固有的",
+    "ex": "inductive biases inherent to CNNs."
+   },
+   {
+    "w": "computational",
+    "ipa": "ˌkɑːmpjuˈteɪʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "计算的",
+    "ex": "Thanks to Transformers' computational efficiency."
+   },
+   {
+    "w": "prevalent",
+    "ipa": "ˈprevələnt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "流行的",
+    "ex": "self-attention has become prevalent in NLP."
+   }
+  ]
+ },
+ {
+  "sec": "2. Related Work · 相关工作",
+  "short": "Related",
+  "icon": "2",
+  "words": [
+   {
+    "w": "corpora",
+    "ipa": "ˈkɔːrpərə",
+    "pos": "n.",
+    "lv": "p",
+    "m": "语料库",
+    "ex": "often pre-trained on large corpora."
+   },
+   {
+    "w": "denoising",
+    "ipa": "diːˈnɔɪzɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "去噪",
+    "ex": "BERT uses a denoising self-supervised pre-training task."
+   },
+   {
+    "w": "approximations",
+    "ipa": "əˌprɑːksɪˈmeɪʃnz",
+    "pos": "n.",
+    "lv": "p",
+    "m": "近似法",
+    "ex": "several approximations have been tried in the past.",
+    "ov": "t"
+   },
+   {
+    "w": "neighborhoods",
+    "ipa": "ˈneɪbərhʊdz",
+    "pos": "n.",
+    "lv": "4",
+    "m": "邻域",
+    "ex": "applied the self-attention only in local neighborhoods."
+   },
+   {
+    "w": "scalable",
+    "ipa": "ˈskeɪləbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可扩展的",
+    "ex": "employ scalable approximations to global self-attention."
+   },
+   {
+    "w": "augmenting",
+    "ipa": "ɔːɡˈmentɪŋ",
+    "pos": "v.",
+    "lv": "k",
+    "m": "增强",
+    "ex": "by augmenting feature maps for image classification."
+   },
+   {
+    "w": "unsupervised",
+    "ipa": "ˌʌnsərˈvɪzɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无监督的",
+    "ex": "unsupervised object discovery, or unified text-vision tasks."
+   },
+   {
+    "w": "probed",
+    "ipa": "proʊbd",
+    "pos": "v.",
+    "lv": "p",
+    "m": "探测",
+    "ex": "the resulting representation can then be fine-tuned or probed linearly."
+   },
+   {
+    "w": "promising",
+    "ipa": "ˈprɑːmɪsɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有前途的",
+    "ex": "demonstrate promising results on computer vision tasks."
+   },
+   {
+    "w": "heuristic",
+    "ipa": "hjʊˈrɪstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "启发式的",
+    "ex": "heuristic approach to scale attention."
+   },
+   {
+    "w": "outperforms",
+    "ipa": "ˌaʊtpərˈfɔːrmz",
+    "pos": "v.",
+    "lv": "6",
+    "m": "优于",
+    "ex": "The smaller ViT-L/16 model outperforms BiT-L on all tasks."
+   },
+   {
+    "w": "exemplify",
+    "ipa": "ɪɡˈzemplɪfaɪ",
+    "pos": "v.",
+    "lv": "6",
+    "m": "举例说明",
+    "ex": "exemplify the promise of this approach."
+   },
+   {
+    "w": "albeit",
+    "ipa": "ɔːlˈbiːɪt",
+    "pos": "conj.",
+    "lv": "p",
+    "m": "尽管",
+    "ex": "albeit requiring substantially less computational resources."
+   },
+   {
+    "w": "respective",
+    "ipa": "rɪˈspektɪv",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "各自的",
+    "ex": "decomposes the VTAB tasks into their respective groups."
+   },
+   {
+    "w": "specialized",
+    "ipa": "ˈspeʃəlaɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "专门的",
+    "ex": "specialized attention architectures demonstrate promising results."
+   },
+   {
+    "w": "patch",
+    "ipa": "/pætʃ/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "补丁，图像块",
+    "ex": "An image x ∈ R^{H×W×C} is reshaped into a sequence of patches x_p ∈ R^{N×(P²·C)}."
+   },
+   {
+    "w": "embedding",
+    "ipa": "/ɪmˈbedɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "嵌入",
+    "ex": "The output of the embedding layer is a sequence of vectors that can be fed into a Transformer encoder."
+   },
+   {
+    "w": "positional",
+    "ipa": "/pəˈzɪʃənl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "位置的",
+    "ex": "Positional embeddings are added to the patch embeddings to provide position information."
+   },
+   {
+    "w": "encoder",
+    "ipa": "/ɪnˈkoʊdər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "编码器",
+    "ex": "The output of the embedding layer is a sequence of vectors that can be fed into a Transformer encoder."
+   },
+   {
+    "w": "normalization",
+    "ipa": "/ˌnɔːrməlɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "归一化",
+    "ex": "We use Layer Normalization before each multi-head self-attention and the MLP blocks."
+   },
+   {
+    "w": "head",
+    "ipa": "/hed/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "头，注意力头",
+    "ex": "The multi-head self-attention mechanism allows the model to jointly attend to information from different representation subspaces."
+   }
+  ]
+ },
+ {
+  "sec": "3.1 Vision Transformer (ViT)",
+  "short": "ViT",
+  "icon": "3",
+  "words": [
+   {
+    "w": "flattened",
+    "ipa": "ˈflætnd",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "展平的",
+    "ex": "we reshape the image into a sequence of flattened 2D patches."
+   },
+   {
+    "w": "latent",
+    "ipa": "ˈleɪnt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "潜在的",
+    "ex": "The Transformer uses constant latent vector size D."
+   },
+   {
+    "w": "projection",
+    "ipa": "prəˈdʒekʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "投影",
+    "ex": "map to D dimensions with a trainable linear projection."
+   },
+   {
+    "w": "prepend",
+    "ipa": "priːˈpend",
+    "pos": "v.",
+    "lv": "p",
+    "m": "前置",
+    "ex": "we prepend a learnable embedding to the sequence."
+   },
+   {
+    "w": "position embeddings",
+    "ipa": "pəˈzɪʃn ɪmˈbedɪŋz",
+    "pos": "n.",
+    "lv": "p",
+    "m": "位置嵌入",
+    "ex": "Position embeddings are added to retain positional information."
+   },
+   {
+    "w": "retention",
+    "ipa": "rɪˈtenʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "保留",
+    "ex": "Position embeddings are added to retain positional information."
+   },
+   {
+    "w": "alternating",
+    "ipa": "ɔːlˈtɜːrneɪtɪŋ",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "交替的",
+    "ex": "consists of alternating layers of multiheaded self-attention and MLP blocks."
+   },
+   {
+    "w": "residual",
+    "ipa": "rɪˈzɪdʒuəl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "残差的",
+    "ex": "residual connections after every block."
+   },
+   {
+    "w": "non-linearity",
+    "ipa": "ˌnɑːnlɪnɪˈærəti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "非线性",
+    "ex": "The MLP contains two layers with a GELU non-linearity."
+   },
+   {
+    "w": "spatial",
+    "ipa": "ˈspeɪʃl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "空间的",
+    "ex": "The two-dimensional neighborhood structure is used very sparingly."
+   },
+   {
+    "w": "interpolation",
+    "ipa": "ɪnˌtɜːrpəˈleɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "插值",
+    "ex": "We therefore perform 2D interpolation of position embeddings.",
+    "ov": "g"
+   },
+   {
+    "w": "vanilla",
+    "ipa": "vəˈnɪlə",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "普通的",
+    "ex": "large scale pre-training makes vanilla transformers competitive."
+   },
+   {
+    "w": "linear",
+    "ipa": "ˈlɪniər",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "线性的",
+    "ex": "a trainable linear projection."
+   },
+   {
+    "w": "sequential",
+    "ipa": "sɪˈkwenʃl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "顺序的",
+    "ex": "a sequence of flattened 2D patches.",
+    "ov": "g"
+   },
+   {
+    "w": "plausible",
+    "ipa": "ˈplɔːzəbl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "合理的",
+    "ex": "The components resemble plausible basis functions."
+   },
+   {
+    "w": "symmetric",
+    "ipa": "sɪˈmetrɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "对称的",
+    "ex": "symmetric architecture design."
+   },
+   {
+    "w": "effective",
+    "ipa": "ɪˈfektɪv",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有效的",
+    "ex": "serves as the effective input sequence length."
+   },
+   {
+    "w": "efficiency",
+    "ipa": "ɪˈfɪʃnsi",
+    "pos": "n.",
+    "lv": "4",
+    "m": "效率",
+    "ex": "computational efficiency and scalability."
+   },
+   {
+    "w": "pretrain",
+    "ipa": "/priːˈtreɪn/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "预训练",
+    "ex": "When pre-trained on large amounts of data and transferred to multiple mid-sized or small image recognition benchmarks, ViT attains excellent results."
+   },
+   {
+    "w": "finetune",
+    "ipa": "/ˈfaɪntjuːn/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "微调",
+    "ex": "The dominant approach is to pre-train on a large text corpus and then fine-tune on a smaller task-specific dataset."
+   },
+   {
+    "w": "benchmark",
+    "ipa": "/ˈbentʃmɑːrk/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "基准，基准测试",
+    "ex": "When pre-trained on large amounts of data and transferred to multiple mid-sized or small image recognition benchmarks."
+   },
+   {
+    "w": "generalization",
+    "ipa": "/ˌdʒenərəlɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "泛化",
+    "ex": "ViT generalizes well to other tasks and datasets."
+   }
+  ]
+ },
+ {
+  "sec": "3.2 Fine-tuning and Higher Resolution",
+  "short": "Fine-tune",
+  "icon": "3b",
+  "words": [
+   {
+    "w": "fine-tuning",
+    "ipa": "faɪn ˈtuːnɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "微调",
+    "ex": "we pre-train ViT on large datasets, and fine-tune to downstream tasks."
+   },
+   {
+    "w": "downstream",
+    "ipa": "ˈdaʊnstriːm",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "下游的",
+    "ex": "fine-tune to downstream tasks."
+   },
+   {
+    "w": "feedforward",
+    "ipa": "ˈfiːdfɔːrwərd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "前馈的",
+    "ex": "we attach a zero-initialized feedforward layer."
+   },
+   {
+    "w": "arbitrary",
+    "ipa": "ˈɑːrbɪtreri",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "任意的",
+    "ex": "The Vision Transformer can handle arbitrary sequence lengths."
+   },
+   {
+    "w": "constraints",
+    "ipa": "kənˈstreɪnts",
+    "pos": "n.",
+    "lv": "6",
+    "m": "约束",
+    "ex": "up to memory constraints."
+   },
+   {
+    "w": "injected",
+    "ipa": "ɪnˈdʒektɪd",
+    "pos": "v.",
+    "lv": "6",
+    "m": "注入",
+    "ex": "an inductive bias is manually injected into the Vision Transformer."
+   },
+   {
+    "w": "resolution",
+    "ipa": "ˌrezəˈluːʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分辨率",
+    "ex": "adjusting the position embeddings for images of different resolution."
+   },
+   {
+    "w": "backbone",
+    "ipa": "ˈbækbəʊn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "骨干网络",
+    "ex": "the ResNet backbone."
+   },
+   {
+    "w": "standardize",
+    "ipa": "ˈstændərdaɪz",
+    "pos": "v.",
+    "lv": "4",
+    "m": "标准化",
+    "ex": "used standardized convolutions."
+   },
+   {
+    "w": "augmented",
+    "ipa": "ɔːɡˈmentɪd",
+    "pos": "v.",
+    "lv": "k",
+    "m": "增强",
+    "ex": "augmented by relative positional encoding."
+   },
+   {
+    "w": "hybrid",
+    "ipa": "ˈhaɪbrɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "混合的",
+    "ex": "As an alternative to raw image patches, a hybrid model."
+   },
+   {
+    "w": "feature maps",
+    "ipa": "ˈfiːtʃər mæps",
+    "pos": "n.",
+    "lv": "p",
+    "m": "特征图",
+    "ex": "the input sequence can be formed from feature maps of a CNN."
+   },
+   {
+    "w": "zero-initialized",
+    "ipa": "ˈzɪroʊ ɪˈnɪʃəlaɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "零初始化的",
+    "ex": "we attach a zero-initialized feedforward layer."
+   },
+   {
+    "w": "interpolated",
+    "ipa": "ɪnˈtɜːrpəleɪtɪd",
+    "pos": "v.",
+    "lv": "p",
+    "m": "插值",
+    "ex": "perform 2D interpolation of the pre-trained position embeddings."
+   }
+  ]
+ },
+ {
+  "sec": "4.1 Setup · 实验设置",
+  "short": "Setup",
+  "icon": "4",
+  "words": [
+   {
+    "w": "de-duplicate",
+    "ipa": "diːˈdʌplɪkeɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "去重",
+    "ex": "We de-duplicate the pre-training datasets."
+   },
+   {
+    "w": "favourably",
+    "ipa": "ˈfeɪvərəbli",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "有利地",
+    "ex": "ViT performs very favourably."
+   },
+   {
+    "w": "hyperparameters",
+    "ipa": "ˌhaɪpərpəˈræmɪtərz",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超参数",
+    "ex": "we use the same hyper-parameters for all settings."
+   },
+   {
+    "w": "momentum",
+    "ipa": "moʊˈmentəm",
+    "pos": "n.",
+    "lv": "6",
+    "m": "动量",
+    "ex": "For fine-tuning we use SGD with momentum."
+   },
+   {
+    "w": "weight decay",
+    "ipa": "weɪt dɪˈkeɪ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "权重衰减",
+    "ex": "we apply a high weight decay of 0.1."
+   },
+   {
+    "w": "closed form",
+    "ipa": "kloʊzd fɔːrm",
+    "pos": "n.",
+    "lv": "p",
+    "m": "闭式解",
+    "ex": "recover the exact solution in closed form."
+   },
+   {
+    "w": "semi-supervised",
+    "ipa": "ˌsemi sərˈvɪzɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "半监督的",
+    "ex": "Noisy Student is trained using semi-supervised learning."
+   },
+   {
+    "w": "inversely",
+    "ipa": "ɪnˈvɜːrsli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "反向地",
+    "ex": "sequence length is inversely proportional to the square of the patch size."
+   },
+   {
+    "w": "proportional",
+    "ipa": "prəˈpɔːrʃənl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "成比例的",
+    "ex": "inversely proportional to the square of the patch size."
+   },
+   {
+    "w": "few-shot",
+    "ipa": "fuː ʃɑːt",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "少样本的",
+    "ex": "we sometimes use linear few-shot accuracies for fast evaluation."
+   },
+   {
+    "w": "batch",
+    "ipa": "bætʃ",
+    "pos": "n.",
+    "lv": "6",
+    "m": "批，批量",
+    "ex": "a batch size of 4096."
+   },
+   {
+    "w": "gradient",
+    "ipa": "ˈɡreɪdiənt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "梯度",
+    "ex": "gradient clipping at global norm 1."
+   },
+   {
+    "w": "warmup",
+    "ipa": "ˈwɔːrmʌp",
+    "pos": "n.",
+    "lv": "p",
+    "m": "预热",
+    "ex": "learning rate warmup of 10k steps."
+   },
+   {
+    "w": "cosine decay",
+    "ipa": "ˈkoʊzaɪn dɪˈkeɪ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "余弦衰减",
+    "ex": "cosine learning rate decay."
+   },
+   {
+    "w": "preprocessing",
+    "ipa": "priːˈproʊsesɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "预处理",
+    "ex": "pre-processing follows Kolesnikov et al."
+   },
+   {
+    "w": "ablation",
+    "ipa": "əˈbleɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "消融实验",
+    "ex": "We ran ablations on different ways of encoding spatial information."
+   },
+   {
+    "w": "empirical",
+    "ipa": "ɪmˈpɪrɪkl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "经验的",
+    "ex": "Empirical Computational Costs."
+   },
+   {
+    "w": "baseline",
+    "ipa": "ˈbeɪslaɪn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "基线",
+    "ex": "For the baseline CNNs, we use ResNet."
+   },
+   {
+    "w": "visualization",
+    "ipa": "/ˌvɪʒuəlɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可视化",
+    "ex": "We visualize the attention maps to understand what the model has learned."
+   },
+   {
+    "w": "interpretability",
+    "ipa": "/ɪnˌtɜːrprəˈtəbɪləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可解释性",
+    "ex": "The attention maps provide some level of interpretability for the model's decisions."
+   },
+   {
+    "w": "robustness",
+    "ipa": "/roʊˈbʌstnəs/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "鲁棒性，稳健性",
+    "ex": "ViT demonstrates strong robustness to domain shifts."
+   }
+  ]
+ },
+ {
+  "sec": "4.2 Comparison · 结果对比",
+  "short": "Compare",
+  "icon": "5",
+  "words": [
+   {
+    "w": "outperform",
+    "ipa": "ˌaʊtpərˈfɔːrm",
+    "pos": "v.",
+    "lv": "6",
+    "m": "优于",
+    "ex": "ViT-L/16 model outperforms BiT-L on all tasks."
+   },
+   {
+    "w": "vanishes",
+    "ipa": "ˈvænɪʃɪz",
+    "pos": "v.",
+    "lv": "4",
+    "m": "消失",
+    "ex": "the difference vanishes for larger models."
+   },
+   {
+    "w": "decompose",
+    "ipa": "ˌdiːkəmˈpoʊz",
+    "pos": "v.",
+    "lv": "6",
+    "m": "分解",
+    "ex": "Figure 2 decomposes the VTAB tasks."
+   },
+   {
+    "w": "flagship",
+    "ipa": "ˈflæɡʃɪp",
+    "pos": "n.",
+    "lv": "6",
+    "m": "旗舰产品",
+    "ex": "We also evaluate our flagship ViT-H/14 model."
+   },
+   {
+    "w": "compute",
+    "ipa": "kəmˈpjuːt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "计算量",
+    "ex": "when considering the computational cost of pre-training."
+   },
+   {
+    "w": "stochastic",
+    "ipa": "stəˈkæstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "随机的",
+    "ex": "Adam: A method for stochastic optimization."
+   },
+   {
+    "w": "converge",
+    "ipa": "kənˈvɜːrdʒ",
+    "pos": "v.",
+    "lv": "6",
+    "m": "收敛",
+    "ex": "the models converge to similar performance."
+   },
+   {
+    "w": "surpass",
+    "ipa": "sərˈpæs",
+    "pos": "v.",
+    "lv": "4",
+    "m": "超过",
+    "ex": "ViT surpasses ResNet on most benchmarks."
+   },
+   {
+    "w": "dimension",
+    "ipa": "daɪˈmenʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "维度",
+    "ex": "scaling different dimensions of the Transformer architecture."
+   },
+   {
+    "w": "latency",
+    "ipa": "ˈleɪtnsi",
+    "pos": "n.",
+    "lv": "p",
+    "m": "延迟",
+    "ex": "lower latency in inference.",
+    "ov": "g"
+   },
+   {
+    "w": "throughput",
+    "ipa": "ˈθruːpʊt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "吞吐量",
+    "ex": "higher throughput for training."
+   },
+   {
+    "w": "degradation",
+    "ipa": "ˌdeɡrəˈdeɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "退化，下降",
+    "ex": "performance degradation on small datasets."
+   },
+   {
+    "w": "favorable",
+    "ipa": "ˈfeɪvərəbl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有利的",
+    "ex": "ViT performs very favourably."
+   },
+   {
+    "w": "inference",
+    "ipa": "ˈɪnfərəns",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推理",
+    "ex": "inference speed on TPUv3 accelerator."
+   },
+   {
+    "w": "pre-training",
+    "ipa": "priːˈtreɪnɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "预训练",
+    "ex": "pre-trained on large amounts of data."
+   }
+  ]
+ },
+ {
+  "sec": "4.3 Pre-training Data Requirements",
+  "short": "Data Req",
+  "icon": "6",
+  "words": [
+   {
+    "w": "intrinsic",
+    "ipa": "ɪnˈtrɪnsɪk",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "内在的",
+    "ex": "we assess the intrinsic model properties."
+   },
+   {
+    "w": "overfitting",
+    "ipa": "ˌoʊvərˈfɪtɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "过拟合",
+    "ex": "Vision Transformers overfit more than ResNets."
+   },
+   {
+    "w": "reinforces",
+    "ipa": "ˌriːɪnˈfɔːrsɪz",
+    "pos": "v.",
+    "lv": "4",
+    "m": "加强",
+    "ex": "This result reinforces the intuition."
+   },
+   {
+    "w": "intuition",
+    "ipa": "ˌɪntuˈɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "直觉",
+    "ex": "This result reinforces the intuition that convolutional bias is useful."
+   },
+   {
+    "w": "bottleneck",
+    "ipa": "ˈbɑːtlnek",
+    "pos": "n.",
+    "lv": "6",
+    "m": "瓶颈",
+    "ex": "data size does not bottleneck the models' performances."
+   },
+   {
+    "w": "plateau",
+    "ipa": "plæˈtoʊ",
+    "pos": "n.",
+    "lv": "6",
+    "m": "稳定期",
+    "ex": "ResNets plateau sooner than ViT."
+   },
+   {
+    "w": "extrapolate",
+    "ipa": "ɪkˈstræpəleɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "外推",
+    "ex": "we extrapolate performance to larger datasets."
+   },
+   {
+    "w": "diminishing",
+    "ipa": "dɪˈmɪnɪʃɪŋ",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "递减的",
+    "ex": "diminishing returns are already visible after 16 layers."
+   },
+   {
+    "w": "paradigm",
+    "ipa": "ˈpærədaɪm",
+    "pos": "n.",
+    "lv": "k",
+    "m": "范式",
+    "ex": "a new paradigm for image recognition."
+   },
+   {
+    "w": "subsume",
+    "ipa": "səbˈsuːm",
+    "pos": "v.",
+    "lv": "p",
+    "m": "包含",
+    "ex": "convolutional bias is subsumed by large-scale data.",
+    "ov": "g"
+   },
+   {
+    "w": "convergence",
+    "ipa": "kənˈvɜːrdʒəns",
+    "pos": "n.",
+    "lv": "p",
+    "m": "收敛",
+    "ex": "the convergence behavior of different models."
+   }
+  ]
+ },
+ {
+  "sec": "4.4 Scaling Study · 缩放实验",
+  "short": "Scaling",
+  "icon": "7",
+  "words": [
+   {
+    "w": "dominate",
+    "ipa": "ˈdɑːmɪneɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "占主导",
+    "ex": "Vision Transformers dominate ResNets on the performance/compute trade-off."
+   },
+   {
+    "w": "trade-off",
+    "ipa": "ˈtreɪd ɔːf",
+    "pos": "n.",
+    "lv": "p",
+    "m": "权衡",
+    "ex": "the performance/compute trade-off."
+   },
+   {
+    "w": "motivating",
+    "ipa": "ˈmoʊtɪveɪtɪŋ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "推动",
+    "ex": "motivating future scaling efforts."
+   },
+   {
+    "w": "configurations",
+    "ipa": "kənˌfɪɡjəˈreɪʃnz",
+    "pos": "n.",
+    "lv": "6",
+    "m": "配置",
+    "ex": "different configurations of the Transformer architecture."
+   },
+   {
+    "w": "saturate",
+    "ipa": "ˈsætʃəreɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "饱和",
+    "ex": "Vision Transformers appear not to saturate."
+   }
+  ]
+ },
+ {
+  "sec": "4.5 Inspecting ViT · 分析",
+  "short": "Inspect",
+  "icon": "8",
+  "words": [
+   {
+    "w": "principal",
+    "ipa": "ˈprɪnsəpl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "主要的",
+    "ex": "the top principal components of the learned embedding filters."
+   },
+   {
+    "w": "basis",
+    "ipa": "ˈbeɪsɪs",
+    "pos": "n.",
+    "lv": "4",
+    "m": "基底",
+    "ex": "The components resemble plausible basis functions."
+   },
+   {
+    "w": "localization",
+    "ipa": "ˌloʊkələˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "定位",
+    "ex": "the model attends to image regions relevant for classification.",
+    "ov": "t"
+   },
+   {
+    "w": "receptive",
+    "ipa": "rɪˈseptɪv",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "感受性的",
+    "ex": "This attention distance is analogous to receptive field size in CNNs."
+   },
+   {
+    "w": "analogous",
+    "ipa": "əˈnæləɡəs",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "类似的",
+    "ex": "This attention distance is analogous to receptive field size."
+   },
+   {
+    "w": "semantically",
+    "ipa": "sɪˈmæntɪkli",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "语义上地",
+    "ex": "the model attends to image regions that are semantically relevant."
+   },
+   {
+    "w": "cosine",
+    "ipa": "ˈkoʊzaɪn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "余弦",
+    "ex": "Tiles show the cosine similarity between the position embedding."
+   },
+   {
+    "w": "topology",
+    "ipa": "təˈpɑːlədʒi",
+    "pos": "n.",
+    "lv": "p",
+    "m": "拓扑结构",
+    "ex": "The position embeddings learn to represent 2D image topology."
+   },
+   {
+    "w": "sinusoidal",
+    "ipa": "ˌsɪnəˈsɔɪdl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "正弦的",
+    "ex": "a sinusoidal structure is sometimes apparent."
+   },
+   {
+    "w": "hand-crafted",
+    "ipa": "hænd ˈkræftɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "手工设计的",
+    "ex": "hand-crafted 2D-aware embedding variants do not yield improvements."
+   }
+  ]
+ },
+ {
+  "sec": "4.6 Self-Supervision · 自监督",
+  "short": "Self-Sup",
+  "icon": "9",
+  "words": [
+   {
+    "w": "self-supervised",
+    "ipa": "self sərˈvɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "自监督的",
+    "ex": "large scale self-supervised pre-training."
+   },
+   {
+    "w": "contrastive",
+    "ipa": "kənˈtræstɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "对比的",
+    "ex": "We leave exploration of contrastive pre-training to future work."
+   },
+   {
+    "w": "masked",
+    "ipa": "mæskt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "遮蔽的",
+    "ex": "mimicking the masked language modeling task used in BERT."
+   },
+   {
+    "w": "mimicking",
+    "ipa": "ˈmɪmɪkɪŋ",
+    "pos": "v.",
+    "lv": "p",
+    "m": "模仿",
+    "ex": "mimicking the masked language modeling task used in BERT."
+   },
+   {
+    "w": "corruption",
+    "ipa": "kəˈrʌmpʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "损坏",
+    "ex": "we corrupt 50% of patch embeddings."
+   },
+   {
+    "w": "pretext",
+    "ipa": "ˈpriːtekst",
+    "pos": "n.",
+    "lv": "6",
+    "m": " pretext任务",
+    "ex": "pretext task for self-supervised learning."
+   },
+   {
+    "w": "linear probing",
+    "ipa": "ˈlɪniər ˈproʊbɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "线性探测",
+    "ex": "probed linearly for classification performance."
+   },
+   {
+    "w": "invariant",
+    "ipa": "ɪnˈveəriənt",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "不变的",
+    "ex": "learning visual invariances."
+   },
+   {
+    "w": "augmentation",
+    "ipa": "ˌɔːɡmenˈteɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "数据增强",
+    "ex": "data augmentation techniques.",
+    "ov": "g"
+   }
+  ]
+ },
+ {
+  "sec": "5. Conclusion · 结论",
+  "short": "Conclusion",
+  "icon": "C",
+  "words": [
+   {
+    "w": "segmentation",
+    "ipa": "ˌseɡmənˈteɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "分割",
+    "ex": "apply ViT to detection and segmentation."
+   },
+   {
+    "w": "encouraging",
+    "ipa": "ɪnˈkɜːrɪdʒɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "令人鼓舞的",
+    "ex": "While these initial results are encouraging, many challenges remain."
+   },
+   {
+    "w": "detection",
+    "ipa": "dɪˈtekʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "检测",
+    "ex": "apply ViT to detection and segmentation."
+   },
+   {
+    "w": "approach",
+    "ipa": "əˈproʊtʃ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "方法",
+    "ex": "indicate the promise of this approach."
+   },
+   {
+    "w": "coupled",
+    "ipa": "ˈkʌpld",
+    "pos": "v.",
+    "lv": "p",
+    "m": "耦合",
+    "ex": "Our results, coupled with those in Carion et al., indicate the promise."
+   },
+   {
+    "w": "satisfactory",
+    "ipa": "ˌsætɪsˈfæktəri",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "令人满意的",
+    "ex": "results that are satisfactory for production use."
+   },
+   {
+    "w": "substantiate",
+    "ipa": "səbˈstænʃieɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "证实",
+    "ex": "further experiments substantiate these findings."
+   },
+   {
+    "w": "incentive",
+    "ipa": "ɪnˈsentɪv",
+    "pos": "n.",
+    "lv": "4",
+    "m": "激励",
+    "ex": "large datasets provide incentive for scaling models."
+   }
+  ]
+ },
+ {
+  "sec": "Appendix A · 附录A",
+  "short": "App A",
+  "icon": "AA",
+  "words": [
+   {
+    "w": "concatenated",
+    "ipa": "kənˈtækəneɪtɪd",
+    "pos": "v.",
+    "lv": "p",
+    "m": "拼接",
+    "ex": "project their concatenated outputs."
+   },
+   {
+    "w": "pairwise",
+    "ipa": "ˈperwaɪz",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "成对的",
+    "ex": "pairwise similarity between two elements."
+   },
+   {
+    "w": "softmax",
+    "ipa": "ˈsftmæks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "softmax函数",
+    "ex": "A = softmax(qk⊤/√Dh)."
+   },
+   {
+    "w": "query",
+    "ipa": "ˈkwɪri",
+    "pos": "n.",
+    "lv": "6",
+    "m": "查询",
+    "ex": "their respective query and key representations."
+   },
+   {
+    "w": "key",
+    "ipa": "kiː",
+    "pos": "n.",
+    "lv": "4",
+    "m": "键",
+    "ex": "their respective query and key representations."
+   },
+   {
+    "w": "logits",
+    "ipa": "ˈlɑːɡɪts",
+    "pos": "n.",
+    "lv": "p",
+    "m": "对数几率",
+    "ex": "add it to the logits of the main attention."
+   },
+   {
+    "w": "representation",
+    "ipa": "ˌreprɪzenˈteɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "表示",
+    "ex": "the resulting representation can then be fine-tuned."
+   },
+   {
+    "w": "mechanism",
+    "ipa": "ˈmekənɪzəm",
+    "pos": "n.",
+    "lv": "4",
+    "m": "机制",
+    "ex": "the attention mechanism."
+   },
+   {
+    "w": "attention",
+    "ipa": "əˈtenʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "注意力",
+    "ex": "self-attention allows ViT to integrate information."
+   },
+   {
+    "w": "multihead",
+    "ipa": "ˌmʌltiˈhed",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "多头的",
+    "ex": "Multihead self-attention is an extension of SA."
+   }
+  ]
+ },
+ {
+  "sec": "Appendix B · 附录B",
+  "short": "App B",
+  "icon": "AB",
+  "words": [
+   {
+    "w": "unconventional",
+    "ipa": "ˌʌnkənˈvenʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "非常规的",
+    "ex": "our use of Adam as optimizer is quite unconventional.",
+    "ov": "t"
+   },
+   {
+    "w": "robust",
+    "ipa": "roʊˈbʌst",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "稳健的",
+    "ex": "This setting showed robust improvements."
+   },
+   {
+    "w": "configuration",
+    "ipa": "kənˌfɪɡjəˈreɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "配置",
+    "ex": "different configurations of the Transformer architecture."
+   }
+  ]
+ },
+ {
+  "sec": "Appendix D · 附录D",
+  "short": "App D",
+  "icon": "AD",
+  "words": [
+   {
+    "w": "axial",
+    "ipa": "ˈæksiəl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "轴向的",
+    "ex": "Axial Attention is a technique to run self-attention on large inputs."
+   },
+   {
+    "w": "recursive",
+    "ipa": "rɪˈkɜːrsɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "递归的",
+    "ex": "recursively multiplied the weight matrices."
+   },
+   {
+    "w": "approximation",
+    "ipa": "əˌprɑːksɪˈmeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "近似",
+    "ex": "several approximations have been tried.",
+    "ov": "t"
+   }
+  ]
+ }
+];
+const LVCLS={"4":"t4","6":"t6","k":"tk","p":"tp","t":"tt","g":"tg"};
+const LVNAME={"4":"四级","6":"六级","k":"考研","p":"考博","t":"雅思 · 托福","g":"GRE"};
+const LVSHORT={"4":"4","6":"6","k":"考研","p":"考博","t":"托福","g":"GRE"};
+const LVORDER=["4","6","k","p","t","g"];
+
+let mode="sec";
+let theme="theme-mag"; // 章节视图固定杂志风；按级别视图固定暗色大页
+
+function cardHTML(x,sec){
+  const from = mode==="lv" ? `<div class="from">出自 ${sec}</div>` : "";
+  if(theme==="theme-paper"){
+    return `<div class="word"><span class="w">${x.w}<span class="ipa">/${x.ipa}/</span><i class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</i></span>
+      <span><span class="pos">${x.pos}</span><span class="m">${x.m}</span>${from}</span>
+      <span class="ex">${x.ex}</span></div>`;
+  }
+  if(theme==="theme-mag") return "";
+  return `<div class="card lv${x.lv}" data-say="${x.w}"><span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</span>
+    <div class="m">${x.pos} ${x.m}</div><div class="ex">${x.ex}</div>${from}</div>`;
+}
+function magRow(x,sec){
+  return `<tr data-say="${x.w}"><td class="w">${x.w}<span class="ipa">/${x.ipa}/</span></td>
+    <td class="lv"><b class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</b></td>
+    <td class="m">${x.pos} ${x.m}${mode==="lv"?`<span class="from">出自 ${sec}</span>`:""}</td>
+    <td class="ex">${x.ex}</td></tr>`;
+}
+function groupHTML(title,icon,inner){
+  if(theme==="theme-mag") return `<div class="sec"><h2>${title}</h2><table>${inner}</table></div>`;
+  if(theme==="theme-dark"||theme==="theme-fresh")
+    return `<div class="sec"><h2>${theme==="theme-dark"?"":"<span class='n'>"+icon+"</span>"}${title}</h2><div class="grid">${inner}</div></div>`;
+  return `<div class="sec"><h2>${title}</h2>${inner}</div>`;
+}
+function render(){
+  document.body.classList.toggle("lv-mode",mode==="lv");
+  if(mode==="sec")document.body.className="theme-mag";
+  const app=document.getElementById("app");
+  let html="";
+  if(mode==="sec"){
+    for(const s of DATA){
+      html += theme==="theme-mag"
+        ? groupHTML(s.sec,s.icon,s.words.map(x=>magRow(x,s.short)).join(""))
+        : groupHTML(s.sec,s.icon,s.words.map(x=>cardHTML(x,s.short)).join(""));
+    }
+  }else{
+    // 学习模式同款暗色大页：每个级别一块
+    const dot={4:"var(--c4)",6:"var(--c6)",k:"var(--ckaon)",p:"var(--cphd)",t:"var(--ct)",g:"var(--cg)"};
+    html=LVORDER.map(lv=>{
+      const items=[];
+      DATA.forEach(s=>s.words.forEach(x=>{if(x.lv===lv||x.ov===lv)items.push([x.ov===lv?{...x,lv:x.ov}:x,s.short])}));
+      items.sort((a,b)=>a[0].w.localeCompare(b[0].w));
+      const cls={4:"",6:"l6",k:"lk",p:"lp",t:"lt",g:"lg"}[lv];
+      return `<div class="lvslide ${cls}">
+        <div class="ltitle"><span style="color:${dot[lv]}">${LVNAME[lv]}</span>词汇<small>${items.length} words · 按字母排序 · 悬停看原文例句 · 点击发音</small></div>
+        <div class="sgrid">${items.map(([x,sec])=>`
+          <div class="lcard" data-say="${x.w}">
+            <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span>
+            <div class="m">${x.pos} ${x.m}</div>
+            <div class="ex">${x.ex}</div>
+            <div class="from">出自 ${sec}</div>
+          </div>`).join("")}</div></div>`;
+    }).join("");
+  }
+  app.innerHTML=html;
+}
+function syncToolbar(){
+  document.getElementById("v-sec").classList.toggle("on",mode==="sec");
+  document.getElementById("v-lv").classList.toggle("on",mode==="lv");
+}
+document.getElementById("v-sec").onclick=()=>{mode="sec";theme="theme-mag";document.body.className="theme-mag";syncToolbar();render();};
+document.getElementById("v-lv").onclick=()=>{mode="lv";syncToolbar();render();};
+
+// 朗读：在线 TTS 多源自动降级（Polly → 百度 → 谷歌），选音色只对 Polly 源生效
+const ALL_SRC=["yd1","yd0","bd","gg"];
+const ONLINE_VOICES=[["yd1","美式 · 有道（推荐）"],["yd0","英式 · 有道"],["bd","百度翻译 · 女声"],["mute","🔇 不朗读"]];
+let ONLINE="yd1";try{const sv=localStorage.getItem("vocab_voice");if(sv&&["yd1","yd0","bd","gg","mute"].includes(sv))ONLINE=sv;}catch(e){}
+let SRC_ORDER=["yd1","yd0","bd","gg"],srcIdx=0; // 当前可用的源
+function applyVoiceOrder(){const i=ALL_SRC.indexOf(ONLINE);SRC_ORDER=i<0?ALL_SRC.slice():ALL_SRC.slice(i).concat(ALL_SRC.slice(0,i));}
+applyVoiceOrder();
+let audio=null;
+function ttsURL(src,t){
+  const q=encodeURIComponent(t);
+  if(src==="yd1")return `https://dict.youdao.com/dictvoice?type=1&audio=${q}`;
+  if(src==="yd0")return `https://dict.youdao.com/dictvoice?type=0&audio=${q}`;
+  if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=en&text=${q}&spd=5&source=web`;
+  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${q}`;
+}
+function fillVoiceSel(){
+  const sel=document.getElementById("voiceSel");if(!sel)return;
+  sel.innerHTML=`<option value="mute" ${ONLINE==="mute"?"selected":""}>🔇 不朗读</option>`+ONLINE_VOICES.map(([v,l])=>`<option value="${v}" ${ONLINE===v?"selected":""}>${l}</option>`).join("");
+  const st=document.getElementById("srcState");
+  if(st)st.textContent={yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[SRC_ORDER[srcIdx]]||"";
+}
+fillVoiceSel();
+let saying=0; // 防并发
+function say(t){
+  if(ONLINE==="mute"){try{if(audio){audio.pause();audio=null}}catch(e){}return}
+  const my=++saying;
+  trySrc(0,t,my);
+}
+function trySrc(i,t,my){
+  if(my!==saying)return;
+  if(i>=SRC_ORDER.length){const st=document.getElementById("srcState");if(st)st.textContent="无可用源";return}
+  const src=SRC_ORDER[i];
+  const st=document.getElementById("srcState");
+  if(st)st.textContent="尝试"+({yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[src]);
+  try{if(audio){audio.pause();audio=null}}catch(e){}
+  const a=new Audio(ttsURL(src,t));
+  let ok=false,advanced=false;
+  const advance=()=>{ if(!ok&&!advanced&&my===saying){advanced=true;trySrc(i+1,t,my);} };
+  a.addEventListener("playing",()=>{ok=true;
+    if(srcIdx!==i){srcIdx=i;fillVoiceSel();} // 记住能用的源
+  });
+  a.addEventListener("error",advance);
+  audio=a;
+  a.play().catch(advance);
+  setTimeout(()=>{ if(!ok&&my===saying&&a.paused)advance(); },2500);
+}
+document.getElementById("voiceSel").addEventListener("change",e=>{
+  ONLINE=e.target.value; applyVoiceOrder(); // 换音色重新从头试源
+  if(ONLINE!=="mute") say("Hello, let us learn new words together.");
+});
+/* ---- 白天 / 夜晚 ---- */
+let night=false;
+try{night=(localStorage.getItem("vocab_dn")||"day")==="night"}catch(e){night=false}
+function applyDN(){
+  document.body.classList.toggle("night",night);
+  document.getElementById("dn-day").classList.toggle("on",!night);
+  document.getElementById("dn-night").classList.toggle("on",night);
+  if(typeof studyEl!=="undefined"&&studyEl)studyEl.classList.toggle("day",!night);
+}
+document.getElementById("dn-day").onclick=()=>{night=false;try{localStorage.setItem("vocab_dn","day")}catch(e){};applyDN();};
+document.getElementById("dn-night").onclick=()=>{night=true;try{localStorage.setItem("vocab_dn","night")}catch(e){};applyDN();};
+document.getElementById("app").addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+
+/* ---------- 学习模式：按章节分页的 PPT 翻页 ---------- */
+const PER_PAGE = 12; // 每页最多词数，放不下自动续页
+let slides=[],si=0;
+function buildSlides(){
+  slides=[];
+  for(const s of DATA){
+    for(let i=0;i<s.words.length;i+=PER_PAGE){
+      slides.push({sec:s.sec,page:Math.floor(i/PER_PAGE)+1,
+        pages:Math.ceil(s.words.length/PER_PAGE),words:s.words.slice(i,i+PER_PAGE)});
+    }
+  }
+}
+const studyEl=document.getElementById("study");
+let open=false;
+function showSlide(){
+  const sl=slides[si];
+  const title=sl.pages>1 ? `${sl.sec}（第 ${sl.page}/${sl.pages} 页）` : sl.sec;
+  document.getElementById("sPage").innerHTML =
+    `<div class="stitle">${title}<small>${sl.words.length} words</small></div>
+     <div class="sgrid">${sl.words.map(x=>`
+       <div class="scard" data-say="${x.w}">
+         <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}" style="font-size:11px;padding:2px 8px">${LVSHORT[x.lv]}</span>
+         <div class="m">${x.pos} ${x.m}</div>
+         <div class="ex">${x.ex}</div>
+       </div>`).join("")}</div>`;
+  document.getElementById("sIdx").textContent=(si+1)+" / "+slides.length;
+  document.getElementById("sbar").style.width=((si+1)/slides.length*100)+"%";
+  document.getElementById("sPrev").disabled=si===0;
+  document.getElementById("sNext").disabled=si===slides.length-1;
+  studyEl.querySelector(".sbody").scrollTop=0;
+}
+function studyOpen(){ buildSlides(); si=0; open=true; studyEl.classList.add("on"); applyDN(); showSlide(); }
+function studyClose(){ open=false; studyEl.classList.remove("on"); }
+function next(){ if(si<slides.length-1){ si++; showSlide(); } }
+function prev(){ if(si>0){ si--; showSlide(); } }
+document.getElementById("v-study").onclick=()=>open?studyClose():studyOpen();
+document.getElementById("sClose").onclick=studyClose;
+document.getElementById("sExit").onclick=studyClose;
+document.getElementById("sNext").onclick=next;
+document.getElementById("sPrev").onclick=prev;
+studyEl.addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+document.addEventListener("keydown",e=>{
+  if(!open) return;
+  if(e.code==="Space"||e.key==="ArrowRight"||e.key==="PageDown"){ e.preventDefault(); next(); }
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){ prev(); }
+  else if(e.key==="Escape"){ studyClose(); }
+});
+applyDN(); syncToolbar(); render();
+</script>
+</body>
+</html>
