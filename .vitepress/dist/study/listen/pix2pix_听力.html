@@ -542,6 +542,7 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -575,6 +576,7 @@
 <script>
 const ITEMS=[{"w": "conditional", "ipa": "kənˈdɪʃənl", "pos": "adj.", "m": "条件的", "ex": "Image-to-Image Translation with Conditional Adversarial Networks", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "general-purpose", "ipa": "ˌdʒenrəl ˈpɜːrpəs", "pos": "adj.", "m": "通用的", "ex": "a general-purpose solution to image-to-image translation problems", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "formulation", "ipa": "ˌfɔːrmjuˈleɪʃn", "pos": "n.", "m": "形式化表述", "ex": "problems that traditionally would require very different loss formulations", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "synthesizing", "ipa": "ˈsɪnθəsaɪzɪŋ", "pos": "v.", "m": "合成", "ex": "effective at synthesizing photos from label maps", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "reconstruct", "ipa": "ˌriːkənˈstrʌkt", "pos": "v.", "m": "重建", "ex": "reconstructing objects from edge maps", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "colorize", "ipa": "ˈkʌləraɪz", "pos": "v.", "m": "上色", "ex": "and colorizing images, among other tasks", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "applicability", "ipa": "əˌplɪkəˈbɪləti", "pos": "n.", "m": "适用性", "ex": "further demonstrating its wide applicability and ease of adoption", "lv": "考博", "ov": "GRE", "sec": "Abstract"}, {"w": "adoption", "ipa": "əˈdɑːpʃn", "pos": "n.", "m": "采用", "ex": "wide applicability and ease of adoption", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "tweaking", "ipa": "ˈtwiːkɪŋ", "pos": "n.", "m": "调参", "ex": "without the need for parameter tweaking", "lv": "考博", "ov": "GRE", "sec": "Abstract"}, {"w": "hand-engineer", "ipa": "ˌhænd endʒɪˈnɪr", "pos": "v.", "m": "手工设计", "ex": "we no longer hand-engineer our mapping functions", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "reasonable", "ipa": "ˈriːzənəbl", "pos": "adj.", "m": "合理的", "ex": "achieve reasonable results without hand-engineering", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "facade", "ipa": "fəˈsɑːd", "pos": "n.", "m": "（建筑）立面", "ex": "Labels to Facade", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "aerial", "ipa": "ˈeriəl", "pos": "adj.", "m": "航拍的", "ex": "Aerial to Map", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "corresponding", "ipa": "ˌkɔːrəˈspɑːndɪŋ", "pos": "adj.", "m": "对应的", "ex": "translating an input image into a corresponding output image", "lv": "四级", "ov": "", "sec": "Abstract"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"conditional": "../listen-audio/w_brian_conditional.mp3", "formulation": "../listen-audio/w_brian_formulation.mp3", "corresponding": "../listen-audio/w_brian_corresponding.mp3", "applicability": "../listen-audio/w_brian_applicability.mp3", "reconstruct": "../listen-audio/w_brian_reconstruct.mp3", "adoption": "../listen-audio/w_brian_adoption.mp3", "reasonable": "../listen-audio/w_brian_reasonable.mp3", "synthesizing": "../listen-audio/w_brian_synthesizing.mp3", "general-purpose": "../listen-audio/w_brian_general_purpose.mp3", "colorize": "../listen-audio/w_brian_colorize.mp3", "tweaking": "../listen-audio/w_brian_tweaking.mp3", "hand-engineer": "../listen-audio/w_brian_hand_engineer.mp3", "facade": "../listen-audio/w_brian_facade.mp3", "aerial": "../listen-audio/w_brian_aerial.mp3"}, "e": {"Image-to-Image Translation with Conditional Adversarial Networks": "../listen-audio/e_brian_aa8d5db8d7ce.mp3", "a general-purpose solution to image-to-image translation problems": "../listen-audio/e_brian_4976899a24f7.mp3", "problems that traditionally would require very different loss formulations": "../listen-audio/e_brian_e98c46cbdc49.mp3", "effective at synthesizing photos from label maps": "../listen-audio/e_brian_76395baae825.mp3", "reconstructing objects from edge maps": "../listen-audio/e_brian_bff7a2b3e461.mp3", "and colorizing images, among other tasks": "../listen-audio/e_brian_f9d1f5e0d037.mp3", "further demonstrating its wide applicability and ease of adoption": "../listen-audio/e_brian_0da52425f1cb.mp3", "wide applicability and ease of adoption": "../listen-audio/e_brian_add2137cfc2a.mp3", "without the need for parameter tweaking": "../listen-audio/e_brian_689e5aae9ab5.mp3", "we no longer hand-engineer our mapping functions": "../listen-audio/e_brian_8db4767d5f53.mp3", "achieve reasonable results without hand-engineering": "../listen-audio/e_brian_a86bd1d9949e.mp3", "Labels to Facade": "../listen-audio/e_brian_1e372bb70d04.mp3", "Aerial to Map": "../listen-audio/e_brian_5c23ff362e81.mp3", "translating an input image into a corresponding output image": "../listen-audio/e_brian_878829c0d2e1.mp3"}}, "en-US-AndrewNeural": {"w": {"conditional": "../listen-audio/w_andrew_conditional.mp3", "formulation": "../listen-audio/w_andrew_formulation.mp3", "corresponding": "../listen-audio/w_andrew_corresponding.mp3"}}, "zh-CN-YunyangNeural": {"m": {"条件的": "../listen-audio/m_yunyang_ac4abf5f61f8.mp3", "采用": "../listen-audio/m_yunyang_7b4eb56b0375.mp3", "对应的": "../listen-audio/m_yunyang_a7c3fdddb504.mp3", "合成": "../listen-audio/m_yunyang_c29e4097806f.mp3", "适用性": "../listen-audio/m_yunyang_f5d55a37e610.mp3", "重建": "../listen-audio/m_yunyang_9e0931596013.mp3", "通用的": "../listen-audio/m_yunyang_0e8d749ab2f4.mp3", "手工设计": "../listen-audio/m_yunyang_48d0f5d729c9.mp3", "合理的": "../listen-audio/m_yunyang_4ff36070d8b0.mp3", "形式化表述": "../listen-audio/m_yunyang_e09c8b1381ca.mp3", "上色": "../listen-audio/m_yunyang_a26637b16f5f.mp3", "调参": "../listen-audio/m_yunyang_10d52fdb0957.mp3", "（建筑）立面": "../listen-audio/m_yunyang_44f80e27e3f4.mp3", "航拍的": "../listen-audio/m_yunyang_321421bdb500.mp3"}}, "zh-CN-YunjianNeural": {"m": {"条件的": "../listen-audio/m_yunjian_ac4abf5f61f8.mp3", "采用": "../listen-audio/m_yunjian_7b4eb56b0375.mp3", "对应的": "../listen-audio/m_yunjian_a7c3fdddb504.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const VIDEO={};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -995,6 +997,24 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
+
+/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
+(function videoRow(){
+  try{
+    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
+    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
+    row.style.display="";
+    const sp=row.querySelector("span");
+    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
+    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
+      if(!x[1])return;
+      const b=document.createElement("b");
+      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
+      b.onclick=()=>window.open(x[1],"_blank","noopener");
+      box.appendChild(b);
+    });
+  }catch(e){}
+})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){

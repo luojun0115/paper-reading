@@ -542,6 +542,7 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -575,6 +576,7 @@
 <script>
 const ITEMS=[{"w": "denoising", "ipa": "diːˈnɔɪzɪŋ", "pos": "n.", "m": "去噪", "ex": "Denoising diffusion probabilistic models (DDPM)", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "diffusion", "ipa": "dɪˈfjuːʒn", "pos": "n.", "m": "扩散", "ex": "Denoising diffusion probabilistic models", "lv": "考博", "ov": "GRE", "sec": "Abstract"}, {"w": "log-likelihood", "ipa": "ˈlɔːɡ ˈlaɪklihʊd", "pos": "n.", "m": "对数似然", "ex": "DDPMs can also achieve competitive log-likelihoods", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "reverse", "ipa": "rɪˈvɜːrs", "pos": "adj.", "m": "反向的", "ex": "learning variances of the reverse diffusion process", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "forward pass", "ipa": "ˈfɔːrwərd pæs", "pos": "n.", "m": "前向传播", "ex": "an order of magnitude fewer forward passes", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "negligible", "ipa": "ˈneɡlɪdʒəbl", "pos": "adj.", "m": "可忽略的", "ex": "with a negligible difference in sample quality", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "deployment", "ipa": "dɪˈplɔɪmənt", "pos": "n.", "m": "部署", "ex": "important for the practical deployment of these models", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "precision", "ipa": "prɪˈsɪʒn", "pos": "n.", "m": "精确率", "ex": "we additionally use precision and recall", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "smoothly", "ipa": "ˈsmuːðli", "pos": "adv.", "m": "平滑地", "ex": "sample quality and likelihood of these models scale smoothly", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "ensemble", "ipa": "ɑːnˈsɑːmbl", "pos": "n.", "m": "集成", "ex": "as well as an ensemble produced by using θvlb", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "timestep", "ipa": "ˈtaɪmstep", "pos": "n.", "m": "时间步", "ex": "for that timestep of the diffusion process", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "seed", "ipa": "siːd", "pos": "n.", "m": "随机种子", "ex": "the seed was ﬁxed, allowing a direct comparison", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "gradual", "ipa": "ˈɡrædʒuəl", "pos": "adj.", "m": "逐渐的", "ex": "learning to reverse a gradual, multi-step noising process", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "equivalence", "ipa": "ɪˈkwɪvələns", "pos": "n.", "m": "等价性", "ex": "showed an equivalence between denoising diffusion probabilistic models and score based models", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "autoregressive", "ipa": "ˌɔːtoʊrɪˈɡresɪv", "pos": "adj.", "m": "自回归的", "ex": "competitive with other likelihood-based models such as autoregressive models", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "likelihood-based", "ipa": "ˈlaɪklihʊd beɪst", "pos": "adj.", "m": "基于似然的", "ex": "other likelihood-based models", "lv": "考博", "ov": "", "sec": "Intro"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"seed": "../listen-audio/w_brian_seed.mp3", "ensemble": "../listen-audio/w_brian_ensemble.mp3", "timestep": "../listen-audio/w_brian_timestep.mp3", "denoising": "../listen-audio/w_brian_denoising.mp3", "autoregressive": "../listen-audio/w_brian_autoregressive.mp3", "diffusion": "../listen-audio/w_brian_diffusion.mp3", "deployment": "../listen-audio/w_brian_deployment.mp3", "reverse": "../listen-audio/w_brian_reverse.mp3", "smoothly": "../listen-audio/w_brian_smoothly.mp3", "precision": "../listen-audio/w_brian_precision.mp3", "log-likelihood": "../listen-audio/w_brian_log_likelihood.mp3", "forward pass": "../listen-audio/w_brian_forward_pass.mp3", "negligible": "../listen-audio/w_brian_negligible.mp3", "gradual": "../listen-audio/w_brian_gradual.mp3", "equivalence": "../listen-audio/w_brian_equivalence.mp3", "likelihood-based": "../listen-audio/w_brian_likelihood_based.mp3"}, "e": {"Denoising diffusion probabilistic models (DDPM)": "../listen-audio/e_brian_460ea757431d.mp3", "Denoising diffusion probabilistic models": "../listen-audio/e_brian_de71201a2398.mp3", "DDPMs can also achieve competitive log-likelihoods": "../listen-audio/e_brian_76c2134b7152.mp3", "learning variances of the reverse diffusion process": "../listen-audio/e_brian_664701bda035.mp3", "an order of magnitude fewer forward passes": "../listen-audio/e_brian_ba430d7dd0f3.mp3", "with a negligible difference in sample quality": "../listen-audio/e_brian_65bf3c3fab48.mp3", "important for the practical deployment of these models": "../listen-audio/e_brian_413ce620d8f8.mp3", "we additionally use precision and recall": "../listen-audio/e_brian_56c63841e720.mp3", "sample quality and likelihood of these models scale smoothly": "../listen-audio/e_brian_e1d4cf03d6c4.mp3", "as well as an ensemble produced by using θvlb": "../listen-audio/e_brian_337dbdc5fbdc.mp3", "for that timestep of the diffusion process": "../listen-audio/e_brian_5f7089e2abe6.mp3", "the seed was ﬁxed, allowing a direct comparison": "../listen-audio/e_brian_129ffd4fee96.mp3", "learning to reverse a gradual, multi-step noising process": "../listen-audio/e_brian_5252c17e2d29.mp3", "showed an equivalence between denoising diffusion probabilistic models and score based models": "../listen-audio/e_brian_7c6e647af6f6.mp3", "competitive with other likelihood-based models such as autoregressive models": "../listen-audio/e_brian_c2a24d150e30.mp3", "other likelihood-based models": "../listen-audio/e_brian_23ccb47bf711.mp3"}}, "en-US-AndrewNeural": {"w": {"seed": "../listen-audio/w_andrew_seed.mp3", "ensemble": "../listen-audio/w_andrew_ensemble.mp3"}}, "zh-CN-YunyangNeural": {"m": {"自回归的": "../listen-audio/m_yunyang_f10a28fa6508.mp3", "时间步": "../listen-audio/m_yunyang_5b93633ac176.mp3", "集成": "../listen-audio/m_yunyang_8dce5ae4f23b.mp3", "去噪": "../listen-audio/m_yunyang_0239edcd62d6.mp3", "部署": "../listen-audio/m_yunyang_a9f94dcd57ee.mp3", "扩散": "../listen-audio/m_yunyang_80b3d97a7307.mp3", "平滑地": "../listen-audio/m_yunyang_c3fdb65a73e1.mp3", "对数似然": "../listen-audio/m_yunyang_92cbdcbfdafd.mp3", "精确率": "../listen-audio/m_yunyang_6fb98831cbf4.mp3", "反向的": "../listen-audio/m_yunyang_1446d4ccbfac.mp3", "前向传播": "../listen-audio/m_yunyang_fad572287632.mp3", "可忽略的": "../listen-audio/m_yunyang_163798ba39f2.mp3", "随机种子": "../listen-audio/m_yunyang_b0db489fe5b5.mp3", "逐渐的": "../listen-audio/m_yunyang_9aee49e76b33.mp3", "等价性": "../listen-audio/m_yunyang_52bf2c78cff3.mp3", "基于似然的": "../listen-audio/m_yunyang_4f62ac76f125.mp3"}}, "zh-CN-YunjianNeural": {"m": {"自回归的": "../listen-audio/m_yunjian_f10a28fa6508.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const VIDEO={};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -995,6 +997,24 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
+
+/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
+(function videoRow(){
+  try{
+    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
+    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
+    row.style.display="";
+    const sp=row.querySelector("span");
+    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
+    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
+      if(!x[1])return;
+      const b=document.createElement("b");
+      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
+      b.onclick=()=>window.open(x[1],"_blank","noopener");
+      box.appendChild(b);
+    });
+  }catch(e){}
+})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){

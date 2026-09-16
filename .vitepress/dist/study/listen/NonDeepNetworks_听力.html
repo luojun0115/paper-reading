@@ -542,6 +542,7 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -575,6 +576,7 @@
 <script>
 const ITEMS=[{"w": "hallmark", "ipa": "ˈhɔːlmɑːrk", "pos": "n.", "m": "标志，特征", "ex": "Depth is the hallmark of deep neural networks", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "sequential", "ipa": "sɪˈkwenʃl", "pos": "adj.", "m": "串行的", "ex": "more depth means more sequential computation and higher latency", "lv": "考博", "ov": "GRE", "sec": "Abstract"}, {"w": "parallel", "ipa": "ˈpærəlel", "pos": "adj.", "m": "并行的", "ex": "we use parallel subnetworks instead of stacking one layer after another", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "subnetwork", "ipa": "ˈsʌbˌnetwɜːrk", "pos": "n.", "m": "子网络", "ex": "we use parallel subnetworks", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "utilize", "ipa": "ˈjuːtəlaɪz", "pos": "v.", "m": "利用", "ex": "By utilizing parallel substructures", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "backbone", "ipa": "ˈbækboʊn", "pos": "n.", "m": "主干网络", "ex": "a network with a low-depth (12) backbone", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "proof of concept", "ipa": "pruːf əv ˈkɑːnsept", "pos": "n.", "m": "概念验证", "ex": "we provide a proof of concept", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "revolutionize", "ipa": "ˌrevəˈluːʃənaɪz", "pos": "v.", "m": "彻底变革", "ex": "DNNs have revolutionized the ﬁelds of machine learning", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "characteristic", "ipa": "ˌkerəktəˈrɪstɪk", "pos": "n.", "m": "特征", "ex": "a key characteristic of DNNs is that they are deep", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "neuron", "ipa": "ˈnʊrɑːn", "pos": "n.", "m": "神经元", "ex": "the length of the longest path from an input neuron to an output neuron", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "intra-group", "ipa": "ˌɪntrə ˈɡruːp", "pos": "adj.", "m": "组内的", "ex": "groups of neurons with no intra-group connections", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "essential", "ipa": "ɪˈsenʃl", "pos": "adj.", "m": "必不可少的", "ex": "large depth is an essential component for high-performing networks", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "representational", "ipa": "ˌreprɪzenˈteɪʃənl", "pos": "adj.", "m": "表示的", "ex": "depth increases the representational ability of a network", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "abstract", "ipa": "ˈæbstrækt", "pos": "adj.", "m": "抽象的", "ex": "helps learn increasingly abstract features", "lv": "四级", "ov": "", "sec": "Abstract"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"essential": "../listen-audio/w_brian_essential.mp3", "sequential": "../listen-audio/w_brian_sequential.mp3", "backbone": "../listen-audio/w_brian_backbone.mp3", "revolutionize": "../listen-audio/w_brian_revolutionize.mp3", "abstract": "../listen-audio/w_brian_abstract.mp3", "parallel": "../listen-audio/w_brian_parallel.mp3", "hallmark": "../listen-audio/w_brian_hallmark.mp3", "representational": "../listen-audio/w_brian_representational.mp3", "utilize": "../listen-audio/w_brian_utilize.mp3", "subnetwork": "../listen-audio/w_brian_subnetwork.mp3", "proof of concept": "../listen-audio/w_brian_proof_of_concept.mp3", "characteristic": "../listen-audio/w_brian_characteristic.mp3", "neuron": "../listen-audio/w_brian_neuron.mp3", "intra-group": "../listen-audio/w_brian_intra_group.mp3"}, "e": {"Depth is the hallmark of deep neural networks": "../listen-audio/e_brian_b32748b3359e.mp3", "more depth means more sequential computation and higher latency": "../listen-audio/e_brian_5072c2deeba9.mp3", "we use parallel subnetworks instead of stacking one layer after another": "../listen-audio/e_brian_bd09d2fd7e31.mp3", "we use parallel subnetworks": "../listen-audio/e_brian_5a12e8ef4756.mp3", "By utilizing parallel substructures": "../listen-audio/e_brian_a888b6bec26d.mp3", "a network with a low-depth (12) backbone": "../listen-audio/e_brian_49813a810d57.mp3", "we provide a proof of concept": "../listen-audio/e_brian_2b254527a857.mp3", "DNNs have revolutionized the ﬁelds of machine learning": "../listen-audio/e_brian_b366d332c78e.mp3", "a key characteristic of DNNs is that they are deep": "../listen-audio/e_brian_7df7bb27b726.mp3", "the length of the longest path from an input neuron to an output neuron": "../listen-audio/e_brian_51b63fc982b7.mp3", "groups of neurons with no intra-group connections": "../listen-audio/e_brian_2583a85f7a5b.mp3", "large depth is an essential component for high-performing networks": "../listen-audio/e_brian_396c71b21e9e.mp3", "depth increases the representational ability of a network": "../listen-audio/e_brian_2cd69d018d7d.mp3", "helps learn increasingly abstract features": "../listen-audio/e_brian_9be3e3b7bc85.mp3"}}, "en-US-AndrewNeural": {"w": {"essential": "../listen-audio/w_andrew_essential.mp3", "sequential": "../listen-audio/w_andrew_sequential.mp3"}}, "zh-CN-YunyangNeural": {"m": {"必不可少的": "../listen-audio/m_yunyang_91892e3daeaf.mp3", "利用": "../listen-audio/m_yunyang_c0d076b90724.mp3", "彻底变革": "../listen-audio/m_yunyang_bd7a9a1d8686.mp3", "抽象的": "../listen-audio/m_yunyang_cb71a857b8ab.mp3", "并行的": "../listen-audio/m_yunyang_c18e9217f146.mp3", "标志，特征": "../listen-audio/m_yunyang_1c7cbe558d12.mp3", "串行的": "../listen-audio/m_yunyang_9a85a39b3aeb.mp3", "子网络": "../listen-audio/m_yunyang_a561593f498b.mp3", "主干网络": "../listen-audio/m_yunyang_887a36bf3b78.mp3", "概念验证": "../listen-audio/m_yunyang_41f003fb8d79.mp3", "特征": "../listen-audio/m_yunyang_1dfba5008236.mp3", "神经元": "../listen-audio/m_yunyang_4f0e34e027b2.mp3", "组内的": "../listen-audio/m_yunyang_25639519d488.mp3", "表示的": "../listen-audio/m_yunyang_0672c5beaf3d.mp3"}}, "zh-CN-YunjianNeural": {"m": {"必不可少的": "../listen-audio/m_yunjian_91892e3daeaf.mp3", "利用": "../listen-audio/m_yunjian_c0d076b90724.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const VIDEO={};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -995,6 +997,24 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
+
+/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
+(function videoRow(){
+  try{
+    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
+    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
+    row.style.display="";
+    const sp=row.querySelector("span");
+    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
+    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
+      if(!x[1])return;
+      const b=document.createElement("b");
+      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
+      b.onclick=()=>window.open(x[1],"_blank","noopener");
+      box.appendChild(b);
+    });
+  }catch(e){}
+})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){

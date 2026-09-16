@@ -542,6 +542,7 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -575,6 +576,7 @@
 <script>
 const ITEMS=[{"w": "paradigm", "ipa": "ˈpærədaɪm", "pos": "n.", "m": "范式", "ex": "One paradigm for learning from few labeled examples", "lv": "考研", "ov": "", "sec": "Abstract"}, {"w": "unlabeled", "ipa": "ˌʌnˈleɪbld", "pos": "adj.", "m": "无标注的", "ex": "making best use of a large amount of unlabeled data", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "pretraining", "ipa": "priːˈtreɪnɪŋ", "pos": "n.", "m": "预训练", "ex": "unsupervised pretraining followed by supervised ﬁne-tuning", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "task-agnostic", "ipa": "tɑːsk æɡˈnɑːstɪk", "pos": "adj.", "m": "任务无关的", "ex": "uses unlabeled data in a task-agnostic way", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "semi-supervised", "ipa": "ˌsemi ˈsuːpərvaɪzd", "pos": "adj.", "m": "半监督的", "ex": "surprisingly effective for semi-supervised learning on ImageNet", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "ingredient", "ipa": "ɪnˈɡriːdiənt", "pos": "n.", "m": "要素", "ex": "A key ingredient of our approach", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "distill", "ipa": "dɪˈstɪl", "pos": "v.", "m": "蒸馏", "ex": "the big network can be further improved and distilled into a much smaller one", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "summarize", "ipa": "ˈsʌməraɪz", "pos": "v.", "m": "概括", "ex": "can be summarized in three steps", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "reﬁne", "ipa": "rɪˈfaɪn", "pos": "v.", "m": "精炼", "ex": "for reﬁning and transferring the task-speciﬁc knowledge", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "transfer", "ipa": "trænsˈfɜːr", "pos": "v.", "m": "迁移", "ex": "reﬁning and transferring the task-speciﬁc knowledge", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "procedure", "ipa": "prəˈsiːdʒər", "pos": "n.", "m": "流程", "ex": "This procedure achieves 73.9% ImageNet top-1 accuracy", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "outperform", "ipa": "ˌaʊtpərˈfɔːrm", "pos": "v.", "m": "表现优于", "ex": "outperforming standard supervised training with all of the labels", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "establish", "ipa": "ɪˈstæblɪʃ", "pos": "v.", "m": "确立", "ex": "This note establishes stronger and more feasible baselines", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "feasible", "ipa": "ˈfiːzəbl", "pos": "adj.", "m": "可行的", "ex": "stronger and more feasible baselines built in the MoCo framework", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "counterpart", "ipa": "ˈkaʊntərpɑːrt", "pos": "n.", "m": "对照版本", "ex": "unsupervised pre-training can surpass its ImageNet-supervised counterpart", "lv": "六级", "ov": "", "sec": "Intro"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"transfer": "../listen-audio/w_brian_transfer.mp3", "establish": "../listen-audio/w_brian_establish.mp3", "outperform": "../listen-audio/w_brian_outperform.mp3", "semi-supervised": "../listen-audio/w_brian_semi_supervised.mp3", "summarize": "../listen-audio/w_brian_summarize.mp3", "procedure": "../listen-audio/w_brian_procedure.mp3", "unlabeled": "../listen-audio/w_brian_unlabeled.mp3", "paradigm": "../listen-audio/w_brian_paradigm.mp3", "counterpart": "../listen-audio/w_brian_counterpart.mp3", "distill": "../listen-audio/w_brian_distill.mp3", "feasible": "../listen-audio/w_brian_feasible.mp3", "reﬁne": "../listen-audio/w_brian_reﬁne.mp3", "task-agnostic": "../listen-audio/w_brian_task_agnostic.mp3", "pretraining": "../listen-audio/w_brian_pretraining.mp3", "ingredient": "../listen-audio/w_brian_ingredient.mp3"}, "e": {"This note establishes stronger and more feasible baselines": "../listen-audio/e_brian_23e96eb64698.mp3", "unsupervised pre-training can surpass its ImageNet-supervised counterpart": "../listen-audio/e_brian_65db7f123a0f.mp3", "One paradigm for learning from few labeled examples": "../listen-audio/e_brian_bdfddab366b1.mp3", "making best use of a large amount of unlabeled data": "../listen-audio/e_brian_5fa7fb25ed86.mp3", "unsupervised pretraining followed by supervised ﬁne-tuning": "../listen-audio/e_brian_90d4381161ae.mp3", "uses unlabeled data in a task-agnostic way": "../listen-audio/e_brian_d337d9a2c363.mp3", "surprisingly effective for semi-supervised learning on ImageNet": "../listen-audio/e_brian_aa28804b06bd.mp3", "A key ingredient of our approach": "../listen-audio/e_brian_2ec4fdb826b5.mp3", "the big network can be further improved and distilled into a much smaller one": "../listen-audio/e_brian_11bda3281a66.mp3", "can be summarized in three steps": "../listen-audio/e_brian_23d442c3e0d7.mp3", "for reﬁning and transferring the task-speciﬁc knowledge": "../listen-audio/e_brian_3474a7adf60c.mp3", "reﬁning and transferring the task-speciﬁc knowledge": "../listen-audio/e_brian_8beb00a05431.mp3", "This procedure achieves 73.9% ImageNet top-1 accuracy": "../listen-audio/e_brian_21224df9471e.mp3", "outperforming standard supervised training with all of the labels": "../listen-audio/e_brian_6b1f5088a574.mp3", "stronger and more feasible baselines built in the MoCo framework": "../listen-audio/e_brian_88e4dcfea0c2.mp3"}}, "en-US-AndrewNeural": {"w": {"transfer": "../listen-audio/w_andrew_transfer.mp3", "establish": "../listen-audio/w_andrew_establish.mp3", "outperform": "../listen-audio/w_andrew_outperform.mp3", "semi-supervised": "../listen-audio/w_andrew_semi_supervised.mp3"}}, "zh-CN-YunyangNeural": {"m": {"预训练": "../listen-audio/m_yunyang_40decf735255.mp3", "半监督的": "../listen-audio/m_yunyang_680a713e1446.mp3", "流程": "../listen-audio/m_yunyang_f630b9a4da10.mp3", "蒸馏": "../listen-audio/m_yunyang_8f82b62c545d.mp3", "无标注的": "../listen-audio/m_yunyang_aabf31afe7c5.mp3", "迁移": "../listen-audio/m_yunyang_26defddbea60.mp3", "范式": "../listen-audio/m_yunyang_23393b4292f3.mp3", "确立": "../listen-audio/m_yunyang_18e56bca82f2.mp3", "任务无关的": "../listen-audio/m_yunyang_3a7e83824ba7.mp3", "可行的": "../listen-audio/m_yunyang_56faab128f6c.mp3", "表现优于": "../listen-audio/m_yunyang_61107aaed3d9.mp3", "对照版本": "../listen-audio/m_yunyang_2ad0e27b4e29.mp3", "要素": "../listen-audio/m_yunyang_eb67d8e4ebb9.mp3", "概括": "../listen-audio/m_yunyang_f18dab461c03.mp3", "精炼": "../listen-audio/m_yunyang_2d865d01290f.mp3"}}, "zh-CN-YunjianNeural": {"m": {"预训练": "../listen-audio/m_yunjian_40decf735255.mp3", "半监督的": "../listen-audio/m_yunjian_680a713e1446.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const VIDEO={};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -995,6 +997,24 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
+
+/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
+(function videoRow(){
+  try{
+    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
+    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
+    row.style.display="";
+    const sp=row.querySelector("span");
+    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
+    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
+      if(!x[1])return;
+      const b=document.createElement("b");
+      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
+      b.onclick=()=>window.open(x[1],"_blank","noopener");
+      box.appendChild(b);
+    });
+  }catch(e){}
+})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){

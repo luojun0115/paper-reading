@@ -542,6 +542,7 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -575,6 +576,7 @@
 <script>
 const ITEMS=[{"w": "yield", "ipa": "jiːld", "pos": "v.", "m": "产生，带来", "ex": "The style-based GAN architecture yields state-of-the-art results", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "unconditional", "ipa": "ˌʌnkənˈdɪʃənl", "pos": "adj.", "m": "无条件的", "ex": "data-driven unconditional generative image modeling", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "expose", "ipa": "ɪkˈspoʊz", "pos": "v.", "m": "揭露，指出", "ex": "We expose and analyze several of its characteristic artifacts", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "characteristic", "ipa": "ˌkerəktəˈrɪstɪk", "pos": "adj.", "m": "特有的", "ex": "several of its characteristic artifacts", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "artifact", "ipa": "ˈɑːrtɪfækt", "pos": "n.", "m": "伪影；瑕疵", "ex": "analyze several of its characteristic artifacts", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "redesign", "ipa": "ˌriːdɪˈzaɪn", "pos": "v.", "m": "重新设计", "ex": "we redesign the generator normalization", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "revisit", "ipa": "ˌriːˈvɪzɪt", "pos": "v.", "m": "重新审视", "ex": "revisit progressive growing", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "regularize", "ipa": "ˈreɡjələraɪz", "pos": "v.", "m": "正则化", "ex": "regularize the generator to encourage good conditioning", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "latent", "ipa": "ˈleɪtnt", "pos": "adj.", "m": "潜空间的", "ex": "the mapping from latent codes to images", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "invert", "ipa": "ɪnˈvɜːrt", "pos": "v.", "m": "求逆，反转", "ex": "the generator becomes signiﬁcantly easier to invert", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "attribute", "ipa": "əˈtrɪbjuːt", "pos": "v.", "m": "归因", "ex": "reliably attribute a generated image to a particular network", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "utilize", "ipa": "ˈjuːtəlaɪz", "pos": "v.", "m": "利用", "ex": "visualize how well the generator utilizes its output resolution", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "capacity", "ipa": "kəˈpæsəti", "pos": "n.", "m": "容量", "ex": "identify a capacity problem", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "redefine", "ipa": "ˌriːdɪˈfaɪn", "pos": "v.", "m": "重新定义", "ex": "our improved model redeﬁnes the state of the art", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "perceived", "ipa": "pərˈsiːvd", "pos": "adj.", "m": "感知到的", "ex": "as well as perceived image quality", "lv": "考博", "ov": "", "sec": "Abstract"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"capacity": "../listen-audio/w_brian_capacity.mp3", "artifact": "../listen-audio/w_brian_artifact.mp3", "yield": "../listen-audio/w_brian_yield.mp3", "latent": "../listen-audio/w_brian_latent.mp3", "invert": "../listen-audio/w_brian_invert.mp3", "unconditional": "../listen-audio/w_brian_unconditional.mp3", "attribute": "../listen-audio/w_brian_attribute.mp3", "expose": "../listen-audio/w_brian_expose.mp3", "utilize": "../listen-audio/w_brian_utilize.mp3", "characteristic": "../listen-audio/w_brian_characteristic.mp3", "redesign": "../listen-audio/w_brian_redesign.mp3", "revisit": "../listen-audio/w_brian_revisit.mp3", "regularize": "../listen-audio/w_brian_regularize.mp3", "redefine": "../listen-audio/w_brian_redefine.mp3", "perceived": "../listen-audio/w_brian_perceived.mp3"}, "e": {"The style-based GAN architecture yields state-of-the-art results": "../listen-audio/e_brian_37317aad33db.mp3", "data-driven unconditional generative image modeling": "../listen-audio/e_brian_779ecbaf4663.mp3", "We expose and analyze several of its characteristic artifacts": "../listen-audio/e_brian_4bae3382f1c3.mp3", "several of its characteristic artifacts": "../listen-audio/e_brian_734b05616e75.mp3", "analyze several of its characteristic artifacts": "../listen-audio/e_brian_97681e7e33df.mp3", "we redesign the generator normalization": "../listen-audio/e_brian_22838e14565b.mp3", "revisit progressive growing": "../listen-audio/e_brian_8ba940cfacb4.mp3", "regularize the generator to encourage good conditioning": "../listen-audio/e_brian_e5bf48fb00da.mp3", "the mapping from latent codes to images": "../listen-audio/e_brian_f4fabd8b9e4d.mp3", "the generator becomes signiﬁcantly easier to invert": "../listen-audio/e_brian_95e7af8a69a2.mp3", "reliably attribute a generated image to a particular network": "../listen-audio/e_brian_9cc0ba9a62b2.mp3", "visualize how well the generator utilizes its output resolution": "../listen-audio/e_brian_84722c651793.mp3", "identify a capacity problem": "../listen-audio/e_brian_c8537e2ce412.mp3", "our improved model redeﬁnes the state of the art": "../listen-audio/e_brian_bf2860f460dd.mp3", "as well as perceived image quality": "../listen-audio/e_brian_a5712424e07d.mp3"}}, "en-US-AndrewNeural": {"w": {"capacity": "../listen-audio/w_andrew_capacity.mp3", "artifact": "../listen-audio/w_andrew_artifact.mp3", "yield": "../listen-audio/w_andrew_yield.mp3"}}, "zh-CN-YunyangNeural": {"m": {"正则化": "../listen-audio/m_yunyang_4bd7c8e0b175.mp3", "利用": "../listen-audio/m_yunyang_c0d076b90724.mp3", "潜空间的": "../listen-audio/m_yunyang_59ffafbc07b2.mp3", "无条件的": "../listen-audio/m_yunyang_c2146b90a9eb.mp3", "产生，带来": "../listen-audio/m_yunyang_d95276de6982.mp3", "归因": "../listen-audio/m_yunyang_ffda2390f00c.mp3", "揭露，指出": "../listen-audio/m_yunyang_0ccd9bdf74ac.mp3", "特有的": "../listen-audio/m_yunyang_7d4f64a830c1.mp3", "伪影；瑕疵": "../listen-audio/m_yunyang_461fdad72ecd.mp3", "重新设计": "../listen-audio/m_yunyang_ddb300a7b254.mp3", "重新审视": "../listen-audio/m_yunyang_425f7620becc.mp3", "求逆，反转": "../listen-audio/m_yunyang_33f94c3d1d49.mp3", "容量": "../listen-audio/m_yunyang_fe7d74278aa9.mp3", "重新定义": "../listen-audio/m_yunyang_7ac8c92e0739.mp3", "感知到的": "../listen-audio/m_yunyang_44086e6f730e.mp3"}}, "zh-CN-YunjianNeural": {"m": {"正则化": "../listen-audio/m_yunjian_4bd7c8e0b175.mp3", "利用": "../listen-audio/m_yunjian_c0d076b90724.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const VIDEO={};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -995,6 +997,24 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
+
+/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
+(function videoRow(){
+  try{
+    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
+    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
+    row.style.display="";
+    const sp=row.querySelector("span");
+    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
+    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
+      if(!x[1])return;
+      const b=document.createElement("b");
+      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
+      b.onclick=()=>window.open(x[1],"_blank","noopener");
+      box.appendChild(b);
+    });
+  }catch(e){}
+})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){

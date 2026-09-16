@@ -542,6 +542,7 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -575,6 +576,7 @@
 <script>
 const ITEMS=[{"w": "grouping", "ipa": "ˈɡruːpɪŋ", "pos": "n.", "m": "分组", "ex": "Grouping and recognition are important components of visual scene understanding", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "implicit", "ipa": "ɪmˈplɪsɪt", "pos": "adj.", "m": "隐式的", "ex": "grouping of image regions usually happens implicitly via top-down supervision", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "top-down", "ipa": "ˈtɑːp ˈdaʊn", "pos": "adj.", "m": "自顶向下的", "ex": "happens implicitly via top-down supervision from pixel-level recognition labels", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "mechanism", "ipa": "ˈmekənɪzəm", "pos": "n.", "m": "机制", "ex": "bring back the grouping mechanism into deep networks", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "emerge", "ipa": "ɪˈmɜːrdʒ", "pos": "v.", "m": "涌现", "ex": "allows semantic segments to emerge automatically with only text supervision", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "hierarchical", "ipa": "ˌhaɪəˈrɑːrkɪkl", "pos": "adj.", "m": "分层的", "ex": "We propose a hierarchical Grouping Vision Transformer (GroupViT)", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "grid", "ipa": "ɡrɪd", "pos": "n.", "m": "网格", "ex": "goes beyond the regular grid structure representation", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "progressively", "ipa": "prəˈɡresɪvli", "pos": "adv.", "m": "逐步地", "ex": "learns to group image regions into progressively larger arbitrary-shaped segments", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "arbitrary", "ipa": "ˈɑːrbətreri", "pos": "adj.", "m": "任意的", "ex": "progressively larger arbitrary-shaped segments", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "jointly", "ipa": "ˈdʒɔɪntli", "pos": "adv.", "m": "联合地", "ex": "We train GroupViT jointly with a text encoder", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "annotation", "ipa": "ˌænəˈteɪʃn", "pos": "n.", "m": "像素级标注", "ex": "without any pixel-level annotations", "lv": "考博", "ov": "GRE", "sec": "Abstract"}, {"w": "manner", "ipa": "ˈmænər", "pos": "n.", "m": "方式", "ex": "successfully transfers to the task of semantic segmentation in a zero-shot manner", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "competitively", "ipa": "kəmˈpetətɪvli", "pos": "adv.", "m": "有竞争力地", "ex": "performs competitively to state-of-the-art transfer-learning methods", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "require", "ipa": "rɪˈkwaɪər", "pos": "v.", "m": "需要", "ex": "transfer-learning methods requiring greater levels of supervision", "lv": "四级", "ov": "", "sec": "Abstract"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"mechanism": "../listen-audio/w_brian_mechanism.mp3", "arbitrary": "../listen-audio/w_brian_arbitrary.mp3", "jointly": "../listen-audio/w_brian_jointly.mp3", "grid": "../listen-audio/w_brian_grid.mp3", "competitively": "../listen-audio/w_brian_competitively.mp3", "implicit": "../listen-audio/w_brian_implicit.mp3", "emerge": "../listen-audio/w_brian_emerge.mp3", "annotation": "../listen-audio/w_brian_annotation.mp3", "hierarchical": "../listen-audio/w_brian_hierarchical.mp3", "progressively": "../listen-audio/w_brian_progressively.mp3", "manner": "../listen-audio/w_brian_manner.mp3", "grouping": "../listen-audio/w_brian_grouping.mp3", "top-down": "../listen-audio/w_brian_top_down.mp3", "require": "../listen-audio/w_brian_require.mp3"}, "e": {"Grouping and recognition are important components of visual scene understanding": "../listen-audio/e_brian_12e993aea40d.mp3", "grouping of image regions usually happens implicitly via top-down supervision": "../listen-audio/e_brian_eb2622fba7dc.mp3", "happens implicitly via top-down supervision from pixel-level recognition labels": "../listen-audio/e_brian_3b8f99958acd.mp3", "bring back the grouping mechanism into deep networks": "../listen-audio/e_brian_6bbb9c8ed480.mp3", "allows semantic segments to emerge automatically with only text supervision": "../listen-audio/e_brian_265a3fb93f4e.mp3", "We propose a hierarchical Grouping Vision Transformer (GroupViT)": "../listen-audio/e_brian_a2071ce27e6d.mp3", "goes beyond the regular grid structure representation": "../listen-audio/e_brian_b9c71befdff3.mp3", "learns to group image regions into progressively larger arbitrary-shaped segments": "../listen-audio/e_brian_67d4a6d7b396.mp3", "progressively larger arbitrary-shaped segments": "../listen-audio/e_brian_b9e028c5460e.mp3", "We train GroupViT jointly with a text encoder": "../listen-audio/e_brian_925e6fce6dd8.mp3", "without any pixel-level annotations": "../listen-audio/e_brian_165855b57623.mp3", "successfully transfers to the task of semantic segmentation in a zero-shot manner": "../listen-audio/e_brian_1afee841856c.mp3", "performs competitively to state-of-the-art transfer-learning methods": "../listen-audio/e_brian_2cb37e61a23b.mp3", "transfer-learning methods requiring greater levels of supervision": "../listen-audio/e_brian_528218efa5d6.mp3"}}, "en-US-AndrewNeural": {"w": {"mechanism": "../listen-audio/w_andrew_mechanism.mp3", "arbitrary": "../listen-audio/w_andrew_arbitrary.mp3"}}, "zh-CN-YunyangNeural": {"m": {"机制": "../listen-audio/m_yunyang_779ca1eeadb7.mp3", "任意的": "../listen-audio/m_yunyang_cd523d714616.mp3", "联合地": "../listen-audio/m_yunyang_433cb3b898e4.mp3", "网格": "../listen-audio/m_yunyang_16bf955c2283.mp3", "有竞争力地": "../listen-audio/m_yunyang_72910d45c8f1.mp3", "隐式的": "../listen-audio/m_yunyang_fb0fab48b663.mp3", "方式": "../listen-audio/m_yunyang_7220e4d5f9f6.mp3", "分组": "../listen-audio/m_yunyang_829abe5a8dcd.mp3", "自顶向下的": "../listen-audio/m_yunyang_a34ee9d2af8a.mp3", "涌现": "../listen-audio/m_yunyang_cc2a3e234468.mp3", "分层的": "../listen-audio/m_yunyang_23d4d863bd82.mp3", "逐步地": "../listen-audio/m_yunyang_1743b137735d.mp3", "像素级标注": "../listen-audio/m_yunyang_8163ae8c596b.mp3", "需要": "../listen-audio/m_yunyang_df16ffceb35f.mp3"}}, "zh-CN-YunjianNeural": {"m": {"机制": "../listen-audio/m_yunjian_779ca1eeadb7.mp3", "任意的": "../listen-audio/m_yunjian_cd523d714616.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const VIDEO={};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -995,6 +997,24 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
+
+/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
+(function videoRow(){
+  try{
+    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
+    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
+    row.style.display="";
+    const sp=row.querySelector("span");
+    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
+    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
+      if(!x[1])return;
+      const b=document.createElement("b");
+      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
+      b.onclick=()=>window.open(x[1],"_blank","noopener");
+      box.appendChild(b);
+    });
+  }catch(e){}
+})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){

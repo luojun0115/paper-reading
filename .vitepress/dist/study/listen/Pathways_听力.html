@@ -542,6 +542,7 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -575,6 +576,7 @@
 <script>
 const ITEMS=[{"w": "orchestration", "ipa": "ˌɔːrkɪˈstreɪʃn", "pos": "n.", "m": "编排", "ex": "a new large scale orchestration layer for accelerators", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "explicitly", "ipa": "ɪkˈsplɪsɪtli", "pos": "adv.", "m": "明确地", "ex": "PATHWAYS is explicitly designed to enable exploration", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "retain", "ipa": "rɪˈteɪn", "pos": "v.", "m": "保持", "ex": "while retaining state of the art performance", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "sharded", "ipa": "ˈʃɑːrdɪd", "pos": "adj.", "m": "分片的", "ex": "uses a sharded dataﬂow graph of asynchronous operators", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "operator", "ipa": "ˈɑːpəreɪtər", "pos": "n.", "m": "算子", "ex": "asynchronous operators that consume and produce futures", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "gang-schedule", "ipa": "ɡæŋ ˈskedʒuːl", "pos": "v.", "m": "成组调度", "ex": "efﬁciently gang-schedules heterogeneous parallel computations", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "heterogeneous", "ipa": "ˌhetərəˈdʒiːniəs", "pos": "adj.", "m": "异构的", "ex": "heterogeneous parallel computations on thousands of accelerators", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "interconnect", "ipa": "ˌɪntərkəˈnekt", "pos": "n.", "m": "互连（网络）", "ex": "coordinating data transfers over their dedicated interconnects", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "parity", "ipa": "ˈpærəti", "pos": "n.", "m": "持平，对等", "ex": "achieve performance parity with state-of-the-art systems", "lv": "考博", "ov": "GRE", "sec": "Abstract"}, {"w": "utilization", "ipa": "ˌjuːtələˈzeɪʃn", "pos": "n.", "m": "利用率", "ex": "∼100% accelerator utilization", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "island", "ipa": "ˈaɪlənd", "pos": "n.", "m": "岛（加速器岛）", "ex": "sharded across two islands of accelerators", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "co-evolution", "ipa": "ˌkoʊ ˌevəˈluːʃn", "pos": "n.", "m": "协同演化", "ex": "characterized by the co-evolution of ML models and hardware", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "over-specialized", "ipa": "ˈoʊvər ˈspeʃəlaɪzd", "pos": "adj.", "m": "过度特化的", "ex": "systems become over-specialized to current workloads", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "anticipate", "ipa": "ænˈtɪsɪpeɪt", "pos": "v.", "m": "预见", "ex": "fail to anticipate future needs", "lv": "四级", "ov": "", "sec": "Abstract"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"explicitly": "../listen-audio/w_brian_explicitly.mp3", "operator": "../listen-audio/w_brian_operator.mp3", "anticipate": "../listen-audio/w_brian_anticipate.mp3", "utilization": "../listen-audio/w_brian_utilization.mp3", "orchestration": "../listen-audio/w_brian_orchestration.mp3", "retain": "../listen-audio/w_brian_retain.mp3", "sharded": "../listen-audio/w_brian_sharded.mp3", "gang-schedule": "../listen-audio/w_brian_gang_schedule.mp3", "heterogeneous": "../listen-audio/w_brian_heterogeneous.mp3", "interconnect": "../listen-audio/w_brian_interconnect.mp3", "parity": "../listen-audio/w_brian_parity.mp3", "island": "../listen-audio/w_brian_island.mp3", "co-evolution": "../listen-audio/w_brian_co_evolution.mp3", "over-specialized": "../listen-audio/w_brian_over_specialized.mp3"}, "e": {"a new large scale orchestration layer for accelerators": "../listen-audio/e_brian_4838a5cb1a88.mp3", "PATHWAYS is explicitly designed to enable exploration": "../listen-audio/e_brian_72f3c003dfe3.mp3", "while retaining state of the art performance": "../listen-audio/e_brian_797c37aa3dc1.mp3", "uses a sharded dataﬂow graph of asynchronous operators": "../listen-audio/e_brian_55b09a64e782.mp3", "asynchronous operators that consume and produce futures": "../listen-audio/e_brian_309768c5727f.mp3", "efﬁciently gang-schedules heterogeneous parallel computations": "../listen-audio/e_brian_9967bad9e994.mp3", "heterogeneous parallel computations on thousands of accelerators": "../listen-audio/e_brian_162bcff31e0e.mp3", "coordinating data transfers over their dedicated interconnects": "../listen-audio/e_brian_ffdd331dd2f4.mp3", "achieve performance parity with state-of-the-art systems": "../listen-audio/e_brian_0f1c4544758a.mp3", "∼100% accelerator utilization": "../listen-audio/e_brian_a29407d70f8e.mp3", "sharded across two islands of accelerators": "../listen-audio/e_brian_f57b4a3460e6.mp3", "characterized by the co-evolution of ML models and hardware": "../listen-audio/e_brian_a08051fb9410.mp3", "systems become over-specialized to current workloads": "../listen-audio/e_brian_f8a0431660fe.mp3", "fail to anticipate future needs": "../listen-audio/e_brian_930f8b04ff16.mp3"}}, "en-US-AndrewNeural": {"w": {"explicitly": "../listen-audio/w_andrew_explicitly.mp3"}}, "zh-CN-YunyangNeural": {"m": {"明确地": "../listen-audio/m_yunyang_c5f90750dc59.mp3", "编排": "../listen-audio/m_yunyang_449074a9415f.mp3", "保持": "../listen-audio/m_yunyang_5f0c0bf32dc1.mp3", "分片的": "../listen-audio/m_yunyang_971ade5a210f.mp3", "算子": "../listen-audio/m_yunyang_acd4a8c63a00.mp3", "成组调度": "../listen-audio/m_yunyang_36fd94d54c96.mp3", "异构的": "../listen-audio/m_yunyang_4e472a1d9661.mp3", "互连（网络）": "../listen-audio/m_yunyang_d97b59675878.mp3", "持平，对等": "../listen-audio/m_yunyang_2c5bae69f9ae.mp3", "利用率": "../listen-audio/m_yunyang_bbdff9f6368b.mp3", "岛（加速器岛）": "../listen-audio/m_yunyang_542c58cfe68b.mp3", "协同演化": "../listen-audio/m_yunyang_a35438e4f54d.mp3", "过度特化的": "../listen-audio/m_yunyang_ca89c3365cb2.mp3", "预见": "../listen-audio/m_yunyang_eddd45a549b3.mp3"}}, "zh-CN-YunjianNeural": {"m": {"明确地": "../listen-audio/m_yunjian_c5f90750dc59.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const VIDEO={"title": "Pathways 逐段精读", "bili": "https://www.bilibili.com/video/BV1xB4y1m7Xi/", "yt": "https://youtu.be/8hS1ZtgG0wU", "zhihu": "", "date": "5/5/22"};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -995,6 +997,24 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
+
+/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
+(function videoRow(){
+  try{
+    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
+    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
+    row.style.display="";
+    const sp=row.querySelector("span");
+    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
+    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
+      if(!x[1])return;
+      const b=document.createElement("b");
+      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
+      b.onclick=()=>window.open(x[1],"_blank","noopener");
+      box.appendChild(b);
+    });
+  }catch(e){}
+})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){
