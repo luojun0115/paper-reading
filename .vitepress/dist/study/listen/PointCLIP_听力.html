@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "inspirational", "ipa": "ˌɪnspəˈreɪʃənl", "pos": "adj.", "m": "鼓舞人心的", "ex": "zero-shot and few-shot learning via CLIP have shown inspirational performance", "lv": "考博", "sec": "Abstract"}, {"w": "open-vocabulary", "ipa": "ˈoʊpən voʊˈkæbjəleri", "pos": "adj.", "m": "开放词汇的", "ex": "learns to match images with their corresponding texts in open-vocabulary settings", "lv": "考博", "sec": "Abstract"}, {"w": "unexplored", "ipa": "ˌʌnɪkˈsplɔːrd", "pos": "adj.", "m": "未被充分探索的", "ex": "it remains under explored whether CLIP can be generalized to 3D recognition", "lv": "考博", "sec": "Abstract"}, {"w": "feasible", "ipa": "ˈfiːzəbl", "pos": "adj.", "m": "可行的", "ex": "we identify such a setting is feasible", "lv": "四级", "sec": "Abstract"}, {"w": "alignment", "ipa": "əˈlaɪnmənt", "pos": "n.", "m": "对齐", "ex": "which conducts alignment between CLIP-encoded point cloud and 3D category texts", "lv": "六级", "sec": "Abstract"}, {"w": "project", "ipa": "prəˈdʒekt", "pos": "v.", "m": "投影", "ex": "we encode a point cloud by projecting it into multi-view depth maps", "lv": "四级", "sec": "Abstract"}, {"w": "aggregate", "ipa": "ˈæɡrɪɡət", "pos": "v.", "m": "聚合", "ex": "aggregate the view-wise zero-shot prediction to achieve knowledge transfer", "lv": "六级", "sec": "Abstract"}, {"w": "dominate", "ipa": "ˈdɑːmɪneɪt", "pos": "v.", "m": "主导", "ex": "Deep learning has dominated computer vision tasks of both 2D and 3D domains", "lv": "四级", "sec": "Abstract"}, {"w": "cross-modality", "ipa": "krɔːs ˈmoʊdələti", "pos": "adj.", "m": "跨模态的", "ex": "achieves cross-modality knowledge transfer", "lv": "考博", "sec": "Abstract"}, {"w": "demand", "ipa": "dɪˈmænd", "pos": "n.", "m": "需求", "ex": "the growing demand for processing 3D point cloud data", "lv": "四级", "sec": "Abstract"}, {"w": "aggregator", "ipa": "ˈæɡrɪɡeɪtər", "pos": "n.", "m": "聚合器", "ex": "advanced deep models with better local feature aggregator", "lv": "考博", "sec": "Abstract"}, {"w": "sparsity", "ipa": "ˈspɑːrsəti", "pos": "n.", "m": "稀疏性", "ex": "3D point clouds suffer from space sparsity and irregular distribution", "lv": "考博", "sec": "Abstract"}, {"w": "irregular", "ipa": "ɪˈreɡjələr", "pos": "adj.", "m": "不规则的", "ex": "space sparsity and irregular distribution", "lv": "四级", "sec": "Abstract"}, {"w": "hinder", "ipa": "ˈhɪndər", "pos": "v.", "m": "阻碍", "ex": "which hinder direct methods", "lv": "四级", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"aggregate": "../listen-audio/w_brian_aggregate.mp3", "inspirational": "../listen-audio/w_brian_inspirational.mp3", "sparsity": "../listen-audio/w_brian_sparsity.mp3", "alignment": "../listen-audio/w_brian_alignment.mp3", "feasible": "../listen-audio/w_brian_feasible.mp3", "dominate": "../listen-audio/w_brian_dominate.mp3", "project": "../listen-audio/w_brian_project.mp3", "open-vocabulary": "../listen-audio/w_brian_open_vocabulary.mp3", "unexplored": "../listen-audio/w_brian_unexplored.mp3", "cross-modality": "../listen-audio/w_brian_cross_modality.mp3", "demand": "../listen-audio/w_brian_demand.mp3", "aggregator": "../listen-audio/w_brian_aggregator.mp3", "irregular": "../listen-audio/w_brian_irregular.mp3", "hinder": "../listen-audio/w_brian_hinder.mp3"}}, "en-US-AndrewNeural": {"w": {"aggregate": "../listen-audio/w_andrew_aggregate.mp3", "inspirational": "../listen-audio/w_andrew_inspirational.mp3"}}, "zh-CN-YunyangNeural": {"m": {"投影": "../listen-audio/m_yunyang_16ad4ad54911.mp3", "稀疏性": "../listen-audio/m_yunyang_6e5e5d59f76f.mp3", "聚合": "../listen-audio/m_yunyang_52efbe5e62e1.mp3", "对齐": "../listen-audio/m_yunyang_5ee8bf302c6b.mp3", "可行的": "../listen-audio/m_yunyang_56faab128f6c.mp3", "鼓舞人心的": "../listen-audio/m_yunyang_f8c0ef840920.mp3", "开放词汇的": "../listen-audio/m_yunyang_5685c8afff5a.mp3", "未被充分探索的": "../listen-audio/m_yunyang_0339fe88ca10.mp3", "主导": "../listen-audio/m_yunyang_794a5eb1633a.mp3", "跨模态的": "../listen-audio/m_yunyang_c776c6fab571.mp3", "需求": "../listen-audio/m_yunyang_e6cefb85dc60.mp3", "聚合器": "../listen-audio/m_yunyang_155f3662d0cb.mp3", "不规则的": "../listen-audio/m_yunyang_504d07ee78d6.mp3", "阻碍": "../listen-audio/m_yunyang_136e7d0f30c3.mp3"}}, "zh-CN-YunjianNeural": {"m": {"投影": "../listen-audio/m_yunjian_16ad4ad54911.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "inspirational", "ipa": "ˌɪnspəˈreɪʃənl", "pos": "adj.", "m": "鼓舞人心的", "ex": "zero-shot and few-shot learning via CLIP have shown inspirational performance", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "open-vocabulary", "ipa": "ˈoʊpən voʊˈkæbjəleri", "pos": "adj.", "m": "开放词汇的", "ex": "learns to match images with their corresponding texts in open-vocabulary settings", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "unexplored", "ipa": "ˌʌnɪkˈsplɔːrd", "pos": "adj.", "m": "未被充分探索的", "ex": "it remains under explored whether CLIP can be generalized to 3D recognition", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "feasible", "ipa": "ˈfiːzəbl", "pos": "adj.", "m": "可行的", "ex": "we identify such a setting is feasible", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "alignment", "ipa": "əˈlaɪnmənt", "pos": "n.", "m": "对齐", "ex": "which conducts alignment between CLIP-encoded point cloud and 3D category texts", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "project", "ipa": "prəˈdʒekt", "pos": "v.", "m": "投影", "ex": "we encode a point cloud by projecting it into multi-view depth maps", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "aggregate", "ipa": "ˈæɡrɪɡət", "pos": "v.", "m": "聚合", "ex": "aggregate the view-wise zero-shot prediction to achieve knowledge transfer", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "dominate", "ipa": "ˈdɑːmɪneɪt", "pos": "v.", "m": "主导", "ex": "Deep learning has dominated computer vision tasks of both 2D and 3D domains", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "cross-modality", "ipa": "krɔːs ˈmoʊdələti", "pos": "adj.", "m": "跨模态的", "ex": "achieves cross-modality knowledge transfer", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "demand", "ipa": "dɪˈmænd", "pos": "n.", "m": "需求", "ex": "the growing demand for processing 3D point cloud data", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "aggregator", "ipa": "ˈæɡrɪɡeɪtər", "pos": "n.", "m": "聚合器", "ex": "advanced deep models with better local feature aggregator", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "sparsity", "ipa": "ˈspɑːrsəti", "pos": "n.", "m": "稀疏性", "ex": "3D point clouds suffer from space sparsity and irregular distribution", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "irregular", "ipa": "ɪˈreɡjələr", "pos": "adj.", "m": "不规则的", "ex": "space sparsity and irregular distribution", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "hinder", "ipa": "ˈhɪndər", "pos": "v.", "m": "阻碍", "ex": "which hinder direct methods", "lv": "四级", "ov": "", "sec": "Abstract"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"aggregate": "../listen-audio/w_brian_aggregate.mp3", "inspirational": "../listen-audio/w_brian_inspirational.mp3", "sparsity": "../listen-audio/w_brian_sparsity.mp3", "alignment": "../listen-audio/w_brian_alignment.mp3", "feasible": "../listen-audio/w_brian_feasible.mp3", "dominate": "../listen-audio/w_brian_dominate.mp3", "project": "../listen-audio/w_brian_project.mp3", "open-vocabulary": "../listen-audio/w_brian_open_vocabulary.mp3", "unexplored": "../listen-audio/w_brian_unexplored.mp3", "cross-modality": "../listen-audio/w_brian_cross_modality.mp3", "demand": "../listen-audio/w_brian_demand.mp3", "aggregator": "../listen-audio/w_brian_aggregator.mp3", "irregular": "../listen-audio/w_brian_irregular.mp3", "hinder": "../listen-audio/w_brian_hinder.mp3"}, "e": {"zero-shot and few-shot learning via CLIP have shown inspirational performance": "../listen-audio/e_brian_1aaf9c551ac0.mp3", "learns to match images with their corresponding texts in open-vocabulary settings": "../listen-audio/e_brian_a5d1dd213747.mp3", "it remains under explored whether CLIP can be generalized to 3D recognition": "../listen-audio/e_brian_c74fcc744851.mp3", "we identify such a setting is feasible": "../listen-audio/e_brian_2b42fb1ed847.mp3", "which conducts alignment between CLIP-encoded point cloud and 3D category texts": "../listen-audio/e_brian_477047126172.mp3", "we encode a point cloud by projecting it into multi-view depth maps": "../listen-audio/e_brian_2e07b930c146.mp3", "aggregate the view-wise zero-shot prediction to achieve knowledge transfer": "../listen-audio/e_brian_8f2ce9005c21.mp3", "Deep learning has dominated computer vision tasks of both 2D and 3D domains": "../listen-audio/e_brian_f5ff637bebfb.mp3", "achieves cross-modality knowledge transfer": "../listen-audio/e_brian_10c59b413033.mp3", "the growing demand for processing 3D point cloud data": "../listen-audio/e_brian_28917e7a3dc3.mp3", "advanced deep models with better local feature aggregator": "../listen-audio/e_brian_2aa59cae8816.mp3", "3D point clouds suffer from space sparsity and irregular distribution": "../listen-audio/e_brian_a1e6aca2b494.mp3", "space sparsity and irregular distribution": "../listen-audio/e_brian_8ff6e3489347.mp3", "which hinder direct methods": "../listen-audio/e_brian_5e6658256bbb.mp3"}}, "en-US-AndrewNeural": {"w": {"aggregate": "../listen-audio/w_andrew_aggregate.mp3", "inspirational": "../listen-audio/w_andrew_inspirational.mp3"}}, "zh-CN-YunyangNeural": {"m": {"投影": "../listen-audio/m_yunyang_16ad4ad54911.mp3", "稀疏性": "../listen-audio/m_yunyang_6e5e5d59f76f.mp3", "聚合": "../listen-audio/m_yunyang_52efbe5e62e1.mp3", "对齐": "../listen-audio/m_yunyang_5ee8bf302c6b.mp3", "可行的": "../listen-audio/m_yunyang_56faab128f6c.mp3", "鼓舞人心的": "../listen-audio/m_yunyang_f8c0ef840920.mp3", "开放词汇的": "../listen-audio/m_yunyang_5685c8afff5a.mp3", "未被充分探索的": "../listen-audio/m_yunyang_0339fe88ca10.mp3", "主导": "../listen-audio/m_yunyang_794a5eb1633a.mp3", "跨模态的": "../listen-audio/m_yunyang_c776c6fab571.mp3", "需求": "../listen-audio/m_yunyang_e6cefb85dc60.mp3", "聚合器": "../listen-audio/m_yunyang_155f3662d0cb.mp3", "不规则的": "../listen-audio/m_yunyang_504d07ee78d6.mp3", "阻碍": "../listen-audio/m_yunyang_136e7d0f30c3.mp3"}}, "zh-CN-YunjianNeural": {"m": {"投影": "../listen-audio/m_yunjian_16ad4ad54911.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

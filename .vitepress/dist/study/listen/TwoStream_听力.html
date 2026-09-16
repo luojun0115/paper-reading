@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "discriminatively", "ipa": "dɪˈskrɪmɪnətɪvli", "pos": "adv.", "m": "判别式地（训练）", "ex": "architectures of discriminatively trained deep Convolutional Networks", "lv": "考博", "sec": "Abstract"}, {"w": "complementary", "ipa": "ˌkɑːmplɪˈmentri", "pos": "adj.", "m": "互补的", "ex": "capture the complementary information on appearance from still frames and motion", "lv": "考研", "sec": "Abstract"}, {"w": "appearance", "ipa": "əˈpɪrəns", "pos": "n.", "m": "外观", "ex": "complementary information on appearance from still frames", "lv": "四级", "sec": "Abstract"}, {"w": "temporal", "ipa": "ˈtempərəl", "pos": "adj.", "m": "时序的", "ex": "incorporates spatial and temporal networks", "lv": "考博", "sec": "Abstract"}, {"w": "incorporate", "ipa": "ɪnˈkɔːrpəreɪt", "pos": "v.", "m": "融合，纳入", "ex": "a two-stream ConvNet architecture which incorporates spatial and temporal networks", "lv": "六级", "sec": "Abstract"}, {"w": "optical ﬂow", "ipa": "ˈɑːptɪkl floʊ", "pos": "n.", "m": "光流", "ex": "a ConvNet trained on multi-frame dense optical ﬂow", "lv": "考博", "sec": "Abstract"}, {"w": "in spite of", "ipa": "ɪn spaɪt əv", "pos": "phr.", "m": "尽管", "ex": "achieve very good performance in spite of limited training data", "lv": "考博", "sec": "Abstract"}, {"w": "margin", "ipa": "ˈmɑːrdʒən", "pos": "n.", "m": "幅度", "ex": "It also exceeds by a large margin previous attempts", "lv": "四级", "sec": "Abstract"}, {"w": "challenging", "ipa": "ˈtʃælɪndʒɪŋ", "pos": "adj.", "m": "有挑战性的", "ex": "Recognition of human actions in videos is a challenging task", "lv": "四级", "sec": "Intro"}, {"w": "component", "ipa": "kəmˈpoʊnənt", "pos": "n.", "m": "组成部分", "ex": "the temporal component of videos provides an additional clue", "lv": "四级", "sec": "Intro"}, {"w": "clue", "ipa": "kluː", "pos": "n.", "m": "线索", "ex": "provides an additional (and important) clue for recognition", "lv": "四级", "sec": "Intro"}, {"w": "reliably", "ipa": "rɪˈlaɪəbli", "pos": "adv.", "m": "可靠地", "ex": "a number of actions can be reliably recognised based on the motion information", "lv": "考博", "sec": "Intro"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "（数据）增强", "ex": "video provides natural data augmentation (jittering)", "lv": "考博", "sec": "Intro"}, {"w": "jittering", "ipa": "ˈdʒɪtərɪŋ", "pos": "n.", "m": "抖动", "ex": "natural data augmentation (jittering)", "lv": "考博", "sec": "Intro"}, {"w": "stacked", "ipa": "stækt", "pos": "adj.", "m": "堆叠的", "ex": "by using stacked video frames as input to the network", "lv": "四级", "sec": "Intro"}, {"w": "stream", "ipa": "striːm", "pos": "n.", "m": "流（双流）", "ex": "a different architecture based on two separate recognition streams", "lv": "四级", "sec": "Intro"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"temporal": "../listen-audio/w_brian_temporal.mp3", "augmentation": "../listen-audio/w_brian_augmentation.mp3", "incorporate": "../listen-audio/w_brian_incorporate.mp3", "complementary": "../listen-audio/w_brian_complementary.mp3", "margin": "../listen-audio/w_brian_margin.mp3", "appearance": "../listen-audio/w_brian_appearance.mp3", "component": "../listen-audio/w_brian_component.mp3", "challenging": "../listen-audio/w_brian_challenging.mp3", "reliably": "../listen-audio/w_brian_reliably.mp3", "stacked": "../listen-audio/w_brian_stacked.mp3", "stream": "../listen-audio/w_brian_stream.mp3", "jittering": "../listen-audio/w_brian_jittering.mp3", "discriminatively": "../listen-audio/w_brian_discriminatively.mp3", "optical ﬂow": "../listen-audio/w_brian_optical_ﬂow.mp3", "in spite of": "../listen-audio/w_brian_in_spite_of.mp3", "clue": "../listen-audio/w_brian_clue.mp3"}}, "zh-CN-YunyangNeural": {"m": {"时序的": "../listen-audio/m_yunyang_331865120370.mp3", "融合，纳入": "../listen-audio/m_yunyang_4e6eb6a3b347.mp3", "互补的": "../listen-audio/m_yunyang_6d8a3d3dd982.mp3", "幅度": "../listen-audio/m_yunyang_73315d5746a2.mp3", "（数据）增强": "../listen-audio/m_yunyang_9c36038c7859.mp3", "外观": "../listen-audio/m_yunyang_afcde2611bdd.mp3", "尽管": "../listen-audio/m_yunyang_1cbf2eb3c878.mp3", "有挑战性的": "../listen-audio/m_yunyang_bbf713876518.mp3", "可靠地": "../listen-audio/m_yunyang_dc29eb1bfa2a.mp3", "光流": "../listen-audio/m_yunyang_b7a406c44422.mp3", "判别式地（训练）": "../listen-audio/m_yunyang_2c4295fd7a2d.mp3", "组成部分": "../listen-audio/m_yunyang_f2a82a825035.mp3", "线索": "../listen-audio/m_yunyang_ad46a96c3b5b.mp3", "抖动": "../listen-audio/m_yunyang_f1b8e0c6053e.mp3", "堆叠的": "../listen-audio/m_yunyang_3ae382be5f49.mp3", "流（双流）": "../listen-audio/m_yunyang_8a829000439e.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "discriminatively", "ipa": "dɪˈskrɪmɪnətɪvli", "pos": "adv.", "m": "判别式地（训练）", "ex": "architectures of discriminatively trained deep Convolutional Networks", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "complementary", "ipa": "ˌkɑːmplɪˈmentri", "pos": "adj.", "m": "互补的", "ex": "capture the complementary information on appearance from still frames and motion", "lv": "考研", "ov": "", "sec": "Abstract"}, {"w": "appearance", "ipa": "əˈpɪrəns", "pos": "n.", "m": "外观", "ex": "complementary information on appearance from still frames", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "temporal", "ipa": "ˈtempərəl", "pos": "adj.", "m": "时序的", "ex": "incorporates spatial and temporal networks", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "incorporate", "ipa": "ɪnˈkɔːrpəreɪt", "pos": "v.", "m": "融合，纳入", "ex": "a two-stream ConvNet architecture which incorporates spatial and temporal networks", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "optical ﬂow", "ipa": "ˈɑːptɪkl floʊ", "pos": "n.", "m": "光流", "ex": "a ConvNet trained on multi-frame dense optical ﬂow", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "in spite of", "ipa": "ɪn spaɪt əv", "pos": "phr.", "m": "尽管", "ex": "achieve very good performance in spite of limited training data", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "margin", "ipa": "ˈmɑːrdʒən", "pos": "n.", "m": "幅度", "ex": "It also exceeds by a large margin previous attempts", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "challenging", "ipa": "ˈtʃælɪndʒɪŋ", "pos": "adj.", "m": "有挑战性的", "ex": "Recognition of human actions in videos is a challenging task", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "component", "ipa": "kəmˈpoʊnənt", "pos": "n.", "m": "组成部分", "ex": "the temporal component of videos provides an additional clue", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "clue", "ipa": "kluː", "pos": "n.", "m": "线索", "ex": "provides an additional (and important) clue for recognition", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "reliably", "ipa": "rɪˈlaɪəbli", "pos": "adv.", "m": "可靠地", "ex": "a number of actions can be reliably recognised based on the motion information", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "（数据）增强", "ex": "video provides natural data augmentation (jittering)", "lv": "考博", "ov": "GRE", "sec": "Intro"}, {"w": "jittering", "ipa": "ˈdʒɪtərɪŋ", "pos": "n.", "m": "抖动", "ex": "natural data augmentation (jittering)", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "stacked", "ipa": "stækt", "pos": "adj.", "m": "堆叠的", "ex": "by using stacked video frames as input to the network", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "stream", "ipa": "striːm", "pos": "n.", "m": "流（双流）", "ex": "a different architecture based on two separate recognition streams", "lv": "四级", "ov": "", "sec": "Intro"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"temporal": "../listen-audio/w_brian_temporal.mp3", "augmentation": "../listen-audio/w_brian_augmentation.mp3", "incorporate": "../listen-audio/w_brian_incorporate.mp3", "complementary": "../listen-audio/w_brian_complementary.mp3", "margin": "../listen-audio/w_brian_margin.mp3", "appearance": "../listen-audio/w_brian_appearance.mp3", "component": "../listen-audio/w_brian_component.mp3", "challenging": "../listen-audio/w_brian_challenging.mp3", "reliably": "../listen-audio/w_brian_reliably.mp3", "stacked": "../listen-audio/w_brian_stacked.mp3", "stream": "../listen-audio/w_brian_stream.mp3", "jittering": "../listen-audio/w_brian_jittering.mp3", "discriminatively": "../listen-audio/w_brian_discriminatively.mp3", "optical ﬂow": "../listen-audio/w_brian_optical_ﬂow.mp3", "in spite of": "../listen-audio/w_brian_in_spite_of.mp3", "clue": "../listen-audio/w_brian_clue.mp3"}, "e": {"architectures of discriminatively trained deep Convolutional Networks": "../listen-audio/e_brian_23d4ded85742.mp3", "capture the complementary information on appearance from still frames and motion": "../listen-audio/e_brian_b2f2e1c713ae.mp3", "complementary information on appearance from still frames": "../listen-audio/e_brian_7eda8aad922a.mp3", "incorporates spatial and temporal networks": "../listen-audio/e_brian_15e0327f3cf6.mp3", "a two-stream ConvNet architecture which incorporates spatial and temporal networks": "../listen-audio/e_brian_41b246653176.mp3", "a ConvNet trained on multi-frame dense optical ﬂow": "../listen-audio/e_brian_54ee17fe273a.mp3", "achieve very good performance in spite of limited training data": "../listen-audio/e_brian_f629e3d59a98.mp3", "It also exceeds by a large margin previous attempts": "../listen-audio/e_brian_4890553ffb16.mp3", "Recognition of human actions in videos is a challenging task": "../listen-audio/e_brian_edd398c19280.mp3", "the temporal component of videos provides an additional clue": "../listen-audio/e_brian_a9b01d3297ae.mp3", "provides an additional (and important) clue for recognition": "../listen-audio/e_brian_5096dc7fb756.mp3", "a number of actions can be reliably recognised based on the motion information": "../listen-audio/e_brian_50c0536c7b03.mp3", "video provides natural data augmentation (jittering)": "../listen-audio/e_brian_06107a0ee8ba.mp3", "natural data augmentation (jittering)": "../listen-audio/e_brian_d7404e03f9ee.mp3", "by using stacked video frames as input to the network": "../listen-audio/e_brian_89c7d0cb3fae.mp3", "a different architecture based on two separate recognition streams": "../listen-audio/e_brian_5ccc27978050.mp3"}}, "zh-CN-YunyangNeural": {"m": {"时序的": "../listen-audio/m_yunyang_331865120370.mp3", "融合，纳入": "../listen-audio/m_yunyang_4e6eb6a3b347.mp3", "互补的": "../listen-audio/m_yunyang_6d8a3d3dd982.mp3", "幅度": "../listen-audio/m_yunyang_73315d5746a2.mp3", "（数据）增强": "../listen-audio/m_yunyang_9c36038c7859.mp3", "外观": "../listen-audio/m_yunyang_afcde2611bdd.mp3", "尽管": "../listen-audio/m_yunyang_1cbf2eb3c878.mp3", "有挑战性的": "../listen-audio/m_yunyang_bbf713876518.mp3", "可靠地": "../listen-audio/m_yunyang_dc29eb1bfa2a.mp3", "光流": "../listen-audio/m_yunyang_b7a406c44422.mp3", "判别式地（训练）": "../listen-audio/m_yunyang_2c4295fd7a2d.mp3", "组成部分": "../listen-audio/m_yunyang_f2a82a825035.mp3", "线索": "../listen-audio/m_yunyang_ad46a96c3b5b.mp3", "抖动": "../listen-audio/m_yunyang_f1b8e0c6053e.mp3", "堆叠的": "../listen-audio/m_yunyang_3ae382be5f49.mp3", "流（双流）": "../listen-audio/m_yunyang_8a829000439e.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

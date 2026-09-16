@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "aliasing", "ipa": "ˈeɪliəsɪŋ", "pos": "n.", "m": "混叠（信号处理伪像）", "ex": "careless signal processing that causes aliasing in the generator network", "lv": "考博", "sec": "Abstract"}, {"w": "hierarchical", "ipa": "ˌhaɪəˈrɑːrkɪkl", "pos": "adj.", "m": "分层的", "ex": "despite their hierarchical convolutional nature", "lv": "考博", "sec": "Abstract"}, {"w": "synthesis", "ipa": "ˈsɪnθəsɪs", "pos": "n.", "m": "合成", "ex": "the synthesis process of typical generative adversarial networks", "lv": "六级", "sec": "Abstract"}, {"w": "unhealthy", "ipa": "ʌnˈhelθi", "pos": "adj.", "m": "不健康的（不合理的）", "ex": "depends on absolute pixel coordinates in an unhealthy manner", "lv": "考博", "sec": "Abstract"}, {"w": "manifest", "ipa": "ˈmænɪfest", "pos": "v.", "m": "显现", "ex": "This manifests itself as detail appearing to be glued to image coordinates", "lv": "六级", "sec": "Abstract"}, {"w": "depict", "ipa": "dɪˈpɪkt", "pos": "v.", "m": "描绘", "ex": "instead of the surfaces of depicted objects", "lv": "六级", "sec": "Abstract"}, {"w": "trace", "ipa": "treɪs", "pos": "v.", "m": "追溯", "ex": "We trace the root cause to careless signal processing", "lv": "四级", "sec": "Abstract"}, {"w": "careless", "ipa": "ˈkerləs", "pos": "adj.", "m": "疏忽的", "ex": "We trace the root cause to careless signal processing", "lv": "四级", "sec": "Abstract"}, {"w": "continuous", "ipa": "kənˈtɪnjuəs", "pos": "adj.", "m": "连续的", "ex": "Interpreting all signals in the network as continuous", "lv": "四级", "sec": "Abstract"}, {"w": "applicable", "ipa": "əˈplɪkəbl", "pos": "adj.", "m": "适用的", "ex": "we derive generally applicable, small architectural changes", "lv": "四级", "sec": "Abstract"}, {"w": "guarantee", "ipa": "ˌɡærənˈtiː", "pos": "v.", "m": "保证", "ex": "architectural changes that guarantee that unwanted information cannot leak", "lv": "四级", "sec": "Abstract"}, {"w": "leak", "ipa": "liːk", "pos": "v.", "m": "泄漏", "ex": "unwanted information cannot leak into the hierarchical synthesis process", "lv": "四级", "sec": "Abstract"}, {"w": "dramatically", "ipa": "drəˈmætɪkli", "pos": "adv.", "m": "显著地", "ex": "differ dramatically in their internal representations", "lv": "四级", "sec": "Abstract"}, {"w": "equivariant", "ipa": "ɪˈkweɪvəriənt", "pos": "adj.", "m": "等变的", "ex": "fully equivariant to translation and rotation even at subpixel scales", "lv": "考博", "sec": "Abstract"}, {"w": "subpixel", "ipa": "ˈsʌbˌpɪksl", "pos": "n.", "m": "亚像素", "ex": "even at subpixel scales", "lv": "考博", "sec": "Abstract"}, {"w": "pave the way", "ipa": "peɪv ðə weɪ", "pos": "phr.", "m": "为…铺平道路", "ex": "Our results pave the way for generative models better suited for video and animation", "lv": "考博", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"synthesis": "../listen-audio/w_brian_synthesis.mp3", "equivariant": "../listen-audio/w_brian_equivariant.mp3", "continuous": "../listen-audio/w_brian_continuous.mp3", "applicable": "../listen-audio/w_brian_applicable.mp3", "depict": "../listen-audio/w_brian_depict.mp3", "dramatically": "../listen-audio/w_brian_dramatically.mp3", "guarantee": "../listen-audio/w_brian_guarantee.mp3", "hierarchical": "../listen-audio/w_brian_hierarchical.mp3", "trace": "../listen-audio/w_brian_trace.mp3", "leak": "../listen-audio/w_brian_leak.mp3", "manifest": "../listen-audio/w_brian_manifest.mp3", "aliasing": "../listen-audio/w_brian_aliasing.mp3", "unhealthy": "../listen-audio/w_brian_unhealthy.mp3", "careless": "../listen-audio/w_brian_careless.mp3", "subpixel": "../listen-audio/w_brian_subpixel.mp3", "pave the way": "../listen-audio/w_brian_pave_the_way.mp3"}}, "zh-CN-YunyangNeural": {"m": {"显著地": "../listen-audio/m_yunyang_b274003aab3a.mp3", "合成": "../listen-audio/m_yunyang_c29e4097806f.mp3", "等变的": "../listen-audio/m_yunyang_f5192b7c05c7.mp3", "连续的": "../listen-audio/m_yunyang_f459e5081755.mp3", "描绘": "../listen-audio/m_yunyang_5b16f9baa162.mp3", "适用的": "../listen-audio/m_yunyang_97f40a7bceee.mp3", "保证": "../listen-audio/m_yunyang_d3fdd2bdcf9b.mp3", "分层的": "../listen-audio/m_yunyang_23d4d863bd82.mp3", "显现": "../listen-audio/m_yunyang_de3c80300efd.mp3", "泄漏": "../listen-audio/m_yunyang_01ac89d9da7e.mp3", "混叠（信号处理伪像）": "../listen-audio/m_yunyang_69c46f899dc5.mp3", "不健康的（不合理的）": "../listen-audio/m_yunyang_ff0491be0bba.mp3", "追溯": "../listen-audio/m_yunyang_958e955bdeb4.mp3", "疏忽的": "../listen-audio/m_yunyang_290016cae8b6.mp3", "亚像素": "../listen-audio/m_yunyang_b86f96fa70ba.mp3", "为…铺平道路": "../listen-audio/m_yunyang_6822dba724ca.mp3"}}, "zh-CN-YunjianNeural": {"m": {"显著地": "../listen-audio/m_yunjian_b274003aab3a.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "aliasing", "ipa": "ˈeɪliəsɪŋ", "pos": "n.", "m": "混叠（信号处理伪像）", "ex": "careless signal processing that causes aliasing in the generator network", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "hierarchical", "ipa": "ˌhaɪəˈrɑːrkɪkl", "pos": "adj.", "m": "分层的", "ex": "despite their hierarchical convolutional nature", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "synthesis", "ipa": "ˈsɪnθəsɪs", "pos": "n.", "m": "合成", "ex": "the synthesis process of typical generative adversarial networks", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "unhealthy", "ipa": "ʌnˈhelθi", "pos": "adj.", "m": "不健康的（不合理的）", "ex": "depends on absolute pixel coordinates in an unhealthy manner", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "manifest", "ipa": "ˈmænɪfest", "pos": "v.", "m": "显现", "ex": "This manifests itself as detail appearing to be glued to image coordinates", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "depict", "ipa": "dɪˈpɪkt", "pos": "v.", "m": "描绘", "ex": "instead of the surfaces of depicted objects", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "trace", "ipa": "treɪs", "pos": "v.", "m": "追溯", "ex": "We trace the root cause to careless signal processing", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "careless", "ipa": "ˈkerləs", "pos": "adj.", "m": "疏忽的", "ex": "We trace the root cause to careless signal processing", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "continuous", "ipa": "kənˈtɪnjuəs", "pos": "adj.", "m": "连续的", "ex": "Interpreting all signals in the network as continuous", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "applicable", "ipa": "əˈplɪkəbl", "pos": "adj.", "m": "适用的", "ex": "we derive generally applicable, small architectural changes", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "guarantee", "ipa": "ˌɡærənˈtiː", "pos": "v.", "m": "保证", "ex": "architectural changes that guarantee that unwanted information cannot leak", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "leak", "ipa": "liːk", "pos": "v.", "m": "泄漏", "ex": "unwanted information cannot leak into the hierarchical synthesis process", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "dramatically", "ipa": "drəˈmætɪkli", "pos": "adv.", "m": "显著地", "ex": "differ dramatically in their internal representations", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "equivariant", "ipa": "ɪˈkweɪvəriənt", "pos": "adj.", "m": "等变的", "ex": "fully equivariant to translation and rotation even at subpixel scales", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "subpixel", "ipa": "ˈsʌbˌpɪksl", "pos": "n.", "m": "亚像素", "ex": "even at subpixel scales", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "pave the way", "ipa": "peɪv ðə weɪ", "pos": "phr.", "m": "为…铺平道路", "ex": "Our results pave the way for generative models better suited for video and animation", "lv": "考博", "ov": "", "sec": "Abstract"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"synthesis": "../listen-audio/w_brian_synthesis.mp3", "equivariant": "../listen-audio/w_brian_equivariant.mp3", "continuous": "../listen-audio/w_brian_continuous.mp3", "applicable": "../listen-audio/w_brian_applicable.mp3", "depict": "../listen-audio/w_brian_depict.mp3", "dramatically": "../listen-audio/w_brian_dramatically.mp3", "guarantee": "../listen-audio/w_brian_guarantee.mp3", "hierarchical": "../listen-audio/w_brian_hierarchical.mp3", "trace": "../listen-audio/w_brian_trace.mp3", "leak": "../listen-audio/w_brian_leak.mp3", "manifest": "../listen-audio/w_brian_manifest.mp3", "aliasing": "../listen-audio/w_brian_aliasing.mp3", "unhealthy": "../listen-audio/w_brian_unhealthy.mp3", "careless": "../listen-audio/w_brian_careless.mp3", "subpixel": "../listen-audio/w_brian_subpixel.mp3", "pave the way": "../listen-audio/w_brian_pave_the_way.mp3"}, "e": {"careless signal processing that causes aliasing in the generator network": "../listen-audio/e_brian_a15b83c801ab.mp3", "despite their hierarchical convolutional nature": "../listen-audio/e_brian_d188d819e0c2.mp3", "the synthesis process of typical generative adversarial networks": "../listen-audio/e_brian_8ac4e2d1e11f.mp3", "depends on absolute pixel coordinates in an unhealthy manner": "../listen-audio/e_brian_d335cc724c9c.mp3", "This manifests itself as detail appearing to be glued to image coordinates": "../listen-audio/e_brian_a4303db0ae53.mp3", "instead of the surfaces of depicted objects": "../listen-audio/e_brian_c7b1e9376c43.mp3", "We trace the root cause to careless signal processing": "../listen-audio/e_brian_2d683e755e8c.mp3", "Interpreting all signals in the network as continuous": "../listen-audio/e_brian_c93848cc8613.mp3", "we derive generally applicable, small architectural changes": "../listen-audio/e_brian_d235554d58a1.mp3", "architectural changes that guarantee that unwanted information cannot leak": "../listen-audio/e_brian_9f202d6ce5d2.mp3", "unwanted information cannot leak into the hierarchical synthesis process": "../listen-audio/e_brian_60f599d73419.mp3", "differ dramatically in their internal representations": "../listen-audio/e_brian_82cf97a115e4.mp3", "fully equivariant to translation and rotation even at subpixel scales": "../listen-audio/e_brian_95f37698e1d3.mp3", "even at subpixel scales": "../listen-audio/e_brian_bb3494c9abb9.mp3", "Our results pave the way for generative models better suited for video and animation": "../listen-audio/e_brian_5f34b96ffe94.mp3"}}, "zh-CN-YunyangNeural": {"m": {"显著地": "../listen-audio/m_yunyang_b274003aab3a.mp3", "合成": "../listen-audio/m_yunyang_c29e4097806f.mp3", "等变的": "../listen-audio/m_yunyang_f5192b7c05c7.mp3", "连续的": "../listen-audio/m_yunyang_f459e5081755.mp3", "描绘": "../listen-audio/m_yunyang_5b16f9baa162.mp3", "适用的": "../listen-audio/m_yunyang_97f40a7bceee.mp3", "保证": "../listen-audio/m_yunyang_d3fdd2bdcf9b.mp3", "分层的": "../listen-audio/m_yunyang_23d4d863bd82.mp3", "显现": "../listen-audio/m_yunyang_de3c80300efd.mp3", "泄漏": "../listen-audio/m_yunyang_01ac89d9da7e.mp3", "混叠（信号处理伪像）": "../listen-audio/m_yunyang_69c46f899dc5.mp3", "不健康的（不合理的）": "../listen-audio/m_yunyang_ff0491be0bba.mp3", "追溯": "../listen-audio/m_yunyang_958e955bdeb4.mp3", "疏忽的": "../listen-audio/m_yunyang_290016cae8b6.mp3", "亚像素": "../listen-audio/m_yunyang_b86f96fa70ba.mp3", "为…铺平道路": "../listen-audio/m_yunyang_6822dba724ca.mp3"}}, "zh-CN-YunjianNeural": {"m": {"显著地": "../listen-audio/m_yunjian_b274003aab3a.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

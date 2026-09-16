@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "motivation", "ipa": "ˌmoʊtɪˈveɪʃn", "pos": "n.", "m": "动机", "ex": "Our motivation stems from the observation that 2D CNNs have remained solid performers", "lv": "四级", "sec": "Abstract"}, {"w": "stem from", "ipa": "stem frʌm", "pos": "phr.", "m": "源于", "ex": "Our motivation stems from the observation", "lv": "考博", "sec": "Abstract"}, {"w": "empirically", "ipa": "ɪmˈpɪrɪkli", "pos": "adv.", "m": "实证地", "ex": "we empirically demonstrate the accuracy advantages of 3D CNNs", "lv": "六级", "sec": "Abstract"}, {"w": "factorize", "ipa": "ˈfæktəraɪz", "pos": "v.", "m": "分解", "ex": "factorizing the 3D convolutional ﬁlters into separate spatial and temporal components", "lv": "考博", "sec": "Abstract"}, {"w": "component", "ipa": "kəmˈpoʊnənt", "pos": "n.", "m": "分量", "ex": "separate spatial and temporal components", "lv": "四级", "sec": "Abstract"}, {"w": "superior", "ipa": "suːˈpɪriər", "pos": "adj.", "m": "更优的", "ex": "results comparable or superior to the state-of-the-art", "lv": "四级", "sec": "Abstract"}, {"w": "galvanize", "ipa": "ˈɡælvənaɪz", "pos": "v.", "m": "推动，激振", "ex": "deep learning has galvanized the ﬁeld of still-image recognition", "lv": "考博", "sec": "Intro"}, {"w": "steady", "ipa": "ˈstedi", "pos": "adj.", "m": "持续的", "ex": "a steady sequence of remarkable advances", "lv": "四级", "sec": "Intro"}, {"w": "remarkable", "ipa": "rɪˈmɑːrkəbl", "pos": "adj.", "m": "非凡的", "ex": "a steady sequence of remarkable advances", "lv": "四级", "sec": "Intro"}, {"w": "insightful", "ipa": "ˈɪnsaɪtfl", "pos": "adj.", "m": "富有洞见的", "ex": "driven by insightful design innovations", "lv": "考博", "sec": "Intro"}, {"w": "conversely", "ipa": "ˈkɑːnvɜːrsli", "pos": "adv.", "m": "相反地", "ex": "Conversely, it may be argued that the video domain has not yet witnessed", "lv": "四级", "sec": "Intro"}, {"w": "witness", "ipa": "ˈwɪtnəs", "pos": "v.", "m": "见证", "ex": "the video domain has not yet witnessed its AlexNet moment", "lv": "四级", "sec": "Intro"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"factorize": "../listen-audio/w_brian_factorize.mp3", "superior": "../listen-audio/w_brian_superior.mp3", "empirically": "../listen-audio/w_brian_empirically.mp3", "motivation": "../listen-audio/w_brian_motivation.mp3", "remarkable": "../listen-audio/w_brian_remarkable.mp3", "component": "../listen-audio/w_brian_component.mp3", "conversely": "../listen-audio/w_brian_conversely.mp3", "stem from": "../listen-audio/w_brian_stem_from.mp3", "galvanize": "../listen-audio/w_brian_galvanize.mp3", "steady": "../listen-audio/w_brian_steady.mp3", "insightful": "../listen-audio/w_brian_insightful.mp3", "witness": "../listen-audio/w_brian_witness.mp3"}}, "en-US-AndrewNeural": {"w": {"factorize": "../listen-audio/w_andrew_factorize.mp3", "superior": "../listen-audio/w_andrew_superior.mp3"}}, "zh-CN-YunyangNeural": {"m": {"持续的": "../listen-audio/m_yunyang_7b341bb076f8.mp3", "非凡的": "../listen-audio/m_yunyang_6b8eb2901295.mp3", "分解": "../listen-audio/m_yunyang_54e63f844254.mp3", "相反地": "../listen-audio/m_yunyang_aeb48f8cccab.mp3", "更优的": "../listen-audio/m_yunyang_c389158f9317.mp3", "动机": "../listen-audio/m_yunyang_5fec942d26ae.mp3", "源于": "../listen-audio/m_yunyang_5e454b0159f6.mp3", "实证地": "../listen-audio/m_yunyang_b4994d9255f9.mp3", "分量": "../listen-audio/m_yunyang_8f60807cd30a.mp3", "推动，激振": "../listen-audio/m_yunyang_a86bdf2ce96a.mp3", "富有洞见的": "../listen-audio/m_yunyang_4cf377c5e24c.mp3", "见证": "../listen-audio/m_yunyang_533ec6342868.mp3"}}, "zh-CN-YunjianNeural": {"m": {"持续的": "../listen-audio/m_yunjian_7b341bb076f8.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "motivation", "ipa": "ˌmoʊtɪˈveɪʃn", "pos": "n.", "m": "动机", "ex": "Our motivation stems from the observation that 2D CNNs have remained solid performers", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "stem from", "ipa": "stem frʌm", "pos": "phr.", "m": "源于", "ex": "Our motivation stems from the observation", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "empirically", "ipa": "ɪmˈpɪrɪkli", "pos": "adv.", "m": "实证地", "ex": "we empirically demonstrate the accuracy advantages of 3D CNNs", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "factorize", "ipa": "ˈfæktəraɪz", "pos": "v.", "m": "分解", "ex": "factorizing the 3D convolutional ﬁlters into separate spatial and temporal components", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "component", "ipa": "kəmˈpoʊnənt", "pos": "n.", "m": "分量", "ex": "separate spatial and temporal components", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "superior", "ipa": "suːˈpɪriər", "pos": "adj.", "m": "更优的", "ex": "results comparable or superior to the state-of-the-art", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "galvanize", "ipa": "ˈɡælvənaɪz", "pos": "v.", "m": "推动，激振", "ex": "deep learning has galvanized the ﬁeld of still-image recognition", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "steady", "ipa": "ˈstedi", "pos": "adj.", "m": "持续的", "ex": "a steady sequence of remarkable advances", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "remarkable", "ipa": "rɪˈmɑːrkəbl", "pos": "adj.", "m": "非凡的", "ex": "a steady sequence of remarkable advances", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "insightful", "ipa": "ˈɪnsaɪtfl", "pos": "adj.", "m": "富有洞见的", "ex": "driven by insightful design innovations", "lv": "考博", "ov": "GRE", "sec": "Intro"}, {"w": "conversely", "ipa": "ˈkɑːnvɜːrsli", "pos": "adv.", "m": "相反地", "ex": "Conversely, it may be argued that the video domain has not yet witnessed", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "witness", "ipa": "ˈwɪtnəs", "pos": "v.", "m": "见证", "ex": "the video domain has not yet witnessed its AlexNet moment", "lv": "四级", "ov": "", "sec": "Intro"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"factorize": "../listen-audio/w_brian_factorize.mp3", "superior": "../listen-audio/w_brian_superior.mp3", "empirically": "../listen-audio/w_brian_empirically.mp3", "motivation": "../listen-audio/w_brian_motivation.mp3", "remarkable": "../listen-audio/w_brian_remarkable.mp3", "component": "../listen-audio/w_brian_component.mp3", "conversely": "../listen-audio/w_brian_conversely.mp3", "stem from": "../listen-audio/w_brian_stem_from.mp3", "galvanize": "../listen-audio/w_brian_galvanize.mp3", "steady": "../listen-audio/w_brian_steady.mp3", "insightful": "../listen-audio/w_brian_insightful.mp3", "witness": "../listen-audio/w_brian_witness.mp3"}, "e": {"Our motivation stems from the observation that 2D CNNs have remained solid performers": "../listen-audio/e_brian_b69fe2879b00.mp3", "Our motivation stems from the observation": "../listen-audio/e_brian_cb11c30f07a4.mp3", "we empirically demonstrate the accuracy advantages of 3D CNNs": "../listen-audio/e_brian_c58fce7f48a3.mp3", "factorizing the 3D convolutional ﬁlters into separate spatial and temporal components": "../listen-audio/e_brian_e4ac579d6afd.mp3", "separate spatial and temporal components": "../listen-audio/e_brian_a525d3195312.mp3", "results comparable or superior to the state-of-the-art": "../listen-audio/e_brian_d17cf121c929.mp3", "deep learning has galvanized the ﬁeld of still-image recognition": "../listen-audio/e_brian_db0ca36736fb.mp3", "a steady sequence of remarkable advances": "../listen-audio/e_brian_dd569c9b9668.mp3", "driven by insightful design innovations": "../listen-audio/e_brian_c2ba4a6c8207.mp3", "Conversely, it may be argued that the video domain has not yet witnessed": "../listen-audio/e_brian_d978cf5ddce6.mp3", "the video domain has not yet witnessed its AlexNet moment": "../listen-audio/e_brian_d67d564d20dc.mp3"}}, "en-US-AndrewNeural": {"w": {"factorize": "../listen-audio/w_andrew_factorize.mp3", "superior": "../listen-audio/w_andrew_superior.mp3"}}, "zh-CN-YunyangNeural": {"m": {"持续的": "../listen-audio/m_yunyang_7b341bb076f8.mp3", "非凡的": "../listen-audio/m_yunyang_6b8eb2901295.mp3", "分解": "../listen-audio/m_yunyang_54e63f844254.mp3", "相反地": "../listen-audio/m_yunyang_aeb48f8cccab.mp3", "更优的": "../listen-audio/m_yunyang_c389158f9317.mp3", "动机": "../listen-audio/m_yunyang_5fec942d26ae.mp3", "源于": "../listen-audio/m_yunyang_5e454b0159f6.mp3", "实证地": "../listen-audio/m_yunyang_b4994d9255f9.mp3", "分量": "../listen-audio/m_yunyang_8f60807cd30a.mp3", "推动，激振": "../listen-audio/m_yunyang_a86bdf2ce96a.mp3", "富有洞见的": "../listen-audio/m_yunyang_4cf377c5e24c.mp3", "见证": "../listen-audio/m_yunyang_533ec6342868.mp3"}}, "zh-CN-YunjianNeural": {"m": {"持续的": "../listen-audio/m_yunjian_7b341bb076f8.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

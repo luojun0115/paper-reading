@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "publicly", "ipa": "ˈpʌblɪkli", "pos": "adv.", "m": "公开地", "ex": "a GPT language model ﬁne-tuned on publicly available code from GitHub", "lv": "四级", "sec": "Abstract"}, {"w": "distinct", "ipa": "dɪˈstɪŋkt", "pos": "adj.", "m": "不同的，独特的", "ex": "A distinct production version of Codex powers GitHub Copilot", "lv": "四级", "sec": "Abstract"}, {"w": "capability", "ipa": "ˌkeɪpəˈbɪləti", "pos": "n.", "m": "能力", "ex": "study its Python code-writing capabilities", "lv": "六级", "sec": "Abstract"}, {"w": "functional", "ipa": "ˈfʌŋkʃənl", "pos": "adj.", "m": "功能性的", "ex": "to measure functional correctness for synthesizing programs", "lv": "考博", "sec": "Abstract"}, {"w": "correctness", "ipa": "kəˈrektnəs", "pos": "n.", "m": "正确性", "ex": "measure functional correctness for synthesizing programs from docstrings", "lv": "考博", "sec": "Abstract"}, {"w": "docstring", "ipa": "ˈdɑːkstrɪŋ", "pos": "n.", "m": "文档字符串", "ex": "synthesizing programs from docstrings", "lv": "考博", "sec": "Abstract"}, {"w": "sampling", "ipa": "ˈsæmplɪŋ", "pos": "n.", "m": "采样", "ex": "repeated sampling from the model is a surprisingly effective strategy", "lv": "四级", "sec": "Abstract"}, {"w": "surprisingly", "ipa": "sərˈpraɪzɪŋli", "pos": "adv.", "m": "出人意料地", "ex": "repeated sampling is a surprisingly effective strategy", "lv": "六级", "sec": "Abstract"}, {"w": "prompt", "ipa": "prɑːmpt", "pos": "n.", "m": "提示（输入）", "ex": "producing working solutions to difﬁcult prompts", "lv": "四级", "sec": "Abstract"}, {"w": "investigation", "ipa": "ɪnˌvestɪˈɡeɪʃn", "pos": "n.", "m": "调查，研究", "ex": "Careful investigation of our model reveals its limitations", "lv": "四级", "sec": "Abstract"}, {"w": "reveal", "ipa": "rɪˈviːl", "pos": "v.", "m": "揭示", "ex": "investigation of our model reveals its limitations", "lv": "四级", "sec": "Abstract"}, {"w": "limitation", "ipa": "ˌlɪmɪˈteɪʃn", "pos": "n.", "m": "局限", "ex": "reveals its limitations, including difﬁculty with docstrings", "lv": "四级", "sec": "Abstract"}, {"w": "variable", "ipa": "ˈveriəbl", "pos": "n.", "m": "变量", "ex": "binding operations to variables", "lv": "四级", "sec": "Abstract"}, {"w": "deploy", "ipa": "dɪˈplɔɪ", "pos": "v.", "m": "部署", "ex": "the potential broader impacts of deploying powerful code generation technologies", "lv": "六级", "sec": "Abstract"}, {"w": "economics", "ipa": "ˌiːkəˈnɑːmɪks", "pos": "n.", "m": "经济（影响）", "ex": "covering safety, security, and economics", "lv": "四级", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"prompt": "../listen-audio/w_brian_prompt.mp3", "investigation": "../listen-audio/w_brian_investigation.mp3", "distinct": "../listen-audio/w_brian_distinct.mp3", "capability": "../listen-audio/w_brian_capability.mp3", "publicly": "../listen-audio/w_brian_publicly.mp3", "functional": "../listen-audio/w_brian_functional.mp3", "correctness": "../listen-audio/w_brian_correctness.mp3", "docstring": "../listen-audio/w_brian_docstring.mp3", "sampling": "../listen-audio/w_brian_sampling.mp3", "surprisingly": "../listen-audio/w_brian_surprisingly.mp3", "reveal": "../listen-audio/w_brian_reveal.mp3", "limitation": "../listen-audio/w_brian_limitation.mp3", "variable": "../listen-audio/w_brian_variable.mp3", "deploy": "../listen-audio/w_brian_deploy.mp3", "economics": "../listen-audio/w_brian_economics.mp3"}}, "en-US-AndrewNeural": {"w": {"prompt": "../listen-audio/w_andrew_prompt.mp3"}}, "zh-CN-YunyangNeural": {"m": {"调查，研究": "../listen-audio/m_yunyang_fe1373e2c314.mp3", "能力": "../listen-audio/m_yunyang_89acdd31eabe.mp3", "公开地": "../listen-audio/m_yunyang_863fa253f58c.mp3", "不同的，独特的": "../listen-audio/m_yunyang_ec1fde04d6a5.mp3", "功能性的": "../listen-audio/m_yunyang_77e0b8eb069e.mp3", "正确性": "../listen-audio/m_yunyang_c6ded8bb5084.mp3", "文档字符串": "../listen-audio/m_yunyang_ce1bff3ceedc.mp3", "采样": "../listen-audio/m_yunyang_42ac9be904e4.mp3", "出人意料地": "../listen-audio/m_yunyang_45cf38f09ef9.mp3", "提示（输入）": "../listen-audio/m_yunyang_b0905ee4a228.mp3", "揭示": "../listen-audio/m_yunyang_97297a7b54b5.mp3", "局限": "../listen-audio/m_yunyang_0abf3db556eb.mp3", "变量": "../listen-audio/m_yunyang_ddc7d28b7b10.mp3", "部署": "../listen-audio/m_yunyang_a9f94dcd57ee.mp3", "经济（影响）": "../listen-audio/m_yunyang_7f48a13dfb83.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "publicly", "ipa": "ˈpʌblɪkli", "pos": "adv.", "m": "公开地", "ex": "a GPT language model ﬁne-tuned on publicly available code from GitHub", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "distinct", "ipa": "dɪˈstɪŋkt", "pos": "adj.", "m": "不同的，独特的", "ex": "A distinct production version of Codex powers GitHub Copilot", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "capability", "ipa": "ˌkeɪpəˈbɪləti", "pos": "n.", "m": "能力", "ex": "study its Python code-writing capabilities", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "functional", "ipa": "ˈfʌŋkʃənl", "pos": "adj.", "m": "功能性的", "ex": "to measure functional correctness for synthesizing programs", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "correctness", "ipa": "kəˈrektnəs", "pos": "n.", "m": "正确性", "ex": "measure functional correctness for synthesizing programs from docstrings", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "docstring", "ipa": "ˈdɑːkstrɪŋ", "pos": "n.", "m": "文档字符串", "ex": "synthesizing programs from docstrings", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "sampling", "ipa": "ˈsæmplɪŋ", "pos": "n.", "m": "采样", "ex": "repeated sampling from the model is a surprisingly effective strategy", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "surprisingly", "ipa": "sərˈpraɪzɪŋli", "pos": "adv.", "m": "出人意料地", "ex": "repeated sampling is a surprisingly effective strategy", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "prompt", "ipa": "prɑːmpt", "pos": "n.", "m": "提示（输入）", "ex": "producing working solutions to difﬁcult prompts", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "investigation", "ipa": "ɪnˌvestɪˈɡeɪʃn", "pos": "n.", "m": "调查，研究", "ex": "Careful investigation of our model reveals its limitations", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "reveal", "ipa": "rɪˈviːl", "pos": "v.", "m": "揭示", "ex": "investigation of our model reveals its limitations", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "limitation", "ipa": "ˌlɪmɪˈteɪʃn", "pos": "n.", "m": "局限", "ex": "reveals its limitations, including difﬁculty with docstrings", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "variable", "ipa": "ˈveriəbl", "pos": "n.", "m": "变量", "ex": "binding operations to variables", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "deploy", "ipa": "dɪˈplɔɪ", "pos": "v.", "m": "部署", "ex": "the potential broader impacts of deploying powerful code generation technologies", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "economics", "ipa": "ˌiːkəˈnɑːmɪks", "pos": "n.", "m": "经济（影响）", "ex": "covering safety, security, and economics", "lv": "四级", "ov": "", "sec": "Abstract"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"prompt": "../listen-audio/w_brian_prompt.mp3", "investigation": "../listen-audio/w_brian_investigation.mp3", "distinct": "../listen-audio/w_brian_distinct.mp3", "capability": "../listen-audio/w_brian_capability.mp3", "publicly": "../listen-audio/w_brian_publicly.mp3", "functional": "../listen-audio/w_brian_functional.mp3", "correctness": "../listen-audio/w_brian_correctness.mp3", "docstring": "../listen-audio/w_brian_docstring.mp3", "sampling": "../listen-audio/w_brian_sampling.mp3", "surprisingly": "../listen-audio/w_brian_surprisingly.mp3", "reveal": "../listen-audio/w_brian_reveal.mp3", "limitation": "../listen-audio/w_brian_limitation.mp3", "variable": "../listen-audio/w_brian_variable.mp3", "deploy": "../listen-audio/w_brian_deploy.mp3", "economics": "../listen-audio/w_brian_economics.mp3"}, "e": {"a GPT language model ﬁne-tuned on publicly available code from GitHub": "../listen-audio/e_brian_a4d56324a0cd.mp3", "A distinct production version of Codex powers GitHub Copilot": "../listen-audio/e_brian_38f879658ca9.mp3", "study its Python code-writing capabilities": "../listen-audio/e_brian_f8f14d746029.mp3", "to measure functional correctness for synthesizing programs": "../listen-audio/e_brian_71d43c7a302d.mp3", "measure functional correctness for synthesizing programs from docstrings": "../listen-audio/e_brian_475d19477a9b.mp3", "synthesizing programs from docstrings": "../listen-audio/e_brian_ccd087d28356.mp3", "repeated sampling from the model is a surprisingly effective strategy": "../listen-audio/e_brian_f0306c5c9a2c.mp3", "repeated sampling is a surprisingly effective strategy": "../listen-audio/e_brian_ed382232cd1b.mp3", "producing working solutions to difﬁcult prompts": "../listen-audio/e_brian_5c3eaa6baf9e.mp3", "Careful investigation of our model reveals its limitations": "../listen-audio/e_brian_807f56ad4be6.mp3", "investigation of our model reveals its limitations": "../listen-audio/e_brian_70be5077330f.mp3", "reveals its limitations, including difﬁculty with docstrings": "../listen-audio/e_brian_554d6e9692d7.mp3", "binding operations to variables": "../listen-audio/e_brian_f2bb94f94802.mp3", "the potential broader impacts of deploying powerful code generation technologies": "../listen-audio/e_brian_d8fe9d4e0bd9.mp3", "covering safety, security, and economics": "../listen-audio/e_brian_8b8332014bbb.mp3"}}, "en-US-AndrewNeural": {"w": {"prompt": "../listen-audio/w_andrew_prompt.mp3"}}, "zh-CN-YunyangNeural": {"m": {"调查，研究": "../listen-audio/m_yunyang_fe1373e2c314.mp3", "能力": "../listen-audio/m_yunyang_89acdd31eabe.mp3", "公开地": "../listen-audio/m_yunyang_863fa253f58c.mp3", "不同的，独特的": "../listen-audio/m_yunyang_ec1fde04d6a5.mp3", "功能性的": "../listen-audio/m_yunyang_77e0b8eb069e.mp3", "正确性": "../listen-audio/m_yunyang_c6ded8bb5084.mp3", "文档字符串": "../listen-audio/m_yunyang_ce1bff3ceedc.mp3", "采样": "../listen-audio/m_yunyang_42ac9be904e4.mp3", "出人意料地": "../listen-audio/m_yunyang_45cf38f09ef9.mp3", "提示（输入）": "../listen-audio/m_yunyang_b0905ee4a228.mp3", "揭示": "../listen-audio/m_yunyang_97297a7b54b5.mp3", "局限": "../listen-audio/m_yunyang_0abf3db556eb.mp3", "变量": "../listen-audio/m_yunyang_ddc7d28b7b10.mp3", "部署": "../listen-audio/m_yunyang_a9f94dcd57ee.mp3", "经济（影响）": "../listen-audio/m_yunyang_7f48a13dfb83.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "axis-aligned", "ipa": "ˈæksɪs əˈlaɪnd", "pos": "adj.", "m": "轴对齐的", "ex": "Detection identiﬁes objects as axis-aligned boxes in an image", "lv": "考博", "sec": "Abstract"}, {"w": "enumerate", "ipa": "ɪˈnuːməreɪt", "pos": "v.", "m": "枚举", "ex": "Most successful object detectors enumerate a nearly exhaustive list", "lv": "考博", "sec": "Abstract"}, {"w": "exhaustive", "ipa": "ɪɡˈzɔːstɪv", "pos": "adj.", "m": "穷尽的", "ex": "enumerate a nearly exhaustive list of potential object locations", "lv": "六级", "sec": "Abstract"}, {"w": "wasteful", "ipa": "ˈweɪstfl", "pos": "adj.", "m": "浪费的", "ex": "This is wasteful, inefﬁcient, and requires additional post-processing", "lv": "六级", "sec": "Abstract"}, {"w": "keypoint", "ipa": "ˈkiːpɔɪnt", "pos": "n.", "m": "关键点", "ex": "Our detector uses keypoint estimation to ﬁnd center points", "lv": "考博", "sec": "Abstract"}, {"w": "regress", "ipa": "rɪˈɡres", "pos": "v.", "m": "回归（预测）", "ex": "regresses to all other object properties", "lv": "考博", "sec": "Abstract"}, {"w": "orientation", "ipa": "ˌɔːriənˈteɪʃn", "pos": "n.", "m": "朝向", "ex": "properties, such as size, 3D location, orientation, and even pose", "lv": "六级", "sec": "Abstract"}, {"w": "differentiable", "ipa": "ˌdɪfəˈrenʃəbl", "pos": "adj.", "m": "可微的", "ex": "end-to-end differentiable, simpler, faster, and more accurate", "lv": "考博", "sec": "Abstract"}, {"w": "competitively", "ipa": "kəmˈpetətɪvli", "pos": "adv.", "m": "有竞争力地", "ex": "performs competitively with sophisticated multi-stage methods", "lv": "四级", "sec": "Abstract"}, {"w": "candidate", "ipa": "ˈkændɪdət", "pos": "n.", "m": "候选", "ex": "enumerates object location from a large set of region candidates", "lv": "四级", "sec": "Related"}, {"w": "crop", "ipa": "krɑːp", "pos": "v.", "m": "裁剪", "ex": "crops them, and classiﬁes each using a deep network", "lv": "四级", "sec": "Related"}, {"w": "implicit", "ipa": "ɪmˈplɪsɪt", "pos": "adj.", "m": "隐式的", "ex": "Object detection with implicit anchors", "lv": "六级", "sec": "Related"}, {"w": "anchor", "ipa": "ˈæŋkər", "pos": "n.", "m": "锚框", "ex": "It samples ﬁxed-shape bounding boxes (anchors)", "lv": "四级", "sec": "Related"}, {"w": "foreground", "ipa": "ˈfɔːrɡraʊnd", "pos": "n.", "m": "前景", "ex": "classiﬁes each into foreground or not", "lv": "考博", "sec": "Related"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"differentiable": "../listen-audio/w_brian_differentiable.mp3", "crop": "../listen-audio/w_brian_crop.mp3", "exhaustive": "../listen-audio/w_brian_exhaustive.mp3", "candidate": "../listen-audio/w_brian_candidate.mp3", "axis-aligned": "../listen-audio/w_brian_axis_aligned.mp3", "enumerate": "../listen-audio/w_brian_enumerate.mp3", "wasteful": "../listen-audio/w_brian_wasteful.mp3", "keypoint": "../listen-audio/w_brian_keypoint.mp3", "regress": "../listen-audio/w_brian_regress.mp3", "orientation": "../listen-audio/w_brian_orientation.mp3", "competitively": "../listen-audio/w_brian_competitively.mp3", "implicit": "../listen-audio/w_brian_implicit.mp3", "anchor": "../listen-audio/w_brian_anchor.mp3", "foreground": "../listen-audio/w_brian_foreground.mp3"}}, "zh-CN-YunyangNeural": {"m": {"可微的": "../listen-audio/m_yunyang_1cfca9ae528a.mp3", "裁剪": "../listen-audio/m_yunyang_293cafbbd30b.mp3", "候选": "../listen-audio/m_yunyang_f21434beef4a.mp3", "轴对齐的": "../listen-audio/m_yunyang_1e02a9590ff0.mp3", "枚举": "../listen-audio/m_yunyang_56975625b606.mp3", "穷尽的": "../listen-audio/m_yunyang_2d71e044191f.mp3", "浪费的": "../listen-audio/m_yunyang_a6980ba05d5a.mp3", "关键点": "../listen-audio/m_yunyang_4d6dae70e4f1.mp3", "回归（预测）": "../listen-audio/m_yunyang_df294c26e8a6.mp3", "朝向": "../listen-audio/m_yunyang_f5a504645a98.mp3", "有竞争力地": "../listen-audio/m_yunyang_72910d45c8f1.mp3", "隐式的": "../listen-audio/m_yunyang_fb0fab48b663.mp3", "锚框": "../listen-audio/m_yunyang_9492939f072a.mp3", "前景": "../listen-audio/m_yunyang_35d8cc8b99b0.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "axis-aligned", "ipa": "ˈæksɪs əˈlaɪnd", "pos": "adj.", "m": "轴对齐的", "ex": "Detection identiﬁes objects as axis-aligned boxes in an image", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "enumerate", "ipa": "ɪˈnuːməreɪt", "pos": "v.", "m": "枚举", "ex": "Most successful object detectors enumerate a nearly exhaustive list", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "exhaustive", "ipa": "ɪɡˈzɔːstɪv", "pos": "adj.", "m": "穷尽的", "ex": "enumerate a nearly exhaustive list of potential object locations", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "wasteful", "ipa": "ˈweɪstfl", "pos": "adj.", "m": "浪费的", "ex": "This is wasteful, inefﬁcient, and requires additional post-processing", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "keypoint", "ipa": "ˈkiːpɔɪnt", "pos": "n.", "m": "关键点", "ex": "Our detector uses keypoint estimation to ﬁnd center points", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "regress", "ipa": "rɪˈɡres", "pos": "v.", "m": "回归（预测）", "ex": "regresses to all other object properties", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "orientation", "ipa": "ˌɔːriənˈteɪʃn", "pos": "n.", "m": "朝向", "ex": "properties, such as size, 3D location, orientation, and even pose", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "differentiable", "ipa": "ˌdɪfəˈrenʃəbl", "pos": "adj.", "m": "可微的", "ex": "end-to-end differentiable, simpler, faster, and more accurate", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "competitively", "ipa": "kəmˈpetətɪvli", "pos": "adv.", "m": "有竞争力地", "ex": "performs competitively with sophisticated multi-stage methods", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "candidate", "ipa": "ˈkændɪdət", "pos": "n.", "m": "候选", "ex": "enumerates object location from a large set of region candidates", "lv": "四级", "ov": "", "sec": "Related"}, {"w": "crop", "ipa": "krɑːp", "pos": "v.", "m": "裁剪", "ex": "crops them, and classiﬁes each using a deep network", "lv": "四级", "ov": "", "sec": "Related"}, {"w": "implicit", "ipa": "ɪmˈplɪsɪt", "pos": "adj.", "m": "隐式的", "ex": "Object detection with implicit anchors", "lv": "六级", "ov": "", "sec": "Related"}, {"w": "anchor", "ipa": "ˈæŋkər", "pos": "n.", "m": "锚框", "ex": "It samples ﬁxed-shape bounding boxes (anchors)", "lv": "四级", "ov": "", "sec": "Related"}, {"w": "foreground", "ipa": "ˈfɔːrɡraʊnd", "pos": "n.", "m": "前景", "ex": "classiﬁes each into foreground or not", "lv": "考博", "ov": "", "sec": "Related"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"differentiable": "../listen-audio/w_brian_differentiable.mp3", "crop": "../listen-audio/w_brian_crop.mp3", "exhaustive": "../listen-audio/w_brian_exhaustive.mp3", "candidate": "../listen-audio/w_brian_candidate.mp3", "axis-aligned": "../listen-audio/w_brian_axis_aligned.mp3", "enumerate": "../listen-audio/w_brian_enumerate.mp3", "wasteful": "../listen-audio/w_brian_wasteful.mp3", "keypoint": "../listen-audio/w_brian_keypoint.mp3", "regress": "../listen-audio/w_brian_regress.mp3", "orientation": "../listen-audio/w_brian_orientation.mp3", "competitively": "../listen-audio/w_brian_competitively.mp3", "implicit": "../listen-audio/w_brian_implicit.mp3", "anchor": "../listen-audio/w_brian_anchor.mp3", "foreground": "../listen-audio/w_brian_foreground.mp3"}, "e": {"Detection identiﬁes objects as axis-aligned boxes in an image": "../listen-audio/e_brian_a28ef72c135a.mp3", "Most successful object detectors enumerate a nearly exhaustive list": "../listen-audio/e_brian_43e86aa3527d.mp3", "enumerate a nearly exhaustive list of potential object locations": "../listen-audio/e_brian_d71d517d98ff.mp3", "This is wasteful, inefﬁcient, and requires additional post-processing": "../listen-audio/e_brian_6613e6879272.mp3", "Our detector uses keypoint estimation to ﬁnd center points": "../listen-audio/e_brian_146ae24017ab.mp3", "regresses to all other object properties": "../listen-audio/e_brian_a2de1289b535.mp3", "properties, such as size, 3D location, orientation, and even pose": "../listen-audio/e_brian_8b9a9a18f906.mp3", "end-to-end differentiable, simpler, faster, and more accurate": "../listen-audio/e_brian_846f9960a958.mp3", "performs competitively with sophisticated multi-stage methods": "../listen-audio/e_brian_43a46f74c1e3.mp3", "enumerates object location from a large set of region candidates": "../listen-audio/e_brian_ed7ff3649319.mp3", "crops them, and classiﬁes each using a deep network": "../listen-audio/e_brian_444a62de79b8.mp3", "Object detection with implicit anchors": "../listen-audio/e_brian_600e25cb6aee.mp3", "It samples ﬁxed-shape bounding boxes (anchors)": "../listen-audio/e_brian_8000a184aea2.mp3", "classiﬁes each into foreground or not": "../listen-audio/e_brian_44d8335080aa.mp3"}}, "zh-CN-YunyangNeural": {"m": {"可微的": "../listen-audio/m_yunyang_1cfca9ae528a.mp3", "裁剪": "../listen-audio/m_yunyang_293cafbbd30b.mp3", "候选": "../listen-audio/m_yunyang_f21434beef4a.mp3", "轴对齐的": "../listen-audio/m_yunyang_1e02a9590ff0.mp3", "枚举": "../listen-audio/m_yunyang_56975625b606.mp3", "穷尽的": "../listen-audio/m_yunyang_2d71e044191f.mp3", "浪费的": "../listen-audio/m_yunyang_a6980ba05d5a.mp3", "关键点": "../listen-audio/m_yunyang_4d6dae70e4f1.mp3", "回归（预测）": "../listen-audio/m_yunyang_df294c26e8a6.mp3", "朝向": "../listen-audio/m_yunyang_f5a504645a98.mp3", "有竞争力地": "../listen-audio/m_yunyang_72910d45c8f1.mp3", "隐式的": "../listen-audio/m_yunyang_fb0fab48b663.mp3", "锚框": "../listen-audio/m_yunyang_9492939f072a.mp3", "前景": "../listen-audio/m_yunyang_35d8cc8b99b0.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

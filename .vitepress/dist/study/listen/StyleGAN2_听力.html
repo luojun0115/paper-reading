@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "yield", "ipa": "jiːld", "pos": "v.", "m": "产生，带来", "ex": "The style-based GAN architecture yields state-of-the-art results", "lv": "四级", "sec": "Abstract"}, {"w": "unconditional", "ipa": "ˌʌnkənˈdɪʃənl", "pos": "adj.", "m": "无条件的", "ex": "data-driven unconditional generative image modeling", "lv": "考博", "sec": "Abstract"}, {"w": "expose", "ipa": "ɪkˈspoʊz", "pos": "v.", "m": "揭露，指出", "ex": "We expose and analyze several of its characteristic artifacts", "lv": "四级", "sec": "Abstract"}, {"w": "characteristic", "ipa": "ˌkerəktəˈrɪstɪk", "pos": "adj.", "m": "特有的", "ex": "several of its characteristic artifacts", "lv": "四级", "sec": "Abstract"}, {"w": "artifact", "ipa": "ˈɑːrtɪfækt", "pos": "n.", "m": "伪影；瑕疵", "ex": "analyze several of its characteristic artifacts", "lv": "考博", "sec": "Abstract"}, {"w": "redesign", "ipa": "ˌriːdɪˈzaɪn", "pos": "v.", "m": "重新设计", "ex": "we redesign the generator normalization", "lv": "考博", "sec": "Abstract"}, {"w": "revisit", "ipa": "ˌriːˈvɪzɪt", "pos": "v.", "m": "重新审视", "ex": "revisit progressive growing", "lv": "考博", "sec": "Abstract"}, {"w": "regularize", "ipa": "ˈreɡjələraɪz", "pos": "v.", "m": "正则化", "ex": "regularize the generator to encourage good conditioning", "lv": "考博", "sec": "Abstract"}, {"w": "latent", "ipa": "ˈleɪtnt", "pos": "adj.", "m": "潜空间的", "ex": "the mapping from latent codes to images", "lv": "六级", "sec": "Abstract"}, {"w": "invert", "ipa": "ɪnˈvɜːrt", "pos": "v.", "m": "求逆，反转", "ex": "the generator becomes signiﬁcantly easier to invert", "lv": "六级", "sec": "Abstract"}, {"w": "attribute", "ipa": "əˈtrɪbjuːt", "pos": "v.", "m": "归因", "ex": "reliably attribute a generated image to a particular network", "lv": "四级", "sec": "Abstract"}, {"w": "utilize", "ipa": "ˈjuːtəlaɪz", "pos": "v.", "m": "利用", "ex": "visualize how well the generator utilizes its output resolution", "lv": "四级", "sec": "Abstract"}, {"w": "capacity", "ipa": "kəˈpæsəti", "pos": "n.", "m": "容量", "ex": "identify a capacity problem", "lv": "四级", "sec": "Abstract"}, {"w": "redefine", "ipa": "ˌriːdɪˈfaɪn", "pos": "v.", "m": "重新定义", "ex": "our improved model redeﬁnes the state of the art", "lv": "六级", "sec": "Abstract"}, {"w": "perceived", "ipa": "pərˈsiːvd", "pos": "adj.", "m": "感知到的", "ex": "as well as perceived image quality", "lv": "考博", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"capacity": "../listen-audio/w_brian_capacity.mp3", "artifact": "../listen-audio/w_brian_artifact.mp3", "yield": "../listen-audio/w_brian_yield.mp3", "latent": "../listen-audio/w_brian_latent.mp3", "invert": "../listen-audio/w_brian_invert.mp3", "unconditional": "../listen-audio/w_brian_unconditional.mp3", "attribute": "../listen-audio/w_brian_attribute.mp3", "expose": "../listen-audio/w_brian_expose.mp3", "utilize": "../listen-audio/w_brian_utilize.mp3", "characteristic": "../listen-audio/w_brian_characteristic.mp3", "redesign": "../listen-audio/w_brian_redesign.mp3", "revisit": "../listen-audio/w_brian_revisit.mp3", "regularize": "../listen-audio/w_brian_regularize.mp3", "redefine": "../listen-audio/w_brian_redefine.mp3", "perceived": "../listen-audio/w_brian_perceived.mp3"}}, "en-US-AndrewNeural": {"w": {"capacity": "../listen-audio/w_andrew_capacity.mp3", "artifact": "../listen-audio/w_andrew_artifact.mp3", "yield": "../listen-audio/w_andrew_yield.mp3"}}, "zh-CN-YunyangNeural": {"m": {"正则化": "../listen-audio/m_yunyang_4bd7c8e0b175.mp3", "利用": "../listen-audio/m_yunyang_c0d076b90724.mp3", "潜空间的": "../listen-audio/m_yunyang_59ffafbc07b2.mp3", "无条件的": "../listen-audio/m_yunyang_c2146b90a9eb.mp3", "产生，带来": "../listen-audio/m_yunyang_d95276de6982.mp3", "归因": "../listen-audio/m_yunyang_ffda2390f00c.mp3", "揭露，指出": "../listen-audio/m_yunyang_0ccd9bdf74ac.mp3", "特有的": "../listen-audio/m_yunyang_7d4f64a830c1.mp3", "伪影；瑕疵": "../listen-audio/m_yunyang_461fdad72ecd.mp3", "重新设计": "../listen-audio/m_yunyang_ddb300a7b254.mp3", "重新审视": "../listen-audio/m_yunyang_425f7620becc.mp3", "求逆，反转": "../listen-audio/m_yunyang_33f94c3d1d49.mp3", "容量": "../listen-audio/m_yunyang_fe7d74278aa9.mp3", "重新定义": "../listen-audio/m_yunyang_7ac8c92e0739.mp3", "感知到的": "../listen-audio/m_yunyang_44086e6f730e.mp3"}}, "zh-CN-YunjianNeural": {"m": {"正则化": "../listen-audio/m_yunjian_4bd7c8e0b175.mp3", "利用": "../listen-audio/m_yunjian_c0d076b90724.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "yield", "ipa": "jiːld", "pos": "v.", "m": "产生，带来", "ex": "The style-based GAN architecture yields state-of-the-art results", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "unconditional", "ipa": "ˌʌnkənˈdɪʃənl", "pos": "adj.", "m": "无条件的", "ex": "data-driven unconditional generative image modeling", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "expose", "ipa": "ɪkˈspoʊz", "pos": "v.", "m": "揭露，指出", "ex": "We expose and analyze several of its characteristic artifacts", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "characteristic", "ipa": "ˌkerəktəˈrɪstɪk", "pos": "adj.", "m": "特有的", "ex": "several of its characteristic artifacts", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "artifact", "ipa": "ˈɑːrtɪfækt", "pos": "n.", "m": "伪影；瑕疵", "ex": "analyze several of its characteristic artifacts", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "redesign", "ipa": "ˌriːdɪˈzaɪn", "pos": "v.", "m": "重新设计", "ex": "we redesign the generator normalization", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "revisit", "ipa": "ˌriːˈvɪzɪt", "pos": "v.", "m": "重新审视", "ex": "revisit progressive growing", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "regularize", "ipa": "ˈreɡjələraɪz", "pos": "v.", "m": "正则化", "ex": "regularize the generator to encourage good conditioning", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "latent", "ipa": "ˈleɪtnt", "pos": "adj.", "m": "潜空间的", "ex": "the mapping from latent codes to images", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "invert", "ipa": "ɪnˈvɜːrt", "pos": "v.", "m": "求逆，反转", "ex": "the generator becomes signiﬁcantly easier to invert", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "attribute", "ipa": "əˈtrɪbjuːt", "pos": "v.", "m": "归因", "ex": "reliably attribute a generated image to a particular network", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "utilize", "ipa": "ˈjuːtəlaɪz", "pos": "v.", "m": "利用", "ex": "visualize how well the generator utilizes its output resolution", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "capacity", "ipa": "kəˈpæsəti", "pos": "n.", "m": "容量", "ex": "identify a capacity problem", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "redefine", "ipa": "ˌriːdɪˈfaɪn", "pos": "v.", "m": "重新定义", "ex": "our improved model redeﬁnes the state of the art", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "perceived", "ipa": "pərˈsiːvd", "pos": "adj.", "m": "感知到的", "ex": "as well as perceived image quality", "lv": "考博", "ov": "", "sec": "Abstract"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"capacity": "../listen-audio/w_brian_capacity.mp3", "artifact": "../listen-audio/w_brian_artifact.mp3", "yield": "../listen-audio/w_brian_yield.mp3", "latent": "../listen-audio/w_brian_latent.mp3", "invert": "../listen-audio/w_brian_invert.mp3", "unconditional": "../listen-audio/w_brian_unconditional.mp3", "attribute": "../listen-audio/w_brian_attribute.mp3", "expose": "../listen-audio/w_brian_expose.mp3", "utilize": "../listen-audio/w_brian_utilize.mp3", "characteristic": "../listen-audio/w_brian_characteristic.mp3", "redesign": "../listen-audio/w_brian_redesign.mp3", "revisit": "../listen-audio/w_brian_revisit.mp3", "regularize": "../listen-audio/w_brian_regularize.mp3", "redefine": "../listen-audio/w_brian_redefine.mp3", "perceived": "../listen-audio/w_brian_perceived.mp3"}, "e": {"The style-based GAN architecture yields state-of-the-art results": "../listen-audio/e_brian_37317aad33db.mp3", "data-driven unconditional generative image modeling": "../listen-audio/e_brian_779ecbaf4663.mp3", "We expose and analyze several of its characteristic artifacts": "../listen-audio/e_brian_4bae3382f1c3.mp3", "several of its characteristic artifacts": "../listen-audio/e_brian_734b05616e75.mp3", "analyze several of its characteristic artifacts": "../listen-audio/e_brian_97681e7e33df.mp3", "we redesign the generator normalization": "../listen-audio/e_brian_22838e14565b.mp3", "revisit progressive growing": "../listen-audio/e_brian_8ba940cfacb4.mp3", "regularize the generator to encourage good conditioning": "../listen-audio/e_brian_e5bf48fb00da.mp3", "the mapping from latent codes to images": "../listen-audio/e_brian_f4fabd8b9e4d.mp3", "the generator becomes signiﬁcantly easier to invert": "../listen-audio/e_brian_95e7af8a69a2.mp3", "reliably attribute a generated image to a particular network": "../listen-audio/e_brian_9cc0ba9a62b2.mp3", "visualize how well the generator utilizes its output resolution": "../listen-audio/e_brian_84722c651793.mp3", "identify a capacity problem": "../listen-audio/e_brian_c8537e2ce412.mp3", "our improved model redeﬁnes the state of the art": "../listen-audio/e_brian_bf2860f460dd.mp3", "as well as perceived image quality": "../listen-audio/e_brian_a5712424e07d.mp3"}}, "en-US-AndrewNeural": {"w": {"capacity": "../listen-audio/w_andrew_capacity.mp3", "artifact": "../listen-audio/w_andrew_artifact.mp3", "yield": "../listen-audio/w_andrew_yield.mp3"}}, "zh-CN-YunyangNeural": {"m": {"正则化": "../listen-audio/m_yunyang_4bd7c8e0b175.mp3", "利用": "../listen-audio/m_yunyang_c0d076b90724.mp3", "潜空间的": "../listen-audio/m_yunyang_59ffafbc07b2.mp3", "无条件的": "../listen-audio/m_yunyang_c2146b90a9eb.mp3", "产生，带来": "../listen-audio/m_yunyang_d95276de6982.mp3", "归因": "../listen-audio/m_yunyang_ffda2390f00c.mp3", "揭露，指出": "../listen-audio/m_yunyang_0ccd9bdf74ac.mp3", "特有的": "../listen-audio/m_yunyang_7d4f64a830c1.mp3", "伪影；瑕疵": "../listen-audio/m_yunyang_461fdad72ecd.mp3", "重新设计": "../listen-audio/m_yunyang_ddb300a7b254.mp3", "重新审视": "../listen-audio/m_yunyang_425f7620becc.mp3", "求逆，反转": "../listen-audio/m_yunyang_33f94c3d1d49.mp3", "容量": "../listen-audio/m_yunyang_fe7d74278aa9.mp3", "重新定义": "../listen-audio/m_yunyang_7ac8c92e0739.mp3", "感知到的": "../listen-audio/m_yunyang_44086e6f730e.mp3"}}, "zh-CN-YunjianNeural": {"m": {"正则化": "../listen-audio/m_yunjian_4bd7c8e0b175.mp3", "利用": "../listen-audio/m_yunjian_c0d076b90724.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

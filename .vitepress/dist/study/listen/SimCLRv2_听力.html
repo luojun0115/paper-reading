@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "paradigm", "ipa": "ˈpærədaɪm", "pos": "n.", "m": "范式", "ex": "One paradigm for learning from few labeled examples", "lv": "考研", "sec": "Abstract"}, {"w": "unlabeled", "ipa": "ˌʌnˈleɪbld", "pos": "adj.", "m": "无标注的", "ex": "making best use of a large amount of unlabeled data", "lv": "考博", "sec": "Abstract"}, {"w": "pretraining", "ipa": "priːˈtreɪnɪŋ", "pos": "n.", "m": "预训练", "ex": "unsupervised pretraining followed by supervised ﬁne-tuning", "lv": "考博", "sec": "Abstract"}, {"w": "task-agnostic", "ipa": "tɑːsk æɡˈnɑːstɪk", "pos": "adj.", "m": "任务无关的", "ex": "uses unlabeled data in a task-agnostic way", "lv": "考博", "sec": "Abstract"}, {"w": "semi-supervised", "ipa": "ˌsemi ˈsuːpərvaɪzd", "pos": "adj.", "m": "半监督的", "ex": "surprisingly effective for semi-supervised learning on ImageNet", "lv": "考博", "sec": "Abstract"}, {"w": "ingredient", "ipa": "ɪnˈɡriːdiənt", "pos": "n.", "m": "要素", "ex": "A key ingredient of our approach", "lv": "四级", "sec": "Abstract"}, {"w": "distill", "ipa": "dɪˈstɪl", "pos": "v.", "m": "蒸馏", "ex": "the big network can be further improved and distilled into a much smaller one", "lv": "六级", "sec": "Abstract"}, {"w": "summarize", "ipa": "ˈsʌməraɪz", "pos": "v.", "m": "概括", "ex": "can be summarized in three steps", "lv": "四级", "sec": "Abstract"}, {"w": "reﬁne", "ipa": "rɪˈfaɪn", "pos": "v.", "m": "精炼", "ex": "for reﬁning and transferring the task-speciﬁc knowledge", "lv": "考博", "sec": "Abstract"}, {"w": "transfer", "ipa": "trænsˈfɜːr", "pos": "v.", "m": "迁移", "ex": "reﬁning and transferring the task-speciﬁc knowledge", "lv": "四级", "sec": "Abstract"}, {"w": "procedure", "ipa": "prəˈsiːdʒər", "pos": "n.", "m": "流程", "ex": "This procedure achieves 73.9% ImageNet top-1 accuracy", "lv": "四级", "sec": "Abstract"}, {"w": "outperform", "ipa": "ˌaʊtpərˈfɔːrm", "pos": "v.", "m": "表现优于", "ex": "outperforming standard supervised training with all of the labels", "lv": "六级", "sec": "Abstract"}, {"w": "establish", "ipa": "ɪˈstæblɪʃ", "pos": "v.", "m": "确立", "ex": "This note establishes stronger and more feasible baselines", "lv": "四级", "sec": "Intro"}, {"w": "feasible", "ipa": "ˈfiːzəbl", "pos": "adj.", "m": "可行的", "ex": "stronger and more feasible baselines built in the MoCo framework", "lv": "四级", "sec": "Intro"}, {"w": "counterpart", "ipa": "ˈkaʊntərpɑːrt", "pos": "n.", "m": "对照版本", "ex": "unsupervised pre-training can surpass its ImageNet-supervised counterpart", "lv": "六级", "sec": "Intro"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"transfer": "../listen-audio/w_brian_transfer.mp3", "establish": "../listen-audio/w_brian_establish.mp3", "outperform": "../listen-audio/w_brian_outperform.mp3", "semi-supervised": "../listen-audio/w_brian_semi_supervised.mp3", "summarize": "../listen-audio/w_brian_summarize.mp3", "procedure": "../listen-audio/w_brian_procedure.mp3", "unlabeled": "../listen-audio/w_brian_unlabeled.mp3", "paradigm": "../listen-audio/w_brian_paradigm.mp3", "counterpart": "../listen-audio/w_brian_counterpart.mp3", "distill": "../listen-audio/w_brian_distill.mp3", "feasible": "../listen-audio/w_brian_feasible.mp3", "reﬁne": "../listen-audio/w_brian_reﬁne.mp3", "task-agnostic": "../listen-audio/w_brian_task_agnostic.mp3", "pretraining": "../listen-audio/w_brian_pretraining.mp3", "ingredient": "../listen-audio/w_brian_ingredient.mp3"}}, "en-US-AndrewNeural": {"w": {"transfer": "../listen-audio/w_andrew_transfer.mp3", "establish": "../listen-audio/w_andrew_establish.mp3", "outperform": "../listen-audio/w_andrew_outperform.mp3", "semi-supervised": "../listen-audio/w_andrew_semi_supervised.mp3"}}, "zh-CN-YunyangNeural": {"m": {"预训练": "../listen-audio/m_yunyang_40decf735255.mp3", "半监督的": "../listen-audio/m_yunyang_680a713e1446.mp3", "流程": "../listen-audio/m_yunyang_f630b9a4da10.mp3", "蒸馏": "../listen-audio/m_yunyang_8f82b62c545d.mp3", "无标注的": "../listen-audio/m_yunyang_aabf31afe7c5.mp3", "迁移": "../listen-audio/m_yunyang_26defddbea60.mp3", "范式": "../listen-audio/m_yunyang_23393b4292f3.mp3", "确立": "../listen-audio/m_yunyang_18e56bca82f2.mp3", "任务无关的": "../listen-audio/m_yunyang_3a7e83824ba7.mp3", "可行的": "../listen-audio/m_yunyang_56faab128f6c.mp3", "表现优于": "../listen-audio/m_yunyang_61107aaed3d9.mp3", "对照版本": "../listen-audio/m_yunyang_2ad0e27b4e29.mp3", "要素": "../listen-audio/m_yunyang_eb67d8e4ebb9.mp3", "概括": "../listen-audio/m_yunyang_f18dab461c03.mp3", "精炼": "../listen-audio/m_yunyang_2d865d01290f.mp3"}}, "zh-CN-YunjianNeural": {"m": {"预训练": "../listen-audio/m_yunjian_40decf735255.mp3", "半监督的": "../listen-audio/m_yunjian_680a713e1446.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "paradigm", "ipa": "ˈpærədaɪm", "pos": "n.", "m": "范式", "ex": "One paradigm for learning from few labeled examples", "lv": "考研", "ov": "", "sec": "Abstract"}, {"w": "unlabeled", "ipa": "ˌʌnˈleɪbld", "pos": "adj.", "m": "无标注的", "ex": "making best use of a large amount of unlabeled data", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "pretraining", "ipa": "priːˈtreɪnɪŋ", "pos": "n.", "m": "预训练", "ex": "unsupervised pretraining followed by supervised ﬁne-tuning", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "task-agnostic", "ipa": "tɑːsk æɡˈnɑːstɪk", "pos": "adj.", "m": "任务无关的", "ex": "uses unlabeled data in a task-agnostic way", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "semi-supervised", "ipa": "ˌsemi ˈsuːpərvaɪzd", "pos": "adj.", "m": "半监督的", "ex": "surprisingly effective for semi-supervised learning on ImageNet", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "ingredient", "ipa": "ɪnˈɡriːdiənt", "pos": "n.", "m": "要素", "ex": "A key ingredient of our approach", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "distill", "ipa": "dɪˈstɪl", "pos": "v.", "m": "蒸馏", "ex": "the big network can be further improved and distilled into a much smaller one", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "summarize", "ipa": "ˈsʌməraɪz", "pos": "v.", "m": "概括", "ex": "can be summarized in three steps", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "reﬁne", "ipa": "rɪˈfaɪn", "pos": "v.", "m": "精炼", "ex": "for reﬁning and transferring the task-speciﬁc knowledge", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "transfer", "ipa": "trænsˈfɜːr", "pos": "v.", "m": "迁移", "ex": "reﬁning and transferring the task-speciﬁc knowledge", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "procedure", "ipa": "prəˈsiːdʒər", "pos": "n.", "m": "流程", "ex": "This procedure achieves 73.9% ImageNet top-1 accuracy", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "outperform", "ipa": "ˌaʊtpərˈfɔːrm", "pos": "v.", "m": "表现优于", "ex": "outperforming standard supervised training with all of the labels", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "establish", "ipa": "ɪˈstæblɪʃ", "pos": "v.", "m": "确立", "ex": "This note establishes stronger and more feasible baselines", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "feasible", "ipa": "ˈfiːzəbl", "pos": "adj.", "m": "可行的", "ex": "stronger and more feasible baselines built in the MoCo framework", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "counterpart", "ipa": "ˈkaʊntərpɑːrt", "pos": "n.", "m": "对照版本", "ex": "unsupervised pre-training can surpass its ImageNet-supervised counterpart", "lv": "六级", "ov": "", "sec": "Intro"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"transfer": "../listen-audio/w_brian_transfer.mp3", "establish": "../listen-audio/w_brian_establish.mp3", "outperform": "../listen-audio/w_brian_outperform.mp3", "semi-supervised": "../listen-audio/w_brian_semi_supervised.mp3", "summarize": "../listen-audio/w_brian_summarize.mp3", "procedure": "../listen-audio/w_brian_procedure.mp3", "unlabeled": "../listen-audio/w_brian_unlabeled.mp3", "paradigm": "../listen-audio/w_brian_paradigm.mp3", "counterpart": "../listen-audio/w_brian_counterpart.mp3", "distill": "../listen-audio/w_brian_distill.mp3", "feasible": "../listen-audio/w_brian_feasible.mp3", "reﬁne": "../listen-audio/w_brian_reﬁne.mp3", "task-agnostic": "../listen-audio/w_brian_task_agnostic.mp3", "pretraining": "../listen-audio/w_brian_pretraining.mp3", "ingredient": "../listen-audio/w_brian_ingredient.mp3"}, "e": {"This note establishes stronger and more feasible baselines": "../listen-audio/e_brian_23e96eb64698.mp3", "unsupervised pre-training can surpass its ImageNet-supervised counterpart": "../listen-audio/e_brian_65db7f123a0f.mp3", "One paradigm for learning from few labeled examples": "../listen-audio/e_brian_bdfddab366b1.mp3", "making best use of a large amount of unlabeled data": "../listen-audio/e_brian_5fa7fb25ed86.mp3", "unsupervised pretraining followed by supervised ﬁne-tuning": "../listen-audio/e_brian_90d4381161ae.mp3", "uses unlabeled data in a task-agnostic way": "../listen-audio/e_brian_d337d9a2c363.mp3", "surprisingly effective for semi-supervised learning on ImageNet": "../listen-audio/e_brian_aa28804b06bd.mp3", "A key ingredient of our approach": "../listen-audio/e_brian_2ec4fdb826b5.mp3", "the big network can be further improved and distilled into a much smaller one": "../listen-audio/e_brian_11bda3281a66.mp3", "can be summarized in three steps": "../listen-audio/e_brian_23d442c3e0d7.mp3", "for reﬁning and transferring the task-speciﬁc knowledge": "../listen-audio/e_brian_3474a7adf60c.mp3", "reﬁning and transferring the task-speciﬁc knowledge": "../listen-audio/e_brian_8beb00a05431.mp3", "This procedure achieves 73.9% ImageNet top-1 accuracy": "../listen-audio/e_brian_21224df9471e.mp3", "outperforming standard supervised training with all of the labels": "../listen-audio/e_brian_6b1f5088a574.mp3", "stronger and more feasible baselines built in the MoCo framework": "../listen-audio/e_brian_88e4dcfea0c2.mp3"}}, "en-US-AndrewNeural": {"w": {"transfer": "../listen-audio/w_andrew_transfer.mp3", "establish": "../listen-audio/w_andrew_establish.mp3", "outperform": "../listen-audio/w_andrew_outperform.mp3", "semi-supervised": "../listen-audio/w_andrew_semi_supervised.mp3"}}, "zh-CN-YunyangNeural": {"m": {"预训练": "../listen-audio/m_yunyang_40decf735255.mp3", "半监督的": "../listen-audio/m_yunyang_680a713e1446.mp3", "流程": "../listen-audio/m_yunyang_f630b9a4da10.mp3", "蒸馏": "../listen-audio/m_yunyang_8f82b62c545d.mp3", "无标注的": "../listen-audio/m_yunyang_aabf31afe7c5.mp3", "迁移": "../listen-audio/m_yunyang_26defddbea60.mp3", "范式": "../listen-audio/m_yunyang_23393b4292f3.mp3", "确立": "../listen-audio/m_yunyang_18e56bca82f2.mp3", "任务无关的": "../listen-audio/m_yunyang_3a7e83824ba7.mp3", "可行的": "../listen-audio/m_yunyang_56faab128f6c.mp3", "表现优于": "../listen-audio/m_yunyang_61107aaed3d9.mp3", "对照版本": "../listen-audio/m_yunyang_2ad0e27b4e29.mp3", "要素": "../listen-audio/m_yunyang_eb67d8e4ebb9.mp3", "概括": "../listen-audio/m_yunyang_f18dab461c03.mp3", "精炼": "../listen-audio/m_yunyang_2d865d01290f.mp3"}}, "zh-CN-YunjianNeural": {"m": {"预训练": "../listen-audio/m_yunjian_40decf735255.mp3", "半监督的": "../listen-audio/m_yunjian_680a713e1446.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}

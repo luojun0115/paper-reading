@@ -563,6 +563,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
@@ -572,8 +573,8 @@
 </div>
 
 <script>
-const ITEMS=[{"w": "spatiotemporal", "ipa": "ˌspeɪʃioʊˈtempərəl", "pos": "adj.", "m": "时空的", "ex": "a simple, yet effective approach for spatiotemporal feature learning", "lv": "考博", "sec": "Abstract"}, {"w": "homogeneous", "ipa": "ˌhoʊməˈdʒiːniəs", "pos": "adj.", "m": "同质的", "ex": "A homogeneous architecture with small 3×3×3 convolution kernels", "lv": "四级", "sec": "Abstract"}, {"w": "kernel", "ipa": "ˈkɜːrnl", "pos": "n.", "m": "卷积核", "ex": "small 3×3×3 convolution kernels in all layers", "lv": "六级", "sec": "Abstract"}, {"w": "namely", "ipa": "ˈneɪmli", "pos": "adv.", "m": "也就是", "ex": "Our learned features, namely C3D (Convolutional 3D)", "lv": "四级", "sec": "Abstract"}, {"w": "compact", "ipa": "kəmˈpækt", "pos": "adj.", "m": "紧凑的", "ex": "the features are compact: achieving 52.8% accuracy with only 10 dimensions", "lv": "六级", "sec": "Abstract"}, {"w": "conceptually", "ipa": "kənˈseptʃuəli", "pos": "adv.", "m": "概念上", "ex": "they are conceptually very simple and easy to train and use", "lv": "考博", "sec": "Abstract"}, {"w": "multimedia", "ipa": "ˌmʌltiˈmiːdiə", "pos": "n.", "m": "多媒体", "ex": "Multimedia on the Internet is growing rapidly", "lv": "考博", "sec": "Intro"}, {"w": "combat", "ipa": "ˈkɑːmbæt", "pos": "v.", "m": "对抗", "ex": "To combat the information explosion", "lv": "四级", "sec": "Intro"}, {"w": "explosion", "ipa": "ɪkˈsploʊʒn", "pos": "n.", "m": "爆炸（激增）", "ex": "To combat the information explosion", "lv": "四级", "sec": "Intro"}, {"w": "essential", "ipa": "ɪˈsenʃl", "pos": "adj.", "m": "必不可少的", "ex": "it is essential to understand and analyze these videos", "lv": "四级", "sec": "Intro"}, {"w": "recommendation", "ipa": "ˌrekəmenˈdeɪʃn", "pos": "n.", "m": "推荐", "ex": "for various purposes like search, recommendation, ranking", "lv": "四级", "sec": "Intro"}, {"w": "tackle", "ipa": "ˈtækl", "pos": "v.", "m": "处理，攻克", "ex": "tackled different problems such as action recognition", "lv": "四级", "sec": "Intro"}, {"w": "abnormal", "ipa": "æbˈnɔːrml", "pos": "adj.", "m": "异常的", "ex": "abnormal event detection", "lv": "四级", "sec": "Intro"}, {"w": "considerable", "ipa": "kənˈsɪdərəbl", "pos": "adj.", "m": "相当大的", "ex": "Considerable progress has been made in these individual problems", "lv": "四级", "sec": "Intro"}, {"w": "employ", "ipa": "ɪmˈplɔɪ", "pos": "v.", "m": "采用", "ex": "by employing different speciﬁc solutions", "lv": "四级", "sec": "Intro"}, {"w": "descriptor", "ipa": "dɪˈskrɪptər", "pos": "n.", "m": "描述子", "ex": "a generic video descriptor that helps in solving large-scale video tasks", "lv": "考博", "sec": "Intro"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"essential": "../listen-audio/w_brian_essential.mp3", "employ": "../listen-audio/w_brian_employ.mp3", "kernel": "../listen-audio/w_brian_kernel.mp3", "considerable": "../listen-audio/w_brian_considerable.mp3", "conceptually": "../listen-audio/w_brian_conceptually.mp3", "spatiotemporal": "../listen-audio/w_brian_spatiotemporal.mp3", "homogeneous": "../listen-audio/w_brian_homogeneous.mp3", "namely": "../listen-audio/w_brian_namely.mp3", "compact": "../listen-audio/w_brian_compact.mp3", "multimedia": "../listen-audio/w_brian_multimedia.mp3", "combat": "../listen-audio/w_brian_combat.mp3", "explosion": "../listen-audio/w_brian_explosion.mp3", "recommendation": "../listen-audio/w_brian_recommendation.mp3", "tackle": "../listen-audio/w_brian_tackle.mp3", "abnormal": "../listen-audio/w_brian_abnormal.mp3", "descriptor": "../listen-audio/w_brian_descriptor.mp3"}}, "en-US-AndrewNeural": {"w": {"essential": "../listen-audio/w_andrew_essential.mp3", "employ": "../listen-audio/w_andrew_employ.mp3", "kernel": "../listen-audio/w_andrew_kernel.mp3"}}, "zh-CN-YunyangNeural": {"m": {"必不可少的": "../listen-audio/m_yunyang_91892e3daeaf.mp3", "采用": "../listen-audio/m_yunyang_7b4eb56b0375.mp3", "卷积核": "../listen-audio/m_yunyang_f1b66205c0c3.mp3", "相当大的": "../listen-audio/m_yunyang_8420c50f258b.mp3", "概念上": "../listen-audio/m_yunyang_f4372f0818e6.mp3", "时空的": "../listen-audio/m_yunyang_fc989e893e35.mp3", "同质的": "../listen-audio/m_yunyang_7ea2accd2a55.mp3", "也就是": "../listen-audio/m_yunyang_c92dd1ad69f4.mp3", "紧凑的": "../listen-audio/m_yunyang_dd194be99489.mp3", "多媒体": "../listen-audio/m_yunyang_ea2da291d256.mp3", "对抗": "../listen-audio/m_yunyang_8aac06edd6d7.mp3", "爆炸（激增）": "../listen-audio/m_yunyang_17a640a3df8f.mp3", "推荐": "../listen-audio/m_yunyang_3f9810121c20.mp3", "处理，攻克": "../listen-audio/m_yunyang_661abca3bec5.mp3", "异常的": "../listen-audio/m_yunyang_2bdf6cf41545.mp3", "描述子": "../listen-audio/m_yunyang_4425091523ea.mp3"}}, "zh-CN-YunjianNeural": {"m": {"必不可少的": "../listen-audio/m_yunjian_91892e3daeaf.mp3", "采用": "../listen-audio/m_yunjian_7b4eb56b0375.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "spatiotemporal", "ipa": "ˌspeɪʃioʊˈtempərəl", "pos": "adj.", "m": "时空的", "ex": "a simple, yet effective approach for spatiotemporal feature learning", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "homogeneous", "ipa": "ˌhoʊməˈdʒiːniəs", "pos": "adj.", "m": "同质的", "ex": "A homogeneous architecture with small 3×3×3 convolution kernels", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "kernel", "ipa": "ˈkɜːrnl", "pos": "n.", "m": "卷积核", "ex": "small 3×3×3 convolution kernels in all layers", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "namely", "ipa": "ˈneɪmli", "pos": "adv.", "m": "也就是", "ex": "Our learned features, namely C3D (Convolutional 3D)", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "compact", "ipa": "kəmˈpækt", "pos": "adj.", "m": "紧凑的", "ex": "the features are compact: achieving 52.8% accuracy with only 10 dimensions", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "conceptually", "ipa": "kənˈseptʃuəli", "pos": "adv.", "m": "概念上", "ex": "they are conceptually very simple and easy to train and use", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "multimedia", "ipa": "ˌmʌltiˈmiːdiə", "pos": "n.", "m": "多媒体", "ex": "Multimedia on the Internet is growing rapidly", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "combat", "ipa": "ˈkɑːmbæt", "pos": "v.", "m": "对抗", "ex": "To combat the information explosion", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "explosion", "ipa": "ɪkˈsploʊʒn", "pos": "n.", "m": "爆炸（激增）", "ex": "To combat the information explosion", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "essential", "ipa": "ɪˈsenʃl", "pos": "adj.", "m": "必不可少的", "ex": "it is essential to understand and analyze these videos", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "recommendation", "ipa": "ˌrekəmenˈdeɪʃn", "pos": "n.", "m": "推荐", "ex": "for various purposes like search, recommendation, ranking", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "tackle", "ipa": "ˈtækl", "pos": "v.", "m": "处理，攻克", "ex": "tackled different problems such as action recognition", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "abnormal", "ipa": "æbˈnɔːrml", "pos": "adj.", "m": "异常的", "ex": "abnormal event detection", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "considerable", "ipa": "kənˈsɪdərəbl", "pos": "adj.", "m": "相当大的", "ex": "Considerable progress has been made in these individual problems", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "employ", "ipa": "ɪmˈplɔɪ", "pos": "v.", "m": "采用", "ex": "by employing different speciﬁc solutions", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "descriptor", "ipa": "dɪˈskrɪptər", "pos": "n.", "m": "描述子", "ex": "a generic video descriptor that helps in solving large-scale video tasks", "lv": "考博", "ov": "", "sec": "Intro"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"essential": "../listen-audio/w_brian_essential.mp3", "employ": "../listen-audio/w_brian_employ.mp3", "kernel": "../listen-audio/w_brian_kernel.mp3", "considerable": "../listen-audio/w_brian_considerable.mp3", "conceptually": "../listen-audio/w_brian_conceptually.mp3", "spatiotemporal": "../listen-audio/w_brian_spatiotemporal.mp3", "homogeneous": "../listen-audio/w_brian_homogeneous.mp3", "namely": "../listen-audio/w_brian_namely.mp3", "compact": "../listen-audio/w_brian_compact.mp3", "multimedia": "../listen-audio/w_brian_multimedia.mp3", "combat": "../listen-audio/w_brian_combat.mp3", "explosion": "../listen-audio/w_brian_explosion.mp3", "recommendation": "../listen-audio/w_brian_recommendation.mp3", "tackle": "../listen-audio/w_brian_tackle.mp3", "abnormal": "../listen-audio/w_brian_abnormal.mp3", "descriptor": "../listen-audio/w_brian_descriptor.mp3"}, "e": {"a simple, yet effective approach for spatiotemporal feature learning": "../listen-audio/e_brian_918b881e7021.mp3", "A homogeneous architecture with small 3×3×3 convolution kernels": "../listen-audio/e_brian_47a08a7ef577.mp3", "small 3×3×3 convolution kernels in all layers": "../listen-audio/e_brian_fc0d9cc45340.mp3", "Our learned features, namely C3D (Convolutional 3D)": "../listen-audio/e_brian_d172b6267419.mp3", "the features are compact: achieving 52.8% accuracy with only 10 dimensions": "../listen-audio/e_brian_f4bd8a0895a2.mp3", "they are conceptually very simple and easy to train and use": "../listen-audio/e_brian_f1f66549619f.mp3", "Multimedia on the Internet is growing rapidly": "../listen-audio/e_brian_18f5b8de3748.mp3", "To combat the information explosion": "../listen-audio/e_brian_c9db072b6d87.mp3", "it is essential to understand and analyze these videos": "../listen-audio/e_brian_c22ee7df9c3b.mp3", "for various purposes like search, recommendation, ranking": "../listen-audio/e_brian_502f6d016f41.mp3", "tackled different problems such as action recognition": "../listen-audio/e_brian_6ce8f857f1c1.mp3", "abnormal event detection": "../listen-audio/e_brian_39dac16e08ea.mp3", "Considerable progress has been made in these individual problems": "../listen-audio/e_brian_5a413209d904.mp3", "by employing different speciﬁc solutions": "../listen-audio/e_brian_8ebde6b687a3.mp3", "a generic video descriptor that helps in solving large-scale video tasks": "../listen-audio/e_brian_ed538414a5c3.mp3"}}, "en-US-AndrewNeural": {"w": {"essential": "../listen-audio/w_andrew_essential.mp3", "employ": "../listen-audio/w_andrew_employ.mp3", "kernel": "../listen-audio/w_andrew_kernel.mp3"}}, "zh-CN-YunyangNeural": {"m": {"必不可少的": "../listen-audio/m_yunyang_91892e3daeaf.mp3", "采用": "../listen-audio/m_yunyang_7b4eb56b0375.mp3", "卷积核": "../listen-audio/m_yunyang_f1b66205c0c3.mp3", "相当大的": "../listen-audio/m_yunyang_8420c50f258b.mp3", "概念上": "../listen-audio/m_yunyang_f4372f0818e6.mp3", "时空的": "../listen-audio/m_yunyang_fc989e893e35.mp3", "同质的": "../listen-audio/m_yunyang_7ea2accd2a55.mp3", "也就是": "../listen-audio/m_yunyang_c92dd1ad69f4.mp3", "紧凑的": "../listen-audio/m_yunyang_dd194be99489.mp3", "多媒体": "../listen-audio/m_yunyang_ea2da291d256.mp3", "对抗": "../listen-audio/m_yunyang_8aac06edd6d7.mp3", "爆炸（激增）": "../listen-audio/m_yunyang_17a640a3df8f.mp3", "推荐": "../listen-audio/m_yunyang_3f9810121c20.mp3", "处理，攻克": "../listen-audio/m_yunyang_661abca3bec5.mp3", "异常的": "../listen-audio/m_yunyang_2bdf6cf41545.mp3", "描述子": "../listen-audio/m_yunyang_4425091523ea.mp3"}}, "zh-CN-YunjianNeural": {"m": {"必不可少的": "../listen-audio/m_yunjian_91892e3daeaf.mp3", "采用": "../listen-audio/m_yunjian_7b4eb56b0375.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -609,12 +610,19 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
   else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
@@ -673,6 +681,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -817,7 +846,7 @@ seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}
