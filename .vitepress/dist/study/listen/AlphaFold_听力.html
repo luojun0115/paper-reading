@@ -744,19 +744,10 @@ seg($("segReveal"),[{t:"开",v:true},{t:"关",v:false}],()=>S.reveal,v=>S.reveal
   ()=>refreshCurrent("先听后现： "+(S.reveal?"开":"关")));
 seg($("segZh"),[{t:"开",v:true},{t:"关",v:false}],()=>S.zh,v=>S.zh=v,
   ()=>refreshCurrent("朗读中文： "+(S.zh?"开":"关")));
-/* 朗读例句：本篇若没有预生成例句音频（例句体积最大，已下线），
-   开关直接显示「暂不可用」，点了给明确提示——绝不偷偷回退到在线机器音 */
-(function(){
-  const box=$("segEx"); if(!box)return;
-  if(!audioVoices("e").length){
-    S.ex=false;                                  /* 默认关掉，避免无声/机器音 */
-    box.innerHTML='<b class="off" data-v="off" title="例句音频未预生成，暂不可用">暂不可用</b>';
-    box.querySelector("b").onclick=()=>toast("例句朗读暂不可用（音频未预生成）");
-    return;
-  }
-  seg(box,[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
-    ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
-})();
+/* 朗读例句：沿用老版方案 = 百度在线合成（lan=en，spd=5，source=web）。
+   本篇若预生成了例句音频则用本地微软音，没有就走百度在线 */
+seg($("segEx"),[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
+  ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
 // 单词字体：选项本身就用自己的字体渲染，所见即所得
 const FONTS=[
   {v:"sans",    t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
@@ -958,7 +949,7 @@ function zhText(w){
 function ttsURL(t,kind){
   const e=encodeURIComponent(t);
   const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
-  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=3&source=web&text="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
   const L=localAudio(t,kind); if(L)return L;
   if(kind==="zh")return bd("zh");
   if(kind==="sent")return bd("en");
@@ -967,7 +958,7 @@ function ttsURL(t,kind){
 function ttsURLs(t,kind){
   const e=encodeURIComponent(t);
   const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
-  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=3&source=web&text="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
   const urls=[];
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
@@ -1084,8 +1075,8 @@ function playCurrent(){
     if(S.reveal)render(w,true);
     timer=setTimeout(live(()=>{qi=(qi+1)%queue.length;playCurrent()}),S.pause);
   });
-  /* 例句：已下线（不预生成、也不回退在线）。只有本篇确实有例句音频时才念 */
-  const afterEx=live(()=>{ if(S.ex && audioVoices("e").length){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
+  /* 例句：有本地微软音频就播本地，没有就走百度在线（老版方案） */
+  const afterEx=live(()=>{ if(S.ex){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
   const afterZh=live(()=>{
     if(S.zh){ timer=setTimeout(live(()=>say(zhText(w),"zh",afterEx)),450) }
     else afterEx();
