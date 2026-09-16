@@ -1,753 +1,853 @@
-<!doctype html>
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SimCLRv1_论文词汇_听力</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SimCLRv1_论文词汇_听力 · 单词连播</title>
 <style>
-:root{--bg:#101319;--panel:#181c25;--card:#1d2230;--line:#2a3040;--tx:#e8eaf0;--dim:#9aa3b5;--acc:#ff8c00;--accd:#eb6900;--red:#d33a31}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--tx);font:16px/1.6 -apple-system,"PingFang SC","Segoe UI",sans-serif;min-height:100vh}
-.wrap{max-width:880px;margin:0 auto;padding:28px 20px 60px}
-.ptitle{font-size:12.5px;color:var(--dim);font-style:italic;margin-bottom:4px}
-h1{font-size:26px;margin-bottom:18px}
-h1 b{color:var(--acc)}
-.sec{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
-.sec h3{font-size:13px;color:var(--dim);font-weight:600;letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
-.sec h3 .mini{font-size:12px;font-weight:400}
-button{cursor:pointer;font:inherit}
-.chip{display:inline-block;padding:5px 13px;margin:0 8px 8px 0;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--dim);font-size:14px}
-.chip.on{color:#fff;border-color:var(--acc);background:rgba(255,140,0,.14)}
-.chip .n{opacity:.55;font-size:12px;margin-left:4px}
-.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.opt{padding:7px 16px;border-radius:10px;border:1.5px solid var(--line);background:transparent;color:var(--dim);font-size:14px}
-.opt.on{color:#fff;border-color:var(--acc);background:rgba(255,140,0,.14)}
-select{background:var(--card);color:var(--tx);border:1.5px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-size:14px}
-#start{width:100%;margin-top:4px;padding:14px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--acc),var(--accd));color:#fff;font-size:17px;font-weight:700}
-#cnt{color:var(--dim);font-size:13px}
-.srcState{font-size:12px;color:var(--dim)}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{min-height:100vh;display:flex;justify-content:center;font-family:"PingFang SC",-apple-system,sans-serif;background:#111}
 
-/* ================= 网易云黑胶播放器 ================= */
-/* ---- 品牌角标（风格致敬） ---- */
-.brandmark{position:absolute;left:28px;bottom:14px;display:flex;align-items:center;gap:9px;opacity:.92;pointer-events:none;z-index:5}
-.brandmark .ai{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.35)}
-.brandmark .bn{font-size:14px;font-weight:700;letter-spacing:1px;line-height:1.15}
-.brandmark .bn i{display:block;font-style:normal;font-weight:400;font-size:9px;letter-spacing:2px;opacity:.5}
-[data-theme="cinema"] .brandmark,[data-theme="glass"] .brandmark,[data-theme="neon"] .brandmark{display:none}
-@media (max-width:620px){.brandmark{display:none}}
-#toast{position:absolute;bottom:175px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.74);color:#fff;padding:9px 20px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9}
-#toast.on{opacity:1}
-#player{position:fixed;inset:0;display:none;overflow:hidden;background:#171114}
-#player.on{display:block}
-#nbg{position:absolute;inset:-120px;filter:blur(90px) saturate(1.1);opacity:.55;transition:background 1.2s ease}
-#nshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,4,.25),rgba(10,5,4,.12) 34%,rgba(8,4,3,.6) 92%)}
-.ntop{position:absolute;top:16px;left:0;right:0;display:flex;align-items:flex-start;padding:0 34px}
-.nico{background:transparent;border:none;color:rgba(255,255,255,.85);font-size:27px;line-height:1;padding:6px}
-.nico:hover{color:#fff}
-.ntitles{flex:1;padding:0 18px;text-align:center}
-#tword{font-size:16px;font-weight:600;color:rgba(255,255,255,.6);line-height:1.2;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#tsub{font-size:15px;color:rgba(255,255,255,.55);margin-top:2px}
-/* 唱盘 */
-.vinylwrap{position:absolute;top:70px;left:calc(50% - 220px);width:440px;height:440px;transform:scale(.6);transform-origin:top center}
-.rotor{position:absolute;inset:0;border-radius:50%;animation:spin 16s linear infinite;animation-play-state:paused}
-#player.playing .rotor{animation-play-state:running}
-@keyframes spin{to{transform:rotate(360deg)}}
-.disc{position:absolute;inset:30px;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#0b0b0e 0 2px,#151518 2px 5px);box-shadow:0 24px 70px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.1),inset 0 0 60px rgba(0,0,0,.55)}
-#cover{position:absolute;inset:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(0,0,0,.35),0 8px 30px rgba(0,0,0,.45);transition:background 1.2s ease}
-#cletter{font-size:118px;font-weight:900;color:rgba(25,10,4,.82);transition:opacity .3s}
-/* 唱针（不随盘转）：pivot 在 (190,-90)，暂停时抬起 */
-.needlebox{position:absolute;inset:0;transform-origin:190px -90px;transition:transform .8s cubic-bezier(.3,1.25,.5,1);pointer-events:none}
-#player.paused .needlebox{transform:rotate(-33deg)}
-.nseg1{position:absolute;left:186px;top:-78px;width:11px;height:180px;border-radius:6px;background:linear-gradient(90deg,#f2f2f5,#b9b9c2);box-shadow:0 3px 10px rgba(0,0,0,.4);transform:rotate(-14deg);transform-origin:6px 8px}
-.nseg2{position:absolute;left:231px;top:99px;width:13px;height:130px;border-radius:7px;background:linear-gradient(90deg,#ececf0,#c7c7cf);transform:rotate(55deg);transform-origin:5px 6px;box-shadow:0 3px 10px rgba(0,0,0,.45)}
-.npivot{position:absolute;left:178px;top:-90px;width:22px;height:22px;border-radius:50%;background:#f4f4f7;box-shadow:0 2px 8px rgba(0,0,0,.5)}
-/* 歌词区 */
-.nlyr{position:absolute;left:0;right:0;top:336px;bottom:auto;text-align:center;transition:filter .4s,opacity .4s}
-.nlyr.hiddenl{filter:blur(9px);opacity:.35}
-#bigword{font-size:clamp(54px,8.2vw,102px);font-weight:800;color:#fff;line-height:1.12;letter-spacing:.5px;word-break:break-word;text-shadow:0 4px 40px rgba(0,0,0,.45)}
-#ipa{color:rgba(255,255,255,.8);font-size:29px;font-family:Georgia,serif;margin-top:12px}
-#ipa .p{color:rgba(255,255,255,.48);font-size:20px;font-family:-apple-system,sans-serif}
-#mean{color:#fff;font-size:clamp(28px,3.6vw,46px);font-weight:700;margin-top:10px}
-#ex{color:rgba(255,255,255,.55);font-size:20px;font-style:italic;margin-top:14px}
-/* 图标排 */
-.nicons{position:absolute;left:0;right:0;bottom:140px;text-align:center}
-.nico2{font-size:25px;margin:0 26px;cursor:pointer;color:rgba(255,255,255,.85);user-select:none}
-.nico2.dim{color:rgba(255,255,255,.55)}
-.nico2.fav{color:var(--red);text-shadow:0 0 16px rgba(211,58,49,.5)}
-.nico2:hover{color:#fff}
-.nico2.fav:hover{color:var(--red)}
-#starBtn.on{color:#ffd76a !important;text-shadow:0 0 14px rgba(255,215,106,.55)}
-/* 进度 */
-.nprog{position:absolute;bottom:108px;left:64px;right:64px;display:flex;align-items:center;gap:14px}
-.nprog span{color:rgba(255,255,255,.55);font-size:14px;min-width:44px}
-.nprog span:last-child{text-align:right}
-.nbar{flex:1;height:2.5px;background:rgba(255,255,255,.25);border-radius:99px;position:relative}
-#nfill{position:absolute;left:0;top:0;height:100%;background:#fff;border-radius:99px;width:0}
-#nknob{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 1px 6px rgba(0,0,0,.5);left:0}
-/* 控制行 */
-.nctrl{position:absolute;bottom:8px;left:110px;right:110px;display:flex;align-items:center;justify-content:space-between}
-.nplay{width:74px;height:74px;border-radius:50%;border:2.5px solid #fff;background:transparent;color:#fff;font-size:21px;display:inline-flex;align-items:center;justify-content:center}
-.nplay:hover{transform:scale(1.05)}
-.nctrl .nico{font-size:28px}
-#ordBtn{font-size:16px;min-width:86px}
-#skipBtn{font-size:16px}
-#replayBtn{font-size:16px}
-@media (max-width:620px){
-  .vinylwrap{transform:scale(.5);top:56px}
-  .nlyr{top:300px}
-  .nctrl{left:40px;right:40px}
-  .nprog{left:34px;right:34px}
-}
+  /* ============ 皮肤 ============ */
+  .app{
+    --h:356;
+    --bg-a:#fcf6da; --bg-b:#f8ecb0; --bg-c:#eeda8e;
+    --card-bg:rgba(255,252,240,.35); --card-br:rgba(255,255,255,.9);
+    --disc-a:#eeda84; --disc-b:#d9bd5e;
+    --groove:rgba(150,110,30,.10); --dshadow:rgba(160,120,30,.35);
+    --arm-a:rgba(255,255,255,.95); --arm-b:rgba(255,255,255,.7);
+    --tx:#2f2416; --tx2:#6b5a35; --tx3:#8a7850;
+    --bar-bg:rgba(90,70,30,.25); --bar-fill:#2f2416;
+    --sheet-bg:rgba(255,252,240,.97); --accent:#e4574f;
+  }
+  .app[data-skin="qq"]{
+    --bg-a:hsl(356 85% 88%); --bg-b:hsl(352 70% 76%); --bg-c:hsl(348 62% 66%);
+    --card-bg:rgba(255,255,255,.22); --card-br:rgba(255,255,255,.75);
+    --disc-a:hsl(356 62% 66%); --disc-b:hsl(354 55% 58%);
+    --groove:rgba(120,30,30,.10); --dshadow:rgba(120,40,40,.45);
+    --tx:#332424; --tx2:#5a4644; --tx3:#6b5450;
+    --bar-bg:rgba(70,40,40,.25); --bar-fill:#3a2c2c;
+    --sheet-bg:rgba(255,252,250,.96);
+  }
+  .app[data-skin="nred"]{           /* 网易云 · 红 */
+    --bg-a:#fdeeed; --bg-b:#fbdcd9; --bg-c:#f6c6c1;
+    --card-bg:rgba(255,255,255,.42); --card-br:rgba(255,255,255,.9);
+    --disc-a:#e0584f; --disc-b:#c0342c;
+    --groove:rgba(150,40,30,.10); --dshadow:rgba(190,70,60,.35);
+    --tx:#3a1f1c; --tx2:#7a524e; --tx3:#9b7a76;
+    --bar-bg:rgba(120,50,40,.22); --bar-fill:#c0342c;
+    --sheet-bg:rgba(255,246,245,.97); --accent:#d33a31;
+  }
+  .app[data-skin="qqgreen"]{        /* QQ音乐 · 绿 */
+    --bg-a:#eafaf2; --bg-b:#d6f4e6; --bg-c:#bcead6;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.9);
+    --disc-a:#3fce8c; --disc-b:#22a96c;
+    --groove:rgba(20,110,70,.10); --dshadow:rgba(30,150,100,.32);
+    --tx:#123328; --tx2:#4a7a66; --tx3:#7ba191;
+    --bar-bg:rgba(30,110,80,.2); --bar-fill:#1f9a63;
+    --sheet-bg:rgba(246,255,251,.97); --accent:#31c27c;
+  }
+  .app[data-skin="kugou"]{          /* 酷狗 · 蓝 */
+    --bg-a:#e9f6fe; --bg-b:#d3edfd; --bg-c:#b6e0fa;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.9);
+    --disc-a:#4cc0f7; --disc-b:#1a86d0;
+    --groove:rgba(20,90,150,.10); --dshadow:rgba(30,120,190,.32);
+    --tx:#0f2b40; --tx2:#4a6c86; --tx3:#7a99b0;
+    --bar-bg:rgba(30,90,140,.2); --bar-fill:#1a86d0;
+    --sheet-bg:rgba(245,251,255,.97); --accent:#1a9bf0;
+  }
+  .app[data-skin="xiami"]{          /* 虾米 · 橙（白底） */
+    --bg-a:#fff6ef; --bg-b:#ffe9d8; --bg-c:#ffd7ba;
+    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.95);
+    --disc-a:#ff8a4c; --disc-b:#e85f1f;
+    --groove:rgba(160,80,20,.10); --dshadow:rgba(220,120,50,.32);
+    --tx:#3d2415; --tx2:#8a5f42; --tx3:#a8856a;
+    --bar-bg:rgba(140,80,30,.2); --bar-fill:#e85f1f;
+    --sheet-bg:rgba(255,250,245,.97); --accent:#ff5a1f;
+  }
+  .app[data-skin="netease"]{
+    --bg-a:#3a2429; --bg-b:#241619; --bg-c:#150d10;
+    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.16);
+    --disc-a:#1b1b1b; --disc-b:#0d0d0d;
+    --groove:rgba(255,255,255,.055); --dshadow:rgba(0,0,0,.6);
+    --tx:#f2ecec; --tx2:rgba(240,232,232,.72); --tx3:rgba(240,232,232,.5);
+    --bar-bg:rgba(255,255,255,.22); --bar-fill:#f2ecec;
+    --sheet-bg:rgba(28,20,20,.96); --accent:#ec4141;
+  }
+  .app[data-skin="vinyl"]{
+    --bg-a:#eef0f6; --bg-b:#e3e6f0; --bg-c:#d6dae8;
+    --card-bg:rgba(255,255,255,.55); --card-br:#fff;
+    --disc-a:#1c1c1c; --disc-b:#0c0c0c;
+    --groove:rgba(255,255,255,.05); --dshadow:rgba(40,50,90,.4);
+    --arm-a:rgba(255,255,255,.95); --arm-b:#c9c9d8;
+    --tx:#232333; --tx2:#5b5b76; --tx3:#7b7b95;
+    --bar-bg:rgba(40,40,80,.18); --bar-fill:#35354a;
+    --sheet-bg:rgba(252,252,255,.96); --accent:#6b6bf2;
+  }
+  .app[data-skin="gold"]{
+    --bg-a:#f7ead0; --bg-b:#efdcbb; --bg-c:#e2c795;
+    --card-bg:rgba(255,255,255,.38); --card-br:rgba(255,255,255,.8);
+    --disc-a:#4a341c; --disc-b:#2e1f0f;
+    --groove:rgba(255,235,200,.07); --dshadow:rgba(90,60,20,.45);
+    --arm-a:rgba(255,250,240,.95); --arm-b:rgba(240,225,200,.72);
+    --tx:#3a2a12; --tx2:#6b5430; --tx3:#8a7048;
+    --bar-bg:rgba(80,55,20,.22); --bar-fill:#4a3418;
+    --sheet-bg:rgba(255,250,240,.97); --accent:#b8860b;
+  }
+  .app[data-skin="vinylx"]{          /* 悬浮黑胶（参照网易云图标：黑盘+大蓝标+顶部细针） */
+    --bg-a:#e9e8f0; --bg-b:#e9e8f0; --bg-c:#e2e1ec;
+    --card-bg:transparent; --card-br:transparent;
+    --disc-a:#191919; --disc-b:#0b0b0b;
+    --groove:rgba(255,255,255,.055); --dshadow:rgba(70,70,110,.28);
+    --tx:#2b2b38; --tx2:#5c5c6e; --tx3:#8b8b9c;
+    --bar-bg:rgba(60,60,90,.18); --bar-fill:#2b2b38;
+    --sheet-bg:rgba(250,250,253,.97); --accent:#5b5bd6;
+  }
+  .app[data-skin="vinylx"] .card{background:transparent;border-color:transparent;box-shadow:none}
+  .app[data-skin="vinylx"] .vinyl{box-shadow:0 0 0 2px rgba(255,255,255,.45),0 16px 36px rgba(70,70,110,.3)}
+  .app[data-skin="vinylx"] .art{inset:24%;box-shadow:none;
+    background:radial-gradient(circle at 32% 26%,#7a7ae8,#4b4bcd 62%,#3d3dbe)}
+  .app[data-skin="vinylx"] .arm{display:none}
+  .app[data-skin="vinylx"] .needle{display:block}
+  .app{
+    position:relative;width:min(430px,100vw);max-width:430px;overflow:hidden;
+    min-height:calc(100vh / var(--z,1));   /* 缩放后仍刚好铺满一屏 */
+    zoom:var(--z,1);                        /* 整体等比放大（含所有 px 尺寸） */
+    display:flex;flex-direction:column;color:var(--tx);
+    background:
+      radial-gradient(120% 60% at 85% 4%, var(--bg-a) 0%, transparent 55%),
+      radial-gradient(140% 70% at 15% 30%, var(--bg-b) 0%, transparent 60%),
+      linear-gradient(178deg,var(--bg-b) 0%,var(--bg-a) 55%,var(--bg-c) 100%);
+    transition:background .5s,color .5s;
+  }
 
-/* ---- 级别徽章 ---- */
-.badges{margin-bottom:18px}
-.b{display:inline-block;font-size:13px;font-weight:800;padding:3px 12px;border-radius:8px;color:#111;margin:0 4px}
-.lv4{background:#4da3ff}.lv6{background:#b07cff}.lvk{background:#ff8c00}.lvp{background:#ff5d5d}
-.ovt{background:#39d0d8}.ovg{background:#e06bd6}
-[data-theme="netease"] .badges{display:none}
+  /* 顶栏 */
+  .top{display:flex;align-items:center;gap:12px;padding:16px 20px 4px}
+  .top .pt{flex:1;min-width:0;font-size:12px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .top .ic{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .top .ic svg{width:20px;height:20px;stroke:var(--tx2);fill:none;stroke-width:2}
+  .top .dot{stroke:var(--tx2);fill:var(--tx2)}
+  /* 收藏/星标：未点亮时一律中性灰，避免被皮肤色染成"像已收藏的红心" */
+  .top .ic.neutral svg{stroke:rgba(118,124,134,.92)}
+  .top .ic.neutral .slash{stroke:rgba(118,124,134,.92)}
+  .top .ic.neutral.on svg{stroke:var(--accent)}
+  .top .ic.on svg{stroke:var(--accent)}
+  .top .ic.on svg .fillable{fill:var(--accent)}
+  .top .ic svg .slash{opacity:1;transition:opacity .2s}   /* 未收藏：心上有斜线 */
+  .top .ic.on svg .slash{opacity:0}                        /* 已收藏：斜线消失、心填色 */
+  .top{gap:9px}
+  .top .ic{width:30px;height:30px}
+  .top .ic svg{width:19px;height:19px}
+  .srow.col{flex-direction:column;align-items:stretch;gap:9px}
+  .seg.wrap{flex-wrap:wrap;justify-content:flex-start}
+  .clr{font-size:11.5px;color:var(--accent);cursor:pointer;font-weight:600}
+  .repin{width:56px;padding:4px 6px;border-radius:8px;border:1px solid var(--bar-bg);
+    background:transparent;color:var(--tx);font-size:12px;text-align:center;font-variant-numeric:tabular-nums}
+  .repin:focus{outline:none;border-color:var(--accent)}
 
-/* ---- 主题：影院黑 ---- */
-[data-theme] .vinylwrap{display:none}
-[data-theme="netease"] .vinylwrap{display:block}
-[data-theme="cinema"] .nicons,[data-theme="neon"] .nicons,[data-theme="ttplayer"] .nicons,[data-theme="ttpod"] .nicons,[data-theme="kugou"] .nicons,[data-theme="kuwo"] .nicons{display:none}
-[data-theme="cinema"] #nbg{background:radial-gradient(120% 90% at 50% 38%,#171c2a 0%,#0a0d14 62%,#05070b 100%);filter:none;opacity:1}
-[data-theme="cinema"] #nshade{background:linear-gradient(180deg,rgba(0,0,0,.22),transparent 32%,rgba(0,0,0,.38))}
-[data-theme="cinema"] #tword{letter-spacing:3px;text-transform:uppercase;font-size:15px}
-[data-theme="cinema"] .nlyr{top:50%;transform:translateY(-54%)}
-[data-theme="cinema"] #bigword{font-size:clamp(64px,11vw,150px);text-shadow:0 0 80px rgba(255,140,0,.28)}
-[data-theme="cinema"] #player.playing #bigword{text-shadow:0 0 90px rgba(255,140,0,.5),0 0 30px rgba(255,140,0,.32)}
-[data-theme="cinema"] #ipa{color:#ff9d2e}
-[data-theme="cinema"] .nprog{top:50px;bottom:auto;left:0;right:0;padding:0 44px}
-[data-theme="cinema"] .nprog span{visibility:hidden}
-[data-theme="cinema"] .nctrl{bottom:44px}
+  /* 唱片卡 */
+  .card{
+    position:relative;margin:10px 26px 0;aspect-ratio:1/1.02;border-radius:30px;
+    background:var(--card-bg);border:2px solid var(--card-br);
+    box-shadow:0 18px 44px var(--dshadow);flex:none;
+  }
+  .vinyl{
+    position:absolute;left:50%;top:50%;width:86%;aspect-ratio:1;
+    transform:translate(-50%,-50%);border-radius:50%;
+    background:
+      repeating-radial-gradient(circle at 50% 50%,var(--groove) 0 1px,transparent 1px 4px),
+      radial-gradient(circle at 50% 50%,var(--disc-a) 0 61%,var(--disc-b) 61% 100%);
+    box-shadow:0 10px 30px var(--dshadow),inset 0 0 0 1px rgba(255,255,255,.18);
+    animation:spin 14s linear infinite;animation-play-state:paused;
+  }
+  .playing .vinyl{animation-play-state:running}
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+  .vinyl::before{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 200deg,transparent 0 40deg,rgba(255,255,255,.22) 62deg,
+      transparent 92deg 210deg,rgba(255,255,255,.12) 235deg,transparent 268deg);
+  }
+  /* 盘心标签：跟随皮肤色系（同盘深色 + 白色高光），不再用单词色相，避免红胶紫标这种撞色 */
+  .art{
+    position:absolute;inset:27%;border-radius:50%;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,.42), rgba(255,255,255,0) 58%),
+      var(--disc-b);
+    box-shadow:0 0 0 5px rgba(255,255,255,.22),0 4px 14px rgba(0,0,0,.28);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .art svg{width:42%;height:42%;fill:#fff;filter:drop-shadow(0 2px 5px rgba(0,0,0,.3))}
+  .art .cl{font-size:clamp(30px,8vw,46px);font-weight:800;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.3)}
 
-/* ---- 主题：玻璃拟态 ---- */
-[data-theme="glass"] #nbg{background:linear-gradient(135deg,#1b1140 0%,#2a1a5e 40%,#0f2a5c 100%);filter:none;opacity:1}
-[data-theme="glass"] #nbg::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(255,110,60,.4);filter:blur(120px);top:-120px;left:-80px}
-[data-theme="glass"] #nbg::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(70,140,255,.45);filter:blur(130px);bottom:-120px;right:-60px}
-[data-theme="glass"] #nshade{background:none}
-[data-theme="glass"] .nlyr{top:50%;left:50%;right:auto;transform:translate(-50%,-54%);width:min(800px,92vw);background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);backdrop-filter:blur(24px);border-radius:44px;padding:42px 52px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
-[data-theme="glass"] .nlyr.hiddenl{filter:none;opacity:1}
-[data-theme="glass"] .nlyr.hiddenl #bigword{filter:blur(12px);opacity:.4}
-[data-theme="glass"] .nlyr.hiddenl #mean,#player .nlyr.hiddenl #ipa{filter:blur(9px);opacity:.4}
-[data-theme="glass"] .nlyr.hiddenl #ex{visibility:hidden}
-[data-theme="glass"] .badges .b{padding:5px 16px;border-radius:999px;font-size:14px}
-[data-theme="glass"] .badges .b+ .b{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff}
-[data-theme="glass"] #ipa{display:inline-block;padding:7px 22px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28)}
-[data-theme="glass"] #bigword{text-shadow:0 4px 30px rgba(120,80,255,.5)}
+  /* 唱臂 */
+  .arm{position:absolute;top:-4px;right:0;width:110px;height:100%;z-index:5;pointer-events:none}
+  .arm .cap{position:absolute;top:0;right:30px;width:30px;height:16px;border-radius:9px 9px 5px 5px;background:var(--arm-a);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+  .arm .pivot{position:absolute;top:12px;right:20px;width:46px;height:46px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,var(--arm-a),var(--arm-b));box-shadow:0 4px 12px rgba(0,0,0,.25)}
+  .arm .pivot::before{content:"";position:absolute;inset:13px;border-radius:50%;background:rgba(140,140,160,.35)}
+  .arm .bar{position:absolute;top:32px;right:40px;width:7px;height:70%;border-radius:4px;
+    background:linear-gradient(var(--arm-a),var(--arm-b));transform-origin:3.5px 3.5px;
+    transform:rotate(var(--arm,0deg));transition:transform .6s cubic-bezier(.34,1.2,.5,1);
+    box-shadow:0 2px 6px rgba(0,0,0,.18)}
+  .arm .bar .head{position:absolute;left:50%;bottom:-10px;width:22px;height:44px;
+    transform:translateX(-50%) rotate(12deg);border-radius:11px;
+    background:linear-gradient(var(--arm-a),var(--arm-b));box-shadow:0 3px 8px rgba(0,0,0,.22)}
 
-/* ---- 主题：霓虹终端 ---- */
-[data-theme="neon"] #nbg{background:#050807;filter:none;opacity:1}
-[data-theme="neon"] #nshade{background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 4px)}
-[data-theme="neon"] .nlyr,[data-theme="neon"] #tword,[data-theme="neon"] .nico,[data-theme="neon"] .nplay{font-family:"SF Mono",Menlo,Consolas,monospace}
-[data-theme="neon"] .nlyr{top:50%;transform:translateY(-54%)}
-[data-theme="neon"] #bigword{color:#3dff8f;text-shadow:0 0 26px rgba(61,255,143,.85),0 0 90px rgba(61,255,143,.4)}
-[data-theme="neon"] #player.playing #bigword::after{content:"▌";animation:neonblink 1s steps(2,start) infinite}
-@keyframes neonblink{to{visibility:hidden}}
-[data-theme="neon"] #ipa{color:#ffb02e;text-shadow:0 0 16px rgba(255,176,46,.6);font-family:inherit}
-[data-theme="neon"] #mean{color:#d8ffe9}
-[data-theme="neon"] #ex{color:#5f8f74;font-family:inherit}
-[data-theme="neon"] .badges{color:#ffb02e;font-size:14px;letter-spacing:4px}
-[data-theme="neon"] .badges .b{background:none;color:#ffb02e;padding:0;font-size:14px;letter-spacing:3px}
-[data-theme="neon"] #nfill,#neon #nknob{background:#3dff8f}
-[data-theme="neon"] #nfill{box-shadow:0 0 12px rgba(61,255,143,.8)}
-[data-theme="neon"] #nknob{background:#3dff8f;box-shadow:0 0 10px rgba(61,255,143,.8)}
-[data-theme="neon"] .nplay{border-color:#3dff8f;color:#3dff8f}
-[data-theme="neon"] .nico{color:rgba(61,255,143,.85)}
-[data-theme="neon"] .nico:hover{color:#3dff8f}
-[data-theme="neon"] .nico2{color:rgba(61,255,143,.85)}
-[data-theme="neon"] .nico2.dim{color:rgba(61,255,143,.5)}
-[data-theme="neon"] .nico2.fav{color:#3dff8f;text-shadow:0 0 16px rgba(61,255,143,.5)}
+  /* 顶部细针（vinylx 悬浮黑胶：轴点在上，细臂弯折落盘，照网易云图标） */
+  .needle{display:none;position:absolute;left:50%;top:-2px;width:26%;
+    transform:translateX(-50%) rotate(var(--nd,-30deg));
+    transform-origin:34% 3%;                 /* 旋转轴 = 轴点圆心 */
+    z-index:6;pointer-events:none;transition:transform .7s cubic-bezier(.34,1.2,.5,1)}
+  .needle svg{width:100%;height:auto;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.28))}
 
-/* ---- 主题：天天动听（桌面歌词绿字） ---- */
-[data-theme="ttpod"] #nbg{background:radial-gradient(90% 60% at 50% 10%,#123039 0%,#081318 55%,#04070a 100%);filter:none;opacity:1}
-[data-theme="ttpod"] #nshade{background:none}
-[data-theme="ttpod"] .nicons{display:none}
-[data-theme="ttpod"] .nlyr{top:50%;transform:translateY(-54%)}
-[data-theme="ttpod"] #bigword{color:#8dff5e;-webkit-text-stroke:1.5px rgba(0,0,0,.85);text-shadow:0 3px 0 rgba(0,0,0,.55),0 0 26px rgba(141,255,94,.4)}
-[data-theme="ttpod"] #ipa{color:#39c6cf;font-family:"SF Mono",Menlo,monospace}
-[data-theme="ttpod"] #nfill{background:#39c6cf;box-shadow:0 0 10px rgba(57,198,207,.8)}
-[data-theme="ttpod"] #nknob{background:#eafffb;width:14px;height:14px}
-[data-theme="ttpod"] .nplay{background:#0e2b31;border-color:#39c6cf;color:#8dff5e}
+  /* 主区：左唱片 + 右信息列；PC 自动变横向矩形 */
+  .main{flex:1;display:flex;flex-direction:column;min-height:0}
+  .side{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
+  .timerChip{position:absolute;right:0;top:0;font-size:11px;color:var(--tx3);opacity:.9;
+    letter-spacing:.4px;font-variant-numeric:tabular-nums;pointer-events:none}
+  @media (min-width:760px){
+    .app{width:min(1280px,96vw);max-width:none;zoom:1;min-height:auto;margin:auto;padding-bottom:8px}
+    .main{flex-direction:row;align-items:center;gap:40px;padding:8px 30px 0}
+    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕 */
+    .main>.card{margin:0;flex:0 0 clamp(400px,min(40vw,66vh),640px);align-self:center}
+    .side{align-self:stretch;justify-content:flex-start}
+    /* 单词区在「角标」与「底部控制」之间的剩余空间里垂直居中 → 整体下移到中间 */
+    .side .word{padding:0;min-height:0;text-align:center;margin-top:auto;margin-bottom:auto}
+    .side .sec{font-size:11.5px;margin-bottom:12px}
+    .side .word .big{font-size:clamp(50px,5vw,74px);text-shadow:0 2px 10px rgba(0,0,0,.06)}
+    .side .word .ipa{font-size:20px;transform:translateY(-9px)}
+    .side .word .wrow{gap:12px}
+    .side .word .mean{font-size:clamp(16px,1.5vw,21px)}
+    .side .word .ex{font-size:17px}
+    .side .wav{--wvh:28px;height:42px;gap:5px}
+    .side .slot{min-height:96px;margin-top:34px;margin-bottom:26px}
+    .side .wav i{width:5px}
+    .side .skins{margin-top:8px}   /* 由 .word 的下 auto 外边距顶到列底 */
+    /* 用 .side 前缀提权重：压过写在后面的基础规则（margin-top:auto 等） */
+    .side .prog{padding:14px 0 0}
+    .side .ctrl{margin-top:8px;padding:6px 0 0}
+    .side .ctrl svg{width:27px;height:27px}
+    .side .ctrl .ord{font-size:13px}
+    .side .play{width:72px;height:72px}
+    .side .play svg{width:29px;height:29px}
+    .top .pt{font-size:13px}
+  }
 
-/* ---- 主题：千千静听（XP 面板 + LED 歌词 + 均衡器） ---- */
-[data-theme="ttplayer"] #nbg{background:linear-gradient(180deg,#5c6672,#39424c);filter:none;opacity:1}
-[data-theme="ttplayer"] #nshade{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.5))}
-[data-theme="ttplayer"] .ntop{background:linear-gradient(180deg,#6f9fd8,#3b6fb0);border-radius:10px 10px 0 0;margin:30px 120px 0;padding:10px 24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 8px 24px rgba(0,0,0,.35)}
-[data-theme="ttplayer"] .nico{color:#fff}
-[data-theme="ttplayer"] .nicons{display:none}
-[data-theme="ttplayer"] .nlyr{top:190px}
-[data-theme="ttplayer"] #bigword{font-family:"SF Mono",Menlo,monospace;color:#ffb200;text-shadow:0 0 18px rgba(255,178,0,.55);font-size:clamp(44px,6.6vw,84px);letter-spacing:2px}
-[data-theme="ttplayer"] #ipa{color:#9fb4c8;font-family:"SF Mono",Menlo,monospace}
-[data-theme="ttplayer"] #mean{color:#e8eef5}
-[data-theme="ttplayer"] #ex{color:#8b98a6}
-[data-theme="ttplayer"] .badges .b{background:#1d2733;color:#ffd76a;border-radius:3px}
-[data-theme="ttplayer"] .eqrow{position:absolute;left:0;right:0;top:540px;display:flex;justify-content:center;gap:22px;height:56px;align-items:flex-end}
-[data-theme="ttplayer"] .eqrow i{width:10px;height:56px;border-radius:3px;position:relative;background:linear-gradient(180deg,#101418,#05070a);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-[data-theme="ttplayer"] .eqrow i::after{content:"";position:absolute;left:-3px;width:16px;height:10px;border-radius:2px;background:linear-gradient(180deg,#ffd76a,#e89b00);top:var(--e,42%)}
-[data-theme="ttplayer"] #player.playing .eqrow i::after{animation:eqbob 1.1s ease-in-out infinite alternate}
-[data-theme="ttplayer"] .eqrow i:nth-child(2)::after{animation-delay:.14s}
-[data-theme="ttplayer"] .eqrow i:nth-child(3)::after{animation-delay:.28s}
-[data-theme="ttplayer"] .eqrow i:nth-child(4)::after{animation-delay:.07s}
-[data-theme="ttplayer"] .eqrow i:nth-child(5)::after{animation-delay:.34s}
-[data-theme="ttplayer"] .eqrow i:nth-child(6)::after{animation-delay:.2s}
-[data-theme="ttplayer"] .eqrow i:nth-child(7)::after{animation-delay:.42s}
-[data-theme="ttplayer"] .eqrow i:nth-child(8)::after{animation-delay:.1s}
-@keyframes eqbob{from{top:12%}to{top:68%}}
-[data-theme="ttplayer"] .nprog{bottom:104px}
-[data-theme="ttplayer"] #nbar{height:12px;border-radius:4px;background:repeating-linear-gradient(90deg,#0c1013 0 6px,#131a20 6px 8px);overflow:hidden}
-[data-theme="ttplayer"] #nfill{background:linear-gradient(180deg,#ffd76a,#e89b00)}
-[data-theme="ttplayer"] #nknob{width:8px;height:18px;border-radius:2px;background:#f4f4f7}
-[data-theme="ttplayer"] .nprog span{color:#c8d2dc}
-[data-theme="ttplayer"] .nctrl{bottom:16px}
-[data-theme="ttplayer"] .nplay{background:linear-gradient(180deg,#f0f3f7,#c2ccd8);border:1px solid #8a94a2;color:#1d2733;border-radius:8px}
+  /* 波浪：恢复原来的紧凑居中款，峰值收敛（不铺满、不高） */
+  .wav{--wvh:22px;display:none;align-items:flex-end;justify-content:center;gap:4px;height:34px}
+  .wav i{width:4px;height:5px;border-radius:2px;background:var(--tx3);opacity:.5;transition:opacity .3s}
+  .playing .wav i{opacity:.85;animation:wv .8s ease-in-out infinite alternate}
+  @keyframes wv{from{height:5px}to{height:var(--wvh,22px)}}
 
-/* ---- 主题：QQ 音乐 ---- */
-[data-theme="qq"] #nbg{background:radial-gradient(80% 60% at 50% 30%,#17222b,#0b1116 70%);filter:none;opacity:1}
-[data-theme="qq"] #nbg::after{content:"";position:absolute;inset:0;background:radial-gradient(50% 36% at 50% 34%,rgba(49,194,124,.18),transparent 72%)}
-[data-theme="qq"] #nshade{background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.45))}
-[data-theme="qq"] .nlyr{top:50%;transform:translateY(-52%)}
-[data-theme="qq"] #ipa{color:#31c27c}
-[data-theme="qq"] .nico2.fav{color:#31c27c;text-shadow:0 0 14px rgba(49,194,124,.5)}
-[data-theme="qq"] .nplay{border-color:#31c27c;color:#31c27c}
-[data-theme="qq"] #nfill{background:#31c27c}
-[data-theme="qq"] #nknob{background:#31c27c}
-[data-theme="qq"] #bigword{text-shadow:0 4px 34px rgba(49,194,124,.35)}
+  /* 单词区 */
+  .word{padding:20px 26px 0;text-align:center;min-height:150px}
+  /* 章节/级别/进度：左上角角标，弱化处理不抢单词（小字 + 拉开距离 + 降透明度） */
+  .side .sec{font-size:10px;color:var(--tx3);opacity:.72;margin:0 0 10px;text-align:left;letter-spacing:.3px}
+  .word .wrow{display:inline-flex;align-items:flex-end;justify-content:center;gap:9px}
+  .word .big{font-size:clamp(36px,9.5vw,50px);font-weight:800;letter-spacing:.5px;line-height:1.15;color:var(--tx);
+    font-family:var(--wfont,"PingFang SC",-apple-system,sans-serif)}
+  /* 音标：贴在单词右下角当注音，不再单独占一行 */
+  .word .ipa{font-size:15px;color:var(--tx2);white-space:nowrap;transform:translateY(-7px)}
+  /* 固定槽位：高度锁死，波浪↔释义原地切换，不产生位移 */
+  .slot{display:flex;align-items:center;justify-content:center;min-height:72px;margin-top:26px}
+  .slot .txt{width:100%}
+  /* 释义：压成一行、字号收小（过长时省略，避免撑破排版） */
+  .word .mean{font-size:16px;font-weight:700;color:var(--tx);text-align:center;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .word .ex{font-size:13.5px;font-style:italic;color:var(--tx3);margin-top:8px;line-height:1.5}
+  .hiddenl{filter:blur(9px);opacity:.55;transition:filter .4s,opacity .4s}
 
-/* ---- 主题：酷狗音乐（蓝色圆环进度） ---- */
-[data-theme="kugou"] #nbg{background:linear-gradient(160deg,#06263f,#0a3a5c 55%,#04121f);filter:none;opacity:1}
-[data-theme="kugou"] #nshade{background:radial-gradient(60% 40% at 50% 18%,rgba(53,186,250,.28),transparent 70%)}
-[data-theme="kugou"] .nicons{display:none}
-[data-theme="kugou"] .nlyr{top:50%;transform:translateY(-54%)}
-[data-theme="kugou"] #ipa{color:#7fd0ff}
-[data-theme="kugou"] #mean{color:#eaf6ff}
-[data-theme="kugou"] .nplay{width:88px;height:88px;border:none;background:conic-gradient(#35bafa var(--kp,0%),rgba(255,255,255,.16) 0);color:#fff;font-size:19px;position:relative}
-[data-theme="kugou"] .nplay::after{content:"";position:absolute;inset:7px;border-radius:50%;background:#0a2033}
-[data-theme="kugou"] .nplay span{position:relative;z-index:1}
-[data-theme="kugou"] #nfill{background:#35bafa}
-[data-theme="kugou"] #nknob{background:#35bafa}
+  /* 皮肤切换 */
+  .skins{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px}
+  .skins .lb{font-size:10.5px;color:var(--tx3)}
+  .skins .sw{width:25px;height:25px;border-radius:50%;cursor:pointer;border:2px solid transparent;box-shadow:0 2px 7px rgba(0,0,0,.2);transition:transform .2s}
+  .skins .sw:hover{transform:scale(1.08)}
+  .skins .sw.on{border-color:var(--accent);transform:scale(1.14)}
+  .skins .zbtn{font-size:10.5px;color:var(--tx2);border:1px solid var(--bar-bg);border-radius:99px;padding:3px 10px;cursor:pointer;user-select:none}
+  .skins .zbtn:hover{color:var(--accent);border-color:var(--accent)}
 
-/* ---- 主题：酷我音乐（金黄圆角） ---- */
-[data-theme="kuwo"] #nbg{background:radial-gradient(100% 70% at 50% 0%,#3a2a12 0%,#1c1207 60%,#0c0805 100%);filter:none;opacity:1}
-[data-theme="kuwo"] .nicons{display:none}
-[data-theme="kuwo"] .nlyr{top:50%;transform:translateY(-54%)}
-[data-theme="kuwo"] #ipa{color:#ffce3f}
-[data-theme="kuwo"] .nplay{border:none;background:linear-gradient(135deg,#ffd94d,#ffaa00);color:#3a2a00;border-radius:22px;width:84px;font-weight:800;box-shadow:0 10px 30px rgba(255,180,0,.35)}
-[data-theme="kuwo"] #nfill{background:#ffce3f}
-[data-theme="kuwo"] #nknob{background:#ffce3f}
+  /* 进度：时间贴近两端（对齐官方） */
+  .prog{display:flex;align-items:center;gap:10px;padding:14px 20px 0}
+  .prog .t{flex:none;min-width:50px;font-size:10.5px;color:var(--tx2);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .prog .t.r{text-align:right}
+  .bar{position:relative;flex:1;height:4px;border-radius:2px;background:var(--bar-bg);cursor:pointer}
+  .bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;background:var(--bar-fill)}
+  .bar .knob{position:absolute;top:50%;left:0;width:12px;height:12px;border-radius:50%;background:var(--bar-fill);transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.3)}
 
-/* ---- 主题：虾米音乐（白底橙） ---- */
-[data-theme="xiami"] #nbg{background:linear-gradient(180deg,#ffffff,#f2f3f7);filter:none;opacity:1}
-[data-theme="xiami"] #nshade{background:none}
-[data-theme="xiami"] #tword{color:#6a707d}
-[data-theme="xiami"] .nico{color:#555}
-[data-theme="xiami"] .nico:hover{color:#1c1c22}
-[data-theme="xiami"] .nico2{color:#777}
-[data-theme="xiami"] .nico2.fav{color:#ff5a1f;text-shadow:none}
-[data-theme="xiami"] .nlyr{top:50%;transform:translateY(-54%)}
-[data-theme="xiami"] #bigword{color:#1c1c22;text-shadow:none}
-[data-theme="xiami"] #ipa{color:#ff5a1f}
-[data-theme="xiami"] #mean{color:#1c1c22}
-[data-theme="xiami"] #ex{color:#8a8f9c}
-[data-theme="xiami"] .nplay{border:2.5px solid #ff5a1f;color:#ff5a1f}
-[data-theme="xiami"] #nbar{background:rgba(0,0,0,.12)}
-[data-theme="xiami"] #nfill{background:#ff5a1f}
-[data-theme="xiami"] #nknob{background:#ff5a1f}
-[data-theme="xiami"] .nprog span{color:#9aa0ab}
+  /* 控制：全宽分布 顺序 · 快退 · 播放 · 快进 · 列表 */
+  .ctrl{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 22px 26px}
+  .ctrl svg{width:24px;height:24px;stroke:var(--tx);fill:none;stroke-width:1.8;cursor:pointer;transition:stroke .15s}
+  .ctrl svg:hover{stroke:var(--accent)}
+  .ctrl .ord{font-size:12px;color:var(--tx2);cursor:pointer;user-select:none;min-width:36px}
+  .ctrl .ord:hover{color:var(--accent)}
+  .play{width:64px;height:64px;border-radius:50%;background:transparent;border:2.5px solid var(--tx);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+  .play:active{transform:scale(.92)}
+  .play svg{width:26px;height:26px;stroke:none;fill:var(--tx)}
 
-/* ---- 主题：Spotify ---- */
-[data-theme="spotify"] #nbg{background:linear-gradient(180deg,#1f1f1f 0%,#121212 60%);filter:none;opacity:1}
-[data-theme="spotify"] #nbg::before{content:"";position:absolute;inset:0;background:radial-gradient(46% 30% at 50% 26%,rgba(29,185,84,.3),transparent 72%)}
-[data-theme="spotify"] #nshade{background:none}
-[data-theme="spotify"] .nlyr{top:50%;transform:translateY(-54%)}
-[data-theme="spotify"] #bigword{letter-spacing:-1px;font-weight:900}
-[data-theme="spotify"] #ipa{color:#1db954}
-[data-theme="spotify"] .nico2.fav{color:#1db954;text-shadow:none}
-[data-theme="spotify"] .nplay{background:#fff;color:#121212;border:none}
-[data-theme="spotify"] #nfill{background:#1db954}
-[data-theme="spotify"] #nknob{background:#fff}
+  /* 设置面板 */
+  .sheet{position:absolute;left:0;right:0;bottom:0;z-index:20;background:var(--sheet-bg);backdrop-filter:blur(14px);
+    border-radius:22px 22px 0 0;padding:16px 22px 28px;transform:translateY(105%);
+    transition:transform .35s cubic-bezier(.3,1,.4,1);box-shadow:0 -10px 30px rgba(0,0,0,.2)}
+  .sheet.on{transform:translateY(0)}
+  .sheet h3{font-size:14px;color:var(--tx);margin-bottom:0}
+  .shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .shb{font-size:12.5px;font-weight:600;color:var(--accent);cursor:pointer;user-select:none}
+  .shb:hover{opacity:.75}
+  .top .ic{flex:none}
+  .srow{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bar-bg)}
+  .srow:last-of-type{border-bottom:none}
+  .srow span{font-size:13.5px;color:var(--tx)}
+  .seg{display:flex;gap:6px}
+  .seg b{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;cursor:pointer;
+    border:1px solid var(--bar-bg);color:var(--tx2)}
+  .seg b.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .sback{margin-top:14px;width:100%;padding:11px;border-radius:12px;border:1px solid var(--bar-bg);
+    background:transparent;color:var(--tx);font-size:14px;font-weight:600;cursor:pointer}
 
-/* ---- 主题：频谱律动（底部频谱柱上下跳动） ---- */
-.specrow,.fallpool,.ripplebox,.notepool{display:none;pointer-events:none}
-[data-theme="spectrum"] .specrow{display:flex;align-items:flex-end;gap:6px;position:absolute;left:40px;right:40px;bottom:128px;height:110px;opacity:.9}
-[data-theme="spectrum"] .specrow i{flex:1;height:100%;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#63f5d2,#2a8ad4);transform-origin:bottom;transform:scaleY(.12)}
-[data-theme="spectrum"] #player.playing .specrow i{animation-name:barDance;animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate}
-@keyframes barDance{from{transform:scaleY(.1)}to{transform:scaleY(1)}}
-[data-theme="spectrum"] #nbg{background:radial-gradient(100% 70% at 50% 20%,#160b2e 0%,#0a0616 60%,#040209 100%);filter:none;opacity:1}
-[data-theme="spectrum"] #nshade{background:none}
-[data-theme="spectrum"] .nicons{display:none}
-[data-theme="spectrum"] .nlyr{top:50%;transform:translateY(-58%)}
-[data-theme="spectrum"] #bigword{color:#eafcf7;text-shadow:0 0 34px rgba(99,245,210,.4)}
-[data-theme="spectrum"] #ipa{color:#63f5d2}
-[data-theme="spectrum"] .nplay{border-color:#63f5d2;color:#63f5d2}
-[data-theme="spectrum"] #nfill{background:#63f5d2}
-[data-theme="spectrum"] #nknob{background:#63f5d2}
-[data-theme="spectrum"] .nico{color:rgba(99,245,210,.8)}
-[data-theme="spectrum"] .nico:hover{color:#63f5d2}
-
-/* ---- 主题：瀑布歌词（唱过的词向上流走） ---- */
-[data-theme="waterfall"] #nbg{background:linear-gradient(180deg,#0d1b2a 0%,#071018 70%,#04080d 100%);filter:none;opacity:1}
-[data-theme="waterfall"] #nbg::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 90px)}
-[data-theme="waterfall"] #nshade{background:none}
-[data-theme="waterfall"] .fallpool{display:block;position:absolute;inset:0;overflow:hidden}
-[data-theme="waterfall"] .fallpool .fchip{position:absolute;top:64%;left:50%;color:rgba(255,255,255,.55);font-size:26px;font-weight:700;white-space:nowrap;animation:fallUp 5.5s linear forwards}
-@keyframes fallUp{from{transform:translate(-50%,30px);opacity:.85}to{transform:translate(-50%,-300px);opacity:0}}
-[data-theme="waterfall"] .nlyr{top:50%;transform:translateY(-52%)}
-[data-theme="waterfall"] #bigword{text-shadow:0 4px 40px rgba(90,160,255,.35)}
-[data-theme="waterfall"] #ipa{color:#5aa0ff}
-
-/* ---- 主题：声波涟漪（单词周围水波扩散） ---- */
-[data-theme="ripple"] #nbg{background:radial-gradient(90% 70% at 50% 40%,#0e2233 0%,#050b12 70%);filter:none;opacity:1}
-[data-theme="ripple"] #nshade{background:none}
-[data-theme="ripple"] .nicons{display:none}
-[data-theme="ripple"] .ripplebox{display:block;position:absolute;left:50%;top:44%;width:0;height:0}
-[data-theme="ripple"] .ripplebox i{position:absolute;left:-150px;top:-150px;width:300px;height:300px;border:2px solid rgba(120,190,255,.5);border-radius:50%;opacity:0}
-[data-theme="ripple"] #player.playing .ripplebox i{animation:ripR 2.8s ease-out infinite}
-[data-theme="ripple"] .ripplebox i:nth-child(2){animation-delay:.95s}
-[data-theme="ripple"] .ripplebox i:nth-child(3){animation-delay:1.9s}
-@keyframes ripR{0%{transform:scale(.42);opacity:.5}100%{transform:scale(1.8);opacity:0}}
-[data-theme="ripple"] .nlyr{top:50%;transform:translateY(-52%)}
-[data-theme="ripple"] #bigword{text-shadow:0 0 44px rgba(120,190,255,.45)}
-[data-theme="ripple"] #ipa{color:#78beff}
-[data-theme="ripple"] .nplay{border-color:#78beff;color:#78beff}
-[data-theme="ripple"] #nfill{background:#78beff}
-[data-theme="ripple"] #nknob{background:#78beff}
-
-/* ---- 主题：音符上浮（♪♫ 飘起） ---- */
-[data-theme="notes"] #nbg{background:linear-gradient(180deg,#1c1207 0%,#0b0704 70%);filter:none;opacity:1}
-[data-theme="notes"] #nshade{background:none}
-[data-theme="notes"] .notepool{display:block;position:absolute;inset:0;overflow:hidden}
-[data-theme="notes"] .notepool .nt{position:absolute;bottom:-40px;color:#ffd76a;text-shadow:0 0 14px rgba(255,215,106,.5);animation:noteRise 6s linear forwards}
-@keyframes noteRise{0%{transform:translateY(0) rotate(-8deg);opacity:0}12%{opacity:.85}100%{transform:translateY(-560px) rotate(16deg);opacity:0}}
-[data-theme="notes"] .nlyr{top:50%;transform:translateY(-52%)}
-[data-theme="notes"] #ipa{color:#ffd76a}
-[data-theme="notes"] .nplay{border-color:#ffd76a;color:#ffd76a}
-[data-theme="notes"] #nfill{background:#ffd76a}
-[data-theme="notes"] #nknob{background:#ffd76a}
+  .toast{position:absolute;left:50%;bottom:110px;transform:translateX(-50%) translateY(10px);
+    background:rgba(0,0,0,.78);color:#fff;font-size:12px;padding:8px 14px;border-radius:99px;
+    opacity:0;transition:.3s;pointer-events:none;z-index:30;white-space:nowrap}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
-<body data-theme="netease">
-<div class="wrap" id="setup">
-  <div class="ptitle"><i>A Simple Framework for Contrastive Learning of Visual Representations · SimCLR · ICML 2020</i></div>
-  <h1>🎧 <b>单词连播</b> <span style="font-size:14px;color:var(--dim);font-weight:400">独立听力页</span></h1>
+<body>
+<div class="app" id="app" data-skin="lemon">
 
-  <div class="sec">
-    <h3>朗读范围 <span class="mini" id="cnt"></span></h3>
-    <div style="margin-bottom:6px;color:var(--dim);font-size:13px">级别</div>
-    <div id="lvChips" class="row"></div>
-    <div style="margin:10px 0 6px;color:var(--dim);font-size:13px">章节 <button class="chip" style="padding:2px 10px;font-size:12px" id="secAll">全选</button></div>
-    <div id="secChips" class="row"></div>
-  </div>
-
-  <div class="sec">
-    <h3>播放方式</h3>
-    <div class="row" style="margin-bottom:10px">
-      <span style="color:var(--dim);font-size:14px">顺序</span>
-      <button class="opt on" data-order="seq">顺序</button>
-      <button class="opt" data-order="rand">随机</button>
-      <span style="color:var(--dim);font-size:14px;margin-left:14px">停顿</span>
-      <button class="opt on" data-pause="2000">2s</button>
-      <button class="opt" data-pause="4000">4s</button>
-      <button class="opt" data-pause="6000">6s</button>
+  <div class="top">
+    <div class="ic" id="backBtn" title="返回">
+      <svg viewBox="0 0 24 24" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>
     </div>
-    <div class="row">
-      <span style="color:var(--dim);font-size:14px">显示</span>
-      <button class="opt on" data-mode="full">全显</button>
-      <button class="opt" data-mode="reveal">先听后现</button>
-      <button class="opt" id="zhBtn" title="读完单词后用中文音色读一遍释义">朗读中文释义</button>
-      <button class="opt" id="exBtn" title="读完单词（和中文）后用英文源朗读原文例句">朗读英文例句</button>
-      <span style="color:var(--dim);font-size:14px;margin-left:14px">音色</span>
-      <select id="voiceSel"></select>
-      <span class="srcState" id="srcState"></span>
-      <span style="color:var(--dim);font-size:12px">（源失败自动换源；有道提供英/美两种发音）</span>
-      <span style="color:var(--dim);font-size:14px;margin-left:14px">太简单</span>
-      <button class="opt on" id="useSkipBtn" title="朗读时自动跳过已标记的词">跳过已掌握词</button>
-      <span id="skipCnt" style="color:var(--dim);font-size:13px">已跳过 0 词</span>
-      <button class="opt" id="clearSkipBtn">清空跳过</button>
+    <div class="pt" id="ptitle">A Simple Framework for Contrastive Learning of Visual Representations · SimCLR · ICML 2020</div>
+    <div class="ic neutral" id="favBtn" title="收藏（再点取消）">
+      <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round">
+        <defs>
+          <clipPath id="favClip">
+            <path transform="translate(12 12) scale(.86) translate(-12 -12)"
+                  d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+          </clipPath>
+        </defs>
+        <path class="fillable heart" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+        <path class="slash" d="M4 4 20 20" clip-path="url(#favClip)"/>
+      </svg>
+    </div>
+    <div class="ic neutral" id="starBtn" title="标星（重点词，可只背星标）">
+      <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round">
+        <path class="fillable star" d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/>
+      </svg>
+    </div>
+    <div class="ic" id="okBtn" title="认识，之后不再朗读">
+      <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>
+    </div>
+    <div class="ic" id="replayBtn" title="重听当前词">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
+    </div>
+    <div class="ic" id="skinBtn" title="换皮肤（点一下换下一套）">
+      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 3.2 3.4 5.9l2 3.6 1.9-1V20.8h9.4V8.5l1.9 1 2-3.6L15.8 3.2a3.8 3.8 0 0 1-7.6 0Z"/></svg>
+    </div>
+    <div class="ic" id="moreBtn" title="设置">
+      <svg class="dot" viewBox="0 0 24 24" stroke="none"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>
     </div>
   </div>
 
-  <button id="start">▶ 开始连播</button>
-</div>
+  <div class="main">
+  <div class="card">
+    <div class="vinyl">
+      <div class="art" id="art">
+        <svg class="wave" viewBox="0 0 24 24" fill="#fff">
+          <rect x="3.2" y="9.5"  width="2.8" height="5"  rx="1.4"/>
+          <rect x="8.2" y="6"    width="2.8" height="12" rx="1.4"/>
+          <rect x="13.2" y="3"   width="2.8" height="18" rx="1.4"/>
+          <rect x="18.2" y="7.5" width="2.8" height="9"  rx="1.4"/>
+        </svg>
+      </div>
+    </div>
+    <div class="arm">
+      <div class="cap"></div><div class="pivot"></div>
+      <div class="bar"><div class="head"></div></div>
+    </div>
+    <div class="needle">
+      <svg viewBox="0 0 160 180" fill="none">
+        <defs>
+          <linearGradient id="ndg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d4d4e0"/><stop offset="1" stop-color="#8f8fa2"/>
+          </linearGradient>
+        </defs>
+        <!-- 轴点 -->
+        <circle cx="55" cy="6" r="7.5" fill="#c9c9d6"/>
+        <circle cx="55" cy="6" r="3.2" fill="#9c9cad"/>
+        <!-- 弯针：平滑贝塞尔，连续弧度而非两段直线 -->
+        <path d="M55 12 C 63 52, 82 92, 108 126 C 115 135, 120 144, 121 152"
+              stroke="url(#ndg)" stroke-width="4.6" stroke-linecap="round"/>
+        <!-- 针头：沿曲线切线方向的圆头短粗段，与针身融为一体、不外凸 -->
+        <path d="M120.6 149.5 L122.2 162.5" stroke="url(#ndg)" stroke-width="8.5"
+              stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
 
-<div id="player">
-  <div id="nbg"></div>
-  <div id="nshade"></div>
-  <div class="ntop">
-    <button class="nico" id="backBtn" title="返回设置 (Esc)">←</button>
-    <div class="ntitles"><div id="tword"></div></div>
-    <button class="nico" id="replayBtn" title="重听当前词">⤴</button>
-  </div>
-  <div class="vinylwrap" id="vwrap" title="点击重听当前词">
-    <div class="rotor">
-      <div class="disc"></div>
-      <div id="cover"><span id="cletter">A</span></div>
+  <div class="side">
+  <div class="sec" id="wsec">准备中…</div>
+  <div class="timerChip" id="timerChip" style="display:none">⏱ 0:00</div>
+  <div class="word">
+    <div class="wrow">
+      <span class="big" id="wbig">—</span>
+      <span class="ipa" id="wipa"></span>
     </div>
-    <div class="needlebox">
-      <div class="nseg1"></div>
-      <div class="nseg2"></div>
-      <div class="npivot"></div>
+    <!-- 波浪与释义共用同一个固定位置：未揭晓=波浪，揭晓=原地换释义，不跳动 -->
+    <div class="slot">
+      <div class="wav" id="wav"></div>
+      <div class="txt" id="wtxt">
+        <div class="mean" id="wmean"></div>
+        <div class="ex" id="wex"></div>
+      </div>
     </div>
   </div>
-  <div class="nlyr" id="lyrics">
-    <div class="badges" id="badges"></div>
-    <div id="bigword"></div>
-    <div id="ipa"></div>
-    <div id="mean"></div>
-    <div id="ex"></div>
+
+
+  <div class="prog">
+    <span class="t" id="cur">第 0 词</span>
+    <div class="bar" id="bar"><div class="fill" id="fill"></div><div class="knob" id="knob"></div></div>
+    <span class="t r" id="dur">共 0 词</span>
   </div>
-  <div class="nicons">
-    <span class="nico2" id="favBtn" title="收藏">❤</span>
-    <span class="nico2 dim">⤓</span>
-    <span class="nico2 dim" id="starBtn" title="太简单？标记后不再朗读（再点取消）">☆</span>
-    <span class="nico2 dim">⋯</span>
+
+  <div class="ctrl">
+    <span class="ord" id="ordBtn">顺序</span>
+    <svg viewBox="0 0 24 24" id="prevBtn"><path d="M19 20 9 12l10-8v16Z"/><path d="M5 5v14"/></svg>
+    <div class="play" id="play">
+      <svg id="icPlay" viewBox="0 0 24 24"><path d="M8 5.3v13.4L19 12Z"/></svg>
+      <svg id="icPause" viewBox="0 0 24 24" style="display:none"><rect x="6.5" y="5" width="3.6" height="14" rx="1.2"/><rect x="13.9" y="5" width="3.6" height="14" rx="1.2"/></svg>
+    </div>
+    <svg viewBox="0 0 24 24" id="nextBtn"><path d="M5 4l10 8-10 8V4Z"/><path d="M19 5v14"/></svg>
+    <svg viewBox="0 0 24 24" id="listBtn"><path d="M4 6h16M4 12h16M4 18h12"/></svg>
   </div>
-  <div class="eqrow" id="eqrow"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="nprog">
-    <span id="tel">0:00</span>
-    <div class="nbar"><i id="nfill"></i><b id="nknob"></b></div>
-    <span id="ttot">0:00</span>
   </div>
-  <div class="specrow" id="specrow"><i style="animation-delay:-0.00s;animation-duration:0.46s"></i><i style="animation-delay:-0.37s;animation-duration:0.75s"></i><i style="animation-delay:-0.11s;animation-duration:0.54s"></i><i style="animation-delay:-0.48s;animation-duration:0.83s"></i><i style="animation-delay:-0.22s;animation-duration:0.62s"></i><i style="animation-delay:-0.59s;animation-duration:0.91s"></i><i style="animation-delay:-0.33s;animation-duration:0.70s"></i><i style="animation-delay:-0.07s;animation-duration:0.49s"></i><i style="animation-delay:-0.44s;animation-duration:0.78s"></i><i style="animation-delay:-0.18s;animation-duration:0.57s"></i><i style="animation-delay:-0.55s;animation-duration:0.86s"></i><i style="animation-delay:-0.29s;animation-duration:0.65s"></i><i style="animation-delay:-0.03s;animation-duration:0.94s"></i><i style="animation-delay:-0.40s;animation-duration:0.73s"></i><i style="animation-delay:-0.14s;animation-duration:0.52s"></i><i style="animation-delay:-0.51s;animation-duration:0.81s"></i><i style="animation-delay:-0.25s;animation-duration:0.60s"></i><i style="animation-delay:-0.62s;animation-duration:0.89s"></i><i style="animation-delay:-0.36s;animation-duration:0.68s"></i><i style="animation-delay:-0.10s;animation-duration:0.47s"></i><i style="animation-delay:-0.47s;animation-duration:0.76s"></i><i style="animation-delay:-0.21s;animation-duration:0.55s"></i><i style="animation-delay:-0.58s;animation-duration:0.84s"></i><i style="animation-delay:-0.32s;animation-duration:0.63s"></i><i style="animation-delay:-0.06s;animation-duration:0.92s"></i><i style="animation-delay:-0.43s;animation-duration:0.71s"></i></div>
-  <div class="fallpool" id="fallpool"></div>
-  <div class="ripplebox" id="ripplebox"><i></i><i></i><i></i></div>
-  <div class="notepool" id="notepool"></div>
-  <div id="toast"></div>
-  <div class="brandmark" id="brandmark" title="音乐播放器风格致敬 · 非官方"></div>
-  <div class="nctrl">
-    <button class="nico" id="ordBtn" title="切换 顺序/随机">⟳ 顺序</button>
-    <button class="nico" id="prev2" title="上一个 (←)">⏮</button>
-    <button class="nplay" id="pp2" title="播放/暂停 (空格)"><span id="pp2t">❚❚</span></button>
-    <button class="nico" id="next2" title="下一个 (→)">⏭</button>
-    <button class="nico" id="skipBtn" title="认识此词：加入跳过并到下一个 (S)">✓ 认识</button>
-    <button class="nico" id="listBtn" title="退出播放 (Esc)">☰</button>
   </div>
+
+  <div class="sheet" id="sheet">
+    <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
+    <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
+    <div class="srow"><span>单词重复</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="seg" id="segRepeat"></div>
+        <input id="repInput" class="repin" type="number" min="1" max="20" step="1" title="自定义次数（1–20）">
+      </div>
+    </div>
+    <div class="srow"><span>每词停顿</span><div class="seg" id="segPause"></div></div>
+    <div class="srow"><span>先听后现</span><div class="seg" id="segReveal"></div></div>
+    <div class="srow"><span>朗读中文</span><div class="seg" id="segZh"></div></div>
+    <div class="srow"><span>朗读例句</span><div class="seg" id="segEx"></div></div>
+    <div class="srow"><span>界面缩放</span><div class="seg" id="segZoom"></div></div>
+    <div class="srow"><span>单词字体</span><div class="seg" id="segFont"></div></div>
+    <div class="srow"><span>定时停止</span><div class="seg" id="segTimer"></div></div>
+    <div class="srow"><span>词库来源</span><div class="seg" id="segSource"></div></div>
+    <div class="srow"><span id="markCnt">⭐ 0 · ❤ 0 · ✓ 0</span><span class="clr" id="clearStar">清空星标</span></div>
+    <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
+    <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
+    <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
+    <button class="sback" id="setupBack">← 返回播放</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
 </div>
 
 <script>
-const DATA = [{"sec": "Abstract · 摘要", "short": "Abstract", "icon": "Abs", "words": [{"w": "contrastive", "ipa": "kənˈtrɑːstɪv", "pos": "adj.", "lv": "p", "m": "对比的，对照的", "ex": "a simple framework for contrastive learning of visual representations"}, {"w": "framework", "ipa": "ˈfreɪmwɜːrk", "pos": "n.", "lv": "4", "m": "框架，体系", "ex": "a simple framework for contrastive learning of visual representations"}, {"w": "representation", "ipa": "ˌreprɪzenˈteɪʃn", "pos": "n.", "lv": "6", "m": "表示，表征", "ex": "contrastive learning of visual representations"}, {"w": "supervised", "ipa": "suːˈpɜːrvɪzd", "pos": "adj.", "lv": "p", "m": "有监督的", "ex": "self-supervised learning algorithms"}, {"w": "specialized", "ipa": "ˈspeʃəlaɪzd", "pos": "adj.", "lv": "p", "m": "专门的，特化的", "ex": "without requiring specialized architectures"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "lv": "p", "m": "增强，扩充", "ex": "composition of data augmentations plays a critical role", "ov": "g"}, {"w": "transformation", "ipa": "ˌtrænsfərˈmeɪʃn", "pos": "n.", "lv": "4", "m": "变换，转化", "ex": "a learnable nonlinear transformation between the representation and the contrastive loss"}, {"w": "nonlinear", "ipa": "nɒnˈlɪniər", "pos": "adj.", "lv": "p", "m": "非线性的", "ex": "a learnable nonlinear transformation"}, {"w": "substantially", "ipa": "səbˈstænʃəli", "pos": "adv.", "lv": "4", "m": "显著地，实质上", "ex": "substantially improves the quality of the learned representations"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "lv": "4", "m": "准确率，精确度", "ex": "achieves 76.5% top-1 accuracy"}]}, {"sec": "1. Introduction · 引言", "short": "Intro", "icon": "1", "words": [{"w": "generative", "ipa": "ˈdʒenərətɪv", "pos": "adj.", "lv": "6", "m": "生成式的", "ex": "Generative approaches learn to generate or otherwise model pixels"}, {"w": "discriminative", "ipa": "dɪˈskrɪmɪnətɪv", "pos": "adj.", "lv": "p", "m": "判别式的", "ex": "Discriminative approaches learn representations using objective functions"}, {"w": "pretext", "ipa": "ˈpriːtekst", "pos": "n.", "lv": "6", "m": "前置任务", "ex": "train networks to perform pretext tasks"}, {"w": "heuristic", "ipa": "hjʊˈrɪstɪk", "pos": "adj./n.", "lv": "p", "m": "启发式的", "ex": "Many such approaches have relied on heuristics"}, {"w": "latent", "ipa": "ˈleɪtnt", "pos": "adj.", "lv": "6", "m": "潜在的，隐变量的", "ex": "maximizing agreement between differently augmented views in the latent space"}, {"w": "computationally", "ipa": "ˌkɒmpjuˈteɪʃənəli", "pos": "adv.", "lv": "p", "m": "在计算上", "ex": "pixel-level generation is computationally expensive", "ov": "g"}, {"w": "unlabeled", "ipa": "ʌnˈleɪbld", "pos": "adj.", "lv": "p", "m": "无标签的", "ex": "from an unlabeled dataset"}, {"w": "objective", "ipa": "əbˈdʒektɪv", "pos": "n.", "lv": "4", "m": "目标函数", "ex": "using objective functions similar to supervised learning"}]}, {"sec": "2.1 · The Contrastive Learning Framework · 对比学习框架", "short": "Framework", "icon": "2.1", "words": [{"w": "stochastic", "ipa": "stəˈkæstɪk", "pos": "adj.", "lv": "p", "m": "随机的", "ex": "A stochastic data augmentation module"}, {"w": "correlated", "ipa": "kəˈreleɪtɪd", "pos": "adj.", "lv": "p", "m": "相关的", "ex": "resulting in two correlated views of the same example", "ov": "g"}, {"w": "sequential", "ipa": "sɪˈkwenʃl", "pos": "adj.", "lv": "p", "m": "顺序的，序列的", "ex": "we sequentially apply three simple augmentations", "ov": "g"}, {"w": "architecture", "ipa": "ˈɑːrkɪtektʃər", "pos": "n.", "lv": "4", "m": "架构，体系结构", "ex": "without requiring specialized architectures"}, {"w": "dimensionality", "ipa": "daɪˌmenʃəˈnæləti", "pos": "n.", "lv": "p", "m": "维度", "ex": "with the same input and output dimensionality"}, {"w": "identity", "ipa": "aɪˈdentəti", "pos": "n.", "lv": "4", "m": "恒等，身份", "ex": "identity mapping"}, {"w": "activation", "ipa": "ˌæktɪˈveɪʃn", "pos": "n.", "lv": "p", "m": "激活", "ex": "with one additional hidden layer and ReLU activation"}, {"w": "invariant", "ipa": "ɪnˈveəriənt", "pos": "adj.", "lv": "p", "m": "不变的", "ex": "z = g(h) is trained to be invariant to data transformation"}]}, {"sec": "2.2 · Training with Large Batch Size · 大批量训练", "short": "BatchSize", "icon": "2.2", "words": [{"w": "minibatch", "ipa": "ˈmɪnibætʃ", "pos": "n.", "lv": "p", "m": "小批量", "ex": "for sampled minibatch {xk}"}, {"w": "aggregating", "ipa": "ˈæɡrɪɡeɪtɪŋ", "pos": "v.", "lv": "6", "m": "聚合", "ex": "aggregating BN mean and variance over all devices"}, {"w": "distributed", "ipa": "dɪˈstrɪbjuːtɪd", "pos": "adj.", "lv": "p", "m": "分布式的", "ex": "In distributed training with data parallelism"}, {"w": "parallelism", "ipa": "ˈpærəlelɪzəm", "pos": "n.", "lv": "p", "m": "并行性", "ex": "data parallelism", "ov": "g"}, {"w": "leakage", "ipa": "ˈliːkɪdʒ", "pos": "n.", "lv": "6", "m": "泄漏", "ex": "the model can exploit the local information leakage"}, {"w": "optimizer", "ipa": "ˈɑːptɪmaɪzər", "pos": "n.", "lv": "p", "m": "优化器", "ex": "we use the LARS optimizer"}, {"w": "accelerator", "ipa": "əkˈseləreɪtər", "pos": "n.", "lv": "p", "m": "加速器", "ex": "using 32 to 128 cores depending on the batch size"}]}, {"sec": "2.3 · Evaluation Protocol · 评估协议", "short": "Protocol", "icon": "2.3", "words": [{"w": "protocol", "ipa": "ˈproʊtəkɑːl", "pos": "n.", "lv": "4", "m": "协议，规程", "ex": "Here we lay out the protocol for our empirical studies"}, {"w": "metric", "ipa": "ˈmetrɪk", "pos": "n.", "lv": "4", "m": "度量，指标", "ex": "11-point mAP metric"}, {"w": "benchmark", "ipa": "ˈbentʃmɑːrk", "pos": "n.", "lv": "p", "m": "基准", "ex": "ImageNet ILSVRC-2012 dataset"}, {"w": "baseline", "ipa": "ˈbeɪslaɪn", "pos": "n.", "lv": "p", "m": "基线", "ex": "a strong supervised baseline"}, {"w": "validation", "ipa": "ˌvælɪˈdeɪʃn", "pos": "n.", "lv": "6", "m": "验证", "ex": "We select the best hyperparameters on a validation set"}, {"w": "hyperparameter", "ipa": "ˌhaɪpərpəˈræmɪtər", "pos": "n.", "lv": "p", "m": "超参数", "ex": "hyperparameter tuning for each model-dataset combination"}]}, {"sec": "3. Data Augmentation · 数据增强", "short": "Augment", "icon": "3", "words": [{"w": "geometric", "ipa": "ˌdʒiəˈmetrɪk", "pos": "adj.", "lv": "6", "m": "几何的", "ex": "spatial/geometric transformation of data"}, {"w": "cropping", "ipa": "ˈkrɑːpɪŋ", "pos": "n.", "lv": "p", "m": "裁剪", "ex": "cropping and resizing with horizontal flipping"}, {"w": "flipping", "ipa": "ˈflɪpɪŋ", "pos": "n.", "lv": "p", "m": "翻转", "ex": "with horizontal flipping"}, {"w": "rotation", "ipa": "roʊˈteɪʃn", "pos": "n.", "lv": "4", "m": "旋转", "ex": "rotation and cutout"}, {"w": "saturation", "ipa": "ˌsætʃəˈreɪʃn", "pos": "n.", "lv": "6", "m": "饱和度", "ex": "brightness, contrast, saturation, hue"}, {"w": "brightness", "ipa": "ˈbraɪtnəs", "pos": "n.", "lv": "6", "m": "亮度", "ex": "brightness, contrast, saturation, hue"}, {"w": "contrast", "ipa": "ˈkɑːntræst", "pos": "n.", "lv": "4", "m": "对比度", "ex": "brightness, contrast, saturation, hue"}, {"w": "conjecture", "ipa": "kənˈdʒektʃər", "pos": "n./v.", "lv": "p", "m": "猜想，推测", "ex": "We conjecture that one serious issue"}, {"w": "histogram", "ipa": "ˈhɪstəɡræm", "pos": "n.", "lv": "6", "m": "直方图", "ex": "color histograms alone suffice to distinguish images"}, {"w": "generalizable", "ipa": "ˈdʒenərəlaɪzəbl", "pos": "adj.", "lv": "p", "m": "可泛化的", "ex": "to learn generalizable features"}, {"w": "shortcut", "ipa": "ˈʃɔːrtkʌt", "pos": "n.", "lv": "4", "m": "捷径", "ex": "Neural nets may exploit this shortcut"}, {"w": "sophisticated", "ipa": "səˈfɪstɪkeɪtɪd", "pos": "adj.", "lv": "4", "m": "复杂的，精密的", "ex": "AutoAugment, a sophisticated augmentation policy"}, {"w": "composition", "ipa": "ˌkɑːmpəˈzɪʃn", "pos": "n.", "lv": "4", "m": "组合，构成", "ex": "Composition of data augmentation operations is crucial"}, {"w": "stochastically", "ipa": "stəˈkæstɪkli", "pos": "adv.", "lv": "p", "m": "随机地", "ex": "compose them stochastically"}]}, {"sec": "4.1 · NT-Xent Loss · 归一化温度缩放交叉熵损失", "short": "NT-Xent", "icon": "4.1", "words": [{"w": "entropy", "ipa": "ˈent्रpi", "pos": "n.", "lv": "p", "m": "熵", "ex": "Normalized Temperature-scaled Cross Entropy loss"}, {"w": "normalized", "ipa": "ˈnɔːrməlaɪzd", "pos": "adj.", "lv": "p", "m": "归一化的", "ex": "Normalized Temperature-scaled Cross Entropy"}, {"w": "temperature", "ipa": "ˈtemprətʃər", "pos": "n.", "lv": "k", "m": "温度（参数）", "ex": "temperature parameter τ"}, {"w": "logistic", "ipa": "ləˈdʒɪstɪk", "pos": "adj.", "lv": "p", "m": "逻辑的", "ex": "NT-Logistic loss function"}, {"w": "gradient", "ipa": "ˈɡreɪdiənt", "pos": "n.", "lv": "6", "m": "梯度", "ex": "Gradient w.r.t. u"}, {"w": "semihard", "ipa": "ˌsemiˈhɑːrd", "pos": "adj.", "lv": "p", "m": "半难的", "ex": "using semi-hard negative mining"}, {"w": "distinguish", "ipa": "dɪˈstɪŋɡwɪʃ", "pos": "v.", "lv": "4", "m": "区分，辨别", "ex": "suffice to distinguish images"}, {"w": "mining", "ipa": "ˈmaɪnɪŋ", "pos": "n.", "lv": "4", "m": "挖掘", "ex": "semi-hard negative mining"}]}, {"sec": "4.2 · Projection Head · 投影头", "short": "ProjHead", "icon": "4.2", "words": [{"w": "projection", "ipa": "prəˈdʒekʃn", "pos": "n.", "lv": "p", "m": "投影", "ex": "A nonlinear projection head improves the representation quality"}, {"w": "dimension", "ipa": "dɪˈmenʃn", "pos": "n.", "lv": "4", "m": "维度", "ex": "regardless of output dimension"}, {"w": "hidden", "ipa": "ˈhɪdn", "pos": "adj.", "lv": "6", "m": "隐藏的", "ex": "one additional hidden layer"}, {"w": "orientation", "ipa": "ˌɔːriənˈteɪʃn", "pos": "n.", "lv": "6", "m": "方向，朝向", "ex": "the color or orientation of objects"}, {"w": "downstream", "ipa": "ˌdaʊnˈstriːm", "pos": "adj.", "lv": "p", "m": "下游的", "ex": "information that may be useful for the downstream task"}, {"w": "eigenvalue", "ipa": "ˈaɪɡənvæljuː", "pos": "n.", "lv": "p", "m": "特征值", "ex": "eigenvalue distribution of linear projection matrix"}]}, {"sec": "5. Training · 训练", "short": "Training", "icon": "5", "words": [{"w": "embedding", "ipa": "ɪmˈbedɪŋ", "pos": "n.", "lv": "p", "m": "嵌入，向量表示", "ex": "normalized embeddings"}, {"w": "cosine", "ipa": "ˈkoʊzaɪn", "pos": "n.", "lv": "p", "m": "余弦", "ex": "cosine similarity vs dot product"}, {"w": "ablation", "ipa": "æˈbleɪʃn", "pos": "n.", "lv": "p", "m": "消融实验", "ex": "we only test these operators in ablation"}, {"w": "convergence", "ipa": "kənˈvɜːrdʒəns", "pos": "n.", "lv": "p", "m": "收敛", "ex": "when training to convergence"}, {"w": "saturation", "ipa": "ˌsætʃəˈreɪʃn", "pos": "n.", "lv": "6", "m": "饱和", "ex": "the performance seems to saturate"}, {"w": "degradation", "ipa": "ˌdeɡrəˈdeɪʃn", "pos": "n.", "lv": "6", "m": "退化，下降", "ex": "causes a small degradation in performance"}, {"w": "correlated", "ipa": "kəˈreleɪtɪd", "pos": "adj.", "lv": "p", "m": "相关的", "ex": "they are almost linearly correlated", "ov": "g"}]}, {"sec": "6. Semi-Supervised & Transfer · 半监督与迁移学习", "short": "Transfer", "icon": "6", "words": [{"w": "semi-supervised", "ipa": "ˌsemi-suːˈpɜːrvɪzd", "pos": "adj.", "lv": "p", "m": "半监督的", "ex": "semi-supervised learning on ImageNet"}, {"w": "fine-tuned", "ipa": "faɪnˈtuːnd", "pos": "v.", "lv": "p", "m": "微调", "ex": "When fine-tuned on only 1% of the labels"}, {"w": "transfer", "ipa": "ˈtrænsfɜːr", "pos": "n./v.", "lv": "4", "m": "迁移", "ex": "Transfer learning performance"}, {"w": "logistic", "ipa": "ləˈdʒɪstɪk", "pos": "adj.", "lv": "p", "m": "逻辑的", "ex": "logistic regression classifier"}, {"w": "regularization", "ipa": "ˌreɡjələrɪˈzeɪʃn", "pos": "n.", "lv": "p", "m": "正则化", "ex": "an ℓ2-regularized multinomial logistic regression"}, {"w": "propagation", "ipa": "ˌprɑːpəˈɡeɪʃn", "pos": "n.", "lv": "6", "m": "传播", "ex": "label-propagation methods"}, {"w": "class-balanced", "ipa": "ˈklæs ˈbælənst", "pos": "adj.", "lv": "p", "m": "类别平衡的", "ex": "sample 1% or 10% of the labeled datasets in a class-balanced way"}, {"w": "outperform", "ipa": "ˌaʊtpərˈfɔːrm", "pos": "v.", "lv": "6", "m": "胜过，优于", "ex": "outperforming AlexNet with 100× fewer labels"}]}, {"sec": "7. Related Work · 相关工作", "short": "Related", "icon": "7", "words": [{"w": "instantiation", "ipa": "ɪnˌstænʃiˈeɪʃn", "pos": "n.", "lv": "p", "m": "实例化", "ex": "the specific instantiations may be different"}, {"w": "comprehensive", "ipa": "kɑːmprɪˈhensɪv", "pos": "adj.", "lv": "4", "m": "全面的", "ex": "We provide a comprehensive comparison"}, {"w": "superiority", "ipa": "suːˌpɪriˈɔːrəti", "pos": "n.", "lv": "6", "m": "优越性", "ex": "The superiority of our framework"}, {"w": "decouple", "ipa": "diːˈkʌpl", "pos": "v.", "lv": "p", "m": "解耦", "ex": "conveniently decouples the predictive task from other components", "ov": "t"}, {"w": "symmetrically", "ipa": "sɪˈmetrɪkli", "pos": "adv.", "lv": "6", "m": "对称地", "ex": "apply data augmentation symmetrically to both branches"}, {"w": "leverages", "ipa": "ˈlevərɪdʒɪz", "pos": "v.", "lv": "p", "m": "利用，借助", "ex": "NT-Xent loss function leverages normalization and temperature"}, {"w": "explicitly", "ipa": "ɪkˈsplɪsɪtli", "pos": "adv.", "lv": "4", "m": "显式地", "ex": "leverage an explicit memory bank"}, {"w": "parametric", "ipa": "ˌpærəˈmetrɪk", "pos": "adj.", "lv": "p", "m": "参数化的", "ex": "non-parametric instance discrimination"}]}, {"sec": "8. Conclusion · 结论", "short": "Conclusion", "icon": "8", "words": [{"w": "considerably", "ipa": "kənˈsɪdərəbli", "pos": "adv.", "lv": "4", "m": "相当大地", "ex": "we improve considerably over previous methods"}, {"w": "undervalued", "ipa": "ˌʌndərˈvæljuːd", "pos": "adj.", "lv": "p", "m": "被低估的", "ex": "self-supervised learning remains undervalued"}, {"w": "surge", "ipa": "sɜːrdʒ", "pos": "n.", "lv": "4", "m": "激增", "ex": "despite a recent surge in interest"}, {"w": "compose", "ipa": "kəmˈpoʊz", "pos": "v.", "lv": "4", "m": "组成，构成", "ex": "By combining our findings"}, {"w": "instantiate", "ipa": "ɪnˈstænʃieɪt", "pos": "v.", "lv": "p", "m": "实例化", "ex": "present a simple framework and its instantiation", "ov": "g"}]}, {"sec": "Appendix A · 数据增强细节", "short": "AugDetail", "icon": "A", "words": [{"w": "jittering", "ipa": "ˈdʒɪtərɪŋ", "pos": "n.", "lv": "p", "m": "抖动，抖动增强", "ex": "color jittering and color dropping"}, {"w": "grayscale", "ipa": "ˈɡreiskeɪl", "pos": "n.", "lv": "p", "m": "灰度", "ex": "tf.image.rgb_to_grayscale(image)"}, {"w": "kernel", "ipa": "ˈkɜːrnl", "pos": "n.", "lv": "6", "m": "核（高斯核）", "ex": "We blur the image using a Gaussian kernel"}, {"w": "stride", "ipa": "straɪd", "pos": "n.", "lv": "6", "m": "步幅（卷积步长）", "ex": "replace the first 7x7 Conv of stride 2"}, {"w": "bicubic", "ipa": "baɪˈkjuːbɪk", "pos": "adj.", "lv": "p", "m": "双三次的", "ex": "using bicubic resampling"}, {"w": "resampling", "ipa": "riːˈsæmplɪŋ", "pos": "n.", "lv": "p", "m": "重采样", "ex": "using bicubic resampling"}]}, {"sec": "Appendix B · 补充实验", "short": "ExpDetail", "icon": "B", "words": [{"w": "saturate", "ipa": "ˈsætʃəreɪt", "pos": "v.", "lv": "6", "m": "饱和", "ex": "the performance seems to saturate with a batch size of 8192"}, {"w": "logarithmically", "ipa": "ˌlɑːɡəˈrɪðmɪkli", "pos": "adv.", "lv": "p", "m": "对数地", "ex": "logarithmically spaced values"}, {"w": "empirical", "ipa": "ɪmˈpɪrɪkl", "pos": "adj.", "lv": "6", "m": "经验的，实证的", "ex": "our empirical studies"}, {"w": "initialization", "ipa": "ɪˌnɪʃəlaɪˈzeɪʃn", "pos": "n.", "lv": "p", "m": "初始化", "ex": "training from random initialization"}, {"w": "regularizer", "ipa": "ˈreɡjələraɪzər", "pos": "n.", "lv": "p", "m": "正则化器", "ex": "ℓ2-regularized multinomial logistic regression classifier"}]}, {"sec": "Appendix C · 设计选择对比", "short": "Design", "icon": "C", "words": [{"w": "decoupled", "ipa": "diːˈkʌipt", "pos": "adj.", "lv": "p", "m": "解耦的", "ex": "We decouple the prediction task and the encoder architecture"}, {"w": "aggregation", "ipa": "ˌæɡrɪˈɡeɪʃn", "pos": "n.", "lv": "p", "m": "聚合", "ex": "a context aggregation network", "ov": "g"}, {"w": "spectrum", "ipa": "ˈspektrəm", "pos": "n.", "lv": "6", "m": "范围，谱", "ex": "wider spectrum of resolutions"}, {"w": "invariant", "ipa": "ɪnˈveəriənt", "pos": "adj.", "lv": "p", "m": "不变的", "ex": "invariant information clustering"}, {"w": "triangular", "ipa": "traɪˈæŋɡjələr", "pos": "adj.", "lv": "6", "m": "三角形的", "ex": "Margin Triplet loss function"}]}, {"sec": "Abstract · 摘要", "short": "Abstract2", "icon": "Abs2", "words": [{"w": "depict", "ipa": "dɪˈpɪkt", "pos": "v.", "lv": "6", "m": "描述，描绘", "ex": "most mainstream approaches fall into one of two classes"}, {"w": "mainstream", "ipa": "ˈmeɪnstriːm", "pos": "adj./n.", "lv": "4", "m": "主流的", "ex": "most mainstream approaches"}, {"w": "pixel", "ipa": "ˈpɪksl", "pos": "n.", "lv": "p", "m": "像素", "ex": "model pixels in the input space"}, {"w": "computational", "ipa": "ˌkɑːmpjuˈteɪʃənl", "pos": "adj.", "lv": "p", "m": "计算的", "ex": "pixel-level generation is computationally expensive"}, {"w": "feature", "ipa": "ˈfiːtʃər", "pos": "n.", "lv": "4", "m": "特征", "ex": "to learn generalizable features"}]}, {"sec": "1. Introduction · 引言", "short": "Intro2", "icon": "1b", "words": [{"w": "residual", "ipa": "rɪˈzɪdʒuəl", "pos": "adj.", "lv": "6", "m": "残差的", "ex": "Deep residual learning for image recognition"}, {"w": "encoder", "ipa": "ɪnˈkoʊdər", "pos": "n.", "lv": "p", "m": "编码器", "ex": "A neural network base encoder f(·)"}, {"w": "decoder", "ipa": "diːˈkoʊdər", "pos": "n.", "lv": "p", "m": "解码器", "ex": "generative approaches use decoder networks"}, {"w": "normalization", "ipa": "ˌnɔːrməlaɪˈzeɪʃn", "pos": "n.", "lv": "6", "m": "归一化", "ex": "batch normalization"}, {"w": "convolutional", "ipa": "kənˈvɑːluːʃənl", "pos": "adj.", "lv": "p", "m": "卷积的", "ex": "deep convolutional neural networks"}, {"w": "dropout", "ipa": "ˈdrɑːpɑːt", "pos": "n.", "lv": "4", "m": "随机失活", "ex": "dropout and other regularization techniques"}, {"w": "pretext", "ipa": "ˈpriːtekst", "pos": "n.", "lv": "6", "m": "前置任务", "ex": "perform pretext tasks where both inputs and labels are derived from unlabeled data"}, {"w": "invariance", "ipa": "ɪnˈveəriəns", "pos": "n.", "lv": "p", "m": "不变性", "ex": "learning invariant representations"}]}, {"sec": "2.1 · The Contrastive Learning Framework · 对比学习框架", "short": "Framework2", "icon": "2.1b", "words": [{"w": "positive", "ipa": "ˈpɑːzətɪv", "pos": "adj.", "lv": "4", "m": "正的（正样本对）", "ex": "we consider as a positive pair"}, {"w": "negative", "ipa": "ˈneɡətɪv", "pos": "adj.", "lv": "4", "m": "负的（负样本对）", "ex": "16382 negative examples per positive pair"}, {"w": "agreement", "ipa": "əˈɡriːmənt", "pos": "n.", "lv": "4", "m": "一致性，一致", "ex": "maximizing agreement between differently augmented views"}, {"w": "latent", "ipa": "ˈleɪtnt", "pos": "adj.", "lv": "6", "m": "潜在的", "ex": "via a contrastive loss in the latent space"}, {"w": "compose", "ipa": "kəmˈpoʊz", "pos": "v.", "lv": "4", "m": "组合", "ex": "randomly composed data augmentations"}, {"w": "share", "ipa": "ʃer", "pos": "v.", "lv": "k", "m": "共享", "ex": "a single network shared for all randomly augmented views"}, {"w": "w.r.t.", "ipa": "/wɜːr ˈtuː/", "pos": "prep.", "lv": "p", "m": "关于（with respect to）", "ex": "Gradient w.r.t. u"}]}, {"sec": "3. Data Augmentation · 数据增强", "short": "Augment2", "icon": "3b", "words": [{"w": "distortion", "ipa": "dɪˈstɔːrʃn", "pos": "n.", "lv": "6", "m": "扭曲，失真", "ex": "random color distortion"}, {"w": "blurring", "ipa": "ˈblɜːrɪŋ", "pos": "n.", "lv": "p", "m": "模糊", "ex": "random Gaussian blur"}, {"w": "noise", "ipa": "nɔɪz", "pos": "n.", "lv": "4", "m": "噪声", "ex": "Gaussian noise"}, {"w": "patch", "ipa": "pætʃ", "pos": "n.", "lv": "4", "m": "补丁，块", "ex": "most patches from an image share a similar color distribution"}, {"w": "insufficient", "ipa": "ˌɪnsəˈfɪʃnt", "pos": "adj.", "lv": "4", "m": "不足的", "ex": "no single transformation suffices to learn good representations"}, {"w": "suffice", "ipa": "səˈfaɪs", "pos": "v.", "lv": "6", "m": "足够", "ex": "color histograms alone suffice to distinguish images"}, {"w": "spatial", "ipa": "ˈspeɪʃl", "pos": "adj.", "lv": "6", "m": "空间的", "ex": "spatial/geometric transformation"}, {"w": "appearance", "ipa": "əˈpɪrəns", "pos": "n.", "lv": "4", "m": "外观，外表", "ex": "appearance transformation"}, {"w": "hue", "ipa": "hjuː", "pos": "n.", "lv": "p", "m": "色调", "ex": "brightness, contrast, saturation, hue"}, {"w": "symmetric", "ipa": "sɪˈmetrɪk", "pos": "adj.", "lv": "p", "m": "对称的", "ex": "apply augmentation symmetrically to both branches"}, {"w": "asymmetric", "ipa": "ˌeɪsɪˈmetrɪk", "pos": "adj.", "lv": "p", "m": "不对称的", "ex": "asymmetric data augmentation"}, {"w": "generalization", "ipa": "ˌdʒenərəlaɪˈzeɪʃn", "pos": "n.", "lv": "4", "m": "泛化", "ex": "to learn generalizable features"}]}, {"sec": "4.1 · NT-Xent Loss · 归一化温度缩放交叉熵损失", "short": "NT-Xent2", "icon": "4.1b", "words": [{"w": "softmax", "ipa": "ˈsɒftmæks", "pos": "n.", "lv": "p", "m": "softmax函数", "ex": "softmax cross-entropy objective"}, {"w": "sigmoid", "ipa": "ˈsɪɡmɔɪd", "pos": "n.", "lv": "p", "m": "sigmoid函数", "ex": "log sigmoid function"}, {"w": "denominator", "ipa": "dɪˈnɑːmɪneɪtər", "pos": "n.", "lv": "p", "m": "分母", "ex": "the partition function in the denominator"}, {"w": "numerator", "ipa": "ˈnuːməreɪtər", "pos": "n.", "lv": "p", "m": "分子", "ex": "the positive example in the numerator"}, {"w": "pairwise", "ipa": "ˈperwaɪz", "pos": "adj.", "lv": "p", "m": "成对的", "ex": "pairwise similarity"}, {"w": "cosine", "ipa": "ˈkoʊzaɪn", "pos": "n.", "lv": "p", "m": "余弦", "ex": "cosine similarity"}, {"w": "dot product", "ipa": "dɑːt ˈprɑːdʌkt", "pos": "n.", "lv": "p", "m": "点积", "ex": "cosine similarity vs dot product"}, {"w": "partition", "ipa": "pɑːrˈtɪʃn", "pos": "n.", "lv": "6", "m": "分区，分配函数", "ex": "the partition function"}]}, {"sec": "5. Training · 训练", "short": "Training2", "icon": "5b", "words": [{"w": "optimizer", "ipa": "ˈɑːptɪmaɪzər", "pos": "n.", "lv": "p", "m": "优化器", "ex": "SGD/Momentum optimizer"}, {"w": "momentum", "ipa": "ˈmoʊmentəm", "pos": "n.", "lv": "6", "m": "动量", "ex": "Nesterov momentum optimizer"}, {"w": "learning rate", "ipa": "ˈlɜːrnɪŋ reɪt", "pos": "n.", "lv": "p", "m": "学习率", "ex": "linear scaling of learning rate"}, {"w": "epochs", "ipa": "ˈiːpɑːks", "pos": "n.", "lv": "6", "m": "训练轮次", "ex": "trained for 100 epochs"}, {"w": "batch", "ipa": "bætʃ", "pos": "n.", "lv": "6", "m": "批次", "ex": "larger batch sizes"}, {"w": "depth", "ipa": "depθ", "pos": "n.", "lv": "4", "m": "深度", "ex": "varied depth and width"}, {"w": "width", "ipa": "wɪdθ", "pos": "n.", "lv": "4", "m": "宽度", "ex": "varied depth and width"}, {"w": "residual", "ipa": "rɪˈzɪdʒuəl", "pos": "adj.", "lv": "6", "m": "残差的", "ex": "ResNet-50 architecture"}, {"w": "ensemble", "ipa": "ɪnˈsɛmbl", "pos": "n.", "lv": "p", "m": "集成", "ex": "PIRL-ens. ensemble model"}]}, {"sec": "6. Semi-Supervised & Transfer · 半监督与迁移学习", "short": "Transfer2", "icon": "6b", "words": [{"w": "label fraction", "ipa": "ˈleɪbəl ˈfrækʃn", "pos": "n.", "lv": "p", "m": "标签比例", "ex": "1% or 10% of the labeled datasets"}, {"w": "fine-tuning", "ipa": "faɪnˈtuːnɪŋ", "pos": "n.", "lv": "p", "m": "微调", "ex": "fine-tune the whole base network"}, {"w": "regularizer", "ipa": "ˈreɡjələraɪzər", "pos": "n.", "lv": "p", "m": "正则化项", "ex": "without regularization"}, {"w": "interpolation", "ipa": "ɪnˌtɜːrpəˈleɪʃn", "pos": "n.", "lv": "p", "m": "插值", "ex": "bicubic interpolation", "ov": "g"}, {"w": "multinomial", "ipa": "ˌmʌltɪˈnoʊmiəl", "pos": "adj.", "lv": "p", "m": "多项式的", "ex": "multinomial logistic regression"}, {"w": "L-BFGS", "ipa": "/ɛl bɛf dʒiː ɛs/", "pos": "n.", "lv": "p", "m": "L-BFGS优化算法", "ex": "We used L-BFGS to optimize the softmax cross-entropy objective"}]}, {"sec": "7. Related Work · 相关工作", "short": "Related2", "icon": "7b", "words": [{"w": "memory bank", "ipa": "ˈmeməri bæŋk", "pos": "n.", "lv": "p", "m": "记忆库", "ex": "leverage an explicit memory bank"}, {"w": "instance discrimination", "ipa": "ˈɪnstəns dɪˌskrɪmɪˈneɪʃn", "pos": "n.", "lv": "p", "m": "实例判别", "ex": "non-parametric instance discrimination"}, {"w": "mutual information", "ipa": "ˈmjuːtʃuəl ˌɪnfərˈmeɪʃn", "pos": "n.", "lv": "p", "m": "互信息", "ex": "maximizing mutual information across views"}, {"w": "pretraining", "ipa": "priːˈtreɪnɪŋ", "pos": "n.", "lv": "p", "m": "预训练", "ex": "pretrained on ImageNet"}, {"w": "architecture", "ipa": "ˈɑːrkɪtektʃər", "pos": "n.", "lv": "4", "m": "架构", "ex": "standard and more powerful ResNets"}, {"w": "receptive field", "ipa": "rɪˈsiːptɪv fiːld", "pos": "n.", "lv": "p", "m": "感受野", "ex": "constraining the receptive field"}]}, {"sec": "Appendix B · 补充实验", "short": "ExpDetail2", "icon": "B2", "words": [{"w": "fine-grained", "ipa": "faɪn ɡreɪnd", "pos": "adj.", "lv": "p", "m": "细粒度的", "ex": "fine-grained visual categorization"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "lv": "4", "m": "准确率", "ex": "top-1 accuracy"}, {"w": "permutation", "ipa": "ˌpɜːrmjuˈteɪʃn", "pos": "n.", "lv": "p", "m": "置换，排列", "ex": "permutation test", "ov": "g"}, {"w": "splits", "ipa": "splɪts", "pos": "n.", "lv": "4", "m": "划分", "ex": "multiple train/test splits"}, {"w": "per-class", "ipa": "pɜːr klæs", "pos": "adj.", "lv": "p", "m": "每类的", "ex": "mean per-class accuracy"}]}];
+const ITEMS=[{"w": "contrastive", "ipa": "kənˈtrɑːstɪv", "pos": "adj.", "m": "对比的，对照的", "ex": "a simple framework for contrastive learning of visual representations", "lv": "考博", "sec": "Abstract"}, {"w": "framework", "ipa": "ˈfreɪmwɜːrk", "pos": "n.", "m": "框架，体系", "ex": "a simple framework for contrastive learning of visual representations", "lv": "四级", "sec": "Abstract"}, {"w": "representation", "ipa": "ˌreprɪzenˈteɪʃn", "pos": "n.", "m": "表示，表征", "ex": "contrastive learning of visual representations", "lv": "六级", "sec": "Abstract"}, {"w": "supervised", "ipa": "suːˈpɜːrvɪzd", "pos": "adj.", "m": "有监督的", "ex": "self-supervised learning algorithms", "lv": "考博", "sec": "Abstract"}, {"w": "specialized", "ipa": "ˈspeʃəlaɪzd", "pos": "adj.", "m": "专门的，特化的", "ex": "without requiring specialized architectures", "lv": "考博", "sec": "Abstract"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "增强，扩充", "ex": "composition of data augmentations plays a critical role", "lv": "考博", "sec": "Abstract"}, {"w": "transformation", "ipa": "ˌtrænsfərˈmeɪʃn", "pos": "n.", "m": "变换，转化", "ex": "a learnable nonlinear transformation between the representation and the contrastive loss", "lv": "四级", "sec": "Abstract"}, {"w": "nonlinear", "ipa": "nɒnˈlɪniər", "pos": "adj.", "m": "非线性的", "ex": "a learnable nonlinear transformation", "lv": "考博", "sec": "Abstract"}, {"w": "substantially", "ipa": "səbˈstænʃəli", "pos": "adv.", "m": "显著地，实质上", "ex": "substantially improves the quality of the learned representations", "lv": "四级", "sec": "Abstract"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "m": "准确率，精确度", "ex": "achieves 76.5% top-1 accuracy", "lv": "四级", "sec": "Abstract"}, {"w": "generative", "ipa": "ˈdʒenərətɪv", "pos": "adj.", "m": "生成式的", "ex": "Generative approaches learn to generate or otherwise model pixels", "lv": "六级", "sec": "Intro"}, {"w": "discriminative", "ipa": "dɪˈskrɪmɪnətɪv", "pos": "adj.", "m": "判别式的", "ex": "Discriminative approaches learn representations using objective functions", "lv": "考博", "sec": "Intro"}, {"w": "pretext", "ipa": "ˈpriːtekst", "pos": "n.", "m": "前置任务", "ex": "train networks to perform pretext tasks", "lv": "六级", "sec": "Intro"}, {"w": "heuristic", "ipa": "hjʊˈrɪstɪk", "pos": "adj./n.", "m": "启发式的", "ex": "Many such approaches have relied on heuristics", "lv": "考博", "sec": "Intro"}, {"w": "latent", "ipa": "ˈleɪtnt", "pos": "adj.", "m": "潜在的，隐变量的", "ex": "maximizing agreement between differently augmented views in the latent space", "lv": "六级", "sec": "Intro"}, {"w": "computationally", "ipa": "ˌkɒmpjuˈteɪʃənəli", "pos": "adv.", "m": "在计算上", "ex": "pixel-level generation is computationally expensive", "lv": "考博", "sec": "Intro"}, {"w": "unlabeled", "ipa": "ʌnˈleɪbld", "pos": "adj.", "m": "无标签的", "ex": "from an unlabeled dataset", "lv": "考博", "sec": "Intro"}, {"w": "objective", "ipa": "əbˈdʒektɪv", "pos": "n.", "m": "目标函数", "ex": "using objective functions similar to supervised learning", "lv": "四级", "sec": "Intro"}, {"w": "stochastic", "ipa": "stəˈkæstɪk", "pos": "adj.", "m": "随机的", "ex": "A stochastic data augmentation module", "lv": "考博", "sec": "Framework"}, {"w": "correlated", "ipa": "kəˈreleɪtɪd", "pos": "adj.", "m": "相关的", "ex": "resulting in two correlated views of the same example", "lv": "考博", "sec": "Framework"}, {"w": "sequential", "ipa": "sɪˈkwenʃl", "pos": "adj.", "m": "顺序的，序列的", "ex": "we sequentially apply three simple augmentations", "lv": "考博", "sec": "Framework"}, {"w": "architecture", "ipa": "ˈɑːrkɪtektʃər", "pos": "n.", "m": "架构，体系结构", "ex": "without requiring specialized architectures", "lv": "四级", "sec": "Framework"}, {"w": "dimensionality", "ipa": "daɪˌmenʃəˈnæləti", "pos": "n.", "m": "维度", "ex": "with the same input and output dimensionality", "lv": "考博", "sec": "Framework"}, {"w": "identity", "ipa": "aɪˈdentəti", "pos": "n.", "m": "恒等，身份", "ex": "identity mapping", "lv": "四级", "sec": "Framework"}, {"w": "activation", "ipa": "ˌæktɪˈveɪʃn", "pos": "n.", "m": "激活", "ex": "with one additional hidden layer and ReLU activation", "lv": "考博", "sec": "Framework"}, {"w": "invariant", "ipa": "ɪnˈveəriənt", "pos": "adj.", "m": "不变的", "ex": "z = g(h) is trained to be invariant to data transformation", "lv": "考博", "sec": "Framework"}, {"w": "minibatch", "ipa": "ˈmɪnibætʃ", "pos": "n.", "m": "小批量", "ex": "for sampled minibatch {xk}", "lv": "考博", "sec": "BatchSize"}, {"w": "aggregating", "ipa": "ˈæɡrɪɡeɪtɪŋ", "pos": "v.", "m": "聚合", "ex": "aggregating BN mean and variance over all devices", "lv": "六级", "sec": "BatchSize"}, {"w": "distributed", "ipa": "dɪˈstrɪbjuːtɪd", "pos": "adj.", "m": "分布式的", "ex": "In distributed training with data parallelism", "lv": "考博", "sec": "BatchSize"}, {"w": "parallelism", "ipa": "ˈpærəlelɪzəm", "pos": "n.", "m": "并行性", "ex": "data parallelism", "lv": "考博", "sec": "BatchSize"}, {"w": "leakage", "ipa": "ˈliːkɪdʒ", "pos": "n.", "m": "泄漏", "ex": "the model can exploit the local information leakage", "lv": "六级", "sec": "BatchSize"}, {"w": "optimizer", "ipa": "ˈɑːptɪmaɪzər", "pos": "n.", "m": "优化器", "ex": "we use the LARS optimizer", "lv": "考博", "sec": "BatchSize"}, {"w": "accelerator", "ipa": "əkˈseləreɪtər", "pos": "n.", "m": "加速器", "ex": "using 32 to 128 cores depending on the batch size", "lv": "考博", "sec": "BatchSize"}, {"w": "protocol", "ipa": "ˈproʊtəkɑːl", "pos": "n.", "m": "协议，规程", "ex": "Here we lay out the protocol for our empirical studies", "lv": "四级", "sec": "Protocol"}, {"w": "metric", "ipa": "ˈmetrɪk", "pos": "n.", "m": "度量，指标", "ex": "11-point mAP metric", "lv": "四级", "sec": "Protocol"}, {"w": "benchmark", "ipa": "ˈbentʃmɑːrk", "pos": "n.", "m": "基准", "ex": "ImageNet ILSVRC-2012 dataset", "lv": "考博", "sec": "Protocol"}, {"w": "baseline", "ipa": "ˈbeɪslaɪn", "pos": "n.", "m": "基线", "ex": "a strong supervised baseline", "lv": "考博", "sec": "Protocol"}, {"w": "validation", "ipa": "ˌvælɪˈdeɪʃn", "pos": "n.", "m": "验证", "ex": "We select the best hyperparameters on a validation set", "lv": "六级", "sec": "Protocol"}, {"w": "hyperparameter", "ipa": "ˌhaɪpərpəˈræmɪtər", "pos": "n.", "m": "超参数", "ex": "hyperparameter tuning for each model-dataset combination", "lv": "考博", "sec": "Protocol"}, {"w": "geometric", "ipa": "ˌdʒiəˈmetrɪk", "pos": "adj.", "m": "几何的", "ex": "spatial/geometric transformation of data", "lv": "六级", "sec": "Augment"}, {"w": "cropping", "ipa": "ˈkrɑːpɪŋ", "pos": "n.", "m": "裁剪", "ex": "cropping and resizing with horizontal flipping", "lv": "考博", "sec": "Augment"}, {"w": "flipping", "ipa": "ˈflɪpɪŋ", "pos": "n.", "m": "翻转", "ex": "with horizontal flipping", "lv": "考博", "sec": "Augment"}, {"w": "rotation", "ipa": "roʊˈteɪʃn", "pos": "n.", "m": "旋转", "ex": "rotation and cutout", "lv": "四级", "sec": "Augment"}, {"w": "saturation", "ipa": "ˌsætʃəˈreɪʃn", "pos": "n.", "m": "饱和度", "ex": "brightness, contrast, saturation, hue", "lv": "六级", "sec": "Augment"}, {"w": "brightness", "ipa": "ˈbraɪtnəs", "pos": "n.", "m": "亮度", "ex": "brightness, contrast, saturation, hue", "lv": "六级", "sec": "Augment"}, {"w": "contrast", "ipa": "ˈkɑːntræst", "pos": "n.", "m": "对比度", "ex": "brightness, contrast, saturation, hue", "lv": "四级", "sec": "Augment"}, {"w": "conjecture", "ipa": "kənˈdʒektʃər", "pos": "n./v.", "m": "猜想，推测", "ex": "We conjecture that one serious issue", "lv": "考博", "sec": "Augment"}, {"w": "histogram", "ipa": "ˈhɪstəɡræm", "pos": "n.", "m": "直方图", "ex": "color histograms alone suffice to distinguish images", "lv": "六级", "sec": "Augment"}, {"w": "generalizable", "ipa": "ˈdʒenərəlaɪzəbl", "pos": "adj.", "m": "可泛化的", "ex": "to learn generalizable features", "lv": "考博", "sec": "Augment"}, {"w": "shortcut", "ipa": "ˈʃɔːrtkʌt", "pos": "n.", "m": "捷径", "ex": "Neural nets may exploit this shortcut", "lv": "四级", "sec": "Augment"}, {"w": "sophisticated", "ipa": "səˈfɪstɪkeɪtɪd", "pos": "adj.", "m": "复杂的，精密的", "ex": "AutoAugment, a sophisticated augmentation policy", "lv": "四级", "sec": "Augment"}, {"w": "composition", "ipa": "ˌkɑːmpəˈzɪʃn", "pos": "n.", "m": "组合，构成", "ex": "Composition of data augmentation operations is crucial", "lv": "四级", "sec": "Augment"}, {"w": "stochastically", "ipa": "stəˈkæstɪkli", "pos": "adv.", "m": "随机地", "ex": "compose them stochastically", "lv": "考博", "sec": "Augment"}, {"w": "entropy", "ipa": "ˈent्रpi", "pos": "n.", "m": "熵", "ex": "Normalized Temperature-scaled Cross Entropy loss", "lv": "考博", "sec": "NT-Xent"}, {"w": "normalized", "ipa": "ˈnɔːrməlaɪzd", "pos": "adj.", "m": "归一化的", "ex": "Normalized Temperature-scaled Cross Entropy", "lv": "考博", "sec": "NT-Xent"}, {"w": "temperature", "ipa": "ˈtemprətʃər", "pos": "n.", "m": "温度（参数）", "ex": "temperature parameter τ", "lv": "考研", "sec": "NT-Xent"}, {"w": "logistic", "ipa": "ləˈdʒɪstɪk", "pos": "adj.", "m": "逻辑的", "ex": "NT-Logistic loss function", "lv": "考博", "sec": "NT-Xent"}, {"w": "gradient", "ipa": "ˈɡreɪdiənt", "pos": "n.", "m": "梯度", "ex": "Gradient w.r.t. u", "lv": "六级", "sec": "NT-Xent"}, {"w": "semihard", "ipa": "ˌsemiˈhɑːrd", "pos": "adj.", "m": "半难的", "ex": "using semi-hard negative mining", "lv": "考博", "sec": "NT-Xent"}, {"w": "distinguish", "ipa": "dɪˈstɪŋɡwɪʃ", "pos": "v.", "m": "区分，辨别", "ex": "suffice to distinguish images", "lv": "四级", "sec": "NT-Xent"}, {"w": "mining", "ipa": "ˈmaɪnɪŋ", "pos": "n.", "m": "挖掘", "ex": "semi-hard negative mining", "lv": "四级", "sec": "NT-Xent"}, {"w": "projection", "ipa": "prəˈdʒekʃn", "pos": "n.", "m": "投影", "ex": "A nonlinear projection head improves the representation quality", "lv": "考博", "sec": "ProjHead"}, {"w": "dimension", "ipa": "dɪˈmenʃn", "pos": "n.", "m": "维度", "ex": "regardless of output dimension", "lv": "四级", "sec": "ProjHead"}, {"w": "hidden", "ipa": "ˈhɪdn", "pos": "adj.", "m": "隐藏的", "ex": "one additional hidden layer", "lv": "六级", "sec": "ProjHead"}, {"w": "orientation", "ipa": "ˌɔːriənˈteɪʃn", "pos": "n.", "m": "方向，朝向", "ex": "the color or orientation of objects", "lv": "六级", "sec": "ProjHead"}, {"w": "downstream", "ipa": "ˌdaʊnˈstriːm", "pos": "adj.", "m": "下游的", "ex": "information that may be useful for the downstream task", "lv": "考博", "sec": "ProjHead"}, {"w": "eigenvalue", "ipa": "ˈaɪɡənvæljuː", "pos": "n.", "m": "特征值", "ex": "eigenvalue distribution of linear projection matrix", "lv": "考博", "sec": "ProjHead"}, {"w": "embedding", "ipa": "ɪmˈbedɪŋ", "pos": "n.", "m": "嵌入，向量表示", "ex": "normalized embeddings", "lv": "考博", "sec": "Training"}, {"w": "cosine", "ipa": "ˈkoʊzaɪn", "pos": "n.", "m": "余弦", "ex": "cosine similarity vs dot product", "lv": "考博", "sec": "Training"}, {"w": "ablation", "ipa": "æˈbleɪʃn", "pos": "n.", "m": "消融实验", "ex": "we only test these operators in ablation", "lv": "考博", "sec": "Training"}, {"w": "convergence", "ipa": "kənˈvɜːrdʒəns", "pos": "n.", "m": "收敛", "ex": "when training to convergence", "lv": "考博", "sec": "Training"}, {"w": "saturation", "ipa": "ˌsætʃəˈreɪʃn", "pos": "n.", "m": "饱和", "ex": "the performance seems to saturate", "lv": "六级", "sec": "Training"}, {"w": "degradation", "ipa": "ˌdeɡrəˈdeɪʃn", "pos": "n.", "m": "退化，下降", "ex": "causes a small degradation in performance", "lv": "六级", "sec": "Training"}, {"w": "correlated", "ipa": "kəˈreleɪtɪd", "pos": "adj.", "m": "相关的", "ex": "they are almost linearly correlated", "lv": "考博", "sec": "Training"}, {"w": "semi-supervised", "ipa": "ˌsemi-suːˈpɜːrvɪzd", "pos": "adj.", "m": "半监督的", "ex": "semi-supervised learning on ImageNet", "lv": "考博", "sec": "Transfer"}, {"w": "fine-tuned", "ipa": "faɪnˈtuːnd", "pos": "v.", "m": "微调", "ex": "When fine-tuned on only 1% of the labels", "lv": "考博", "sec": "Transfer"}, {"w": "transfer", "ipa": "ˈtrænsfɜːr", "pos": "n./v.", "m": "迁移", "ex": "Transfer learning performance", "lv": "四级", "sec": "Transfer"}, {"w": "logistic", "ipa": "ləˈdʒɪstɪk", "pos": "adj.", "m": "逻辑的", "ex": "logistic regression classifier", "lv": "考博", "sec": "Transfer"}, {"w": "regularization", "ipa": "ˌreɡjələrɪˈzeɪʃn", "pos": "n.", "m": "正则化", "ex": "an ℓ2-regularized multinomial logistic regression", "lv": "考博", "sec": "Transfer"}, {"w": "propagation", "ipa": "ˌprɑːpəˈɡeɪʃn", "pos": "n.", "m": "传播", "ex": "label-propagation methods", "lv": "六级", "sec": "Transfer"}, {"w": "class-balanced", "ipa": "ˈklæs ˈbælənst", "pos": "adj.", "m": "类别平衡的", "ex": "sample 1% or 10% of the labeled datasets in a class-balanced way", "lv": "考博", "sec": "Transfer"}, {"w": "outperform", "ipa": "ˌaʊtpərˈfɔːrm", "pos": "v.", "m": "胜过，优于", "ex": "outperforming AlexNet with 100× fewer labels", "lv": "六级", "sec": "Transfer"}, {"w": "instantiation", "ipa": "ɪnˌstænʃiˈeɪʃn", "pos": "n.", "m": "实例化", "ex": "the specific instantiations may be different", "lv": "考博", "sec": "Related"}, {"w": "comprehensive", "ipa": "kɑːmprɪˈhensɪv", "pos": "adj.", "m": "全面的", "ex": "We provide a comprehensive comparison", "lv": "四级", "sec": "Related"}, {"w": "superiority", "ipa": "suːˌpɪriˈɔːrəti", "pos": "n.", "m": "优越性", "ex": "The superiority of our framework", "lv": "六级", "sec": "Related"}, {"w": "decouple", "ipa": "diːˈkʌpl", "pos": "v.", "m": "解耦", "ex": "conveniently decouples the predictive task from other components", "lv": "考博", "sec": "Related"}, {"w": "symmetrically", "ipa": "sɪˈmetrɪkli", "pos": "adv.", "m": "对称地", "ex": "apply data augmentation symmetrically to both branches", "lv": "六级", "sec": "Related"}, {"w": "leverages", "ipa": "ˈlevərɪdʒɪz", "pos": "v.", "m": "利用，借助", "ex": "NT-Xent loss function leverages normalization and temperature", "lv": "考博", "sec": "Related"}, {"w": "explicitly", "ipa": "ɪkˈsplɪsɪtli", "pos": "adv.", "m": "显式地", "ex": "leverage an explicit memory bank", "lv": "四级", "sec": "Related"}, {"w": "parametric", "ipa": "ˌpærəˈmetrɪk", "pos": "adj.", "m": "参数化的", "ex": "non-parametric instance discrimination", "lv": "考博", "sec": "Related"}, {"w": "considerably", "ipa": "kənˈsɪdərəbli", "pos": "adv.", "m": "相当大地", "ex": "we improve considerably over previous methods", "lv": "四级", "sec": "Conclusion"}, {"w": "undervalued", "ipa": "ˌʌndərˈvæljuːd", "pos": "adj.", "m": "被低估的", "ex": "self-supervised learning remains undervalued", "lv": "考博", "sec": "Conclusion"}, {"w": "surge", "ipa": "sɜːrdʒ", "pos": "n.", "m": "激增", "ex": "despite a recent surge in interest", "lv": "四级", "sec": "Conclusion"}, {"w": "compose", "ipa": "kəmˈpoʊz", "pos": "v.", "m": "组成，构成", "ex": "By combining our findings", "lv": "四级", "sec": "Conclusion"}, {"w": "instantiate", "ipa": "ɪnˈstænʃieɪt", "pos": "v.", "m": "实例化", "ex": "present a simple framework and its instantiation", "lv": "考博", "sec": "Conclusion"}, {"w": "jittering", "ipa": "ˈdʒɪtərɪŋ", "pos": "n.", "m": "抖动，抖动增强", "ex": "color jittering and color dropping", "lv": "考博", "sec": "AugDetail"}, {"w": "grayscale", "ipa": "ˈɡreiskeɪl", "pos": "n.", "m": "灰度", "ex": "tf.image.rgb_to_grayscale(image)", "lv": "考博", "sec": "AugDetail"}, {"w": "kernel", "ipa": "ˈkɜːrnl", "pos": "n.", "m": "核（高斯核）", "ex": "We blur the image using a Gaussian kernel", "lv": "六级", "sec": "AugDetail"}, {"w": "stride", "ipa": "straɪd", "pos": "n.", "m": "步幅（卷积步长）", "ex": "replace the first 7x7 Conv of stride 2", "lv": "六级", "sec": "AugDetail"}, {"w": "bicubic", "ipa": "baɪˈkjuːbɪk", "pos": "adj.", "m": "双三次的", "ex": "using bicubic resampling", "lv": "考博", "sec": "AugDetail"}, {"w": "resampling", "ipa": "riːˈsæmplɪŋ", "pos": "n.", "m": "重采样", "ex": "using bicubic resampling", "lv": "考博", "sec": "AugDetail"}, {"w": "saturate", "ipa": "ˈsætʃəreɪt", "pos": "v.", "m": "饱和", "ex": "the performance seems to saturate with a batch size of 8192", "lv": "六级", "sec": "ExpDetail"}, {"w": "logarithmically", "ipa": "ˌlɑːɡəˈrɪðmɪkli", "pos": "adv.", "m": "对数地", "ex": "logarithmically spaced values", "lv": "考博", "sec": "ExpDetail"}, {"w": "empirical", "ipa": "ɪmˈpɪrɪkl", "pos": "adj.", "m": "经验的，实证的", "ex": "our empirical studies", "lv": "六级", "sec": "ExpDetail"}, {"w": "initialization", "ipa": "ɪˌnɪʃəlaɪˈzeɪʃn", "pos": "n.", "m": "初始化", "ex": "training from random initialization", "lv": "考博", "sec": "ExpDetail"}, {"w": "regularizer", "ipa": "ˈreɡjələraɪzər", "pos": "n.", "m": "正则化器", "ex": "ℓ2-regularized multinomial logistic regression classifier", "lv": "考博", "sec": "ExpDetail"}, {"w": "decoupled", "ipa": "diːˈkʌipt", "pos": "adj.", "m": "解耦的", "ex": "We decouple the prediction task and the encoder architecture", "lv": "考博", "sec": "Design"}, {"w": "aggregation", "ipa": "ˌæɡrɪˈɡeɪʃn", "pos": "n.", "m": "聚合", "ex": "a context aggregation network", "lv": "考博", "sec": "Design"}, {"w": "spectrum", "ipa": "ˈspektrəm", "pos": "n.", "m": "范围，谱", "ex": "wider spectrum of resolutions", "lv": "六级", "sec": "Design"}, {"w": "invariant", "ipa": "ɪnˈveəriənt", "pos": "adj.", "m": "不变的", "ex": "invariant information clustering", "lv": "考博", "sec": "Design"}, {"w": "triangular", "ipa": "traɪˈæŋɡjələr", "pos": "adj.", "m": "三角形的", "ex": "Margin Triplet loss function", "lv": "六级", "sec": "Design"}, {"w": "depict", "ipa": "dɪˈpɪkt", "pos": "v.", "m": "描述，描绘", "ex": "most mainstream approaches fall into one of two classes", "lv": "六级", "sec": "Abstract2"}, {"w": "mainstream", "ipa": "ˈmeɪnstriːm", "pos": "adj./n.", "m": "主流的", "ex": "most mainstream approaches", "lv": "四级", "sec": "Abstract2"}, {"w": "pixel", "ipa": "ˈpɪksl", "pos": "n.", "m": "像素", "ex": "model pixels in the input space", "lv": "考博", "sec": "Abstract2"}, {"w": "computational", "ipa": "ˌkɑːmpjuˈteɪʃənl", "pos": "adj.", "m": "计算的", "ex": "pixel-level generation is computationally expensive", "lv": "考博", "sec": "Abstract2"}, {"w": "feature", "ipa": "ˈfiːtʃər", "pos": "n.", "m": "特征", "ex": "to learn generalizable features", "lv": "四级", "sec": "Abstract2"}, {"w": "residual", "ipa": "rɪˈzɪdʒuəl", "pos": "adj.", "m": "残差的", "ex": "Deep residual learning for image recognition", "lv": "六级", "sec": "Intro2"}, {"w": "encoder", "ipa": "ɪnˈkoʊdər", "pos": "n.", "m": "编码器", "ex": "A neural network base encoder f(·)", "lv": "考博", "sec": "Intro2"}, {"w": "decoder", "ipa": "diːˈkoʊdər", "pos": "n.", "m": "解码器", "ex": "generative approaches use decoder networks", "lv": "考博", "sec": "Intro2"}, {"w": "normalization", "ipa": "ˌnɔːrməlaɪˈzeɪʃn", "pos": "n.", "m": "归一化", "ex": "batch normalization", "lv": "六级", "sec": "Intro2"}, {"w": "convolutional", "ipa": "kənˈvɑːluːʃənl", "pos": "adj.", "m": "卷积的", "ex": "deep convolutional neural networks", "lv": "考博", "sec": "Intro2"}, {"w": "dropout", "ipa": "ˈdrɑːpɑːt", "pos": "n.", "m": "随机失活", "ex": "dropout and other regularization techniques", "lv": "四级", "sec": "Intro2"}, {"w": "pretext", "ipa": "ˈpriːtekst", "pos": "n.", "m": "前置任务", "ex": "perform pretext tasks where both inputs and labels are derived from unlabeled data", "lv": "六级", "sec": "Intro2"}, {"w": "invariance", "ipa": "ɪnˈveəriəns", "pos": "n.", "m": "不变性", "ex": "learning invariant representations", "lv": "考博", "sec": "Intro2"}, {"w": "positive", "ipa": "ˈpɑːzətɪv", "pos": "adj.", "m": "正的（正样本对）", "ex": "we consider as a positive pair", "lv": "四级", "sec": "Framework2"}, {"w": "negative", "ipa": "ˈneɡətɪv", "pos": "adj.", "m": "负的（负样本对）", "ex": "16382 negative examples per positive pair", "lv": "四级", "sec": "Framework2"}, {"w": "agreement", "ipa": "əˈɡriːmənt", "pos": "n.", "m": "一致性，一致", "ex": "maximizing agreement between differently augmented views", "lv": "四级", "sec": "Framework2"}, {"w": "latent", "ipa": "ˈleɪtnt", "pos": "adj.", "m": "潜在的", "ex": "via a contrastive loss in the latent space", "lv": "六级", "sec": "Framework2"}, {"w": "compose", "ipa": "kəmˈpoʊz", "pos": "v.", "m": "组合", "ex": "randomly composed data augmentations", "lv": "四级", "sec": "Framework2"}, {"w": "share", "ipa": "ʃer", "pos": "v.", "m": "共享", "ex": "a single network shared for all randomly augmented views", "lv": "考研", "sec": "Framework2"}, {"w": "w.r.t.", "ipa": "/wɜːr ˈtuː/", "pos": "prep.", "m": "关于（with respect to）", "ex": "Gradient w.r.t. u", "lv": "考博", "sec": "Framework2"}, {"w": "distortion", "ipa": "dɪˈstɔːrʃn", "pos": "n.", "m": "扭曲，失真", "ex": "random color distortion", "lv": "六级", "sec": "Augment2"}, {"w": "blurring", "ipa": "ˈblɜːrɪŋ", "pos": "n.", "m": "模糊", "ex": "random Gaussian blur", "lv": "考博", "sec": "Augment2"}, {"w": "noise", "ipa": "nɔɪz", "pos": "n.", "m": "噪声", "ex": "Gaussian noise", "lv": "四级", "sec": "Augment2"}, {"w": "patch", "ipa": "pætʃ", "pos": "n.", "m": "补丁，块", "ex": "most patches from an image share a similar color distribution", "lv": "四级", "sec": "Augment2"}, {"w": "insufficient", "ipa": "ˌɪnsəˈfɪʃnt", "pos": "adj.", "m": "不足的", "ex": "no single transformation suffices to learn good representations", "lv": "四级", "sec": "Augment2"}, {"w": "suffice", "ipa": "səˈfaɪs", "pos": "v.", "m": "足够", "ex": "color histograms alone suffice to distinguish images", "lv": "六级", "sec": "Augment2"}, {"w": "spatial", "ipa": "ˈspeɪʃl", "pos": "adj.", "m": "空间的", "ex": "spatial/geometric transformation", "lv": "六级", "sec": "Augment2"}, {"w": "appearance", "ipa": "əˈpɪrəns", "pos": "n.", "m": "外观，外表", "ex": "appearance transformation", "lv": "四级", "sec": "Augment2"}, {"w": "hue", "ipa": "hjuː", "pos": "n.", "m": "色调", "ex": "brightness, contrast, saturation, hue", "lv": "考博", "sec": "Augment2"}, {"w": "symmetric", "ipa": "sɪˈmetrɪk", "pos": "adj.", "m": "对称的", "ex": "apply augmentation symmetrically to both branches", "lv": "考博", "sec": "Augment2"}, {"w": "asymmetric", "ipa": "ˌeɪsɪˈmetrɪk", "pos": "adj.", "m": "不对称的", "ex": "asymmetric data augmentation", "lv": "考博", "sec": "Augment2"}, {"w": "generalization", "ipa": "ˌdʒenərəlaɪˈzeɪʃn", "pos": "n.", "m": "泛化", "ex": "to learn generalizable features", "lv": "四级", "sec": "Augment2"}, {"w": "softmax", "ipa": "ˈsɒftmæks", "pos": "n.", "m": "softmax函数", "ex": "softmax cross-entropy objective", "lv": "考博", "sec": "NT-Xent2"}, {"w": "sigmoid", "ipa": "ˈsɪɡmɔɪd", "pos": "n.", "m": "sigmoid函数", "ex": "log sigmoid function", "lv": "考博", "sec": "NT-Xent2"}, {"w": "denominator", "ipa": "dɪˈnɑːmɪneɪtər", "pos": "n.", "m": "分母", "ex": "the partition function in the denominator", "lv": "考博", "sec": "NT-Xent2"}, {"w": "numerator", "ipa": "ˈnuːməreɪtər", "pos": "n.", "m": "分子", "ex": "the positive example in the numerator", "lv": "考博", "sec": "NT-Xent2"}, {"w": "pairwise", "ipa": "ˈperwaɪz", "pos": "adj.", "m": "成对的", "ex": "pairwise similarity", "lv": "考博", "sec": "NT-Xent2"}, {"w": "cosine", "ipa": "ˈkoʊzaɪn", "pos": "n.", "m": "余弦", "ex": "cosine similarity", "lv": "考博", "sec": "NT-Xent2"}, {"w": "dot product", "ipa": "dɑːt ˈprɑːdʌkt", "pos": "n.", "m": "点积", "ex": "cosine similarity vs dot product", "lv": "考博", "sec": "NT-Xent2"}, {"w": "partition", "ipa": "pɑːrˈtɪʃn", "pos": "n.", "m": "分区，分配函数", "ex": "the partition function", "lv": "六级", "sec": "NT-Xent2"}, {"w": "optimizer", "ipa": "ˈɑːptɪmaɪzər", "pos": "n.", "m": "优化器", "ex": "SGD/Momentum optimizer", "lv": "考博", "sec": "Training2"}, {"w": "momentum", "ipa": "ˈmoʊmentəm", "pos": "n.", "m": "动量", "ex": "Nesterov momentum optimizer", "lv": "六级", "sec": "Training2"}, {"w": "learning rate", "ipa": "ˈlɜːrnɪŋ reɪt", "pos": "n.", "m": "学习率", "ex": "linear scaling of learning rate", "lv": "考博", "sec": "Training2"}, {"w": "epochs", "ipa": "ˈiːpɑːks", "pos": "n.", "m": "训练轮次", "ex": "trained for 100 epochs", "lv": "六级", "sec": "Training2"}, {"w": "batch", "ipa": "bætʃ", "pos": "n.", "m": "批次", "ex": "larger batch sizes", "lv": "六级", "sec": "Training2"}, {"w": "depth", "ipa": "depθ", "pos": "n.", "m": "深度", "ex": "varied depth and width", "lv": "四级", "sec": "Training2"}, {"w": "width", "ipa": "wɪdθ", "pos": "n.", "m": "宽度", "ex": "varied depth and width", "lv": "四级", "sec": "Training2"}, {"w": "residual", "ipa": "rɪˈzɪdʒuəl", "pos": "adj.", "m": "残差的", "ex": "ResNet-50 architecture", "lv": "六级", "sec": "Training2"}, {"w": "ensemble", "ipa": "ɪnˈsɛmbl", "pos": "n.", "m": "集成", "ex": "PIRL-ens. ensemble model", "lv": "考博", "sec": "Training2"}, {"w": "label fraction", "ipa": "ˈleɪbəl ˈfrækʃn", "pos": "n.", "m": "标签比例", "ex": "1% or 10% of the labeled datasets", "lv": "考博", "sec": "Transfer2"}, {"w": "fine-tuning", "ipa": "faɪnˈtuːnɪŋ", "pos": "n.", "m": "微调", "ex": "fine-tune the whole base network", "lv": "考博", "sec": "Transfer2"}, {"w": "regularizer", "ipa": "ˈreɡjələraɪzər", "pos": "n.", "m": "正则化项", "ex": "without regularization", "lv": "考博", "sec": "Transfer2"}, {"w": "interpolation", "ipa": "ɪnˌtɜːrpəˈleɪʃn", "pos": "n.", "m": "插值", "ex": "bicubic interpolation", "lv": "考博", "sec": "Transfer2"}, {"w": "multinomial", "ipa": "ˌmʌltɪˈnoʊmiəl", "pos": "adj.", "m": "多项式的", "ex": "multinomial logistic regression", "lv": "考博", "sec": "Transfer2"}, {"w": "L-BFGS", "ipa": "/ɛl bɛf dʒiː ɛs/", "pos": "n.", "m": "L-BFGS优化算法", "ex": "We used L-BFGS to optimize the softmax cross-entropy objective", "lv": "考博", "sec": "Transfer2"}, {"w": "memory bank", "ipa": "ˈmeməri bæŋk", "pos": "n.", "m": "记忆库", "ex": "leverage an explicit memory bank", "lv": "考博", "sec": "Related2"}, {"w": "instance discrimination", "ipa": "ˈɪnstəns dɪˌskrɪmɪˈneɪʃn", "pos": "n.", "m": "实例判别", "ex": "non-parametric instance discrimination", "lv": "考博", "sec": "Related2"}, {"w": "mutual information", "ipa": "ˈmjuːtʃuəl ˌɪnfərˈmeɪʃn", "pos": "n.", "m": "互信息", "ex": "maximizing mutual information across views", "lv": "考博", "sec": "Related2"}, {"w": "pretraining", "ipa": "priːˈtreɪnɪŋ", "pos": "n.", "m": "预训练", "ex": "pretrained on ImageNet", "lv": "考博", "sec": "Related2"}, {"w": "architecture", "ipa": "ˈɑːrkɪtektʃər", "pos": "n.", "m": "架构", "ex": "standard and more powerful ResNets", "lv": "四级", "sec": "Related2"}, {"w": "receptive field", "ipa": "rɪˈsiːptɪv fiːld", "pos": "n.", "m": "感受野", "ex": "constraining the receptive field", "lv": "考博", "sec": "Related2"}, {"w": "fine-grained", "ipa": "faɪn ɡreɪnd", "pos": "adj.", "m": "细粒度的", "ex": "fine-grained visual categorization", "lv": "考博", "sec": "ExpDetail2"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "m": "准确率", "ex": "top-1 accuracy", "lv": "四级", "sec": "ExpDetail2"}, {"w": "permutation", "ipa": "ˌpɜːrmjuˈteɪʃn", "pos": "n.", "m": "置换，排列", "ex": "permutation test", "lv": "考博", "sec": "ExpDetail2"}, {"w": "splits", "ipa": "splɪts", "pos": "n.", "m": "划分", "ex": "multiple train/test splits", "lv": "四级", "sec": "ExpDetail2"}, {"w": "per-class", "ipa": "pɜːr klæs", "pos": "adj.", "m": "每类的", "ex": "mean per-class accuracy", "lv": "考博", "sec": "ExpDetail2"}];
+const SKINS=[
+  {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
+  {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
+  {id:"nred",n:"网易云红",p:"linear-gradient(135deg,#fbdcd9,#c0342c)"},
+  {id:"qqgreen",n:"QQ绿",p:"linear-gradient(135deg,#d6f4e6,#22a96c)"},
+  {id:"kugou",n:"酷狗蓝",p:"linear-gradient(135deg,#d3edfd,#1a86d0)"},
+  {id:"xiami",n:"虾米橙",p:"linear-gradient(135deg,#ffe9d8,#e85f1f)"},
+  {id:"netease",n:"网易云黑",p:"linear-gradient(135deg,#3a2429,#150d10)"},
+  {id:"vinyl",n:"黑胶原色",p:"linear-gradient(135deg,#e6e9f2,#161616)"},
+  {id:"gold",n:"香槟金",p:"linear-gradient(135deg,#f2dfbd,#3a2a14)"},
+  {id:"vinylx",n:"悬浮黑胶",p:"radial-gradient(circle at 50% 50%,#5b5bd6 0 30%,#17171a 31%)"}
+];
+const $=id=>document.getElementById(id);
+const app=$("app");
+let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0};
+try{const c=JSON.parse(localStorage.getItem("listen_qq_cfg")||"{}");Object.assign(S,c)}catch(e){}
+const save=()=>{try{localStorage.setItem("listen_qq_cfg",JSON.stringify(S))}catch(e){}};
 
-/* 展开成朗读清单（扁平队列）——网页播放与后期视频渲染共用同一数据结构 */
-const ITEMS=[];
-DATA.forEach(s=>s.words.forEach(w=>ITEMS.push({
-  w:w.w,ipa:w.ipa,pos:w.pos,m:w.m,ex:w.ex,lv:w.lv,ov:w.ov||"",
-  sec:s.sec,short:s.short,icon:s.icon,paper:s.paper||""
-})));
-const LVN={4:"四级",6:"六级",k:"考研",p:"考博"},LVC={4:"lv4",6:"lv6",k:"lvk",p:"lvp"};
+/* 收藏 / 已掌握 / 章节范围（跨页面共享） */
+const rd=(k)=>{try{return new Set(JSON.parse(localStorage.getItem(k)||"[]"))}catch(e){return new Set()}};
+const wr=(k,s)=>{try{localStorage.setItem(k,JSON.stringify([...s]))}catch(e){}};
+let stars=rd("listen_qq_star"), favs=rd("listen_qq_fav"), skips=rd("listen_qq_skip");
+const SECS=[...new Set(ITEMS.map(i=>i.sec))];
+let range={};
+try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
+SECS.forEach(s=>{if(!(s in range))range[s]=true});
 
-/* ---- 朗读：多源在线 TTS 自动降级（有道美音/英音、百度、谷歌）----
-   注：StreamElements(Polly) 匿名接口已 401 关停，故移除 ---- */
-const SRC_NAME={yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"};
-const ALL_SRC=["yd1","yd0","bd","gg"];
-const ONLINE_VOICES=[["yd1","美式 · 有道（推荐）"],["yd0","英式 · 有道"],["bd","百度翻译 · 女声"],["mute","🔇 不朗读"]];
-let ONLINE="yd1";
-let SRC_ORDER=["yd1","yd0","bd","gg"];
-let audio=null;
-function applyVoiceOrder(){
-  const i=ALL_SRC.indexOf(ONLINE);
-  SRC_ORDER=i<0?ALL_SRC.slice():ALL_SRC.slice(i).concat(ALL_SRC.slice(0,i));
+let queue=[], qi=0, playing=false, timer=null, audio=null;
+let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
+
+function buildQueue(){
+  let list=ITEMS.filter(i=>range[i.sec]!==false);
+  if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
+  else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
+  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过不读的 */
+  if(S.source!=="all")       list=list.filter(i=>!skips.has(i.w));   /* 专背模式下「不读」依然生效 */
+  if(S.order==="rand"){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
+  queue=list;
+  if(qi>=queue.length)qi=0;
 }
-function ttsURL(src,t,zh){
-  const q=encodeURIComponent(t);
-  if(zh){ // 中文释义：有道词典源不支持中文，落到百度/谷歌
-    if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=zh&text=${q}&spd=5&source=web`;
-    return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh&q=${q}`;
-  }
-  if(src==="yd1")return `https://dict.youdao.com/dictvoice?type=1&audio=${q}`;
-  if(src==="yd0")return `https://dict.youdao.com/dictvoice?type=0&audio=${q}`;
-  if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=en&text=${q}&spd=5&source=web`;
-  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${q}`;
+function rebuild(keep){
+  const cur=queue[qi];
+  buildQueue();
+  if(keep&&cur){const k=queue.findIndex(x=>x.w===cur.w);qi=k>=0?k:0}
 }
-let saying=0,audioFrac=0;
-function updateFrac(f){audioFrac=Math.max(0,Math.min(1,f));updateBar();}
-function sayWord(t,onend,kind="word"){ // kind: "word"=全部源 "zh"=中文(百度/谷歌) "sent"=英文整句(百度/谷歌，有道不支持整句)
-  if(ONLINE==="mute"){try{if(audio){audio.pause();audio=null}}catch(e){}return false}
-  const my=++saying;
-  const order=kind==="word"?SRC_ORDER:["bd","gg"];
-  trySrc(0,t,my,onend,kind,order);
-  return true;
+function updateBtns(){
+  const w=queue[qi];
+  $("favBtn").classList.toggle("on",!!(w&&favs.has(w.w)));
+  $("starBtn").classList.toggle("on",!!(w&&stars.has(w.w)));
+  $("okBtn").classList.toggle("on",!!(w&&skips.has(w.w)));
 }
-function trySrc(i,t,my,onend,kind,order){
-  if(my!==saying){return}
-  if(i>=order.length){ // 无可用源：当作播完处理，流程不卡死
-    const sl=document.getElementById("srcLive");if(sl&&kind==="word")sl.textContent="（无可用源）";
-    if(onend)setTimeout(()=>{if(my===saying)onend()},600);
+function updateCounts(){
+  $("skipCnt").textContent="已跳过 "+skips.size+" 词";
+  $("markCnt").textContent="⭐ "+stars.size+" · ❤ "+favs.size+" · ✓ "+skips.size;
+}
+/* 标记后统一收尾：重建队列，空了就提示，否则接着播 */
+function afterMark(){
+  updateBtns(); updateCounts(); rebuild(true);   /* 保留当前词：随机模式下重排也不会跳走 */
+  if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
+  if(playing)playCurrent(); else render(queue[qi],true);
+}
+function renderRange(){
+  const box=$("rangeBox"); box.innerHTML="";
+  SECS.forEach(s=>{
+    const c=document.createElement("b");
+    c.textContent=s+" "+ITEMS.filter(i=>i.sec===s).length;
+    c.className=range[s]?"on":"";
+    c.onclick=()=>{
+      range[s]=!range[s];
+      try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
+      renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+
+// 皮肤：右上角 👕 点一下按顺序循环，不需要挑颜色
+let skinIdx=0;
+function applySkin(id,announce){
+  const i=SKINS.findIndex(s=>s.id===id);
+  skinIdx=i<0?0:i;
+  app.dataset.skin=SKINS[skinIdx].id;
+  try{localStorage.setItem("listen_qq_skin",SKINS[skinIdx].id)}catch(e){}
+  updateArm();
+  if(announce)toast("皮肤： "+SKINS[skinIdx].n);
+}
+$("skinBtn").onclick=()=>{ skinIdx=(skinIdx+1)%SKINS.length; applySkin(SKINS[skinIdx].id,true); };
+try{const sv=localStorage.getItem("listen_qq_skin"); if(sv)applySkin(sv,false)}catch(e){}
+
+// 设置段
+function seg(box,opts,get,set,after){
+  box.innerHTML="";
+  opts.forEach(o=>{
+    const b=document.createElement("b"); b.textContent=o.t; b.dataset.v=o.v;
+    b.className=get()===o.v?"on":"";
+    b.onclick=()=>{set(o.v);box.querySelectorAll("b").forEach(x=>x.classList.remove("on"));b.classList.add("on");save();after&&after(o.v)};
+    box.appendChild(b);
+  });
+}
+/* 设置改完立刻生效：播放中重播当前词，暂停中按新设置重绘 —— 否则改了像没改 */
+function refreshCurrent(msg){
+  if(msg)toast(msg);
+  if(!queue[qi])return;
+  if(playing)playCurrent();
+  else render(queue[qi],true);
+}
+seg($("segVoice"),[{t:"美音",v:"us"},{t:"英音",v:"uk"}],()=>S.voice,v=>S.voice=v,
+  ()=>refreshCurrent("发音： "+(S.voice==="uk"?"英音":"美音")));
+seg($("segPause"),[{t:"2s",v:2000},{t:"4s",v:4000},{t:"6s",v:6000}],()=>S.pause,v=>S.pause=v,
+  ()=>refreshCurrent("每词停顿： "+(S.pause/1000)+" 秒"));
+/* 单词重复次数：1/3/5 快捷 + 右侧输入框自定义（1–20） */
+function setRepeat(v,persist){
+  v=Math.max(1,Math.min(20,Math.round(+v||1)));
+  S.repeat=v; $("repInput").value=v;
+  $("segRepeat").querySelectorAll("b").forEach(b=>b.classList.toggle("on",+b.dataset.v===v));
+  if(persist)save();
+}
+seg($("segRepeat"),[{t:"1次",v:1},{t:"3次",v:3},{t:"5次",v:5}],()=>S.repeat,v=>S.repeat=v,
+  ()=>{setRepeat(S.repeat,false);refreshCurrent("单词重复： "+S.repeat+" 次")});
+$("repInput").addEventListener("change",()=>{setRepeat($("repInput").value,true);refreshCurrent("单词重复： "+S.repeat+" 次")});
+$("repInput").addEventListener("keydown",e=>{if(e.key==="Enter")e.target.blur()});
+setRepeat(S.repeat||1,false);
+seg($("segReveal"),[{t:"开",v:true},{t:"关",v:false}],()=>S.reveal,v=>S.reveal=v,
+  ()=>refreshCurrent("先听后现： "+(S.reveal?"开":"关")));
+seg($("segZh"),[{t:"开",v:true},{t:"关",v:false}],()=>S.zh,v=>S.zh=v,
+  ()=>refreshCurrent("朗读中文： "+(S.zh?"开":"关")));
+seg($("segEx"),[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
+  ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
+// 单词字体：选项本身就用自己的字体渲染，所见即所得
+const FONTS=[
+  {v:"sans", t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
+  {v:"serif",t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
+  {v:"round",t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
+  {v:"kai",  t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
+  {v:"mono", t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'}
+];
+function applyFont(v){
+  const f=FONTS.find(x=>x.v===v)||FONTS[0];
+  app.style.setProperty("--wfont",f.f);
+}
+seg($("segFont"),FONTS.map(x=>({t:x.t,v:x.v})),()=>S.font,v=>{S.font=v;applyFont(v);save()});
+$("segFont").querySelectorAll("b").forEach((b,i)=>{b.style.fontFamily=FONTS[i].f;b.style.fontSize="13px"});
+applyFont(S.font);
+
+/* 定时停止：到点自动停（最长 60 分钟），词区右上角显示倒计时 */
+let timerLeft=0, timerInt=null;
+function renderTimer(){
+  const m=Math.floor(timerLeft/60), s=timerLeft%60;
+  $("timerChip").textContent="⏱ "+m+":"+String(s).padStart(2,"0");
+}
+function stopTimer(fired){
+  if(timerInt){clearInterval(timerInt);timerInt=null}
+  timerLeft=0; $("timerChip").style.display="none";
+  if(fired){ clearT(); stopAudio(); setPlaying(false); toast("⏱ 定时时间到，已停止播放") }
+}
+function startTimer(min){
+  stopTimer(false);
+  if(!min)return;
+  timerLeft=Math.round(min*60);
+  $("timerChip").style.display=""; renderTimer();
+  timerInt=setInterval(()=>{
+    timerLeft--;
+    if(timerLeft<=0){ stopTimer(true); return }
+    renderTimer();
+  },1000);
+}
+seg($("segTimer"),[{t:"关",v:0},{t:"5分",v:5},{t:"10分",v:10},{t:"20分",v:20},{t:"30分",v:30},{t:"60分",v:60}],
+  ()=>S.timer,v=>S.timer=v,m=>{ startTimer(m); if(m)toast("⏱ "+m+" 分钟后自动停止") });
+if(S.timer>0)startTimer(S.timer);
+
+/* 词库来源：全部 / 只背星标 / 只读收藏 */
+function applySource(){
+  qi=0; rebuild(false); updateArm(); updateCounts();
+  if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
+  if(playing)playCurrent(); else render(queue[qi],true);
+}
+seg($("segSource"),[{t:"全部",v:"all"},{t:"仅⭐",v:"star"},{t:"仅❤",v:"fav"}],()=>S.source,v=>S.source=v,applySource);
+
+seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.order=v,
+  ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
+seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
+  ()=>{rebuild(true);updateArm()});
+renderRange(); updateCounts();
+
+$("favBtn").onclick=()=>{
+  const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}
+  if(favs.has(w.w)){favs.delete(w.w);toast("已取消收藏「"+w.w+"」")}else{favs.add(w.w);toast("已收藏「"+w.w+"」")}
+  wr("listen_qq_fav",favs); afterMark();
+};
+$("starBtn").onclick=()=>{
+  const w=queue[qi]; if(!w){toast("先进入一个词再标星");return}
+  if(stars.has(w.w)){stars.delete(w.w);toast("已取消星标「"+w.w+"」")}else{stars.add(w.w);toast("已标星「"+w.w+"」，可只背星标")}
+  wr("listen_qq_star",stars); afterMark();
+};
+$("okBtn").onclick=()=>{
+  const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
+  if(skips.has(w.w)){skips.delete(w.w);toast("已恢复朗读「"+w.w+"」")}
+  else{skips.add(w.w);toast("此词不再朗读「"+w.w+"」")}
+  wr("listen_qq_skip",skips); afterMark();
+};
+$("clearSkip").onclick=()=>{skips.clear();wr("listen_qq_skip",skips);updateCounts();rebuild(true);toast("已清空「不读」列表")};
+$("clearStar").onclick=()=>{stars.clear();wr("listen_qq_star",stars);updateCounts();rebuild(true);toast("已清空星标")};
+/* 弯箭头：沿用旧设计语义 = 重听当前词（不想启用时删掉这三行即可） */
+$("replayBtn").onclick=()=>{
+  if(!queue[qi])return;
+  if(!playing)setPlaying(true);
+  playCurrent(); toast("重听当前词");
+};
+
+// 颜色/封面
+function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1600)}
+
+// 唱臂：静止垂直在盘右 → 播放落到盘面 → 随队列进度内移
+const armBar=document.querySelector(".arm .bar");
+const needle=document.querySelector(".needle");
+const ARM_REST=0, ARM_START=16, ARM_END=24;
+function updateArm(){
+  const p=queue.length>1?Math.min(1,qi/(queue.length-1)):0;
+  if(app.dataset.skin==="vinylx"){          /* 顶部细针：播放落盘（如图），暂停抬起 */
+    needle.style.setProperty("--nd",(playing?6*p:-30).toFixed(2)+"deg");
     return;
   }
-  const src=order[i];
-  const st=document.getElementById("srcState");
-  const sl=document.getElementById("srcLive");
-  if(kind==="word"){const nm=SRC_NAME[src]||src;
-    if(st)st.textContent="源:"+nm;
-    if(sl)sl.textContent="· 源:"+nm;}
-  try{if(audio){audio.pause();audio=null}}catch(e){}
-  const a=new Audio(ttsURL(src,t,kind==="zh"));
-  let ok=false,advanced=false,done=false;
-  const advance=()=>{ if(!ok&&!advanced&&my===saying){advanced=true;trySrc(i+1,t,my,onend,kind,order);} };
-  const finish=()=>{ if(!done&&my===saying){done=true;updateFrac(1);if(onend)onend();} };
-  a.addEventListener("playing",()=>{ok=true;});
-  a.addEventListener("timeupdate",()=>{ if(my===saying&&a.duration){updateFrac(a.currentTime/a.duration);} });
-  a.addEventListener("ended",finish);
-  a.addEventListener("error",advance);
-  audio=a;
-  a.play().catch(advance);
-  setTimeout(()=>{ if(!ok&&my===saying&&a.paused)advance(); },2500);
-}
-function stopAudio(){saying++;try{if(audio){audio.pause();audio=null}}catch(e){}}
-
-/* ---- 设置 ---- */
-const S={lv:new Set(["4","6","k","p"]),sec:new Set(DATA.map(s=>s.sec)),order:"seq",pause:2000,mode:"full",zh:false,ex:false,useskip:true};
-try{const c=JSON.parse(localStorage.getItem("listen_cfg")||"{}");
-  if(c.lv)S.lv=new Set(c.lv); if(c.sec)S.sec=new Set(c.sec);
-  if(c.order)S.order=c.order; if(c.pause)S.pause=c.pause; if(c.mode)S.mode=c.mode;
-  if(typeof c.zh==="boolean")S.zh=c.zh;
-  if(typeof c.ex==="boolean")S.ex=c.ex;
-  if(typeof c.useskip==="boolean")S.useskip=c.useskip;
-  if(typeof c.voice==="string"&&["yd1","yd0","bd","gg","mute"].includes(c.voice))ONLINE=c.voice;
-}catch(e){}
-applyVoiceOrder();
-function saveCfg(){try{localStorage.setItem("listen_cfg",JSON.stringify({lv:[...S.lv],sec:[...S.sec],order:S.order,pause:S.pause,mode:S.mode,zh:S.zh,ex:S.ex,useskip:S.useskip,voice:ONLINE}))}catch(e){}}
-let skips=new Set(); // 已掌握（太简单）的词，全局按词存储
-try{skips=new Set(JSON.parse(localStorage.getItem("vocab_skip")||"[]"))}catch(e){}
-function saveSkips(){try{localStorage.setItem("vocab_skip",JSON.stringify([...skips]))}catch(e){}}
-
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
-function renderChips(){
-  const lc={};ITEMS.forEach(w=>lc[w.lv]=(lc[w.lv]||0)+1);
-  document.getElementById("lvChips").innerHTML=["4","6","k","p"].map(l=>
-    `<button class="chip ${S.lv.has(l)?"on":""}" data-lv="${l}">${LVN[l]}<span class="n">${lc[l]||0}</span></button>`).join("");
-  const merged=ITEMS.some(w=>w.paper);
-  if(merged){
-    const groups={};DATA.forEach(s=>{(groups[s.paper||"未命名词库"]=groups[s.paper||"未命名词库"]||[]).push(s)});
-    document.getElementById("secChips").innerHTML=Object.keys(groups).map(p=>{
-      const n=groups[p].reduce((a,s)=>a+s.words.length,0);
-      const on=groups[p].every(s=>S.sec.has(s.sec));
-      const nm=p.length>20?p.slice(0,20)+"…":p;
-      return `<button class="chip ${on?"on":""}" data-pap="${esc(p)}">${esc(nm)}<span class="n">${n}</span></button>`;
-    }).join("");
-  }else{
-    document.getElementById("secChips").innerHTML=DATA.map(s=>
-      `<button class="chip ${S.sec.has(s.sec)?"on":""}" data-sec="${esc(s.sec)}">${esc(s.icon+" "+s.short)}<span class="n">${s.words.length}</span></button>`).join("");
-  }
-  document.getElementById("cnt").textContent=`· 已选 ${queue0().length} / ${ITEMS.length} 词`;
-  const sc=document.getElementById("skipCnt");if(sc)sc.textContent=`已跳过 ${skips.size} 词`;
-}
-function updateSkipCnt(){renderChips();}
-function queue0(){return ITEMS.filter(w=>S.lv.has(w.lv)&&S.sec.has(w.sec)&&!(S.useskip&&skips.has(w.w)))}
-document.getElementById("lvChips").onclick=e=>{const b=e.target.closest("[data-lv]");if(!b)return;
-  const l=b.dataset.lv; S.lv.has(l)?S.lv.delete(l):S.lv.add(l); saveCfg();renderChips();};
-document.getElementById("secChips").onclick=e=>{const b=e.target.closest("[data-sec],[data-pap]");if(!b)return;
-  if(b.dataset.pap){
-    const secs=DATA.filter(s=>(s.paper||"未命名词库")===b.dataset.pap).map(s=>s.sec);
-    const all=secs.every(k=>S.sec.has(k));
-    secs.forEach(k=>all?S.sec.delete(k):S.sec.add(k));
-  }else{
-    const k=b.dataset.sec; S.sec.has(k)?S.sec.delete(k):S.sec.add(k);
-  }
-  saveCfg();renderChips();};
-document.getElementById("secAll").onclick=()=>{S.sec=new Set(DATA.map(s=>s.sec));saveCfg();renderChips();};
-document.querySelectorAll("[data-order]").forEach(b=>b.onclick=()=>{S.order=b.dataset.order;syncOpts();saveCfg();});
-document.querySelectorAll("[data-pause]").forEach(b=>b.onclick=()=>{S.pause=+b.dataset.pause;saveCfg();syncOpts();});
-document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{S.mode=b.dataset.mode;syncOpts();saveCfg();});
-function syncOpts(){
-  document.querySelectorAll("[data-order]").forEach(b=>b.classList.toggle("on",b.dataset.order===S.order));
-  document.querySelectorAll("[data-pause]").forEach(b=>b.classList.toggle("on",+b.dataset.pause===S.pause));
-  document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("on",b.dataset.mode===S.mode));
-  document.getElementById("zhBtn").classList.toggle("on",S.zh);
-  document.getElementById("exBtn").classList.toggle("on",S.ex);
-  document.getElementById("useSkipBtn").classList.toggle("on",S.useskip);
+  const a=playing?ARM_START+(ARM_END-ARM_START)*p:ARM_REST;
+  armBar.style.setProperty("--arm",a.toFixed(2)+"deg");
 }
 
-/* ---- 音色选择 + 中文释义 ---- */
-const vs=document.getElementById("voiceSel");
-vs.innerHTML=ONLINE_VOICES.map(([v,l])=>`<option value="${v}">${l}</option>`).join("");
-vs.value=ONLINE;
-vs.onchange=()=>{ONLINE=vs.value;applyVoiceOrder();saveCfg();
-  if(ONLINE!=="mute")sayWord("Hello, let us learn new words together.");};
-document.getElementById("zhBtn").onclick=()=>{S.zh=!S.zh;syncOpts();saveCfg();
-  if(S.zh)sayWord("语料库",null,"zh");};
-document.getElementById("exBtn").onclick=()=>{S.ex=!S.ex;syncOpts();saveCfg();
-  if(S.ex)sayWord("The quick brown fox jumps over the lazy dog.",null,"sent");};
-document.getElementById("useSkipBtn").onclick=()=>{S.useskip=!S.useskip;syncOpts();saveCfg();renderChips();
-  toast(S.useskip?"已开启：朗读时跳过已掌握词":"已关闭：已掌握词也会朗读");};
-document.getElementById("clearSkipBtn").onclick=()=>{
-  if(!skips.size){toast("跳过列表是空的");return}
-  if(confirm("确定清空全部 "+skips.size+" 个已跳过的单词？（之后会重新朗读）")){
-    skips.clear();saveSkips();renderChips();toast("已清空跳过列表");}};
-const stripPos=m=>m.replace(/^[a-z./]+\s*/,"");
+function render(w,reveal){
+  app.style.setProperty("--h",hue(w.w));
+  $("art").style.opacity=(S.reveal&&!reveal)?.42:1;   /* 先听后现：未揭晓时封面变暗 */
+  $("wsec").textContent=w.sec+" · "+w.lv+" · 第 "+(qi+1)+"/"+queue.length+" 词";
+  $("wbig").textContent=w.w;
+  const ipaRaw=(w.ipa||"").trim().replace(/^[/\[]+|[/\]]+$/g,"");   /* 去掉可能已有的斜线/方括号 */
+  $("wipa").textContent=ipaRaw?"/"+ipaRaw+"/":"";                    /* 统一包成 /.../ */
+  $("wmean").textContent=(w.pos?w.pos+" ":"")+w.m;
+  $("wex").textContent=w.ex?"“"+w.ex+"”":"";
+  const hid=S.reveal&&!reveal;
+  /* 同一个槽位内原地切换：未揭晓=波浪（正在听），揭晓=释义；高度不变，绝不跳动 */
+  $("wav").style.display=hid?"flex":"none";
+  $("wtxt").style.display=hid?"none":"";
+  $("cur").textContent="第 "+(qi+1)+" 词";
+  $("dur").textContent="共 "+queue.length+" 词";
+  const pct=queue.length?qi/queue.length*100:0;
+  $("fill").style.width=pct+"%"; $("knob").style.left=pct+"%";
+  updateBtns();
+}
 
-/* ---- 收藏 ---- */
-let favs=new Set();
-try{favs=new Set(JSON.parse(localStorage.getItem("vocab_fav")||"[]"))}catch(e){}
-function saveFavs(){try{localStorage.setItem("vocab_fav",JSON.stringify([...favs]))}catch(e){}}
+function ttsURL(t,kind){
+  if(kind==="zh")return "https://fanyi.baidu.com/gettts?lan=zh&text="+encodeURIComponent(t);
+  if(kind==="sent")return "https://fanyi.baidu.com/gettts?lan=en&text="+encodeURIComponent(t);
+  return "https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+encodeURIComponent(t);
+}
+function say(text,kind,cb){
+  stopAudio();
+  audio=new Audio(ttsURL(text,kind));
+  let done=false;
+  const fin=ok=>{if(done)return;done=true;cb&&cb(ok)};
+  audio.onended=()=>fin(true);
+  audio.onerror=()=>fin(false);
+  audio.play().catch(err=>{ if(err&&err.name==="NotAllowedError")autoplayBlocked=true; fin(false) });
+  setTimeout(()=>fin(false),9000);
+}
+function stopAudio(){try{if(audio){audio.pause();audio=null}}catch(e){}}
+function clearT(){if(timer){clearTimeout(timer);timer=null}}
 
-/* ---- 播放器 ---- */
-let queue=[],qi=0,playing=false,timer=null,toastTimer=null,noteTimer=null,prevW=null;
-function stopFx(){if(noteTimer){clearInterval(noteTimer);noteTimer=null}
-  const pool=$("notepool");if(pool)pool.innerHTML="";}
-function fxSpawnNote(){if(document.body.dataset.theme!=="notes")return;
-  const pool=$("notepool");if(!pool)return;
-  const n=document.createElement("span");n.className="nt";
-  n.textContent=["♪","♫","♩"][Math.floor(Math.random()*3)];
-  n.style.left=(8+Math.random()*84)+"%";n.style.fontSize=(18+Math.random()*18)+"px";
-  n.style.animationDuration=(4.5+Math.random()*2.5).toFixed(2)+"s";
-  pool.appendChild(n);setTimeout(()=>n.remove(),7400);}
-function fxStart(){stopFx();
-  if(document.body.dataset.theme==="notes")noteTimer=setInterval(fxSpawnNote,780);}
-function fxSpawnChip(t){if(document.body.dataset.theme!=="waterfall")return;
-  const pool=$("fallpool");if(!pool)return;
-  const c=document.createElement("span");c.className="fchip";c.textContent=t;
-  pool.appendChild(c);setTimeout(()=>c.remove(),5800);}
-function fxInitBars(){if(document.body.dataset.theme!=="spectrum")return;
-  document.querySelectorAll("#specrow i").forEach(b=>{b.style.animationDuration=(0.5+Math.random()*0.5).toFixed(2)+"s";b.style.animationDelay=(-Math.random()).toFixed(2)+"s";});}
-function toast(msg){const t=$("toast");if(!t)return;t.textContent=msg;t.classList.add("on");
-  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("on"),1400);}
-const $=id=>document.getElementById(id);
-const P=()=>$("player");
-function clearTimer(){if(timer){clearTimeout(timer);timer=null}}
-function fmt(t){t=Math.max(0,Math.round(t));return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")}
-function perWord(){return 1.6+(S.zh?1.4:0)+(S.ex?3.8:0)+S.pause/1000}
-function updateBar(){
-  if(!queue.length)return;
-  const pct=Math.min(100,(qi+audioFrac)/queue.length*100);
-  $("nfill").style.width=pct+"%";$("nknob").style.left=pct+"%";
-  P().style.setProperty("--kp",pct.toFixed(1)+"%");
-  $("tel").textContent=fmt(qi*perWord()+audioFrac*1.6);
-  $("ttot").textContent=fmt(queue.length*perWord());
+/* 池子为空（比如「只背星标」但一个都没标）时的提示 */
+function emptyHint(){
+  const star=S.source==="star";
+  $("wsec").textContent="";
+  $("wbig").textContent="—";
+  $("wipa").textContent="";
+  $("wmean").textContent=star?"还没有 ⭐ 星标词":"还没有 ❤ 收藏词";
+  $("wex").textContent="点右上角 "+(star?"☆":"❤")+" 标记后，这里会自动连播";
+  $("wav").style.display="none";
+  $("wtxt").style.display="";
+  $("art").style.opacity=1;
+  $("cur").textContent="第 0 词"; $("dur").textContent="共 0 词";
+  $("fill").style.width="0%"; $("knob").style.left="0%";
 }
-function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
-function buildQueue(){
-  queue=queue0();
-  if(S.order==="rand"){for(let i=queue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[queue[i],queue[j]]=[queue[j],queue[i]]}}
-}
-function startPlayer(){
-  if(!queue0().length)return;
-  buildQueue();qi=0;playing=true;
-  $("setup").style.display="none";P().classList.add("on");
-  fxStart();playCurrent();
-}
-function backToSetup(){clearTimer();stopAudio();stopFx();playing=false;P().classList.remove("on","playing","paused");$("setup").style.display="";updateBar();}
-function renderPlayer(w,hidden){
-  $("tword").innerHTML=`${w.paper?esc(w.paper)+" · ":""}${esc(w.sec)} · ${LVN[w.lv]} · 第 ${qi+1}/${queue.length} 词 <span id="srcLive" style="color:rgba(255,255,255,.4);font-size:13px"></span>`;
-  const H=hue(w.w);
-  if(document.body.dataset.theme==="netease")$("nbg").style.background=`linear-gradient(175deg,hsl(${H} 62% 42%),hsl(${(H+38)%360} 55% 26%) 58%,#150d0c 96%)`;
-  else $("nbg").style.background="";
-  if(document.body.dataset.theme==="netease")$("cover").style.background=`linear-gradient(140deg,hsl(${H} 85% 60%),hsl(${(H+32)%360} 82% 50%) 60%,hsl(${(H+55)%360} 70% 42%))`;
-  $("cletter").textContent=hidden?"♪":w.w[0].toUpperCase();
-  $("cletter").style.opacity=hidden?".55":"1";
-  const bw=$("bigword");bw.textContent=hidden?"♪ ♪ ♪":w.w;bw.style.opacity=hidden?".4":"1";
-  $("ipa").innerHTML=`/${esc(w.ipa)}/ <span class="p">${esc(w.pos)}</span>`;
-  $("mean").textContent=w.m;
-  $("ex").textContent=`“${w.ex}”`;
-  $("lyrics").classList.toggle("hiddenl",!!hidden);
-  $("bigword").classList.toggle("hiddenl",!!hidden);
-  if(prevW&&prevW!==w.w)fxSpawnChip(prevW);
-  prevW=w.w;
-  const bg=$("badges");
-  if(bg)bg.innerHTML=`<span class="b ${LVC[w.lv]}">${LVN[w.lv]}</span>`+(w.ov?`<span class="b ${w.ov==="t"?"ovt":"ovg"}">${w.ov==="t"?"雅思托福":"GRE"}</span>`:"");
-  $("favBtn").classList.toggle("fav",favs.has(w.w));
-  const pt=$("pp2t");if(pt)pt.textContent=playing?"❚❚":"▶";
-  const ob=$("ordBtn");if(ob)ob.textContent=S.order==="rand"?"🔀 随机":"⟳ 顺序";
-  const sb=$("skipBtn");if(sb)sb.style.display=SHOW_SKIP?"":"none";
-  const st=$("starBtn");
-  if(st){const on=skips.has(w.w);st.textContent=on?"★":"☆";st.classList.toggle("on",on);st.title=on?"已标记太简单（点此取消）":"太简单？标记后不再朗读";}
-  updateBar();
-}
+
 function playCurrent(){
-  clearTimer();stopAudio();audioFrac=0;
-  const w=queue[qi];if(!w)return;
-  const hide=playing&&S.mode==="reveal";
-  renderPlayer(w,hide);
-  P().classList.toggle("playing",playing);
-  P().classList.toggle("paused",!playing);
+  clearT();stopAudio();
+  const w=queue[qi]; if(!w)return;
+  render(w,!(S.reveal));
+  updateArm();
   if(!playing)return;
-  const ended=()=>{
-    if(S.mode==="reveal")renderPlayer(w,false);
-    const go=()=>{timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent();},S.pause)};
-    const afterZh=()=>{
-      if(S.ex){
-        timer=setTimeout(()=>{
-          const ok=sayWord(w.ex,go,"sent");
-          if(ok===false)go();
-        },500);
-      }else go();
-    };
-    if(S.zh){
-      timer=setTimeout(()=>{
-        const ok=sayWord(stripPos(w.m),afterZh,"zh");
-        if(ok===false)afterZh();
-      },450);
-    }else afterZh();
+  const goNext=()=>{
+    if(S.reveal)render(w,true);
+    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent()},S.pause);
   };
-  const ok=sayWord(w.w,ended);
-  if(ok===false){ // 无音频：按固定节奏走
-    if(S.mode==="reveal")renderPlayer(w,false);
-    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent();},Math.max(S.pause,1200));
-  }
+  const afterEx=()=>{ if(S.ex){say(w.ex,"sent",()=>goNext())} else goNext(); };
+  const afterZh=()=>{ if(S.zh){setTimeout(()=>say(w.m.replace(/^[a-z]+\.\s*/i,""),"zh",afterEx),450)} else afterEx(); };
+  /* 单词可重复朗读 N 次（默认 1），全部读完再走中文/例句 */
+  let left=Math.max(1,Math.min(20,Math.round(+S.repeat||1)));
+  const again=()=>{
+    left--;
+    if(left>0){ timer=setTimeout(()=>say(w.w,"word",again),420) }
+    else afterZh();
+  };
+  say(w.w,"word",again);
 }
-function nav(d){qi=(qi+d+queue.length)%queue.length;playing=true;playCurrent();}
-function togglePause(){
-  playing=!playing;
-  if(playing){fxStart();playCurrent();}
-  else{clearTimer();stopAudio();stopFx();P().classList.remove("playing");P().classList.add("paused");renderPlayer(queue[qi],false);}
+
+function setPlaying(on){
+  playing=on; app.classList.toggle("playing",on);
+  $("icPlay").style.display=on?"none":""; $("icPause").style.display=on?"":"none";
+  updateArm();
 }
-$("start").onclick=startPlayer;
-$("pp2").onclick=togglePause;
-$("prev2").onclick=()=>nav(-1);
-$("next2").onclick=()=>nav(1);
-$("backBtn").onclick=backToSetup;
-$("skipBtn").onclick=()=>{const w=queue[qi];if(!w)return;
-  skips.add(w.w);saveSkips();updateSkipCnt();
-  queue.splice(qi,1);toast("已掌握，不再朗读「"+w.w+"」");
-  if(!queue.length){backToSetup();return}
-  if(qi>=queue.length)qi=0;
-  playCurrent();};
-$("starBtn").onclick=()=>{const w=queue[qi];if(!w)return;
-  if(skips.has(w.w)){skips.delete(w.w);saveSkips();renderPlayer(w,false);toast("已取消标记，「"+w.w+"」恢复朗读");}
-  else{skips.add(w.w);saveSkips();renderPlayer(w,false);
-    const tip=S.useskip?"已标记太简单，不再朗读":"已标记太简单（提示：请在播放方式开启「跳过已掌握词」）";
-    toast(tip+"「"+w.w+"」");}
-  updateSkipCnt();};
-$("listBtn").onclick=backToSetup;
-$("replayBtn").onclick=()=>{playing=true;playCurrent();};
-$("vwrap").onclick=()=>{playing=true;playCurrent();};
-$("ordBtn").onclick=()=>{S.order=S.order==="seq"?"rand":"seq";syncOpts();saveCfg();
-  const w=queue[qi];buildQueue();qi=Math.max(0,queue.indexOf(w));
-  $("ordBtn").textContent=S.order==="rand"?"🔀 随机":"⟳ 顺序";
-  toast(S.order==="rand"?"已切换为随机播放":"已切换为顺序播放");};
-$("favBtn").onclick=()=>{const w=queue[qi];if(!w)return;
-  favs.has(w.w)?favs.delete(w.w):favs.add(w.w);saveFavs();
-  $("favBtn").classList.toggle("fav",favs.has(w.w));};
+$("play").onclick=()=>{ setPlaying(!playing); if(playing)playCurrent(); else {clearT();stopAudio();} };
+$("prevBtn").onclick=()=>{if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
+$("nextBtn").onclick=()=>{if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
+$("moreBtn").onclick=()=>$("sheet").classList.add("on");
+$("listBtn").onclick=()=>$("sheet").classList.add("on");
+$("sheetBack").onclick=()=>{$("sheet").classList.remove("on");if(!playing){setPlaying(true);playCurrent()}};
+$("backBtn").onclick=()=>{
+  if(history.length>1)history.back();          // 从站点点进来的：退回上一页
+  else location.href="../../listen/";          // 直接打开的：回听力索引
+};
+$("ordBtn").textContent=S.order==="rand"?"随机":"顺序";
+$("ordBtn").onclick=()=>{
+  S.order=S.order==="seq"?"rand":"seq"; save();
+  $("ordBtn").textContent=S.order==="rand"?"随机":"顺序";
+  rebuild(true); updateArm();
+  toast(S.order==="rand"?"随机播放":"顺序播放");
+  if(playing)playCurrent(); else if(queue[qi])render(queue[qi],true);
+};
+$("setupBack").onclick=()=>{$("sheet").classList.remove("on");if(!playing){setPlaying(true);playCurrent()}};
+$("bar").onclick=e=>{
+  if(!queue.length)return;
+  const r=$("bar").getBoundingClientRect();
+  qi=Math.min(queue.length-1,Math.max(0,Math.floor((e.clientX-r.left)/r.width*queue.length)));
+  if(playing)playCurrent(); else render(queue[qi],true);
+};
 document.addEventListener("keydown",e=>{
-  if(!P().classList.contains("on"))return;
-  if(e.code==="Space"){e.preventDefault();togglePause()}
-  else if(e.key==="ArrowRight")nav(1);
-  else if(e.key==="ArrowLeft")nav(-1);
-  else if((e.key==="s"||e.key==="S")&&SHOW_SKIP){$("skipBtn").click()}
-  else if(e.key==="Escape")backToSetup();
+  if(e.code==="Space"){e.preventDefault();$("play").click()}
+  else if(e.key==="ArrowRight")$("nextBtn").click();
+  else if(e.key==="ArrowLeft")$("prevBtn").click();
+  else if(e.key==="Escape")$("sheet").classList.remove("on");
 });
 
-const BRANDS={
- netease:{n:"网易云音乐",c:"#ff7a7a",bg:"#d33a31",ch:"云"},
- qq:{n:"QQ音乐",c:"#31c27c",bg:"#31c27c",ch:"Q"},
- kugou:{n:"酷狗音乐",c:"#5ec5ff",bg:"linear-gradient(135deg,#35bafa,#1877c9)",ch:"K"},
- kuwo:{n:"酷我音乐",c:"#ffce3f",bg:"#ffce3f",ch:"酷",dark:true},
- xiami:{n:"虾米音乐",c:"#ff5a1f",bg:"#ff5a1f",ch:"✕"},
- spotify:{n:"Spotify",c:"#1db954",bg:"#1db954",ch:"♫"},
- ttpod:{n:"天天动听",c:"#39c6cf",bg:"#0e2b31",ch:"听",bord:"#39c6cf"},
- ttplayer:{n:"千千静听",c:"#ffb200",bg:"#3b6fb0",ch:"千"}
-};
-let SHOW_BRAND=0;
-let SHOW_SKIP=0;
-function renderBrand(){
-  const th=document.body.dataset.theme,b=BRANDS[th],el=$("brandmark");
-  if(!el)return;
-  if(!SHOW_BRAND||!b){el.style.display="none";return}
-  el.style.display="flex";
-  el.innerHTML=`<span class="ai" style="background:${b.bg};color:${b.dark?"#3a2a00":"#fff"}${b.bord?";border:1.5px solid "+b.bord:""}">${b.ch}</span>`
-    +`<span class="bn" style="color:${b.c}">${b.n}<i>风格致敬</i></span>`;
+// 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中
+(function(){
+  const box=$("wav");
+  for(let i=0;i<26;i++){
+    const b=document.createElement("i");
+    b.style.animationDuration=(0.55+Math.random()*0.55).toFixed(2)+"s";
+    b.style.animationDelay=(-Math.random()*0.9).toFixed(2)+"s";
+    box.appendChild(b);
+  }
+})();
+
+// 界面缩放：设置面板里切档（窄屏才生效；宽屏走双栏，固定 1x）
+const ZOOMS=[1,1.25,1.5,2];
+function setZ(z,persist){
+  app.style.setProperty("--z",z);
+  const zs=$("segZoom");
+  if(zs)zs.querySelectorAll("b").forEach(b=>b.classList.toggle("on",+b.dataset.v===+z));
+  if(persist){try{localStorage.setItem("listen_qq_zoom",z)}catch(e){}}
 }
-renderChips();syncOpts();updateBar();renderBrand();fxInitBars();
+seg($("segZoom"),ZOOMS.map(z=>({t:z+"x",v:z})),()=>+(localStorage.getItem("listen_qq_zoom")||1),v=>setZ(v,true));
+function measureDesign(){
+  const prev=app.style.minHeight; app.style.minHeight="0px";
+  const h=app.scrollHeight; app.style.minHeight=prev; return h;
+}
+addEventListener("resize",()=>{
+  if(innerWidth<760 && !localStorage.getItem("listen_qq_zoom")) initZoom();
+});
+function initZoom(){
+  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏：双栏布局，不叠加缩放
+  const saved=+(localStorage.getItem("listen_qq_zoom")||0);
+  if(saved&&ZOOMS.indexOf(saved)>=0){ setZ(saved,false); return }
+  app.style.setProperty("--z","1");
+  const dh=Math.max(measureDesign(),640);
+  const fit=Math.min(2,(innerWidth-20)/430,(innerHeight-20)/dh);
+  const ok=ZOOMS.filter(v=>v<=fit+1e-6);
+  setZ(ok.length?ok[ok.length-1]:1,false);
+}
+initZoom();
+
+// 进入即播放；被浏览器拦截则停在 ▶ 等点击
+(function autoStart(){
+  buildQueue();
+  if(!queue.length){ emptyHint(); return }
+  setPlaying(true); playCurrent();
+  let heard=false; const mark=()=>{heard=true};
+  const iv=setInterval(()=>{if(audio){audio.addEventListener("playing",mark);audio.addEventListener("timeupdate",mark)}},250);
+  setTimeout(()=>{
+    clearInterval(iv);
+    if(heard)return;                        /* 真的出声了：正常播放 */
+    if(!autoplayBlocked)return;             /* 没出声但不是被拦（网络慢/无音频设备）：不干预，别误暂停 */
+    clearT();stopAudio();setPlaying(false);qi=0;render(queue[0],true);
+    toast("浏览器拦截了自动播放，点 ▶ 开始");
+  },3000);
+})();
 </script>
 </body>
 </html>
