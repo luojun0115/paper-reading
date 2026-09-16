@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MathIntuition_论文词汇_听力 · 单词连播</title>
+<title>MathIntuition_听力 · 单词连播</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{min-height:100vh;display:flex;justify-content:center;font-family:"PingFang SC",-apple-system,sans-serif;background:#111}
@@ -94,6 +94,87 @@
     --bar-bg:rgba(80,55,20,.22); --bar-fill:#4a3418;
     --sheet-bg:rgba(255,250,240,.97); --accent:#b8860b;
   }
+  .app[data-skin="sakura"]{         /* 樱花粉 */
+    --bg-a:#fdeef3; --bg-b:#f9d7e2; --bg-c:#f4c2d4;
+    --card-bg:rgba(255,255,255,.42); --card-br:rgba(255,255,255,.9);
+    --disc-a:#f08cb2; --disc-b:#e0618f;
+    --groove:rgba(160,50,90,.10); --dshadow:rgba(210,90,140,.35);
+    --tx:#3d1f2b; --tx2:#7a4f61; --tx3:#9b7486;
+    --bar-bg:rgba(140,60,95,.2); --bar-fill:#e0618f;
+    --sheet-bg:rgba(255,247,250,.97); --accent:#e8638c;
+  }
+  .app[data-skin="matcha"]{         /* 抹茶（同全站主题色） */
+    --bg-a:#f1f4ea; --bg-b:#e4ecd7; --bg-c:#d5e2c2;
+    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.92);
+    --disc-a:#93b073; --disc-b:#66854a;
+    --groove:rgba(70,100,40,.10); --dshadow:rgba(100,130,70,.32);
+    --tx:#2c3a1e; --tx2:#5d7247; --tx3:#84976d;
+    --bar-bg:rgba(80,110,50,.2); --bar-fill:#5f7d46;
+    --sheet-bg:rgba(250,252,246,.97); --accent:#6b8e4e;
+  }
+  .app[data-skin="mint"]{           /* 薄荷 */
+    --bg-a:#eefaf7; --bg-b:#daf2ec; --bg-c:#c2e8df;
+    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
+    --disc-a:#55c7b2; --disc-b:#2ba58f;
+    --groove:rgba(20,110,95,.10); --dshadow:rgba(40,150,130,.3);
+    --tx:#12332c; --tx2:#4a7368; --tx3:#7a998f;
+    --bar-bg:rgba(30,110,95,.2); --bar-fill:#2ba58f;
+    --sheet-bg:rgba(247,253,251,.97); --accent:#2bbfa3;
+  }
+  .app[data-skin="ocean"]{          /* 海盐蓝 */
+    --bg-a:#eef5fc; --bg-b:#dcebf9; --bg-c:#c5ddf3;
+    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
+    --disc-a:#63a1dd; --disc-b:#3a6fb8;
+    --groove:rgba(30,80,150,.10); --dshadow:rgba(60,110,180,.32);
+    --tx:#122a44; --tx2:#4a6886; --tx3:#7a93ab;
+    --bar-bg:rgba(40,90,150,.2); --bar-fill:#3a6fb8;
+    --sheet-bg:rgba(247,251,255,.97); --accent:#3a7bd5;
+  }
+  .app[data-skin="grape"]{          /* 星空紫 */
+    --bg-a:#f2eefa; --bg-b:#e5dcf6; --bg-c:#d4c6ee;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.9);
+    --disc-a:#9a7fda; --disc-b:#7257bd;
+    --groove:rgba(80,50,150,.10); --dshadow:rgba(120,90,190,.32);
+    --tx:#2c2144; --tx2:#5f4f80; --tx3:#8677a3;
+    --bar-bg:rgba(90,60,160,.2); --bar-fill:#7257bd;
+    --sheet-bg:rgba(251,249,255,.97); --accent:#7c5cd6;
+  }
+  .app[data-skin="amusic"]{         /* Apple Music 红 */
+    --bg-a:#fff4f4; --bg-b:#ffe3e5; --bg-c:#ffd2d6;
+    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.95);
+    --disc-a:#fb5c74; --disc-b:#e11d3f;
+    --groove:rgba(170,20,50,.10); --dshadow:rgba(230,50,80,.32);
+    --tx:#3d1420; --tx2:#844a58; --tx3:#a87581;
+    --bar-bg:rgba(150,30,60,.2); --bar-fill:#e11d3f;
+    --sheet-bg:rgba(255,248,248,.97); --accent:#fa233b;
+  }
+  .app[data-skin="mocha"]{          /* 摩卡棕 */
+    --bg-a:#f7f1ea; --bg-b:#eee1d3; --bg-c:#e0cdb8;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.88);
+    --disc-a:#7d5c42; --disc-b:#553a28;
+    --groove:rgba(90,60,35,.10); --dshadow:rgba(120,85,55,.35);
+    --tx:#38271a; --tx2:#6e5540; --tx3:#93795f;
+    --bar-bg:rgba(110,75,45,.2); --bar-fill:#5d4128;
+    --sheet-bg:rgba(253,250,246,.97); --accent:#8b5e3c;
+  }
+  .app[data-skin="spotify"]{        /* Spotify 黑绿 */
+    --bg-a:#1d2420; --bg-b:#121713; --bg-c:#0b0e0c;
+    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
+    --disc-a:#181d18; --disc-b:#0c0f0c;
+    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
+    --tx:#f0f5f0; --tx2:rgba(235,245,235,.72); --tx3:rgba(235,245,235,.5);
+    --bar-bg:rgba(255,255,255,.2); --bar-fill:#f0f5f0;
+    --sheet-bg:rgba(18,23,19,.96); --accent:#1db954;
+  }
+  .app[data-skin="midnight"]{       /* 深夜蓝（暗色） */
+    --bg-a:#1e2740; --bg-b:#151c30; --bg-c:#0d1220;
+    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
+    --disc-a:#141a2b; --disc-b:#090c15;
+    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
+    --tx:#eef2fb; --tx2:rgba(235,240,250,.72); --tx3:rgba(235,240,250,.5);
+    --bar-bg:rgba(255,255,255,.2); --bar-fill:#eef2fb;
+    --sheet-bg:rgba(18,24,40,.96); --accent:#4a9eff;
+  }
   .app[data-skin="vinylx"]{          /* 悬浮黑胶（参照网易云图标：黑盘+大蓝标+顶部细针） */
     --bg-a:#e9e8f0; --bg-b:#e9e8f0; --bg-c:#e2e1ec;
     --card-bg:transparent; --card-br:transparent;
@@ -133,8 +214,12 @@
   .top .ic.neutral.on svg{stroke:var(--accent)}
   .top .ic.on svg{stroke:var(--accent)}
   .top .ic.on svg .fillable{fill:var(--accent)}
-  .top .ic svg .slash{opacity:1;transition:opacity .2s}   /* 未收藏：心上有斜线 */
-  .top .ic.on svg .slash{opacity:0}                        /* 已收藏：斜线消失、心填色 */
+  /* 「跳过/已掌握」新图标是实心路径（无描边）：中性灰 → 点亮用强调色 */
+  .top .ic svg.solid{stroke:none;fill:rgba(118,124,134,.92)}
+  .top .ic.on svg.solid{fill:var(--accent)}
+  /* 斜线 = 「已划掉」标记：默认不显示，点了 ✓ 之后才划掉 */
+  .top .ic svg .slash{opacity:0;transition:opacity .2s}
+  .top .ic.on svg .slash{opacity:1}
   .top{gap:9px}
   .top .ic{width:30px;height:30px}
   .top .ic svg{width:19px;height:19px}
@@ -205,11 +290,35 @@
   .side{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
   .timerChip{position:absolute;right:0;top:0;font-size:11px;color:var(--tx3);opacity:.9;
     letter-spacing:.4px;font-variant-numeric:tabular-nums;pointer-events:none}
+  /* 当前词的来源标记（星标/收藏/已跳过）：点一下即取消，专门救误点 */
+  .mkbadge{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0}
+  .mkbadge .mk{font-style:normal;display:flex;align-items:center;font-size:11px;line-height:1;
+    padding:5px 8px;border-radius:99px;
+    border:1px solid var(--accent);color:var(--accent);cursor:pointer;user-select:none;
+    background:transparent;transition:opacity .15s,transform .15s}
+  .mkbadge .mk svg{width:14px;height:14px;display:block}
+  .mkbadge .mk svg.fill{fill:currentColor}
+  /* 标记统计：和「词库来源」用同一套图标，不再用 ⭐❤✓ 这种混搭 */
+  #markCnt{display:flex;align-items:center;gap:13px}
+  #markCnt b{display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;color:var(--tx2)}
+  #markCnt b svg{width:14px;height:14px;display:block}
+  #markCnt b svg.fill{fill:currentColor}
+  #clearBox{display:flex;gap:6px}
+  #clearBox b{display:flex;align-items:center;gap:3px;padding:5px 9px;font-size:12px}
+  #clearBox b svg{width:13px;height:13px;display:block}
+  #clearBox b svg.fill{fill:currentColor}
+  #clearBox b i{font-style:normal;font-size:10px;opacity:.65}
+  .mkbadge .mk:hover{opacity:.6}
+  .mkbadge .mk:active{transform:scale(.94)}
+  .mkbadge .mk::after{content:" ✕"}
   @media (min-width:760px){
-    .app{width:min(1280px,96vw);max-width:none;zoom:1;min-height:auto;margin:auto;padding-bottom:8px}
+    /* 宽屏：定成横向矩形（16:10）并随缩放等比，别再被 100vh 拉成竖长方形 */
+    body{align-items:center}
+    .app{width:min(1280px,calc(96vw / var(--z,1)));max-width:none;zoom:var(--z,1);
+      aspect-ratio:16/10;min-height:0;max-height:calc(96vh / var(--z,1));margin:auto;padding-bottom:8px}
     .main{flex-direction:row;align-items:center;gap:40px;padding:8px 30px 0}
     /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕 */
-    .main>.card{margin:0;flex:0 0 clamp(400px,min(40vw,66vh),640px);align-self:center}
+    .main>.card{margin:0;flex:0 0 calc(clamp(400px,min(40vw,66vh),640px) / var(--z,1));align-self:center}
     .side{align-self:stretch;justify-content:flex-start}
     /* 单词区在「角标」与「底部控制」之间的剩余空间里垂直居中 → 整体下移到中间 */
     .side .word{padding:0;min-height:0;text-align:center;margin-top:auto;margin-bottom:auto}
@@ -287,20 +396,31 @@
 
   /* 设置面板 */
   .sheet{position:absolute;left:0;right:0;bottom:0;z-index:20;background:var(--sheet-bg);backdrop-filter:blur(14px);
-    border-radius:22px 22px 0 0;padding:16px 22px 28px;transform:translateY(105%);
+    border-radius:22px 22px 0 0;padding:0 22px 28px;transform:translateY(105%);
+    /* 关键：面板必须限高且可滚动，否则顶部选项会被顶出屏幕点不到 */
+    max-height:calc(100% - 12px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
     transition:transform .35s cubic-bezier(.3,1,.4,1);box-shadow:0 -10px 30px rgba(0,0,0,.2)}
   .sheet.on{transform:translateY(0)}
+  .sheet::-webkit-scrollbar{width:6px}
+  .sheet::-webkit-scrollbar-thumb{background:var(--bar-bg);border-radius:3px}
   .sheet h3{font-size:14px;color:var(--tx);margin-bottom:0}
-  .shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  /* 标题行吸顶：滚动时「返回播放」始终可见 */
+  .shd{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;
+    background:var(--sheet-bg);padding:16px 0 12px}
   .shb{font-size:12.5px;font-weight:600;color:var(--accent);cursor:pointer;user-select:none}
   .shb:hover{opacity:.75}
   .top .ic{flex:none}
-  .srow{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bar-bg)}
+  .srow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;
+    padding:10px 0;border-bottom:1px solid var(--bar-bg)}
   .srow:last-of-type{border-bottom:none}
-  .srow span{font-size:13.5px;color:var(--tx)}
-  .seg{display:flex;gap:6px}
+  .srow span{font-size:13.5px;color:var(--tx);white-space:nowrap}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
   .seg b{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;cursor:pointer;
-    border:1px solid var(--bar-bg);color:var(--tx2)}
+    border:1px solid var(--bar-bg);color:var(--tx2);display:flex;align-items:center;justify-content:center}
+  .seg b svg{width:15px;height:15px;display:block}
+  .seg b.icn{padding:5px 10px;min-width:34px}
+  .seg b.off{opacity:.5;cursor:not-allowed;border-style:dashed}
+  .seg b svg.fill{fill:currentColor}
   .seg b.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .sback{margin-top:14px;width:100%;padding:11px;border-radius:12px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:14px;font-weight:600;cursor:pointer}
@@ -319,16 +439,12 @@
       <svg viewBox="0 0 24 24" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>
     </div>
     <div class="pt" id="ptitle">Advancing mathematics by guiding human intuition with AI · Nature 2021</div>
+    <div class="ic" id="replayBtn" title="重听当前词">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
+    </div>
     <div class="ic neutral" id="favBtn" title="收藏（再点取消）">
       <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round">
-        <defs>
-          <clipPath id="favClip">
-            <path transform="translate(12 12) scale(.86) translate(-12 -12)"
-                  d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-          </clipPath>
-        </defs>
         <path class="fillable heart" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-        <path class="slash" d="M4 4 20 20" clip-path="url(#favClip)"/>
       </svg>
     </div>
     <div class="ic neutral" id="starBtn" title="标星（重点词，可只背星标）">
@@ -336,14 +452,13 @@
         <path class="fillable star" d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/>
       </svg>
     </div>
-    <div class="ic" id="okBtn" title="认识，之后不再朗读">
-      <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>
-    </div>
-    <div class="ic" id="replayBtn" title="重听当前词">
-      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
+    <div class="ic neutral" id="okBtn" title="标为已掌握（跳过=不再朗读，再点恢复）">
+      <svg viewBox="0 0 1024 1024" class="solid">
+        <path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/>
+      </svg>
     </div>
     <div class="ic" id="skinBtn" title="换皮肤（点一下换下一套）">
-      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 3.2 3.4 5.9l2 3.6 1.9-1V20.8h9.4V8.5l1.9 1 2-3.6L15.8 3.2a3.8 3.8 0 0 1-7.6 0Z"/></svg>
+      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.8 3.4c0 2 1.4 3.6 3.2 3.6s3.2-1.6 3.2-3.6l6.2 2.7-1.8 4.1-2.6-1.1v10.7H6.8V9.1L4.2 10.2 2.4 6.1Z"/></svg>
     </div>
     <div class="ic" id="moreBtn" title="设置">
       <svg class="dot" viewBox="0 0 24 24" stroke="none"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>
@@ -389,6 +504,7 @@
   <div class="side">
   <div class="sec" id="wsec">准备中…</div>
   <div class="timerChip" id="timerChip" style="display:none">⏱ 0:00</div>
+  <div class="mkbadge" id="mkBadge" style="display:none"></div>
   <div class="word">
     <div class="wrow">
       <span class="big" id="wbig">—</span>
@@ -427,6 +543,8 @@
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
+    <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
+    <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
     <div class="srow"><span>单词重复</span>
       <div style="display:flex;align-items:center;gap:8px">
         <div class="seg" id="segRepeat"></div>
@@ -434,6 +552,7 @@
       </div>
     </div>
     <div class="srow"><span>每词停顿</span><div class="seg" id="segPause"></div></div>
+    <div class="srow"><span>语速</span><div class="seg" id="segRate"></div></div>
     <div class="srow"><span>先听后现</span><div class="seg" id="segReveal"></div></div>
     <div class="srow"><span>朗读中文</span><div class="seg" id="segZh"></div></div>
     <div class="srow"><span>朗读例句</span><div class="seg" id="segEx"></div></div>
@@ -441,7 +560,7 @@
     <div class="srow"><span>单词字体</span><div class="seg" id="segFont"></div></div>
     <div class="srow"><span>定时停止</span><div class="seg" id="segTimer"></div></div>
     <div class="srow"><span>词库来源</span><div class="seg" id="segSource"></div></div>
-    <div class="srow"><span id="markCnt">⭐ 0 · ❤ 0 · ✓ 0</span><span class="clr" id="clearStar">清空星标</span></div>
+    <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
@@ -454,6 +573,7 @@
 
 <script>
 const ITEMS=[{"w": "intuition", "ipa": "ˌɪntuˈɪʃn", "pos": "n.", "m": "直觉", "ex": "Advancing mathematics by guiding human intuition with AI", "lv": "六级", "sec": "Intro"}, {"w": "formulate", "ipa": "ˈfɔːrmjuleɪt", "pos": "v.", "m": "表述，提出", "ex": "discovering patterns and using these to formulate and prove conjectures", "lv": "四级", "sec": "Intro"}, {"w": "conjecture", "ipa": "kənˈdʒektʃər", "pos": "n.", "m": "猜想", "ex": "formulate and prove conjectures, resulting in theorems", "lv": "考博", "sec": "Intro"}, {"w": "theorem", "ipa": "ˈθiːərəm", "pos": "n.", "m": "定理", "ex": "resulting in theorems", "lv": "六级", "sec": "Intro"}, {"w": "assistance", "ipa": "əˈsɪstəns", "pos": "n.", "m": "协助", "ex": "discovered with the assistance of machine learning", "lv": "四级", "sec": "Intro"}, {"w": "attribution", "ipa": "ˌætrɪˈbjuːʃn", "pos": "n.", "m": "归因", "ex": "understanding them with attribution techniques", "lv": "考博", "sec": "Intro"}, {"w": "outline", "ipa": "ˈaʊtlaɪn", "pos": "v.", "m": "概述", "ex": "We outline this machine-learning-guided framework", "lv": "四级", "sec": "Intro"}, {"w": "distinct", "ipa": "dɪˈstɪŋkt", "pos": "adj.", "m": "不同的", "ex": "current research questions in distinct areas of pure mathematics", "lv": "四级", "sec": "Intro"}, {"w": "meaningful", "ipa": "ˈmiːnɪŋfl", "pos": "adj.", "m": "有意义的", "ex": "it led to meaningful mathematical contributions", "lv": "考博", "sec": "Intro"}, {"w": "algebraic", "ipa": "ˌældʒəˈbreɪɪk", "pos": "adj.", "m": "代数的", "ex": "a new connection between the algebraic and geometric structure of knots", "lv": "考博", "sec": "Intro"}, {"w": "knot", "ipa": "nɑːt", "pos": "n.", "m": "纽结（数学中的 knot）", "ex": "the algebraic and geometric structure of knots", "lv": "四级", "sec": "Intro"}, {"w": "combinatorial", "ipa": "ˌkɑːmbɪnəˈtɔːriəl", "pos": "adj.", "m": "组合的", "ex": "predicted by the combinatorial invariance conjecture for symmetric groups", "lv": "考博", "sec": "Intro"}, {"w": "invariance", "ipa": "ɪnˈveriəns", "pos": "n.", "m": "不变性", "ex": "the combinatorial invariance conjecture", "lv": "考博", "sec": "Intro"}, {"w": "respectively strengths", "ipa": "rɪˈspektɪv streŋθs", "pos": "phr.", "m": "各自的优势", "ex": "leveraging the respective strengths of mathematicians and machine learning", "lv": "考博", "sec": "Intro"}, {"w": "suspected", "ipa": "səˈspektɪd", "pos": "adj.", "m": "被怀疑的（尚待证明）", "ex": "statements that are suspected to be true but have not been proven", "lv": "四级", "sec": "Intro"}, {"w": "inaccessible", "ipa": "ˌɪnækˈsesəbl", "pos": "adj.", "m": "难以企及的", "ex": "a new understanding of problems that were previously inaccessible", "lv": "六级", "sec": "Intro"}, {"w": "consistently", "ipa": "kənˈsɪstəntli", "pos": "adv.", "m": "一贯地", "ex": "computational techniques have become consistently useful", "lv": "四级", "sec": "Intro"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"invariance": "../listen-audio/w_brian_invariance.mp3", "conjecture": "../listen-audio/w_brian_conjecture.mp3", "distinct": "../listen-audio/w_brian_distinct.mp3", "algebraic": "../listen-audio/w_brian_algebraic.mp3", "intuition": "../listen-audio/w_brian_intuition.mp3", "attribution": "../listen-audio/w_brian_attribution.mp3", "theorem": "../listen-audio/w_brian_theorem.mp3", "consistently": "../listen-audio/w_brian_consistently.mp3", "formulate": "../listen-audio/w_brian_formulate.mp3", "assistance": "../listen-audio/w_brian_assistance.mp3", "outline": "../listen-audio/w_brian_outline.mp3", "meaningful": "../listen-audio/w_brian_meaningful.mp3", "knot": "../listen-audio/w_brian_knot.mp3", "combinatorial": "../listen-audio/w_brian_combinatorial.mp3", "respectively strengths": "../listen-audio/w_brian_respectively_strengths.mp3", "suspected": "../listen-audio/w_brian_suspected.mp3", "inaccessible": "../listen-audio/w_brian_inaccessible.mp3"}}, "zh-CN-YunyangNeural": {"m": {"不变性": "../listen-audio/m_yunyang_a916edad8219.mp3", "猜想": "../listen-audio/m_yunyang_5cc978fa795e.mp3", "不同的": "../listen-audio/m_yunyang_bdc3d63eea13.mp3", "代数的": "../listen-audio/m_yunyang_091a0bf06a60.mp3", "直觉": "../listen-audio/m_yunyang_2476e13a300e.mp3", "定理": "../listen-audio/m_yunyang_179023e1bb18.mp3", "组合的": "../listen-audio/m_yunyang_57a6b740916b.mp3", "表述，提出": "../listen-audio/m_yunyang_4a583897a525.mp3", "协助": "../listen-audio/m_yunyang_194edd1270dc.mp3", "归因": "../listen-audio/m_yunyang_ffda2390f00c.mp3", "概述": "../listen-audio/m_yunyang_a4d3b02a4666.mp3", "有意义的": "../listen-audio/m_yunyang_11df81ee33cd.mp3", "纽结": "../listen-audio/m_yunyang_b4246a46d1ee.mp3", "各自的优势": "../listen-audio/m_yunyang_69f5b52f7c32.mp3", "被怀疑的（尚待证明）": "../listen-audio/m_yunyang_5d2b06732289.mp3", "难以企及的": "../listen-audio/m_yunyang_ae5676003efe.mp3", "一贯地": "../listen-audio/m_yunyang_ae1fe6cafd40.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -464,11 +584,20 @@ const SKINS=[
   {id:"netease",n:"网易云黑",p:"linear-gradient(135deg,#3a2429,#150d10)"},
   {id:"vinyl",n:"黑胶原色",p:"linear-gradient(135deg,#e6e9f2,#161616)"},
   {id:"gold",n:"香槟金",p:"linear-gradient(135deg,#f2dfbd,#3a2a14)"},
+  {id:"sakura",n:"樱花粉",p:"linear-gradient(135deg,#fdeef3,#f2b9cd)"},
+  {id:"matcha",n:"抹茶",p:"linear-gradient(135deg,#eef3e6,#a9c489)"},
+  {id:"mint",n:"薄荷",p:"linear-gradient(135deg,#eefaf7,#8fd8c8)"},
+  {id:"ocean",n:"海盐蓝",p:"linear-gradient(135deg,#eef5fc,#7fb3e6)"},
+  {id:"grape",n:"星空紫",p:"linear-gradient(135deg,#f2eefa,#b39ade)"},
+  {id:"amusic",n:"Apple红",p:"linear-gradient(135deg,#fff4f4,#fa5c74)"},
+  {id:"mocha",n:"摩卡",p:"linear-gradient(135deg,#f7f1ea,#b08d6d)"},
+  {id:"spotify",n:"Spotify",p:"linear-gradient(135deg,#1d2420,#1db954)"},
+  {id:"midnight",n:"深夜蓝",p:"linear-gradient(135deg,#1e2740,#4a9eff)"},
   {id:"vinylx",n:"悬浮黑胶",p:"radial-gradient(circle at 50% 50%,#5b5bd6 0 30%,#17171a 31%)"}
 ];
 const $=id=>document.getElementById(id);
 const app=$("app");
-let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0};
+let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0,rate:1,enVoice:"",zhVoice:""};
 try{const c=JSON.parse(localStorage.getItem("listen_qq_cfg")||"{}");Object.assign(S,c)}catch(e){}
 const save=()=>{try{localStorage.setItem("listen_qq_cfg",JSON.stringify(S))}catch(e){}};
 
@@ -488,8 +617,10 @@ function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
-  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过不读的 */
-  if(S.source!=="all")       list=list.filter(i=>!skips.has(i.w));   /* 专背模式下「不读」依然生效 */
+  else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
+  else if(S.source==="new")  list=list.filter(i=>!skips.has(i.w));   /* 仅新词：只读还没标已掌握的 */
+  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过已划掉的 */
+  /* 专背模式不再二次排除已跳过的：否则「星标+已跳过」的词根本读不到，没法取消误点 */
   if(S.order==="rand"){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
   queue=list;
   if(qi>=queue.length)qi=0;
@@ -507,8 +638,25 @@ function updateBtns(){
 }
 function updateCounts(){
   $("skipCnt").textContent="已跳过 "+skips.size+" 词";
-  $("markCnt").textContent="⭐ "+stars.size+" · ❤ "+favs.size+" · ✓ "+skips.size;
+  /* 和「词库来源」同一套图标：星标 / 收藏 / 跳过（原先是 ⭐❤✓ emoji 混搭） */
+  $("markCnt").innerHTML="<b>"+IC.star+stars.size+"</b><b>"+IC.heart+favs.size+"</b><b>"+IC.skip+skips.size+"</b>";
 }
+/* 当前词的标记：只显示「跳过」（星标/收藏看顶栏图标即可，不重复占地方） */
+function renderMarks(w){
+  const box=$("mkBadge"); if(!box)return;
+  if(!w||!skips.has(w.w)){box.style.display="none";return}
+  box.innerHTML='<i class="mk" data-cancel="skip" title="此词已跳过 · 点一下恢复朗读">'+IC.skip+'<i>✕</i></i>';
+  box.style.display="flex";
+}
+$("mkBadge").onclick=e=>{
+  const el=e.target.closest("[data-cancel]"); if(!el)return;
+  const w=queue[qi]; if(!w)return;
+  const k=el.dataset.cancel;
+  if(k==="star"){stars.delete(w.w);wr("listen_qq_star",stars);toast("已取消星标「"+w.w+"」")}
+  else if(k==="fav"){favs.delete(w.w);wr("listen_qq_fav",favs);toast("已取消收藏「"+w.w+"」")}
+  else if(k==="skip"){skips.delete(w.w);wr("listen_qq_skip",skips);toast("已恢复朗读「"+w.w+"」")}
+  afterMark();
+};
 /* 标记后统一收尾：重建队列，空了就提示，否则接着播 */
 function afterMark(){
   updateBtns(); updateCounts(); rebuild(true);   /* 保留当前词：随机模式下重排也不会跳走 */
@@ -545,11 +693,23 @@ $("skinBtn").onclick=()=>{ skinIdx=(skinIdx+1)%SKINS.length; applySkin(SKINS[ski
 try{const sv=localStorage.getItem("listen_qq_skin"); if(sv)applySkin(sv,false)}catch(e){}
 
 // 设置段
+/* 小图标库：星标 / 收藏 / 跳过（用户提供）/ 加号（新词）/ 全部 */
+const IC={
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
+  skip:'<svg class="fill" viewBox="0 0 1024 1024"><path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/></svg>',
+  news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 13.6 9.4l4.9 1.6-4.9 1.6L12 17.5l-1.6-4.9-4.9-1.6 4.9-1.6Z"/></svg>',
+  all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>'
+};
 function seg(box,opts,get,set,after){
   box.innerHTML="";
   opts.forEach(o=>{
-    const b=document.createElement("b"); b.textContent=o.t; b.dataset.v=o.v;
-    b.className=get()===o.v?"on":"";
+    const b=document.createElement("b");
+    if(o.svg){ b.innerHTML=o.svg; b.className="icn" } else { b.textContent=o.t }
+    b.dataset.v=o.v;
+    if(o.tip) b.title=o.tip;
+    if(get()===o.v) b.classList.add("on");
     b.onclick=()=>{set(o.v);box.querySelectorAll("b").forEach(x=>x.classList.remove("on"));b.classList.add("on");save();after&&after(o.v)};
     box.appendChild(b);
   });
@@ -565,6 +725,9 @@ seg($("segVoice"),[{t:"美音",v:"us"},{t:"英音",v:"uk"}],()=>S.voice,v=>S.voi
   ()=>refreshCurrent("发音： "+(S.voice==="uk"?"英音":"美音")));
 seg($("segPause"),[{t:"2s",v:2000},{t:"4s",v:4000},{t:"6s",v:6000}],()=>S.pause,v=>S.pause=v,
   ()=>refreshCurrent("每词停顿： "+(S.pause/1000)+" 秒"));
+/* 语速：直接改 audio.playbackRate（对有道/百度/系统语音都生效，不改音调） */
+seg($("segRate"),[{t:"0.75x",v:.75},{t:"1x",v:1},{t:"1.25x",v:1.25},{t:"1.5x",v:1.5}],()=>+S.rate||1,v=>S.rate=v,
+  ()=>refreshCurrent("语速： "+S.rate+"x"));
 /* 单词重复次数：1/3/5 快捷 + 右侧输入框自定义（1–20） */
 function setRepeat(v,persist){
   v=Math.max(1,Math.min(20,Math.round(+v||1)));
@@ -581,15 +744,34 @@ seg($("segReveal"),[{t:"开",v:true},{t:"关",v:false}],()=>S.reveal,v=>S.reveal
   ()=>refreshCurrent("先听后现： "+(S.reveal?"开":"关")));
 seg($("segZh"),[{t:"开",v:true},{t:"关",v:false}],()=>S.zh,v=>S.zh=v,
   ()=>refreshCurrent("朗读中文： "+(S.zh?"开":"关")));
-seg($("segEx"),[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
-  ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
+/* 朗读例句：本篇若没有预生成例句音频（例句体积最大，已下线），
+   开关直接显示「暂不可用」，点了给明确提示——绝不偷偷回退到在线机器音 */
+(function(){
+  const box=$("segEx"); if(!box)return;
+  if(!audioVoices("e").length){
+    S.ex=false;                                  /* 默认关掉，避免无声/机器音 */
+    box.innerHTML='<b class="off" data-v="off" title="例句音频未预生成，暂不可用">暂不可用</b>';
+    box.querySelector("b").onclick=()=>toast("例句朗读暂不可用（音频未预生成）");
+    return;
+  }
+  seg(box,[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
+    ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
+})();
 // 单词字体：选项本身就用自己的字体渲染，所见即所得
 const FONTS=[
-  {v:"sans", t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
-  {v:"serif",t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
-  {v:"round",t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
-  {v:"kai",  t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
-  {v:"mono", t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'}
+  {v:"sans",    t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
+  {v:"serif",   t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
+  {v:"round",   t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
+  {v:"kai",     t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
+  {v:"mono",    t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'},
+  {v:"xingkai", t:"行楷", f:'"Xingkai SC","STXingkai","Snell Roundhand",cursive'},
+  {v:"weibei",  t:"魏碑", f:'"Weibei SC","STWeibei","Kaiti SC",serif'},
+  {v:"wawati",  t:"娃娃", f:'"Wawati SC","STWawati","Comic Sans MS",cursive'},
+  {v:"lanting", t:"兰亭", f:'"Lantinghei SC","FZLanTingHei-S-GB","PingFang SC",sans-serif'},
+  {v:"futura",  t:"几何", f:'Futura,"Avenir Next","Century Gothic",sans-serif'},
+  {v:"georgia", t:"书卷", f:'Georgia,"Times New Roman","Songti SC",serif'},
+  {v:"rounded", t:"圆润", f:'"Arial Rounded MT Bold","Hiragino Maru Gothic ProN","Yuanti SC",sans-serif'},
+  {v:"marker",  t:"手写", f:'"Marker Felt","Chalkboard SE","Comic Sans MS",cursive'}
 ];
 function applyFont(v){
   const f=FONTS.find(x=>x.v===v)||FONTS[0];
@@ -631,7 +813,14 @@ function applySource(){
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
   if(playing)playCurrent(); else render(queue[qi],true);
 }
-seg($("segSource"),[{t:"全部",v:"all"},{t:"仅⭐",v:"star"},{t:"仅❤",v:"fav"}],()=>S.source,v=>S.source=v,applySource);
+/* 词库来源：纯图标（全部 / 星标 / 收藏 / 跳过 / 新词），鼠标悬停有说明 */
+seg($("segSource"),[
+  {v:"all", svg:IC.all,  tip:"全部词"},
+  {v:"star",svg:IC.star, tip:"只看星标词"},
+  {v:"fav", svg:IC.heart,tip:"只看收藏词"},
+  {v:"skip",svg:IC.skip, tip:"只看已跳过的词（点标记可取消）"},
+  {v:"new", svg:IC.news, tip:"只看还没跳过的词"}
+],()=>S.source,v=>S.source=v,applySource);
 
 seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.order=v,
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
@@ -655,8 +844,25 @@ $("okBtn").onclick=()=>{
   else{skips.add(w.w);toast("此词不再朗读「"+w.w+"」")}
   wr("listen_qq_skip",skips); afterMark();
 };
-$("clearSkip").onclick=()=>{skips.clear();wr("listen_qq_skip",skips);updateCounts();rebuild(true);toast("已清空「不读」列表")};
-$("clearStar").onclick=()=>{stars.clear();wr("listen_qq_star",stars);updateCounts();rebuild(true);toast("已清空星标")};
+/* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
+$("clearBox").innerHTML=[["star",IC.star,"清空所有星标"],["fav",IC.heart,"清空所有收藏"],["skip",IC.skip,"清空所有跳过（恢复朗读）"]]
+  .map(x=>'<b data-clr="'+x[0]+'" title="'+x[2]+'">'+x[1]+'<i>✕</i></b>').join("");
+/* 清空按钮：每次点击都必须有反馈——原先星标本来就是 0 时点「清空星标」毫无反应，像坏了 */
+$("clearSkip").onclick=()=>{
+  if(!skips.size){toast("本来就没有跳过的词");return}
+  const n=skips.size; skips.clear(); wr("listen_qq_skip",skips); afterMark(); toast("已清空 "+n+" 个跳过词");
+};
+$("clearBox").onclick=e=>{
+  const b=e.target.closest("[data-clr]"); if(!b)return;
+  const k=b.dataset.clr;
+  const set = k==="star"?stars : k==="fav"?favs : skips;
+  const key = k==="star"?"listen_qq_star" : k==="fav"?"listen_qq_fav" : "listen_qq_skip";
+  const name= k==="star"?"星标" : k==="fav"?"收藏" : "跳过";
+  const n=set.size;
+  if(!n){ toast("本来就没有"+name+"的词"); return }
+  set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
+};
+const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
 /* 弯箭头：沿用旧设计语义 = 重听当前词（不想启用时删掉这三行即可） */
 $("replayBtn").onclick=()=>{
   if(!queue[qi])return;
@@ -684,6 +890,8 @@ function updateArm(){
 
 function render(w,reveal){
   app.style.setProperty("--h",hue(w.w));
+  updateBtns();                                      /* 顶栏 ❤/★/✓ 跟随当前词（原先切词不刷新，显示的是上一个词的状态） */
+  renderMarks(w);                                    /* 跳过标记（仅被跳过的词显示） */
   $("art").style.opacity=(S.reveal&&!reveal)?.42:1;   /* 先听后现：未揭晓时封面变暗 */
   $("wsec").textContent=w.sec+" · "+w.lv+" · 第 "+(qi+1)+"/"+queue.length+" 词";
   $("wbig").textContent=w.w;
@@ -702,32 +910,158 @@ function render(w,reveal){
   updateBtns();
 }
 
+/* 音源（全部实测过）：
+   · 单词 → 有道词典音（只有一个英文词时可靠）
+   · 中文/例句 → 百度 gettts，必须带 spd + **source=web**，否则返回错误页（200 但播不出）
+   · 每个都带兜底 + 开播看门狗，最后一层用系统语音 */
+/* ===== 本地微软语音：按音色取音频，缺失自动回退其它音色 → 再回退在线 TTS ===== */
+const VNAME={
+  "en-US-BrianNeural":"Brian","en-US-AndrewNeural":"Andrew","en-US-GuyNeural":"Guy",
+  "en-US-AriaNeural":"Aria","en-US-JennyNeural":"Jenny","en-US-AvaNeural":"Ava",
+  "en-US-EmmaNeural":"Emma","en-US-ChristopherNeural":"Christopher","en-US-EricNeural":"Eric",
+  "en-US-RogerNeural":"Roger","en-US-SteffanNeural":"Steffan","en-US-AnaNeural":"Ana",
+  "en-US-MichelleNeural":"Michelle","en-GB-SoniaNeural":"Sonia","en-GB-RyanNeural":"Ryan",
+  "en-GB-LibbyNeural":"Libby","en-GB-ThomasNeural":"Thomas","en-GB-MaisieNeural":"Maisie",
+  "zh-CN-YunyangNeural":"云扬","zh-CN-YunjianNeural":"云健","zh-CN-YunxiNeural":"云希",
+  "zh-CN-XiaoxiaoNeural":"晓晓","zh-CN-XiaoyiNeural":"晓伊","zh-CN-YunxiaNeural":"云夏",
+  "zh-CN-liaoning-XiaobeiNeural":"晓北","zh-CN-shaanxi-XiaoniNeural":"晓妮"
+};
+const voiceLabel=id=>VNAME[id]||String(id).replace(/Neural$/,"").split("-").pop();
+/* 本篇已生成哪些音色：w/e = 英文音色，m = 中文音色 */
+function audioVoices(kind){ try{ return AUDIO?Object.keys(AUDIO).filter(v=>AUDIO[v]&&AUDIO[v][kind]):[] }catch(e){ return [] } }
+function localAudio(t,kind){
+  try{
+    if(!AUDIO)return "";
+    const map = kind==="word"?"w" : kind==="zh"?"m" : kind==="sent"?"e" : null;
+    if(!map)return "";
+    const key = kind==="word" ? String(t).toLowerCase()
+              : kind==="zh"   ? String(t).replace(/^[a-z]+\.\s*/i,"")
+              : String(t);
+    const all = audioVoices(map);
+    const want = kind==="zh" ? S.zhVoice : S.enVoice;
+    const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    for(let i=0;i<order.length;i++){
+      const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
+      if(m&&m[key])return m[key];
+    }
+  }catch(e){}
+  return "";
+}
+/* 中文朗读文本：去掉词性前缀 + 去掉括号里的英文注释。
+   否则中文音色会把括号里的英文也念出来，中英混读听着就是"机器音" */
+function zhText(w){
+  return String((w&&w.m)||"")
+    .replace(/^[a-z]+\.\s*/i,"")
+    .replace(/[（(][^）)]*[A-Za-z][^）)]*[）)]/g,"")
+    .replace(/\s+/g," ").trim();
+}
 function ttsURL(t,kind){
-  if(kind==="zh")return "https://fanyi.baidu.com/gettts?lan=zh&text="+encodeURIComponent(t);
-  if(kind==="sent")return "https://fanyi.baidu.com/gettts?lan=en&text="+encodeURIComponent(t);
-  return "https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+encodeURIComponent(t);
+  const e=encodeURIComponent(t);
+  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=3&source=web&text="+e;
+  const L=localAudio(t,kind); if(L)return L;
+  if(kind==="zh")return bd("zh");
+  if(kind==="sent")return bd("en");
+  return yd;
+}
+function ttsURLs(t,kind){
+  const e=encodeURIComponent(t);
+  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=3&source=web&text="+e;
+  const urls=[];
+  const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
+  if(kind==="zh")urls.push(bd("zh"));
+  else if(kind==="sent")urls.push(bd("en"));
+  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  return urls;
+}
+
+/* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
+(function voiceRows(){
+  const en=audioVoices("w"), zh=audioVoices("m");
+  const rowOf=id=>{const e=$(id); return e?e.closest(".srow"):null};
+  const rEn=rowOf("segEnVoice"), rZh=rowOf("segZhVoice");
+  if(en.length){
+    if(!S.enVoice||en.indexOf(S.enVoice)<0)S.enVoice=(en.find(v=>/brian/i.test(v))||en[0]);
+    seg($("segEnVoice"),en.map(v=>({t:voiceLabel(v),v})),()=>S.enVoice,v=>{S.enVoice=v},
+        ()=>refreshCurrent("单词音色： "+voiceLabel(S.enVoice)));
+    const vr=$("segVoice")&&$("segVoice").closest(".srow"); if(vr)vr.style.display="none";  /* 有微软音后，美音/英音已无意义 */
+  }else if(rEn){ rEn.style.display="none" }
+  if(zh.length){
+    if(!S.zhVoice||zh.indexOf(S.zhVoice)<0)S.zhVoice=(zh.find(v=>/yunyang/i.test(v))||zh[0]);
+    seg($("segZhVoice"),zh.map(v=>({t:voiceLabel(v),v})),()=>S.zhVoice,v=>{S.zhVoice=v},
+        ()=>refreshCurrent("中文音色： "+voiceLabel(S.zhVoice)));
+  }else if(rZh){ rZh.style.display="none" }
+})();
+let failStreak=0;   /* 连续失败计数：防止音源全挂时疯狂空转刷完词表 */
+/* 系统语音兜底：在线音源都不可用时，用浏览器自带语音朗读，保证有声音 */
+function speakLocal(text,lang,cb){
+  try{
+    if(!window.speechSynthesis){ cb&&cb(false); return }
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang=lang; u.rate=Math.max(.5,Math.min(2,(+S.rate||1)*.95));   /* 系统语音也跟着语速 */
+    let done=false; const fin=ok=>{ if(done)return; done=true; cb&&cb(ok) };
+    u.onend=()=>fin(true); u.onerror=()=>fin(false);
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    setTimeout(()=>fin(true),Math.min(12000,1200+String(text).length*90));  /* 无 onend 时按字长估算收尾 */
+  }catch(e){ cb&&cb(false) }
 }
 function say(text,kind,cb){
-  stopAudio();
-  audio=new Audio(ttsURL(text,kind));
-  let done=false;
-  const fin=ok=>{if(done)return;done=true;cb&&cb(ok)};
-  audio.onended=()=>fin(true);
-  audio.onerror=()=>fin(false);
-  audio.play().catch(err=>{ if(err&&err.name==="NotAllowedError")autoplayBlocked=true; fin(false) });
-  setTimeout(()=>fin(false),9000);
+  const urls=ttsURLs(text,kind);
+  const t0=Date.now();
+  let i=0, done=false, local=false;
+  const finish=ok=>{
+    if(done)return; done=true;
+    failStreak=ok?0:failStreak+1;
+    if(!ok&&failStreak>=3){                 /* 连续 3 次完全没声：停下来告诉用户，别静默刷词 */
+      clearT(); stopAudio(); setPlaying(false);
+      toast("⚠️ 朗读音源暂时不可用，已暂停。检查网络后点 ▶ 继续");
+      return;
+    }
+    const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
+    setTimeout(()=>cb&&cb(ok),wait);
+  };
+  const tryNext=()=>{
+    if(done)return;
+    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+      if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
+      local=true;
+      speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
+      return;
+    }
+    stopAudio();
+    const a=new Audio(urls[i++]);
+    audio=a;
+    try{a.playbackRate=+S.rate||1}catch(e){}      /* 语速（preservesPitch 默认开，不改音调） */
+    let started=false;
+    a.addEventListener("playing",()=>{ started=true });
+    a.addEventListener("ended",()=>{ if(started)finish(true); else tryNext() });
+    a.addEventListener("error",()=>{ if(!started)tryNext(); else finish(true) });
+    a.play().catch(err=>{
+      if(err&&err.name==="NotAllowedError"){ autoplayBlocked=true; finish(false) }
+      else tryNext();
+    });
+    setTimeout(()=>{ if(!started&&!done)tryNext() },2500);   /* 2.5s 没出声 → 换下一个音源 */
+    setTimeout(()=>{ if(!done)finish(!!started) },15000);
+  };
+  tryNext();
 }
 function stopAudio(){try{if(audio){audio.pause();audio=null}}catch(e){}}
 function clearT(){if(timer){clearTimeout(timer);timer=null}}
 
 /* 池子为空（比如「只背星标」但一个都没标）时的提示 */
 function emptyHint(){
-  const star=S.source==="star";
+  const src=S.source;
   $("wsec").textContent="";
   $("wbig").textContent="—";
   $("wipa").textContent="";
-  $("wmean").textContent=star?"还没有 ⭐ 星标词":"还没有 ❤ 收藏词";
-  $("wex").textContent="点右上角 "+(star?"☆":"❤")+" 标记后，这里会自动连播";
+  $("wmean").textContent = src==="star"?"还没有 ⭐ 星标词"
+    : src==="fav"?"还没有 ❤ 收藏词"
+    : src==="skip"?"还没有 ✓ 跳过的词"
+    : "这里还没有可读的词";
+  $("wex").textContent = src==="skip"?"在词上点「✓ 跳过」标记后，这里能集中回看并一键取消"
+    : "点右上角 "+(src==="fav"?"❤":"☆")+" 标记后，这里会自动连播";
+  renderMarks(null);
   $("wav").style.display="none";
   $("wtxt").style.display="";
   $("art").style.opacity=1;
@@ -735,25 +1069,34 @@ function emptyHint(){
   $("fill").style.width="0%"; $("knob").style.left="0%";
 }
 
+/* 播放代际：每次 playCurrent 换代，上一代残留的延时/回执一律作废。
+   否则旧链的 420/450ms 延时会插进新链 → 开关关了还在读、中文被顶掉、读串词 */
+let gen=0;
 function playCurrent(){
+  const g=++gen;
   clearT();stopAudio();
   const w=queue[qi]; if(!w)return;
+  const live=fn=>(...a)=>{ if(g!==gen)return; return fn(...a) };
   render(w,!(S.reveal));
   updateArm();
   if(!playing)return;
-  const goNext=()=>{
+  const goNext=live(()=>{
     if(S.reveal)render(w,true);
-    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent()},S.pause);
-  };
-  const afterEx=()=>{ if(S.ex){say(w.ex,"sent",()=>goNext())} else goNext(); };
-  const afterZh=()=>{ if(S.zh){setTimeout(()=>say(w.m.replace(/^[a-z]+\.\s*/i,""),"zh",afterEx),450)} else afterEx(); };
+    timer=setTimeout(live(()=>{qi=(qi+1)%queue.length;playCurrent()}),S.pause);
+  });
+  /* 例句：已下线（不预生成、也不回退在线）。只有本篇确实有例句音频时才念 */
+  const afterEx=live(()=>{ if(S.ex && audioVoices("e").length){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
+  const afterZh=live(()=>{
+    if(S.zh){ timer=setTimeout(live(()=>say(zhText(w),"zh",afterEx)),450) }
+    else afterEx();
+  });
   /* 单词可重复朗读 N 次（默认 1），全部读完再走中文/例句 */
   let left=Math.max(1,Math.min(20,Math.round(+S.repeat||1)));
-  const again=()=>{
+  const again=live(()=>{
     left--;
-    if(left>0){ timer=setTimeout(()=>say(w.w,"word",again),420) }
+    if(left>0){ timer=setTimeout(live(()=>say(w.w,"word",again)),420) }
     else afterZh();
-  };
+  });
   say(w.w,"word",again);
 }
 
@@ -763,8 +1106,11 @@ function setPlaying(on){
   updateArm();
 }
 $("play").onclick=()=>{ setPlaying(!playing); if(playing)playCurrent(); else {clearT();stopAudio();} };
-$("prevBtn").onclick=()=>{if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
-$("nextBtn").onclick=()=>{if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
+/* 上一词/下一词：抽成函数——它们是 <svg>，没有 .click()，键盘里点会直接抛异常 */
+function prevWord(){if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+function nextWord(){if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+$("prevBtn").onclick=prevWord;
+$("nextBtn").onclick=nextWord;
 $("moreBtn").onclick=()=>$("sheet").classList.add("on");
 $("listBtn").onclick=()=>$("sheet").classList.add("on");
 $("sheetBack").onclick=()=>{$("sheet").classList.remove("on");if(!playing){setPlaying(true);playCurrent()}};
@@ -789,8 +1135,8 @@ $("bar").onclick=e=>{
 };
 document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
-  else if(e.key==="ArrowRight")$("nextBtn").click();
-  else if(e.key==="ArrowLeft")$("prevBtn").click();
+  else if(e.key==="ArrowRight")nextWord();
+  else if(e.key==="ArrowLeft")prevWord();
   else if(e.key==="Escape")$("sheet").classList.remove("on");
 });
 
@@ -822,9 +1168,10 @@ addEventListener("resize",()=>{
   if(innerWidth<760 && !localStorage.getItem("listen_qq_zoom")) initZoom();
 });
 function initZoom(){
-  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏：双栏布局，不叠加缩放
   const saved=+(localStorage.getItem("listen_qq_zoom")||0);
+  /* 用户手动选过档位：任何屏幕都尊重，别再被自动逻辑覆盖 */
   if(saved&&ZOOMS.indexOf(saved)>=0){ setZ(saved,false); return }
+  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏默认 1x（双栏本来就够大）
   app.style.setProperty("--z","1");
   const dh=Math.max(measureDesign(),640);
   const fit=Math.min(2,(innerWidth-20)/430,(innerHeight-20)/dh);
