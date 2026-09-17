@@ -17,12 +17,12 @@ const zones = [
   {
     icon: '🎬', name: '朗读区', en: 'READING', href: withBase('/reading/'),
     desc: '逐页带读视频：原文高亮 + 逐词跟读 + 章节进度条。',
-    badge: '筹备中', soon: true
+    badge: '逐页带读', soon: false
   },
   {
     icon: '🎓', name: '讲解区', en: 'EXPLAIN', href: withBase('/explain/'),
-    desc: '论文精读讲解，逐节拆解动机、方法与结论。',
-    badge: '筹备中', soon: true
+    desc: '李沐《深度学习论文精读》：逐节拆解动机、方法与结论，可对照本站词表页、听力页一起看。',
+    badge: '李沐 60 期精读', soon: false
   }
 ]
 </script>
