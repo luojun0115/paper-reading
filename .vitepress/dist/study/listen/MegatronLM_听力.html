@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MegatronLM_听力 · 单词连播</title>
+<title>MegatronLM_论文词汇_听力 · 单词连播</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{min-height:100vh;display:flex;justify-content:center;font-family:"PingFang SC",-apple-system,sans-serif;background:#111}
@@ -376,7 +376,7 @@
   .word{padding:20px 26px 0;text-align:center;min-height:150px}
   /* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方，不挡底部 */
   .wordTip{font-size:13px;font-weight:600;color:var(--accent);margin:2px auto 12px;padding:6px 15px;
-    border-radius:99px;display:inline-block;line-height:1.2;
+    border-radius:99px;display:block;width:fit-content;line-height:1.2;
     background:color-mix(in srgb,var(--accent) 13%,transparent);
     border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);
     opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s;pointer-events:none}
@@ -601,7 +601,6 @@
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
     <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
-    <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
@@ -711,16 +710,15 @@ function updateBtns(){
   $("okBtn").classList.toggle("on",!!(w&&skips.has(w.w)));
 }
 function updateCounts(){
-  $("skipCnt").textContent="已跳过 "+skips.size+" 词";
-  /* 和「词库来源」同一套图标：星标 / 收藏 / 跳过（原先是 ⭐❤✓ emoji 混搭） */
+  /* 跳过计数在上方「词库来源」行的 ⭐❤✓ 里已有，这里不再重复显示「已跳过 N 词」 */
   $("markCnt").innerHTML="<b>"+IC.star+stars.size+"</b><b>"+IC.heart+favs.size+"</b><b>"+IC.skip+skips.size+"</b>";
 }
 /* 当前词的标记：只显示「跳过」（星标/收藏看顶栏图标即可，不重复占地方） */
 function renderMarks(w){
   const box=$("mkBadge"); if(!box)return;
-  if(!w||!skips.has(w.w)){box.style.display="none";return}
-  box.innerHTML='<i class="mk" data-cancel="skip" title="此词已跳过 · 点一下恢复朗读">'+IC.skip+'<i>✕</i></i>';
-  box.style.display="flex";
+  /* 已跳过不再浮出徽标：跳过时本就有 toast「已跳过」提示 + 顶栏 ✓ 按钮的状态，
+     这里去掉重复提醒（原先的「跳过✕」胶囊）。 */
+  box.style.display="none";
 }
 $("mkBadge").onclick=e=>{
   const el=e.target.closest("[data-cancel]"); if(!el)return;
@@ -936,11 +934,6 @@ $("okBtn").onclick=()=>{
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
 $("clearBox").innerHTML=[["star",IC.star,"清空所有星标"],["fav",IC.heart,"清空所有收藏"],["skip",IC.skip,"清空所有跳过（恢复朗读）"]]
   .map(x=>'<b data-clr="'+x[0]+'" title="'+x[2]+'">'+x[1]+'<i>✕</i></b>').join("");
-/* 清空按钮：每次点击都必须有反馈——原先星标本来就是 0 时点「清空星标」毫无反应，像坏了 */
-$("clearSkip").onclick=()=>{
-  if(!skips.size){toast("本来就没有跳过的词");return}
-  const n=skips.size; skips.clear(); wr("listen_qq_skip",skips); afterMark(); toast("已清空 "+n+" 个跳过词");
-};
 $("clearBox").onclick=e=>{
   const b=e.target.closest("[data-clr]"); if(!b)return;
   const k=b.dataset.clr;
