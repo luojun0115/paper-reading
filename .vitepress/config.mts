@@ -49,13 +49,8 @@ export default defineConfig({
       { text: '讲解区', link: '/explain/' }
     ],
 
-    // 显式侧边栏：只列主栏目，排除 paper-notes（99 篇笔记页仅通过讲解区“本站对照”进入）
-    sidebar: [
-      { text: '单词区', items: [{ text: '概览', link: '/vocab/' }] },
-      { text: '听力区', items: [{ text: '概览', link: '/listen/' }] },
-      { text: '朗读区', items: [{ text: '概览', link: '/reading/' }] },
-      { text: '讲解区', items: [{ text: '概览', link: '/explain/' }] },
-    ],
+    // 不显示左侧侧边栏（各栏目通过顶部导航访问）
+    sidebar: false,
 
     footer: {
       message: '让科研像聊天一样简单。',
