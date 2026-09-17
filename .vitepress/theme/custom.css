@@ -75,6 +75,14 @@ body {
 .wide .VPDoc .content { max-width: 1304px !important; }
 .wide .VPDoc .content-container { max-width: 1240px !important; }
 
+/* 讲解区：论文表格整体水平居中（表格按内容收缩、默认贴左，这里改为居中） */
+.wide .vp-doc table {
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .VPDoc h1 { font-family: var(--dr-hf); letter-spacing: var(--dr-hlet); }
 .VPDoc .content-container { font-size: 15px; }
 

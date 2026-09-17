@@ -18,6 +18,7 @@ export default defineConfig({
   title: '深读馆',
   titleTemplate: ':title · 深读馆 DeepRead',
   description: '一篇论文，四种读法 —— 单词 · 听力 · 朗读 · 讲解',
+  base: BASE,
   cleanUrls: false,
   lastUpdated: false,
   appearance: false, // 关闭 VitePress 自带的明暗开关，改用自有主题切换器（数量见 theme-defs.mjs）
@@ -46,6 +47,14 @@ export default defineConfig({
       { text: '听力区', link: '/listen/' },
       { text: '朗读区', link: '/reading/' },
       { text: '讲解区', link: '/explain/' }
+    ],
+
+    // 显式侧边栏：只列主栏目，排除 paper-notes（99 篇笔记页仅通过讲解区“本站对照”进入）
+    sidebar: [
+      { text: '单词区', items: [{ text: '概览', link: '/vocab/' }] },
+      { text: '听力区', items: [{ text: '概览', link: '/listen/' }] },
+      { text: '朗读区', items: [{ text: '概览', link: '/reading/' }] },
+      { text: '讲解区', items: [{ text: '概览', link: '/explain/' }] },
     ],
 
     footer: {
