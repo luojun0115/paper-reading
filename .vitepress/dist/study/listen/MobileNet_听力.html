@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MobileNet_听力 · 单词连播</title>
+<title>MobileNet_论文词汇_听力 · 单词连播</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{min-height:100vh;display:flex;justify-content:center;font-family:"PingFang SC",-apple-system,sans-serif;background:#111}
@@ -94,87 +94,6 @@
     --bar-bg:rgba(80,55,20,.22); --bar-fill:#4a3418;
     --sheet-bg:rgba(255,250,240,.97); --accent:#b8860b;
   }
-  .app[data-skin="sakura"]{         /* 樱花粉 */
-    --bg-a:#fdeef3; --bg-b:#f9d7e2; --bg-c:#f4c2d4;
-    --card-bg:rgba(255,255,255,.42); --card-br:rgba(255,255,255,.9);
-    --disc-a:#f08cb2; --disc-b:#e0618f;
-    --groove:rgba(160,50,90,.10); --dshadow:rgba(210,90,140,.35);
-    --tx:#3d1f2b; --tx2:#7a4f61; --tx3:#9b7486;
-    --bar-bg:rgba(140,60,95,.2); --bar-fill:#e0618f;
-    --sheet-bg:rgba(255,247,250,.97); --accent:#e8638c;
-  }
-  .app[data-skin="matcha"]{         /* 抹茶（同全站主题色） */
-    --bg-a:#f1f4ea; --bg-b:#e4ecd7; --bg-c:#d5e2c2;
-    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.92);
-    --disc-a:#93b073; --disc-b:#66854a;
-    --groove:rgba(70,100,40,.10); --dshadow:rgba(100,130,70,.32);
-    --tx:#2c3a1e; --tx2:#5d7247; --tx3:#84976d;
-    --bar-bg:rgba(80,110,50,.2); --bar-fill:#5f7d46;
-    --sheet-bg:rgba(250,252,246,.97); --accent:#6b8e4e;
-  }
-  .app[data-skin="mint"]{           /* 薄荷 */
-    --bg-a:#eefaf7; --bg-b:#daf2ec; --bg-c:#c2e8df;
-    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
-    --disc-a:#55c7b2; --disc-b:#2ba58f;
-    --groove:rgba(20,110,95,.10); --dshadow:rgba(40,150,130,.3);
-    --tx:#12332c; --tx2:#4a7368; --tx3:#7a998f;
-    --bar-bg:rgba(30,110,95,.2); --bar-fill:#2ba58f;
-    --sheet-bg:rgba(247,253,251,.97); --accent:#2bbfa3;
-  }
-  .app[data-skin="ocean"]{          /* 海盐蓝 */
-    --bg-a:#eef5fc; --bg-b:#dcebf9; --bg-c:#c5ddf3;
-    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
-    --disc-a:#63a1dd; --disc-b:#3a6fb8;
-    --groove:rgba(30,80,150,.10); --dshadow:rgba(60,110,180,.32);
-    --tx:#122a44; --tx2:#4a6886; --tx3:#7a93ab;
-    --bar-bg:rgba(40,90,150,.2); --bar-fill:#3a6fb8;
-    --sheet-bg:rgba(247,251,255,.97); --accent:#3a7bd5;
-  }
-  .app[data-skin="grape"]{          /* 星空紫 */
-    --bg-a:#f2eefa; --bg-b:#e5dcf6; --bg-c:#d4c6ee;
-    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.9);
-    --disc-a:#9a7fda; --disc-b:#7257bd;
-    --groove:rgba(80,50,150,.10); --dshadow:rgba(120,90,190,.32);
-    --tx:#2c2144; --tx2:#5f4f80; --tx3:#8677a3;
-    --bar-bg:rgba(90,60,160,.2); --bar-fill:#7257bd;
-    --sheet-bg:rgba(251,249,255,.97); --accent:#7c5cd6;
-  }
-  .app[data-skin="amusic"]{         /* Apple Music 红 */
-    --bg-a:#fff4f4; --bg-b:#ffe3e5; --bg-c:#ffd2d6;
-    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.95);
-    --disc-a:#fb5c74; --disc-b:#e11d3f;
-    --groove:rgba(170,20,50,.10); --dshadow:rgba(230,50,80,.32);
-    --tx:#3d1420; --tx2:#844a58; --tx3:#a87581;
-    --bar-bg:rgba(150,30,60,.2); --bar-fill:#e11d3f;
-    --sheet-bg:rgba(255,248,248,.97); --accent:#fa233b;
-  }
-  .app[data-skin="mocha"]{          /* 摩卡棕 */
-    --bg-a:#f7f1ea; --bg-b:#eee1d3; --bg-c:#e0cdb8;
-    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.88);
-    --disc-a:#7d5c42; --disc-b:#553a28;
-    --groove:rgba(90,60,35,.10); --dshadow:rgba(120,85,55,.35);
-    --tx:#38271a; --tx2:#6e5540; --tx3:#93795f;
-    --bar-bg:rgba(110,75,45,.2); --bar-fill:#5d4128;
-    --sheet-bg:rgba(253,250,246,.97); --accent:#8b5e3c;
-  }
-  .app[data-skin="spotify"]{        /* Spotify 黑绿 */
-    --bg-a:#1d2420; --bg-b:#121713; --bg-c:#0b0e0c;
-    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
-    --disc-a:#181d18; --disc-b:#0c0f0c;
-    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
-    --tx:#f0f5f0; --tx2:rgba(235,245,235,.72); --tx3:rgba(235,245,235,.5);
-    --bar-bg:rgba(255,255,255,.2); --bar-fill:#f0f5f0;
-    --sheet-bg:rgba(18,23,19,.96); --accent:#1db954;
-  }
-  .app[data-skin="midnight"]{       /* 深夜蓝（暗色） */
-    --bg-a:#1e2740; --bg-b:#151c30; --bg-c:#0d1220;
-    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
-    --disc-a:#141a2b; --disc-b:#090c15;
-    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
-    --tx:#eef2fb; --tx2:rgba(235,240,250,.72); --tx3:rgba(235,240,250,.5);
-    --bar-bg:rgba(255,255,255,.2); --bar-fill:#eef2fb;
-    --sheet-bg:rgba(18,24,40,.96); --accent:#4a9eff;
-  }
   .app[data-skin="vinylx"]{          /* 悬浮黑胶（参照网易云图标：黑盘+大蓝标+顶部细针） */
     --bg-a:#e9e8f0; --bg-b:#e9e8f0; --bg-c:#e2e1ec;
     --card-bg:transparent; --card-br:transparent;
@@ -214,42 +133,14 @@
   .top .ic.neutral.on svg{stroke:var(--accent)}
   .top .ic.on svg{stroke:var(--accent)}
   .top .ic.on svg .fillable{fill:var(--accent)}
-  /* 「跳过/已掌握」新图标是实心路径（无描边）：中性灰 → 点亮用强调色 */
-  .top .ic svg.solid{stroke:none;fill:rgba(118,124,134,.92)}
-  .top .ic.on svg.solid{fill:var(--accent)}
-  /* 标记点亮瞬间的微动效：和收藏/星标一个手感，点到就有反馈 */
-  @keyframes mkpulse{0%{transform:scale(1)}38%{transform:scale(1.26)}100%{transform:scale(1)}}
-  .top .ic.pulse svg{animation:mkpulse .32s ease}
-  /* 斜线 = 「已划掉」标记：默认不显示，点了 ✓ 之后才划掉 */
-  .top .ic svg .slash{opacity:0;transition:opacity .2s}
-  .top .ic.on svg .slash{opacity:1}
+  .top .ic svg .slash{opacity:1;transition:opacity .2s}   /* 未收藏：心上有斜线 */
+  .top .ic.on svg .slash{opacity:0}                        /* 已收藏：斜线消失、心填色 */
   .top{gap:9px}
   .top .ic{width:30px;height:30px}
   .top .ic svg{width:19px;height:19px}
   .srow.col{flex-direction:column;align-items:stretch;gap:9px}
   .seg.wrap{flex-wrap:wrap;justify-content:flex-start}
   .clr{font-size:11.5px;color:var(--accent);cursor:pointer;font-weight:600}
-  /* 自定义链接面板 + 备份 */
-  .sheet.lks{z-index:26}
-  .lk{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bar-bg)}
-  .lk input[type=checkbox]{flex:none;width:16px;height:16px;accent-color:var(--accent)}
-  .lk .lkn{font-size:13.5px;font-weight:600;color:var(--tx);cursor:pointer;flex:1;min-width:0;
-    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .lk .lkn:hover{color:var(--accent)}
-  .lk .lku{font-size:10.5px;color:var(--tx3);max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .lkrow{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--bar-bg);align-items:center}
-  .lkrow input{flex:1;min-width:0;padding:7px 10px;border-radius:9px;border:1px solid var(--bar-bg);
-    background:transparent;color:var(--tx);font-size:12.5px}
-  .lkrow input.nm{flex:0 0 96px}
-  .lkrow input:focus{outline:none;border-color:var(--accent)}
-  .lkrow .del{flex:none;font-size:13px;color:var(--accent);cursor:pointer;padding:4px 7px;user-select:none}
-  .lkbtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-  .lkbtns b{font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:99px;
-    border:1px solid var(--bar-bg);color:var(--tx2);cursor:pointer}
-  .lkbtns b:hover{border-color:var(--accent);color:var(--accent)}
-  .lkbtns b.pri{border-color:var(--accent);color:var(--accent)}
-  .lkempty{padding:16px 0;color:var(--tx3);font-size:12.5px;line-height:1.8}
-  .bktip{font-size:11px;color:var(--tx3);line-height:1.6;margin-top:8px}
   .repin{width:56px;padding:4px 6px;border-radius:8px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:12px;text-align:center;font-variant-numeric:tabular-nums}
   .repin:focus{outline:none;border-color:var(--accent)}
@@ -314,35 +205,11 @@
   .side{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
   .timerChip{position:absolute;right:0;top:0;font-size:11px;color:var(--tx3);opacity:.9;
     letter-spacing:.4px;font-variant-numeric:tabular-nums;pointer-events:none}
-  /* 当前词的来源标记（星标/收藏/已跳过）：点一下即取消，专门救误点 */
-  .mkbadge{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0}
-  .mkbadge .mk{font-style:normal;display:flex;align-items:center;font-size:11px;line-height:1;
-    padding:5px 8px;border-radius:99px;
-    border:1px solid var(--accent);color:var(--accent);cursor:pointer;user-select:none;
-    background:transparent;transition:opacity .15s,transform .15s}
-  .mkbadge .mk svg{width:14px;height:14px;display:block}
-  .mkbadge .mk svg.fill{fill:currentColor}
-  /* 标记统计：和「词库来源」用同一套图标，不再用 ⭐❤✓ 这种混搭 */
-  #markCnt{display:flex;align-items:center;gap:13px}
-  #markCnt b{display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;color:var(--tx2)}
-  #markCnt b svg{width:14px;height:14px;display:block}
-  #markCnt b svg.fill{fill:currentColor}
-  #clearBox{display:flex;gap:6px}
-  #clearBox b{display:flex;align-items:center;gap:3px;padding:5px 9px;font-size:12px}
-  #clearBox b svg{width:13px;height:13px;display:block}
-  #clearBox b svg.fill{fill:currentColor}
-  #clearBox b i{font-style:normal;font-size:10px;opacity:.65}
-  .mkbadge .mk:hover{opacity:.6}
-  .mkbadge .mk:active{transform:scale(.94)}
-  .mkbadge .mk::after{content:" ✕"}
   @media (min-width:760px){
-    /* 宽屏：定成横向矩形（16:10）并随缩放等比，别再被 100vh 拉成竖长方形 */
-    body{align-items:center}
-    .app{width:min(1280px,calc(96vw / var(--z,1)));max-width:none;zoom:var(--z,1);
-      aspect-ratio:16/10;min-height:0;max-height:calc(96vh / var(--z,1));margin:auto;padding-bottom:8px}
+    .app{width:min(1280px,96vw);max-width:none;zoom:1;min-height:auto;margin:auto;padding-bottom:8px}
     .main{flex-direction:row;align-items:center;gap:40px;padding:8px 30px 0}
-    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕；宽屏接近方形（1:1），宽度够、高度也够长 */
-    .main>.card{margin:0;flex:0 0 calc(clamp(460px,min(50vw,58vh),780px) / var(--z,1));aspect-ratio:1/1;align-self:center}
+    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕 */
+    .main>.card{margin:0;flex:0 0 clamp(400px,min(40vw,66vh),640px);align-self:center}
     .side{align-self:stretch;justify-content:flex-start}
     /* 单词区在「角标」与「底部控制」之间的剩余空间里垂直居中 → 整体下移到中间 */
     .side .word{padding:0;min-height:0;text-align:center;margin-top:auto;margin-bottom:auto}
@@ -374,13 +241,6 @@
 
   /* 单词区 */
   .word{padding:20px 26px 0;text-align:center;min-height:150px}
-  /* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方，不挡底部 */
-  .wordTip{font-size:13px;font-weight:600;color:var(--accent);margin:2px auto 12px;padding:6px 15px;
-    border-radius:99px;display:inline-block;line-height:1.2;
-    background:color-mix(in srgb,var(--accent) 13%,transparent);
-    border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);
-    opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s;pointer-events:none}
-  .wordTip.on{opacity:1;transform:translateY(0)}
   /* 章节/级别/进度：左上角角标，弱化处理不抢单词（小字 + 拉开距离 + 降透明度） */
   .side .sec{font-size:10px;color:var(--tx3);opacity:.72;margin:0 0 10px;text-align:left;letter-spacing:.3px}
   .word .wrow{display:inline-flex;align-items:flex-end;justify-content:center;gap:9px}
@@ -427,31 +287,20 @@
 
   /* 设置面板 */
   .sheet{position:absolute;left:0;right:0;bottom:0;z-index:20;background:var(--sheet-bg);backdrop-filter:blur(14px);
-    border-radius:22px 22px 0 0;padding:0 22px 28px;transform:translateY(105%);
-    /* 关键：面板必须限高且可滚动，否则顶部选项会被顶出屏幕点不到 */
-    max-height:calc(100% - 12px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+    border-radius:22px 22px 0 0;padding:16px 22px 28px;transform:translateY(105%);
     transition:transform .35s cubic-bezier(.3,1,.4,1);box-shadow:0 -10px 30px rgba(0,0,0,.2)}
   .sheet.on{transform:translateY(0)}
-  .sheet::-webkit-scrollbar{width:6px}
-  .sheet::-webkit-scrollbar-thumb{background:var(--bar-bg);border-radius:3px}
   .sheet h3{font-size:14px;color:var(--tx);margin-bottom:0}
-  /* 标题行吸顶：滚动时「返回播放」始终可见 */
-  .shd{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;
-    background:var(--sheet-bg);padding:16px 0 12px}
+  .shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
   .shb{font-size:12.5px;font-weight:600;color:var(--accent);cursor:pointer;user-select:none}
   .shb:hover{opacity:.75}
   .top .ic{flex:none}
-  .srow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;
-    padding:10px 0;border-bottom:1px solid var(--bar-bg)}
+  .srow{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bar-bg)}
   .srow:last-of-type{border-bottom:none}
-  .srow span{font-size:13.5px;color:var(--tx);white-space:nowrap}
-  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .srow span{font-size:13.5px;color:var(--tx)}
+  .seg{display:flex;gap:6px}
   .seg b{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;cursor:pointer;
-    border:1px solid var(--bar-bg);color:var(--tx2);display:flex;align-items:center;justify-content:center}
-  .seg b svg{width:15px;height:15px;display:block}
-  .seg b.icn{padding:5px 10px;min-width:34px}
-  .seg b.off{opacity:.5;cursor:not-allowed;border-style:dashed}
-  .seg b svg.fill{fill:currentColor}
+    border:1px solid var(--bar-bg);color:var(--tx2)}
   .seg b.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .sback{margin-top:14px;width:100%;padding:11px;border-radius:12px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:14px;font-weight:600;cursor:pointer}
@@ -470,12 +319,16 @@
       <svg viewBox="0 0 24 24" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>
     </div>
     <div class="pt" id="ptitle">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications · arXiv 2017</div>
-    <div class="ic" id="replayBtn" title="重听当前词">
-      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
-    </div>
     <div class="ic neutral" id="favBtn" title="收藏（再点取消）">
       <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round">
+        <defs>
+          <clipPath id="favClip">
+            <path transform="translate(12 12) scale(.86) translate(-12 -12)"
+                  d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+          </clipPath>
+        </defs>
         <path class="fillable heart" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+        <path class="slash" d="M4 4 20 20" clip-path="url(#favClip)"/>
       </svg>
     </div>
     <div class="ic neutral" id="starBtn" title="标星（重点词，可只背星标）">
@@ -483,13 +336,14 @@
         <path class="fillable star" d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/>
       </svg>
     </div>
-    <div class="ic neutral" id="okBtn" title="标为已掌握（跳过=不再朗读，再点恢复）">
-      <svg viewBox="0 0 1024 1024" class="solid">
-        <path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/>
-      </svg>
+    <div class="ic" id="okBtn" title="认识，之后不再朗读">
+      <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>
+    </div>
+    <div class="ic" id="replayBtn" title="重听当前词">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
     </div>
     <div class="ic" id="skinBtn" title="换皮肤（点一下换下一套）">
-      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.8 3.4c0 2 1.4 3.6 3.2 3.6s3.2-1.6 3.2-3.6l6.2 2.7-1.8 4.1-2.6-1.1v10.7H6.8V9.1L4.2 10.2 2.4 6.1Z"/></svg>
+      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 3.2 3.4 5.9l2 3.6 1.9-1V20.8h9.4V8.5l1.9 1 2-3.6L15.8 3.2a3.8 3.8 0 0 1-7.6 0Z"/></svg>
     </div>
     <div class="ic" id="moreBtn" title="设置">
       <svg class="dot" viewBox="0 0 24 24" stroke="none"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>
@@ -535,9 +389,7 @@
   <div class="side">
   <div class="sec" id="wsec">准备中…</div>
   <div class="timerChip" id="timerChip" style="display:none">⏱ 0:00</div>
-  <div class="mkbadge" id="mkBadge" style="display:none"></div>
   <div class="word">
-    <div class="wordTip" id="wordTip"></div>
     <div class="wrow">
       <span class="big" id="wbig">—</span>
       <span class="ipa" id="wipa"></span>
@@ -575,8 +427,6 @@
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
-    <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
-    <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
     <div class="srow"><span>单词重复</span>
       <div style="display:flex;align-items:center;gap:8px">
         <div class="seg" id="segRepeat"></div>
@@ -584,7 +434,6 @@
       </div>
     </div>
     <div class="srow"><span>每词停顿</span><div class="seg" id="segPause"></div></div>
-    <div class="srow"><span>语速</span><div class="seg" id="segRate"></div></div>
     <div class="srow"><span>先听后现</span><div class="seg" id="segReveal"></div></div>
     <div class="srow"><span>朗读中文</span><div class="seg" id="segZh"></div></div>
     <div class="srow"><span>朗读例句</span><div class="seg" id="segEx"></div></div>
@@ -592,41 +441,19 @@
     <div class="srow"><span>单词字体</span><div class="seg" id="segFont"></div></div>
     <div class="srow"><span>定时停止</span><div class="seg" id="segTimer"></div></div>
     <div class="srow"><span>词库来源</span><div class="seg" id="segSource"></div></div>
-    <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
-    <div class="srow col"><span>链接与备份</span>
-      <div class="seg wrap" id="backupBox"></div>
-      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
-    </div>
+    <div class="srow"><span id="markCnt">⭐ 0 · ❤ 0 · ✓ 0</span><span class="clr" id="clearStar">清空星标</span></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
-    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
-  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
-  <div class="sheet lks" id="linkPop">
-    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
-    <div id="linkList"></div>
-    <div class="lkbtns" id="linkPopBtns"></div>
-  </div>
-  <!-- 链接配置面板：增删改本篇的链接 -->
-  <div class="sheet lks" id="linkCfg">
-    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
-    <div id="linkRows"></div>
-    <div class="lkbtns">
-      <b id="linkAddRow">＋ 添加一行</b>
-      <b id="linkSave" class="pri">保存</b>
-    </div>
-  </div>
-  <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
-const ITEMS=[{"w": "efficient", "ipa": "ɪˈfɪʃnt", "pos": "adj.", "m": "高效的，有效率的", "ex": "We present a class of efficient models called MobileNets", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "embedded", "ipa": "ɪmˈbedɪd", "pos": "adj.", "m": "嵌入式的，内含的", "ex": "for mobile and embedded vision applications", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "streamlined", "ipa": "ˈstriːmlaɪnd", "pos": "adj.", "m": "流线型的，精简的", "ex": "based on a streamlined architecture that uses depth-wise separable convolutions", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "separable", "ipa": "səˈpærəbl", "pos": "adj.", "m": "可分离的", "ex": "uses depth-wise separable convolutions to build light weight deep neural networks", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "lightweight", "ipa": "ˈlaɪtweɪt", "pos": "adj.", "m": "轻量级的", "ex": "to build light weight deep neural networks", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "hyperparameter", "ipa": "ˌhaɪpəˈpærəmɪtər", "pos": "n.", "m": "超参数", "ex": "We introduce two simple global hyper-parameters that efficiently trade off between latency and accuracy", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "latency", "ipa": "ləˈtɛnsi", "pos": "n.", "m": "延迟，潜伏期", "ex": "efficiently trade off between latency and accuracy", "lv": "考博", "ov": "GRE", "sec": "Abstract"}, {"w": "constraint", "ipa": "kənˈstreɪnt", "pos": "n.", "m": "约束，限制", "ex": "based on the constraints of the problem", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "trade off", "ipa": "treɪd ɒf", "pos": "n./v.", "m": "权衡，折中", "ex": "efficiently trade off between latency and accuracy", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "m": "准确率，精度", "ex": "efficiently trade off between latency and accuracy", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "resource", "ipa": "rɪˈzɔːrs", "pos": "n.", "m": "资源", "ex": "extensive experiments on resource and accuracy tradeoffs", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "demonstrate", "ipa": "ˈdɛmənstreɪt", "pos": "v.", "m": "展示，证明", "ex": "We then demonstrate the effectiveness of MobileNets across a wide range of applications", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "extensive", "ipa": "ɪkˈstɛnsɪv", "pos": "adj.", "m": "广泛的，大量的", "ex": "We present extensive experiments on resource and accuracy tradeoffs", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "classification", "ipa": "ˌklæsɪfɪˈkeɪʃn", "pos": "n.", "m": "分类", "ex": "show strong performance compared to other popular models on ImageNet classification", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "show", "ipa": "ʃoʊ", "pos": "v.", "m": "显示，展示", "ex": "We present extensive experiments", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "tradeoff", "ipa": "ˈtreɪdɔːf", "pos": "n.", "m": "权衡", "ex": "experiments on resource and accuracy tradeoffs", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "popularize", "ipa": "ˈpɑːpjələraɪz", "pos": "v.", "m": "推广，普及", "ex": "AlexNet popularized deep convolutional neural networks by winning the ImageNet Challenge", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "necessarily", "ipa": "ˌnesəˈserəli", "pos": "adv.", "m": "必定", "ex": "these advances are not necessarily making networks more efﬁcient", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "respect", "ipa": "rɪˈspekt", "pos": "n.", "m": "方面（with respect to 在…方面）", "ex": "more efﬁcient with respect to size and speed", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "ﬁnegrain", "ipa": "ˈfaɪn ɡreɪn", "pos": "adj.", "m": "细粒度的", "ex": "use cases including object detection, ﬁnegrain classiﬁcation", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "attribute", "ipa": "ˈætrɪbjuːt", "pos": "n.", "m": "属性", "ex": "face attributes and large scale geo-localization", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "localization", "ipa": "ˌloʊkəlaɪˈzeɪʃn", "pos": "n.", "m": "定位（geo-localization 地理定位）", "ex": "large scale geo-localization", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "ubiquitous", "ipa": "juːˈbɪkwɪtəs", "pos": "adj.", "m": "无处不在的，普遍存在的", "ex": "Convolutional neural networks have become ubiquitous in computer vision", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "complicated", "ipa": "ˈkɒmplɪkeɪtɪd", "pos": "adj.", "m": "复杂的", "ex": "The general trend has been to make deeper and more complicated networks", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "advance", "ipa": "ədˈvæns", "pos": "n.", "m": "进步，进展", "ex": "these advances to improve accuracy are not necessarily making networks more efficient", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "timely", "ipa": "ˈtaɪmli", "pos": "adj.", "m": "及时的，适时的", "ex": "the recognition tasks need to be carried out in a timely fashion", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "fashion", "ipa": "ˈfæʃn", "pos": "n.", "m": "方式，时尚", "ex": "in a timely fashion on a computationally limited platform", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "platform", "ipa": "ˈplætfɔːrm", "pos": "n.", "m": "平台", "ex": "on a computationally limited platform", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "architecture", "ipa": "ˈɑːrkɪtektʃər", "pos": "n.", "m": "架构，结构", "ex": "This paper describes an efficient network architecture", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "requirement", "ipa": "rɪˈkwaɪərmənt", "pos": "n.", "m": "要求，需求", "ex": "matched to the design requirements for mobile and embedded vision applications", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "computationally", "ipa": "kɒmpjəˈteɪʃənəli", "pos": "adv.", "m": "计算上", "ex": "on a computationally limited platform", "lv": "考博", "ov": "GRE", "sec": "Intro"}, {"w": "investigate", "ipa": "ɪnˈvɛstɪɡeɪt", "pos": "v.", "m": "研究，调查", "ex": "Section 5 closes with a summary and conclusion", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "summarize", "ipa": "ˈsʌməraɪz", "pos": "v.", "m": "总结，概括", "ex": "Section 5 closes with a summary and conclusion", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "introduce", "ipa": "ɪntrəˈdjuːs", "pos": "v.", "m": "引入，介绍", "ex": "We introduce two simple global hyper-parameters", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "trend", "ipa": "trɛnd", "pos": "n.", "m": "趋势，潮流", "ex": "The general trend has been to make deeper and more complicated networks", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "recognition", "ipa": "ˌrɛkəɡˈnɪʃn", "pos": "n.", "m": "识别", "ex": "the recognition tasks need to be carried out in a timely fashion", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "description", "ipa": "dɪˈskrɪpʃn", "pos": "n.", "m": "描述", "ex": "Section 3 describes the MobileNet architecture", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "factorize", "ipa": "ˈfæktəraɪz", "pos": "v.", "m": "分解，因式分解", "ex": "build a network out of fully factorized convolutions", "lv": "考博", "ov": "", "sec": "Prior"}, {"w": "topology", "ipa": "təˈpɒlədʒi", "pos": "n.", "m": "拓扑结构", "ex": "as well as the use of topological connections", "lv": "考博", "ov": "", "sec": "Prior"}, {"w": "bottleneck", "ipa": "ˈbɒtlnek", "pos": "n.", "m": "瓶颈", "ex": "Squeezenet uses a bottleneck approach to design a very small network", "lv": "六级", "ov": "", "sec": "Prior"}, {"w": "quantization", "ipa": "kwɒntəˈzeɪʃn", "pos": "n.", "m": "量化", "ex": "Compression based on product quantization", "lv": "考博", "ov": "", "sec": "Prior"}, {"w": "pruning", "ipa": "ˈpruːnɪŋ", "pos": "n.", "m": "剪枝", "ex": "pruning, vector quantization and Huffman coding have been proposed", "lv": "六级", "ov": "", "sec": "Prior"}, {"w": "compression", "ipa": "kəmˈpreʃn", "pos": "n.", "m": "压缩", "ex": "Another method for training small networks is distillation", "lv": "六级", "ov": "", "sec": "Prior"}, {"w": "distillation", "ipa": "dɪˈstɪleɪʃn", "pos": "n.", "m": "蒸馏（知识蒸馏）", "ex": "distillation which uses a larger network to teach a smaller network", "lv": "考博", "ov": "", "sec": "Prior"}, {"w": "emerging", "ipa": "ɪˈmɜːrdʒɪŋ", "pos": "adj.", "m": "新兴的", "ex": "Another emerging approach is low bit networks", "lv": "四级", "ov": "", "sec": "Prior"}, {"w": "complementary", "ipa": "kɒmplɪˈmentəri", "pos": "adj.", "m": "互补的", "ex": "It is complementary to our approach", "lv": "考研", "ov": "", "sec": "Prior"}, {"w": "approach", "ipa": "əˈproʊtʃ", "pos": "n.", "m": "方法，途径", "ex": "Many different approaches can be generally categorized", "lv": "四级", "ov": "", "sec": "Prior"}, {"w": "literature", "ipa": "ˈlɪtrətʃər", "pos": "n.", "m": "文献", "ex": "in the recent literature", "lv": "四级", "ov": "", "sec": "Prior"}, {"w": "compress", "ipa": "kəmˈprɛs", "pos": "v.", "m": "压缩", "ex": "compressing pretrained networks", "lv": "四级", "ov": "", "sec": "Prior"}, {"w": "pretrained", "ipa": "priːˈtreɪnd", "pos": "adj.", "m": "预训练的", "ex": "compressing pretrained networks", "lv": "考博", "ov": "", "sec": "Prior"}, {"w": "hashing", "ipa": "ˈhæʃɪŋ", "pos": "n.", "m": "哈希", "ex": "hashing have been proposed in the literature", "lv": "考博", "ov": "", "sec": "Prior"}, {"w": "categorize", "ipa": "ˈkætəɡəraɪz", "pos": "v.", "m": "分类，归类", "ex": "Many different approaches can be generally categorized", "lv": "六级", "ov": "", "sec": "Prior"}, {"w": "optimize", "ipa": "ˈɒptɪmaɪz", "pos": "v.", "m": "优化", "ex": "MobileNets primarily focus on optimizing for latency", "lv": "考博", "ov": "", "sec": "Prior"}, {"w": "speed", "ipa": "spiːd", "pos": "n.", "m": "速度", "ex": "Many papers on small networks focus only on size but do not consider speed", "lv": "六级", "ov": "", "sec": "Prior"}, {"w": "depthwise", "ipa": "ˈdɛpθwaɪz", "pos": "adj.", "m": "逐深度的，深度方向的", "ex": "MobileNet model is based on depthwise separable convolutions", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "pointwise", "ipa": "ˈpɔɪntwaɪz", "pos": "adj.", "m": "逐点的，逐像素的", "ex": "a 1×1 convolution called a pointwise convolution", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "filter", "ipa": "ˈfɪltər", "pos": "n./v.", "m": "滤波器，过滤", "ex": "depthwise convolution applies a single filter to each input channel", "lv": "四级", "ov": "", "sec": "DWConv"}, {"w": "combine", "ipa": "kəmˈbaɪn", "pos": "v.", "m": "结合，组合", "ex": "The pointwise convolution then applies a 1×1 convolution to combine the outputs", "lv": "四级", "ov": "", "sec": "DWConv"}, {"w": "feature map", "ipa": "ˈfiːtʃər mæp", "pos": "n.", "m": "特征图", "ex": "takes as input a DF × DF × M feature map F", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "kernel", "ipa": "ˈkɜːrnl", "pos": "n.", "m": "核，卷积核", "ex": "parameterized by convolution kernel K of size DK×DK×M×N", "lv": "六级", "ov": "", "sec": "DWConv"}, {"w": "stride", "ipa": "straɪd", "pos": "n.", "m": "步幅，步长", "ex": "assuming stride one and padding", "lv": "六级", "ov": "", "sec": "DWConv"}, {"w": "padding", "ipa": "ˈpædɪŋ", "pos": "n.", "m": "填充", "ex": "assuming stride one and padding", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "representation", "ipa": "ˌrɛprɪzenˈteɪʃn", "pos": "n.", "m": "表示，表征", "ex": "combining features in order to produce a new representation", "lv": "六级", "ov": "", "sec": "DWConv"}, {"w": "substantially", "ipa": "səbˈstænʃəli", "pos": "adv.", "m": "大量地，显著地", "ex": "for substantial reduction in computational cost", "lv": "四级", "ov": "", "sec": "DWConv"}, {"w": "linear combination", "ipa": "ˈlɪniər kəmbɪˈneɪʃn", "pos": "n.", "m": "线性组合", "ex": "Pointwise convolution is then used to create a linear combination of the output", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "nonlinearity", "ipa": "ˌnɒnlɪnɪˈærəti", "pos": "n.", "m": "非线性", "ex": "MobileNets use both batchnorm and ReLU nonlinearities", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "computational cost", "ipa": "kɒmpjəˈteɪʃnl kɒst", "pos": "n.", "m": "计算成本", "ex": "Depthwise separable convolutions cost", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "drastically", "ipa": "ˈdræstɪkli", "pos": "adv.", "m": "大幅度地，显著地", "ex": "This factorization has the effect of drastically reducing computation", "lv": "六级", "ov": "", "sec": "DWConv"}, {"w": "dimension", "ipa": "dɪˈmɛnʃn", "pos": "n.", "m": "维度，尺寸", "ex": "where DK is the spatial dimension of the kernel", "lv": "四级", "ov": "", "sec": "DWConv"}, {"w": "spatial", "ipa": "ˈspeɪʃl", "pos": "adj.", "m": "空间的", "ex": "where DK is the spatial dimension of the kernel assumed to be square", "lv": "六级", "ov": "", "sec": "DWConv"}, {"w": "output", "ipa": "ˈaʊtpʊt", "pos": "n.", "m": "输出", "ex": "produces a DF × DF × N feature map G", "lv": "四级", "ov": "", "sec": "DWConv"}, {"w": "channel", "ipa": "ˈtʃænl", "pos": "n.", "m": "通道", "ex": "depthwise convolution applies a single filter to each input channel", "lv": "四级", "ov": "", "sec": "DWConv"}, {"w": "parameterize", "ipa": "pəˈræmɪtəraɪz", "pos": "v.", "m": "参数化", "ex": "The standard convolutional layer is parameterized by convolution kernel K", "lv": "考博", "ov": "", "sec": "DWConv"}, {"w": "depth", "ipa": "dɛpθ", "pos": "n.", "m": "深度", "ex": "M is the number of input channels (input depth)", "lv": "四级", "ov": "", "sec": "DWConv"}, {"w": "batchnorm", "ipa": "ˈbætʃnɔːrm", "pos": "n.", "m": "批归一化（Batch Normalization）", "ex": "All layers are followed by a batchnorm and ReLU nonlinearity", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "fully connected", "ipa": "ˈfʊli kəˈnektɪd", "pos": "adj.", "m": "全连接的", "ex": "the final fully connected layer which has no nonlinearity", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "softmax", "ipa": "ˈsɒftmæks", "pos": "n.", "m": "Softmax函数", "ex": "feeds into a softmax layer for classification", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "downsampling", "ipa": "ˌdaʊnˈsæmpəlɪŋ", "pos": "n.", "m": "下采样", "ex": "Down sampling is handled with strided convolution", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "pooling", "ipa": "ˈpuːlɪŋ", "pos": "n.", "m": "池化", "ex": "A final average pooling reduces the spatial resolution", "lv": "四级", "ov": "", "sec": "Structure"}, {"w": "resolution", "ipa": "ˌrɛzəˈluːʃn", "pos": "n.", "m": "分辨率", "ex": "reduces the spatial resolution to 1 before the fully connected layer", "lv": "四级", "ov": "", "sec": "Structure"}, {"w": "parameter", "ipa": "pəˈræmɪtər", "pos": "n.", "m": "参数", "ex": "MobileNet has 28 layers", "lv": "六级", "ov": "", "sec": "Structure"}, {"w": "sparsity", "ipa": "spɑːrˈsəti", "pos": "n.", "m": "稀疏性", "ex": "until a very high level of sparsity", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "dense", "ipa": "dɛns", "pos": "adj.", "m": "密集的", "ex": "puts nearly all of the computation into dense 1×1 convolutions", "lv": "四级", "ov": "", "sec": "Structure"}, {"w": "reordering", "ipa": "riːˈɔːrdərɪŋ", "pos": "n.", "m": "重排序", "ex": "require an initial reordering in memory called im2col", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "linear algebra", "ipa": "ˈlɪniər ˈældʒɪbrə", "pos": "n.", "m": "线性代数", "ex": "one of the most optimized numerical linear algebra algorithms", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "implementation", "ipa": "ˌɪmplɪmɛnˈteɪʃn", "pos": "n.", "m": "实现，实施", "ex": "This can be implemented with highly optimized general matrix multiply", "lv": "四级", "ov": "", "sec": "Structure"}, {"w": "nonlinearity", "ipa": "ˌnɒnlɪnɪˈærəti", "pos": "n.", "m": "非线性", "ex": "All layers are followed by a batchnorm and ReLU nonlinearity", "lv": "考博", "ov": "", "sec": "Structure"}, {"w": "exception", "ipa": "ɪkˈsɛpʃn", "pos": "n.", "m": "例外", "ex": "with the exception of the final fully connected layer", "lv": "四级", "ov": "", "sec": "Structure"}, {"w": "distort", "ipa": "dɪˈstɔːrt", "pos": "v.", "m": "使变形，扭曲", "ex": "we reduce the amount of image distortions by limiting the size of small crops", "lv": "六级", "ov": "", "sec": "Structure"}, {"w": "numerical", "ipa": "ˈnjuːmərɪkl", "pos": "adj.", "m": "数值的", "ex": "one of the most optimized numerical linear algebra algorithms", "lv": "六级", "ov": "", "sec": "Structure"}, {"w": "memory", "ipa": "ˈmɛməri", "pos": "n.", "m": "内存，记忆", "ex": "require an initial reordering in memory called im2col", "lv": "四级", "ov": "", "sec": "Structure"}, {"w": "multiplier", "ipa": "ˈmʌltɪplaɪər", "pos": "n.", "m": "乘子，乘数", "ex": "we introduce a very simple parameter α called width multiplier", "lv": "考博", "ov": "", "sec": "Multipliers"}, {"w": "thin", "ipa": "θɪn", "pos": "v.", "m": "使变薄，使变细", "ex": "The role of the width multiplier α is to thin a network uniformly at each layer", "lv": "考博", "ov": "", "sec": "Multipliers"}, {"w": "uniformly", "ipa": "ˈjuːnɪfɔːrmli", "pos": "adv.", "m": "均匀地", "ex": "to thin a network uniformly at each layer", "lv": "四级", "ov": "", "sec": "Multipliers"}, {"w": "implicitly", "ipa": "ɪmˈplɪsɪtli", "pos": "adv.", "m": "隐式地", "ex": "In practice we implicitly set ρ by setting the input resolution", "lv": "六级", "ov": "", "sec": "Multipliers"}, {"w": "quadratically", "ipa": "kwɒˈdrætɪkli", "pos": "adv.", "m": "二次方地", "ex": "reducing computational cost and the number of parameters quadratically by roughly α²", "lv": "考博", "ov": "", "sec": "Multipliers"}, {"w": "computation", "ipa": "ˌkɒmpjəˈteɪʃn", "pos": "n.", "m": "计算", "ex": "the computational cost for the core layers", "lv": "考博", "ov": "GRE", "sec": "Multipliers"}, {"w": "baseline", "ipa": "ˈbeɪslaɪn", "pos": "n.", "m": "基线，基准", "ex": "α = 1 is the baseline MobileNet", "lv": "考博", "ov": "", "sec": "Multipliers"}, {"w": "sequentially", "ipa": "sɪˈkwɛnʃəli", "pos": "adv.", "m": "依次地，顺序地", "ex": "as architecture shrinking methods are sequentially applied to the layer", "lv": "考博", "ov": "GRE", "sec": "Multipliers"}, {"w": "shrinking", "ipa": "ˈʃrɪŋkɪŋ", "pos": "n.", "m": "收缩，缩小", "ex": "architecture shrinking methods are sequentially applied", "lv": "四级", "ov": "", "sec": "Multipliers"}, {"w": "input", "ipa": "ˈɪnpʊt", "pos": "n.", "m": "输入", "ex": "the number of input channels M becomes αM", "lv": "四级", "ov": "", "sec": "Multipliers"}, {"w": "cumulative", "ipa": "ˈkjuːmjələtɪv", "pos": "adj.", "m": "累积的", "ex": "each row is a cumulative effect adding on top of the previous row", "lv": "六级", "ov": "", "sec": "Multipliers"}, {"w": "reduced", "ipa": "rɪˈdjuːst", "pos": "adj.", "m": "减少的，精简的", "ex": "ρ < 1 are reduced computation MobileNets", "lv": "考博", "ov": "", "sec": "Multipliers"}, {"w": "multiply", "ipa": "ˈmʌltɪplaɪ", "pos": "v.", "m": "乘，使相乘", "ex": "where the computational cost depends multiplicatively on the number of input channels", "lv": "四级", "ov": "", "sec": "Multipliers"}, {"w": "typically", "ipa": "ˈtɪpɪkli", "pos": "adv.", "m": "通常地", "ex": "typically set implicitly so that the input resolution of the network is 224", "lv": "四级", "ov": "", "sec": "Multipliers"}, {"w": "shallow", "ipa": "ˈʃæloʊ", "pos": "adj.", "m": "浅的（浅层网络）", "ex": "making MobileNet shallower", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "thinner", "ipa": "ˈθɪnər", "pos": "adj.", "m": "更薄的（更窄的网络）", "ex": "making MobileNets thinner is 3% better than making them shallower", "lv": "考博", "ov": "", "sec": "Experiments"}, {"w": "smoothly", "ipa": "ˈsmuːðli", "pos": "adv.", "m": "平滑地", "ex": "Accuracy drops off smoothly until the architecture is made too small", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "complexity", "ipa": "kəmˈplɛksəti", "pos": "n.", "m": "复杂度", "ex": "with only a fraction of computational complexity", "lv": "六级", "ov": "", "sec": "Experiments"}, {"w": "comparable", "ipa": "ˈkɒmpərəbl", "pos": "adj.", "m": "可比较的，相当的", "ex": "MobileNet achieves comparable results to other networks", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "fraction", "ipa": "ˈfrækʃn", "pos": "n.", "m": "一小部分，分数", "ex": "with only a fraction of computational complexity and model size", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "intensive", "ipa": "ɪnˈtɛnsɪv", "pos": "adj.", "m": "密集的，大量的", "ex": "27 times less compute intensive", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "investigate", "ipa": "ɪnˈvɛstɪɡeɪt", "pos": "v.", "m": "研究，调查", "ex": "In this section we first investigate the effects of depthwise convolutions", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "determine", "ipa": "dɪˈtɜːrmɪn", "pos": "v.", "m": "确定，决定", "ex": "rather than the number of layers", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "contain", "ipa": "kənˈteɪn", "pos": "v.", "m": "包含，含有", "ex": "these models contain only 4.2 million parameters", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "exceed", "ipa": "ɪkˈsiːd", "pos": "v.", "m": "超过，超越", "ex": "the MobileNet version exceeds Im2GPS by a large margin", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "supersede", "ipa": "ˌsuːpərˈsiːd", "pos": "v.", "m": "取代，替代", "ex": "demonstrating superior size, speed and accuracy characteristics", "lv": "考博", "ov": "", "sec": "Experiments"}, {"w": "extensive", "ipa": "ɪkˈstɛnsɪv", "pos": "adj.", "m": "广泛的", "ex": "we first investigate the effects of depthwise convolutions", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "decrease", "ipa": "dɪˈkriːs", "pos": "v.", "m": "减少，降低", "ex": "Accuracy drops off smoothly", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "smaller", "ipa": "ˈsmɔːlər", "pos": "adj.", "m": "更小的", "ex": "making MobileNets thinner is 3% better than making them shallower", "lv": "考博", "ov": "", "sec": "Experiments"}, {"w": "trade", "ipa": "treɪd", "pos": "v.", "m": "交易，权衡", "ex": "show the trade offs of reducing the network based on the two hyper-parameters", "lv": "四级", "ov": "", "sec": "Experiments"}, {"w": "fine-grained", "ipa": "faɪn ɡreɪnd", "pos": "adj.", "m": "细粒度的", "ex": "We train MobileNet for fine grained recognition on the Stanford Dogs dataset", "lv": "考博", "ov": "", "sec": "Applications"}, {"w": "dataset", "ipa": "ˈdeɪtəset", "pos": "n.", "m": "数据集", "ex": "on the Stanford Dogs dataset", "lv": "考博", "ov": "", "sec": "Applications"}, {"w": "pretrain", "ipa": "priːˈtreɪn", "pos": "v.", "m": "预训练", "ex": "use the noisy web data to pretrain a fine grained dog recognition model", "lv": "考博", "ov": "", "sec": "Applications"}, {"w": "fine-tune", "ipa": "faɪn tjuːn", "pos": "v.", "m": "微调", "ex": "and then fine tune the model on the Stanford Dogs training set", "lv": "考博", "ov": "", "sec": "Applications"}, {"w": "geographic", "ipa": "ˌdʒiːəˈɡræfɪk", "pos": "adj.", "m": "地理的", "ex": "divides the earth into a grid of geographic cells", "lv": "四级", "ov": "", "sec": "Applications"}, {"w": "classify", "ipa": "ˈklæsɪfaɪ", "pos": "v.", "m": "分类", "ex": "casts the task as a classification problem", "lv": "四级", "ov": "", "sec": "Applications"}, {"w": "localize", "ipa": "ˈləʊkəlaɪz", "pos": "v.", "m": "定位", "ex": "PlaNet has been shown to successfully localize a large variety of photos", "lv": "考博", "ov": "雅思托福", "sec": "Applications"}, {"w": "margin", "ipa": "ˈmɑːrdʒɪn", "pos": "n.", "m": "差距，边缘", "ex": "it still outperforms Im2GPS by a large margin", "lv": "四级", "ov": "", "sec": "Applications"}, {"w": "compact", "ipa": "kəmˈpækt", "pos": "adj.", "m": "紧凑的，精简的", "ex": "the MobileNet version is much more compact", "lv": "六级", "ov": "", "sec": "Applications"}, {"w": "variety", "ipa": "vəˈraɪəti", "pos": "n.", "m": "种类，多样性", "ex": "a large variety of photos", "lv": "四级", "ov": "", "sec": "Applications"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "m": "准确率", "ex": "only slightly decreased performance compared to PlaNet", "lv": "四级", "ov": "", "sec": "Applications"}, {"w": "geo-tagged", "ipa": "ˈdʒiːoʊ tæɡd", "pos": "adj.", "m": "带有地理标签的", "ex": "trains a convolutional neural network on millions of geo-tagged photos", "lv": "考博", "ov": "", "sec": "Applications"}, {"w": "noisy", "ipa": "ˈnɔɪzi", "pos": "adj.", "m": "有噪声的，嘈杂的", "ex": "use the noisy web data to pretrain", "lv": "四级", "ov": "", "sec": "Applications"}, {"w": "collect", "ipa": "kəˈlɛkt", "pos": "v.", "m": "收集", "ex": "we collect an even larger but noisy training set from the web", "lv": "四级", "ov": "", "sec": "Applications"}, {"w": "web", "ipa": "wɛb", "pos": "n.", "m": "网络，互联网", "ex": "use the noisy web data to pretrain a fine grained dog recognition model", "lv": "六级", "ov": "", "sec": "Applications"}, {"w": "synergistic", "ipa": "ˌsɪnərˈdʒɪstɪk", "pos": "adj.", "m": "协同的，协同增效的", "ex": "a synergistic relationship between MobileNet and distillation", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "parsimonious", "ipa": "ˌpɑːrsɪˈmoʊniəs", "pos": "adj.", "m": "吝啬的，节俭的（参数精简）", "ex": "the parsimonious parameterization of MobileNet", "lv": "考博", "ov": "GRE", "sec": "Deploy"}, {"w": "resilient", "ipa": "rɪˈzɪliənt", "pos": "adj.", "m": "有弹性的，适应性强的", "ex": "the MobileNet-based classifier is resilient to aggressive model shrinking", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "deploy", "ipa": "dɪˈplɔɪ", "pos": "v.", "m": "部署", "ex": "MobileNet can also be deployed as an effective base network", "lv": "六级", "ov": "", "sec": "Deploy"}, {"w": "framework", "ipa": "ˈfreɪmwɜːrk", "pos": "n.", "m": "框架", "ex": "under both Faster-RCNN and SSD framework", "lv": "四级", "ov": "", "sec": "Deploy"}, {"w": "embedding", "ipa": "ɪmˈbedɪŋ", "pos": "n.", "m": "嵌入，向量表示", "ex": "The FaceNet model builds face embeddings based on the triplet loss", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "triplet", "ipa": "ˈtrɪplɪt", "pos": "n.", "m": "三元组", "ex": "builds face embeddings based on the triplet loss", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "overfitting", "ipa": "ˌoʊvərˈfɪtɪŋ", "pos": "n.", "m": "过拟合", "ex": "small models have less trouble with overfitting", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "regularization", "ipa": "ˌrɛɡjələrɪˈzeɪʃn", "pos": "n.", "m": "正则化", "ex": "we use less regularization and data augmentation techniques", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "数据增强", "ex": "we use less regularization and data augmentation techniques", "lv": "考博", "ov": "GRE", "sec": "Deploy"}, {"w": "emulate", "ipa": "ˈɛmjuleɪt", "pos": "v.", "m": "仿真，模仿", "ex": "training the classifier to emulate the outputs of a larger model", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "ground-truth", "ipa": "ɡraʊnd trʌθ", "pos": "n.", "m": " ground truth，真实标签", "ex": "instead of the ground-truth labels", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "distort", "ipa": "dɪˈstɔːrt", "pos": "v.", "m": "使变形，扭曲", "ex": "we reduce the amount of image distortions", "lv": "六级", "ov": "", "sec": "Deploy"}, {"w": "esoteric", "ipa": "ˌɛsəˈtɛrɪk", "pos": "adj.", "m": "深奥的，难懂的", "ex": "compressing large systems with unknown or esoteric training procedures", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "infinite", "ipa": "ˈɪnfɪnɪt", "pos": "adj.", "m": "无限的", "ex": "enabling training from large (and potentially infinite) unlabeled datasets", "lv": "四级", "ov": "", "sec": "Deploy"}, {"w": "weight decay", "ipa": "weɪt dɪˈkeɪ", "pos": "n.", "m": "权重衰减", "ex": "put very little or no weight decay on the depthwise filters", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "multi-attribute", "ipa": "ˈmʌlti əˈtrɪbjuːt", "pos": "adj.", "m": "多属性的", "ex": "The classifier is trained on a multi-attribute dataset", "lv": "考博", "ov": "", "sec": "Deploy"}, {"w": "decision", "ipa": "dɪˈsɪʒn", "pos": "n.", "m": "决策", "ex": "important design decisions leading to an efficient model", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "reasonable", "ipa": "ˈriːznəbl", "pos": "adj.", "m": "合理的", "ex": "by trading off a reasonable amount of accuracy", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "superior", "ipa": "suːˈpɪriər", "pos": "adj.", "m": "优越的，上等的", "ex": "demonstrating superior size, speed and accuracy characteristics", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "adoption", "ipa": "əˈdɒpʃn", "pos": "n.", "m": "采用，采纳", "ex": "As a next step to help adoption and exploration of MobileNets", "lv": "六级", "ov": "", "sec": "Conclusion"}, {"w": "explore", "ipa": "ɪkˈsplɔːr", "pos": "v.", "m": "探索", "ex": "help adoption and exploration of MobileNets", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "efficiency", "ipa": "ɪˈfɪʃnsi", "pos": "n.", "m": "效率", "ex": "demonstrating MobileNet's effectiveness when applied to a wide variety of tasks", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "effectiveness", "ipa": "ɪˈfɛktɪvnəs", "pos": "n.", "m": "有效性", "ex": "demonstrating MobileNet's effectiveness when applied to a wide variety of tasks", "lv": "考博", "ov": "雅思托福", "sec": "Conclusion"}, {"w": "conclude", "ipa": "kənˈkluːd", "pos": "v.", "m": "总结，得出结论", "ex": "We concluded by demonstrating MobileNet's effectiveness", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "release", "ipa": "rɪˈliːs", "pos": "v.", "m": "发布，释放", "ex": "we plan on releasing models in TensorFlow", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "proposed", "ipa": "prəˈpoʊzd", "pos": "adj.", "m": "提出的", "ex": "We proposed a new model architecture called MobileNets", "lv": "考博", "ov": "", "sec": "Conclusion"}, {"w": "explored", "ipa": "ɪkˈsplɔːrd", "pos": "adj.", "m": "被探索的", "ex": "help adoption and exploration of MobileNets", "lv": "考博", "ov": "", "sec": "Conclusion"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"baseline": "../listen-audio/w_brian_baseline.mp3", "exceed": "../listen-audio/w_brian_exceed.mp3", "parameter": "../listen-audio/w_brian_parameter.mp3", "fine-tune": "../listen-audio/w_brian_fine_tune.mp3", "framework": "../listen-audio/w_brian_framework.mp3", "factorize": "../listen-audio/w_brian_factorize.mp3", "compress": "../listen-audio/w_brian_compress.mp3", "regularization": "../listen-audio/w_brian_regularization.mp3", "architecture": "../listen-audio/w_brian_architecture.mp3", "constraint": "../listen-audio/w_brian_constraint.mp3", "resolution": "../listen-audio/w_brian_resolution.mp3", "noisy": "../listen-audio/w_brian_noisy.mp3", "extensive": "../listen-audio/w_brian_extensive.mp3", "representation": "../listen-audio/w_brian_representation.mp3", "superior": "../listen-audio/w_brian_superior.mp3", "fraction": "../listen-audio/w_brian_fraction.mp3", "dimension": "../listen-audio/w_brian_dimension.mp3", "embedding": "../listen-audio/w_brian_embedding.mp3", "kernel": "../listen-audio/w_brian_kernel.mp3", "softmax": "../listen-audio/w_brian_softmax.mp3", "complexity": "../listen-audio/w_brian_complexity.mp3", "separable": "../listen-audio/w_brian_separable.mp3", "overfitting": "../listen-audio/w_brian_overfitting.mp3", "hyperparameter": "../listen-audio/w_brian_hyperparameter.mp3", "computationally": "../listen-audio/w_brian_computationally.mp3", "comparable": "../listen-audio/w_brian_comparable.mp3", "classify": "../listen-audio/w_brian_classify.mp3", "nonlinearity": "../listen-audio/w_brian_nonlinearity.mp3", "augmentation": "../listen-audio/w_brian_augmentation.mp3", "pooling": "../listen-audio/w_brian_pooling.mp3", "summarize": "../listen-audio/w_brian_summarize.mp3", "sparsity": "../listen-audio/w_brian_sparsity.mp3", "ubiquitous": "../listen-audio/w_brian_ubiquitous.mp3", "determine": "../listen-audio/w_brian_determine.mp3", "bottleneck": "../listen-audio/w_brian_bottleneck.mp3", "demonstrate": "../listen-audio/w_brian_demonstrate.mp3", "implicitly": "../listen-audio/w_brian_implicitly.mp3", "distillation": "../listen-audio/w_brian_distillation.mp3", "substantially": "../listen-audio/w_brian_substantially.mp3", "complementary": "../listen-audio/w_brian_complementary.mp3", "fine-grained": "../listen-audio/w_brian_fine_grained.mp3", "shallow": "../listen-audio/w_brian_shallow.mp3", "implementation": "../listen-audio/w_brian_implementation.mp3", "margin": "../listen-audio/w_brian_margin.mp3", "accuracy": "../listen-audio/w_brian_accuracy.mp3", "computation": "../listen-audio/w_brian_computation.mp3", "classification": "../listen-audio/w_brian_classification.mp3", "resilient": "../listen-audio/w_brian_resilient.mp3", "pretrained": "../listen-audio/w_brian_pretrained.mp3", "spatial": "../listen-audio/w_brian_spatial.mp3", "drastically": "../listen-audio/w_brian_drastically.mp3", "compact": "../listen-audio/w_brian_compact.mp3", "investigate": "../listen-audio/w_brian_investigate.mp3", "emerging": "../listen-audio/w_brian_emerging.mp3", "weight decay": "../listen-audio/w_brian_weight_decay.mp3", "optimize": "../listen-audio/w_brian_optimize.mp3", "adoption": "../listen-audio/w_brian_adoption.mp3", "complicated": "../listen-audio/w_brian_complicated.mp3", "popularize": "../listen-audio/w_brian_popularize.mp3", "emulate": "../listen-audio/w_brian_emulate.mp3", "deploy": "../listen-audio/w_brian_deploy.mp3", "stride": "../listen-audio/w_brian_stride.mp3", "filter": "../listen-audio/w_brian_filter.mp3", "attribute": "../listen-audio/w_brian_attribute.mp3", "topology": "../listen-audio/w_brian_topology.mp3", "downsampling": "../listen-audio/w_brian_downsampling.mp3", "hashing": "../listen-audio/w_brian_hashing.mp3", "parameterize": "../listen-audio/w_brian_parameterize.mp3", "cumulative": "../listen-audio/w_brian_cumulative.mp3", "quantization": "../listen-audio/w_brian_quantization.mp3", "smoothly": "../listen-audio/w_brian_smoothly.mp3", "ground-truth": "../listen-audio/w_brian_ground_truth.mp3", "batchnorm": "../listen-audio/w_brian_batchnorm.mp3", "localize": "../listen-audio/w_brian_localize.mp3", "compression": "../listen-audio/w_brian_compression.mp3", "tradeoff": "../listen-audio/w_brian_tradeoff.mp3", "pretrain": "../listen-audio/w_brian_pretrain.mp3", "approach": "../listen-audio/w_brian_approach.mp3", "uniformly": "../listen-audio/w_brian_uniformly.mp3", "effectiveness": "../listen-audio/w_brian_effectiveness.mp3", "efficiency": "../listen-audio/w_brian_efficiency.mp3", "depth": "../listen-audio/w_brian_depth.mp3", "latency": "../listen-audio/w_brian_latency.mp3", "efficient": "../listen-audio/w_brian_efficient.mp3", "fashion": "../listen-audio/w_brian_fashion.mp3", "dense": "../listen-audio/w_brian_dense.mp3", "distort": "../listen-audio/w_brian_distort.mp3", "trend": "../listen-audio/w_brian_trend.mp3", "categorize": "../listen-audio/w_brian_categorize.mp3", "introduce": "../listen-audio/w_brian_introduce.mp3", "memory": "../listen-audio/w_brian_memory.mp3", "localization": "../listen-audio/w_brian_localization.mp3", "literature": "../listen-audio/w_brian_literature.mp3", "numerical": "../listen-audio/w_brian_numerical.mp3", "fully connected": "../listen-audio/w_brian_fully_connected.mp3", "trade off": "../listen-audio/w_brian_trade_off.mp3", "pointwise": "../listen-audio/w_brian_pointwise.mp3", "dataset": "../listen-audio/w_brian_dataset.mp3", "recognition": "../listen-audio/w_brian_recognition.mp3", "lightweight": "../listen-audio/w_brian_lightweight.mp3", "supersede": "../listen-audio/w_brian_supersede.mp3", "conclude": "../listen-audio/w_brian_conclude.mp3", "embedded": "../listen-audio/w_brian_embedded.mp3", "streamlined": "../listen-audio/w_brian_streamlined.mp3", "depthwise": "../listen-audio/w_brian_depthwise.mp3", "necessarily": "../listen-audio/w_brian_necessarily.mp3", "respect": "../listen-audio/w_brian_respect.mp3", "ﬁnegrain": "../listen-audio/w_brian_ﬁnegrain.mp3", "resource": "../listen-audio/w_brian_resource.mp3", "show": "../listen-audio/w_brian_show.mp3", "advance": "../listen-audio/w_brian_advance.mp3", "timely": "../listen-audio/w_brian_timely.mp3", "platform": "../listen-audio/w_brian_platform.mp3", "requirement": "../listen-audio/w_brian_requirement.mp3", "description": "../listen-audio/w_brian_description.mp3", "pruning": "../listen-audio/w_brian_pruning.mp3", "speed": "../listen-audio/w_brian_speed.mp3", "combine": "../listen-audio/w_brian_combine.mp3", "feature map": "../listen-audio/w_brian_feature_map.mp3", "padding": "../listen-audio/w_brian_padding.mp3", "linear combination": "../listen-audio/w_brian_linear_combination.mp3", "computational cost": "../listen-audio/w_brian_computational_cost.mp3", "output": "../listen-audio/w_brian_output.mp3", "channel": "../listen-audio/w_brian_channel.mp3", "reordering": "../listen-audio/w_brian_reordering.mp3", "linear algebra": "../listen-audio/w_brian_linear_algebra.mp3", "exception": "../listen-audio/w_brian_exception.mp3", "multiplier": "../listen-audio/w_brian_multiplier.mp3", "thin": "../listen-audio/w_brian_thin.mp3", "quadratically": "../listen-audio/w_brian_quadratically.mp3", "sequentially": "../listen-audio/w_brian_sequentially.mp3", "shrinking": "../listen-audio/w_brian_shrinking.mp3", "input": "../listen-audio/w_brian_input.mp3", "reduced": "../listen-audio/w_brian_reduced.mp3", "multiply": "../listen-audio/w_brian_multiply.mp3", "typically": "../listen-audio/w_brian_typically.mp3", "thinner": "../listen-audio/w_brian_thinner.mp3", "intensive": "../listen-audio/w_brian_intensive.mp3", "contain": "../listen-audio/w_brian_contain.mp3", "decrease": "../listen-audio/w_brian_decrease.mp3", "smaller": "../listen-audio/w_brian_smaller.mp3", "trade": "../listen-audio/w_brian_trade.mp3", "geographic": "../listen-audio/w_brian_geographic.mp3", "variety": "../listen-audio/w_brian_variety.mp3", "geo-tagged": "../listen-audio/w_brian_geo_tagged.mp3", "collect": "../listen-audio/w_brian_collect.mp3", "web": "../listen-audio/w_brian_web.mp3", "synergistic": "../listen-audio/w_brian_synergistic.mp3", "parsimonious": "../listen-audio/w_brian_parsimonious.mp3", "triplet": "../listen-audio/w_brian_triplet.mp3", "esoteric": "../listen-audio/w_brian_esoteric.mp3", "infinite": "../listen-audio/w_brian_infinite.mp3", "multi-attribute": "../listen-audio/w_brian_multi_attribute.mp3", "decision": "../listen-audio/w_brian_decision.mp3", "reasonable": "../listen-audio/w_brian_reasonable.mp3", "explore": "../listen-audio/w_brian_explore.mp3", "release": "../listen-audio/w_brian_release.mp3", "proposed": "../listen-audio/w_brian_proposed.mp3", "explored": "../listen-audio/w_brian_explored.mp3"}, "e": {"We introduce two simple global hyper-parameters": "../listen-audio/e_brian_12546a4b3e86.mp3", "We present extensive experiments on resource and accuracy tradeoffs": "../listen-audio/e_brian_f0b69e30d49a.mp3", "experiments on resource and accuracy tradeoffs": "../listen-audio/e_brian_351a11444737.mp3", "Convolutional neural networks have become ubiquitous in computer vision": "../listen-audio/e_brian_437e0bf28268.mp3", "AlexNet popularized deep convolutional neural networks by winning the ImageNet Challenge": "../listen-audio/e_brian_58dcf73158df.mp3", "these advances are not necessarily making networks more efﬁcient": "../listen-audio/e_brian_247f45a77dbf.mp3", "more efﬁcient with respect to size and speed": "../listen-audio/e_brian_d540631bafc9.mp3", "use cases including object detection, ﬁnegrain classiﬁcation": "../listen-audio/e_brian_6172bef22f58.mp3", "face attributes and large scale geo-localization": "../listen-audio/e_brian_b5b3b08ba327.mp3", "large scale geo-localization": "../listen-audio/e_brian_8317c6c53727.mp3", "We present a class of efficient models called MobileNets": "../listen-audio/e_brian_76c019f9b7fd.mp3", "for mobile and embedded vision applications": "../listen-audio/e_brian_d377796ef3dd.mp3", "based on a streamlined architecture that uses depth-wise separable convolutions": "../listen-audio/e_brian_584082aac19d.mp3", "uses depth-wise separable convolutions to build light weight deep neural networks": "../listen-audio/e_brian_2ada8874d54e.mp3", "to build light weight deep neural networks": "../listen-audio/e_brian_fb15302e627f.mp3", "We introduce two simple global hyper-parameters that efficiently trade off between latency and accuracy": "../listen-audio/e_brian_93a4dbf57efb.mp3", "efficiently trade off between latency and accuracy": "../listen-audio/e_brian_53b6bcbdff3d.mp3", "based on the constraints of the problem": "../listen-audio/e_brian_56dcced539d4.mp3", "extensive experiments on resource and accuracy tradeoffs": "../listen-audio/e_brian_1323e72dc428.mp3", "We then demonstrate the effectiveness of MobileNets across a wide range of applications": "../listen-audio/e_brian_a8d66bc97685.mp3", "show strong performance compared to other popular models on ImageNet classification": "../listen-audio/e_brian_43c952484d7a.mp3", "We present extensive experiments": "../listen-audio/e_brian_a97fdfdadd86.mp3", "The general trend has been to make deeper and more complicated networks": "../listen-audio/e_brian_0849eeac97ba.mp3", "these advances to improve accuracy are not necessarily making networks more efficient": "../listen-audio/e_brian_31ed9ffffdd1.mp3", "the recognition tasks need to be carried out in a timely fashion": "../listen-audio/e_brian_7e83a9449ed7.mp3", "in a timely fashion on a computationally limited platform": "../listen-audio/e_brian_8ce1a66d27bf.mp3", "on a computationally limited platform": "../listen-audio/e_brian_d01926a85013.mp3", "This paper describes an efficient network architecture": "../listen-audio/e_brian_24fabb1d115e.mp3", "matched to the design requirements for mobile and embedded vision applications": "../listen-audio/e_brian_cb2fb757a041.mp3", "Section 5 closes with a summary and conclusion": "../listen-audio/e_brian_14e0e529ced0.mp3", "Section 3 describes the MobileNet architecture": "../listen-audio/e_brian_b7c4b0d0d42c.mp3", "build a network out of fully factorized convolutions": "../listen-audio/e_brian_9b89d1cdc615.mp3", "as well as the use of topological connections": "../listen-audio/e_brian_affc34f64bb9.mp3", "Squeezenet uses a bottleneck approach to design a very small network": "../listen-audio/e_brian_746fce629405.mp3", "Compression based on product quantization": "../listen-audio/e_brian_27c6ba8c360e.mp3", "pruning, vector quantization and Huffman coding have been proposed": "../listen-audio/e_brian_45f6bacccf17.mp3", "Another method for training small networks is distillation": "../listen-audio/e_brian_efc24c29ce3d.mp3", "distillation which uses a larger network to teach a smaller network": "../listen-audio/e_brian_100caf7f3efc.mp3", "Another emerging approach is low bit networks": "../listen-audio/e_brian_bcbb06713a1f.mp3", "It is complementary to our approach": "../listen-audio/e_brian_980a467e098d.mp3", "Many different approaches can be generally categorized": "../listen-audio/e_brian_317be819f919.mp3", "in the recent literature": "../listen-audio/e_brian_3b5cf99e60e3.mp3", "compressing pretrained networks": "../listen-audio/e_brian_8797a5375b47.mp3", "hashing have been proposed in the literature": "../listen-audio/e_brian_cc633aa49992.mp3", "MobileNets primarily focus on optimizing for latency": "../listen-audio/e_brian_12e473408823.mp3", "Many papers on small networks focus only on size but do not consider speed": "../listen-audio/e_brian_3c8f80fb19e0.mp3", "MobileNet model is based on depthwise separable convolutions": "../listen-audio/e_brian_b43b6583f667.mp3", "a 1×1 convolution called a pointwise convolution": "../listen-audio/e_brian_9bf6b1fca4db.mp3", "depthwise convolution applies a single filter to each input channel": "../listen-audio/e_brian_28948c07a053.mp3", "The pointwise convolution then applies a 1×1 convolution to combine the outputs": "../listen-audio/e_brian_046cd5bd225a.mp3", "takes as input a DF × DF × M feature map F": "../listen-audio/e_brian_c72403018bd4.mp3", "parameterized by convolution kernel K of size DK×DK×M×N": "../listen-audio/e_brian_da265ce5124a.mp3", "assuming stride one and padding": "../listen-audio/e_brian_f60837bf558c.mp3", "combining features in order to produce a new representation": "../listen-audio/e_brian_f17060ddc6f1.mp3", "for substantial reduction in computational cost": "../listen-audio/e_brian_558c66b43d0b.mp3", "Pointwise convolution is then used to create a linear combination of the output": "../listen-audio/e_brian_c676882f0ee2.mp3", "MobileNets use both batchnorm and ReLU nonlinearities": "../listen-audio/e_brian_dc1d735c6bca.mp3", "Depthwise separable convolutions cost": "../listen-audio/e_brian_bc4cfd7e3189.mp3", "This factorization has the effect of drastically reducing computation": "../listen-audio/e_brian_faac7e9241d5.mp3", "where DK is the spatial dimension of the kernel": "../listen-audio/e_brian_3f8403f7c5d5.mp3", "where DK is the spatial dimension of the kernel assumed to be square": "../listen-audio/e_brian_e250cf301813.mp3", "produces a DF × DF × N feature map G": "../listen-audio/e_brian_7fe0cc79e106.mp3", "The standard convolutional layer is parameterized by convolution kernel K": "../listen-audio/e_brian_422075278920.mp3", "M is the number of input channels (input depth)": "../listen-audio/e_brian_8b40c1a2931a.mp3", "All layers are followed by a batchnorm and ReLU nonlinearity": "../listen-audio/e_brian_52579760155b.mp3", "the final fully connected layer which has no nonlinearity": "../listen-audio/e_brian_d25a3e773598.mp3", "feeds into a softmax layer for classification": "../listen-audio/e_brian_8db41a90eeae.mp3", "Down sampling is handled with strided convolution": "../listen-audio/e_brian_3b4854e648cc.mp3", "A final average pooling reduces the spatial resolution": "../listen-audio/e_brian_452ea71120b0.mp3", "reduces the spatial resolution to 1 before the fully connected layer": "../listen-audio/e_brian_2520d1a274f7.mp3", "MobileNet has 28 layers": "../listen-audio/e_brian_680b47367901.mp3", "until a very high level of sparsity": "../listen-audio/e_brian_80efc0497a8f.mp3", "puts nearly all of the computation into dense 1×1 convolutions": "../listen-audio/e_brian_4fcc551ea091.mp3", "require an initial reordering in memory called im2col": "../listen-audio/e_brian_22aa48c8e3d1.mp3", "one of the most optimized numerical linear algebra algorithms": "../listen-audio/e_brian_697a3f72525b.mp3", "This can be implemented with highly optimized general matrix multiply": "../listen-audio/e_brian_db92dc38e168.mp3", "with the exception of the final fully connected layer": "../listen-audio/e_brian_705991847d3d.mp3", "we reduce the amount of image distortions by limiting the size of small crops": "../listen-audio/e_brian_a15b2d764fce.mp3", "we introduce a very simple parameter α called width multiplier": "../listen-audio/e_brian_c77cd19aaa28.mp3", "The role of the width multiplier α is to thin a network uniformly at each layer": "../listen-audio/e_brian_e0c99cd5c289.mp3", "to thin a network uniformly at each layer": "../listen-audio/e_brian_bbeb8382f2f8.mp3", "In practice we implicitly set ρ by setting the input resolution": "../listen-audio/e_brian_1451243a6980.mp3", "reducing computational cost and the number of parameters quadratically by roughly α²": "../listen-audio/e_brian_feeb27c330d2.mp3", "the computational cost for the core layers": "../listen-audio/e_brian_5a624a8af6f6.mp3", "α = 1 is the baseline MobileNet": "../listen-audio/e_brian_597dbaeca078.mp3", "as architecture shrinking methods are sequentially applied to the layer": "../listen-audio/e_brian_c768a348cad2.mp3", "architecture shrinking methods are sequentially applied": "../listen-audio/e_brian_b2e2c605de24.mp3", "the number of input channels M becomes αM": "../listen-audio/e_brian_64980a7ad287.mp3", "each row is a cumulative effect adding on top of the previous row": "../listen-audio/e_brian_04c1cba24fe6.mp3", "ρ < 1 are reduced computation MobileNets": "../listen-audio/e_brian_37ea4cbe1615.mp3", "where the computational cost depends multiplicatively on the number of input channels": "../listen-audio/e_brian_a9ab4f4e1eb1.mp3", "typically set implicitly so that the input resolution of the network is 224": "../listen-audio/e_brian_9e79e23dd7fb.mp3", "making MobileNet shallower": "../listen-audio/e_brian_9516396afe7d.mp3", "making MobileNets thinner is 3% better than making them shallower": "../listen-audio/e_brian_86c37cc844f0.mp3", "Accuracy drops off smoothly until the architecture is made too small": "../listen-audio/e_brian_3c852f165e52.mp3", "with only a fraction of computational complexity": "../listen-audio/e_brian_2c316c4e75ab.mp3", "MobileNet achieves comparable results to other networks": "../listen-audio/e_brian_428a2d251032.mp3", "with only a fraction of computational complexity and model size": "../listen-audio/e_brian_d57788de1cd6.mp3", "27 times less compute intensive": "../listen-audio/e_brian_53c8bebef17c.mp3", "In this section we first investigate the effects of depthwise convolutions": "../listen-audio/e_brian_8debf3b2ec05.mp3", "rather than the number of layers": "../listen-audio/e_brian_1c42e36bc2ce.mp3", "these models contain only 4.2 million parameters": "../listen-audio/e_brian_f846d1ae5d64.mp3", "the MobileNet version exceeds Im2GPS by a large margin": "../listen-audio/e_brian_d79232a63eab.mp3", "demonstrating superior size, speed and accuracy characteristics": "../listen-audio/e_brian_d0637197ab58.mp3", "we first investigate the effects of depthwise convolutions": "../listen-audio/e_brian_ab4b77ce5b67.mp3", "Accuracy drops off smoothly": "../listen-audio/e_brian_0f9496dadaf2.mp3", "show the trade offs of reducing the network based on the two hyper-parameters": "../listen-audio/e_brian_b0501b6c32f2.mp3", "We train MobileNet for fine grained recognition on the Stanford Dogs dataset": "../listen-audio/e_brian_48e715e6246a.mp3", "on the Stanford Dogs dataset": "../listen-audio/e_brian_5d528771544a.mp3", "use the noisy web data to pretrain a fine grained dog recognition model": "../listen-audio/e_brian_73c46cabb10c.mp3", "and then fine tune the model on the Stanford Dogs training set": "../listen-audio/e_brian_914ed981104b.mp3", "divides the earth into a grid of geographic cells": "../listen-audio/e_brian_5e73303ba43b.mp3", "casts the task as a classification problem": "../listen-audio/e_brian_7da7a8ad6401.mp3", "PlaNet has been shown to successfully localize a large variety of photos": "../listen-audio/e_brian_230f3236c606.mp3", "it still outperforms Im2GPS by a large margin": "../listen-audio/e_brian_805769c6ada0.mp3", "the MobileNet version is much more compact": "../listen-audio/e_brian_9a9c1c66703e.mp3", "a large variety of photos": "../listen-audio/e_brian_e15c7dc31516.mp3", "only slightly decreased performance compared to PlaNet": "../listen-audio/e_brian_e5f5cba79c48.mp3", "trains a convolutional neural network on millions of geo-tagged photos": "../listen-audio/e_brian_cb6a0e647727.mp3", "use the noisy web data to pretrain": "../listen-audio/e_brian_0b2f99df0792.mp3", "we collect an even larger but noisy training set from the web": "../listen-audio/e_brian_61f4ded3f72d.mp3", "a synergistic relationship between MobileNet and distillation": "../listen-audio/e_brian_0f0a55ce7f7f.mp3", "the parsimonious parameterization of MobileNet": "../listen-audio/e_brian_afb089baf356.mp3", "the MobileNet-based classifier is resilient to aggressive model shrinking": "../listen-audio/e_brian_4272f5db4e28.mp3", "MobileNet can also be deployed as an effective base network": "../listen-audio/e_brian_f3cca03d45d4.mp3", "under both Faster-RCNN and SSD framework": "../listen-audio/e_brian_14a9882dbe8e.mp3", "The FaceNet model builds face embeddings based on the triplet loss": "../listen-audio/e_brian_44cbc4e7bc41.mp3", "builds face embeddings based on the triplet loss": "../listen-audio/e_brian_1df5c8a213fc.mp3", "small models have less trouble with overfitting": "../listen-audio/e_brian_b3bae5c8b83a.mp3", "we use less regularization and data augmentation techniques": "../listen-audio/e_brian_4d4b60616856.mp3", "training the classifier to emulate the outputs of a larger model": "../listen-audio/e_brian_cbd6265233eb.mp3", "instead of the ground-truth labels": "../listen-audio/e_brian_20600f96bc70.mp3", "we reduce the amount of image distortions": "../listen-audio/e_brian_161c96d17726.mp3", "compressing large systems with unknown or esoteric training procedures": "../listen-audio/e_brian_69959eac8901.mp3", "enabling training from large (and potentially infinite) unlabeled datasets": "../listen-audio/e_brian_82bb549314c2.mp3", "put very little or no weight decay on the depthwise filters": "../listen-audio/e_brian_c2b84e53f4d5.mp3", "The classifier is trained on a multi-attribute dataset": "../listen-audio/e_brian_2946a0e12f53.mp3", "important design decisions leading to an efficient model": "../listen-audio/e_brian_a52aeb1b2af2.mp3", "by trading off a reasonable amount of accuracy": "../listen-audio/e_brian_04b2fb300349.mp3", "As a next step to help adoption and exploration of MobileNets": "../listen-audio/e_brian_51b22ec0ce72.mp3", "help adoption and exploration of MobileNets": "../listen-audio/e_brian_0aba5feab989.mp3", "demonstrating MobileNet's effectiveness when applied to a wide variety of tasks": "../listen-audio/e_brian_e9de68b138ee.mp3", "We concluded by demonstrating MobileNet's effectiveness": "../listen-audio/e_brian_c6f37c169a69.mp3", "we plan on releasing models in TensorFlow": "../listen-audio/e_brian_ee9960b77294.mp3", "We proposed a new model architecture called MobileNets": "../listen-audio/e_brian_398eaa7ee07c.mp3"}}, "en-US-AndrewNeural": {"w": {"baseline": "../listen-audio/w_andrew_baseline.mp3", "exceed": "../listen-audio/w_andrew_exceed.mp3", "parameter": "../listen-audio/w_andrew_parameter.mp3", "fine-tune": "../listen-audio/w_andrew_fine_tune.mp3", "framework": "../listen-audio/w_andrew_framework.mp3", "factorize": "../listen-audio/w_andrew_factorize.mp3", "compress": "../listen-audio/w_andrew_compress.mp3", "regularization": "../listen-audio/w_andrew_regularization.mp3", "architecture": "../listen-audio/w_andrew_architecture.mp3", "constraint": "../listen-audio/w_andrew_constraint.mp3", "resolution": "../listen-audio/w_andrew_resolution.mp3", "noisy": "../listen-audio/w_andrew_noisy.mp3", "extensive": "../listen-audio/w_andrew_extensive.mp3", "representation": "../listen-audio/w_andrew_representation.mp3", "superior": "../listen-audio/w_andrew_superior.mp3", "fraction": "../listen-audio/w_andrew_fraction.mp3", "dimension": "../listen-audio/w_andrew_dimension.mp3", "embedding": "../listen-audio/w_andrew_embedding.mp3", "kernel": "../listen-audio/w_andrew_kernel.mp3", "softmax": "../listen-audio/w_andrew_softmax.mp3", "complexity": "../listen-audio/w_andrew_complexity.mp3", "separable": "../listen-audio/w_andrew_separable.mp3", "overfitting": "../listen-audio/w_andrew_overfitting.mp3", "hyperparameter": "../listen-audio/w_andrew_hyperparameter.mp3"}}, "zh-CN-YunyangNeural": {"m": {"参数": "../listen-audio/m_yunyang_3d0a2df9ec50.mp3", "微调": "../listen-audio/m_yunyang_58fd75c1b689.mp3", "预训练": "../listen-audio/m_yunyang_40decf735255.mp3", "框架": "../listen-audio/m_yunyang_41f1d2b62436.mp3", "压缩": "../listen-audio/m_yunyang_6612548ad85b.mp3", "参数化": "../listen-audio/m_yunyang_d27f1135c6e3.mp3", "正则化": "../listen-audio/m_yunyang_4bd7c8e0b175.mp3", "量化": "../listen-audio/m_yunyang_03860b396eb4.mp3", "表示，表征": "../listen-audio/m_yunyang_a3551d56cb9f.mp3", "约束，限制": "../listen-audio/m_yunyang_5d10dc719bc9.mp3", "分辨率": "../listen-audio/m_yunyang_874a58161898.mp3", "Softmax函数": "../listen-audio/m_yunyang_299739b8affc.mp3", "复杂度": "../listen-audio/m_yunyang_f13c3e0717ea.mp3", "可分离的": "../listen-audio/m_yunyang_7b68fb87e5b6.mp3", "超参数": "../listen-audio/m_yunyang_eb02ceade464.mp3", "过拟合": "../listen-audio/m_yunyang_246329933358.mp3", "计算上": "../listen-audio/m_yunyang_ce8cb5559deb.mp3", "分类，归类": "../listen-audio/m_yunyang_16ee950c8948.mp3", "下采样": "../listen-audio/m_yunyang_8afd53a44331.mp3", "非线性": "../listen-audio/m_yunyang_2997c8e005c6.mp3", "池化": "../listen-audio/m_yunyang_63a87cded21c.mp3", "稀疏性": "../listen-audio/m_yunyang_6e5e5d59f76f.mp3", "探索": "../listen-audio/m_yunyang_fc6c4c40d219.mp3", "确定，决定": "../listen-audio/m_yunyang_f22baf456288.mp3", "优化": "../listen-audio/m_yunyang_aa84ec947f0a.mp3", "隐式地": "../listen-audio/m_yunyang_1f6db7c61c55.mp3", "数据增强": "../listen-audio/m_yunyang_e4fc36e3fc4b.mp3", "互补的": "../listen-audio/m_yunyang_6d8a3d3dd982.mp3", "细粒度的": "../listen-audio/m_yunyang_c6c2168138ba.mp3", "分类": "../listen-audio/m_yunyang_d0771a42bbc4.mp3", "准确率": "../listen-audio/m_yunyang_3c7d9eedb98d.mp3", "计算": "../listen-audio/m_yunyang_35b4b419fa4b.mp3", "预训练的": "../listen-audio/m_yunyang_294df294664d.mp3", "空间的": "../listen-audio/m_yunyang_496cad5b2806.mp3", "引入，介绍": "../listen-audio/m_yunyang_853c08055958.mp3", "研究，调查": "../listen-audio/m_yunyang_dd8c85e149ee.mp3", "新兴的": "../listen-audio/m_yunyang_2c8d3f53ed75.mp3", "权重衰减": "../listen-audio/m_yunyang_6b2aa5940f18.mp3", "复杂的": "../listen-audio/m_yunyang_e3bad3c02505.mp3", "三元组": "../listen-audio/m_yunyang_225cd78bc2c5.mp3", "推广，普及": "../listen-audio/m_yunyang_34fb8db453f7.mp3", "部署": "../listen-audio/m_yunyang_a9f94dcd57ee.mp3", "拓扑结构": "../listen-audio/m_yunyang_2564faa6bbae.mp3", "哈希": "../listen-audio/m_yunyang_b5dbd2c8c3e0.mp3", "累积的": "../listen-audio/m_yunyang_15fa66806020.mp3", "平滑地": "../listen-audio/m_yunyang_c3fdb65a73e1.mp3", "架构，结构": "../listen-audio/m_yunyang_984bf50519d4.mp3", "批归一化": "../listen-audio/m_yunyang_728840306e94.mp3", "定位": "../listen-audio/m_yunyang_a10fa763d201.mp3", "采用，采纳": "../listen-audio/m_yunyang_cac7021d41aa.mp3", "权衡": "../listen-audio/m_yunyang_f11d665e1cb6.mp3", "展示，证明": "../listen-audio/m_yunyang_44f3a553497c.mp3", "有效性": "../listen-audio/m_yunyang_4457266820ae.mp3", "效率": "../listen-audio/m_yunyang_3256142c2215.mp3", "广泛的": "../listen-audio/m_yunyang_1a2e0f36dbb8.mp3", "深度": "../listen-audio/m_yunyang_237fb19abddb.mp3", "均匀地": "../listen-audio/m_yunyang_14dfd7bf2aba.mp3", "瓶颈": "../listen-audio/m_yunyang_619bd0f48c0b.mp3", "权衡，折中": "../listen-audio/m_yunyang_429206e79cf5.mp3", "合理的": "../listen-audio/m_yunyang_4ff36070d8b0.mp3", "超过，超越": "../listen-audio/m_yunyang_c13fe20a12dc.mp3", "内存，记忆": "../listen-audio/m_yunyang_e335ec9cfc81.mp3", "进步，进展": "../listen-audio/m_yunyang_788a6ff54e10.mp3", "文献": "../listen-audio/m_yunyang_47dc0023a7cd.mp3", "数值的": "../listen-audio/m_yunyang_376c6980a1c3.mp3", "全连接的": "../listen-audio/m_yunyang_175f2d58d731.mp3", "方法，途径": "../listen-audio/m_yunyang_53da447629be.mp3", "实现，实施": "../listen-audio/m_yunyang_6ba71e90c346.mp3", "数据集": "../listen-audio/m_yunyang_e20804e309af.mp3", "识别": "../listen-audio/m_yunyang_72eff852be42.mp3", "轻量级的": "../listen-audio/m_yunyang_9054970f88c9.mp3", "维度，尺寸": "../listen-audio/m_yunyang_d92229d62b9c.mp3", "必定": "../listen-audio/m_yunyang_57b524697aa3.mp3", "方面": "../listen-audio/m_yunyang_53334d2f935f.mp3", "属性": "../listen-audio/m_yunyang_24d67862f87f.mp3", "高效的，有效率的": "../listen-audio/m_yunyang_2de7aa9b340d.mp3", "嵌入式的，内含的": "../listen-audio/m_yunyang_7604da0fef2a.mp3", "流线型的，精简的": "../listen-audio/m_yunyang_3956e4d49c30.mp3", "延迟，潜伏期": "../listen-audio/m_yunyang_5b04cede3670.mp3", "准确率，精度": "../listen-audio/m_yunyang_b12a47bab59a.mp3", "资源": "../listen-audio/m_yunyang_eee83a9211a7.mp3", "广泛的，大量的": "../listen-audio/m_yunyang_828651191a71.mp3", "显示，展示": "../listen-audio/m_yunyang_0c3dba88c06d.mp3", "无处不在的，普遍存在的": "../listen-audio/m_yunyang_f530a38dac04.mp3", "及时的，适时的": "../listen-audio/m_yunyang_6a0207e2e5b0.mp3", "方式，时尚": "../listen-audio/m_yunyang_8dffb3519da9.mp3", "平台": "../listen-audio/m_yunyang_4981287fe504.mp3", "要求，需求": "../listen-audio/m_yunyang_3f58a577ab4a.mp3", "总结，概括": "../listen-audio/m_yunyang_893886a395e3.mp3", "趋势，潮流": "../listen-audio/m_yunyang_30c5155bcd9b.mp3", "描述": "../listen-audio/m_yunyang_3bdd08adab6e.mp3", "分解，因式分解": "../listen-audio/m_yunyang_88fed137907b.mp3", "剪枝": "../listen-audio/m_yunyang_5eca93910b39.mp3", "蒸馏（知识蒸馏）": "../listen-audio/m_yunyang_8cbe4f81739f.mp3", "速度": "../listen-audio/m_yunyang_03f38597a66d.mp3", "逐深度的，深度方向的": "../listen-audio/m_yunyang_9395b7c4be15.mp3", "逐点的，逐像素的": "../listen-audio/m_yunyang_10bd4702c10f.mp3", "滤波器，过滤": "../listen-audio/m_yunyang_c645a02893f4.mp3", "结合，组合": "../listen-audio/m_yunyang_f5b891edf787.mp3", "特征图": "../listen-audio/m_yunyang_afcad08cda01.mp3", "核，卷积核": "../listen-audio/m_yunyang_e5673b39d19b.mp3", "步幅，步长": "../listen-audio/m_yunyang_936faa3a0cfb.mp3", "填充": "../listen-audio/m_yunyang_756e44b36d4d.mp3", "大量地，显著地": "../listen-audio/m_yunyang_d9457d11f30b.mp3", "线性组合": "../listen-audio/m_yunyang_a41e036b1d9c.mp3", "计算成本": "../listen-audio/m_yunyang_6c3450159786.mp3", "大幅度地，显著地": "../listen-audio/m_yunyang_dda557396ba4.mp3", "输出": "../listen-audio/m_yunyang_8ba7c3a7bef9.mp3", "通道": "../listen-audio/m_yunyang_e4f52ebce3fb.mp3", "密集的": "../listen-audio/m_yunyang_17f14a293841.mp3", "重排序": "../listen-audio/m_yunyang_f982377d3b68.mp3", "线性代数": "../listen-audio/m_yunyang_4d08a6448db7.mp3", "例外": "../listen-audio/m_yunyang_2df694fbdb97.mp3", "使变形，扭曲": "../listen-audio/m_yunyang_b8f1a43ebad4.mp3", "乘子，乘数": "../listen-audio/m_yunyang_fd93bd36b98b.mp3", "使变薄，使变细": "../listen-audio/m_yunyang_20abd2062454.mp3", "二次方地": "../listen-audio/m_yunyang_88ea41bb2dee.mp3", "基线，基准": "../listen-audio/m_yunyang_2645b1260121.mp3", "依次地，顺序地": "../listen-audio/m_yunyang_4d23b1479f43.mp3", "收缩，缩小": "../listen-audio/m_yunyang_72d3e5ff2609.mp3", "输入": "../listen-audio/m_yunyang_e47d59b1bd2e.mp3", "减少的，精简的": "../listen-audio/m_yunyang_15dc227f8bdf.mp3", "乘，使相乘": "../listen-audio/m_yunyang_1fa02784f65c.mp3", "通常地": "../listen-audio/m_yunyang_b8c095cbac74.mp3", "浅的（浅层网络）": "../listen-audio/m_yunyang_7c84ecedd62f.mp3", "更薄的（更窄的网络）": "../listen-audio/m_yunyang_57d94aa3d5ea.mp3", "可比较的，相当的": "../listen-audio/m_yunyang_8c37b54870cd.mp3", "一小部分，分数": "../listen-audio/m_yunyang_1545326e99e2.mp3", "密集的，大量的": "../listen-audio/m_yunyang_5604ff09bf22.mp3", "包含，含有": "../listen-audio/m_yunyang_5d78993f66c4.mp3", "取代，替代": "../listen-audio/m_yunyang_a66dd5541e1d.mp3", "减少，降低": "../listen-audio/m_yunyang_4806364c2229.mp3", "更小的": "../listen-audio/m_yunyang_4ddd3f3b612c.mp3", "交易，权衡": "../listen-audio/m_yunyang_613f1a5f5845.mp3", "地理的": "../listen-audio/m_yunyang_40df67e8e2f1.mp3", "差距，边缘": "../listen-audio/m_yunyang_f9bb00b1fcc7.mp3", "紧凑的，精简的": "../listen-audio/m_yunyang_6ba0db80a71c.mp3", "种类，多样性": "../listen-audio/m_yunyang_0783fbe0ea5e.mp3", "带有地理标签的": "../listen-audio/m_yunyang_bb433d6216d1.mp3", "有噪声的，嘈杂的": "../listen-audio/m_yunyang_7e9f01f66c95.mp3", "收集": "../listen-audio/m_yunyang_c6dcd4b09a95.mp3", "网络，互联网": "../listen-audio/m_yunyang_ffbec3a9aba3.mp3", "协同的，协同增效的": "../listen-audio/m_yunyang_5f00d10fd25d.mp3", "吝啬的，节俭的（参数精简）": "../listen-audio/m_yunyang_8e1471ee3595.mp3", "有弹性的，适应性强的": "../listen-audio/m_yunyang_bbf6987fbea5.mp3", "嵌入，向量表示": "../listen-audio/m_yunyang_043fe19e3d77.mp3", "仿真，模仿": "../listen-audio/m_yunyang_dd3ea3da61fc.mp3", "ground truth，真实标签": "../listen-audio/m_yunyang_9054f30ef789.mp3", "深奥的，难懂的": "../listen-audio/m_yunyang_f24526b74874.mp3", "无限的": "../listen-audio/m_yunyang_7c0e9fbbbe90.mp3", "多属性的": "../listen-audio/m_yunyang_de9a321418a2.mp3", "决策": "../listen-audio/m_yunyang_5fd3a15c36a0.mp3", "优越的，上等的": "../listen-audio/m_yunyang_57e3a0a90c0c.mp3", "总结，得出结论": "../listen-audio/m_yunyang_0aa3cac9017f.mp3", "发布，释放": "../listen-audio/m_yunyang_f00bc038fd93.mp3", "提出的": "../listen-audio/m_yunyang_28792617e7ee.mp3", "被探索的": "../listen-audio/m_yunyang_8545a5c08b73.mp3"}}, "zh-CN-YunjianNeural": {"m": {"参数": "../listen-audio/m_yunjian_3d0a2df9ec50.mp3", "微调": "../listen-audio/m_yunjian_58fd75c1b689.mp3", "预训练": "../listen-audio/m_yunjian_40decf735255.mp3", "框架": "../listen-audio/m_yunjian_41f1d2b62436.mp3", "压缩": "../listen-audio/m_yunjian_6612548ad85b.mp3", "参数化": "../listen-audio/m_yunjian_d27f1135c6e3.mp3", "正则化": "../listen-audio/m_yunjian_4bd7c8e0b175.mp3", "量化": "../listen-audio/m_yunjian_03860b396eb4.mp3", "表示，表征": "../listen-audio/m_yunjian_a3551d56cb9f.mp3", "约束，限制": "../listen-audio/m_yunjian_5d10dc719bc9.mp3", "分辨率": "../listen-audio/m_yunjian_874a58161898.mp3", "Softmax函数": "../listen-audio/m_yunjian_299739b8affc.mp3", "复杂度": "../listen-audio/m_yunjian_f13c3e0717ea.mp3", "可分离的": "../listen-audio/m_yunjian_7b68fb87e5b6.mp3", "超参数": "../listen-audio/m_yunjian_eb02ceade464.mp3", "过拟合": "../listen-audio/m_yunjian_246329933358.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "efficient", "ipa": "ɪˈfɪʃnt", "pos": "adj.", "m": "高效的，有效率的", "ex": "We present a class of efficient models called MobileNets", "lv": "四级", "sec": "Abstract"}, {"w": "embedded", "ipa": "ɪmˈbedɪd", "pos": "adj.", "m": "嵌入式的，内含的", "ex": "for mobile and embedded vision applications", "lv": "考博", "sec": "Abstract"}, {"w": "streamlined", "ipa": "ˈstriːmlaɪnd", "pos": "adj.", "m": "流线型的，精简的", "ex": "based on a streamlined architecture that uses depth-wise separable convolutions", "lv": "考博", "sec": "Abstract"}, {"w": "separable", "ipa": "səˈpærəbl", "pos": "adj.", "m": "可分离的", "ex": "uses depth-wise separable convolutions to build light weight deep neural networks", "lv": "考博", "sec": "Abstract"}, {"w": "lightweight", "ipa": "ˈlaɪtweɪt", "pos": "adj.", "m": "轻量级的", "ex": "to build light weight deep neural networks", "lv": "考博", "sec": "Abstract"}, {"w": "hyperparameter", "ipa": "ˌhaɪpəˈpærəmɪtər", "pos": "n.", "m": "超参数", "ex": "We introduce two simple global hyper-parameters that efficiently trade off between latency and accuracy", "lv": "考博", "sec": "Abstract"}, {"w": "latency", "ipa": "ləˈtɛnsi", "pos": "n.", "m": "延迟，潜伏期", "ex": "efficiently trade off between latency and accuracy", "lv": "考博", "sec": "Abstract"}, {"w": "constraint", "ipa": "kənˈstreɪnt", "pos": "n.", "m": "约束，限制", "ex": "based on the constraints of the problem", "lv": "六级", "sec": "Abstract"}, {"w": "trade off", "ipa": "treɪd ɒf", "pos": "n./v.", "m": "权衡，折中", "ex": "efficiently trade off between latency and accuracy", "lv": "考博", "sec": "Abstract"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "m": "准确率，精度", "ex": "efficiently trade off between latency and accuracy", "lv": "四级", "sec": "Abstract"}, {"w": "resource", "ipa": "rɪˈzɔːrs", "pos": "n.", "m": "资源", "ex": "extensive experiments on resource and accuracy tradeoffs", "lv": "四级", "sec": "Abstract"}, {"w": "demonstrate", "ipa": "ˈdɛmənstreɪt", "pos": "v.", "m": "展示，证明", "ex": "We then demonstrate the effectiveness of MobileNets across a wide range of applications", "lv": "四级", "sec": "Abstract"}, {"w": "extensive", "ipa": "ɪkˈstɛnsɪv", "pos": "adj.", "m": "广泛的，大量的", "ex": "We present extensive experiments on resource and accuracy tradeoffs", "lv": "四级", "sec": "Abstract"}, {"w": "classification", "ipa": "ˌklæsɪfɪˈkeɪʃn", "pos": "n.", "m": "分类", "ex": "show strong performance compared to other popular models on ImageNet classification", "lv": "四级", "sec": "Abstract"}, {"w": "show", "ipa": "ʃoʊ", "pos": "v.", "m": "显示，展示", "ex": "We present extensive experiments", "lv": "考博", "sec": "Abstract"}, {"w": "tradeoff", "ipa": "ˈtreɪdɔːf", "pos": "n.", "m": "权衡", "ex": "experiments on resource and accuracy tradeoffs", "lv": "六级", "sec": "Abstract"}, {"w": "popularize", "ipa": "ˈpɑːpjələraɪz", "pos": "v.", "m": "推广，普及", "ex": "AlexNet popularized deep convolutional neural networks by winning the ImageNet Challenge", "lv": "四级", "sec": "Abstract"}, {"w": "necessarily", "ipa": "ˌnesəˈserəli", "pos": "adv.", "m": "必定", "ex": "these advances are not necessarily making networks more efﬁcient", "lv": "四级", "sec": "Abstract"}, {"w": "respect", "ipa": "rɪˈspekt", "pos": "n.", "m": "方面（with respect to 在…方面）", "ex": "more efﬁcient with respect to size and speed", "lv": "四级", "sec": "Abstract"}, {"w": "ﬁnegrain", "ipa": "ˈfaɪn ɡreɪn", "pos": "adj.", "m": "细粒度的", "ex": "use cases including object detection, ﬁnegrain classiﬁcation", "lv": "考博", "sec": "Abstract"}, {"w": "attribute", "ipa": "ˈætrɪbjuːt", "pos": "n.", "m": "属性", "ex": "face attributes and large scale geo-localization", "lv": "四级", "sec": "Abstract"}, {"w": "localization", "ipa": "ˌloʊkəlaɪˈzeɪʃn", "pos": "n.", "m": "定位（geo-localization 地理定位）", "ex": "large scale geo-localization", "lv": "考博", "sec": "Abstract"}, {"w": "ubiquitous", "ipa": "juːˈbɪkwɪtəs", "pos": "adj.", "m": "无处不在的，普遍存在的", "ex": "Convolutional neural networks have become ubiquitous in computer vision", "lv": "考博", "sec": "Intro"}, {"w": "complicated", "ipa": "ˈkɒmplɪkeɪtɪd", "pos": "adj.", "m": "复杂的", "ex": "The general trend has been to make deeper and more complicated networks", "lv": "四级", "sec": "Intro"}, {"w": "advance", "ipa": "ədˈvæns", "pos": "n.", "m": "进步，进展", "ex": "these advances to improve accuracy are not necessarily making networks more efficient", "lv": "四级", "sec": "Intro"}, {"w": "timely", "ipa": "ˈtaɪmli", "pos": "adj.", "m": "及时的，适时的", "ex": "the recognition tasks need to be carried out in a timely fashion", "lv": "六级", "sec": "Intro"}, {"w": "fashion", "ipa": "ˈfæʃn", "pos": "n.", "m": "方式，时尚", "ex": "in a timely fashion on a computationally limited platform", "lv": "四级", "sec": "Intro"}, {"w": "platform", "ipa": "ˈplætfɔːrm", "pos": "n.", "m": "平台", "ex": "on a computationally limited platform", "lv": "四级", "sec": "Intro"}, {"w": "architecture", "ipa": "ˈɑːrkɪtektʃər", "pos": "n.", "m": "架构，结构", "ex": "This paper describes an efficient network architecture", "lv": "四级", "sec": "Intro"}, {"w": "requirement", "ipa": "rɪˈkwaɪərmənt", "pos": "n.", "m": "要求，需求", "ex": "matched to the design requirements for mobile and embedded vision applications", "lv": "四级", "sec": "Intro"}, {"w": "computationally", "ipa": "kɒmpjəˈteɪʃənəli", "pos": "adv.", "m": "计算上", "ex": "on a computationally limited platform", "lv": "考博", "sec": "Intro"}, {"w": "investigate", "ipa": "ɪnˈvɛstɪɡeɪt", "pos": "v.", "m": "研究，调查", "ex": "Section 5 closes with a summary and conclusion", "lv": "四级", "sec": "Intro"}, {"w": "summarize", "ipa": "ˈsʌməraɪz", "pos": "v.", "m": "总结，概括", "ex": "Section 5 closes with a summary and conclusion", "lv": "四级", "sec": "Intro"}, {"w": "introduce", "ipa": "ɪntrəˈdjuːs", "pos": "v.", "m": "引入，介绍", "ex": "We introduce two simple global hyper-parameters", "lv": "四级", "sec": "Intro"}, {"w": "trend", "ipa": "trɛnd", "pos": "n.", "m": "趋势，潮流", "ex": "The general trend has been to make deeper and more complicated networks", "lv": "四级", "sec": "Intro"}, {"w": "recognition", "ipa": "ˌrɛkəɡˈnɪʃn", "pos": "n.", "m": "识别", "ex": "the recognition tasks need to be carried out in a timely fashion", "lv": "四级", "sec": "Intro"}, {"w": "description", "ipa": "dɪˈskrɪpʃn", "pos": "n.", "m": "描述", "ex": "Section 3 describes the MobileNet architecture", "lv": "四级", "sec": "Intro"}, {"w": "factorize", "ipa": "ˈfæktəraɪz", "pos": "v.", "m": "分解，因式分解", "ex": "build a network out of fully factorized convolutions", "lv": "考博", "sec": "Prior"}, {"w": "topology", "ipa": "təˈpɒlədʒi", "pos": "n.", "m": "拓扑结构", "ex": "as well as the use of topological connections", "lv": "考博", "sec": "Prior"}, {"w": "bottleneck", "ipa": "ˈbɒtlnek", "pos": "n.", "m": "瓶颈", "ex": "Squeezenet uses a bottleneck approach to design a very small network", "lv": "六级", "sec": "Prior"}, {"w": "quantization", "ipa": "kwɒntəˈzeɪʃn", "pos": "n.", "m": "量化", "ex": "Compression based on product quantization", "lv": "考博", "sec": "Prior"}, {"w": "pruning", "ipa": "ˈpruːnɪŋ", "pos": "n.", "m": "剪枝", "ex": "pruning, vector quantization and Huffman coding have been proposed", "lv": "六级", "sec": "Prior"}, {"w": "compression", "ipa": "kəmˈpreʃn", "pos": "n.", "m": "压缩", "ex": "Another method for training small networks is distillation", "lv": "六级", "sec": "Prior"}, {"w": "distillation", "ipa": "dɪˈstɪleɪʃn", "pos": "n.", "m": "蒸馏（知识蒸馏）", "ex": "distillation which uses a larger network to teach a smaller network", "lv": "考博", "sec": "Prior"}, {"w": "emerging", "ipa": "ɪˈmɜːrdʒɪŋ", "pos": "adj.", "m": "新兴的", "ex": "Another emerging approach is low bit networks", "lv": "四级", "sec": "Prior"}, {"w": "complementary", "ipa": "kɒmplɪˈmentəri", "pos": "adj.", "m": "互补的", "ex": "It is complementary to our approach", "lv": "考研", "sec": "Prior"}, {"w": "approach", "ipa": "əˈproʊtʃ", "pos": "n.", "m": "方法，途径", "ex": "Many different approaches can be generally categorized", "lv": "四级", "sec": "Prior"}, {"w": "literature", "ipa": "ˈlɪtrətʃər", "pos": "n.", "m": "文献", "ex": "in the recent literature", "lv": "四级", "sec": "Prior"}, {"w": "compress", "ipa": "kəmˈprɛs", "pos": "v.", "m": "压缩", "ex": "compressing pretrained networks", "lv": "四级", "sec": "Prior"}, {"w": "pretrained", "ipa": "priːˈtreɪnd", "pos": "adj.", "m": "预训练的", "ex": "compressing pretrained networks", "lv": "考博", "sec": "Prior"}, {"w": "hashing", "ipa": "ˈhæʃɪŋ", "pos": "n.", "m": "哈希", "ex": "hashing have been proposed in the literature", "lv": "考博", "sec": "Prior"}, {"w": "categorize", "ipa": "ˈkætəɡəraɪz", "pos": "v.", "m": "分类，归类", "ex": "Many different approaches can be generally categorized", "lv": "六级", "sec": "Prior"}, {"w": "optimize", "ipa": "ˈɒptɪmaɪz", "pos": "v.", "m": "优化", "ex": "MobileNets primarily focus on optimizing for latency", "lv": "考博", "sec": "Prior"}, {"w": "speed", "ipa": "spiːd", "pos": "n.", "m": "速度", "ex": "Many papers on small networks focus only on size but do not consider speed", "lv": "六级", "sec": "Prior"}, {"w": "depthwise", "ipa": "ˈdɛpθwaɪz", "pos": "adj.", "m": "逐深度的，深度方向的", "ex": "MobileNet model is based on depthwise separable convolutions", "lv": "考博", "sec": "DWConv"}, {"w": "pointwise", "ipa": "ˈpɔɪntwaɪz", "pos": "adj.", "m": "逐点的，逐像素的", "ex": "a 1×1 convolution called a pointwise convolution", "lv": "考博", "sec": "DWConv"}, {"w": "filter", "ipa": "ˈfɪltər", "pos": "n./v.", "m": "滤波器，过滤", "ex": "depthwise convolution applies a single filter to each input channel", "lv": "四级", "sec": "DWConv"}, {"w": "combine", "ipa": "kəmˈbaɪn", "pos": "v.", "m": "结合，组合", "ex": "The pointwise convolution then applies a 1×1 convolution to combine the outputs", "lv": "四级", "sec": "DWConv"}, {"w": "feature map", "ipa": "ˈfiːtʃər mæp", "pos": "n.", "m": "特征图", "ex": "takes as input a DF × DF × M feature map F", "lv": "考博", "sec": "DWConv"}, {"w": "kernel", "ipa": "ˈkɜːrnl", "pos": "n.", "m": "核，卷积核", "ex": "parameterized by convolution kernel K of size DK×DK×M×N", "lv": "六级", "sec": "DWConv"}, {"w": "stride", "ipa": "straɪd", "pos": "n.", "m": "步幅，步长", "ex": "assuming stride one and padding", "lv": "六级", "sec": "DWConv"}, {"w": "padding", "ipa": "ˈpædɪŋ", "pos": "n.", "m": "填充", "ex": "assuming stride one and padding", "lv": "考博", "sec": "DWConv"}, {"w": "representation", "ipa": "ˌrɛprɪzenˈteɪʃn", "pos": "n.", "m": "表示，表征", "ex": "combining features in order to produce a new representation", "lv": "六级", "sec": "DWConv"}, {"w": "substantially", "ipa": "səbˈstænʃəli", "pos": "adv.", "m": "大量地，显著地", "ex": "for substantial reduction in computational cost", "lv": "四级", "sec": "DWConv"}, {"w": "linear combination", "ipa": "ˈlɪniər kəmbɪˈneɪʃn", "pos": "n.", "m": "线性组合", "ex": "Pointwise convolution is then used to create a linear combination of the output", "lv": "考博", "sec": "DWConv"}, {"w": "nonlinearity", "ipa": "ˌnɒnlɪnɪˈærəti", "pos": "n.", "m": "非线性", "ex": "MobileNets use both batchnorm and ReLU nonlinearities", "lv": "考博", "sec": "DWConv"}, {"w": "computational cost", "ipa": "kɒmpjəˈteɪʃnl kɒst", "pos": "n.", "m": "计算成本", "ex": "Depthwise separable convolutions cost", "lv": "考博", "sec": "DWConv"}, {"w": "drastically", "ipa": "ˈdræstɪkli", "pos": "adv.", "m": "大幅度地，显著地", "ex": "This factorization has the effect of drastically reducing computation", "lv": "六级", "sec": "DWConv"}, {"w": "dimension", "ipa": "dɪˈmɛnʃn", "pos": "n.", "m": "维度，尺寸", "ex": "where DK is the spatial dimension of the kernel", "lv": "四级", "sec": "DWConv"}, {"w": "spatial", "ipa": "ˈspeɪʃl", "pos": "adj.", "m": "空间的", "ex": "where DK is the spatial dimension of the kernel assumed to be square", "lv": "六级", "sec": "DWConv"}, {"w": "output", "ipa": "ˈaʊtpʊt", "pos": "n.", "m": "输出", "ex": "produces a DF × DF × N feature map G", "lv": "四级", "sec": "DWConv"}, {"w": "channel", "ipa": "ˈtʃænl", "pos": "n.", "m": "通道", "ex": "depthwise convolution applies a single filter to each input channel", "lv": "四级", "sec": "DWConv"}, {"w": "parameterize", "ipa": "pəˈræmɪtəraɪz", "pos": "v.", "m": "参数化", "ex": "The standard convolutional layer is parameterized by convolution kernel K", "lv": "考博", "sec": "DWConv"}, {"w": "depth", "ipa": "dɛpθ", "pos": "n.", "m": "深度", "ex": "M is the number of input channels (input depth)", "lv": "四级", "sec": "DWConv"}, {"w": "batchnorm", "ipa": "ˈbætʃnɔːrm", "pos": "n.", "m": "批归一化（Batch Normalization）", "ex": "All layers are followed by a batchnorm and ReLU nonlinearity", "lv": "考博", "sec": "Structure"}, {"w": "fully connected", "ipa": "ˈfʊli kəˈnektɪd", "pos": "adj.", "m": "全连接的", "ex": "the final fully connected layer which has no nonlinearity", "lv": "考博", "sec": "Structure"}, {"w": "softmax", "ipa": "ˈsɒftmæks", "pos": "n.", "m": "Softmax函数", "ex": "feeds into a softmax layer for classification", "lv": "考博", "sec": "Structure"}, {"w": "downsampling", "ipa": "ˌdaʊnˈsæmpəlɪŋ", "pos": "n.", "m": "下采样", "ex": "Down sampling is handled with strided convolution", "lv": "考博", "sec": "Structure"}, {"w": "pooling", "ipa": "ˈpuːlɪŋ", "pos": "n.", "m": "池化", "ex": "A final average pooling reduces the spatial resolution", "lv": "四级", "sec": "Structure"}, {"w": "resolution", "ipa": "ˌrɛzəˈluːʃn", "pos": "n.", "m": "分辨率", "ex": "reduces the spatial resolution to 1 before the fully connected layer", "lv": "四级", "sec": "Structure"}, {"w": "parameter", "ipa": "pəˈræmɪtər", "pos": "n.", "m": "参数", "ex": "MobileNet has 28 layers", "lv": "六级", "sec": "Structure"}, {"w": "sparsity", "ipa": "spɑːrˈsəti", "pos": "n.", "m": "稀疏性", "ex": "until a very high level of sparsity", "lv": "考博", "sec": "Structure"}, {"w": "dense", "ipa": "dɛns", "pos": "adj.", "m": "密集的", "ex": "puts nearly all of the computation into dense 1×1 convolutions", "lv": "四级", "sec": "Structure"}, {"w": "reordering", "ipa": "riːˈɔːrdərɪŋ", "pos": "n.", "m": "重排序", "ex": "require an initial reordering in memory called im2col", "lv": "考博", "sec": "Structure"}, {"w": "linear algebra", "ipa": "ˈlɪniər ˈældʒɪbrə", "pos": "n.", "m": "线性代数", "ex": "one of the most optimized numerical linear algebra algorithms", "lv": "考博", "sec": "Structure"}, {"w": "implementation", "ipa": "ˌɪmplɪmɛnˈteɪʃn", "pos": "n.", "m": "实现，实施", "ex": "This can be implemented with highly optimized general matrix multiply", "lv": "四级", "sec": "Structure"}, {"w": "nonlinearity", "ipa": "ˌnɒnlɪnɪˈærəti", "pos": "n.", "m": "非线性", "ex": "All layers are followed by a batchnorm and ReLU nonlinearity", "lv": "考博", "sec": "Structure"}, {"w": "exception", "ipa": "ɪkˈsɛpʃn", "pos": "n.", "m": "例外", "ex": "with the exception of the final fully connected layer", "lv": "四级", "sec": "Structure"}, {"w": "distort", "ipa": "dɪˈstɔːrt", "pos": "v.", "m": "使变形，扭曲", "ex": "we reduce the amount of image distortions by limiting the size of small crops", "lv": "六级", "sec": "Structure"}, {"w": "numerical", "ipa": "ˈnjuːmərɪkl", "pos": "adj.", "m": "数值的", "ex": "one of the most optimized numerical linear algebra algorithms", "lv": "六级", "sec": "Structure"}, {"w": "memory", "ipa": "ˈmɛməri", "pos": "n.", "m": "内存，记忆", "ex": "require an initial reordering in memory called im2col", "lv": "四级", "sec": "Structure"}, {"w": "multiplier", "ipa": "ˈmʌltɪplaɪər", "pos": "n.", "m": "乘子，乘数", "ex": "we introduce a very simple parameter α called width multiplier", "lv": "考博", "sec": "Multipliers"}, {"w": "thin", "ipa": "θɪn", "pos": "v.", "m": "使变薄，使变细", "ex": "The role of the width multiplier α is to thin a network uniformly at each layer", "lv": "考博", "sec": "Multipliers"}, {"w": "uniformly", "ipa": "ˈjuːnɪfɔːrmli", "pos": "adv.", "m": "均匀地", "ex": "to thin a network uniformly at each layer", "lv": "四级", "sec": "Multipliers"}, {"w": "implicitly", "ipa": "ɪmˈplɪsɪtli", "pos": "adv.", "m": "隐式地", "ex": "In practice we implicitly set ρ by setting the input resolution", "lv": "六级", "sec": "Multipliers"}, {"w": "quadratically", "ipa": "kwɒˈdrætɪkli", "pos": "adv.", "m": "二次方地", "ex": "reducing computational cost and the number of parameters quadratically by roughly α²", "lv": "考博", "sec": "Multipliers"}, {"w": "computation", "ipa": "ˌkɒmpjəˈteɪʃn", "pos": "n.", "m": "计算", "ex": "the computational cost for the core layers", "lv": "考博", "sec": "Multipliers"}, {"w": "baseline", "ipa": "ˈbeɪslaɪn", "pos": "n.", "m": "基线，基准", "ex": "α = 1 is the baseline MobileNet", "lv": "考博", "sec": "Multipliers"}, {"w": "sequentially", "ipa": "sɪˈkwɛnʃəli", "pos": "adv.", "m": "依次地，顺序地", "ex": "as architecture shrinking methods are sequentially applied to the layer", "lv": "考博", "sec": "Multipliers"}, {"w": "shrinking", "ipa": "ˈʃrɪŋkɪŋ", "pos": "n.", "m": "收缩，缩小", "ex": "architecture shrinking methods are sequentially applied", "lv": "四级", "sec": "Multipliers"}, {"w": "input", "ipa": "ˈɪnpʊt", "pos": "n.", "m": "输入", "ex": "the number of input channels M becomes αM", "lv": "四级", "sec": "Multipliers"}, {"w": "cumulative", "ipa": "ˈkjuːmjələtɪv", "pos": "adj.", "m": "累积的", "ex": "each row is a cumulative effect adding on top of the previous row", "lv": "六级", "sec": "Multipliers"}, {"w": "reduced", "ipa": "rɪˈdjuːst", "pos": "adj.", "m": "减少的，精简的", "ex": "ρ < 1 are reduced computation MobileNets", "lv": "考博", "sec": "Multipliers"}, {"w": "multiply", "ipa": "ˈmʌltɪplaɪ", "pos": "v.", "m": "乘，使相乘", "ex": "where the computational cost depends multiplicatively on the number of input channels", "lv": "四级", "sec": "Multipliers"}, {"w": "typically", "ipa": "ˈtɪpɪkli", "pos": "adv.", "m": "通常地", "ex": "typically set implicitly so that the input resolution of the network is 224", "lv": "四级", "sec": "Multipliers"}, {"w": "shallow", "ipa": "ˈʃæloʊ", "pos": "adj.", "m": "浅的（浅层网络）", "ex": "making MobileNet shallower", "lv": "四级", "sec": "Experiments"}, {"w": "thinner", "ipa": "ˈθɪnər", "pos": "adj.", "m": "更薄的（更窄的网络）", "ex": "making MobileNets thinner is 3% better than making them shallower", "lv": "考博", "sec": "Experiments"}, {"w": "smoothly", "ipa": "ˈsmuːðli", "pos": "adv.", "m": "平滑地", "ex": "Accuracy drops off smoothly until the architecture is made too small", "lv": "四级", "sec": "Experiments"}, {"w": "complexity", "ipa": "kəmˈplɛksəti", "pos": "n.", "m": "复杂度", "ex": "with only a fraction of computational complexity", "lv": "六级", "sec": "Experiments"}, {"w": "comparable", "ipa": "ˈkɒmpərəbl", "pos": "adj.", "m": "可比较的，相当的", "ex": "MobileNet achieves comparable results to other networks", "lv": "四级", "sec": "Experiments"}, {"w": "fraction", "ipa": "ˈfrækʃn", "pos": "n.", "m": "一小部分，分数", "ex": "with only a fraction of computational complexity and model size", "lv": "四级", "sec": "Experiments"}, {"w": "intensive", "ipa": "ɪnˈtɛnsɪv", "pos": "adj.", "m": "密集的，大量的", "ex": "27 times less compute intensive", "lv": "四级", "sec": "Experiments"}, {"w": "investigate", "ipa": "ɪnˈvɛstɪɡeɪt", "pos": "v.", "m": "研究，调查", "ex": "In this section we first investigate the effects of depthwise convolutions", "lv": "四级", "sec": "Experiments"}, {"w": "determine", "ipa": "dɪˈtɜːrmɪn", "pos": "v.", "m": "确定，决定", "ex": "rather than the number of layers", "lv": "四级", "sec": "Experiments"}, {"w": "contain", "ipa": "kənˈteɪn", "pos": "v.", "m": "包含，含有", "ex": "these models contain only 4.2 million parameters", "lv": "四级", "sec": "Experiments"}, {"w": "exceed", "ipa": "ɪkˈsiːd", "pos": "v.", "m": "超过，超越", "ex": "the MobileNet version exceeds Im2GPS by a large margin", "lv": "四级", "sec": "Experiments"}, {"w": "supersede", "ipa": "ˌsuːpərˈsiːd", "pos": "v.", "m": "取代，替代", "ex": "demonstrating superior size, speed and accuracy characteristics", "lv": "考博", "sec": "Experiments"}, {"w": "extensive", "ipa": "ɪkˈstɛnsɪv", "pos": "adj.", "m": "广泛的", "ex": "we first investigate the effects of depthwise convolutions", "lv": "四级", "sec": "Experiments"}, {"w": "decrease", "ipa": "dɪˈkriːs", "pos": "v.", "m": "减少，降低", "ex": "Accuracy drops off smoothly", "lv": "四级", "sec": "Experiments"}, {"w": "smaller", "ipa": "ˈsmɔːlər", "pos": "adj.", "m": "更小的", "ex": "making MobileNets thinner is 3% better than making them shallower", "lv": "考博", "sec": "Experiments"}, {"w": "trade", "ipa": "treɪd", "pos": "v.", "m": "交易，权衡", "ex": "show the trade offs of reducing the network based on the two hyper-parameters", "lv": "四级", "sec": "Experiments"}, {"w": "fine-grained", "ipa": "faɪn ɡreɪnd", "pos": "adj.", "m": "细粒度的", "ex": "We train MobileNet for fine grained recognition on the Stanford Dogs dataset", "lv": "考博", "sec": "Applications"}, {"w": "dataset", "ipa": "ˈdeɪtəset", "pos": "n.", "m": "数据集", "ex": "on the Stanford Dogs dataset", "lv": "考博", "sec": "Applications"}, {"w": "pretrain", "ipa": "priːˈtreɪn", "pos": "v.", "m": "预训练", "ex": "use the noisy web data to pretrain a fine grained dog recognition model", "lv": "考博", "sec": "Applications"}, {"w": "fine-tune", "ipa": "faɪn tjuːn", "pos": "v.", "m": "微调", "ex": "and then fine tune the model on the Stanford Dogs training set", "lv": "考博", "sec": "Applications"}, {"w": "geographic", "ipa": "ˌdʒiːəˈɡræfɪk", "pos": "adj.", "m": "地理的", "ex": "divides the earth into a grid of geographic cells", "lv": "四级", "sec": "Applications"}, {"w": "classify", "ipa": "ˈklæsɪfaɪ", "pos": "v.", "m": "分类", "ex": "casts the task as a classification problem", "lv": "四级", "sec": "Applications"}, {"w": "localize", "ipa": "ˈləʊkəlaɪz", "pos": "v.", "m": "定位", "ex": "PlaNet has been shown to successfully localize a large variety of photos", "lv": "考博", "sec": "Applications"}, {"w": "margin", "ipa": "ˈmɑːrdʒɪn", "pos": "n.", "m": "差距，边缘", "ex": "it still outperforms Im2GPS by a large margin", "lv": "四级", "sec": "Applications"}, {"w": "compact", "ipa": "kəmˈpækt", "pos": "adj.", "m": "紧凑的，精简的", "ex": "the MobileNet version is much more compact", "lv": "六级", "sec": "Applications"}, {"w": "variety", "ipa": "vəˈraɪəti", "pos": "n.", "m": "种类，多样性", "ex": "a large variety of photos", "lv": "四级", "sec": "Applications"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "m": "准确率", "ex": "only slightly decreased performance compared to PlaNet", "lv": "四级", "sec": "Applications"}, {"w": "geo-tagged", "ipa": "ˈdʒiːoʊ tæɡd", "pos": "adj.", "m": "带有地理标签的", "ex": "trains a convolutional neural network on millions of geo-tagged photos", "lv": "考博", "sec": "Applications"}, {"w": "noisy", "ipa": "ˈnɔɪzi", "pos": "adj.", "m": "有噪声的，嘈杂的", "ex": "use the noisy web data to pretrain", "lv": "四级", "sec": "Applications"}, {"w": "collect", "ipa": "kəˈlɛkt", "pos": "v.", "m": "收集", "ex": "we collect an even larger but noisy training set from the web", "lv": "四级", "sec": "Applications"}, {"w": "web", "ipa": "wɛb", "pos": "n.", "m": "网络，互联网", "ex": "use the noisy web data to pretrain a fine grained dog recognition model", "lv": "六级", "sec": "Applications"}, {"w": "synergistic", "ipa": "ˌsɪnərˈdʒɪstɪk", "pos": "adj.", "m": "协同的，协同增效的", "ex": "a synergistic relationship between MobileNet and distillation", "lv": "考博", "sec": "Deploy"}, {"w": "parsimonious", "ipa": "ˌpɑːrsɪˈmoʊniəs", "pos": "adj.", "m": "吝啬的，节俭的（参数精简）", "ex": "the parsimonious parameterization of MobileNet", "lv": "考博", "sec": "Deploy"}, {"w": "resilient", "ipa": "rɪˈzɪliənt", "pos": "adj.", "m": "有弹性的，适应性强的", "ex": "the MobileNet-based classifier is resilient to aggressive model shrinking", "lv": "考博", "sec": "Deploy"}, {"w": "deploy", "ipa": "dɪˈplɔɪ", "pos": "v.", "m": "部署", "ex": "MobileNet can also be deployed as an effective base network", "lv": "六级", "sec": "Deploy"}, {"w": "framework", "ipa": "ˈfreɪmwɜːrk", "pos": "n.", "m": "框架", "ex": "under both Faster-RCNN and SSD framework", "lv": "四级", "sec": "Deploy"}, {"w": "embedding", "ipa": "ɪmˈbedɪŋ", "pos": "n.", "m": "嵌入，向量表示", "ex": "The FaceNet model builds face embeddings based on the triplet loss", "lv": "考博", "sec": "Deploy"}, {"w": "triplet", "ipa": "ˈtrɪplɪt", "pos": "n.", "m": "三元组", "ex": "builds face embeddings based on the triplet loss", "lv": "考博", "sec": "Deploy"}, {"w": "overfitting", "ipa": "ˌoʊvərˈfɪtɪŋ", "pos": "n.", "m": "过拟合", "ex": "small models have less trouble with overfitting", "lv": "考博", "sec": "Deploy"}, {"w": "regularization", "ipa": "ˌrɛɡjələrɪˈzeɪʃn", "pos": "n.", "m": "正则化", "ex": "we use less regularization and data augmentation techniques", "lv": "考博", "sec": "Deploy"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "数据增强", "ex": "we use less regularization and data augmentation techniques", "lv": "考博", "sec": "Deploy"}, {"w": "emulate", "ipa": "ˈɛmjuleɪt", "pos": "v.", "m": "仿真，模仿", "ex": "training the classifier to emulate the outputs of a larger model", "lv": "考博", "sec": "Deploy"}, {"w": "ground-truth", "ipa": "ɡraʊnd trʌθ", "pos": "n.", "m": " ground truth，真实标签", "ex": "instead of the ground-truth labels", "lv": "考博", "sec": "Deploy"}, {"w": "distort", "ipa": "dɪˈstɔːrt", "pos": "v.", "m": "使变形，扭曲", "ex": "we reduce the amount of image distortions", "lv": "六级", "sec": "Deploy"}, {"w": "esoteric", "ipa": "ˌɛsəˈtɛrɪk", "pos": "adj.", "m": "深奥的，难懂的", "ex": "compressing large systems with unknown or esoteric training procedures", "lv": "考博", "sec": "Deploy"}, {"w": "infinite", "ipa": "ˈɪnfɪnɪt", "pos": "adj.", "m": "无限的", "ex": "enabling training from large (and potentially infinite) unlabeled datasets", "lv": "四级", "sec": "Deploy"}, {"w": "weight decay", "ipa": "weɪt dɪˈkeɪ", "pos": "n.", "m": "权重衰减", "ex": "put very little or no weight decay on the depthwise filters", "lv": "考博", "sec": "Deploy"}, {"w": "multi-attribute", "ipa": "ˈmʌlti əˈtrɪbjuːt", "pos": "adj.", "m": "多属性的", "ex": "The classifier is trained on a multi-attribute dataset", "lv": "考博", "sec": "Deploy"}, {"w": "decision", "ipa": "dɪˈsɪʒn", "pos": "n.", "m": "决策", "ex": "important design decisions leading to an efficient model", "lv": "四级", "sec": "Conclusion"}, {"w": "reasonable", "ipa": "ˈriːznəbl", "pos": "adj.", "m": "合理的", "ex": "by trading off a reasonable amount of accuracy", "lv": "四级", "sec": "Conclusion"}, {"w": "superior", "ipa": "suːˈpɪriər", "pos": "adj.", "m": "优越的，上等的", "ex": "demonstrating superior size, speed and accuracy characteristics", "lv": "四级", "sec": "Conclusion"}, {"w": "adoption", "ipa": "əˈdɒpʃn", "pos": "n.", "m": "采用，采纳", "ex": "As a next step to help adoption and exploration of MobileNets", "lv": "六级", "sec": "Conclusion"}, {"w": "explore", "ipa": "ɪkˈsplɔːr", "pos": "v.", "m": "探索", "ex": "help adoption and exploration of MobileNets", "lv": "四级", "sec": "Conclusion"}, {"w": "efficiency", "ipa": "ɪˈfɪʃnsi", "pos": "n.", "m": "效率", "ex": "demonstrating MobileNet's effectiveness when applied to a wide variety of tasks", "lv": "四级", "sec": "Conclusion"}, {"w": "effectiveness", "ipa": "ɪˈfɛktɪvnəs", "pos": "n.", "m": "有效性", "ex": "demonstrating MobileNet's effectiveness when applied to a wide variety of tasks", "lv": "考博", "sec": "Conclusion"}, {"w": "conclude", "ipa": "kənˈkluːd", "pos": "v.", "m": "总结，得出结论", "ex": "We concluded by demonstrating MobileNet's effectiveness", "lv": "四级", "sec": "Conclusion"}, {"w": "release", "ipa": "rɪˈliːs", "pos": "v.", "m": "发布，释放", "ex": "we plan on releasing models in TensorFlow", "lv": "四级", "sec": "Conclusion"}, {"w": "proposed", "ipa": "prəˈpoʊzd", "pos": "adj.", "m": "提出的", "ex": "We proposed a new model architecture called MobileNets", "lv": "考博", "sec": "Conclusion"}, {"w": "explored", "ipa": "ɪkˈsplɔːrd", "pos": "adj.", "m": "被探索的", "ex": "help adoption and exploration of MobileNets", "lv": "考博", "sec": "Conclusion"}];
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -637,20 +464,11 @@ const SKINS=[
   {id:"netease",n:"网易云黑",p:"linear-gradient(135deg,#3a2429,#150d10)"},
   {id:"vinyl",n:"黑胶原色",p:"linear-gradient(135deg,#e6e9f2,#161616)"},
   {id:"gold",n:"香槟金",p:"linear-gradient(135deg,#f2dfbd,#3a2a14)"},
-  {id:"sakura",n:"樱花粉",p:"linear-gradient(135deg,#fdeef3,#f2b9cd)"},
-  {id:"matcha",n:"抹茶",p:"linear-gradient(135deg,#eef3e6,#a9c489)"},
-  {id:"mint",n:"薄荷",p:"linear-gradient(135deg,#eefaf7,#8fd8c8)"},
-  {id:"ocean",n:"海盐蓝",p:"linear-gradient(135deg,#eef5fc,#7fb3e6)"},
-  {id:"grape",n:"星空紫",p:"linear-gradient(135deg,#f2eefa,#b39ade)"},
-  {id:"amusic",n:"Apple红",p:"linear-gradient(135deg,#fff4f4,#fa5c74)"},
-  {id:"mocha",n:"摩卡",p:"linear-gradient(135deg,#f7f1ea,#b08d6d)"},
-  {id:"spotify",n:"Spotify",p:"linear-gradient(135deg,#1d2420,#1db954)"},
-  {id:"midnight",n:"深夜蓝",p:"linear-gradient(135deg,#1e2740,#4a9eff)"},
   {id:"vinylx",n:"悬浮黑胶",p:"radial-gradient(circle at 50% 50%,#5b5bd6 0 30%,#17171a 31%)"}
 ];
 const $=id=>document.getElementById(id);
 const app=$("app");
-let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0,rate:1,enVoice:"",zhVoice:""};
+let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0};
 try{const c=JSON.parse(localStorage.getItem("listen_qq_cfg")||"{}");Object.assign(S,c)}catch(e){}
 const save=()=>{try{localStorage.setItem("listen_qq_cfg",JSON.stringify(S))}catch(e){}};
 
@@ -662,26 +480,16 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
-/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
-const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
-const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
-let lvOff=new Set();
-try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
-let pendingRebuild=false;    /* 播放中改了标记：等当前词念完再重建队列，绝不中途掐断 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
-  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
-  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
-  else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
-  else if(S.source==="new")  list=list.filter(i=>!skips.has(i.w));   /* 仅新词：只读还没标已掌握的 */
-  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过已划掉的 */
-  /* 专背模式不再二次排除已跳过的：否则「星标+已跳过」的词根本读不到，没法取消误点 */
+  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过不读的 */
+  if(S.source!=="all")       list=list.filter(i=>!skips.has(i.w));   /* 专背模式下「不读」依然生效 */
   if(S.order==="rand"){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
   queue=list;
   if(qi>=queue.length)qi=0;
@@ -690,19 +498,6 @@ function rebuild(keep){
   const cur=queue[qi];
   buildQueue();
   if(keep&&cur){const k=queue.findIndex(x=>x.w===cur.w);qi=k>=0?k:0}
-  pendingRebuild=false;                       /* 这里已经重建过了，撤掉待办的延迟重建 */
-}
-/* 延迟重建：等到"当前这个词念完"再生效（给 pendingRebuild 用） */
-function rebuildKeepPos(){
-  const oldLen=queue.length, oldQi=qi, cur=queue[qi], key=cur?cur.w:null;
-  buildQueue();
-  if(!queue.length){qi=0;return}
-  if(!key){if(qi>=queue.length)qi=0;return}
-  const k=queue.findIndex(x=>x.w===key);
-  if(k>=0){qi=k;return}                       /* 当前词还在队列里：原地不动 */
-  /* 当前词已被排除（刚标了跳过 / 取消了星标）：把指针放到"下一个该读的词"的前一位，
-     goNext 再 +1，正好接到原位置上的那个词——不会漏读，也不会重读 */
-  qi = (oldQi>=oldLen-1) ? -1 : Math.min(oldQi,queue.length-1)-1;
 }
 function updateBtns(){
   const w=queue[qi];
@@ -712,33 +507,13 @@ function updateBtns(){
 }
 function updateCounts(){
   $("skipCnt").textContent="已跳过 "+skips.size+" 词";
-  /* 和「词库来源」同一套图标：星标 / 收藏 / 跳过（原先是 ⭐❤✓ emoji 混搭） */
-  $("markCnt").innerHTML="<b>"+IC.star+stars.size+"</b><b>"+IC.heart+favs.size+"</b><b>"+IC.skip+skips.size+"</b>";
+  $("markCnt").textContent="⭐ "+stars.size+" · ❤ "+favs.size+" · ✓ "+skips.size;
 }
-/* 当前词的标记：只显示「跳过」（星标/收藏看顶栏图标即可，不重复占地方） */
-function renderMarks(w){
-  const box=$("mkBadge"); if(!box)return;
-  if(!w||!skips.has(w.w)){box.style.display="none";return}
-  box.innerHTML='<i class="mk" data-cancel="skip" title="此词已跳过 · 点一下恢复朗读">'+IC.skip+'<i>✕</i></i>';
-  box.style.display="flex";
-}
-$("mkBadge").onclick=e=>{
-  const el=e.target.closest("[data-cancel]"); if(!el)return;
-  const w=queue[qi]; if(!w)return;
-  const k=el.dataset.cancel;
-  if(k==="star"){stars.delete(w.w);wr("listen_qq_star",stars);wordTip("已取消星标「"+w.w+"」")}
-  else if(k==="fav"){favs.delete(w.w);wr("listen_qq_fav",favs);wordTip("已取消收藏「"+w.w+"」")}
-  else if(k==="skip"){skips.delete(w.w);wr("listen_qq_skip",skips);wordTip("已恢复朗读「"+w.w+"」")}
-  afterMark();
-};
-/* 标记后收尾：正在朗读时不打断——当前词照常念完，队列等这个词结束时才重建。
-   （以前是立刻重建+重播，等于一点 ✓ 这个词就被掐掉，这次白学了） */
+/* 标记后统一收尾：重建队列，空了就提示，否则接着播 */
 function afterMark(){
-  updateBtns(); updateCounts(); renderMarks(queue[qi]);
-  if(playing){ pendingRebuild=true; return }
-  rebuild(true);
+  updateBtns(); updateCounts(); rebuild(true);   /* 保留当前词：随机模式下重排也不会跳走 */
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
-  render(queue[qi],true);
+  if(playing)playCurrent(); else render(queue[qi],true);
 }
 function renderRange(){
   const box=$("rangeBox"); box.innerHTML="";
@@ -750,27 +525,6 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
-      if(!playing&&queue[qi])render(queue[qi],true);
-    };
-    box.appendChild(c);
-  });
-}
-/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
-function renderLv(){
-  const box=$("lvBox"); if(!box)return;
-  const row=box.closest(".srow");
-  if(!LVS.length){ if(row)row.style.display="none"; return }
-  box.innerHTML="";
-  LVS.forEach(k=>{
-    const c=document.createElement("b");
-    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
-    c.className=lvOff.has(k)?"":"on";
-    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
-    c.onclick=()=>{
-      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
-      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
-      renderLv(); rebuild(true); updateArm(); updateCounts();
-      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -791,23 +545,11 @@ $("skinBtn").onclick=()=>{ skinIdx=(skinIdx+1)%SKINS.length; applySkin(SKINS[ski
 try{const sv=localStorage.getItem("listen_qq_skin"); if(sv)applySkin(sv,false)}catch(e){}
 
 // 设置段
-/* 小图标库：星标 / 收藏 / 跳过（用户提供）/ 加号（新词）/ 全部 */
-const IC={
-  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/></svg>',
-  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
-  skip:'<svg class="fill" viewBox="0 0 1024 1024"><path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/></svg>',
-  news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 13.6 9.4l4.9 1.6-4.9 1.6L12 17.5l-1.6-4.9-4.9-1.6 4.9-1.6Z"/></svg>',
-  all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>',
-  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>'
-};
 function seg(box,opts,get,set,after){
   box.innerHTML="";
   opts.forEach(o=>{
-    const b=document.createElement("b");
-    if(o.svg){ b.innerHTML=o.svg; b.className="icn" } else { b.textContent=o.t }
-    b.dataset.v=o.v;
-    if(o.tip) b.title=o.tip;
-    if(get()===o.v) b.classList.add("on");
+    const b=document.createElement("b"); b.textContent=o.t; b.dataset.v=o.v;
+    b.className=get()===o.v?"on":"";
     b.onclick=()=>{set(o.v);box.querySelectorAll("b").forEach(x=>x.classList.remove("on"));b.classList.add("on");save();after&&after(o.v)};
     box.appendChild(b);
   });
@@ -823,9 +565,6 @@ seg($("segVoice"),[{t:"美音",v:"us"},{t:"英音",v:"uk"}],()=>S.voice,v=>S.voi
   ()=>refreshCurrent("发音： "+(S.voice==="uk"?"英音":"美音")));
 seg($("segPause"),[{t:"2s",v:2000},{t:"4s",v:4000},{t:"6s",v:6000}],()=>S.pause,v=>S.pause=v,
   ()=>refreshCurrent("每词停顿： "+(S.pause/1000)+" 秒"));
-/* 语速：直接改 audio.playbackRate（对有道/百度/系统语音都生效，不改音调） */
-seg($("segRate"),[{t:"0.75x",v:.75},{t:"1x",v:1},{t:"1.25x",v:1.25},{t:"1.5x",v:1.5}],()=>+S.rate||1,v=>S.rate=v,
-  ()=>refreshCurrent("语速： "+S.rate+"x"));
 /* 单词重复次数：1/3/5 快捷 + 右侧输入框自定义（1–20） */
 function setRepeat(v,persist){
   v=Math.max(1,Math.min(20,Math.round(+v||1)));
@@ -842,25 +581,15 @@ seg($("segReveal"),[{t:"开",v:true},{t:"关",v:false}],()=>S.reveal,v=>S.reveal
   ()=>refreshCurrent("先听后现： "+(S.reveal?"开":"关")));
 seg($("segZh"),[{t:"开",v:true},{t:"关",v:false}],()=>S.zh,v=>S.zh=v,
   ()=>refreshCurrent("朗读中文： "+(S.zh?"开":"关")));
-/* 朗读例句：沿用老版方案 = 百度在线合成（lan=en，spd=5，source=web）。
-   本篇若预生成了例句音频则用本地微软音，没有就走百度在线 */
 seg($("segEx"),[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
   ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
 // 单词字体：选项本身就用自己的字体渲染，所见即所得
 const FONTS=[
-  {v:"sans",    t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
-  {v:"serif",   t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
-  {v:"round",   t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
-  {v:"kai",     t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
-  {v:"mono",    t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'},
-  {v:"xingkai", t:"行楷", f:'"Xingkai SC","STXingkai","Snell Roundhand",cursive'},
-  {v:"weibei",  t:"魏碑", f:'"Weibei SC","STWeibei","Kaiti SC",serif'},
-  {v:"wawati",  t:"娃娃", f:'"Wawati SC","STWawati","Comic Sans MS",cursive'},
-  {v:"lanting", t:"兰亭", f:'"Lantinghei SC","FZLanTingHei-S-GB","PingFang SC",sans-serif'},
-  {v:"futura",  t:"几何", f:'Futura,"Avenir Next","Century Gothic",sans-serif'},
-  {v:"georgia", t:"书卷", f:'Georgia,"Times New Roman","Songti SC",serif'},
-  {v:"rounded", t:"圆润", f:'"Arial Rounded MT Bold","Hiragino Maru Gothic ProN","Yuanti SC",sans-serif'},
-  {v:"marker",  t:"手写", f:'"Marker Felt","Chalkboard SE","Comic Sans MS",cursive'}
+  {v:"sans", t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
+  {v:"serif",t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
+  {v:"round",t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
+  {v:"kai",  t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
+  {v:"mono", t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'}
 ];
 function applyFont(v){
   const f=FONTS.find(x=>x.v===v)||FONTS[0];
@@ -902,160 +631,32 @@ function applySource(){
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
   if(playing)playCurrent(); else render(queue[qi],true);
 }
-/* 词库来源：纯图标（全部 / 星标 / 收藏 / 跳过 / 新词），鼠标悬停有说明 */
-seg($("segSource"),[
-  {v:"all", svg:IC.all,  tip:"全部词"},
-  {v:"star",svg:IC.star, tip:"只看星标词"},
-  {v:"fav", svg:IC.heart,tip:"只看收藏词"},
-  {v:"skip",svg:IC.skip, tip:"只看已跳过的词（点标记可取消）"},
-  {v:"new", svg:IC.news, tip:"只看还没跳过的词"}
-],()=>S.source,v=>S.source=v,applySource);
+seg($("segSource"),[{t:"全部",v:"all"},{t:"仅⭐",v:"star"},{t:"仅❤",v:"fav"}],()=>S.source,v=>S.source=v,applySource);
 
 seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.order=v,
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); renderLv(); updateCounts();
+renderRange(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}
-  if(favs.has(w.w)){favs.delete(w.w);wordTip("已取消收藏「"+w.w+"」")}else{favs.add(w.w);wordTip("已收藏「"+w.w+"」")}
+  if(favs.has(w.w)){favs.delete(w.w);toast("已取消收藏「"+w.w+"」")}else{favs.add(w.w);toast("已收藏「"+w.w+"」")}
   wr("listen_qq_fav",favs); afterMark();
 };
 $("starBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标星");return}
-  if(stars.has(w.w)){stars.delete(w.w);wordTip("已取消星标「"+w.w+"」")}else{stars.add(w.w);wordTip("已标星「"+w.w+"」，可只背星标")}
+  if(stars.has(w.w)){stars.delete(w.w);toast("已取消星标「"+w.w+"」")}else{stars.add(w.w);toast("已标星「"+w.w+"」，可只背星标")}
   wr("listen_qq_star",stars); afterMark();
 };
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
-  if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  if(skips.has(w.w)){skips.delete(w.w);toast("已恢复朗读「"+w.w+"」")}
+  else{skips.add(w.w);toast("此词不再朗读「"+w.w+"」")}
   wr("listen_qq_skip",skips); afterMark();
 };
-/* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
-$("clearBox").innerHTML=[["star",IC.star,"清空所有星标"],["fav",IC.heart,"清空所有收藏"],["skip",IC.skip,"清空所有跳过（恢复朗读）"]]
-  .map(x=>'<b data-clr="'+x[0]+'" title="'+x[2]+'">'+x[1]+'<i>✕</i></b>').join("");
-/* 清空按钮：每次点击都必须有反馈——原先星标本来就是 0 时点「清空星标」毫无反应，像坏了 */
-$("clearSkip").onclick=()=>{
-  if(!skips.size){toast("本来就没有跳过的词");return}
-  const n=skips.size; skips.clear(); wr("listen_qq_skip",skips); afterMark(); toast("已清空 "+n+" 个跳过词");
-};
-$("clearBox").onclick=e=>{
-  const b=e.target.closest("[data-clr]"); if(!b)return;
-  const k=b.dataset.clr;
-  const set = k==="star"?stars : k==="fav"?favs : skips;
-  const key = k==="star"?"listen_qq_star" : k==="fav"?"listen_qq_fav" : "listen_qq_skip";
-  const name= k==="star"?"星标" : k==="fav"?"收藏" : "跳过";
-  const n=set.size;
-  if(!n){ toast("本来就没有"+name+"的词"); return }
-  set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
-};
-const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
-/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
-const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
-const LKEY="listen_qq_links";
-const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
-const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
-let LINKS=rdLinks();
-const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
-const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
-
-function renderLinkPop(){
-  const box=$("linkList"),btns=$("linkPopBtns");
-  if(!LINKS.length){
-    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
-    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
-    $("lpCfg").onclick=openLinkCfg;
-    return;
-  }
-  const multi=LINKS.length>1;
-  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
-    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
-    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
-    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
-  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
-    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
-  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
-  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
-    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
-  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
-  $("lpOpenAll").onclick=()=>openMany(LINKS);
-  $("lpCfg").onclick=openLinkCfg;
-}
-function openLinkCfg(){
-  $("linkPop").classList.remove("on");
-  const box=$("linkRows");
-  const row=l=>'<div class="lkrow">'
-    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
-    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
-    +'<span class="del" title="删除此行">✕</span></div>';
-  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
-  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
-  bindDel();
-  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
-  $("linkCfg").classList.add("on");
-}
-$("linkSave").onclick=()=>{
-  const out=[];
-  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
-    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
-    if(!raw)return;
-    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
-  });
-  LINKS=out; wrLinks(out);
-  $("linkCfg").classList.remove("on");
-  toast("已保存 "+out.length+" 个链接");
-};
-$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
-$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
-
-/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
-$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
-$("backupBox").onclick=e=>{
-  const b=e.target.closest("[data-bk]");if(!b)return;
-  if(b.dataset.bk==="cfg")openLinkCfg();
-  else if(b.dataset.bk==="out")doExport();
-  else $("importFile").click();
-};
-function doExport(){
-  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
-  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
-    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
-  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
-  a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
-}
-$("importFile").onchange=e=>{
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=()=>{
-    try{
-      const d=JSON.parse(r.result);
-      if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
-      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
-      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
-        const cur=new Set((links[k]||[]).map(l=>l.url));
-        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
-      });
-      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
-      (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
-      (d.favs||[]).forEach(w=>favs.add(w));
-      (d.skips||[]).forEach(w=>skips.add(w));
-      wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
-      if(d.cfg){Object.assign(S,d.cfg);save()}
-      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
-      LINKS=rdLinks();updateCounts();afterMark();
-      toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
-      setTimeout(()=>location.reload(),1200);
-    }catch(err){toast("导入失败："+err.message)}
-    e.target.value="";
-  };
-  r.readAsText(f);
-};
-
+$("clearSkip").onclick=()=>{skips.clear();wr("listen_qq_skip",skips);updateCounts();rebuild(true);toast("已清空「不读」列表")};
+$("clearStar").onclick=()=>{stars.clear();wr("listen_qq_star",stars);updateCounts();rebuild(true);toast("已清空星标")};
 /* 弯箭头：沿用旧设计语义 = 重听当前词（不想启用时删掉这三行即可） */
 $("replayBtn").onclick=()=>{
   if(!queue[qi])return;
@@ -1066,10 +667,6 @@ $("replayBtn").onclick=()=>{
 // 颜色/封面
 function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1600)}
-/* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方 */
-function wordTip(m){const t=$("wordTip");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1300)}
-/* 标记点亮：图标动一下，短促、不挡视线（和收藏/星标同一手感） */
-function pulse(id){const el=$(id);if(!el)return;el.classList.remove("pulse");void el.offsetWidth;el.classList.add("pulse");setTimeout(()=>el.classList.remove("pulse"),360)}
 
 // 唱臂：静止垂直在盘右 → 播放落到盘面 → 随队列进度内移
 const armBar=document.querySelector(".arm .bar");
@@ -1087,8 +684,6 @@ function updateArm(){
 
 function render(w,reveal){
   app.style.setProperty("--h",hue(w.w));
-  updateBtns();                                      /* 顶栏 ❤/★/✓ 跟随当前词（原先切词不刷新，显示的是上一个词的状态） */
-  renderMarks(w);                                    /* 跳过标记（仅被跳过的词显示） */
   $("art").style.opacity=(S.reveal&&!reveal)?.42:1;   /* 先听后现：未揭晓时封面变暗 */
   $("wsec").textContent=w.sec+" · "+w.lv+" · 第 "+(qi+1)+"/"+queue.length+" 词";
   $("wbig").textContent=w.w;
@@ -1107,158 +702,32 @@ function render(w,reveal){
   updateBtns();
 }
 
-/* 音源（全部实测过）：
-   · 单词 → 有道词典音（只有一个英文词时可靠）
-   · 中文/例句 → 百度 gettts，必须带 spd + **source=web**，否则返回错误页（200 但播不出）
-   · 每个都带兜底 + 开播看门狗，最后一层用系统语音 */
-/* ===== 本地微软语音：按音色取音频，缺失自动回退其它音色 → 再回退在线 TTS ===== */
-const VNAME={
-  "en-US-BrianNeural":"Brian","en-US-AndrewNeural":"Andrew","en-US-GuyNeural":"Guy",
-  "en-US-AriaNeural":"Aria","en-US-JennyNeural":"Jenny","en-US-AvaNeural":"Ava",
-  "en-US-EmmaNeural":"Emma","en-US-ChristopherNeural":"Christopher","en-US-EricNeural":"Eric",
-  "en-US-RogerNeural":"Roger","en-US-SteffanNeural":"Steffan","en-US-AnaNeural":"Ana",
-  "en-US-MichelleNeural":"Michelle","en-GB-SoniaNeural":"Sonia","en-GB-RyanNeural":"Ryan",
-  "en-GB-LibbyNeural":"Libby","en-GB-ThomasNeural":"Thomas","en-GB-MaisieNeural":"Maisie",
-  "zh-CN-YunyangNeural":"云扬","zh-CN-YunjianNeural":"云健","zh-CN-YunxiNeural":"云希",
-  "zh-CN-XiaoxiaoNeural":"晓晓","zh-CN-XiaoyiNeural":"晓伊","zh-CN-YunxiaNeural":"云夏",
-  "zh-CN-liaoning-XiaobeiNeural":"晓北","zh-CN-shaanxi-XiaoniNeural":"晓妮"
-};
-const voiceLabel=id=>VNAME[id]||String(id).replace(/Neural$/,"").split("-").pop();
-/* 本篇已生成哪些音色：w/e = 英文音色，m = 中文音色 */
-function audioVoices(kind){ try{ return AUDIO?Object.keys(AUDIO).filter(v=>AUDIO[v]&&AUDIO[v][kind]):[] }catch(e){ return [] } }
-function localAudio(t,kind){
-  try{
-    if(!AUDIO)return "";
-    const map = kind==="word"?"w" : kind==="zh"?"m" : kind==="sent"?"e" : null;
-    if(!map)return "";
-    const key = kind==="word" ? String(t).toLowerCase()
-              : kind==="zh"   ? String(t).replace(/^[a-z]+\.\s*/i,"")
-              : String(t);
-    const all = audioVoices(map);
-    const want = kind==="zh" ? S.zhVoice : S.enVoice;
-    const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
-    for(let i=0;i<order.length;i++){
-      const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
-    }
-  }catch(e){}
-  return "";
-}
-/* 中文朗读文本：去掉词性前缀 + 去掉括号里的英文注释。
-   否则中文音色会把括号里的英文也念出来，中英混读听着就是"机器音" */
-function zhText(w){
-  return String((w&&w.m)||"")
-    .replace(/^[a-z]+\.\s*/i,"")
-    .replace(/[（(][^）)]*[A-Za-z][^）)]*[）)]/g,"")
-    .replace(/\s+/g," ").trim();
-}
 function ttsURL(t,kind){
-  const e=encodeURIComponent(t);
-  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
-  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
-  const L=localAudio(t,kind); if(L)return L;
-  if(kind==="zh")return bd("zh");
-  if(kind==="sent")return bd("en");
-  return yd;
-}
-function ttsURLs(t,kind){
-  const e=encodeURIComponent(t);
-  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
-  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
-  const urls=[];
-  const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
-  if(kind==="zh")urls.push(bd("zh"));
-  else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
-  return urls;
-}
-
-/* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
-(function voiceRows(){
-  const en=audioVoices("w"), zh=audioVoices("m");
-  const rowOf=id=>{const e=$(id); return e?e.closest(".srow"):null};
-  const rEn=rowOf("segEnVoice"), rZh=rowOf("segZhVoice");
-  if(en.length){
-    if(!S.enVoice||en.indexOf(S.enVoice)<0)S.enVoice=(en.find(v=>/brian/i.test(v))||en[0]);
-    seg($("segEnVoice"),en.map(v=>({t:voiceLabel(v),v})),()=>S.enVoice,v=>{S.enVoice=v},
-        ()=>refreshCurrent("单词音色： "+voiceLabel(S.enVoice)));
-    const vr=$("segVoice")&&$("segVoice").closest(".srow"); if(vr)vr.style.display="none";  /* 有微软音后，美音/英音已无意义 */
-  }else if(rEn){ rEn.style.display="none" }
-  if(zh.length){
-    if(!S.zhVoice||zh.indexOf(S.zhVoice)<0)S.zhVoice=(zh.find(v=>/yunyang/i.test(v))||zh[0]);
-    seg($("segZhVoice"),zh.map(v=>({t:voiceLabel(v),v})),()=>S.zhVoice,v=>{S.zhVoice=v},
-        ()=>refreshCurrent("中文音色： "+voiceLabel(S.zhVoice)));
-  }else if(rZh){ rZh.style.display="none" }
-})();
-let failStreak=0;   /* 连续失败计数：防止音源全挂时疯狂空转刷完词表 */
-/* 系统语音兜底：在线音源都不可用时，用浏览器自带语音朗读，保证有声音 */
-function speakLocal(text,lang,cb){
-  try{
-    if(!window.speechSynthesis){ cb&&cb(false); return }
-    const u=new SpeechSynthesisUtterance(text);
-    u.lang=lang; u.rate=Math.max(.5,Math.min(2,(+S.rate||1)*.95));   /* 系统语音也跟着语速 */
-    let done=false; const fin=ok=>{ if(done)return; done=true; cb&&cb(ok) };
-    u.onend=()=>fin(true); u.onerror=()=>fin(false);
-    speechSynthesis.cancel(); speechSynthesis.speak(u);
-    setTimeout(()=>fin(true),Math.min(12000,1200+String(text).length*90));  /* 无 onend 时按字长估算收尾 */
-  }catch(e){ cb&&cb(false) }
+  if(kind==="zh")return "https://fanyi.baidu.com/gettts?lan=zh&text="+encodeURIComponent(t);
+  if(kind==="sent")return "https://fanyi.baidu.com/gettts?lan=en&text="+encodeURIComponent(t);
+  return "https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+encodeURIComponent(t);
 }
 function say(text,kind,cb){
-  const urls=ttsURLs(text,kind);
-  const t0=Date.now();
-  let i=0, done=false, local=false;
-  const finish=ok=>{
-    if(done)return; done=true;
-    failStreak=ok?0:failStreak+1;
-    if(!ok&&failStreak>=3){                 /* 连续 3 次完全没声：停下来告诉用户，别静默刷词 */
-      clearT(); stopAudio(); setPlaying(false);
-      toast("⚠️ 朗读音源暂时不可用，已暂停。检查网络后点 ▶ 继续");
-      return;
-    }
-    const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
-    setTimeout(()=>cb&&cb(ok),wait);
-  };
-  const tryNext=()=>{
-    if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
-      if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
-      local=true;
-      speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
-      return;
-    }
-    stopAudio();
-    const a=new Audio(urls[i++]);
-    audio=a;
-    try{a.playbackRate=+S.rate||1}catch(e){}      /* 语速（preservesPitch 默认开，不改音调） */
-    let started=false;
-    a.addEventListener("playing",()=>{ started=true });
-    a.addEventListener("ended",()=>{ if(started)finish(true); else tryNext() });
-    a.addEventListener("error",()=>{ if(!started)tryNext(); else finish(true) });
-    a.play().catch(err=>{
-      if(err&&err.name==="NotAllowedError"){ autoplayBlocked=true; finish(false) }
-      else tryNext();
-    });
-    setTimeout(()=>{ if(!started&&!done)tryNext() },2500);   /* 2.5s 没出声 → 换下一个音源 */
-    setTimeout(()=>{ if(!done)finish(!!started) },15000);
-  };
-  tryNext();
+  stopAudio();
+  audio=new Audio(ttsURL(text,kind));
+  let done=false;
+  const fin=ok=>{if(done)return;done=true;cb&&cb(ok)};
+  audio.onended=()=>fin(true);
+  audio.onerror=()=>fin(false);
+  audio.play().catch(err=>{ if(err&&err.name==="NotAllowedError")autoplayBlocked=true; fin(false) });
+  setTimeout(()=>fin(false),9000);
 }
 function stopAudio(){try{if(audio){audio.pause();audio=null}}catch(e){}}
 function clearT(){if(timer){clearTimeout(timer);timer=null}}
 
 /* 池子为空（比如「只背星标」但一个都没标）时的提示 */
 function emptyHint(){
-  const src=S.source;
+  const star=S.source==="star";
   $("wsec").textContent="";
   $("wbig").textContent="—";
   $("wipa").textContent="";
-  $("wmean").textContent = src==="star"?"还没有 ⭐ 星标词"
-    : src==="fav"?"还没有 ❤ 收藏词"
-    : src==="skip"?"还没有 ✓ 跳过的词"
-    : "这里还没有可读的词";
-  $("wex").textContent = src==="skip"?"在词上点「✓ 跳过」标记后，这里能集中回看并一键取消"
-    : "点右上角 "+(src==="fav"?"❤":"☆")+" 标记后，这里会自动连播";
-  renderMarks(null);
+  $("wmean").textContent=star?"还没有 ⭐ 星标词":"还没有 ❤ 收藏词";
+  $("wex").textContent="点右上角 "+(star?"☆":"❤")+" 标记后，这里会自动连播";
   $("wav").style.display="none";
   $("wtxt").style.display="";
   $("art").style.opacity=1;
@@ -1266,37 +735,25 @@ function emptyHint(){
   $("fill").style.width="0%"; $("knob").style.left="0%";
 }
 
-/* 播放代际：每次 playCurrent 换代，上一代残留的延时/回执一律作废。
-   否则旧链的 420/450ms 延时会插进新链 → 开关关了还在读、中文被顶掉、读串词 */
-let gen=0;
 function playCurrent(){
-  const g=++gen;
   clearT();stopAudio();
   const w=queue[qi]; if(!w)return;
-  const live=fn=>(...a)=>{ if(g!==gen)return; return fn(...a) };
   render(w,!(S.reveal));
   updateArm();
   if(!playing)return;
-  const goNext=live(()=>{
+  const goNext=()=>{
     if(S.reveal)render(w,true);
-    timer=setTimeout(live(()=>{
-      if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}   /* 这个词念完了，标记此刻才生效 */
-      qi=(qi+1+queue.length)%queue.length;playCurrent();
-    }),S.pause);
-  });
-  /* 例句：有本地微软音频就播本地，没有就走百度在线（老版方案） */
-  const afterEx=live(()=>{ if(S.ex){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
-  const afterZh=live(()=>{
-    if(S.zh){ timer=setTimeout(live(()=>say(zhText(w),"zh",afterEx)),450) }
-    else afterEx();
-  });
+    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent()},S.pause);
+  };
+  const afterEx=()=>{ if(S.ex){say(w.ex,"sent",()=>goNext())} else goNext(); };
+  const afterZh=()=>{ if(S.zh){setTimeout(()=>say(w.m.replace(/^[a-z]+\.\s*/i,""),"zh",afterEx),450)} else afterEx(); };
   /* 单词可重复朗读 N 次（默认 1），全部读完再走中文/例句 */
   let left=Math.max(1,Math.min(20,Math.round(+S.repeat||1)));
-  const again=live(()=>{
+  const again=()=>{
     left--;
-    if(left>0){ timer=setTimeout(live(()=>say(w.w,"word",again)),420) }
+    if(left>0){ timer=setTimeout(()=>say(w.w,"word",again),420) }
     else afterZh();
-  });
+  };
   say(w.w,"word",again);
 }
 
@@ -1306,13 +763,8 @@ function setPlaying(on){
   updateArm();
 }
 $("play").onclick=()=>{ setPlaying(!playing); if(playing)playCurrent(); else {clearT();stopAudio();} };
-/* 上一词/下一词：抽成函数——它们是 <svg>，没有 .click()，键盘里点会直接抛异常 */
-function prevWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
-  qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
-function nextWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
-  qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
-$("prevBtn").onclick=prevWord;
-$("nextBtn").onclick=nextWord;
+$("prevBtn").onclick=()=>{if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
+$("nextBtn").onclick=()=>{if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
 $("moreBtn").onclick=()=>$("sheet").classList.add("on");
 $("listBtn").onclick=()=>$("sheet").classList.add("on");
 $("sheetBack").onclick=()=>{$("sheet").classList.remove("on");if(!playing){setPlaying(true);playCurrent()}};
@@ -1337,9 +789,9 @@ $("bar").onclick=e=>{
 };
 document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
-  else if(e.key==="ArrowRight")nextWord();
-  else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
+  else if(e.key==="ArrowRight")$("nextBtn").click();
+  else if(e.key==="ArrowLeft")$("prevBtn").click();
+  else if(e.key==="Escape")$("sheet").classList.remove("on");
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中
@@ -1370,10 +822,9 @@ addEventListener("resize",()=>{
   if(innerWidth<760 && !localStorage.getItem("listen_qq_zoom")) initZoom();
 });
 function initZoom(){
+  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏：双栏布局，不叠加缩放
   const saved=+(localStorage.getItem("listen_qq_zoom")||0);
-  /* 用户手动选过档位：任何屏幕都尊重，别再被自动逻辑覆盖 */
   if(saved&&ZOOMS.indexOf(saved)>=0){ setZ(saved,false); return }
-  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏默认 1x（双栏本来就够大）
   app.style.setProperty("--z","1");
   const dh=Math.max(measureDesign(),640);
   const fit=Math.min(2,(innerWidth-20)/430,(innerHeight-20)/dh);

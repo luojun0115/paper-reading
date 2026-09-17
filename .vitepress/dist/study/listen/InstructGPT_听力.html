@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>InstructGPT_听力 · 单词连播</title>
+<title>InstructGPT_论文词汇_听力 · 单词连播</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{min-height:100vh;display:flex;justify-content:center;font-family:"PingFang SC",-apple-system,sans-serif;background:#111}
@@ -94,87 +94,6 @@
     --bar-bg:rgba(80,55,20,.22); --bar-fill:#4a3418;
     --sheet-bg:rgba(255,250,240,.97); --accent:#b8860b;
   }
-  .app[data-skin="sakura"]{         /* 樱花粉 */
-    --bg-a:#fdeef3; --bg-b:#f9d7e2; --bg-c:#f4c2d4;
-    --card-bg:rgba(255,255,255,.42); --card-br:rgba(255,255,255,.9);
-    --disc-a:#f08cb2; --disc-b:#e0618f;
-    --groove:rgba(160,50,90,.10); --dshadow:rgba(210,90,140,.35);
-    --tx:#3d1f2b; --tx2:#7a4f61; --tx3:#9b7486;
-    --bar-bg:rgba(140,60,95,.2); --bar-fill:#e0618f;
-    --sheet-bg:rgba(255,247,250,.97); --accent:#e8638c;
-  }
-  .app[data-skin="matcha"]{         /* 抹茶（同全站主题色） */
-    --bg-a:#f1f4ea; --bg-b:#e4ecd7; --bg-c:#d5e2c2;
-    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.92);
-    --disc-a:#93b073; --disc-b:#66854a;
-    --groove:rgba(70,100,40,.10); --dshadow:rgba(100,130,70,.32);
-    --tx:#2c3a1e; --tx2:#5d7247; --tx3:#84976d;
-    --bar-bg:rgba(80,110,50,.2); --bar-fill:#5f7d46;
-    --sheet-bg:rgba(250,252,246,.97); --accent:#6b8e4e;
-  }
-  .app[data-skin="mint"]{           /* 薄荷 */
-    --bg-a:#eefaf7; --bg-b:#daf2ec; --bg-c:#c2e8df;
-    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
-    --disc-a:#55c7b2; --disc-b:#2ba58f;
-    --groove:rgba(20,110,95,.10); --dshadow:rgba(40,150,130,.3);
-    --tx:#12332c; --tx2:#4a7368; --tx3:#7a998f;
-    --bar-bg:rgba(30,110,95,.2); --bar-fill:#2ba58f;
-    --sheet-bg:rgba(247,253,251,.97); --accent:#2bbfa3;
-  }
-  .app[data-skin="ocean"]{          /* 海盐蓝 */
-    --bg-a:#eef5fc; --bg-b:#dcebf9; --bg-c:#c5ddf3;
-    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
-    --disc-a:#63a1dd; --disc-b:#3a6fb8;
-    --groove:rgba(30,80,150,.10); --dshadow:rgba(60,110,180,.32);
-    --tx:#122a44; --tx2:#4a6886; --tx3:#7a93ab;
-    --bar-bg:rgba(40,90,150,.2); --bar-fill:#3a6fb8;
-    --sheet-bg:rgba(247,251,255,.97); --accent:#3a7bd5;
-  }
-  .app[data-skin="grape"]{          /* 星空紫 */
-    --bg-a:#f2eefa; --bg-b:#e5dcf6; --bg-c:#d4c6ee;
-    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.9);
-    --disc-a:#9a7fda; --disc-b:#7257bd;
-    --groove:rgba(80,50,150,.10); --dshadow:rgba(120,90,190,.32);
-    --tx:#2c2144; --tx2:#5f4f80; --tx3:#8677a3;
-    --bar-bg:rgba(90,60,160,.2); --bar-fill:#7257bd;
-    --sheet-bg:rgba(251,249,255,.97); --accent:#7c5cd6;
-  }
-  .app[data-skin="amusic"]{         /* Apple Music 红 */
-    --bg-a:#fff4f4; --bg-b:#ffe3e5; --bg-c:#ffd2d6;
-    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.95);
-    --disc-a:#fb5c74; --disc-b:#e11d3f;
-    --groove:rgba(170,20,50,.10); --dshadow:rgba(230,50,80,.32);
-    --tx:#3d1420; --tx2:#844a58; --tx3:#a87581;
-    --bar-bg:rgba(150,30,60,.2); --bar-fill:#e11d3f;
-    --sheet-bg:rgba(255,248,248,.97); --accent:#fa233b;
-  }
-  .app[data-skin="mocha"]{          /* 摩卡棕 */
-    --bg-a:#f7f1ea; --bg-b:#eee1d3; --bg-c:#e0cdb8;
-    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.88);
-    --disc-a:#7d5c42; --disc-b:#553a28;
-    --groove:rgba(90,60,35,.10); --dshadow:rgba(120,85,55,.35);
-    --tx:#38271a; --tx2:#6e5540; --tx3:#93795f;
-    --bar-bg:rgba(110,75,45,.2); --bar-fill:#5d4128;
-    --sheet-bg:rgba(253,250,246,.97); --accent:#8b5e3c;
-  }
-  .app[data-skin="spotify"]{        /* Spotify 黑绿 */
-    --bg-a:#1d2420; --bg-b:#121713; --bg-c:#0b0e0c;
-    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
-    --disc-a:#181d18; --disc-b:#0c0f0c;
-    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
-    --tx:#f0f5f0; --tx2:rgba(235,245,235,.72); --tx3:rgba(235,245,235,.5);
-    --bar-bg:rgba(255,255,255,.2); --bar-fill:#f0f5f0;
-    --sheet-bg:rgba(18,23,19,.96); --accent:#1db954;
-  }
-  .app[data-skin="midnight"]{       /* 深夜蓝（暗色） */
-    --bg-a:#1e2740; --bg-b:#151c30; --bg-c:#0d1220;
-    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
-    --disc-a:#141a2b; --disc-b:#090c15;
-    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
-    --tx:#eef2fb; --tx2:rgba(235,240,250,.72); --tx3:rgba(235,240,250,.5);
-    --bar-bg:rgba(255,255,255,.2); --bar-fill:#eef2fb;
-    --sheet-bg:rgba(18,24,40,.96); --accent:#4a9eff;
-  }
   .app[data-skin="vinylx"]{          /* 悬浮黑胶（参照网易云图标：黑盘+大蓝标+顶部细针） */
     --bg-a:#e9e8f0; --bg-b:#e9e8f0; --bg-c:#e2e1ec;
     --card-bg:transparent; --card-br:transparent;
@@ -214,42 +133,14 @@
   .top .ic.neutral.on svg{stroke:var(--accent)}
   .top .ic.on svg{stroke:var(--accent)}
   .top .ic.on svg .fillable{fill:var(--accent)}
-  /* 「跳过/已掌握」新图标是实心路径（无描边）：中性灰 → 点亮用强调色 */
-  .top .ic svg.solid{stroke:none;fill:rgba(118,124,134,.92)}
-  .top .ic.on svg.solid{fill:var(--accent)}
-  /* 标记点亮瞬间的微动效：和收藏/星标一个手感，点到就有反馈 */
-  @keyframes mkpulse{0%{transform:scale(1)}38%{transform:scale(1.26)}100%{transform:scale(1)}}
-  .top .ic.pulse svg{animation:mkpulse .32s ease}
-  /* 斜线 = 「已划掉」标记：默认不显示，点了 ✓ 之后才划掉 */
-  .top .ic svg .slash{opacity:0;transition:opacity .2s}
-  .top .ic.on svg .slash{opacity:1}
+  .top .ic svg .slash{opacity:1;transition:opacity .2s}   /* 未收藏：心上有斜线 */
+  .top .ic.on svg .slash{opacity:0}                        /* 已收藏：斜线消失、心填色 */
   .top{gap:9px}
   .top .ic{width:30px;height:30px}
   .top .ic svg{width:19px;height:19px}
   .srow.col{flex-direction:column;align-items:stretch;gap:9px}
   .seg.wrap{flex-wrap:wrap;justify-content:flex-start}
   .clr{font-size:11.5px;color:var(--accent);cursor:pointer;font-weight:600}
-  /* 自定义链接面板 + 备份 */
-  .sheet.lks{z-index:26}
-  .lk{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bar-bg)}
-  .lk input[type=checkbox]{flex:none;width:16px;height:16px;accent-color:var(--accent)}
-  .lk .lkn{font-size:13.5px;font-weight:600;color:var(--tx);cursor:pointer;flex:1;min-width:0;
-    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .lk .lkn:hover{color:var(--accent)}
-  .lk .lku{font-size:10.5px;color:var(--tx3);max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .lkrow{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--bar-bg);align-items:center}
-  .lkrow input{flex:1;min-width:0;padding:7px 10px;border-radius:9px;border:1px solid var(--bar-bg);
-    background:transparent;color:var(--tx);font-size:12.5px}
-  .lkrow input.nm{flex:0 0 96px}
-  .lkrow input:focus{outline:none;border-color:var(--accent)}
-  .lkrow .del{flex:none;font-size:13px;color:var(--accent);cursor:pointer;padding:4px 7px;user-select:none}
-  .lkbtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-  .lkbtns b{font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:99px;
-    border:1px solid var(--bar-bg);color:var(--tx2);cursor:pointer}
-  .lkbtns b:hover{border-color:var(--accent);color:var(--accent)}
-  .lkbtns b.pri{border-color:var(--accent);color:var(--accent)}
-  .lkempty{padding:16px 0;color:var(--tx3);font-size:12.5px;line-height:1.8}
-  .bktip{font-size:11px;color:var(--tx3);line-height:1.6;margin-top:8px}
   .repin{width:56px;padding:4px 6px;border-radius:8px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:12px;text-align:center;font-variant-numeric:tabular-nums}
   .repin:focus{outline:none;border-color:var(--accent)}
@@ -314,35 +205,11 @@
   .side{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
   .timerChip{position:absolute;right:0;top:0;font-size:11px;color:var(--tx3);opacity:.9;
     letter-spacing:.4px;font-variant-numeric:tabular-nums;pointer-events:none}
-  /* 当前词的来源标记（星标/收藏/已跳过）：点一下即取消，专门救误点 */
-  .mkbadge{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0}
-  .mkbadge .mk{font-style:normal;display:flex;align-items:center;font-size:11px;line-height:1;
-    padding:5px 8px;border-radius:99px;
-    border:1px solid var(--accent);color:var(--accent);cursor:pointer;user-select:none;
-    background:transparent;transition:opacity .15s,transform .15s}
-  .mkbadge .mk svg{width:14px;height:14px;display:block}
-  .mkbadge .mk svg.fill{fill:currentColor}
-  /* 标记统计：和「词库来源」用同一套图标，不再用 ⭐❤✓ 这种混搭 */
-  #markCnt{display:flex;align-items:center;gap:13px}
-  #markCnt b{display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;color:var(--tx2)}
-  #markCnt b svg{width:14px;height:14px;display:block}
-  #markCnt b svg.fill{fill:currentColor}
-  #clearBox{display:flex;gap:6px}
-  #clearBox b{display:flex;align-items:center;gap:3px;padding:5px 9px;font-size:12px}
-  #clearBox b svg{width:13px;height:13px;display:block}
-  #clearBox b svg.fill{fill:currentColor}
-  #clearBox b i{font-style:normal;font-size:10px;opacity:.65}
-  .mkbadge .mk:hover{opacity:.6}
-  .mkbadge .mk:active{transform:scale(.94)}
-  .mkbadge .mk::after{content:" ✕"}
   @media (min-width:760px){
-    /* 宽屏：定成横向矩形（16:10）并随缩放等比，别再被 100vh 拉成竖长方形 */
-    body{align-items:center}
-    .app{width:min(1280px,calc(96vw / var(--z,1)));max-width:none;zoom:var(--z,1);
-      aspect-ratio:16/10;min-height:0;max-height:calc(96vh / var(--z,1));margin:auto;padding-bottom:8px}
+    .app{width:min(1280px,96vw);max-width:none;zoom:1;min-height:auto;margin:auto;padding-bottom:8px}
     .main{flex-direction:row;align-items:center;gap:40px;padding:8px 30px 0}
-    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕；宽屏接近方形（1:1），宽度够、高度也够长 */
-    .main>.card{margin:0;flex:0 0 calc(clamp(460px,min(50vw,58vh),780px) / var(--z,1));aspect-ratio:1/1;align-self:center}
+    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕 */
+    .main>.card{margin:0;flex:0 0 clamp(400px,min(40vw,66vh),640px);align-self:center}
     .side{align-self:stretch;justify-content:flex-start}
     /* 单词区在「角标」与「底部控制」之间的剩余空间里垂直居中 → 整体下移到中间 */
     .side .word{padding:0;min-height:0;text-align:center;margin-top:auto;margin-bottom:auto}
@@ -374,13 +241,6 @@
 
   /* 单词区 */
   .word{padding:20px 26px 0;text-align:center;min-height:150px}
-  /* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方，不挡底部 */
-  .wordTip{font-size:13px;font-weight:600;color:var(--accent);margin:2px auto 12px;padding:6px 15px;
-    border-radius:99px;display:inline-block;line-height:1.2;
-    background:color-mix(in srgb,var(--accent) 13%,transparent);
-    border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);
-    opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s;pointer-events:none}
-  .wordTip.on{opacity:1;transform:translateY(0)}
   /* 章节/级别/进度：左上角角标，弱化处理不抢单词（小字 + 拉开距离 + 降透明度） */
   .side .sec{font-size:10px;color:var(--tx3);opacity:.72;margin:0 0 10px;text-align:left;letter-spacing:.3px}
   .word .wrow{display:inline-flex;align-items:flex-end;justify-content:center;gap:9px}
@@ -427,31 +287,20 @@
 
   /* 设置面板 */
   .sheet{position:absolute;left:0;right:0;bottom:0;z-index:20;background:var(--sheet-bg);backdrop-filter:blur(14px);
-    border-radius:22px 22px 0 0;padding:0 22px 28px;transform:translateY(105%);
-    /* 关键：面板必须限高且可滚动，否则顶部选项会被顶出屏幕点不到 */
-    max-height:calc(100% - 12px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+    border-radius:22px 22px 0 0;padding:16px 22px 28px;transform:translateY(105%);
     transition:transform .35s cubic-bezier(.3,1,.4,1);box-shadow:0 -10px 30px rgba(0,0,0,.2)}
   .sheet.on{transform:translateY(0)}
-  .sheet::-webkit-scrollbar{width:6px}
-  .sheet::-webkit-scrollbar-thumb{background:var(--bar-bg);border-radius:3px}
   .sheet h3{font-size:14px;color:var(--tx);margin-bottom:0}
-  /* 标题行吸顶：滚动时「返回播放」始终可见 */
-  .shd{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;
-    background:var(--sheet-bg);padding:16px 0 12px}
+  .shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
   .shb{font-size:12.5px;font-weight:600;color:var(--accent);cursor:pointer;user-select:none}
   .shb:hover{opacity:.75}
   .top .ic{flex:none}
-  .srow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;
-    padding:10px 0;border-bottom:1px solid var(--bar-bg)}
+  .srow{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bar-bg)}
   .srow:last-of-type{border-bottom:none}
-  .srow span{font-size:13.5px;color:var(--tx);white-space:nowrap}
-  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .srow span{font-size:13.5px;color:var(--tx)}
+  .seg{display:flex;gap:6px}
   .seg b{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;cursor:pointer;
-    border:1px solid var(--bar-bg);color:var(--tx2);display:flex;align-items:center;justify-content:center}
-  .seg b svg{width:15px;height:15px;display:block}
-  .seg b.icn{padding:5px 10px;min-width:34px}
-  .seg b.off{opacity:.5;cursor:not-allowed;border-style:dashed}
-  .seg b svg.fill{fill:currentColor}
+    border:1px solid var(--bar-bg);color:var(--tx2)}
   .seg b.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .sback{margin-top:14px;width:100%;padding:11px;border-radius:12px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:14px;font-weight:600;cursor:pointer}
@@ -470,12 +319,16 @@
       <svg viewBox="0 0 24 24" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>
     </div>
     <div class="pt" id="ptitle">Training language models to follow instructions with human feedback · NeurIPS 2022</div>
-    <div class="ic" id="replayBtn" title="重听当前词">
-      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
-    </div>
     <div class="ic neutral" id="favBtn" title="收藏（再点取消）">
       <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round">
+        <defs>
+          <clipPath id="favClip">
+            <path transform="translate(12 12) scale(.86) translate(-12 -12)"
+                  d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+          </clipPath>
+        </defs>
         <path class="fillable heart" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+        <path class="slash" d="M4 4 20 20" clip-path="url(#favClip)"/>
       </svg>
     </div>
     <div class="ic neutral" id="starBtn" title="标星（重点词，可只背星标）">
@@ -483,13 +336,14 @@
         <path class="fillable star" d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/>
       </svg>
     </div>
-    <div class="ic neutral" id="okBtn" title="标为已掌握（跳过=不再朗读，再点恢复）">
-      <svg viewBox="0 0 1024 1024" class="solid">
-        <path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/>
-      </svg>
+    <div class="ic" id="okBtn" title="认识，之后不再朗读">
+      <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>
+    </div>
+    <div class="ic" id="replayBtn" title="重听当前词">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
     </div>
     <div class="ic" id="skinBtn" title="换皮肤（点一下换下一套）">
-      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.8 3.4c0 2 1.4 3.6 3.2 3.6s3.2-1.6 3.2-3.6l6.2 2.7-1.8 4.1-2.6-1.1v10.7H6.8V9.1L4.2 10.2 2.4 6.1Z"/></svg>
+      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 3.2 3.4 5.9l2 3.6 1.9-1V20.8h9.4V8.5l1.9 1 2-3.6L15.8 3.2a3.8 3.8 0 0 1-7.6 0Z"/></svg>
     </div>
     <div class="ic" id="moreBtn" title="设置">
       <svg class="dot" viewBox="0 0 24 24" stroke="none"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>
@@ -535,9 +389,7 @@
   <div class="side">
   <div class="sec" id="wsec">准备中…</div>
   <div class="timerChip" id="timerChip" style="display:none">⏱ 0:00</div>
-  <div class="mkbadge" id="mkBadge" style="display:none"></div>
   <div class="word">
-    <div class="wordTip" id="wordTip"></div>
     <div class="wrow">
       <span class="big" id="wbig">—</span>
       <span class="ipa" id="wipa"></span>
@@ -575,8 +427,6 @@
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
-    <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
-    <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
     <div class="srow"><span>单词重复</span>
       <div style="display:flex;align-items:center;gap:8px">
         <div class="seg" id="segRepeat"></div>
@@ -584,7 +434,6 @@
       </div>
     </div>
     <div class="srow"><span>每词停顿</span><div class="seg" id="segPause"></div></div>
-    <div class="srow"><span>语速</span><div class="seg" id="segRate"></div></div>
     <div class="srow"><span>先听后现</span><div class="seg" id="segReveal"></div></div>
     <div class="srow"><span>朗读中文</span><div class="seg" id="segZh"></div></div>
     <div class="srow"><span>朗读例句</span><div class="seg" id="segEx"></div></div>
@@ -592,41 +441,19 @@
     <div class="srow"><span>单词字体</span><div class="seg" id="segFont"></div></div>
     <div class="srow"><span>定时停止</span><div class="seg" id="segTimer"></div></div>
     <div class="srow"><span>词库来源</span><div class="seg" id="segSource"></div></div>
-    <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
-    <div class="srow col"><span>链接与备份</span>
-      <div class="seg wrap" id="backupBox"></div>
-      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
-    </div>
+    <div class="srow"><span id="markCnt">⭐ 0 · ❤ 0 · ✓ 0</span><span class="clr" id="clearStar">清空星标</span></div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
-    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
-  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
-  <div class="sheet lks" id="linkPop">
-    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
-    <div id="linkList"></div>
-    <div class="lkbtns" id="linkPopBtns"></div>
-  </div>
-  <!-- 链接配置面板：增删改本篇的链接 -->
-  <div class="sheet lks" id="linkCfg">
-    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
-    <div id="linkRows"></div>
-    <div class="lkbtns">
-      <b id="linkAddRow">＋ 添加一行</b>
-      <b id="linkSave" class="pri">保存</b>
-    </div>
-  </div>
-  <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
-const ITEMS=[{"w": "aligned", "ipa": "əˈlaɪnd", "pos": "adj.", "m": "对齐的，协调的", "ex": "these models are not aligned with their users", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "inherently", "ipa": "ɪnˈhɪrəntli", "pos": "adv.", "m": "内在地，固有地", "ex": "Making language models bigger does not inherently make them better at following a user's intent", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "avenue", "ipa": "ˈævənjuː", "pos": "n.", "m": "途径，方法", "ex": "we show an avenue for aligning language models with user intent", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "fine-tuning", "ipa": "faɪnˈtjuːnɪŋ", "pos": "n.", "m": "微调", "ex": "by fine-tuning with human feedback", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "demonstration", "ipa": "ˌdemənˈstreɪʃn", "pos": "n.", "m": "示范，演示", "ex": "we collect a dataset of labeler demonstrations of the desired model behavior", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "reinforcement", "ipa": "ˌriːɪnˈfɔːrsmənt", "pos": "n.", "m": "强化", "ex": "using reinforcement learning from human feedback", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "preferred", "ipa": "prɪˈfɜːrd", "pos": "adj.", "m": "首选的，偏好的", "ex": "outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "regressions", "ipa": "rɪˈɡreʃnz", "pos": "n.", "m": "退化，回归", "ex": "having minimal performance regressions on public NLP datasets", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "toxic", "ipa": "ˈtɑːksɪk", "pos": "adj.", "m": "有毒的，有害的", "ex": "large language models can generate outputs that are untruthful, toxic, or simply not helpful", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "promising", "ipa": "ˈprɑːmɪsɪŋ", "pos": "adj.", "m": "有前途的，有希望的", "ex": "fine-tuning with human feedback is a promising direction", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "intent", "ipa": "ɪnˈtent", "pos": "n.", "m": "意图", "ex": "better at following a user's intent", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "untruthful", "ipa": "ʌnˈtruːθfl", "pos": "adj.", "m": "不真实的", "ex": "large language models can generate outputs that are untruthful, toxic, or simply not helpful", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "labeler", "ipa": "ˈleɪbələr", "pos": "n.", "m": "标注员", "ex": "Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "regression", "ipa": "rɪˈɡreʃn", "pos": "n.", "m": "倒退，性能回退", "ex": "having minimal performance regressions on public NLP datasets", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "misaligned", "ipa": "ˌmɪsəˈlaɪnd", "pos": "adj.", "m": "未对齐的，失调的", "ex": "the language modeling objective is misaligned", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "behaviors", "ipa": "bɪˈheɪvjərz", "pos": "n.", "m": "行为，表现", "ex": "these models often express unintended behaviors", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "fabricate", "ipa": "ˈfæbrɪkeɪt", "pos": "v.", "m": "捏造，编造", "ex": "they shouldn't fabricate information or mislead the user", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "harmless", "ipa": "ˈhɑːrmləs", "pos": "adj.", "m": "无害的", "ex": "they should not cause physical, psychological, or social harm", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "biased", "ipa": "ˈbaɪəst", "pos": "adj.", "m": "有偏见的", "ex": "not being biased, toxic, or otherwise harmful", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "elaborate", "ipa": "ɪˈlæbəreɪt", "pos": "v.", "m": "详细阐述", "ex": "We elaborate on the evaluation of these criteria in Section 3.6", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "encompasses", "ipa": "ɪnˈkʌmpəsɪz", "pos": "v.", "m": "包含，涵盖", "ex": "This encompasses both explicit intentions and implicit intentions", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "contractors", "ipa": "kənˈtræktərz", "pos": "n.", "m": "承包商，合同工", "ex": "we first hire a team of 40 contractors to label our data", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "demonstrations", "ipa": "ˌdemənˈstreɪʃnz", "pos": "n.", "m": "示范，演示数据", "ex": "a dataset of human-written demonstrations of the desired output behavior", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "algorithm", "ipa": "ˈælɡərɪðəm", "pos": "n.", "m": "算法", "ex": "using the PPO algorithm", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "deployed", "ipa": "dɪˈplɔɪd", "pos": "v.", "m": "部署", "ex": "especially important for language models that are deployed", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "constraints", "ipa": "kənˈstreɪnts", "pos": "n.", "m": "约束，限制", "ex": "more reliably follow explicit constraints in the instruction", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "truthfulness", "ipa": "ˈtruːθflnəs", "pos": "n.", "m": "真实性，诚实", "ex": "InstructGPT models show improvements in truthfulness over GPT-3", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "regressions", "ipa": "rɪˈɡreʃnz", "pos": "n.", "m": "性能退化", "ex": "we observe performance regressions compared to GPT-3", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "compiling", "ipa": "kəmˈpaɪlɪŋ", "pos": "v.", "m": "编译，汇编", "ex": "two different compilations of public NLP tasks", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "unintended", "ipa": "ˌʌnɪnˈtendɪd", "pos": "adj.", "m": "无意的，非预期的", "ex": "these models often express unintended behaviors such as making up facts", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "avert", "ipa": "əˈvɜːrt", "pos": "v.", "m": "避免，防止", "ex": "Averting these unintended behaviors is especially important", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "in accordance with", "ipa": "ɪn əˈkɔːrdns wɪð", "pos": "phr.", "m": "依照，与…一致", "ex": "training them to act in accordance with the user's intention", "lv": "考博", "ov": "雅思托福", "sec": "Intro"}, {"w": "encompass", "ipa": "ɪnˈkʌmpəs", "pos": "v.", "m": "涵盖，包含", "ex": "This encompasses both explicit intentions such as following instructions and implicit intentions", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "implicit", "ipa": "ɪmˈplɪsɪt", "pos": "adj.", "m": "隐含的", "ex": "implicit intentions such as staying truthful", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "mislead", "ipa": "ˌmɪsˈliːd", "pos": "v.", "m": "误导", "ex": "they shouldn't fabricate information or mislead the user", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "criterion", "ipa": "kraɪˈtɪriən", "pos": "n.", "m": "标准，判据", "ex": "We elaborate on the evaluation of these criteria in Section 3.6", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "contractor", "ipa": "ˈkɑːntræktər", "pos": "n.", "m": "外包人员，承包商", "ex": "We ﬁrst hire a team of 40 contractors to label our data", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "compromise", "ipa": "ˈkɑːmprəmaɪz", "pos": "v.", "m": "妥协，损害", "ex": "without compromising labeler preference scores", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "compilation", "ipa": "ˌkɑːmpəˈlɪʃn", "pos": "n.", "m": "汇编，合集", "ex": "two different compilations of public NLP tasks", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "alignment", "ipa": "əˈlaɪnmənt", "pos": "n.", "m": "对齐，协调", "ex": "Research on alignment and learning from human feedback", "lv": "六级", "ov": "", "sec": "Related"}, {"w": "reward", "ipa": "rɪˈwɔːrd", "pos": "n.", "m": "奖励", "ex": "using human feedback as a reward in domains such as dialogue", "lv": "四级", "ov": "", "sec": "Related"}, {"w": "dialogue", "ipa": "ˈdaɪəlɑːɡ", "pos": "n.", "m": "对话", "ex": "domains such as dialogue, translation, semantic parsing", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "semantic", "ipa": "sɪˈmæntɪk", "pos": "adj.", "m": "语义的", "ex": "semantic parsing, story generation, review generation", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "增强，扩充", "ex": "data augmentation, null space projection", "lv": "考博", "ov": "GRE", "sec": "Related"}, {"w": "nascent", "ipa": "ˈnæsnt", "pos": "adj.", "m": "新生的，初期的", "ex": "There is a nascent but growing field that aims to build benchmarks", "lv": "考博", "ov": "GRE", "sec": "Related"}, {"w": "maliciously", "ipa": "məˈlɪʃəsli", "pos": "adv.", "m": "恶意地", "ex": "generate misinformation, and be used maliciously", "lv": "六级", "ov": "", "sec": "Related"}, {"w": "mitigate", "ipa": "ˈmɪtɪɡeɪt", "pos": "v.", "m": "减轻，缓解", "ex": "A goal of modifying the behavior is to mitigate the harms", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "controllable", "ipa": "kənˈtroʊləbl", "pos": "adj.", "m": "可控制的", "ex": "steerability and controllability literature", "lv": "考博", "ov": "雅思托福", "sec": "Related"}, {"w": "degenerate", "ipa": "dɪˈdʒenərət", "pos": "adj.", "m": "退化的，变质的", "ex": "generate very short or degenerate responses", "lv": "六级", "ov": "", "sec": "Related"}, {"w": "technique", "ipa": "tekˈniːk", "pos": "n.", "m": "技术", "ex": "We build on previous techniques to align models with human intentions", "lv": "四级", "ov": "", "sec": "Related"}, {"w": "simulated", "ipa": "ˈsɪmjuleɪtɪd", "pos": "adj.", "m": "模拟的", "ex": "Originally developed for training simple robots in simulated environments and Atari games", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "summarization", "ipa": "ˌsʌmərəˈzeɪʃn", "pos": "n.", "m": "摘要（任务）", "ex": "it has recently been applied to ﬁne-tuning language models to summarize text", "lv": "考博", "ov": "雅思托福", "sec": "Related"}, {"w": "methodology", "ipa": "ˌmeθəˈdɑːlədʒi", "pos": "n.", "m": "方法论", "ex": "Our methodology follows that of Ziegler et al.", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "supervised", "ipa": "ˈsuːpərvaɪzd", "pos": "adj.", "m": "监督的", "ex": "fine-tune a pretrained GPT-3 model on this data using supervised learning", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "policy", "ipa": "ˈpɑːləsi", "pos": "n.", "m": "策略，政策", "ex": "Collect demonstration data, and train a supervised policy", "lv": "四级", "ov": "", "sec": "Method"}, {"w": "scalar", "ipa": "ˈskeɪlər", "pos": "adj.", "m": "标量的", "ex": "it produces a scalar reward", "lv": "六级", "ov": "", "sec": "Method"}, {"w": "optimize", "ipa": "ˈɑːptɪmaɪz", "pos": "v.", "m": "优化", "ex": "We fine-tune the supervised policy to optimize this reward", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "iteratively", "ipa": "ˈɪtəreɪtɪvli", "pos": "adv.", "m": "迭代地", "ex": "Steps 2 and 3 can be iterated continuously", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "pretrained", "ipa": "priːˈtreɪnd", "pos": "adj.", "m": "预训练的", "ex": "We start with a pretrained language model", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "comparisons", "ipa": "kəmˈpærɪsənz", "pos": "n.", "m": "比较，对比", "ex": "We collect a dataset of comparisons between model outputs", "lv": "四级", "ov": "", "sec": "Method"}, {"w": "demonstrations", "ipa": "ˌdemənˈstreɪʃnz", "pos": "n.", "m": "示范数据", "ex": "labelers provide demonstrations of the desired behavior", "lv": "六级", "ov": "", "sec": "Method"}, {"w": "distribution", "ipa": "ˌdɪstrɪˈbjuːʃn", "pos": "n.", "m": "分布", "ex": "a distribution of prompts on which we want our model to produce aligned outputs", "lv": "四级", "ov": "", "sec": "Method"}, {"w": "iterate", "ipa": "ˈɪtəreɪt", "pos": "v.", "m": "迭代", "ex": "Steps 2 and 3 can be iterated continuously", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "deduplicate", "ipa": "diːˈdjuːplɪkeɪt", "pos": "v.", "m": "去重", "ex": "We heuristically deduplicate prompts by checking for prompts that share a long common prefix", "lv": "考博", "ov": "", "sec": "Dataset"}, {"w": "identifiable", "ipa": "aɪˈdentɪfaɪəbl", "pos": "adj.", "m": "可识别的", "ex": "filter all prompts in the training split for personally identifiable information", "lv": "考博", "ov": "", "sec": "Dataset"}, {"w": "bootstrap", "ipa": "ˈbuːtstræp", "pos": "v.", "m": "引导，自举", "ex": "we needed an initial source of instruction-like prompts to bootstrap the process", "lv": "考博", "ov": "", "sec": "Dataset"}, {"w": "diversity", "ipa": "daɪˈvɜːrsəti", "pos": "n.", "m": "多样性", "ex": "ensuring the tasks had sufficient diversity", "lv": "四级", "ov": "", "sec": "Dataset"}, {"w": "compilations", "ipa": "ˌkɑːmpəˈleɪʃnz", "pos": "n.", "m": "汇编，编译", "ex": "two different compilations of public NLP tasks", "lv": "考博", "ov": "", "sec": "Dataset"}, {"w": "prohibited", "ipa": "prəˈhɪbɪtɪd", "pos": "v.", "m": "禁止", "ex": "prompts containing PII", "lv": "四级", "ov": "", "sec": "Dataset"}, {"w": "validation", "ipa": "ˌvælɪˈdeɪʃn", "pos": "n.", "m": "验证", "ex": "we create our train, validation, and test splits based on user ID", "lv": "六级", "ov": "", "sec": "Dataset"}, {"w": "production", "ipa": "prəˈdʌkʃn", "pos": "n.", "m": "生产环境", "ex": "we do not use data from customers using the API in production", "lv": "四级", "ov": "", "sec": "Dataset"}, {"w": "bias", "ipa": "ˈbaɪəs", "pos": "n.", "m": "偏差，偏见", "ex": "We normalize the reward model using a bias", "lv": "六级", "ov": "", "sec": "Dataset"}, {"w": "heuristically", "ipa": "hjʊˈrɪstɪkli", "pos": "adv.", "m": "启发式地", "ex": "We heuristically deduplicate prompts by checking for prompts that share a long common preﬁx", "lv": "考博", "ov": "", "sec": "Dataset"}, {"w": "sensitive", "ipa": "ˈsensətɪv", "pos": "adj.", "m": "敏感的", "ex": "To avoid the models learning potentially sensitive customer details", "lv": "四级", "ov": "", "sec": "Dataset"}, {"w": "arbitrary", "ipa": "ˈɑːrbətreri", "pos": "adj.", "m": "任意的", "ex": "We simply ask the labelers to come up with an arbitrary task", "lv": "四级", "ov": "", "sec": "Dataset"}, {"w": "sufficient", "ipa": "səˈfɪʃnt", "pos": "adj.", "m": "足够的", "ex": "while ensuring the tasks had sufﬁcient diversity", "lv": "四级", "ov": "", "sec": "Dataset"}, {"w": "illustrative", "ipa": "ˈɪləstreɪtɪv", "pos": "adj.", "m": "示例性的", "ex": "We also show some illustrative prompts written by researchers", "lv": "考博", "ov": "", "sec": "Dataset"}, {"w": "mimic", "ipa": "ˈmɪmɪk", "pos": "v.", "m": "模仿", "ex": "prompts written by researchers to mimic the kinds of prompts submitted", "lv": "六级", "ov": "", "sec": "Dataset"}, {"w": "prioritize", "ipa": "praɪˈɔːrətaɪz", "pos": "v.", "m": "优先考虑", "ex": "During training we prioritize helpfulness to the user", "lv": "六级", "ov": "", "sec": "Dataset"}, {"w": "vendor", "ipa": "ˈvendər", "pos": "n.", "m": "供应商", "ex": "These labelers are sourced from the same vendors", "lv": "六级", "ov": "", "sec": "Dataset"}, {"w": "annotator", "ipa": "ˈænəteɪtər", "pos": "n.", "m": "标注者", "ex": "we ﬁnd that inter-annotator agreement rates are quite high", "lv": "考博", "ov": "", "sec": "Dataset"}, {"w": "conflict", "ipa": "ˈkɑːnflɪkt", "pos": "n./v.", "m": "冲突", "ex": "our alignment criteria may come into conﬂict", "lv": "四级", "ov": "", "sec": "Dataset"}, {"w": "demographic", "ipa": "ˌdeməˈɡræfɪk", "pos": "adj.", "m": "人口统计的", "ex": "sensitive to the preferences of different demographic groups", "lv": "考博", "ov": "", "sec": "Tasks"}, {"w": "controversial", "ipa": "ˌkɑːntrəˈvɜːrʃl", "pos": "adj.", "m": "有争议的", "ex": "can occasionally include controversial and sensitive topics", "lv": "四级", "ov": "", "sec": "Tasks"}, {"w": "screening", "ipa": "ˈskriːnɪŋ", "pos": "n.", "m": "筛选，审查", "ex": "based on their performance on a screening test", "lv": "四级", "ov": "", "sec": "Tasks"}, {"w": "contractors", "ipa": "kənˈtræktərz", "pos": "n.", "m": "承包商", "ex": "we hired a team of about 40 contractors", "lv": "考博", "ov": "", "sec": "Tasks"}, {"w": "inter-annotator", "ipa": "ˌɪntərˈænəteɪtər", "pos": "adj.", "m": "标注者间的", "ex": "inter-annotator agreement rates are quite high", "lv": "考博", "ov": "", "sec": "Tasks"}, {"w": "generalization", "ipa": "ˌdʒenrələˈzeɪʃn", "pos": "n.", "m": "泛化", "ex": "to see how well our model generalizes to the preferences of other labelers", "lv": "四级", "ov": "", "sec": "Tasks"}, {"w": "conﬂict", "ipa": "ˈkɑːnflɪkt", "pos": "n.", "m": "冲突", "ex": "our alignment criteria may come into conflict", "lv": "考博", "ov": "", "sec": "Tasks"}, {"w": "collaborate", "ipa": "kəˈlæbəreɪt", "pos": "v.", "m": "合作", "ex": "we collaborate closely with labelers over the course of the project", "lv": "六级", "ov": "", "sec": "Tasks"}, {"w": "dropout", "ipa": "ˈdrɑːpɑːt", "pos": "n.", "m": "丢弃法（正则化）", "ex": "residual dropout of 0.2", "lv": "四级", "ov": "", "sec": "Models"}, {"w": "overfitting", "ipa": "ˌoʊvərˈfɪtɪŋ", "pos": "n.", "m": "过拟合", "ex": "we find that our SFT models overfit on validation loss after 1 epoch", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "cosine", "ipa": "ˈkoʊsaɪn", "pos": "n.", "m": "余弦", "ex": "using a cosine learning rate decay", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "embedding", "ipa": "ɪmˈbedɪŋ", "pos": "n.", "m": "嵌入", "ex": "Starting from the SFT model with the final unembedding layer removed", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "cross-entropy", "ipa": "krɔːs ˈentrəpi", "pos": "n.", "m": "交叉熵", "ex": "They use a cross-entropy loss", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "logits", "ipa": "ˈlɑːɡɪts", "pos": "n.", "m": "对数几率", "ex": "the difference in rewards represents the log odds", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "coefﬁcient", "ipa": "ˌkoʊɪˈfɪʃnt", "pos": "n.", "m": "系数", "ex": "The KL reward coefficient, β, and the pretraining loss coefficient, γ", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "KL penalty", "ipa": "ˌkeɪˈel ˈpenəlti", "pos": "n.", "m": "KL 散度惩罚", "ex": "we add a per-token KL penalty from the SFT model", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "conﬁdence", "ipa": "ˈkɑːnfɪdəns", "pos": "n.", "m": "置信度", "ex": "Error bars throughout the paper are 95% confidence intervals", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "magnitude", "ipa": "ˈmæɡnɪtuːd", "pos": "n.", "m": "量级，大小", "ex": "To illustrate the magnitude of our gains", "lv": "六级", "ov": "", "sec": "Models"}, {"w": "adaptable", "ipa": "əˈdæptəbl", "pos": "adj.", "m": "适应性强的", "ex": "trained on a broad distribution of Internet data and are adaptable to a wide range of downstream tasks", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "decay", "ipa": "dɪˈkeɪ", "pos": "n.", "m": "衰减", "ex": "using a cosine learning rate decay", "lv": "四级", "ov": "", "sec": "Models"}, {"w": "unstable", "ipa": "ˌʌnˈsteɪbl", "pos": "adj.", "m": "不稳定的", "ex": "we found that 175B RM training could be unstable", "lv": "六级", "ov": "", "sec": "Models"}, {"w": "correlated", "ipa": "ˈkɔːrəleɪtɪd", "pos": "adj.", "m": "相关的", "ex": "Since comparisons are very correlated within each labeling task", "lv": "考博", "ov": "GRE", "sec": "Models"}, {"w": "shuffle", "ipa": "ˈʃʌfl", "pos": "v.", "m": "打乱", "ex": "if we simply shufﬂe the comparisons into one dataset", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "computationally", "ipa": "ˌkɑːmpjuˈteɪʃənəli", "pos": "adv.", "m": "计算上", "ex": "This is much more computationally efﬁcient", "lv": "考博", "ov": "GRE", "sec": "Models"}, {"w": "overfit", "ipa": "ˌoʊvərˈfɪt", "pos": "v.", "m": "过拟合", "ex": "a single pass over the dataset caused the reward model to overﬁt", "lv": "考博", "ov": "", "sec": "Models"}, {"w": "honesty", "ipa": "ˈɑːnsti", "pos": "n.", "m": "诚实", "ex": "honest (they shouldn't fabricate information)", "lv": "四级", "ov": "", "sec": "Eval"}, {"w": "helpful", "ipa": "ˈhelpfl", "pos": "adj.", "m": "有帮助的", "ex": "helpful (they should help the user solve their task)", "lv": "四级", "ov": "", "sec": "Eval"}, {"w": "truthfulness", "ipa": "ˈtruːθflnəs", "pos": "n.", "m": "真实性", "ex": "we measure truthfulness—whether the model's statements about the world are true", "lv": "考博", "ov": "", "sec": "Eval"}, {"w": "informativeness", "ipa": "ˌɪnfɔːrˈmætɪvnəs", "pos": "n.", "m": "信息量", "ex": "generating truthful and informative outputs", "lv": "考博", "ov": "", "sec": "Eval"}, {"w": "ambiguous", "ipa": "æmˈbɪɡjuəs", "pos": "adj.", "m": "模棱两可的", "ex": "a given prompt's intention can be unclear or ambiguous", "lv": "六级", "ov": "", "sec": "Eval"}, {"w": "divergence", "ipa": "daɪˈvɜːrdʒəns", "pos": "n.", "m": "分歧，差异", "ex": "there could be a divergence between what a user actually intended", "lv": "考博", "ov": "", "sec": "Eval"}, {"w": "adversarially", "ipa": "ˌædvərˈseriəli", "pos": "adv.", "m": "对抗性地", "ex": "prompts that were not adversarially selected against GPT-3", "lv": "考博", "ov": "", "sec": "Eval"}, {"w": "benchmark", "ipa": "ˈbentʃmɑːrk", "pos": "n.", "m": "基准测试", "ex": "using the TruthfulQA benchmark", "lv": "考博", "ov": "", "sec": "Eval"}, {"w": "hallucination", "ipa": "həˌluːsɪˈneɪʃn", "pos": "n.", "m": "幻觉（捏造信息）", "ex": "a 21% vs. 41% hallucination rate", "lv": "考博", "ov": "", "sec": "Eval"}, {"w": "likert", "ipa": "ˈlaɪkərt", "pos": "n.", "m": "李克特量表", "ex": "on a 1-7 Likert scale", "lv": "考博", "ov": "", "sec": "Eval"}, {"w": "winrate", "ipa": "ˈwɪnreɪt", "pos": "n.", "m": "胜率", "ex": "measured by winrate against the 175B SFT model", "lv": "考博", "ov": "", "sec": "API Results"}, {"w": "magnitude", "ipa": "ˈmæɡnɪtuːd", "pos": "n.", "m": "幅度，量级", "ex": "To illustrate the magnitude of our gains", "lv": "六级", "ov": "", "sec": "API Results"}, {"w": "appropriately", "ipa": "əˈproʊpriətli", "pos": "adv.", "m": "适当地", "ex": "InstructGPT outputs are more appropriate in the context of a customer assistant", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "prevalence", "ipa": "ˈprevələns", "pos": "n.", "m": "流行率，普遍性", "ex": "these results are collapsed across model sizes", "lv": "六级", "ov": "", "sec": "API Results"}, {"w": "statistically", "ipa": "stəˈtɪstɪkli", "pos": "adv.", "m": "统计上地", "ex": "categories occur too infrequently to obtain statistically significant differences", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "generalization", "ipa": "ˌdʒenrələˈzeɪʃn", "pos": "n.", "m": "泛化能力", "ex": "Our models generalize to the preferences of held-out labelers", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "fold", "ipa": "foʊld", "pos": "n.", "m": "折（交叉验证）", "ex": "5-fold cross validation", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "magnitude", "ipa": "ˈmæɡnɪtuːd", "pos": "n.", "m": "显著程度", "ex": "Outputs from our 175B InstructGPT are preferred 85 ± 3% of the time", "lv": "六级", "ov": "", "sec": "API Results"}, {"w": "well-crafted", "ipa": "ˌwel ˈkræftɪd", "pos": "adj.", "m": "精心设计的", "ex": "one can obtain signiﬁcant step-size improvements by using a well-crafted few-shot prompt", "lv": "考博", "ov": "", "sec": "API Results"}, {"w": "favorably", "ipa": "ˈfeɪvərəbli", "pos": "adv.", "m": "有利地，好评地", "ex": "labelers also rate InstructGPT outputs favorably along several more concrete axes", "lv": "考博", "ov": "雅思托福", "sec": "API Results"}, {"w": "concrete", "ipa": "ˈkɑːnkriːt", "pos": "adj.", "m": "具体的", "ex": "along several more concrete axes", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "appropriate", "ipa": "əˈproʊpriət", "pos": "adj.", "m": "恰当的", "ex": "InstructGPT outputs are more appropriate in the context of a customer assistant", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "explicit", "ipa": "ɪkˈsplɪsɪt", "pos": "adj.", "m": "明确的", "ex": "more often follow explicit constraints deﬁned in the instruction", "lv": "六级", "ov": "", "sec": "API Results"}, {"w": "reliable", "ipa": "rɪˈlaɪəbl", "pos": "adj.", "m": "可靠的", "ex": "InstructGPT models are more reliable and easier to control than GPT-3", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "respectful", "ipa": "rɪˈspektfl", "pos": "adj.", "m": "恭敬的，有礼的", "ex": "InstructGPT models generate about 25% fewer toxic outputs when prompted to be respectful", "lv": "四级", "ov": "", "sec": "API Results"}, {"w": "toxicity", "ipa": "tɑːkˈsɪsəti", "pos": "n.", "m": "毒性", "ex": "InstructGPT shows small improvements in toxicity over GPT-3", "lv": "考博", "ov": "", "sec": "NLP Results"}, {"w": "propensity", "ipa": "prəˈpensəti", "pos": "n.", "m": "倾向，习性", "ex": "the model's propensity to generate biased speech", "lv": "考博", "ov": "", "sec": "NLP Results"}, {"w": "entropy", "ipa": "ˈentrəpi", "pos": "n.", "m": "熵", "ex": "the entropy (in bits) of the associated binary probability distributions", "lv": "考博", "ov": "", "sec": "NLP Results"}, {"w": "stereotypical", "ipa": "ˌsteriəˈtɪpɪkl", "pos": "adj.", "m": "刻板印象的", "ex": "regardless of whether or not their outputs exhibit stereotypical behavior", "lv": "考博", "ov": "", "sec": "NLP Results"}, {"w": "mitigate", "ipa": "ˈmɪtɪɡeɪt", "pos": "v.", "m": "缓解，减轻", "ex": "We can minimize performance regressions by modifying our RLHF fine-tuning procedure", "lv": "考博", "ov": "", "sec": "NLP Results"}, {"w": "degradation", "ipa": "ˌdeɡrəˈdeɪʃn", "pos": "n.", "m": "退化，降低", "ex": "performance degradations introduced by our fine-tuning", "lv": "六级", "ov": "", "sec": "NLP Results"}, {"w": "surpass", "ipa": "sərˈpæs", "pos": "v.", "m": "超越", "ex": "even surpasses GPT-3 on HellaSwag", "lv": "四级", "ov": "", "sec": "NLP Results"}, {"w": "perspective", "ipa": "pərˈspektɪv", "pos": "n.", "m": "视角，观点", "ex": "we run model samples through the Perspective API", "lv": "四级", "ov": "", "sec": "NLP Results"}, {"w": "generalization", "ipa": "ˌdʒenrələˈzeɪʃn", "pos": "n.", "m": "泛化", "ex": "InstructGPT shows promising generalization to instructions outside of the RLHF fine-tuning distribution", "lv": "四级", "ov": "", "sec": "Qualitative"}, {"w": "premise", "ipa": "ˈpremɪs", "pos": "n.", "m": "前提", "ex": "when given an instruction with a false premise", "lv": "六级", "ov": "", "sec": "Qualitative"}, {"w": "epistemic", "ipa": "ˌepɪˈstemɪk", "pos": "adj.", "m": "认识论的", "ex": "we instruct labelers to reward epistemic humility", "lv": "考博", "ov": "", "sec": "Qualitative"}, {"w": "humility", "ipa": "hjuːˈmɪləti", "pos": "n.", "m": "谦逊", "ex": "reward epistemic humility", "lv": "考博", "ov": "", "sec": "Qualitative"}, {"w": "hedge", "ipa": "hedʒ", "pos": "v.", "m": "模棱两可地说，闪烁其词", "ex": "the model can overly hedge", "lv": "四级", "ov": "", "sec": "Qualitative"}, {"w": "adversarial", "ipa": "ˌædvərˈseriəl", "pos": "adj.", "m": "对抗性的", "ex": "could be dramatically reduced with adversarial data collection", "lv": "考博", "ov": "", "sec": "Qualitative"}, {"w": "explicitly", "ipa": "ɪkˈsplɪsɪtli", "pos": "adv.", "m": "明确地", "ex": "when explicitly prompted to produce a toxic output", "lv": "四级", "ov": "", "sec": "Qualitative"}, {"w": "degrades", "ipa": "dɪˈɡreɪdz", "pos": "v.", "m": "退化，下降", "ex": "the model's performance degrades when instructions contain multiple explicit constraints", "lv": "六级", "ov": "", "sec": "Qualitative"}, {"w": "scalable", "ipa": "ˈskeɪləbl", "pos": "adj.", "m": "可扩展的", "ex": "we seek general and scalable methods that work for future AI systems", "lv": "考博", "ov": "", "sec": "Alignment"}, {"w": "iterative", "ipa": "ˈɪtəreɪtɪv", "pos": "adj.", "m": "迭代的", "ex": "Our approach to alignment research is iterative", "lv": "考博", "ov": "", "sec": "Alignment"}, {"w": "empirical", "ipa": "ɪmˈpɪrɪkl", "pos": "adj.", "m": "经验的，实证的", "ex": "our approach provides us with a clear empirical feedback loop", "lv": "六级", "ov": "", "sec": "Alignment"}, {"w": "prohibitively", "ipa": "prəˈhɪbɪtɪvli", "pos": "adv.", "m": "令人望而却步地", "ex": "it's prohibitively expensive to have humans supervise models on every task", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "degradations", "ipa": "ˌdeɡrəˈdeɪʃnz", "pos": "n.", "m": "性能退化", "ex": "We were able to mitigate most of the performance degradations", "lv": "六级", "ov": "", "sec": "Alignment"}, {"w": "grounding", "ipa": "ˈɡraʊndɪŋ", "pos": "n.", "m": "落地，实际基础", "ex": "Our work provides grounding for alignment research in AI systems", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "efficiency", "ipa": "ɪˈfɪʃnsi", "pos": "n.", "m": "效率", "ex": "increasing investments in alignment is more cost-effective", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "tax", "ipa": "tæks", "pos": "n.", "m": "代价，税", "ex": "this is an example of an alignment tax", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "essential", "ipa": "ɪˈsenʃl", "pos": "adj.", "m": "必不可少的", "ex": "this feedback loop is essential to reﬁne our alignment techniques", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "refine", "ipa": "rɪˈfaɪn", "pos": "v.", "m": "改进，打磨", "ex": "this feedback loop is essential to reﬁne our alignment techniques", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "modest", "ipa": "ˈmɑːdɪst", "pos": "adj.", "m": "适度的", "ex": "The cost of increasing model alignment is modest relative to pretraining", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "constitute", "ipa": "ˈkɑːnstɪtuːt", "pos": "v.", "m": "构成", "ex": "these performance degradations would constitute an alignment tax", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "adoption", "ipa": "əˈdɑːpʃn", "pos": "n.", "m": "采用", "ex": "Any technique with a high tax might not see adoption", "lv": "六级", "ov": "", "sec": "Alignment"}, {"w": "validate", "ipa": "ˈvælɪdeɪt", "pos": "v.", "m": "验证", "ex": "We've validated alignment techniques from research in the real world", "lv": "考博", "ov": "", "sec": "Alignment"}, {"w": "abstractly", "ipa": "ˈæbstræktli", "pos": "adv.", "m": "抽象地", "ex": "instead of focusing abstractly on aligning AI systems that don't yet exist", "lv": "四级", "ov": "", "sec": "Alignment"}, {"w": "preferences", "ipa": "ˈprefərənsɪz", "pos": "n.", "m": "偏好", "ex": "we have aligned to a set of labelers' preferences", "lv": "四级", "ov": "", "sec": "Target"}, {"w": "demographics", "ipa": "ˌdeməˈɡræfɪks", "pos": "n.", "m": "人口统计数据", "ex": "they are mostly English-speaking people living in the United States or Southeast Asia", "lv": "考博", "ov": "", "sec": "Target"}, {"w": "transparency", "ipa": "trænsˈpærənsi", "pos": "n.", "m": "透明度", "ex": "designing an alignment process that is fair, transparent", "lv": "六级", "ov": "", "sec": "Target"}, {"w": "accountability", "ipa": "əˌkaʊntəˈbɪləti", "pos": "n.", "m": "问责制", "ex": "has suitable accountability mechanisms in place", "lv": "考博", "ov": "GRE", "sec": "Target"}, {"w": "participatory", "ipa": "pɑːrˈtɪsəpətɔːri", "pos": "adj.", "m": "参与式的", "ex": "It is not only a matter of making the alignment process more participatory", "lv": "考博", "ov": "", "sec": "Target"}, {"w": "stakeholders", "ipa": "ˈsteɪkhoʊldərz", "pos": "n.", "m": "利益相关者", "ex": "There are many stakeholders to consider", "lv": "考博", "ov": "", "sec": "Target"}, {"w": "endorse", "ipa": "ɪnˈdɔːrs", "pos": "v.", "m": "认可，赞同", "ex": "deployed and used by groups who endorse different values", "lv": "考研", "ov": "", "sec": "Target"}, {"w": "conditioned", "ipa": "kənˈdɪʃnd", "pos": "v.", "m": "以…为条件", "ex": "train models that can be conditioned on the preferences of certain groups", "lv": "四级", "ov": "", "sec": "Target"}, {"w": "methodology", "ipa": "ˌmeθəˈdɑːlədʒi", "pos": "n.", "m": "方法论", "ex": "Methodology. The behavior of our InstructGPT models is determined in part by the human feedback", "lv": "考博", "ov": "", "sec": "Limits"}, {"w": "spectrum", "ipa": "ˈspektrəm", "pos": "n.", "m": "范围，光谱", "ex": "this group is clearly not representative of the full spectrum of people", "lv": "六级", "ov": "", "sec": "Limits"}, {"w": "disproportionately", "ipa": "ˌdɪsprəˈpɔːrʃənətli", "pos": "adv.", "m": "不成比例地", "ex": "when generating text that disproportionately affects a minority group", "lv": "六级", "ov": "", "sec": "Limits"}, {"w": "deployed", "ipa": "dɪˈplɔɪd", "pos": "v.", "m": "已部署的", "ex": "Our models are neither fully aligned nor fully safe", "lv": "六级", "ov": "", "sec": "Limits"}, {"w": "panacea", "ipa": "ˌpænəˈsiːə", "pos": "n.", "m": "万能药", "ex": "Alignment techniques are not a panacea for resolving safety issues", "lv": "考博", "ov": "", "sec": "Limits"}, {"w": "regulation", "ipa": "ˌreɡjuˈleɪʃn", "pos": "n.", "m": "监管", "ex": "without proper regulation", "lv": "四级", "ov": "", "sec": "Limits"}, {"w": "centralization", "ipa": "ˌsentrələˈzeɪʃn", "pos": "n.", "m": "集中化", "ex": "increased centralization of power", "lv": "考博", "ov": "GRE", "sec": "Limits"}, {"w": "transparency", "ipa": "trænsˈpærənsi", "pos": "n.", "m": "透明度", "ex": "this can come at the cost of reduced transparency", "lv": "六级", "ov": "", "sec": "Limits"}, {"w": "judgment", "ipa": "ˈdʒʌdʒmənt", "pos": "n.", "m": "判断", "ex": "Some of the labeling tasks rely on value judgments", "lv": "考研", "ov": "", "sec": "Limits"}, {"w": "representative", "ipa": "ˌreprɪˈzentətɪv", "pos": "adj.", "m": "有代表性的", "ex": "this group is clearly not representative of the full spectrum of people", "lv": "四级", "ov": "", "sec": "Limits"}, {"w": "minority", "ipa": "maɪˈnɔːrəti", "pos": "n.", "m": "少数群体", "ex": "text that disproportionately affects a minority group", "lv": "四级", "ov": "", "sec": "Limits"}, {"w": "dishonest", "ipa": "dɪˈɑːnɪst", "pos": "adj.", "m": "不诚实的", "ex": "if the user requests a potentially harmful or dishonest response", "lv": "四级", "ov": "", "sec": "Limits"}, {"w": "proxy", "ipa": "ˈprɑːksi", "pos": "n.", "m": "代理指标", "ex": "which is only a proxy for what we want these models to do", "lv": "考博", "ov": "雅思托福", "sec": "Limits"}, {"w": "severe", "ipa": "sɪˈvɪr", "pos": "adj.", "m": "严重的", "ex": "alignment failures could lead to more severe consequences", "lv": "四级", "ov": "", "sec": "Limits"}, {"w": "abusive", "ipa": "əˈbuːsɪv", "pos": "adj.", "m": "辱骂性的", "ex": "generate convincing misinformation, or hateful or abusive content", "lv": "考博", "ov": "", "sec": "Limits"}, {"w": "ecosystem", "ipa": "ˈiːkoʊsɪstəm", "pos": "n.", "m": "生态系统", "ex": "one tool in a broader safety ecosystem", "lv": "六级", "ov": "", "sec": "Limits"}, {"w": "intentional", "ipa": "ɪnˈtenʃənl", "pos": "adj.", "m": "故意的", "ex": "Aside from intentional misuse, there are many domains where large language models should be deployed only with great care", "lv": "四级", "ov": "", "sec": "Limits"}, {"w": "diagnosis", "ipa": "ˌdaɪəɡˈnoʊsɪs", "pos": "n.", "m": "诊断", "ex": "high-stakes domains such as medical diagnoses", "lv": "考博", "ov": "", "sec": "Limits"}, {"w": "eligibility", "ipa": "ˌelɪdʒəˈbɪləti", "pos": "n.", "m": "资格", "ex": "determining eligibility for credit, employment, or housing", "lv": "考博", "ov": "", "sec": "Limits"}, {"w": "exclude", "ipa": "ɪkˈskluːd", "pos": "v.", "m": "排除", "ex": "this excludes most people from access to cutting-edge ML technology", "lv": "四级", "ov": "", "sec": "Limits"}, {"w": "cutting-edge", "ipa": "ˌkʌtɪŋ ˈedʒ", "pos": "adj.", "m": "尖端的", "ex": "excludes most people from access to cutting-edge ML technology", "lv": "考博", "ov": "", "sec": "Limits"}, {"w": "infrastructure", "ipa": "ˈɪnfrəstrʌktʃər", "pos": "n.", "m": "基础设施", "ex": "an organization to own the end-to-end infrastructure of model deployment", "lv": "考研", "ov": "", "sec": "Limits"}, {"w": "revoke", "ipa": "rɪˈvoʊk", "pos": "v.", "m": "撤销", "ex": "monitoring for misuse and revoking access to those who misuse the system", "lv": "考博", "ov": "", "sec": "Limits"}, {"w": "propensity", "ipa": "prəˈpensəti", "pos": "n.", "m": "倾向", "ex": "further decrease the models' propensity to generate toxic outputs", "lv": "考博", "ov": "", "sec": "Open Q"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "增强", "ex": "it may be beneficial to use language models to generate toxic outputs as part of a data augmentation pipeline", "lv": "考博", "ov": "GRE", "sec": "Open Q"}, {"w": "constrained", "ipa": "kənˈstreɪnd", "pos": "adj.", "m": "受约束的", "ex": "one could try constrained optimization approaches", "lv": "六级", "ov": "", "sec": "Open Q"}, {"w": "steerability", "ipa": "ˌstɪrəˈbɪləti", "pos": "n.", "m": "可操纵性", "ex": "directly related to the steerability and controllability literature", "lv": "考博", "ov": "", "sec": "Open Q"}, {"w": "expert iteration", "ipa": "ˈekspɜːrt ɪtəˈreɪʃn", "pos": "n.", "m": "专家迭代", "ex": "one could explore expert iteration", "lv": "考博", "ov": "", "sec": "Open Q"}, {"w": "synthetic", "ipa": "sɪnˈθetɪk", "pos": "adj.", "m": "合成的", "ex": "augment this data with synthetic instructions", "lv": "四级", "ov": "", "sec": "Open Q"}, {"w": "feedback", "ipa": "ˈfiːdbæk", "pos": "n.", "m": "反馈", "ex": "labelers to provide feedback to language models", "lv": "四级", "ov": "", "sec": "Open Q"}, {"w": "interface", "ipa": "ˈɪntərfeɪs", "pos": "n.", "m": "界面，接口", "ex": "designing interfaces for labelers to provide feedback", "lv": "六级", "ov": "", "sec": "Open Q"}, {"w": "misuse", "ipa": "ˌmɪsˈjuːs", "pos": "n.", "m": "滥用", "ex": "making language models better at following user intentions also makes them easier to misuse", "lv": "考博", "ov": "雅思托福", "sec": "Impacts"}, {"w": "misinformation", "ipa": "ˌmɪsɪnfərˈmeɪʃn", "pos": "n.", "m": "虚假信息", "ex": "it may be easier to use these models to generate convincing misinformation", "lv": "考博", "ov": "", "sec": "Impacts"}, {"w": "safety-critical", "ipa": "ˈseɪfti ˈkrɪtɪkl", "pos": "adj.", "m": "安全关键的", "ex": "particularly if these models are deployed in safety-critical situations", "lv": "考博", "ov": "", "sec": "Impacts"}, {"w": "deployed", "ipa": "dɪˈplɔɪd", "pos": "v.", "m": "部署", "ex": "large language models should be deployed only with great care", "lv": "六级", "ov": "", "sec": "Impacts"}, {"w": "centralization", "ipa": "ˌsentrələˈzeɪʃn", "pos": "n.", "m": "集中化", "ex": "increased centralization of power", "lv": "考博", "ov": "GRE", "sec": "Impacts"}, {"w": "limit", "ipa": "ˈlɪmɪt", "pos": "v.", "m": "限制", "ex": "it becomes challenging to limit harmful applications", "lv": "四级", "ov": "", "sec": "Impacts"}, {"w": "open-sourced", "ipa": "ˌoʊpən ˈsɔːrst", "pos": "adj.", "m": "开源的", "ex": "If these models are open-sourced", "lv": "考博", "ov": "", "sec": "Impacts"}, {"w": "regulation", "ipa": "ˌreɡjuˈleɪʃn", "pos": "n.", "m": "法规，监管", "ex": "without proper regulation", "lv": "四级", "ov": "", "sec": "Impacts"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"explicit": "../listen-audio/w_brian_explicit.mp3", "essential": "../listen-audio/w_brian_essential.mp3", "promising": "../listen-audio/w_brian_promising.mp3", "demonstration": "../listen-audio/w_brian_demonstration.mp3", "supervised": "../listen-audio/w_brian_supervised.mp3", "explicitly": "../listen-audio/w_brian_explicitly.mp3", "distribution": "../listen-audio/w_brian_distribution.mp3", "prevalence": "../listen-audio/w_brian_prevalence.mp3", "generalization": "../listen-audio/w_brian_generalization.mp3", "benchmark": "../listen-audio/w_brian_benchmark.mp3", "nascent": "../listen-audio/w_brian_nascent.mp3", "modest": "../listen-audio/w_brian_modest.mp3", "sensitive": "../listen-audio/w_brian_sensitive.mp3", "sufficient": "../listen-audio/w_brian_sufficient.mp3", "magnitude": "../listen-audio/w_brian_magnitude.mp3", "prohibitively": "../listen-audio/w_brian_prohibitively.mp3", "empirical": "../listen-audio/w_brian_empirical.mp3", "shuffle": "../listen-audio/w_brian_shuffle.mp3", "fine-tuning": "../listen-audio/w_brian_fine_tuning.mp3", "validation": "../listen-audio/w_brian_validation.mp3", "entropy": "../listen-audio/w_brian_entropy.mp3", "dialogue": "../listen-audio/w_brian_dialogue.mp3", "diversity": "../listen-audio/w_brian_diversity.mp3", "inherently": "../listen-audio/w_brian_inherently.mp3", "arbitrary": "../listen-audio/w_brian_arbitrary.mp3", "embedding": "../listen-audio/w_brian_embedding.mp3", "mimic": "../listen-audio/w_brian_mimic.mp3", "semantic": "../listen-audio/w_brian_semantic.mp3", "overfitting": "../listen-audio/w_brian_overfitting.mp3", "dropout": "../listen-audio/w_brian_dropout.mp3", "surpass": "../listen-audio/w_brian_surpass.mp3", "overfit": "../listen-audio/w_brian_overfit.mp3", "perspective": "../listen-audio/w_brian_perspective.mp3", "computationally": "../listen-audio/w_brian_computationally.mp3", "decay": "../listen-audio/w_brian_decay.mp3", "biased": "../listen-audio/w_brian_biased.mp3", "augmentation": "../listen-audio/w_brian_augmentation.mp3", "severe": "../listen-audio/w_brian_severe.mp3", "bias": "../listen-audio/w_brian_bias.mp3", "proxy": "../listen-audio/w_brian_proxy.mp3", "validate": "../listen-audio/w_brian_validate.mp3", "alignment": "../listen-audio/w_brian_alignment.mp3", "scalable": "../listen-audio/w_brian_scalable.mp3", "iterative": "../listen-audio/w_brian_iterative.mp3", "constraints": "../listen-audio/w_brian_constraints.mp3", "constrained": "../listen-audio/w_brian_constrained.mp3", "concrete": "../listen-audio/w_brian_concrete.mp3", "policy": "../listen-audio/w_brian_policy.mp3", "harmless": "../listen-audio/w_brian_harmless.mp3", "mitigate": "../listen-audio/w_brian_mitigate.mp3", "premise": "../listen-audio/w_brian_premise.mp3", "degenerate": "../listen-audio/w_brian_degenerate.mp3", "unstable": "../listen-audio/w_brian_unstable.mp3", "adversarial": "../listen-audio/w_brian_adversarial.mp3", "regression": "../listen-audio/w_brian_regression.mp3", "scalar": "../listen-audio/w_brian_scalar.mp3", "bootstrap": "../listen-audio/w_brian_bootstrap.mp3", "pretrained": "../listen-audio/w_brian_pretrained.mp3", "algorithm": "../listen-audio/w_brian_algorithm.mp3", "encompass": "../listen-audio/w_brian_encompass.mp3", "statistically": "../listen-audio/w_brian_statistically.mp3", "cosine": "../listen-audio/w_brian_cosine.mp3", "degradation": "../listen-audio/w_brian_degradation.mp3", "heuristically": "../listen-audio/w_brian_heuristically.mp3", "synthetic": "../listen-audio/w_brian_synthetic.mp3", "demographic": "../listen-audio/w_brian_demographic.mp3", "disproportionately": "../listen-audio/w_brian_disproportionately.mp3", "deployed": "../listen-audio/w_brian_deployed.mp3", "optimize": "../listen-audio/w_brian_optimize.mp3", "adoption": "../listen-audio/w_brian_adoption.mp3", "reinforcement": "../listen-audio/w_brian_reinforcement.mp3", "implicit": "../listen-audio/w_brian_implicit.mp3", "annotator": "../listen-audio/w_brian_annotator.mp3", "hallucination": "../listen-audio/w_brian_hallucination.mp3", "aligned": "../listen-audio/w_brian_aligned.mp3", "conditioned": "../listen-audio/w_brian_conditioned.mp3", "logits": "../listen-audio/w_brian_logits.mp3", "divergence": "../listen-audio/w_brian_divergence.mp3", "coefﬁcient": "../listen-audio/w_brian_coefﬁcient.mp3", "efficiency": "../listen-audio/w_brian_efficiency.mp3", "compromise": "../listen-audio/w_brian_compromise.mp3", "feedback": "../listen-audio/w_brian_feedback.mp3", "criterion": "../listen-audio/w_brian_criterion.mp3", "spectrum": "../listen-audio/w_brian_spectrum.mp3", "ambiguous": "../listen-audio/w_brian_ambiguous.mp3", "constitute": "../listen-audio/w_brian_constitute.mp3", "misuse": "../listen-audio/w_brian_misuse.mp3", "fabricate": "../listen-audio/w_brian_fabricate.mp3", "misinformation": "../listen-audio/w_brian_misinformation.mp3", "accountability": "../listen-audio/w_brian_accountability.mp3", "regulation": "../listen-audio/w_brian_regulation.mp3", "infrastructure": "../listen-audio/w_brian_infrastructure.mp3", "transparency": "../listen-audio/w_brian_transparency.mp3", "refine": "../listen-audio/w_brian_refine.mp3", "representative": "../listen-audio/w_brian_representative.mp3", "elaborate": "../listen-audio/w_brian_elaborate.mp3", "minority": "../listen-audio/w_brian_minority.mp3", "exclude": "../listen-audio/w_brian_exclude.mp3", "intent": "../listen-audio/w_brian_intent.mp3", "adversarially": "../listen-audio/w_brian_adversarially.mp3", "hedge": "../listen-audio/w_brian_hedge.mp3", "toxic": "../listen-audio/w_brian_toxic.mp3", "methodology": "../listen-audio/w_brian_methodology.mp3", "toxicity": "../listen-audio/w_brian_toxicity.mp3", "avenue": "../listen-audio/w_brian_avenue.mp3", "preferred": "../listen-audio/w_brian_preferred.mp3", "regressions": "../listen-audio/w_brian_regressions.mp3", "untruthful": "../listen-audio/w_brian_untruthful.mp3", "labeler": "../listen-audio/w_brian_labeler.mp3", "misaligned": "../listen-audio/w_brian_misaligned.mp3", "behaviors": "../listen-audio/w_brian_behaviors.mp3", "encompasses": "../listen-audio/w_brian_encompasses.mp3", "contractors": "../listen-audio/w_brian_contractors.mp3", "demonstrations": "../listen-audio/w_brian_demonstrations.mp3", "truthfulness": "../listen-audio/w_brian_truthfulness.mp3", "compiling": "../listen-audio/w_brian_compiling.mp3", "unintended": "../listen-audio/w_brian_unintended.mp3", "avert": "../listen-audio/w_brian_avert.mp3", "in accordance with": "../listen-audio/w_brian_in_accordance_with.mp3", "mislead": "../listen-audio/w_brian_mislead.mp3", "contractor": "../listen-audio/w_brian_contractor.mp3", "compilation": "../listen-audio/w_brian_compilation.mp3", "reward": "../listen-audio/w_brian_reward.mp3", "maliciously": "../listen-audio/w_brian_maliciously.mp3", "controllable": "../listen-audio/w_brian_controllable.mp3", "technique": "../listen-audio/w_brian_technique.mp3", "simulated": "../listen-audio/w_brian_simulated.mp3", "summarization": "../listen-audio/w_brian_summarization.mp3", "iteratively": "../listen-audio/w_brian_iteratively.mp3", "comparisons": "../listen-audio/w_brian_comparisons.mp3", "iterate": "../listen-audio/w_brian_iterate.mp3", "deduplicate": "../listen-audio/w_brian_deduplicate.mp3", "identifiable": "../listen-audio/w_brian_identifiable.mp3", "compilations": "../listen-audio/w_brian_compilations.mp3", "prohibited": "../listen-audio/w_brian_prohibited.mp3", "production": "../listen-audio/w_brian_production.mp3", "illustrative": "../listen-audio/w_brian_illustrative.mp3", "prioritize": "../listen-audio/w_brian_prioritize.mp3", "vendor": "../listen-audio/w_brian_vendor.mp3", "conflict": "../listen-audio/w_brian_conflict.mp3", "controversial": "../listen-audio/w_brian_controversial.mp3", "screening": "../listen-audio/w_brian_screening.mp3", "inter-annotator": "../listen-audio/w_brian_inter_annotator.mp3", "conﬂict": "../listen-audio/w_brian_conﬂict.mp3", "collaborate": "../listen-audio/w_brian_collaborate.mp3", "cross-entropy": "../listen-audio/w_brian_cross_entropy.mp3", "kl penalty": "../listen-audio/w_brian_KL_penalty.mp3", "conﬁdence": "../listen-audio/w_brian_conﬁdence.mp3", "adaptable": "../listen-audio/w_brian_adaptable.mp3", "correlated": "../listen-audio/w_brian_correlated.mp3", "honesty": "../listen-audio/w_brian_honesty.mp3", "helpful": "../listen-audio/w_brian_helpful.mp3", "informativeness": "../listen-audio/w_brian_informativeness.mp3", "likert": "../listen-audio/w_brian_likert.mp3", "winrate": "../listen-audio/w_brian_winrate.mp3", "appropriately": "../listen-audio/w_brian_appropriately.mp3", "fold": "../listen-audio/w_brian_fold.mp3", "well-crafted": "../listen-audio/w_brian_well_crafted.mp3", "favorably": "../listen-audio/w_brian_favorably.mp3", "appropriate": "../listen-audio/w_brian_appropriate.mp3", "reliable": "../listen-audio/w_brian_reliable.mp3", "respectful": "../listen-audio/w_brian_respectful.mp3", "propensity": "../listen-audio/w_brian_propensity.mp3", "stereotypical": "../listen-audio/w_brian_stereotypical.mp3", "epistemic": "../listen-audio/w_brian_epistemic.mp3", "humility": "../listen-audio/w_brian_humility.mp3", "degrades": "../listen-audio/w_brian_degrades.mp3", "degradations": "../listen-audio/w_brian_degradations.mp3", "grounding": "../listen-audio/w_brian_grounding.mp3", "tax": "../listen-audio/w_brian_tax.mp3", "abstractly": "../listen-audio/w_brian_abstractly.mp3", "preferences": "../listen-audio/w_brian_preferences.mp3", "demographics": "../listen-audio/w_brian_demographics.mp3", "participatory": "../listen-audio/w_brian_participatory.mp3", "stakeholders": "../listen-audio/w_brian_stakeholders.mp3", "endorse": "../listen-audio/w_brian_endorse.mp3", "panacea": "../listen-audio/w_brian_panacea.mp3", "centralization": "../listen-audio/w_brian_centralization.mp3", "judgment": "../listen-audio/w_brian_judgment.mp3", "dishonest": "../listen-audio/w_brian_dishonest.mp3", "abusive": "../listen-audio/w_brian_abusive.mp3", "ecosystem": "../listen-audio/w_brian_ecosystem.mp3", "intentional": "../listen-audio/w_brian_intentional.mp3", "diagnosis": "../listen-audio/w_brian_diagnosis.mp3", "eligibility": "../listen-audio/w_brian_eligibility.mp3", "cutting-edge": "../listen-audio/w_brian_cutting_edge.mp3", "revoke": "../listen-audio/w_brian_revoke.mp3", "steerability": "../listen-audio/w_brian_steerability.mp3", "expert iteration": "../listen-audio/w_brian_expert_iteration.mp3", "interface": "../listen-audio/w_brian_interface.mp3", "safety-critical": "../listen-audio/w_brian_safety_critical.mp3", "limit": "../listen-audio/w_brian_limit.mp3", "open-sourced": "../listen-audio/w_brian_open_sourced.mp3"}, "e": {"these models are not aligned with their users": "../listen-audio/e_brian_259b2897d6fc.mp3", "Making language models bigger does not inherently make them better at following a user's intent": "../listen-audio/e_brian_996ced659e10.mp3", "we show an avenue for aligning language models with user intent": "../listen-audio/e_brian_3ccfbfa41cc6.mp3", "by fine-tuning with human feedback": "../listen-audio/e_brian_66dd49dca0d0.mp3", "we collect a dataset of labeler demonstrations of the desired model behavior": "../listen-audio/e_brian_d30acb3c9bc7.mp3", "using reinforcement learning from human feedback": "../listen-audio/e_brian_ca2d42d9dc2a.mp3", "outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3": "../listen-audio/e_brian_0756ac29402b.mp3", "having minimal performance regressions on public NLP datasets": "../listen-audio/e_brian_5f0e89eaadef.mp3", "large language models can generate outputs that are untruthful, toxic, or simply not helpful": "../listen-audio/e_brian_17a3b2fd433f.mp3", "fine-tuning with human feedback is a promising direction": "../listen-audio/e_brian_e1b95533bac8.mp3", "better at following a user's intent": "../listen-audio/e_brian_4222e71881b6.mp3", "Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API": "../listen-audio/e_brian_15e652e0692d.mp3", "the language modeling objective is misaligned": "../listen-audio/e_brian_17f5bf0890fe.mp3", "these models often express unintended behaviors": "../listen-audio/e_brian_1410ef93f9cd.mp3", "they shouldn't fabricate information or mislead the user": "../listen-audio/e_brian_943f00a5c2e2.mp3", "they should not cause physical, psychological, or social harm": "../listen-audio/e_brian_e04b96210270.mp3", "not being biased, toxic, or otherwise harmful": "../listen-audio/e_brian_a4133c83dacb.mp3", "We elaborate on the evaluation of these criteria in Section 3.6": "../listen-audio/e_brian_b85f94b34600.mp3", "This encompasses both explicit intentions and implicit intentions": "../listen-audio/e_brian_a4fd1bd2132c.mp3", "we first hire a team of 40 contractors to label our data": "../listen-audio/e_brian_42c78d6a995d.mp3", "a dataset of human-written demonstrations of the desired output behavior": "../listen-audio/e_brian_65ad3da12ea2.mp3", "using the PPO algorithm": "../listen-audio/e_brian_79f31b141ec5.mp3", "especially important for language models that are deployed": "../listen-audio/e_brian_aba4b8f34d9f.mp3", "more reliably follow explicit constraints in the instruction": "../listen-audio/e_brian_982203633c06.mp3", "InstructGPT models show improvements in truthfulness over GPT-3": "../listen-audio/e_brian_847f760d33f3.mp3", "we observe performance regressions compared to GPT-3": "../listen-audio/e_brian_eccde6451106.mp3", "two different compilations of public NLP tasks": "../listen-audio/e_brian_2d746ab5505e.mp3", "these models often express unintended behaviors such as making up facts": "../listen-audio/e_brian_94fec324826a.mp3", "Averting these unintended behaviors is especially important": "../listen-audio/e_brian_c0296f7e6b7e.mp3", "training them to act in accordance with the user's intention": "../listen-audio/e_brian_2f3a0664c5c6.mp3", "This encompasses both explicit intentions such as following instructions and implicit intentions": "../listen-audio/e_brian_0c8bb33c600d.mp3", "implicit intentions such as staying truthful": "../listen-audio/e_brian_9745aa33ea6c.mp3", "We ﬁrst hire a team of 40 contractors to label our data": "../listen-audio/e_brian_6443629eb349.mp3", "without compromising labeler preference scores": "../listen-audio/e_brian_322a9df5cb35.mp3", "Research on alignment and learning from human feedback": "../listen-audio/e_brian_836202668dea.mp3", "using human feedback as a reward in domains such as dialogue": "../listen-audio/e_brian_79d10f682f8a.mp3", "domains such as dialogue, translation, semantic parsing": "../listen-audio/e_brian_1f77c3d5c98d.mp3", "semantic parsing, story generation, review generation": "../listen-audio/e_brian_59052e05a09e.mp3", "data augmentation, null space projection": "../listen-audio/e_brian_da5e129959b3.mp3", "There is a nascent but growing field that aims to build benchmarks": "../listen-audio/e_brian_1857236ce929.mp3", "generate misinformation, and be used maliciously": "../listen-audio/e_brian_b8ecff36344f.mp3", "A goal of modifying the behavior is to mitigate the harms": "../listen-audio/e_brian_f2f51ce9d59f.mp3", "steerability and controllability literature": "../listen-audio/e_brian_8658dcbe25cf.mp3", "generate very short or degenerate responses": "../listen-audio/e_brian_e06f1641a20d.mp3", "We build on previous techniques to align models with human intentions": "../listen-audio/e_brian_3e3d9e90753d.mp3", "Originally developed for training simple robots in simulated environments and Atari games": "../listen-audio/e_brian_4c12cd770d74.mp3", "it has recently been applied to ﬁne-tuning language models to summarize text": "../listen-audio/e_brian_4a2aabd246d3.mp3", "Our methodology follows that of Ziegler et al.": "../listen-audio/e_brian_7176137f446b.mp3", "fine-tune a pretrained GPT-3 model on this data using supervised learning": "../listen-audio/e_brian_ef109712f017.mp3", "Collect demonstration data, and train a supervised policy": "../listen-audio/e_brian_ac96d1067fd0.mp3", "it produces a scalar reward": "../listen-audio/e_brian_f89d3edb7d11.mp3", "We fine-tune the supervised policy to optimize this reward": "../listen-audio/e_brian_eb0ccf496ded.mp3", "Steps 2 and 3 can be iterated continuously": "../listen-audio/e_brian_175cb6245bb3.mp3", "We start with a pretrained language model": "../listen-audio/e_brian_3ab1873e947b.mp3", "We collect a dataset of comparisons between model outputs": "../listen-audio/e_brian_d5ad23fa26d7.mp3", "labelers provide demonstrations of the desired behavior": "../listen-audio/e_brian_bf866c5a5df7.mp3", "a distribution of prompts on which we want our model to produce aligned outputs": "../listen-audio/e_brian_af64c3c0cdd8.mp3", "We heuristically deduplicate prompts by checking for prompts that share a long common prefix": "../listen-audio/e_brian_9cf7b7c0bcc9.mp3", "filter all prompts in the training split for personally identifiable information": "../listen-audio/e_brian_f395cf5540f5.mp3", "we needed an initial source of instruction-like prompts to bootstrap the process": "../listen-audio/e_brian_6b3a837fc53f.mp3", "ensuring the tasks had sufficient diversity": "../listen-audio/e_brian_28ea8ae1aa65.mp3", "prompts containing PII": "../listen-audio/e_brian_04bbd95b9d67.mp3", "we create our train, validation, and test splits based on user ID": "../listen-audio/e_brian_40a0d9c9cbad.mp3", "we do not use data from customers using the API in production": "../listen-audio/e_brian_cab2d42d1764.mp3", "We normalize the reward model using a bias": "../listen-audio/e_brian_9b164d3ed8e3.mp3", "We heuristically deduplicate prompts by checking for prompts that share a long common preﬁx": "../listen-audio/e_brian_551a72b090b8.mp3", "To avoid the models learning potentially sensitive customer details": "../listen-audio/e_brian_26f236a79169.mp3", "We simply ask the labelers to come up with an arbitrary task": "../listen-audio/e_brian_adc7db3bb47f.mp3", "while ensuring the tasks had sufﬁcient diversity": "../listen-audio/e_brian_a985aa50e002.mp3", "We also show some illustrative prompts written by researchers": "../listen-audio/e_brian_247061e48a6f.mp3", "prompts written by researchers to mimic the kinds of prompts submitted": "../listen-audio/e_brian_2ce509c0d811.mp3", "During training we prioritize helpfulness to the user": "../listen-audio/e_brian_0d798a86c7dc.mp3", "These labelers are sourced from the same vendors": "../listen-audio/e_brian_64279474517b.mp3", "we ﬁnd that inter-annotator agreement rates are quite high": "../listen-audio/e_brian_1ce9d3f511ba.mp3", "our alignment criteria may come into conﬂict": "../listen-audio/e_brian_9676f5f9a5f9.mp3", "sensitive to the preferences of different demographic groups": "../listen-audio/e_brian_d1c229d2cb27.mp3", "can occasionally include controversial and sensitive topics": "../listen-audio/e_brian_9f6d5c789be6.mp3", "based on their performance on a screening test": "../listen-audio/e_brian_0183ee0aed46.mp3", "we hired a team of about 40 contractors": "../listen-audio/e_brian_5cb310a6e6d8.mp3", "inter-annotator agreement rates are quite high": "../listen-audio/e_brian_ba05984ba0ea.mp3", "to see how well our model generalizes to the preferences of other labelers": "../listen-audio/e_brian_5dd421cfbad8.mp3", "our alignment criteria may come into conflict": "../listen-audio/e_brian_b1122676fc5e.mp3", "we collaborate closely with labelers over the course of the project": "../listen-audio/e_brian_418f365441f9.mp3", "residual dropout of 0.2": "../listen-audio/e_brian_eb121787a365.mp3", "we find that our SFT models overfit on validation loss after 1 epoch": "../listen-audio/e_brian_ca9eabd3cef4.mp3", "using a cosine learning rate decay": "../listen-audio/e_brian_da0cb0cef3e6.mp3", "Starting from the SFT model with the final unembedding layer removed": "../listen-audio/e_brian_e57151b49084.mp3", "They use a cross-entropy loss": "../listen-audio/e_brian_a044cfa89120.mp3", "the difference in rewards represents the log odds": "../listen-audio/e_brian_84a3f0842a05.mp3", "The KL reward coefficient, β, and the pretraining loss coefficient, γ": "../listen-audio/e_brian_e47608f45543.mp3", "we add a per-token KL penalty from the SFT model": "../listen-audio/e_brian_4d0b1ebb85dd.mp3", "Error bars throughout the paper are 95% confidence intervals": "../listen-audio/e_brian_20171146f8b0.mp3", "To illustrate the magnitude of our gains": "../listen-audio/e_brian_a9cb03e5f0eb.mp3", "trained on a broad distribution of Internet data and are adaptable to a wide range of downstream tasks": "../listen-audio/e_brian_6dd5e25aab9c.mp3", "we found that 175B RM training could be unstable": "../listen-audio/e_brian_fda292e38318.mp3", "Since comparisons are very correlated within each labeling task": "../listen-audio/e_brian_86a0dc156963.mp3", "if we simply shufﬂe the comparisons into one dataset": "../listen-audio/e_brian_a28c6e242e4b.mp3", "This is much more computationally efﬁcient": "../listen-audio/e_brian_5d8c6ca41358.mp3", "a single pass over the dataset caused the reward model to overﬁt": "../listen-audio/e_brian_ed8aeb6902c4.mp3", "honest (they shouldn't fabricate information)": "../listen-audio/e_brian_af2f144095b3.mp3", "helpful (they should help the user solve their task)": "../listen-audio/e_brian_64e0766dcc8f.mp3", "we measure truthfulness—whether the model's statements about the world are true": "../listen-audio/e_brian_598dd39ed7d2.mp3", "generating truthful and informative outputs": "../listen-audio/e_brian_e1cee3f84a2a.mp3", "a given prompt's intention can be unclear or ambiguous": "../listen-audio/e_brian_3dbd51f078cc.mp3", "there could be a divergence between what a user actually intended": "../listen-audio/e_brian_6aa24d2d5374.mp3", "prompts that were not adversarially selected against GPT-3": "../listen-audio/e_brian_9677975bb61a.mp3", "using the TruthfulQA benchmark": "../listen-audio/e_brian_4fc9d89e26cc.mp3", "a 21% vs. 41% hallucination rate": "../listen-audio/e_brian_b9013152094c.mp3", "on a 1-7 Likert scale": "../listen-audio/e_brian_614ba9a13296.mp3", "measured by winrate against the 175B SFT model": "../listen-audio/e_brian_5906b33b499d.mp3", "InstructGPT outputs are more appropriate in the context of a customer assistant": "../listen-audio/e_brian_ffdcd3d71862.mp3", "these results are collapsed across model sizes": "../listen-audio/e_brian_37084df7c652.mp3", "categories occur too infrequently to obtain statistically significant differences": "../listen-audio/e_brian_42156a25ef4a.mp3", "Our models generalize to the preferences of held-out labelers": "../listen-audio/e_brian_d7eeb26633a4.mp3", "5-fold cross validation": "../listen-audio/e_brian_24558cef5726.mp3", "Outputs from our 175B InstructGPT are preferred 85 ± 3% of the time": "../listen-audio/e_brian_ded703ba45cf.mp3", "one can obtain signiﬁcant step-size improvements by using a well-crafted few-shot prompt": "../listen-audio/e_brian_9d3a4c203c76.mp3", "labelers also rate InstructGPT outputs favorably along several more concrete axes": "../listen-audio/e_brian_2fd8fbff7061.mp3", "along several more concrete axes": "../listen-audio/e_brian_9fc21774305a.mp3", "more often follow explicit constraints deﬁned in the instruction": "../listen-audio/e_brian_b6375b376094.mp3", "InstructGPT models are more reliable and easier to control than GPT-3": "../listen-audio/e_brian_5085f79e9c4e.mp3", "InstructGPT models generate about 25% fewer toxic outputs when prompted to be respectful": "../listen-audio/e_brian_b710b20bef40.mp3", "InstructGPT shows small improvements in toxicity over GPT-3": "../listen-audio/e_brian_0c0f352e42aa.mp3", "the model's propensity to generate biased speech": "../listen-audio/e_brian_77adab0c6a2f.mp3", "the entropy (in bits) of the associated binary probability distributions": "../listen-audio/e_brian_6083934f620c.mp3", "regardless of whether or not their outputs exhibit stereotypical behavior": "../listen-audio/e_brian_35628439e2ff.mp3", "We can minimize performance regressions by modifying our RLHF fine-tuning procedure": "../listen-audio/e_brian_e358c4523941.mp3", "performance degradations introduced by our fine-tuning": "../listen-audio/e_brian_5dfbed1e3069.mp3", "even surpasses GPT-3 on HellaSwag": "../listen-audio/e_brian_d64391d8b4d4.mp3", "we run model samples through the Perspective API": "../listen-audio/e_brian_7596fc1d880f.mp3", "InstructGPT shows promising generalization to instructions outside of the RLHF fine-tuning distribution": "../listen-audio/e_brian_d0edf801c44c.mp3", "when given an instruction with a false premise": "../listen-audio/e_brian_bf79f490a6b8.mp3", "we instruct labelers to reward epistemic humility": "../listen-audio/e_brian_f06795cd6e79.mp3", "reward epistemic humility": "../listen-audio/e_brian_dcc20ddbc97a.mp3", "the model can overly hedge": "../listen-audio/e_brian_e09aba1ecdf6.mp3", "could be dramatically reduced with adversarial data collection": "../listen-audio/e_brian_309dd1f4115b.mp3", "when explicitly prompted to produce a toxic output": "../listen-audio/e_brian_38f7910ac00c.mp3", "the model's performance degrades when instructions contain multiple explicit constraints": "../listen-audio/e_brian_a3947e37dbe1.mp3", "we seek general and scalable methods that work for future AI systems": "../listen-audio/e_brian_4ff53f5d8fab.mp3", "Our approach to alignment research is iterative": "../listen-audio/e_brian_c4700075740b.mp3", "our approach provides us with a clear empirical feedback loop": "../listen-audio/e_brian_57a1f095234d.mp3", "it's prohibitively expensive to have humans supervise models on every task": "../listen-audio/e_brian_79bf58295f7f.mp3", "We were able to mitigate most of the performance degradations": "../listen-audio/e_brian_ba561f3736dc.mp3", "Our work provides grounding for alignment research in AI systems": "../listen-audio/e_brian_8a08c68e1769.mp3", "increasing investments in alignment is more cost-effective": "../listen-audio/e_brian_2d52e8cfb2d2.mp3", "this is an example of an alignment tax": "../listen-audio/e_brian_6f1b7008525a.mp3", "this feedback loop is essential to reﬁne our alignment techniques": "../listen-audio/e_brian_b04bd5219970.mp3", "The cost of increasing model alignment is modest relative to pretraining": "../listen-audio/e_brian_a90d0ef00461.mp3", "these performance degradations would constitute an alignment tax": "../listen-audio/e_brian_be0b29075bbd.mp3", "Any technique with a high tax might not see adoption": "../listen-audio/e_brian_fa19f3ccbe9d.mp3", "We've validated alignment techniques from research in the real world": "../listen-audio/e_brian_72966d999fe6.mp3", "instead of focusing abstractly on aligning AI systems that don't yet exist": "../listen-audio/e_brian_2517b73c87c5.mp3", "we have aligned to a set of labelers' preferences": "../listen-audio/e_brian_d51d032547f8.mp3", "they are mostly English-speaking people living in the United States or Southeast Asia": "../listen-audio/e_brian_6850e767d998.mp3", "designing an alignment process that is fair, transparent": "../listen-audio/e_brian_3dc496bf3d3a.mp3", "has suitable accountability mechanisms in place": "../listen-audio/e_brian_d0ca28300bcb.mp3", "It is not only a matter of making the alignment process more participatory": "../listen-audio/e_brian_d368786c9bcc.mp3", "There are many stakeholders to consider": "../listen-audio/e_brian_58a4180e5457.mp3", "deployed and used by groups who endorse different values": "../listen-audio/e_brian_eacd5695a754.mp3", "train models that can be conditioned on the preferences of certain groups": "../listen-audio/e_brian_a4c7dec2ca7a.mp3", "Methodology. The behavior of our InstructGPT models is determined in part by the human feedback": "../listen-audio/e_brian_a4ad3e739b84.mp3", "this group is clearly not representative of the full spectrum of people": "../listen-audio/e_brian_4a024ee16926.mp3", "when generating text that disproportionately affects a minority group": "../listen-audio/e_brian_47f9204216b0.mp3", "Our models are neither fully aligned nor fully safe": "../listen-audio/e_brian_c9331b301146.mp3", "Alignment techniques are not a panacea for resolving safety issues": "../listen-audio/e_brian_31931aa8eb72.mp3", "without proper regulation": "../listen-audio/e_brian_dc41fd994b14.mp3", "increased centralization of power": "../listen-audio/e_brian_ce6edebaf00f.mp3", "this can come at the cost of reduced transparency": "../listen-audio/e_brian_3cae2488b455.mp3", "Some of the labeling tasks rely on value judgments": "../listen-audio/e_brian_bcc18f58e30a.mp3", "text that disproportionately affects a minority group": "../listen-audio/e_brian_b41e4d915333.mp3", "if the user requests a potentially harmful or dishonest response": "../listen-audio/e_brian_20ae2b6b6d7d.mp3", "which is only a proxy for what we want these models to do": "../listen-audio/e_brian_2c51d920dfe8.mp3", "alignment failures could lead to more severe consequences": "../listen-audio/e_brian_d9467c8e8ad4.mp3", "generate convincing misinformation, or hateful or abusive content": "../listen-audio/e_brian_cd9cd871ff18.mp3", "one tool in a broader safety ecosystem": "../listen-audio/e_brian_52773b92479f.mp3", "Aside from intentional misuse, there are many domains where large language models should be deployed only with great care": "../listen-audio/e_brian_c087403d1992.mp3", "high-stakes domains such as medical diagnoses": "../listen-audio/e_brian_0acf24bceb97.mp3", "determining eligibility for credit, employment, or housing": "../listen-audio/e_brian_f3d469abe653.mp3", "this excludes most people from access to cutting-edge ML technology": "../listen-audio/e_brian_1447c5e6ddc8.mp3", "excludes most people from access to cutting-edge ML technology": "../listen-audio/e_brian_6c2b56ccd0fe.mp3", "an organization to own the end-to-end infrastructure of model deployment": "../listen-audio/e_brian_bc7fe3f29e46.mp3", "monitoring for misuse and revoking access to those who misuse the system": "../listen-audio/e_brian_1af6d0fed563.mp3", "further decrease the models' propensity to generate toxic outputs": "../listen-audio/e_brian_92fa67dff01a.mp3", "it may be beneficial to use language models to generate toxic outputs as part of a data augmentation pipeline": "../listen-audio/e_brian_e822c358061d.mp3", "one could try constrained optimization approaches": "../listen-audio/e_brian_b6760025b6b4.mp3", "directly related to the steerability and controllability literature": "../listen-audio/e_brian_0b4ec0ec576c.mp3", "one could explore expert iteration": "../listen-audio/e_brian_05fa0f038929.mp3", "augment this data with synthetic instructions": "../listen-audio/e_brian_a32d54ed837b.mp3", "labelers to provide feedback to language models": "../listen-audio/e_brian_dbac08ca69ef.mp3", "designing interfaces for labelers to provide feedback": "../listen-audio/e_brian_fb9516c3236e.mp3", "making language models better at following user intentions also makes them easier to misuse": "../listen-audio/e_brian_e1474aadbae4.mp3", "it may be easier to use these models to generate convincing misinformation": "../listen-audio/e_brian_ab02dfeaf8c1.mp3", "particularly if these models are deployed in safety-critical situations": "../listen-audio/e_brian_93a83c517c16.mp3", "large language models should be deployed only with great care": "../listen-audio/e_brian_fa8527c39c82.mp3", "it becomes challenging to limit harmful applications": "../listen-audio/e_brian_32db0af69dfc.mp3", "If these models are open-sourced": "../listen-audio/e_brian_199303bccde9.mp3"}}, "en-US-AndrewNeural": {"w": {"explicit": "../listen-audio/w_andrew_explicit.mp3", "essential": "../listen-audio/w_andrew_essential.mp3", "promising": "../listen-audio/w_andrew_promising.mp3", "demonstration": "../listen-audio/w_andrew_demonstration.mp3", "supervised": "../listen-audio/w_andrew_supervised.mp3", "explicitly": "../listen-audio/w_andrew_explicitly.mp3", "distribution": "../listen-audio/w_andrew_distribution.mp3", "prevalence": "../listen-audio/w_andrew_prevalence.mp3", "generalization": "../listen-audio/w_andrew_generalization.mp3", "benchmark": "../listen-audio/w_andrew_benchmark.mp3", "nascent": "../listen-audio/w_andrew_nascent.mp3", "modest": "../listen-audio/w_andrew_modest.mp3", "sensitive": "../listen-audio/w_andrew_sensitive.mp3", "sufficient": "../listen-audio/w_andrew_sufficient.mp3", "magnitude": "../listen-audio/w_andrew_magnitude.mp3", "prohibitively": "../listen-audio/w_andrew_prohibitively.mp3", "empirical": "../listen-audio/w_andrew_empirical.mp3", "shuffle": "../listen-audio/w_andrew_shuffle.mp3", "fine-tuning": "../listen-audio/w_andrew_fine_tuning.mp3", "validation": "../listen-audio/w_andrew_validation.mp3", "entropy": "../listen-audio/w_andrew_entropy.mp3", "dialogue": "../listen-audio/w_andrew_dialogue.mp3", "diversity": "../listen-audio/w_andrew_diversity.mp3", "inherently": "../listen-audio/w_andrew_inherently.mp3", "arbitrary": "../listen-audio/w_andrew_arbitrary.mp3", "embedding": "../listen-audio/w_andrew_embedding.mp3", "mimic": "../listen-audio/w_andrew_mimic.mp3", "semantic": "../listen-audio/w_andrew_semantic.mp3", "overfitting": "../listen-audio/w_andrew_overfitting.mp3", "dropout": "../listen-audio/w_andrew_dropout.mp3", "surpass": "../listen-audio/w_andrew_surpass.mp3", "overfit": "../listen-audio/w_andrew_overfit.mp3"}}, "zh-CN-YunyangNeural": {"m": {"必不可少的": "../listen-audio/m_yunyang_91892e3daeaf.mp3", "明确地": "../listen-audio/m_yunyang_c5f90750dc59.mp3", "分布": "../listen-audio/m_yunyang_b2c9e43889d5.mp3", "模仿": "../listen-audio/m_yunyang_bddd8f74c5c7.mp3", "微调": "../listen-audio/m_yunyang_58fd75c1b689.mp3", "敏感的": "../listen-audio/m_yunyang_aacd4dfd6917.mp3", "足够的": "../listen-audio/m_yunyang_4654e6505aa1.mp3", "去重": "../listen-audio/m_yunyang_27bc6f5a520c.mp3", "限制": "../listen-audio/m_yunyang_df9c9706d4cb.mp3", "经验的，实证的": "../listen-audio/m_yunyang_26ce19f7140b.mp3", "衰减": "../listen-audio/m_yunyang_ab635eff4184.mp3", "验证": "../listen-audio/m_yunyang_cd8992b644e6.mp3", "熵": "../listen-audio/m_yunyang_0d4c9a70d8b1.mp3", "对话": "../listen-audio/m_yunyang_85936242fc9e.mp3", "多样性": "../listen-audio/m_yunyang_b7686fec801e.mp3", "泛化": "../listen-audio/m_yunyang_fb99b6ed20af.mp3", "约束，限制": "../listen-audio/m_yunyang_5d10dc719bc9.mp3", "任意的": "../listen-audio/m_yunyang_cd523d714616.mp3", "采用": "../listen-audio/m_yunyang_7b4eb56b0375.mp3", "嵌入": "../listen-audio/m_yunyang_6ac6e33876b4.mp3", "语义的": "../listen-audio/m_yunyang_77eaf7dfc7b0.mp3", "过拟合": "../listen-audio/m_yunyang_246329933358.mp3", "计算上": "../listen-audio/m_yunyang_ce8cb5559deb.mp3", "令人望而却步地": "../listen-audio/m_yunyang_d33a2aa711c8.mp3", "增强，扩充": "../listen-audio/m_yunyang_228773005a2e.mp3", "退化，下降": "../listen-audio/m_yunyang_9938003bddf1.mp3", "代理指标": "../listen-audio/m_yunyang_938ae5cf02bc.mp3", "优化": "../listen-audio/m_yunyang_aa84ec947f0a.mp3", "可扩展的": "../listen-audio/m_yunyang_2fbf536cb396.mp3", "迭代的": "../listen-audio/m_yunyang_0dad08ec4b48.mp3", "对数几率": "../listen-audio/m_yunyang_8371b28a5b47.mp3", "受约束的": "../listen-audio/m_yunyang_0b87815b3dbf.mp3", "监督的": "../listen-audio/m_yunyang_1e95e56b6a1b.mp3", "不稳定的": "../listen-audio/m_yunyang_942ce79a8c07.mp3", "增强": "../listen-audio/m_yunyang_9a5e272968e1.mp3", "无害的": "../listen-audio/m_yunyang_d96c7ad4ab76.mp3", "偏好": "../listen-audio/m_yunyang_43b9ff4c3d17.mp3", "减轻，缓解": "../listen-audio/m_yunyang_45023b519032.mp3", "缓解，减轻": "../listen-audio/m_yunyang_226bf3ca8149.mp3", "打乱": "../listen-audio/m_yunyang_9a94ab9bfd69.mp3", "前提": "../listen-audio/m_yunyang_a62d8a1a23e3.mp3", "适度的": "../listen-audio/m_yunyang_e8a906bff047.mp3", "对抗性的": "../listen-audio/m_yunyang_134cd3275f67.mp3", "基准测试": "../listen-audio/m_yunyang_416e8ee4e773.mp3", "预训练的": "../listen-audio/m_yunyang_294df294664d.mp3", "偏差，偏见": "../listen-audio/m_yunyang_d1b60b15f7a5.mp3", "有偏见的": "../listen-audio/m_yunyang_3bc6ecd139c8.mp3", "算法": "../listen-audio/m_yunyang_046a899ee7a6.mp3", "相关的": "../listen-audio/m_yunyang_df96859af810.mp3", "包含，涵盖": "../listen-audio/m_yunyang_2fbaadfb497c.mp3", "统计上地": "../listen-audio/m_yunyang_539c3e9528fb.mp3", "余弦": "../listen-audio/m_yunyang_8e1b7b495c69.mp3", "启发式地": "../listen-audio/m_yunyang_584bb37ab156.mp3", "合成的": "../listen-audio/m_yunyang_af40f8b793a0.mp3", "人口统计的": "../listen-audio/m_yunyang_d2dc88c4d077.mp3", "不成比例地": "../listen-audio/m_yunyang_c7399ca0ccc6.mp3", "强化": "../listen-audio/m_yunyang_4c4e41e10dd7.mp3", "标注者": "../listen-audio/m_yunyang_39d59e1d1b73.mp3", "部署": "../listen-audio/m_yunyang_a9f94dcd57ee.mp3", "真实性": "../listen-audio/m_yunyang_4bf272d3f3e1.mp3", "置信度": "../listen-audio/m_yunyang_8f3599b6a57e.mp3", "系数": "../listen-audio/m_yunyang_4d8e599dd03a.mp3", "超越": "../listen-audio/m_yunyang_946399475548.mp3", "效率": "../listen-audio/m_yunyang_3256142c2215.mp3", "反馈": "../listen-audio/m_yunyang_1d50fa5b3a01.mp3", "涵盖，包含": "../listen-audio/m_yunyang_0f8873622eca.mp3", "范围，光谱": "../listen-audio/m_yunyang_37c2951b6af6.mp3", "构成": "../listen-audio/m_yunyang_a2481795eb35.mp3", "滥用": "../listen-audio/m_yunyang_ccdc61ff3413.mp3", "虚假信息": "../listen-audio/m_yunyang_7d7a825332af.mp3", "问责制": "../listen-audio/m_yunyang_f49e582ab02b.mp3", "监管": "../listen-audio/m_yunyang_49078a4bd9d7.mp3", "故意的": "../listen-audio/m_yunyang_85a004c4c3c6.mp3", "基础设施": "../listen-audio/m_yunyang_1801d7de40cb.mp3", "透明度": "../listen-audio/m_yunyang_34dac4adbc96.mp3", "视角，观点": "../listen-audio/m_yunyang_abd535e4cd46.mp3", "有代表性的": "../listen-audio/m_yunyang_011e483434f8.mp3", "迭代": "../listen-audio/m_yunyang_baf8980c052c.mp3", "对抗性地": "../listen-audio/m_yunyang_59507bf73cfd.mp3", "禁止": "../listen-audio/m_yunyang_ff1fda9e47f0.mp3", "方法论": "../listen-audio/m_yunyang_0fdf24e96e50.mp3", "引导，自举": "../listen-audio/m_yunyang_17b945078a5a.mp3", "泛化能力": "../listen-audio/m_yunyang_f7dfc9879112.mp3", "对齐的，协调的": "../listen-audio/m_yunyang_ee6cd3b1495d.mp3", "内在地，固有地": "../listen-audio/m_yunyang_522d3cc1bd34.mp3", "途径，方法": "../listen-audio/m_yunyang_78100c544d61.mp3", "示范，演示": "../listen-audio/m_yunyang_74fb9de80727.mp3", "首选的，偏好的": "../listen-audio/m_yunyang_afa549522a93.mp3", "退化，回归": "../listen-audio/m_yunyang_1d592aaf1ed8.mp3", "有毒的，有害的": "../listen-audio/m_yunyang_eeae742ea70d.mp3", "有前途的，有希望的": "../listen-audio/m_yunyang_523ac01de6b2.mp3", "意图": "../listen-audio/m_yunyang_764aca4e4c7b.mp3", "不真实的": "../listen-audio/m_yunyang_40e250991e6f.mp3", "标注员": "../listen-audio/m_yunyang_39a5db5ecb32.mp3", "倒退，性能回退": "../listen-audio/m_yunyang_886240b5f016.mp3", "未对齐的，失调的": "../listen-audio/m_yunyang_704b7035cac2.mp3", "行为，表现": "../listen-audio/m_yunyang_160fa495c132.mp3", "捏造，编造": "../listen-audio/m_yunyang_d892e6ce01e5.mp3", "详细阐述": "../listen-audio/m_yunyang_93a96fdde42b.mp3", "承包商，合同工": "../listen-audio/m_yunyang_0db014e3186a.mp3", "示范，演示数据": "../listen-audio/m_yunyang_0d4a492eacbc.mp3", "真实性，诚实": "../listen-audio/m_yunyang_637e36f8c6e5.mp3", "性能退化": "../listen-audio/m_yunyang_72bfb399a468.mp3", "编译，汇编": "../listen-audio/m_yunyang_799afe6d4185.mp3", "无意的，非预期的": "../listen-audio/m_yunyang_fc810037eacc.mp3", "避免，防止": "../listen-audio/m_yunyang_e82686293f05.mp3", "依照，与…一致": "../listen-audio/m_yunyang_bd1fa4358631.mp3", "隐含的": "../listen-audio/m_yunyang_b73a7cbff87e.mp3", "误导": "../listen-audio/m_yunyang_28d0f021b0ff.mp3", "标准，判据": "../listen-audio/m_yunyang_c8a36fa109dd.mp3", "外包人员，承包商": "../listen-audio/m_yunyang_f7fda544b891.mp3", "妥协，损害": "../listen-audio/m_yunyang_cef7bcd77739.mp3", "汇编，合集": "../listen-audio/m_yunyang_7e26b97e31ff.mp3", "对齐，协调": "../listen-audio/m_yunyang_8ce16fbc37d5.mp3", "奖励": "../listen-audio/m_yunyang_c39a1ae0d705.mp3", "新生的，初期的": "../listen-audio/m_yunyang_48577575f579.mp3", "恶意地": "../listen-audio/m_yunyang_538a435a448d.mp3", "可控制的": "../listen-audio/m_yunyang_858a4c3dbb65.mp3", "退化的，变质的": "../listen-audio/m_yunyang_17d2f1e46646.mp3", "技术": "../listen-audio/m_yunyang_a95dd3e17941.mp3", "模拟的": "../listen-audio/m_yunyang_5867b47ebc9a.mp3", "摘要（任务）": "../listen-audio/m_yunyang_b3c770514f1b.mp3", "策略，政策": "../listen-audio/m_yunyang_27c54f72ff9a.mp3", "标量的": "../listen-audio/m_yunyang_21c4b5ab5e26.mp3", "迭代地": "../listen-audio/m_yunyang_ee56e71854cf.mp3", "比较，对比": "../listen-audio/m_yunyang_3f05a7f40a37.mp3", "示范数据": "../listen-audio/m_yunyang_12e36041ce86.mp3", "可识别的": "../listen-audio/m_yunyang_c39420aab38b.mp3", "汇编，编译": "../listen-audio/m_yunyang_9e129678686f.mp3", "生产环境": "../listen-audio/m_yunyang_173510b45572.mp3", "示例性的": "../listen-audio/m_yunyang_0a10f7644c6d.mp3", "优先考虑": "../listen-audio/m_yunyang_131220da2b4a.mp3", "供应商": "../listen-audio/m_yunyang_bab268d5468d.mp3", "冲突": "../listen-audio/m_yunyang_93190be9d6f9.mp3", "有争议的": "../listen-audio/m_yunyang_b091a4d0bbb3.mp3", "筛选，审查": "../listen-audio/m_yunyang_5a4f8487a617.mp3", "承包商": "../listen-audio/m_yunyang_4353a822df27.mp3", "标注者间的": "../listen-audio/m_yunyang_9271aafdf479.mp3", "合作": "../listen-audio/m_yunyang_e673449dfdd0.mp3", "丢弃法（正则化）": "../listen-audio/m_yunyang_844f0dc56374.mp3", "交叉熵": "../listen-audio/m_yunyang_bf08985d9d91.mp3", "KL 散度惩罚": "../listen-audio/m_yunyang_d5a6d4f0cf83.mp3", "量级，大小": "../listen-audio/m_yunyang_e34c42648d5d.mp3", "适应性强的": "../listen-audio/m_yunyang_d9989bc3d315.mp3", "诚实": "../listen-audio/m_yunyang_d7bb62059f52.mp3", "有帮助的": "../listen-audio/m_yunyang_c996d51cd935.mp3", "信息量": "../listen-audio/m_yunyang_b245b52cc924.mp3", "模棱两可的": "../listen-audio/m_yunyang_1c972a9c9d79.mp3", "分歧，差异": "../listen-audio/m_yunyang_293e77af5ec4.mp3", "幻觉（捏造信息）": "../listen-audio/m_yunyang_cb42e082b3cf.mp3", "李克特量表": "../listen-audio/m_yunyang_4ddef3586166.mp3", "胜率": "../listen-audio/m_yunyang_ec6b37f066bb.mp3", "幅度，量级": "../listen-audio/m_yunyang_fe66c92f49ec.mp3", "适当地": "../listen-audio/m_yunyang_2e985e0774c7.mp3", "流行率，普遍性": "../listen-audio/m_yunyang_ae099d1c7e1c.mp3", "折（交叉验证）": "../listen-audio/m_yunyang_efd15c1728ab.mp3", "显著程度": "../listen-audio/m_yunyang_d55ec478561b.mp3", "精心设计的": "../listen-audio/m_yunyang_d4558544f3d9.mp3", "有利地，好评地": "../listen-audio/m_yunyang_878c66d56db1.mp3", "具体的": "../listen-audio/m_yunyang_53666354b1e0.mp3", "恰当的": "../listen-audio/m_yunyang_435e4a8f941b.mp3", "明确的": "../listen-audio/m_yunyang_fd79e0fe0325.mp3", "可靠的": "../listen-audio/m_yunyang_19c5f10681ea.mp3", "恭敬的，有礼的": "../listen-audio/m_yunyang_2a74ed86a55f.mp3", "毒性": "../listen-audio/m_yunyang_b5ca6816c470.mp3", "倾向，习性": "../listen-audio/m_yunyang_f906f3a6637d.mp3", "刻板印象的": "../listen-audio/m_yunyang_c3cc8174eec8.mp3", "退化，降低": "../listen-audio/m_yunyang_4c5fc282d4d0.mp3", "认识论的": "../listen-audio/m_yunyang_29f3912c43f9.mp3", "谦逊": "../listen-audio/m_yunyang_919944627745.mp3", "模棱两可地说，闪烁其词": "../listen-audio/m_yunyang_ecd7375948e4.mp3", "落地，实际基础": "../listen-audio/m_yunyang_614bcb59b11b.mp3", "代价，税": "../listen-audio/m_yunyang_d6e9c632862a.mp3", "改进，打磨": "../listen-audio/m_yunyang_c09065a61d67.mp3", "抽象地": "../listen-audio/m_yunyang_48f3cfb7fb2e.mp3", "人口统计数据": "../listen-audio/m_yunyang_9634fa9673b2.mp3", "参与式的": "../listen-audio/m_yunyang_8b2c3785ac32.mp3", "利益相关者": "../listen-audio/m_yunyang_b922941fba4a.mp3", "认可，赞同": "../listen-audio/m_yunyang_ee1007120555.mp3", "以…为条件": "../listen-audio/m_yunyang_4c821ea3575e.mp3", "已部署的": "../listen-audio/m_yunyang_5b8b13850cd4.mp3", "万能药": "../listen-audio/m_yunyang_ba9b08e63d72.mp3", "集中化": "../listen-audio/m_yunyang_808c669c7e57.mp3", "判断": "../listen-audio/m_yunyang_e38bddc986ba.mp3", "少数群体": "../listen-audio/m_yunyang_dbda40d8b138.mp3", "不诚实的": "../listen-audio/m_yunyang_a45895eee107.mp3", "严重的": "../listen-audio/m_yunyang_8aef536a1514.mp3", "辱骂性的": "../listen-audio/m_yunyang_4ec1ee68cb0f.mp3", "生态系统": "../listen-audio/m_yunyang_170227cd3774.mp3", "诊断": "../listen-audio/m_yunyang_fd4bef54d47e.mp3", "资格": "../listen-audio/m_yunyang_ef89f71d20b6.mp3", "排除": "../listen-audio/m_yunyang_93bdf5f2709c.mp3", "尖端的": "../listen-audio/m_yunyang_bd5ccb142141.mp3", "撤销": "../listen-audio/m_yunyang_bd9fcf46b4e5.mp3", "倾向": "../listen-audio/m_yunyang_9eb288e03193.mp3", "可操纵性": "../listen-audio/m_yunyang_f87cfdc4b211.mp3", "专家迭代": "../listen-audio/m_yunyang_a08ca21908ba.mp3", "界面，接口": "../listen-audio/m_yunyang_6475e22de13c.mp3", "安全关键的": "../listen-audio/m_yunyang_400d2ae7ffb2.mp3", "开源的": "../listen-audio/m_yunyang_df9879954823.mp3", "法规，监管": "../listen-audio/m_yunyang_537427ebc5e4.mp3"}}, "zh-CN-YunjianNeural": {"m": {"必不可少的": "../listen-audio/m_yunjian_91892e3daeaf.mp3", "明确地": "../listen-audio/m_yunjian_c5f90750dc59.mp3", "分布": "../listen-audio/m_yunjian_b2c9e43889d5.mp3", "模仿": "../listen-audio/m_yunjian_bddd8f74c5c7.mp3", "微调": "../listen-audio/m_yunjian_58fd75c1b689.mp3", "敏感的": "../listen-audio/m_yunjian_aacd4dfd6917.mp3", "足够的": "../listen-audio/m_yunjian_4654e6505aa1.mp3", "去重": "../listen-audio/m_yunjian_27bc6f5a520c.mp3", "限制": "../listen-audio/m_yunjian_df9c9706d4cb.mp3", "经验的，实证的": "../listen-audio/m_yunjian_26ce19f7140b.mp3", "衰减": "../listen-audio/m_yunjian_ab635eff4184.mp3", "验证": "../listen-audio/m_yunjian_cd8992b644e6.mp3", "熵": "../listen-audio/m_yunjian_0d4c9a70d8b1.mp3", "对话": "../listen-audio/m_yunjian_85936242fc9e.mp3", "多样性": "../listen-audio/m_yunjian_b7686fec801e.mp3", "泛化": "../listen-audio/m_yunjian_fb99b6ed20af.mp3", "约束，限制": "../listen-audio/m_yunjian_5d10dc719bc9.mp3", "任意的": "../listen-audio/m_yunjian_cd523d714616.mp3", "采用": "../listen-audio/m_yunjian_7b4eb56b0375.mp3", "嵌入": "../listen-audio/m_yunjian_6ac6e33876b4.mp3", "语义的": "../listen-audio/m_yunjian_77eaf7dfc7b0.mp3", "过拟合": "../listen-audio/m_yunjian_246329933358.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const ITEMS=[{"w": "aligned", "ipa": "əˈlaɪnd", "pos": "adj.", "m": "对齐的，协调的", "ex": "these models are not aligned with their users", "lv": "考博", "sec": "Abstract"}, {"w": "inherently", "ipa": "ɪnˈhɪrəntli", "pos": "adv.", "m": "内在地，固有地", "ex": "Making language models bigger does not inherently make them better at following a user's intent", "lv": "六级", "sec": "Abstract"}, {"w": "avenue", "ipa": "ˈævənjuː", "pos": "n.", "m": "途径，方法", "ex": "we show an avenue for aligning language models with user intent", "lv": "四级", "sec": "Abstract"}, {"w": "fine-tuning", "ipa": "faɪnˈtjuːnɪŋ", "pos": "n.", "m": "微调", "ex": "by fine-tuning with human feedback", "lv": "考博", "sec": "Abstract"}, {"w": "demonstration", "ipa": "ˌdemənˈstreɪʃn", "pos": "n.", "m": "示范，演示", "ex": "we collect a dataset of labeler demonstrations of the desired model behavior", "lv": "六级", "sec": "Abstract"}, {"w": "reinforcement", "ipa": "ˌriːɪnˈfɔːrsmənt", "pos": "n.", "m": "强化", "ex": "using reinforcement learning from human feedback", "lv": "考博", "sec": "Abstract"}, {"w": "preferred", "ipa": "prɪˈfɜːrd", "pos": "adj.", "m": "首选的，偏好的", "ex": "outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3", "lv": "考博", "sec": "Abstract"}, {"w": "regressions", "ipa": "rɪˈɡreʃnz", "pos": "n.", "m": "退化，回归", "ex": "having minimal performance regressions on public NLP datasets", "lv": "考博", "sec": "Abstract"}, {"w": "toxic", "ipa": "ˈtɑːksɪk", "pos": "adj.", "m": "有毒的，有害的", "ex": "large language models can generate outputs that are untruthful, toxic, or simply not helpful", "lv": "六级", "sec": "Abstract"}, {"w": "promising", "ipa": "ˈprɑːmɪsɪŋ", "pos": "adj.", "m": "有前途的，有希望的", "ex": "fine-tuning with human feedback is a promising direction", "lv": "四级", "sec": "Abstract"}, {"w": "intent", "ipa": "ɪnˈtent", "pos": "n.", "m": "意图", "ex": "better at following a user's intent", "lv": "六级", "sec": "Abstract"}, {"w": "untruthful", "ipa": "ʌnˈtruːθfl", "pos": "adj.", "m": "不真实的", "ex": "large language models can generate outputs that are untruthful, toxic, or simply not helpful", "lv": "考博", "sec": "Abstract"}, {"w": "labeler", "ipa": "ˈleɪbələr", "pos": "n.", "m": "标注员", "ex": "Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API", "lv": "考博", "sec": "Abstract"}, {"w": "regression", "ipa": "rɪˈɡreʃn", "pos": "n.", "m": "倒退，性能回退", "ex": "having minimal performance regressions on public NLP datasets", "lv": "考博", "sec": "Abstract"}, {"w": "misaligned", "ipa": "ˌmɪsəˈlaɪnd", "pos": "adj.", "m": "未对齐的，失调的", "ex": "the language modeling objective is misaligned", "lv": "考博", "sec": "Intro"}, {"w": "behaviors", "ipa": "bɪˈheɪvjərz", "pos": "n.", "m": "行为，表现", "ex": "these models often express unintended behaviors", "lv": "四级", "sec": "Intro"}, {"w": "fabricate", "ipa": "ˈfæbrɪkeɪt", "pos": "v.", "m": "捏造，编造", "ex": "they shouldn't fabricate information or mislead the user", "lv": "六级", "sec": "Intro"}, {"w": "harmless", "ipa": "ˈhɑːrmləs", "pos": "adj.", "m": "无害的", "ex": "they should not cause physical, psychological, or social harm", "lv": "六级", "sec": "Intro"}, {"w": "biased", "ipa": "ˈbaɪəst", "pos": "adj.", "m": "有偏见的", "ex": "not being biased, toxic, or otherwise harmful", "lv": "六级", "sec": "Intro"}, {"w": "elaborate", "ipa": "ɪˈlæbəreɪt", "pos": "v.", "m": "详细阐述", "ex": "We elaborate on the evaluation of these criteria in Section 3.6", "lv": "四级", "sec": "Intro"}, {"w": "encompasses", "ipa": "ɪnˈkʌmpəsɪz", "pos": "v.", "m": "包含，涵盖", "ex": "This encompasses both explicit intentions and implicit intentions", "lv": "考博", "sec": "Intro"}, {"w": "contractors", "ipa": "kənˈtræktərz", "pos": "n.", "m": "承包商，合同工", "ex": "we first hire a team of 40 contractors to label our data", "lv": "考博", "sec": "Intro"}, {"w": "demonstrations", "ipa": "ˌdemənˈstreɪʃnz", "pos": "n.", "m": "示范，演示数据", "ex": "a dataset of human-written demonstrations of the desired output behavior", "lv": "六级", "sec": "Intro"}, {"w": "algorithm", "ipa": "ˈælɡərɪðəm", "pos": "n.", "m": "算法", "ex": "using the PPO algorithm", "lv": "考博", "sec": "Intro"}, {"w": "deployed", "ipa": "dɪˈplɔɪd", "pos": "v.", "m": "部署", "ex": "especially important for language models that are deployed", "lv": "六级", "sec": "Intro"}, {"w": "constraints", "ipa": "kənˈstreɪnts", "pos": "n.", "m": "约束，限制", "ex": "more reliably follow explicit constraints in the instruction", "lv": "六级", "sec": "Intro"}, {"w": "truthfulness", "ipa": "ˈtruːθflnəs", "pos": "n.", "m": "真实性，诚实", "ex": "InstructGPT models show improvements in truthfulness over GPT-3", "lv": "考博", "sec": "Intro"}, {"w": "regressions", "ipa": "rɪˈɡreʃnz", "pos": "n.", "m": "性能退化", "ex": "we observe performance regressions compared to GPT-3", "lv": "考博", "sec": "Intro"}, {"w": "compiling", "ipa": "kəmˈpaɪlɪŋ", "pos": "v.", "m": "编译，汇编", "ex": "two different compilations of public NLP tasks", "lv": "四级", "sec": "Intro"}, {"w": "unintended", "ipa": "ˌʌnɪnˈtendɪd", "pos": "adj.", "m": "无意的，非预期的", "ex": "these models often express unintended behaviors such as making up facts", "lv": "四级", "sec": "Intro"}, {"w": "avert", "ipa": "əˈvɜːrt", "pos": "v.", "m": "避免，防止", "ex": "Averting these unintended behaviors is especially important", "lv": "六级", "sec": "Intro"}, {"w": "in accordance with", "ipa": "ɪn əˈkɔːrdns wɪð", "pos": "phr.", "m": "依照，与…一致", "ex": "training them to act in accordance with the user's intention", "lv": "考博", "sec": "Intro"}, {"w": "encompass", "ipa": "ɪnˈkʌmpəs", "pos": "v.", "m": "涵盖，包含", "ex": "This encompasses both explicit intentions such as following instructions and implicit intentions", "lv": "考博", "sec": "Intro"}, {"w": "implicit", "ipa": "ɪmˈplɪsɪt", "pos": "adj.", "m": "隐含的", "ex": "implicit intentions such as staying truthful", "lv": "六级", "sec": "Intro"}, {"w": "mislead", "ipa": "ˌmɪsˈliːd", "pos": "v.", "m": "误导", "ex": "they shouldn't fabricate information or mislead the user", "lv": "四级", "sec": "Intro"}, {"w": "criterion", "ipa": "kraɪˈtɪriən", "pos": "n.", "m": "标准，判据", "ex": "We elaborate on the evaluation of these criteria in Section 3.6", "lv": "六级", "sec": "Intro"}, {"w": "contractor", "ipa": "ˈkɑːntræktər", "pos": "n.", "m": "外包人员，承包商", "ex": "We ﬁrst hire a team of 40 contractors to label our data", "lv": "考博", "sec": "Intro"}, {"w": "compromise", "ipa": "ˈkɑːmprəmaɪz", "pos": "v.", "m": "妥协，损害", "ex": "without compromising labeler preference scores", "lv": "四级", "sec": "Intro"}, {"w": "compilation", "ipa": "ˌkɑːmpəˈlɪʃn", "pos": "n.", "m": "汇编，合集", "ex": "two different compilations of public NLP tasks", "lv": "考博", "sec": "Intro"}, {"w": "alignment", "ipa": "əˈlaɪnmənt", "pos": "n.", "m": "对齐，协调", "ex": "Research on alignment and learning from human feedback", "lv": "六级", "sec": "Related"}, {"w": "reward", "ipa": "rɪˈwɔːrd", "pos": "n.", "m": "奖励", "ex": "using human feedback as a reward in domains such as dialogue", "lv": "四级", "sec": "Related"}, {"w": "dialogue", "ipa": "ˈdaɪəlɑːɡ", "pos": "n.", "m": "对话", "ex": "domains such as dialogue, translation, semantic parsing", "lv": "考博", "sec": "Related"}, {"w": "semantic", "ipa": "sɪˈmæntɪk", "pos": "adj.", "m": "语义的", "ex": "semantic parsing, story generation, review generation", "lv": "考博", "sec": "Related"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "增强，扩充", "ex": "data augmentation, null space projection", "lv": "考博", "sec": "Related"}, {"w": "nascent", "ipa": "ˈnæsnt", "pos": "adj.", "m": "新生的，初期的", "ex": "There is a nascent but growing field that aims to build benchmarks", "lv": "考博", "sec": "Related"}, {"w": "maliciously", "ipa": "məˈlɪʃəsli", "pos": "adv.", "m": "恶意地", "ex": "generate misinformation, and be used maliciously", "lv": "六级", "sec": "Related"}, {"w": "mitigate", "ipa": "ˈmɪtɪɡeɪt", "pos": "v.", "m": "减轻，缓解", "ex": "A goal of modifying the behavior is to mitigate the harms", "lv": "考博", "sec": "Related"}, {"w": "controllable", "ipa": "kənˈtroʊləbl", "pos": "adj.", "m": "可控制的", "ex": "steerability and controllability literature", "lv": "考博", "sec": "Related"}, {"w": "degenerate", "ipa": "dɪˈdʒenərət", "pos": "adj.", "m": "退化的，变质的", "ex": "generate very short or degenerate responses", "lv": "六级", "sec": "Related"}, {"w": "technique", "ipa": "tekˈniːk", "pos": "n.", "m": "技术", "ex": "We build on previous techniques to align models with human intentions", "lv": "四级", "sec": "Related"}, {"w": "simulated", "ipa": "ˈsɪmjuleɪtɪd", "pos": "adj.", "m": "模拟的", "ex": "Originally developed for training simple robots in simulated environments and Atari games", "lv": "考博", "sec": "Related"}, {"w": "summarization", "ipa": "ˌsʌmərəˈzeɪʃn", "pos": "n.", "m": "摘要（任务）", "ex": "it has recently been applied to ﬁne-tuning language models to summarize text", "lv": "考博", "sec": "Related"}, {"w": "methodology", "ipa": "ˌmeθəˈdɑːlədʒi", "pos": "n.", "m": "方法论", "ex": "Our methodology follows that of Ziegler et al.", "lv": "考博", "sec": "Method"}, {"w": "supervised", "ipa": "ˈsuːpərvaɪzd", "pos": "adj.", "m": "监督的", "ex": "fine-tune a pretrained GPT-3 model on this data using supervised learning", "lv": "考博", "sec": "Method"}, {"w": "policy", "ipa": "ˈpɑːləsi", "pos": "n.", "m": "策略，政策", "ex": "Collect demonstration data, and train a supervised policy", "lv": "四级", "sec": "Method"}, {"w": "scalar", "ipa": "ˈskeɪlər", "pos": "adj.", "m": "标量的", "ex": "it produces a scalar reward", "lv": "六级", "sec": "Method"}, {"w": "optimize", "ipa": "ˈɑːptɪmaɪz", "pos": "v.", "m": "优化", "ex": "We fine-tune the supervised policy to optimize this reward", "lv": "考博", "sec": "Method"}, {"w": "iteratively", "ipa": "ˈɪtəreɪtɪvli", "pos": "adv.", "m": "迭代地", "ex": "Steps 2 and 3 can be iterated continuously", "lv": "考博", "sec": "Method"}, {"w": "pretrained", "ipa": "priːˈtreɪnd", "pos": "adj.", "m": "预训练的", "ex": "We start with a pretrained language model", "lv": "考博", "sec": "Method"}, {"w": "comparisons", "ipa": "kəmˈpærɪsənz", "pos": "n.", "m": "比较，对比", "ex": "We collect a dataset of comparisons between model outputs", "lv": "四级", "sec": "Method"}, {"w": "demonstrations", "ipa": "ˌdemənˈstreɪʃnz", "pos": "n.", "m": "示范数据", "ex": "labelers provide demonstrations of the desired behavior", "lv": "六级", "sec": "Method"}, {"w": "distribution", "ipa": "ˌdɪstrɪˈbjuːʃn", "pos": "n.", "m": "分布", "ex": "a distribution of prompts on which we want our model to produce aligned outputs", "lv": "四级", "sec": "Method"}, {"w": "iterate", "ipa": "ˈɪtəreɪt", "pos": "v.", "m": "迭代", "ex": "Steps 2 and 3 can be iterated continuously", "lv": "考博", "sec": "Method"}, {"w": "deduplicate", "ipa": "diːˈdjuːplɪkeɪt", "pos": "v.", "m": "去重", "ex": "We heuristically deduplicate prompts by checking for prompts that share a long common prefix", "lv": "考博", "sec": "Dataset"}, {"w": "identifiable", "ipa": "aɪˈdentɪfaɪəbl", "pos": "adj.", "m": "可识别的", "ex": "filter all prompts in the training split for personally identifiable information", "lv": "考博", "sec": "Dataset"}, {"w": "bootstrap", "ipa": "ˈbuːtstræp", "pos": "v.", "m": "引导，自举", "ex": "we needed an initial source of instruction-like prompts to bootstrap the process", "lv": "考博", "sec": "Dataset"}, {"w": "diversity", "ipa": "daɪˈvɜːrsəti", "pos": "n.", "m": "多样性", "ex": "ensuring the tasks had sufficient diversity", "lv": "四级", "sec": "Dataset"}, {"w": "compilations", "ipa": "ˌkɑːmpəˈleɪʃnz", "pos": "n.", "m": "汇编，编译", "ex": "two different compilations of public NLP tasks", "lv": "考博", "sec": "Dataset"}, {"w": "prohibited", "ipa": "prəˈhɪbɪtɪd", "pos": "v.", "m": "禁止", "ex": "prompts containing PII", "lv": "四级", "sec": "Dataset"}, {"w": "validation", "ipa": "ˌvælɪˈdeɪʃn", "pos": "n.", "m": "验证", "ex": "we create our train, validation, and test splits based on user ID", "lv": "六级", "sec": "Dataset"}, {"w": "production", "ipa": "prəˈdʌkʃn", "pos": "n.", "m": "生产环境", "ex": "we do not use data from customers using the API in production", "lv": "四级", "sec": "Dataset"}, {"w": "bias", "ipa": "ˈbaɪəs", "pos": "n.", "m": "偏差，偏见", "ex": "We normalize the reward model using a bias", "lv": "六级", "sec": "Dataset"}, {"w": "heuristically", "ipa": "hjʊˈrɪstɪkli", "pos": "adv.", "m": "启发式地", "ex": "We heuristically deduplicate prompts by checking for prompts that share a long common preﬁx", "lv": "考博", "sec": "Dataset"}, {"w": "sensitive", "ipa": "ˈsensətɪv", "pos": "adj.", "m": "敏感的", "ex": "To avoid the models learning potentially sensitive customer details", "lv": "四级", "sec": "Dataset"}, {"w": "arbitrary", "ipa": "ˈɑːrbətreri", "pos": "adj.", "m": "任意的", "ex": "We simply ask the labelers to come up with an arbitrary task", "lv": "四级", "sec": "Dataset"}, {"w": "sufficient", "ipa": "səˈfɪʃnt", "pos": "adj.", "m": "足够的", "ex": "while ensuring the tasks had sufﬁcient diversity", "lv": "四级", "sec": "Dataset"}, {"w": "illustrative", "ipa": "ˈɪləstreɪtɪv", "pos": "adj.", "m": "示例性的", "ex": "We also show some illustrative prompts written by researchers", "lv": "考博", "sec": "Dataset"}, {"w": "mimic", "ipa": "ˈmɪmɪk", "pos": "v.", "m": "模仿", "ex": "prompts written by researchers to mimic the kinds of prompts submitted", "lv": "六级", "sec": "Dataset"}, {"w": "prioritize", "ipa": "praɪˈɔːrətaɪz", "pos": "v.", "m": "优先考虑", "ex": "During training we prioritize helpfulness to the user", "lv": "六级", "sec": "Dataset"}, {"w": "vendor", "ipa": "ˈvendər", "pos": "n.", "m": "供应商", "ex": "These labelers are sourced from the same vendors", "lv": "六级", "sec": "Dataset"}, {"w": "annotator", "ipa": "ˈænəteɪtər", "pos": "n.", "m": "标注者", "ex": "we ﬁnd that inter-annotator agreement rates are quite high", "lv": "考博", "sec": "Dataset"}, {"w": "conflict", "ipa": "ˈkɑːnflɪkt", "pos": "n./v.", "m": "冲突", "ex": "our alignment criteria may come into conﬂict", "lv": "四级", "sec": "Dataset"}, {"w": "demographic", "ipa": "ˌdeməˈɡræfɪk", "pos": "adj.", "m": "人口统计的", "ex": "sensitive to the preferences of different demographic groups", "lv": "考博", "sec": "Tasks"}, {"w": "controversial", "ipa": "ˌkɑːntrəˈvɜːrʃl", "pos": "adj.", "m": "有争议的", "ex": "can occasionally include controversial and sensitive topics", "lv": "四级", "sec": "Tasks"}, {"w": "screening", "ipa": "ˈskriːnɪŋ", "pos": "n.", "m": "筛选，审查", "ex": "based on their performance on a screening test", "lv": "四级", "sec": "Tasks"}, {"w": "contractors", "ipa": "kənˈtræktərz", "pos": "n.", "m": "承包商", "ex": "we hired a team of about 40 contractors", "lv": "考博", "sec": "Tasks"}, {"w": "inter-annotator", "ipa": "ˌɪntərˈænəteɪtər", "pos": "adj.", "m": "标注者间的", "ex": "inter-annotator agreement rates are quite high", "lv": "考博", "sec": "Tasks"}, {"w": "generalization", "ipa": "ˌdʒenrələˈzeɪʃn", "pos": "n.", "m": "泛化", "ex": "to see how well our model generalizes to the preferences of other labelers", "lv": "四级", "sec": "Tasks"}, {"w": "conﬂict", "ipa": "ˈkɑːnflɪkt", "pos": "n.", "m": "冲突", "ex": "our alignment criteria may come into conflict", "lv": "考博", "sec": "Tasks"}, {"w": "collaborate", "ipa": "kəˈlæbəreɪt", "pos": "v.", "m": "合作", "ex": "we collaborate closely with labelers over the course of the project", "lv": "六级", "sec": "Tasks"}, {"w": "dropout", "ipa": "ˈdrɑːpɑːt", "pos": "n.", "m": "丢弃法（正则化）", "ex": "residual dropout of 0.2", "lv": "四级", "sec": "Models"}, {"w": "overfitting", "ipa": "ˌoʊvərˈfɪtɪŋ", "pos": "n.", "m": "过拟合", "ex": "we find that our SFT models overfit on validation loss after 1 epoch", "lv": "考博", "sec": "Models"}, {"w": "cosine", "ipa": "ˈkoʊsaɪn", "pos": "n.", "m": "余弦", "ex": "using a cosine learning rate decay", "lv": "考博", "sec": "Models"}, {"w": "embedding", "ipa": "ɪmˈbedɪŋ", "pos": "n.", "m": "嵌入", "ex": "Starting from the SFT model with the final unembedding layer removed", "lv": "考博", "sec": "Models"}, {"w": "cross-entropy", "ipa": "krɔːs ˈentrəpi", "pos": "n.", "m": "交叉熵", "ex": "They use a cross-entropy loss", "lv": "考博", "sec": "Models"}, {"w": "logits", "ipa": "ˈlɑːɡɪts", "pos": "n.", "m": "对数几率", "ex": "the difference in rewards represents the log odds", "lv": "考博", "sec": "Models"}, {"w": "coefﬁcient", "ipa": "ˌkoʊɪˈfɪʃnt", "pos": "n.", "m": "系数", "ex": "The KL reward coefficient, β, and the pretraining loss coefficient, γ", "lv": "考博", "sec": "Models"}, {"w": "KL penalty", "ipa": "ˌkeɪˈel ˈpenəlti", "pos": "n.", "m": "KL 散度惩罚", "ex": "we add a per-token KL penalty from the SFT model", "lv": "考博", "sec": "Models"}, {"w": "conﬁdence", "ipa": "ˈkɑːnfɪdəns", "pos": "n.", "m": "置信度", "ex": "Error bars throughout the paper are 95% confidence intervals", "lv": "考博", "sec": "Models"}, {"w": "magnitude", "ipa": "ˈmæɡnɪtuːd", "pos": "n.", "m": "量级，大小", "ex": "To illustrate the magnitude of our gains", "lv": "六级", "sec": "Models"}, {"w": "adaptable", "ipa": "əˈdæptəbl", "pos": "adj.", "m": "适应性强的", "ex": "trained on a broad distribution of Internet data and are adaptable to a wide range of downstream tasks", "lv": "考博", "sec": "Models"}, {"w": "decay", "ipa": "dɪˈkeɪ", "pos": "n.", "m": "衰减", "ex": "using a cosine learning rate decay", "lv": "四级", "sec": "Models"}, {"w": "unstable", "ipa": "ˌʌnˈsteɪbl", "pos": "adj.", "m": "不稳定的", "ex": "we found that 175B RM training could be unstable", "lv": "六级", "sec": "Models"}, {"w": "correlated", "ipa": "ˈkɔːrəleɪtɪd", "pos": "adj.", "m": "相关的", "ex": "Since comparisons are very correlated within each labeling task", "lv": "考博", "sec": "Models"}, {"w": "shuffle", "ipa": "ˈʃʌfl", "pos": "v.", "m": "打乱", "ex": "if we simply shufﬂe the comparisons into one dataset", "lv": "考博", "sec": "Models"}, {"w": "computationally", "ipa": "ˌkɑːmpjuˈteɪʃənəli", "pos": "adv.", "m": "计算上", "ex": "This is much more computationally efﬁcient", "lv": "考博", "sec": "Models"}, {"w": "overfit", "ipa": "ˌoʊvərˈfɪt", "pos": "v.", "m": "过拟合", "ex": "a single pass over the dataset caused the reward model to overﬁt", "lv": "考博", "sec": "Models"}, {"w": "honesty", "ipa": "ˈɑːnsti", "pos": "n.", "m": "诚实", "ex": "honest (they shouldn't fabricate information)", "lv": "四级", "sec": "Eval"}, {"w": "helpful", "ipa": "ˈhelpfl", "pos": "adj.", "m": "有帮助的", "ex": "helpful (they should help the user solve their task)", "lv": "四级", "sec": "Eval"}, {"w": "truthfulness", "ipa": "ˈtruːθflnəs", "pos": "n.", "m": "真实性", "ex": "we measure truthfulness—whether the model's statements about the world are true", "lv": "考博", "sec": "Eval"}, {"w": "informativeness", "ipa": "ˌɪnfɔːrˈmætɪvnəs", "pos": "n.", "m": "信息量", "ex": "generating truthful and informative outputs", "lv": "考博", "sec": "Eval"}, {"w": "ambiguous", "ipa": "æmˈbɪɡjuəs", "pos": "adj.", "m": "模棱两可的", "ex": "a given prompt's intention can be unclear or ambiguous", "lv": "六级", "sec": "Eval"}, {"w": "divergence", "ipa": "daɪˈvɜːrdʒəns", "pos": "n.", "m": "分歧，差异", "ex": "there could be a divergence between what a user actually intended", "lv": "考博", "sec": "Eval"}, {"w": "adversarially", "ipa": "ˌædvərˈseriəli", "pos": "adv.", "m": "对抗性地", "ex": "prompts that were not adversarially selected against GPT-3", "lv": "考博", "sec": "Eval"}, {"w": "benchmark", "ipa": "ˈbentʃmɑːrk", "pos": "n.", "m": "基准测试", "ex": "using the TruthfulQA benchmark", "lv": "考博", "sec": "Eval"}, {"w": "hallucination", "ipa": "həˌluːsɪˈneɪʃn", "pos": "n.", "m": "幻觉（捏造信息）", "ex": "a 21% vs. 41% hallucination rate", "lv": "考博", "sec": "Eval"}, {"w": "likert", "ipa": "ˈlaɪkərt", "pos": "n.", "m": "李克特量表", "ex": "on a 1-7 Likert scale", "lv": "考博", "sec": "Eval"}, {"w": "winrate", "ipa": "ˈwɪnreɪt", "pos": "n.", "m": "胜率", "ex": "measured by winrate against the 175B SFT model", "lv": "考博", "sec": "API Results"}, {"w": "magnitude", "ipa": "ˈmæɡnɪtuːd", "pos": "n.", "m": "幅度，量级", "ex": "To illustrate the magnitude of our gains", "lv": "六级", "sec": "API Results"}, {"w": "appropriately", "ipa": "əˈproʊpriətli", "pos": "adv.", "m": "适当地", "ex": "InstructGPT outputs are more appropriate in the context of a customer assistant", "lv": "四级", "sec": "API Results"}, {"w": "prevalence", "ipa": "ˈprevələns", "pos": "n.", "m": "流行率，普遍性", "ex": "these results are collapsed across model sizes", "lv": "六级", "sec": "API Results"}, {"w": "statistically", "ipa": "stəˈtɪstɪkli", "pos": "adv.", "m": "统计上地", "ex": "categories occur too infrequently to obtain statistically significant differences", "lv": "四级", "sec": "API Results"}, {"w": "generalization", "ipa": "ˌdʒenrələˈzeɪʃn", "pos": "n.", "m": "泛化能力", "ex": "Our models generalize to the preferences of held-out labelers", "lv": "四级", "sec": "API Results"}, {"w": "fold", "ipa": "foʊld", "pos": "n.", "m": "折（交叉验证）", "ex": "5-fold cross validation", "lv": "四级", "sec": "API Results"}, {"w": "magnitude", "ipa": "ˈmæɡnɪtuːd", "pos": "n.", "m": "显著程度", "ex": "Outputs from our 175B InstructGPT are preferred 85 ± 3% of the time", "lv": "六级", "sec": "API Results"}, {"w": "well-crafted", "ipa": "ˌwel ˈkræftɪd", "pos": "adj.", "m": "精心设计的", "ex": "one can obtain signiﬁcant step-size improvements by using a well-crafted few-shot prompt", "lv": "考博", "sec": "API Results"}, {"w": "favorably", "ipa": "ˈfeɪvərəbli", "pos": "adv.", "m": "有利地，好评地", "ex": "labelers also rate InstructGPT outputs favorably along several more concrete axes", "lv": "考博", "sec": "API Results"}, {"w": "concrete", "ipa": "ˈkɑːnkriːt", "pos": "adj.", "m": "具体的", "ex": "along several more concrete axes", "lv": "四级", "sec": "API Results"}, {"w": "appropriate", "ipa": "əˈproʊpriət", "pos": "adj.", "m": "恰当的", "ex": "InstructGPT outputs are more appropriate in the context of a customer assistant", "lv": "四级", "sec": "API Results"}, {"w": "explicit", "ipa": "ɪkˈsplɪsɪt", "pos": "adj.", "m": "明确的", "ex": "more often follow explicit constraints deﬁned in the instruction", "lv": "六级", "sec": "API Results"}, {"w": "reliable", "ipa": "rɪˈlaɪəbl", "pos": "adj.", "m": "可靠的", "ex": "InstructGPT models are more reliable and easier to control than GPT-3", "lv": "四级", "sec": "API Results"}, {"w": "respectful", "ipa": "rɪˈspektfl", "pos": "adj.", "m": "恭敬的，有礼的", "ex": "InstructGPT models generate about 25% fewer toxic outputs when prompted to be respectful", "lv": "四级", "sec": "API Results"}, {"w": "toxicity", "ipa": "tɑːkˈsɪsəti", "pos": "n.", "m": "毒性", "ex": "InstructGPT shows small improvements in toxicity over GPT-3", "lv": "考博", "sec": "NLP Results"}, {"w": "propensity", "ipa": "prəˈpensəti", "pos": "n.", "m": "倾向，习性", "ex": "the model's propensity to generate biased speech", "lv": "考博", "sec": "NLP Results"}, {"w": "entropy", "ipa": "ˈentrəpi", "pos": "n.", "m": "熵", "ex": "the entropy (in bits) of the associated binary probability distributions", "lv": "考博", "sec": "NLP Results"}, {"w": "stereotypical", "ipa": "ˌsteriəˈtɪpɪkl", "pos": "adj.", "m": "刻板印象的", "ex": "regardless of whether or not their outputs exhibit stereotypical behavior", "lv": "考博", "sec": "NLP Results"}, {"w": "mitigate", "ipa": "ˈmɪtɪɡeɪt", "pos": "v.", "m": "缓解，减轻", "ex": "We can minimize performance regressions by modifying our RLHF fine-tuning procedure", "lv": "考博", "sec": "NLP Results"}, {"w": "degradation", "ipa": "ˌdeɡrəˈdeɪʃn", "pos": "n.", "m": "退化，降低", "ex": "performance degradations introduced by our fine-tuning", "lv": "六级", "sec": "NLP Results"}, {"w": "surpass", "ipa": "sərˈpæs", "pos": "v.", "m": "超越", "ex": "even surpasses GPT-3 on HellaSwag", "lv": "四级", "sec": "NLP Results"}, {"w": "perspective", "ipa": "pərˈspektɪv", "pos": "n.", "m": "视角，观点", "ex": "we run model samples through the Perspective API", "lv": "四级", "sec": "NLP Results"}, {"w": "generalization", "ipa": "ˌdʒenrələˈzeɪʃn", "pos": "n.", "m": "泛化", "ex": "InstructGPT shows promising generalization to instructions outside of the RLHF fine-tuning distribution", "lv": "四级", "sec": "Qualitative"}, {"w": "premise", "ipa": "ˈpremɪs", "pos": "n.", "m": "前提", "ex": "when given an instruction with a false premise", "lv": "六级", "sec": "Qualitative"}, {"w": "epistemic", "ipa": "ˌepɪˈstemɪk", "pos": "adj.", "m": "认识论的", "ex": "we instruct labelers to reward epistemic humility", "lv": "考博", "sec": "Qualitative"}, {"w": "humility", "ipa": "hjuːˈmɪləti", "pos": "n.", "m": "谦逊", "ex": "reward epistemic humility", "lv": "考博", "sec": "Qualitative"}, {"w": "hedge", "ipa": "hedʒ", "pos": "v.", "m": "模棱两可地说，闪烁其词", "ex": "the model can overly hedge", "lv": "四级", "sec": "Qualitative"}, {"w": "adversarial", "ipa": "ˌædvərˈseriəl", "pos": "adj.", "m": "对抗性的", "ex": "could be dramatically reduced with adversarial data collection", "lv": "考博", "sec": "Qualitative"}, {"w": "explicitly", "ipa": "ɪkˈsplɪsɪtli", "pos": "adv.", "m": "明确地", "ex": "when explicitly prompted to produce a toxic output", "lv": "四级", "sec": "Qualitative"}, {"w": "degrades", "ipa": "dɪˈɡreɪdz", "pos": "v.", "m": "退化，下降", "ex": "the model's performance degrades when instructions contain multiple explicit constraints", "lv": "六级", "sec": "Qualitative"}, {"w": "scalable", "ipa": "ˈskeɪləbl", "pos": "adj.", "m": "可扩展的", "ex": "we seek general and scalable methods that work for future AI systems", "lv": "考博", "sec": "Alignment"}, {"w": "iterative", "ipa": "ˈɪtəreɪtɪv", "pos": "adj.", "m": "迭代的", "ex": "Our approach to alignment research is iterative", "lv": "考博", "sec": "Alignment"}, {"w": "empirical", "ipa": "ɪmˈpɪrɪkl", "pos": "adj.", "m": "经验的，实证的", "ex": "our approach provides us with a clear empirical feedback loop", "lv": "六级", "sec": "Alignment"}, {"w": "prohibitively", "ipa": "prəˈhɪbɪtɪvli", "pos": "adv.", "m": "令人望而却步地", "ex": "it's prohibitively expensive to have humans supervise models on every task", "lv": "四级", "sec": "Alignment"}, {"w": "degradations", "ipa": "ˌdeɡrəˈdeɪʃnz", "pos": "n.", "m": "性能退化", "ex": "We were able to mitigate most of the performance degradations", "lv": "六级", "sec": "Alignment"}, {"w": "grounding", "ipa": "ˈɡraʊndɪŋ", "pos": "n.", "m": "落地，实际基础", "ex": "Our work provides grounding for alignment research in AI systems", "lv": "四级", "sec": "Alignment"}, {"w": "efficiency", "ipa": "ɪˈfɪʃnsi", "pos": "n.", "m": "效率", "ex": "increasing investments in alignment is more cost-effective", "lv": "四级", "sec": "Alignment"}, {"w": "tax", "ipa": "tæks", "pos": "n.", "m": "代价，税", "ex": "this is an example of an alignment tax", "lv": "四级", "sec": "Alignment"}, {"w": "essential", "ipa": "ɪˈsenʃl", "pos": "adj.", "m": "必不可少的", "ex": "this feedback loop is essential to reﬁne our alignment techniques", "lv": "四级", "sec": "Alignment"}, {"w": "refine", "ipa": "rɪˈfaɪn", "pos": "v.", "m": "改进，打磨", "ex": "this feedback loop is essential to reﬁne our alignment techniques", "lv": "四级", "sec": "Alignment"}, {"w": "modest", "ipa": "ˈmɑːdɪst", "pos": "adj.", "m": "适度的", "ex": "The cost of increasing model alignment is modest relative to pretraining", "lv": "四级", "sec": "Alignment"}, {"w": "constitute", "ipa": "ˈkɑːnstɪtuːt", "pos": "v.", "m": "构成", "ex": "these performance degradations would constitute an alignment tax", "lv": "四级", "sec": "Alignment"}, {"w": "adoption", "ipa": "əˈdɑːpʃn", "pos": "n.", "m": "采用", "ex": "Any technique with a high tax might not see adoption", "lv": "六级", "sec": "Alignment"}, {"w": "validate", "ipa": "ˈvælɪdeɪt", "pos": "v.", "m": "验证", "ex": "We've validated alignment techniques from research in the real world", "lv": "考博", "sec": "Alignment"}, {"w": "abstractly", "ipa": "ˈæbstræktli", "pos": "adv.", "m": "抽象地", "ex": "instead of focusing abstractly on aligning AI systems that don't yet exist", "lv": "四级", "sec": "Alignment"}, {"w": "preferences", "ipa": "ˈprefərənsɪz", "pos": "n.", "m": "偏好", "ex": "we have aligned to a set of labelers' preferences", "lv": "四级", "sec": "Target"}, {"w": "demographics", "ipa": "ˌdeməˈɡræfɪks", "pos": "n.", "m": "人口统计数据", "ex": "they are mostly English-speaking people living in the United States or Southeast Asia", "lv": "考博", "sec": "Target"}, {"w": "transparency", "ipa": "trænsˈpærənsi", "pos": "n.", "m": "透明度", "ex": "designing an alignment process that is fair, transparent", "lv": "六级", "sec": "Target"}, {"w": "accountability", "ipa": "əˌkaʊntəˈbɪləti", "pos": "n.", "m": "问责制", "ex": "has suitable accountability mechanisms in place", "lv": "考博", "sec": "Target"}, {"w": "participatory", "ipa": "pɑːrˈtɪsəpətɔːri", "pos": "adj.", "m": "参与式的", "ex": "It is not only a matter of making the alignment process more participatory", "lv": "考博", "sec": "Target"}, {"w": "stakeholders", "ipa": "ˈsteɪkhoʊldərz", "pos": "n.", "m": "利益相关者", "ex": "There are many stakeholders to consider", "lv": "考博", "sec": "Target"}, {"w": "endorse", "ipa": "ɪnˈdɔːrs", "pos": "v.", "m": "认可，赞同", "ex": "deployed and used by groups who endorse different values", "lv": "考研", "sec": "Target"}, {"w": "conditioned", "ipa": "kənˈdɪʃnd", "pos": "v.", "m": "以…为条件", "ex": "train models that can be conditioned on the preferences of certain groups", "lv": "四级", "sec": "Target"}, {"w": "methodology", "ipa": "ˌmeθəˈdɑːlədʒi", "pos": "n.", "m": "方法论", "ex": "Methodology. The behavior of our InstructGPT models is determined in part by the human feedback", "lv": "考博", "sec": "Limits"}, {"w": "spectrum", "ipa": "ˈspektrəm", "pos": "n.", "m": "范围，光谱", "ex": "this group is clearly not representative of the full spectrum of people", "lv": "六级", "sec": "Limits"}, {"w": "disproportionately", "ipa": "ˌdɪsprəˈpɔːrʃənətli", "pos": "adv.", "m": "不成比例地", "ex": "when generating text that disproportionately affects a minority group", "lv": "六级", "sec": "Limits"}, {"w": "deployed", "ipa": "dɪˈplɔɪd", "pos": "v.", "m": "已部署的", "ex": "Our models are neither fully aligned nor fully safe", "lv": "六级", "sec": "Limits"}, {"w": "panacea", "ipa": "ˌpænəˈsiːə", "pos": "n.", "m": "万能药", "ex": "Alignment techniques are not a panacea for resolving safety issues", "lv": "考博", "sec": "Limits"}, {"w": "regulation", "ipa": "ˌreɡjuˈleɪʃn", "pos": "n.", "m": "监管", "ex": "without proper regulation", "lv": "四级", "sec": "Limits"}, {"w": "centralization", "ipa": "ˌsentrələˈzeɪʃn", "pos": "n.", "m": "集中化", "ex": "increased centralization of power", "lv": "考博", "sec": "Limits"}, {"w": "transparency", "ipa": "trænsˈpærənsi", "pos": "n.", "m": "透明度", "ex": "this can come at the cost of reduced transparency", "lv": "六级", "sec": "Limits"}, {"w": "judgment", "ipa": "ˈdʒʌdʒmənt", "pos": "n.", "m": "判断", "ex": "Some of the labeling tasks rely on value judgments", "lv": "考研", "sec": "Limits"}, {"w": "representative", "ipa": "ˌreprɪˈzentətɪv", "pos": "adj.", "m": "有代表性的", "ex": "this group is clearly not representative of the full spectrum of people", "lv": "四级", "sec": "Limits"}, {"w": "minority", "ipa": "maɪˈnɔːrəti", "pos": "n.", "m": "少数群体", "ex": "text that disproportionately affects a minority group", "lv": "四级", "sec": "Limits"}, {"w": "dishonest", "ipa": "dɪˈɑːnɪst", "pos": "adj.", "m": "不诚实的", "ex": "if the user requests a potentially harmful or dishonest response", "lv": "四级", "sec": "Limits"}, {"w": "proxy", "ipa": "ˈprɑːksi", "pos": "n.", "m": "代理指标", "ex": "which is only a proxy for what we want these models to do", "lv": "考博", "sec": "Limits"}, {"w": "severe", "ipa": "sɪˈvɪr", "pos": "adj.", "m": "严重的", "ex": "alignment failures could lead to more severe consequences", "lv": "四级", "sec": "Limits"}, {"w": "abusive", "ipa": "əˈbuːsɪv", "pos": "adj.", "m": "辱骂性的", "ex": "generate convincing misinformation, or hateful or abusive content", "lv": "考博", "sec": "Limits"}, {"w": "ecosystem", "ipa": "ˈiːkoʊsɪstəm", "pos": "n.", "m": "生态系统", "ex": "one tool in a broader safety ecosystem", "lv": "六级", "sec": "Limits"}, {"w": "intentional", "ipa": "ɪnˈtenʃənl", "pos": "adj.", "m": "故意的", "ex": "Aside from intentional misuse, there are many domains where large language models should be deployed only with great care", "lv": "四级", "sec": "Limits"}, {"w": "diagnosis", "ipa": "ˌdaɪəɡˈnoʊsɪs", "pos": "n.", "m": "诊断", "ex": "high-stakes domains such as medical diagnoses", "lv": "考博", "sec": "Limits"}, {"w": "eligibility", "ipa": "ˌelɪdʒəˈbɪləti", "pos": "n.", "m": "资格", "ex": "determining eligibility for credit, employment, or housing", "lv": "考博", "sec": "Limits"}, {"w": "exclude", "ipa": "ɪkˈskluːd", "pos": "v.", "m": "排除", "ex": "this excludes most people from access to cutting-edge ML technology", "lv": "四级", "sec": "Limits"}, {"w": "cutting-edge", "ipa": "ˌkʌtɪŋ ˈedʒ", "pos": "adj.", "m": "尖端的", "ex": "excludes most people from access to cutting-edge ML technology", "lv": "考博", "sec": "Limits"}, {"w": "infrastructure", "ipa": "ˈɪnfrəstrʌktʃər", "pos": "n.", "m": "基础设施", "ex": "an organization to own the end-to-end infrastructure of model deployment", "lv": "考研", "sec": "Limits"}, {"w": "revoke", "ipa": "rɪˈvoʊk", "pos": "v.", "m": "撤销", "ex": "monitoring for misuse and revoking access to those who misuse the system", "lv": "考博", "sec": "Limits"}, {"w": "propensity", "ipa": "prəˈpensəti", "pos": "n.", "m": "倾向", "ex": "further decrease the models' propensity to generate toxic outputs", "lv": "考博", "sec": "Open Q"}, {"w": "augmentation", "ipa": "ˌɔːɡmenˈteɪʃn", "pos": "n.", "m": "增强", "ex": "it may be beneficial to use language models to generate toxic outputs as part of a data augmentation pipeline", "lv": "考博", "sec": "Open Q"}, {"w": "constrained", "ipa": "kənˈstreɪnd", "pos": "adj.", "m": "受约束的", "ex": "one could try constrained optimization approaches", "lv": "六级", "sec": "Open Q"}, {"w": "steerability", "ipa": "ˌstɪrəˈbɪləti", "pos": "n.", "m": "可操纵性", "ex": "directly related to the steerability and controllability literature", "lv": "考博", "sec": "Open Q"}, {"w": "expert iteration", "ipa": "ˈekspɜːrt ɪtəˈreɪʃn", "pos": "n.", "m": "专家迭代", "ex": "one could explore expert iteration", "lv": "考博", "sec": "Open Q"}, {"w": "synthetic", "ipa": "sɪnˈθetɪk", "pos": "adj.", "m": "合成的", "ex": "augment this data with synthetic instructions", "lv": "四级", "sec": "Open Q"}, {"w": "feedback", "ipa": "ˈfiːdbæk", "pos": "n.", "m": "反馈", "ex": "labelers to provide feedback to language models", "lv": "四级", "sec": "Open Q"}, {"w": "interface", "ipa": "ˈɪntərfeɪs", "pos": "n.", "m": "界面，接口", "ex": "designing interfaces for labelers to provide feedback", "lv": "六级", "sec": "Open Q"}, {"w": "misuse", "ipa": "ˌmɪsˈjuːs", "pos": "n.", "m": "滥用", "ex": "making language models better at following user intentions also makes them easier to misuse", "lv": "考博", "sec": "Impacts"}, {"w": "misinformation", "ipa": "ˌmɪsɪnfərˈmeɪʃn", "pos": "n.", "m": "虚假信息", "ex": "it may be easier to use these models to generate convincing misinformation", "lv": "考博", "sec": "Impacts"}, {"w": "safety-critical", "ipa": "ˈseɪfti ˈkrɪtɪkl", "pos": "adj.", "m": "安全关键的", "ex": "particularly if these models are deployed in safety-critical situations", "lv": "考博", "sec": "Impacts"}, {"w": "deployed", "ipa": "dɪˈplɔɪd", "pos": "v.", "m": "部署", "ex": "large language models should be deployed only with great care", "lv": "六级", "sec": "Impacts"}, {"w": "centralization", "ipa": "ˌsentrələˈzeɪʃn", "pos": "n.", "m": "集中化", "ex": "increased centralization of power", "lv": "考博", "sec": "Impacts"}, {"w": "limit", "ipa": "ˈlɪmɪt", "pos": "v.", "m": "限制", "ex": "it becomes challenging to limit harmful applications", "lv": "四级", "sec": "Impacts"}, {"w": "open-sourced", "ipa": "ˌoʊpən ˈsɔːrst", "pos": "adj.", "m": "开源的", "ex": "If these models are open-sourced", "lv": "考博", "sec": "Impacts"}, {"w": "regulation", "ipa": "ˌreɡjuˈleɪʃn", "pos": "n.", "m": "法规，监管", "ex": "without proper regulation", "lv": "四级", "sec": "Impacts"}];
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -637,20 +464,11 @@ const SKINS=[
   {id:"netease",n:"网易云黑",p:"linear-gradient(135deg,#3a2429,#150d10)"},
   {id:"vinyl",n:"黑胶原色",p:"linear-gradient(135deg,#e6e9f2,#161616)"},
   {id:"gold",n:"香槟金",p:"linear-gradient(135deg,#f2dfbd,#3a2a14)"},
-  {id:"sakura",n:"樱花粉",p:"linear-gradient(135deg,#fdeef3,#f2b9cd)"},
-  {id:"matcha",n:"抹茶",p:"linear-gradient(135deg,#eef3e6,#a9c489)"},
-  {id:"mint",n:"薄荷",p:"linear-gradient(135deg,#eefaf7,#8fd8c8)"},
-  {id:"ocean",n:"海盐蓝",p:"linear-gradient(135deg,#eef5fc,#7fb3e6)"},
-  {id:"grape",n:"星空紫",p:"linear-gradient(135deg,#f2eefa,#b39ade)"},
-  {id:"amusic",n:"Apple红",p:"linear-gradient(135deg,#fff4f4,#fa5c74)"},
-  {id:"mocha",n:"摩卡",p:"linear-gradient(135deg,#f7f1ea,#b08d6d)"},
-  {id:"spotify",n:"Spotify",p:"linear-gradient(135deg,#1d2420,#1db954)"},
-  {id:"midnight",n:"深夜蓝",p:"linear-gradient(135deg,#1e2740,#4a9eff)"},
   {id:"vinylx",n:"悬浮黑胶",p:"radial-gradient(circle at 50% 50%,#5b5bd6 0 30%,#17171a 31%)"}
 ];
 const $=id=>document.getElementById(id);
 const app=$("app");
-let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0,rate:1,enVoice:"",zhVoice:""};
+let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0};
 try{const c=JSON.parse(localStorage.getItem("listen_qq_cfg")||"{}");Object.assign(S,c)}catch(e){}
 const save=()=>{try{localStorage.setItem("listen_qq_cfg",JSON.stringify(S))}catch(e){}};
 
@@ -662,26 +480,16 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
-/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
-const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
-const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
-let lvOff=new Set();
-try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
-let pendingRebuild=false;    /* 播放中改了标记：等当前词念完再重建队列，绝不中途掐断 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
-  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
-  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
-  else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
-  else if(S.source==="new")  list=list.filter(i=>!skips.has(i.w));   /* 仅新词：只读还没标已掌握的 */
-  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过已划掉的 */
-  /* 专背模式不再二次排除已跳过的：否则「星标+已跳过」的词根本读不到，没法取消误点 */
+  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过不读的 */
+  if(S.source!=="all")       list=list.filter(i=>!skips.has(i.w));   /* 专背模式下「不读」依然生效 */
   if(S.order==="rand"){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
   queue=list;
   if(qi>=queue.length)qi=0;
@@ -690,19 +498,6 @@ function rebuild(keep){
   const cur=queue[qi];
   buildQueue();
   if(keep&&cur){const k=queue.findIndex(x=>x.w===cur.w);qi=k>=0?k:0}
-  pendingRebuild=false;                       /* 这里已经重建过了，撤掉待办的延迟重建 */
-}
-/* 延迟重建：等到"当前这个词念完"再生效（给 pendingRebuild 用） */
-function rebuildKeepPos(){
-  const oldLen=queue.length, oldQi=qi, cur=queue[qi], key=cur?cur.w:null;
-  buildQueue();
-  if(!queue.length){qi=0;return}
-  if(!key){if(qi>=queue.length)qi=0;return}
-  const k=queue.findIndex(x=>x.w===key);
-  if(k>=0){qi=k;return}                       /* 当前词还在队列里：原地不动 */
-  /* 当前词已被排除（刚标了跳过 / 取消了星标）：把指针放到"下一个该读的词"的前一位，
-     goNext 再 +1，正好接到原位置上的那个词——不会漏读，也不会重读 */
-  qi = (oldQi>=oldLen-1) ? -1 : Math.min(oldQi,queue.length-1)-1;
 }
 function updateBtns(){
   const w=queue[qi];
@@ -712,33 +507,13 @@ function updateBtns(){
 }
 function updateCounts(){
   $("skipCnt").textContent="已跳过 "+skips.size+" 词";
-  /* 和「词库来源」同一套图标：星标 / 收藏 / 跳过（原先是 ⭐❤✓ emoji 混搭） */
-  $("markCnt").innerHTML="<b>"+IC.star+stars.size+"</b><b>"+IC.heart+favs.size+"</b><b>"+IC.skip+skips.size+"</b>";
+  $("markCnt").textContent="⭐ "+stars.size+" · ❤ "+favs.size+" · ✓ "+skips.size;
 }
-/* 当前词的标记：只显示「跳过」（星标/收藏看顶栏图标即可，不重复占地方） */
-function renderMarks(w){
-  const box=$("mkBadge"); if(!box)return;
-  if(!w||!skips.has(w.w)){box.style.display="none";return}
-  box.innerHTML='<i class="mk" data-cancel="skip" title="此词已跳过 · 点一下恢复朗读">'+IC.skip+'<i>✕</i></i>';
-  box.style.display="flex";
-}
-$("mkBadge").onclick=e=>{
-  const el=e.target.closest("[data-cancel]"); if(!el)return;
-  const w=queue[qi]; if(!w)return;
-  const k=el.dataset.cancel;
-  if(k==="star"){stars.delete(w.w);wr("listen_qq_star",stars);wordTip("已取消星标「"+w.w+"」")}
-  else if(k==="fav"){favs.delete(w.w);wr("listen_qq_fav",favs);wordTip("已取消收藏「"+w.w+"」")}
-  else if(k==="skip"){skips.delete(w.w);wr("listen_qq_skip",skips);wordTip("已恢复朗读「"+w.w+"」")}
-  afterMark();
-};
-/* 标记后收尾：正在朗读时不打断——当前词照常念完，队列等这个词结束时才重建。
-   （以前是立刻重建+重播，等于一点 ✓ 这个词就被掐掉，这次白学了） */
+/* 标记后统一收尾：重建队列，空了就提示，否则接着播 */
 function afterMark(){
-  updateBtns(); updateCounts(); renderMarks(queue[qi]);
-  if(playing){ pendingRebuild=true; return }
-  rebuild(true);
+  updateBtns(); updateCounts(); rebuild(true);   /* 保留当前词：随机模式下重排也不会跳走 */
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
-  render(queue[qi],true);
+  if(playing)playCurrent(); else render(queue[qi],true);
 }
 function renderRange(){
   const box=$("rangeBox"); box.innerHTML="";
@@ -750,27 +525,6 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
-      if(!playing&&queue[qi])render(queue[qi],true);
-    };
-    box.appendChild(c);
-  });
-}
-/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
-function renderLv(){
-  const box=$("lvBox"); if(!box)return;
-  const row=box.closest(".srow");
-  if(!LVS.length){ if(row)row.style.display="none"; return }
-  box.innerHTML="";
-  LVS.forEach(k=>{
-    const c=document.createElement("b");
-    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
-    c.className=lvOff.has(k)?"":"on";
-    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
-    c.onclick=()=>{
-      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
-      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
-      renderLv(); rebuild(true); updateArm(); updateCounts();
-      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -791,23 +545,11 @@ $("skinBtn").onclick=()=>{ skinIdx=(skinIdx+1)%SKINS.length; applySkin(SKINS[ski
 try{const sv=localStorage.getItem("listen_qq_skin"); if(sv)applySkin(sv,false)}catch(e){}
 
 // 设置段
-/* 小图标库：星标 / 收藏 / 跳过（用户提供）/ 加号（新词）/ 全部 */
-const IC={
-  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/></svg>',
-  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
-  skip:'<svg class="fill" viewBox="0 0 1024 1024"><path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/></svg>',
-  news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 13.6 9.4l4.9 1.6-4.9 1.6L12 17.5l-1.6-4.9-4.9-1.6 4.9-1.6Z"/></svg>',
-  all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>',
-  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>'
-};
 function seg(box,opts,get,set,after){
   box.innerHTML="";
   opts.forEach(o=>{
-    const b=document.createElement("b");
-    if(o.svg){ b.innerHTML=o.svg; b.className="icn" } else { b.textContent=o.t }
-    b.dataset.v=o.v;
-    if(o.tip) b.title=o.tip;
-    if(get()===o.v) b.classList.add("on");
+    const b=document.createElement("b"); b.textContent=o.t; b.dataset.v=o.v;
+    b.className=get()===o.v?"on":"";
     b.onclick=()=>{set(o.v);box.querySelectorAll("b").forEach(x=>x.classList.remove("on"));b.classList.add("on");save();after&&after(o.v)};
     box.appendChild(b);
   });
@@ -823,9 +565,6 @@ seg($("segVoice"),[{t:"美音",v:"us"},{t:"英音",v:"uk"}],()=>S.voice,v=>S.voi
   ()=>refreshCurrent("发音： "+(S.voice==="uk"?"英音":"美音")));
 seg($("segPause"),[{t:"2s",v:2000},{t:"4s",v:4000},{t:"6s",v:6000}],()=>S.pause,v=>S.pause=v,
   ()=>refreshCurrent("每词停顿： "+(S.pause/1000)+" 秒"));
-/* 语速：直接改 audio.playbackRate（对有道/百度/系统语音都生效，不改音调） */
-seg($("segRate"),[{t:"0.75x",v:.75},{t:"1x",v:1},{t:"1.25x",v:1.25},{t:"1.5x",v:1.5}],()=>+S.rate||1,v=>S.rate=v,
-  ()=>refreshCurrent("语速： "+S.rate+"x"));
 /* 单词重复次数：1/3/5 快捷 + 右侧输入框自定义（1–20） */
 function setRepeat(v,persist){
   v=Math.max(1,Math.min(20,Math.round(+v||1)));
@@ -842,25 +581,15 @@ seg($("segReveal"),[{t:"开",v:true},{t:"关",v:false}],()=>S.reveal,v=>S.reveal
   ()=>refreshCurrent("先听后现： "+(S.reveal?"开":"关")));
 seg($("segZh"),[{t:"开",v:true},{t:"关",v:false}],()=>S.zh,v=>S.zh=v,
   ()=>refreshCurrent("朗读中文： "+(S.zh?"开":"关")));
-/* 朗读例句：沿用老版方案 = 百度在线合成（lan=en，spd=5，source=web）。
-   本篇若预生成了例句音频则用本地微软音，没有就走百度在线 */
 seg($("segEx"),[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
   ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
 // 单词字体：选项本身就用自己的字体渲染，所见即所得
 const FONTS=[
-  {v:"sans",    t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
-  {v:"serif",   t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
-  {v:"round",   t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
-  {v:"kai",     t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
-  {v:"mono",    t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'},
-  {v:"xingkai", t:"行楷", f:'"Xingkai SC","STXingkai","Snell Roundhand",cursive'},
-  {v:"weibei",  t:"魏碑", f:'"Weibei SC","STWeibei","Kaiti SC",serif'},
-  {v:"wawati",  t:"娃娃", f:'"Wawati SC","STWawati","Comic Sans MS",cursive'},
-  {v:"lanting", t:"兰亭", f:'"Lantinghei SC","FZLanTingHei-S-GB","PingFang SC",sans-serif'},
-  {v:"futura",  t:"几何", f:'Futura,"Avenir Next","Century Gothic",sans-serif'},
-  {v:"georgia", t:"书卷", f:'Georgia,"Times New Roman","Songti SC",serif'},
-  {v:"rounded", t:"圆润", f:'"Arial Rounded MT Bold","Hiragino Maru Gothic ProN","Yuanti SC",sans-serif'},
-  {v:"marker",  t:"手写", f:'"Marker Felt","Chalkboard SE","Comic Sans MS",cursive'}
+  {v:"sans", t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
+  {v:"serif",t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
+  {v:"round",t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
+  {v:"kai",  t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
+  {v:"mono", t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'}
 ];
 function applyFont(v){
   const f=FONTS.find(x=>x.v===v)||FONTS[0];
@@ -902,160 +631,32 @@ function applySource(){
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
   if(playing)playCurrent(); else render(queue[qi],true);
 }
-/* 词库来源：纯图标（全部 / 星标 / 收藏 / 跳过 / 新词），鼠标悬停有说明 */
-seg($("segSource"),[
-  {v:"all", svg:IC.all,  tip:"全部词"},
-  {v:"star",svg:IC.star, tip:"只看星标词"},
-  {v:"fav", svg:IC.heart,tip:"只看收藏词"},
-  {v:"skip",svg:IC.skip, tip:"只看已跳过的词（点标记可取消）"},
-  {v:"new", svg:IC.news, tip:"只看还没跳过的词"}
-],()=>S.source,v=>S.source=v,applySource);
+seg($("segSource"),[{t:"全部",v:"all"},{t:"仅⭐",v:"star"},{t:"仅❤",v:"fav"}],()=>S.source,v=>S.source=v,applySource);
 
 seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.order=v,
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); renderLv(); updateCounts();
+renderRange(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}
-  if(favs.has(w.w)){favs.delete(w.w);wordTip("已取消收藏「"+w.w+"」")}else{favs.add(w.w);wordTip("已收藏「"+w.w+"」")}
+  if(favs.has(w.w)){favs.delete(w.w);toast("已取消收藏「"+w.w+"」")}else{favs.add(w.w);toast("已收藏「"+w.w+"」")}
   wr("listen_qq_fav",favs); afterMark();
 };
 $("starBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标星");return}
-  if(stars.has(w.w)){stars.delete(w.w);wordTip("已取消星标「"+w.w+"」")}else{stars.add(w.w);wordTip("已标星「"+w.w+"」，可只背星标")}
+  if(stars.has(w.w)){stars.delete(w.w);toast("已取消星标「"+w.w+"」")}else{stars.add(w.w);toast("已标星「"+w.w+"」，可只背星标")}
   wr("listen_qq_star",stars); afterMark();
 };
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
-  if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  if(skips.has(w.w)){skips.delete(w.w);toast("已恢复朗读「"+w.w+"」")}
+  else{skips.add(w.w);toast("此词不再朗读「"+w.w+"」")}
   wr("listen_qq_skip",skips); afterMark();
 };
-/* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
-$("clearBox").innerHTML=[["star",IC.star,"清空所有星标"],["fav",IC.heart,"清空所有收藏"],["skip",IC.skip,"清空所有跳过（恢复朗读）"]]
-  .map(x=>'<b data-clr="'+x[0]+'" title="'+x[2]+'">'+x[1]+'<i>✕</i></b>').join("");
-/* 清空按钮：每次点击都必须有反馈——原先星标本来就是 0 时点「清空星标」毫无反应，像坏了 */
-$("clearSkip").onclick=()=>{
-  if(!skips.size){toast("本来就没有跳过的词");return}
-  const n=skips.size; skips.clear(); wr("listen_qq_skip",skips); afterMark(); toast("已清空 "+n+" 个跳过词");
-};
-$("clearBox").onclick=e=>{
-  const b=e.target.closest("[data-clr]"); if(!b)return;
-  const k=b.dataset.clr;
-  const set = k==="star"?stars : k==="fav"?favs : skips;
-  const key = k==="star"?"listen_qq_star" : k==="fav"?"listen_qq_fav" : "listen_qq_skip";
-  const name= k==="star"?"星标" : k==="fav"?"收藏" : "跳过";
-  const n=set.size;
-  if(!n){ toast("本来就没有"+name+"的词"); return }
-  set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
-};
-const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
-/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
-const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
-const LKEY="listen_qq_links";
-const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
-const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
-let LINKS=rdLinks();
-const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
-const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
-
-function renderLinkPop(){
-  const box=$("linkList"),btns=$("linkPopBtns");
-  if(!LINKS.length){
-    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
-    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
-    $("lpCfg").onclick=openLinkCfg;
-    return;
-  }
-  const multi=LINKS.length>1;
-  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
-    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
-    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
-    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
-  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
-    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
-  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
-  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
-    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
-  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
-  $("lpOpenAll").onclick=()=>openMany(LINKS);
-  $("lpCfg").onclick=openLinkCfg;
-}
-function openLinkCfg(){
-  $("linkPop").classList.remove("on");
-  const box=$("linkRows");
-  const row=l=>'<div class="lkrow">'
-    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
-    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
-    +'<span class="del" title="删除此行">✕</span></div>';
-  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
-  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
-  bindDel();
-  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
-  $("linkCfg").classList.add("on");
-}
-$("linkSave").onclick=()=>{
-  const out=[];
-  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
-    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
-    if(!raw)return;
-    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
-  });
-  LINKS=out; wrLinks(out);
-  $("linkCfg").classList.remove("on");
-  toast("已保存 "+out.length+" 个链接");
-};
-$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
-$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
-
-/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
-$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
-$("backupBox").onclick=e=>{
-  const b=e.target.closest("[data-bk]");if(!b)return;
-  if(b.dataset.bk==="cfg")openLinkCfg();
-  else if(b.dataset.bk==="out")doExport();
-  else $("importFile").click();
-};
-function doExport(){
-  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
-  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
-    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
-  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
-  a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
-}
-$("importFile").onchange=e=>{
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=()=>{
-    try{
-      const d=JSON.parse(r.result);
-      if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
-      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
-      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
-        const cur=new Set((links[k]||[]).map(l=>l.url));
-        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
-      });
-      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
-      (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
-      (d.favs||[]).forEach(w=>favs.add(w));
-      (d.skips||[]).forEach(w=>skips.add(w));
-      wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
-      if(d.cfg){Object.assign(S,d.cfg);save()}
-      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
-      LINKS=rdLinks();updateCounts();afterMark();
-      toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
-      setTimeout(()=>location.reload(),1200);
-    }catch(err){toast("导入失败："+err.message)}
-    e.target.value="";
-  };
-  r.readAsText(f);
-};
-
+$("clearSkip").onclick=()=>{skips.clear();wr("listen_qq_skip",skips);updateCounts();rebuild(true);toast("已清空「不读」列表")};
+$("clearStar").onclick=()=>{stars.clear();wr("listen_qq_star",stars);updateCounts();rebuild(true);toast("已清空星标")};
 /* 弯箭头：沿用旧设计语义 = 重听当前词（不想启用时删掉这三行即可） */
 $("replayBtn").onclick=()=>{
   if(!queue[qi])return;
@@ -1066,10 +667,6 @@ $("replayBtn").onclick=()=>{
 // 颜色/封面
 function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1600)}
-/* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方 */
-function wordTip(m){const t=$("wordTip");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1300)}
-/* 标记点亮：图标动一下，短促、不挡视线（和收藏/星标同一手感） */
-function pulse(id){const el=$(id);if(!el)return;el.classList.remove("pulse");void el.offsetWidth;el.classList.add("pulse");setTimeout(()=>el.classList.remove("pulse"),360)}
 
 // 唱臂：静止垂直在盘右 → 播放落到盘面 → 随队列进度内移
 const armBar=document.querySelector(".arm .bar");
@@ -1087,8 +684,6 @@ function updateArm(){
 
 function render(w,reveal){
   app.style.setProperty("--h",hue(w.w));
-  updateBtns();                                      /* 顶栏 ❤/★/✓ 跟随当前词（原先切词不刷新，显示的是上一个词的状态） */
-  renderMarks(w);                                    /* 跳过标记（仅被跳过的词显示） */
   $("art").style.opacity=(S.reveal&&!reveal)?.42:1;   /* 先听后现：未揭晓时封面变暗 */
   $("wsec").textContent=w.sec+" · "+w.lv+" · 第 "+(qi+1)+"/"+queue.length+" 词";
   $("wbig").textContent=w.w;
@@ -1107,158 +702,32 @@ function render(w,reveal){
   updateBtns();
 }
 
-/* 音源（全部实测过）：
-   · 单词 → 有道词典音（只有一个英文词时可靠）
-   · 中文/例句 → 百度 gettts，必须带 spd + **source=web**，否则返回错误页（200 但播不出）
-   · 每个都带兜底 + 开播看门狗，最后一层用系统语音 */
-/* ===== 本地微软语音：按音色取音频，缺失自动回退其它音色 → 再回退在线 TTS ===== */
-const VNAME={
-  "en-US-BrianNeural":"Brian","en-US-AndrewNeural":"Andrew","en-US-GuyNeural":"Guy",
-  "en-US-AriaNeural":"Aria","en-US-JennyNeural":"Jenny","en-US-AvaNeural":"Ava",
-  "en-US-EmmaNeural":"Emma","en-US-ChristopherNeural":"Christopher","en-US-EricNeural":"Eric",
-  "en-US-RogerNeural":"Roger","en-US-SteffanNeural":"Steffan","en-US-AnaNeural":"Ana",
-  "en-US-MichelleNeural":"Michelle","en-GB-SoniaNeural":"Sonia","en-GB-RyanNeural":"Ryan",
-  "en-GB-LibbyNeural":"Libby","en-GB-ThomasNeural":"Thomas","en-GB-MaisieNeural":"Maisie",
-  "zh-CN-YunyangNeural":"云扬","zh-CN-YunjianNeural":"云健","zh-CN-YunxiNeural":"云希",
-  "zh-CN-XiaoxiaoNeural":"晓晓","zh-CN-XiaoyiNeural":"晓伊","zh-CN-YunxiaNeural":"云夏",
-  "zh-CN-liaoning-XiaobeiNeural":"晓北","zh-CN-shaanxi-XiaoniNeural":"晓妮"
-};
-const voiceLabel=id=>VNAME[id]||String(id).replace(/Neural$/,"").split("-").pop();
-/* 本篇已生成哪些音色：w/e = 英文音色，m = 中文音色 */
-function audioVoices(kind){ try{ return AUDIO?Object.keys(AUDIO).filter(v=>AUDIO[v]&&AUDIO[v][kind]):[] }catch(e){ return [] } }
-function localAudio(t,kind){
-  try{
-    if(!AUDIO)return "";
-    const map = kind==="word"?"w" : kind==="zh"?"m" : kind==="sent"?"e" : null;
-    if(!map)return "";
-    const key = kind==="word" ? String(t).toLowerCase()
-              : kind==="zh"   ? String(t).replace(/^[a-z]+\.\s*/i,"")
-              : String(t);
-    const all = audioVoices(map);
-    const want = kind==="zh" ? S.zhVoice : S.enVoice;
-    const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
-    for(let i=0;i<order.length;i++){
-      const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
-    }
-  }catch(e){}
-  return "";
-}
-/* 中文朗读文本：去掉词性前缀 + 去掉括号里的英文注释。
-   否则中文音色会把括号里的英文也念出来，中英混读听着就是"机器音" */
-function zhText(w){
-  return String((w&&w.m)||"")
-    .replace(/^[a-z]+\.\s*/i,"")
-    .replace(/[（(][^）)]*[A-Za-z][^）)]*[）)]/g,"")
-    .replace(/\s+/g," ").trim();
-}
 function ttsURL(t,kind){
-  const e=encodeURIComponent(t);
-  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
-  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
-  const L=localAudio(t,kind); if(L)return L;
-  if(kind==="zh")return bd("zh");
-  if(kind==="sent")return bd("en");
-  return yd;
-}
-function ttsURLs(t,kind){
-  const e=encodeURIComponent(t);
-  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
-  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
-  const urls=[];
-  const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
-  if(kind==="zh")urls.push(bd("zh"));
-  else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
-  return urls;
-}
-
-/* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
-(function voiceRows(){
-  const en=audioVoices("w"), zh=audioVoices("m");
-  const rowOf=id=>{const e=$(id); return e?e.closest(".srow"):null};
-  const rEn=rowOf("segEnVoice"), rZh=rowOf("segZhVoice");
-  if(en.length){
-    if(!S.enVoice||en.indexOf(S.enVoice)<0)S.enVoice=(en.find(v=>/brian/i.test(v))||en[0]);
-    seg($("segEnVoice"),en.map(v=>({t:voiceLabel(v),v})),()=>S.enVoice,v=>{S.enVoice=v},
-        ()=>refreshCurrent("单词音色： "+voiceLabel(S.enVoice)));
-    const vr=$("segVoice")&&$("segVoice").closest(".srow"); if(vr)vr.style.display="none";  /* 有微软音后，美音/英音已无意义 */
-  }else if(rEn){ rEn.style.display="none" }
-  if(zh.length){
-    if(!S.zhVoice||zh.indexOf(S.zhVoice)<0)S.zhVoice=(zh.find(v=>/yunyang/i.test(v))||zh[0]);
-    seg($("segZhVoice"),zh.map(v=>({t:voiceLabel(v),v})),()=>S.zhVoice,v=>{S.zhVoice=v},
-        ()=>refreshCurrent("中文音色： "+voiceLabel(S.zhVoice)));
-  }else if(rZh){ rZh.style.display="none" }
-})();
-let failStreak=0;   /* 连续失败计数：防止音源全挂时疯狂空转刷完词表 */
-/* 系统语音兜底：在线音源都不可用时，用浏览器自带语音朗读，保证有声音 */
-function speakLocal(text,lang,cb){
-  try{
-    if(!window.speechSynthesis){ cb&&cb(false); return }
-    const u=new SpeechSynthesisUtterance(text);
-    u.lang=lang; u.rate=Math.max(.5,Math.min(2,(+S.rate||1)*.95));   /* 系统语音也跟着语速 */
-    let done=false; const fin=ok=>{ if(done)return; done=true; cb&&cb(ok) };
-    u.onend=()=>fin(true); u.onerror=()=>fin(false);
-    speechSynthesis.cancel(); speechSynthesis.speak(u);
-    setTimeout(()=>fin(true),Math.min(12000,1200+String(text).length*90));  /* 无 onend 时按字长估算收尾 */
-  }catch(e){ cb&&cb(false) }
+  if(kind==="zh")return "https://fanyi.baidu.com/gettts?lan=zh&text="+encodeURIComponent(t);
+  if(kind==="sent")return "https://fanyi.baidu.com/gettts?lan=en&text="+encodeURIComponent(t);
+  return "https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+encodeURIComponent(t);
 }
 function say(text,kind,cb){
-  const urls=ttsURLs(text,kind);
-  const t0=Date.now();
-  let i=0, done=false, local=false;
-  const finish=ok=>{
-    if(done)return; done=true;
-    failStreak=ok?0:failStreak+1;
-    if(!ok&&failStreak>=3){                 /* 连续 3 次完全没声：停下来告诉用户，别静默刷词 */
-      clearT(); stopAudio(); setPlaying(false);
-      toast("⚠️ 朗读音源暂时不可用，已暂停。检查网络后点 ▶ 继续");
-      return;
-    }
-    const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
-    setTimeout(()=>cb&&cb(ok),wait);
-  };
-  const tryNext=()=>{
-    if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
-      if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
-      local=true;
-      speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
-      return;
-    }
-    stopAudio();
-    const a=new Audio(urls[i++]);
-    audio=a;
-    try{a.playbackRate=+S.rate||1}catch(e){}      /* 语速（preservesPitch 默认开，不改音调） */
-    let started=false;
-    a.addEventListener("playing",()=>{ started=true });
-    a.addEventListener("ended",()=>{ if(started)finish(true); else tryNext() });
-    a.addEventListener("error",()=>{ if(!started)tryNext(); else finish(true) });
-    a.play().catch(err=>{
-      if(err&&err.name==="NotAllowedError"){ autoplayBlocked=true; finish(false) }
-      else tryNext();
-    });
-    setTimeout(()=>{ if(!started&&!done)tryNext() },2500);   /* 2.5s 没出声 → 换下一个音源 */
-    setTimeout(()=>{ if(!done)finish(!!started) },15000);
-  };
-  tryNext();
+  stopAudio();
+  audio=new Audio(ttsURL(text,kind));
+  let done=false;
+  const fin=ok=>{if(done)return;done=true;cb&&cb(ok)};
+  audio.onended=()=>fin(true);
+  audio.onerror=()=>fin(false);
+  audio.play().catch(err=>{ if(err&&err.name==="NotAllowedError")autoplayBlocked=true; fin(false) });
+  setTimeout(()=>fin(false),9000);
 }
 function stopAudio(){try{if(audio){audio.pause();audio=null}}catch(e){}}
 function clearT(){if(timer){clearTimeout(timer);timer=null}}
 
 /* 池子为空（比如「只背星标」但一个都没标）时的提示 */
 function emptyHint(){
-  const src=S.source;
+  const star=S.source==="star";
   $("wsec").textContent="";
   $("wbig").textContent="—";
   $("wipa").textContent="";
-  $("wmean").textContent = src==="star"?"还没有 ⭐ 星标词"
-    : src==="fav"?"还没有 ❤ 收藏词"
-    : src==="skip"?"还没有 ✓ 跳过的词"
-    : "这里还没有可读的词";
-  $("wex").textContent = src==="skip"?"在词上点「✓ 跳过」标记后，这里能集中回看并一键取消"
-    : "点右上角 "+(src==="fav"?"❤":"☆")+" 标记后，这里会自动连播";
-  renderMarks(null);
+  $("wmean").textContent=star?"还没有 ⭐ 星标词":"还没有 ❤ 收藏词";
+  $("wex").textContent="点右上角 "+(star?"☆":"❤")+" 标记后，这里会自动连播";
   $("wav").style.display="none";
   $("wtxt").style.display="";
   $("art").style.opacity=1;
@@ -1266,37 +735,25 @@ function emptyHint(){
   $("fill").style.width="0%"; $("knob").style.left="0%";
 }
 
-/* 播放代际：每次 playCurrent 换代，上一代残留的延时/回执一律作废。
-   否则旧链的 420/450ms 延时会插进新链 → 开关关了还在读、中文被顶掉、读串词 */
-let gen=0;
 function playCurrent(){
-  const g=++gen;
   clearT();stopAudio();
   const w=queue[qi]; if(!w)return;
-  const live=fn=>(...a)=>{ if(g!==gen)return; return fn(...a) };
   render(w,!(S.reveal));
   updateArm();
   if(!playing)return;
-  const goNext=live(()=>{
+  const goNext=()=>{
     if(S.reveal)render(w,true);
-    timer=setTimeout(live(()=>{
-      if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}   /* 这个词念完了，标记此刻才生效 */
-      qi=(qi+1+queue.length)%queue.length;playCurrent();
-    }),S.pause);
-  });
-  /* 例句：有本地微软音频就播本地，没有就走百度在线（老版方案） */
-  const afterEx=live(()=>{ if(S.ex){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
-  const afterZh=live(()=>{
-    if(S.zh){ timer=setTimeout(live(()=>say(zhText(w),"zh",afterEx)),450) }
-    else afterEx();
-  });
+    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent()},S.pause);
+  };
+  const afterEx=()=>{ if(S.ex){say(w.ex,"sent",()=>goNext())} else goNext(); };
+  const afterZh=()=>{ if(S.zh){setTimeout(()=>say(w.m.replace(/^[a-z]+\.\s*/i,""),"zh",afterEx),450)} else afterEx(); };
   /* 单词可重复朗读 N 次（默认 1），全部读完再走中文/例句 */
   let left=Math.max(1,Math.min(20,Math.round(+S.repeat||1)));
-  const again=live(()=>{
+  const again=()=>{
     left--;
-    if(left>0){ timer=setTimeout(live(()=>say(w.w,"word",again)),420) }
+    if(left>0){ timer=setTimeout(()=>say(w.w,"word",again),420) }
     else afterZh();
-  });
+  };
   say(w.w,"word",again);
 }
 
@@ -1306,13 +763,8 @@ function setPlaying(on){
   updateArm();
 }
 $("play").onclick=()=>{ setPlaying(!playing); if(playing)playCurrent(); else {clearT();stopAudio();} };
-/* 上一词/下一词：抽成函数——它们是 <svg>，没有 .click()，键盘里点会直接抛异常 */
-function prevWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
-  qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
-function nextWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
-  qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
-$("prevBtn").onclick=prevWord;
-$("nextBtn").onclick=nextWord;
+$("prevBtn").onclick=()=>{if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
+$("nextBtn").onclick=()=>{if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
 $("moreBtn").onclick=()=>$("sheet").classList.add("on");
 $("listBtn").onclick=()=>$("sheet").classList.add("on");
 $("sheetBack").onclick=()=>{$("sheet").classList.remove("on");if(!playing){setPlaying(true);playCurrent()}};
@@ -1337,9 +789,9 @@ $("bar").onclick=e=>{
 };
 document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
-  else if(e.key==="ArrowRight")nextWord();
-  else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
+  else if(e.key==="ArrowRight")$("nextBtn").click();
+  else if(e.key==="ArrowLeft")$("prevBtn").click();
+  else if(e.key==="Escape")$("sheet").classList.remove("on");
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中
@@ -1370,10 +822,9 @@ addEventListener("resize",()=>{
   if(innerWidth<760 && !localStorage.getItem("listen_qq_zoom")) initZoom();
 });
 function initZoom(){
+  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏：双栏布局，不叠加缩放
   const saved=+(localStorage.getItem("listen_qq_zoom")||0);
-  /* 用户手动选过档位：任何屏幕都尊重，别再被自动逻辑覆盖 */
   if(saved&&ZOOMS.indexOf(saved)>=0){ setZ(saved,false); return }
-  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏默认 1x（双栏本来就够大）
   app.style.setProperty("--z","1");
   const dh=Math.max(measureDesign(),640);
   const fit=Math.min(2,(innerWidth-20)/430,(innerHeight-20)/dh);
