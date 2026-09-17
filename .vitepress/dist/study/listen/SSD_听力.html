@@ -341,8 +341,8 @@
     .app{width:min(1280px,calc(96vw / var(--z,1)));max-width:none;zoom:var(--z,1);
       aspect-ratio:16/10;min-height:0;max-height:calc(96vh / var(--z,1));margin:auto;padding-bottom:8px}
     .main{flex-direction:row;align-items:center;gap:40px;padding:8px 30px 0}
-    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕 */
-    .main>.card{margin:0;flex:0 0 calc(clamp(400px,min(40vw,66vh),640px) / var(--z,1));align-self:center}
+    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕；宽屏接近方形（1:1），宽度够、高度也够长 */
+    .main>.card{margin:0;flex:0 0 calc(clamp(460px,min(50vw,58vh),780px) / var(--z,1));aspect-ratio:1/1;align-self:center}
     .side{align-self:stretch;justify-content:flex-start}
     /* 单词区在「角标」与「底部控制」之间的剩余空间里垂直居中 → 整体下移到中间 */
     .side .word{padding:0;min-height:0;text-align:center;margin-top:auto;margin-bottom:auto}
