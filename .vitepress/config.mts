@@ -27,9 +27,9 @@ function toHost(href: string): string {
 
 function videoEmbed(href: string): string | null {
   let m = href.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/i)
-  if (m) return `https://www.youtube.com/embed/${m[1]}`
+  if (m) return `https://www.youtube.com/embed/${m[1]}?autoplay=0&rel=0`
   m = href.match(/bilibili\.com\/video\/(BV[\w]+)/i)
-  if (m) return `https://player.bilibili.com/player.html?bvid=${m[1]}`
+  if (m) return `https://player.bilibili.com/player.html?bvid=${m[1]}&autoplay=0`
   if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(href)) return href
   return null
 }
@@ -107,7 +107,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: `${BASE}favicon.svg`,
+    logo: '/favicon.svg',
     siteTitle: 'Deep Reading',
     outline: false,
     docFooter: { prev: false, next: false },

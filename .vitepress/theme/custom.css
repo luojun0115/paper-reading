@@ -83,6 +83,22 @@ body {
   margin-right: auto !important;
 }
 
+/*
+  讲解区（.dr-explain）专属：整块内容收窄并居中，
+  让小标题与表格共用同一条左边缘（表格统一占满内容块，宽度不再参差）。
+*/
+.dr-explain .vp-doc {
+  max-width: 960px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.dr-explain .vp-doc table {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .VPDoc h1 { font-family: var(--dr-hf); letter-spacing: var(--dr-hlet); }
 .VPDoc .content-container { font-size: 15px; }
 
@@ -236,10 +252,10 @@ body {
   padding: 14px 15px;
   background: var(--dr-panel); border: var(--dr-bw) solid var(--dr-line);
   border-radius: var(--dr-r); box-shadow: var(--dr-glow);
-  transition: transform .18s, border-color .18s, box-shadow .18s, background .18s;
+  transition: transform .18s, border-color .18s;
   cursor: pointer;
 }
-.dr-card:hover { transform: translateY(-2px); border-color: var(--dr-accent); background: var(--dr-asoft); }
+.dr-card:hover { transform: translateY(-2px); border-color: var(--dr-accent); }
 .dr-card-r1 { display: flex; align-items: baseline; gap: 8px; }
 .dr-lib .dr-card-nm {
   font-family: var(--dr-hf); letter-spacing: var(--dr-hlet);

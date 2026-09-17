@@ -1,7 +1,7 @@
 ---
 title: 讲解区
 aside: false
-pageClass: wide
+pageClass: wide dr-explain
 editLink: false
 ---
 
