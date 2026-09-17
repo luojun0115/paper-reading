@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TimeSformer_论文词汇_听力 · 单词连播</title>
+<title>TimeSformer_听力 · 单词连播</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{min-height:100vh;display:flex;justify-content:center;font-family:"PingFang SC",-apple-system,sans-serif;background:#111}
@@ -94,6 +94,87 @@
     --bar-bg:rgba(80,55,20,.22); --bar-fill:#4a3418;
     --sheet-bg:rgba(255,250,240,.97); --accent:#b8860b;
   }
+  .app[data-skin="sakura"]{         /* 樱花粉 */
+    --bg-a:#fdeef3; --bg-b:#f9d7e2; --bg-c:#f4c2d4;
+    --card-bg:rgba(255,255,255,.42); --card-br:rgba(255,255,255,.9);
+    --disc-a:#f08cb2; --disc-b:#e0618f;
+    --groove:rgba(160,50,90,.10); --dshadow:rgba(210,90,140,.35);
+    --tx:#3d1f2b; --tx2:#7a4f61; --tx3:#9b7486;
+    --bar-bg:rgba(140,60,95,.2); --bar-fill:#e0618f;
+    --sheet-bg:rgba(255,247,250,.97); --accent:#e8638c;
+  }
+  .app[data-skin="matcha"]{         /* 抹茶（同全站主题色） */
+    --bg-a:#f1f4ea; --bg-b:#e4ecd7; --bg-c:#d5e2c2;
+    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.92);
+    --disc-a:#93b073; --disc-b:#66854a;
+    --groove:rgba(70,100,40,.10); --dshadow:rgba(100,130,70,.32);
+    --tx:#2c3a1e; --tx2:#5d7247; --tx3:#84976d;
+    --bar-bg:rgba(80,110,50,.2); --bar-fill:#5f7d46;
+    --sheet-bg:rgba(250,252,246,.97); --accent:#6b8e4e;
+  }
+  .app[data-skin="mint"]{           /* 薄荷 */
+    --bg-a:#eefaf7; --bg-b:#daf2ec; --bg-c:#c2e8df;
+    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
+    --disc-a:#55c7b2; --disc-b:#2ba58f;
+    --groove:rgba(20,110,95,.10); --dshadow:rgba(40,150,130,.3);
+    --tx:#12332c; --tx2:#4a7368; --tx3:#7a998f;
+    --bar-bg:rgba(30,110,95,.2); --bar-fill:#2ba58f;
+    --sheet-bg:rgba(247,253,251,.97); --accent:#2bbfa3;
+  }
+  .app[data-skin="ocean"]{          /* 海盐蓝 */
+    --bg-a:#eef5fc; --bg-b:#dcebf9; --bg-c:#c5ddf3;
+    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
+    --disc-a:#63a1dd; --disc-b:#3a6fb8;
+    --groove:rgba(30,80,150,.10); --dshadow:rgba(60,110,180,.32);
+    --tx:#122a44; --tx2:#4a6886; --tx3:#7a93ab;
+    --bar-bg:rgba(40,90,150,.2); --bar-fill:#3a6fb8;
+    --sheet-bg:rgba(247,251,255,.97); --accent:#3a7bd5;
+  }
+  .app[data-skin="grape"]{          /* 星空紫 */
+    --bg-a:#f2eefa; --bg-b:#e5dcf6; --bg-c:#d4c6ee;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.9);
+    --disc-a:#9a7fda; --disc-b:#7257bd;
+    --groove:rgba(80,50,150,.10); --dshadow:rgba(120,90,190,.32);
+    --tx:#2c2144; --tx2:#5f4f80; --tx3:#8677a3;
+    --bar-bg:rgba(90,60,160,.2); --bar-fill:#7257bd;
+    --sheet-bg:rgba(251,249,255,.97); --accent:#7c5cd6;
+  }
+  .app[data-skin="amusic"]{         /* Apple Music 红 */
+    --bg-a:#fff4f4; --bg-b:#ffe3e5; --bg-c:#ffd2d6;
+    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.95);
+    --disc-a:#fb5c74; --disc-b:#e11d3f;
+    --groove:rgba(170,20,50,.10); --dshadow:rgba(230,50,80,.32);
+    --tx:#3d1420; --tx2:#844a58; --tx3:#a87581;
+    --bar-bg:rgba(150,30,60,.2); --bar-fill:#e11d3f;
+    --sheet-bg:rgba(255,248,248,.97); --accent:#fa233b;
+  }
+  .app[data-skin="mocha"]{          /* 摩卡棕 */
+    --bg-a:#f7f1ea; --bg-b:#eee1d3; --bg-c:#e0cdb8;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.88);
+    --disc-a:#7d5c42; --disc-b:#553a28;
+    --groove:rgba(90,60,35,.10); --dshadow:rgba(120,85,55,.35);
+    --tx:#38271a; --tx2:#6e5540; --tx3:#93795f;
+    --bar-bg:rgba(110,75,45,.2); --bar-fill:#5d4128;
+    --sheet-bg:rgba(253,250,246,.97); --accent:#8b5e3c;
+  }
+  .app[data-skin="spotify"]{        /* Spotify 黑绿 */
+    --bg-a:#1d2420; --bg-b:#121713; --bg-c:#0b0e0c;
+    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
+    --disc-a:#181d18; --disc-b:#0c0f0c;
+    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
+    --tx:#f0f5f0; --tx2:rgba(235,245,235,.72); --tx3:rgba(235,245,235,.5);
+    --bar-bg:rgba(255,255,255,.2); --bar-fill:#f0f5f0;
+    --sheet-bg:rgba(18,23,19,.96); --accent:#1db954;
+  }
+  .app[data-skin="midnight"]{       /* 深夜蓝（暗色） */
+    --bg-a:#1e2740; --bg-b:#151c30; --bg-c:#0d1220;
+    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
+    --disc-a:#141a2b; --disc-b:#090c15;
+    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
+    --tx:#eef2fb; --tx2:rgba(235,240,250,.72); --tx3:rgba(235,240,250,.5);
+    --bar-bg:rgba(255,255,255,.2); --bar-fill:#eef2fb;
+    --sheet-bg:rgba(18,24,40,.96); --accent:#4a9eff;
+  }
   .app[data-skin="vinylx"]{          /* 悬浮黑胶（参照网易云图标：黑盘+大蓝标+顶部细针） */
     --bg-a:#e9e8f0; --bg-b:#e9e8f0; --bg-c:#e2e1ec;
     --card-bg:transparent; --card-br:transparent;
@@ -133,14 +214,42 @@
   .top .ic.neutral.on svg{stroke:var(--accent)}
   .top .ic.on svg{stroke:var(--accent)}
   .top .ic.on svg .fillable{fill:var(--accent)}
-  .top .ic svg .slash{opacity:1;transition:opacity .2s}   /* 未收藏：心上有斜线 */
-  .top .ic.on svg .slash{opacity:0}                        /* 已收藏：斜线消失、心填色 */
+  /* 「跳过/已掌握」新图标是实心路径（无描边）：中性灰 → 点亮用强调色 */
+  .top .ic svg.solid{stroke:none;fill:rgba(118,124,134,.92)}
+  .top .ic.on svg.solid{fill:var(--accent)}
+  /* 标记点亮瞬间的微动效：和收藏/星标一个手感，点到就有反馈 */
+  @keyframes mkpulse{0%{transform:scale(1)}38%{transform:scale(1.26)}100%{transform:scale(1)}}
+  .top .ic.pulse svg{animation:mkpulse .32s ease}
+  /* 斜线 = 「已划掉」标记：默认不显示，点了 ✓ 之后才划掉 */
+  .top .ic svg .slash{opacity:0;transition:opacity .2s}
+  .top .ic.on svg .slash{opacity:1}
   .top{gap:9px}
   .top .ic{width:30px;height:30px}
   .top .ic svg{width:19px;height:19px}
   .srow.col{flex-direction:column;align-items:stretch;gap:9px}
   .seg.wrap{flex-wrap:wrap;justify-content:flex-start}
   .clr{font-size:11.5px;color:var(--accent);cursor:pointer;font-weight:600}
+  /* 自定义链接面板 + 备份 */
+  .sheet.lks{z-index:26}
+  .lk{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bar-bg)}
+  .lk input[type=checkbox]{flex:none;width:16px;height:16px;accent-color:var(--accent)}
+  .lk .lkn{font-size:13.5px;font-weight:600;color:var(--tx);cursor:pointer;flex:1;min-width:0;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lk .lkn:hover{color:var(--accent)}
+  .lk .lku{font-size:10.5px;color:var(--tx3);max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lkrow{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--bar-bg);align-items:center}
+  .lkrow input{flex:1;min-width:0;padding:7px 10px;border-radius:9px;border:1px solid var(--bar-bg);
+    background:transparent;color:var(--tx);font-size:12.5px}
+  .lkrow input.nm{flex:0 0 96px}
+  .lkrow input:focus{outline:none;border-color:var(--accent)}
+  .lkrow .del{flex:none;font-size:13px;color:var(--accent);cursor:pointer;padding:4px 7px;user-select:none}
+  .lkbtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .lkbtns b{font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:99px;
+    border:1px solid var(--bar-bg);color:var(--tx2);cursor:pointer}
+  .lkbtns b:hover{border-color:var(--accent);color:var(--accent)}
+  .lkbtns b.pri{border-color:var(--accent);color:var(--accent)}
+  .lkempty{padding:16px 0;color:var(--tx3);font-size:12.5px;line-height:1.8}
+  .bktip{font-size:11px;color:var(--tx3);line-height:1.6;margin-top:8px}
   .repin{width:56px;padding:4px 6px;border-radius:8px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:12px;text-align:center;font-variant-numeric:tabular-nums}
   .repin:focus{outline:none;border-color:var(--accent)}
@@ -205,11 +314,35 @@
   .side{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
   .timerChip{position:absolute;right:0;top:0;font-size:11px;color:var(--tx3);opacity:.9;
     letter-spacing:.4px;font-variant-numeric:tabular-nums;pointer-events:none}
+  /* 当前词的来源标记（星标/收藏/已跳过）：点一下即取消，专门救误点 */
+  .mkbadge{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0}
+  .mkbadge .mk{font-style:normal;display:flex;align-items:center;font-size:11px;line-height:1;
+    padding:5px 8px;border-radius:99px;
+    border:1px solid var(--accent);color:var(--accent);cursor:pointer;user-select:none;
+    background:transparent;transition:opacity .15s,transform .15s}
+  .mkbadge .mk svg{width:14px;height:14px;display:block}
+  .mkbadge .mk svg.fill{fill:currentColor}
+  /* 标记统计：和「词库来源」用同一套图标，不再用 ⭐❤✓ 这种混搭 */
+  #markCnt{display:flex;align-items:center;gap:13px}
+  #markCnt b{display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;color:var(--tx2)}
+  #markCnt b svg{width:14px;height:14px;display:block}
+  #markCnt b svg.fill{fill:currentColor}
+  #clearBox{display:flex;gap:6px}
+  #clearBox b{display:flex;align-items:center;gap:3px;padding:5px 9px;font-size:12px}
+  #clearBox b svg{width:13px;height:13px;display:block}
+  #clearBox b svg.fill{fill:currentColor}
+  #clearBox b i{font-style:normal;font-size:10px;opacity:.65}
+  .mkbadge .mk:hover{opacity:.6}
+  .mkbadge .mk:active{transform:scale(.94)}
+  .mkbadge .mk::after{content:" ✕"}
   @media (min-width:760px){
-    .app{width:min(1280px,96vw);max-width:none;zoom:1;min-height:auto;margin:auto;padding-bottom:8px}
+    /* 宽屏：定成横向矩形（16:10）并随缩放等比，别再被 100vh 拉成竖长方形 */
+    body{align-items:center}
+    .app{width:min(1280px,calc(96vw / var(--z,1)));max-width:none;zoom:var(--z,1);
+      aspect-ratio:16/10;min-height:0;max-height:calc(96vh / var(--z,1));margin:auto;padding-bottom:8px}
     .main{flex-direction:row;align-items:center;gap:40px;padding:8px 30px 0}
-    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕 */
-    .main>.card{margin:0;flex:0 0 clamp(400px,min(40vw,66vh),640px);align-self:center}
+    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕；宽屏接近方形（1:1），宽度够、高度也够长 */
+    .main>.card{margin:0;flex:0 0 calc(clamp(460px,min(50vw,58vh),780px) / var(--z,1));aspect-ratio:1/1;align-self:center}
     .side{align-self:stretch;justify-content:flex-start}
     /* 单词区在「角标」与「底部控制」之间的剩余空间里垂直居中 → 整体下移到中间 */
     .side .word{padding:0;min-height:0;text-align:center;margin-top:auto;margin-bottom:auto}
@@ -241,6 +374,13 @@
 
   /* 单词区 */
   .word{padding:20px 26px 0;text-align:center;min-height:150px}
+  /* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方，不挡底部 */
+  .wordTip{font-size:13px;font-weight:600;color:var(--accent);margin:2px auto 12px;padding:6px 15px;
+    border-radius:99px;display:inline-block;line-height:1.2;
+    background:color-mix(in srgb,var(--accent) 13%,transparent);
+    border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);
+    opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s;pointer-events:none}
+  .wordTip.on{opacity:1;transform:translateY(0)}
   /* 章节/级别/进度：左上角角标，弱化处理不抢单词（小字 + 拉开距离 + 降透明度） */
   .side .sec{font-size:10px;color:var(--tx3);opacity:.72;margin:0 0 10px;text-align:left;letter-spacing:.3px}
   .word .wrow{display:inline-flex;align-items:flex-end;justify-content:center;gap:9px}
@@ -287,20 +427,31 @@
 
   /* 设置面板 */
   .sheet{position:absolute;left:0;right:0;bottom:0;z-index:20;background:var(--sheet-bg);backdrop-filter:blur(14px);
-    border-radius:22px 22px 0 0;padding:16px 22px 28px;transform:translateY(105%);
+    border-radius:22px 22px 0 0;padding:0 22px 28px;transform:translateY(105%);
+    /* 关键：面板必须限高且可滚动，否则顶部选项会被顶出屏幕点不到 */
+    max-height:calc(100% - 12px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
     transition:transform .35s cubic-bezier(.3,1,.4,1);box-shadow:0 -10px 30px rgba(0,0,0,.2)}
   .sheet.on{transform:translateY(0)}
+  .sheet::-webkit-scrollbar{width:6px}
+  .sheet::-webkit-scrollbar-thumb{background:var(--bar-bg);border-radius:3px}
   .sheet h3{font-size:14px;color:var(--tx);margin-bottom:0}
-  .shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  /* 标题行吸顶：滚动时「返回播放」始终可见 */
+  .shd{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;
+    background:var(--sheet-bg);padding:16px 0 12px}
   .shb{font-size:12.5px;font-weight:600;color:var(--accent);cursor:pointer;user-select:none}
   .shb:hover{opacity:.75}
   .top .ic{flex:none}
-  .srow{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bar-bg)}
+  .srow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;
+    padding:10px 0;border-bottom:1px solid var(--bar-bg)}
   .srow:last-of-type{border-bottom:none}
-  .srow span{font-size:13.5px;color:var(--tx)}
-  .seg{display:flex;gap:6px}
+  .srow span{font-size:13.5px;color:var(--tx);white-space:nowrap}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
   .seg b{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;cursor:pointer;
-    border:1px solid var(--bar-bg);color:var(--tx2)}
+    border:1px solid var(--bar-bg);color:var(--tx2);display:flex;align-items:center;justify-content:center}
+  .seg b svg{width:15px;height:15px;display:block}
+  .seg b.icn{padding:5px 10px;min-width:34px}
+  .seg b.off{opacity:.5;cursor:not-allowed;border-style:dashed}
+  .seg b svg.fill{fill:currentColor}
   .seg b.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .sback{margin-top:14px;width:100%;padding:11px;border-radius:12px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:14px;font-weight:600;cursor:pointer}
@@ -319,16 +470,12 @@
       <svg viewBox="0 0 24 24" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>
     </div>
     <div class="pt" id="ptitle">Is Space-Time Attention All You Need for Video Understanding? · TimeSformer · ICML 2021</div>
+    <div class="ic" id="replayBtn" title="重听当前词">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
+    </div>
     <div class="ic neutral" id="favBtn" title="收藏（再点取消）">
       <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round">
-        <defs>
-          <clipPath id="favClip">
-            <path transform="translate(12 12) scale(.86) translate(-12 -12)"
-                  d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-          </clipPath>
-        </defs>
         <path class="fillable heart" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-        <path class="slash" d="M4 4 20 20" clip-path="url(#favClip)"/>
       </svg>
     </div>
     <div class="ic neutral" id="starBtn" title="标星（重点词，可只背星标）">
@@ -336,14 +483,13 @@
         <path class="fillable star" d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/>
       </svg>
     </div>
-    <div class="ic" id="okBtn" title="认识，之后不再朗读">
-      <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>
-    </div>
-    <div class="ic" id="replayBtn" title="重听当前词">
-      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
+    <div class="ic neutral" id="okBtn" title="标为已掌握（跳过=不再朗读，再点恢复）">
+      <svg viewBox="0 0 1024 1024" class="solid">
+        <path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/>
+      </svg>
     </div>
     <div class="ic" id="skinBtn" title="换皮肤（点一下换下一套）">
-      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 3.2 3.4 5.9l2 3.6 1.9-1V20.8h9.4V8.5l1.9 1 2-3.6L15.8 3.2a3.8 3.8 0 0 1-7.6 0Z"/></svg>
+      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.8 3.4c0 2 1.4 3.6 3.2 3.6s3.2-1.6 3.2-3.6l6.2 2.7-1.8 4.1-2.6-1.1v10.7H6.8V9.1L4.2 10.2 2.4 6.1Z"/></svg>
     </div>
     <div class="ic" id="moreBtn" title="设置">
       <svg class="dot" viewBox="0 0 24 24" stroke="none"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>
@@ -389,7 +535,9 @@
   <div class="side">
   <div class="sec" id="wsec">准备中…</div>
   <div class="timerChip" id="timerChip" style="display:none">⏱ 0:00</div>
+  <div class="mkbadge" id="mkBadge" style="display:none"></div>
   <div class="word">
+    <div class="wordTip" id="wordTip"></div>
     <div class="wrow">
       <span class="big" id="wbig">—</span>
       <span class="ipa" id="wipa"></span>
@@ -427,6 +575,8 @@
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
+    <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
+    <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
     <div class="srow"><span>单词重复</span>
       <div style="display:flex;align-items:center;gap:8px">
         <div class="seg" id="segRepeat"></div>
@@ -434,6 +584,7 @@
       </div>
     </div>
     <div class="srow"><span>每词停顿</span><div class="seg" id="segPause"></div></div>
+    <div class="srow"><span>语速</span><div class="seg" id="segRate"></div></div>
     <div class="srow"><span>先听后现</span><div class="seg" id="segReveal"></div></div>
     <div class="srow"><span>朗读中文</span><div class="seg" id="segZh"></div></div>
     <div class="srow"><span>朗读例句</span><div class="seg" id="segEx"></div></div>
@@ -441,19 +592,41 @@
     <div class="srow"><span>单词字体</span><div class="seg" id="segFont"></div></div>
     <div class="srow"><span>定时停止</span><div class="seg" id="segTimer"></div></div>
     <div class="srow"><span>词库来源</span><div class="seg" id="segSource"></div></div>
-    <div class="srow"><span id="markCnt">⭐ 0 · ❤ 0 · ✓ 0</span><span class="clr" id="clearStar">清空星标</span></div>
+    <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
+    <div class="srow col"><span>链接与备份</span>
+      <div class="seg wrap" id="backupBox"></div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+    </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
+  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
+  <div class="sheet lks" id="linkPop">
+    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
+    <div id="linkList"></div>
+    <div class="lkbtns" id="linkPopBtns"></div>
+  </div>
+  <!-- 链接配置面板：增删改本篇的链接 -->
+  <div class="sheet lks" id="linkCfg">
+    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
+    <div id="linkRows"></div>
+    <div class="lkbtns">
+      <b id="linkAddRow">＋ 添加一行</b>
+      <b id="linkSave" class="pri">保存</b>
+    </div>
+  </div>
+  <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
-const ITEMS=[{"w": "exclusively", "ipa": "/ɪkˈskluːsɪvli/", "pos": "adv.", "m": "专门地，仅仅", "ex": "a scalable video architecture built exclusively on space-time self-attention", "lv": "四级", "sec": "摘要"}, {"w": "scalable", "ipa": "/ˈskeɪləbl/", "pos": "adj.", "m": "可扩展的", "ex": "a fundamentally different approach to video modeling compared to the established paradigm", "lv": "考博", "sec": "摘要"}, {"w": "paradigm", "ipa": "/ˈpærədaɪm/", "pos": "n.", "m": "范式，典范", "ex": "a fundamentally different approach to video modeling compared to the established paradigm of convolution-based video networks", "lv": "考研", "sec": "摘要"}, {"w": "effectively", "ipa": "/ɪˈfektɪvli/", "pos": "adv.", "m": "有效地", "ex": "it is possible to design an effective, and scalable video architecture", "lv": "四级", "sec": "摘要"}, {"w": "attention", "ipa": "/əˈtenʃn/", "pos": "n.", "m": "注意力", "ex": "Is Space-Time Attention All You Need for Video Understanding?", "lv": "四级", "sec": "摘要"}, {"w": "dominant", "ipa": "/ˈdɒmɪnənt/", "pos": "adj.", "m": "占主导地位的", "ex": "CNN-based architectures have been the dominant paradigm for video understanding", "lv": "四级", "sec": "引言"}, {"w": "emerging", "ipa": "/ɪˈmɜːdʒɪŋ/", "pos": "adj.", "m": "新兴的", "ex": "vision Transformers have recently emerged as powerful models for image recognition", "lv": "四级", "sec": "引言"}, {"w": "succinct", "ipa": "/səkˈsɪŋkt/", "pos": "adj.", "m": "简洁的", "ex": "a succinct formulation of the video space-time self-attention mechanism", "lv": "考博", "sec": "引言"}, {"w": "revolution", "ipa": "/ˌrevəˈluːʃn/", "pos": "n.", "m": "革命", "ex": "a revolution in the natural language processing field", "lv": "四级", "sec": "引言"}, {"w": "computationally", "ipa": "/ˌkɒmpjuˈteɪʃənəli/", "pos": "adv.", "m": "计算上地", "ex": "computationally prohibitive for video understanding", "lv": "考博", "sec": "引言"}, {"w": "prohibitive", "ipa": "/prəˈhɪbɪtɪv/", "pos": "adj.", "m": "令人望而却步的", "ex": "the computational complexity is prohibitive for video", "lv": "考博", "sec": "引言"}, {"w": "sequence", "ipa": "/ˈsiːkwəns/", "pos": "n.", "m": "序列", "ex": "video as a sequence of frame-level patches", "lv": "四级", "sec": "引言"}, {"w": "treating", "ipa": "/ˈtriːtɪŋ/", "pos": "v.", "m": "将…视为", "ex": "by treating a video as a sequence of images", "lv": "四级", "sec": "引言"}, {"w": "conceptually", "ipa": "/kənˈseptʃuəli/", "pos": "adv.", "m": "概念上地", "ex": "our method is conceptually simple", "lv": "考博", "sec": "引言"}, {"w": "simplicity", "ipa": "/sɪmˈplɪsəti/", "pos": "n.", "m": "简洁", "ex": "our method is conceptually simple", "lv": "四级", "sec": "引言"}, {"w": "outperform", "ipa": "/ˌaʊtpəˈfɔːm/", "pos": "v.", "m": "优于，胜过", "ex": "recent works have shown that vision Transformers can outperform convolutional networks on image classification", "lv": "六级", "sec": "相关工作"}, {"w": "convolutional", "ipa": "/kənˈvɒljuːʃənl/", "pos": "adj.", "m": "卷积的", "ex": "CNN-based architectures have been the dominant paradigm", "lv": "考博", "sec": "相关工作"}, {"w": "exploiting", "ipa": "/ɪkˈsplɔɪtɪŋ/", "pos": "v.", "m": "利用，开发", "ex": "3D CNNs for video understanding by exploiting spatiotemporal convolutions", "lv": "四级", "sec": "相关工作"}, {"w": "spatiotemporal", "ipa": "/ˌspeɪʃiəʊˈtempərəl/", "pos": "adj.", "m": "时空的", "ex": "exploiting spatiotemporal convolutions for video understanding", "lv": "考博", "sec": "相关工作"}, {"w": "convolutions", "ipa": "/ˌkɒnvəˈluːʃnz/", "pos": "n.", "m": "卷积", "ex": "spatiotemporal convolutions for video understanding", "lv": "考博", "sec": "相关工作"}, {"w": "transferred", "ipa": "/trænsˈfɜːd/", "pos": "v.", "m": "迁移的", "ex": "weights transferred from 2D image models", "lv": "考博", "sec": "相关工作"}, {"w": "modifications", "ipa": "/ˌmɒdɪfɪˈkeɪʃnz/", "pos": "n.", "m": "修改", "ex": "with minor modifications to the architecture", "lv": "六级", "sec": "相关工作"}, {"w": "synthesizing", "ipa": "/ˈsɪnθəsaɪzɪŋ/", "pos": "v.", "m": "合成", "ex": "different modalities such as language and vision are represented as a sequence of vectors", "lv": "六级", "sec": "相关工作"}, {"w": "predecessors", "ipa": "/ˈpriːdɪsesəz/", "pos": "n.", "m": "前身", "ex": "our predecessors in this field", "lv": "六级", "sec": "相关工作"}, {"w": "depict", "ipa": "/dɪˈpɪkt/", "pos": "v.", "m": "描绘，描述", "ex": "depict different spatial and temporal neighborhoods", "lv": "六级", "sec": "相关工作"}, {"w": "architecture", "ipa": "/ˈɑːkɪtektʃə/", "pos": "n.", "m": "架构", "ex": "a video is viewed as a sequence of frame-level patches", "lv": "四级", "sec": "模型"}, {"w": "analogy", "ipa": "/əˈnælədʒi/", "pos": "n.", "m": "类比", "ex": "plays a role similar to the sequences of embedded words fed to text Transformers in NLP", "lv": "六级", "sec": "模型"}, {"w": "embedded", "ipa": "/ɪmˈbedɪd/", "pos": "adj.", "m": "嵌入的", "ex": "the sequences of embedded words fed to text Transformers", "lv": "考博", "sec": "模型"}, {"w": "dimensionality", "ipa": "/dɪˌmenʃəˈnæləti/", "pos": "n.", "m": "维度", "ex": "the latent dimensionality for each attention head", "lv": "考博", "sec": "模型"}, {"w": "concatenation", "ipa": "/kənˌtæɡɪˈneɪʃn/", "pos": "n.", "m": "拼接", "ex": "the concatenation of these vectors from all heads is projected", "lv": "考博", "sec": "模型"}, {"w": "classification", "ipa": "/ˌklæsɪfɪˈkeɪʃn/", "pos": "n.", "m": "分类", "ex": "the final clip embedding is obtained for the classification token", "lv": "四级", "sec": "模型"}, {"w": "prediction", "ipa": "/prɪˈdɪkʃn/", "pos": "n.", "m": "预测", "ex": "append a 1-hidden-layer MLP which is used to predict the final video classes", "lv": "六级", "sec": "模型"}, {"w": "representations", "ipa": "/ˌreprɪzenˈteɪʃnz/", "pos": "n.", "m": "表示", "ex": "encode each video frame as a sequence of patch embeddings", "lv": "六级", "sec": "模型"}, {"w": "preceding", "ipa": "/prɪˈsiːdɪŋ/", "pos": "adj.", "m": "前面的", "ex": "from the representation z encoded by the preceding block", "lv": "四级", "sec": "模型"}, {"w": "projection", "ipa": "/prəˈdʒekʃn/", "pos": "n.", "m": "投影", "ex": "the concatenation of these vectors from all heads is projected", "lv": "考博", "sec": "模型"}, {"w": "patch", "ipa": "/pætʃ/", "pos": "n.", "m": "图像块", "ex": "a video is viewed as a sequence of frame-level patches with a size of 16 × 16 pixels", "lv": "四级", "sec": "视频表示"}, {"w": "token", "ipa": "/ˈtoʊkən/", "pos": "n.", "m": "令牌，标记", "ex": "each video frame is encoded as a sequence of patch embeddings", "lv": "六级", "sec": "视频表示"}, {"w": "vector", "ipa": "/ˈvektər/", "pos": "n.", "m": "向量", "ex": "a query/key/value vector is computed for each patch", "lv": "六级", "sec": "视频表示"}, {"w": "embed", "ipa": "/ɪmˈbed/", "pos": "v.", "m": "嵌入", "ex": "encode each video frame as a sequence of patch embeddings", "lv": "六级", "sec": "视频表示"}, {"w": "learnable", "ipa": "/ˈlɜːnəbl/", "pos": "adj.", "m": "可学习的", "ex": "we add a special learnable vector representing the embedding of the classification token", "lv": "考博", "sec": "视频表示"}, {"w": "temporal", "ipa": "/ˈtempərəl/", "pos": "adj.", "m": "时间的", "ex": "temporal attention and spatial attention are separately applied", "lv": "考博", "sec": "视频表示"}, {"w": "spatial", "ipa": "/ˈspeɪʃl/", "pos": "adj.", "m": "空间的", "ex": "spatial attention within each frame only", "lv": "六级", "sec": "视频表示"}, {"w": "locational", "ipa": "/ləʊˈkeɪʃənl/", "pos": "adj.", "m": "位置的", "ex": "add learnable position embeddings to the patch sequence", "lv": "考博", "sec": "视频表示"}, {"w": "initialize", "ipa": "/ɪˈnɪʃəlaɪz/", "pos": "v.", "m": "初始化", "ex": "initialize with weights learned from ImageNet", "lv": "考博", "sec": "视频表示"}, {"w": "sampling", "ipa": "/ˈsɑːmplɪŋ/", "pos": "n.", "m": "采样", "ex": "with frames sampled at a rate of 1/32", "lv": "四级", "sec": "视频表示"}, {"w": "self-attention", "ipa": "/ˌself əˈtenʃn/", "pos": "n.", "m": "自注意力", "ex": "a succinct formulation of the video space-time self-attention mechanism", "lv": "考博", "sec": "自注意力"}, {"w": "mechanism", "ipa": "/ˈmekənɪzəm/", "pos": "n.", "m": "机制", "ex": "the video space-time self-attention mechanism", "lv": "四级", "sec": "自注意力"}, {"w": "query", "ipa": "/ˈkwɪəri/", "pos": "n.", "m": "查询", "ex": "a query/key/value vector is computed for each patch", "lv": "六级", "sec": "自注意力"}, {"w": "key", "ipa": "/kiː/", "pos": "n.", "m": "键", "ex": "a query/key/value vector is computed for each patch", "lv": "四级", "sec": "自注意力"}, {"w": "value", "ipa": "/ˈvæljuː/", "pos": "n.", "m": "值", "ex": "a query/key/value vector is computed for each patch", "lv": "四级", "sec": "自注意力"}, {"w": "dot-product", "ipa": "/dɒt ˈprɒdʌkt/", "pos": "n.", "m": "点积", "ex": "self-attention weights are computed via dot-product", "lv": "考博", "sec": "自注意力"}, {"w": "softmax", "ipa": "/sɒftˈmæks/", "pos": "n.", "m": "softmax函数", "ex": "SM denotes the softmax activation function", "lv": "考博", "sec": "自注意力"}, {"w": "coefficients", "ipa": "/ˌkəʊɪˈfɪʃnts/", "pos": "n.", "m": "系数", "ex": "self-attention coefficients from each attention head", "lv": "六级", "sec": "自注意力"}, {"w": "activation", "ipa": "/ˌæktɪˈveɪʃn/", "pos": "n.", "m": "激活", "ex": "the softmax activation function", "lv": "考博", "sec": "自注意力"}, {"w": "latent", "ipa": "/ˈleɪtnt/", "pos": "adj.", "m": "潜在的", "ex": "the latent dimensionality for each attention head is set to Dh = D/A", "lv": "六级", "sec": "自注意力"}, {"w": "reduced", "ipa": "/rɪˈdjuːst/", "pos": "adj.", "m": "减少的", "ex": "the computation is significantly reduced for spatial attention", "lv": "考博", "sec": "自注意力"}, {"w": "normalized", "ipa": "/ˈnɔːməlaɪzd/", "pos": "adj.", "m": "归一化的", "ex": "LN denotes LayerNorm", "lv": "考博", "sec": "自注意力"}, {"w": "divided", "ipa": "/dɪˈvaɪdɪd/", "pos": "adj.", "m": "分离的", "ex": "Divided Space-Time Attention where temporal attention and spatial attention are separately applied", "lv": "考博", "sec": "注意力方案"}, {"w": "factorization", "ipa": "/ˌfæktəraɪˈzeɪʃn/", "pos": "n.", "m": "分解", "ex": "this space-time factorization is not only more efficient but also leads to improved accuracy", "lv": "考博", "sec": "注意力方案"}, {"w": "approximation", "ipa": "/əˌprɒksɪˈmeɪʃn/", "pos": "n.", "m": "近似", "ex": "a faster approximation of full spatiotemporal attention using a local-global decomposition", "lv": "考博", "sec": "注意力方案"}, {"w": "decomposition", "ipa": "/ˌdiːkɒmpəˈzɪʃn/", "pos": "n.", "m": "分解", "ex": "a local-global decomposition and a sparsity pattern", "lv": "考博", "sec": "注意力方案"}, {"w": "sparsity", "ipa": "/spəˈrɪsəti/", "pos": "n.", "m": "稀疏性", "ex": "a sparsity pattern similar to that used in sparse transformers", "lv": "考博", "sec": "注意力方案"}, {"w": "neighboring", "ipa": "/ˈneɪbərɪŋ/", "pos": "adj.", "m": "相邻的", "ex": "considering the neighboring patches", "lv": "考研", "sec": "注意力方案"}, {"w": "stride", "ipa": "/straɪd/", "pos": "n.", "m": "步幅", "ex": "using a stride of 2 patches along the temporal dimension", "lv": "六级", "sec": "注意力方案"}, {"w": "axial", "ipa": "/ˈæksiəl/", "pos": "adj.", "m": "轴的", "ex": "Axial attention decomposes the attention computation in three distinct steps", "lv": "六级", "sec": "注意力方案"}, {"w": "decomposes", "ipa": "/diːˈkɒmpəʊzɪz/", "pos": "v.", "m": "分解", "ex": "Axial attention decomposes the attention computation in three distinct steps", "lv": "六级", "sec": "注意力方案"}, {"w": "efficient", "ipa": "/ɪˈfɪʃnt/", "pos": "adj.", "m": "高效的", "ex": "a more efficient architecture for spatiotemporal attention", "lv": "四级", "sec": "注意力方案"}, {"w": "separately", "ipa": "/ˈseprətli/", "pos": "adv.", "m": "分别地", "ex": "temporal attention and spatial attention are separately applied one after the other", "lv": "四级", "sec": "注意力方案"}, {"w": "distinct", "ipa": "/dɪˈstɪŋkt/", "pos": "adj.", "m": "不同的", "ex": "we learn distinct query/key/value matrices over the time and space dimensions", "lv": "四级", "sec": "注意力方案"}, {"w": "matrices", "ipa": "/ˈmeɪtrɪsiːz/", "pos": "n.", "m": "矩阵（复数）", "ex": "we learn distinct query/key/value matrices over the time and space dimensions", "lv": "考博", "sec": "注意力方案"}, {"w": "capacity", "ipa": "/ˈkæpəsəti/", "pos": "n.", "m": "容量，能力", "ex": "divided space-time attention has a larger learning capacity", "lv": "四级", "sec": "注意力分析"}, {"w": "deprecated", "ipa": "/ˈdeprɪkeɪtɪd/", "pos": "adj.", "m": "已废弃的", "ex": "the fitz API is deprecated", "lv": "考博", "sec": "注意力分析"}, {"w": "gracefully", "ipa": "/ˈɡreɪsfəli/", "pos": "adv.", "m": "优雅地", "ex": "the scheme of divided space-time scales gracefully", "lv": "四级", "sec": "注意力分析"}, {"w": "dramatically", "ipa": "/drəˈmætɪkli/", "pos": "adv.", "m": "戏剧性地", "ex": "joint space-time attention leads to a dramatically higher cost", "lv": "四级", "sec": "注意力分析"}, {"w": "practically", "ipa": "/ˈpræktɪkli/", "pos": "adv.", "m": "实际上", "ex": "joint space-time attention is effectively not applicable to large frames", "lv": "四级", "sec": "注意力分析"}, {"w": "effective", "ipa": "/ɪˈfektɪv/", "pos": "adj.", "m": "有效的", "ex": "joint space-time attention is effectively not applicable", "lv": "四级", "sec": "注意力分析"}, {"w": "applicable", "ipa": "/əˈplɪkəbl/", "pos": "adj.", "m": "可应用的", "ex": "joint space-time attention is effectively not applicable to large frames or long videos", "lv": "四级", "sec": "注意力分析"}, {"w": "overwhelmingly", "ipa": "/ˌoʊvəˈwelmɪŋli/", "pos": "adv.", "m": "压倒性地", "ex": "spatial cues are more important than temporal information", "lv": "四级", "sec": "注意力分析"}, {"w": "degraded", "ipa": "/dɪˈɡreɪdɪd/", "pos": "adj.", "m": "退化的", "ex": "this approach leads to degraded classification accuracy", "lv": "考博", "sec": "注意力分析"}, {"w": "scalability", "ipa": "/ˌskeɪləˈbɪləti/", "pos": "n.", "m": "可扩展性", "ex": "the scalability of our model allows it to operate at higher spatial resolution", "lv": "考博", "sec": "注意力分析"}, {"w": "resolution", "ipa": "/ˌrezəˈluːʃn/", "pos": "n.", "m": "分辨率", "ex": "increasing the spatial resolution results in a higher number of patches", "lv": "四级", "sec": "注意力分析"}, {"w": "comparisons", "ipa": "/kəmˈpærɪsnz/", "pos": "n.", "m": "比较", "ex": "only N+1 query-key comparisons are made for spatial attention", "lv": "四级", "sec": "注意力分析"}, {"w": "distinguishing", "ipa": "/dɪˈstɪŋɡwɪʃɪŋ/", "pos": "adj.", "m": "有区别的", "ex": "understanding the distinguishing properties of TimeSformer", "lv": "四级", "sec": "3D CNN对比"}, {"w": "convolutional", "ipa": "/kənˈvɒljuːʃənl/", "pos": "adj.", "m": "卷积的", "ex": "3D convolutional architectures have been the prominent approach", "lv": "考博", "sec": "3D CNN对比"}, {"w": "prominent", "ipa": "/ˈprɒmɪnənt/", "pos": "adj.", "m": "突出的", "ex": "3D convolutional architectures have been the prominent approach", "lv": "四级", "sec": "3D CNN对比"}, {"w": "conversely", "ipa": "/ˈkɒnvɜːsli/", "pos": "adv.", "m": "相反地", "ex": "conversely, state-of-the-art 3D CNNs are much more expensive to train", "lv": "四级", "sec": "3D CNN对比"}, {"w": "expensive", "ipa": "/ɪkˈspensɪv/", "pos": "adj.", "m": "昂贵的", "ex": "3D CNNs are much more expensive to train", "lv": "四级", "sec": "3D CNN对比"}, {"w": "suggested", "ipa": "/səˈdʒestɪd/", "pos": "v.", "m": "表明", "ex": "this suggests that TimeSformer is better suited for settings that involve large-scale learning", "lv": "考博", "sec": "3D CNN对比"}, {"w": "suitable", "ipa": "/ˈsuːtəbl/", "pos": "adj.", "m": "合适的", "ex": "TimeSformer is better suited for settings that involve large-scale learning", "lv": "考研", "sec": "3D CNN对比"}, {"w": "maintaining", "ipa": "/meɪnˈteɪnɪŋ/", "pos": "v.", "m": "保持", "ex": "further increase their model capacity while also maintaining efficiency", "lv": "四级", "sec": "3D CNN对比"}, {"w": "constrain", "ipa": "/kənˈstreɪn/", "pos": "v.", "m": "限制", "ex": "if we constrain SlowFast to be trained under a somewhat similar computational budget", "lv": "六级", "sec": "3D CNN对比"}, {"w": "optimization", "ipa": "/ˌɒptɪmaɪˈzeɪʃn/", "pos": "n.", "m": "优化", "ex": "some 3D CNNs require a very long optimization schedule", "lv": "考博", "sec": "3D CNN对比"}, {"w": "highlighting", "ipa": "/ˈhaɪlɪtɪŋ/", "pos": "v.", "m": "突出显示", "ex": "highlighting the fact that some 3D CNNs require a very long optimization schedule", "lv": "四级", "sec": "3D CNN对比"}, {"w": "alternative", "ipa": "/ɔːlˈtɜːnətɪv/", "pos": "n.", "m": "替代方案", "ex": "TimeSformer provides a more efficient alternative to labs", "lv": "四级", "sec": "3D CNN对比"}, {"w": "numerous", "ipa": "/ˈnjuːmərəs/", "pos": "adj.", "m": "许多的", "ex": "numerous recent works", "lv": "四级", "sec": "3D CNN对比"}, {"w": "position", "ipa": "/pəˈzɪʃn/", "pos": "n.", "m": "位置", "ex": "the importance of positional embeddings", "lv": "四级", "sec": "词元与位置"}, {"w": "embedding", "ipa": "/ɪmˈbedɪŋ/", "pos": "n.", "m": "嵌入", "ex": "the importance of our learned spatiotemporal positional embeddings", "lv": "考博", "sec": "词元与位置"}, {"w": "positional", "ipa": "/pəˈzɪʃənl/", "pos": "adj.", "m": "位置的", "ex": "the importance of positional embeddings", "lv": "考博", "sec": "词元与位置"}, {"w": "variant", "ipa": "/ˈveəriənt/", "pos": "n.", "m": "变体", "ex": "we experimented with a few variants of TimeSformer", "lv": "考博", "sec": "词元与位置"}, {"w": "consistent", "ipa": "/kənˈsɪstənt/", "pos": "adj.", "m": "一致的", "ex": "ImageNet-21K pretraining leads consistently to a better performance", "lv": "四级", "sec": "词元与位置"}, {"w": "spatially", "ipa": "/ˈspeɪʃəli/", "pos": "adv.", "m": "空间上", "ex": "Kinetics-400 is more spatially biased", "lv": "六级", "sec": "词元与位置"}, {"w": "biased", "ipa": "/ˈbaɪəst/", "pos": "adj.", "m": "有偏见的", "ex": "Kinetics-400 is more spatially biased", "lv": "六级", "sec": "词元与位置"}, {"w": "reasoning", "ipa": "/ˈriːzənɪŋ/", "pos": "n.", "m": "推理", "ex": "SSv2 requires complex spatiotemporal reasoning", "lv": "四级", "sec": "词元与位置"}, {"w": "intuition", "ipa": "/ˌɪntjuˈɪʃn/", "pos": "n.", "m": "直觉", "ex": "this makes sense as SSv2 requires complex spatiotemporal reasoning", "lv": "六级", "sec": "词元与位置"}, {"w": "consistently", "ipa": "/kənˈsɪstəntli/", "pos": "adv.", "m": "一贯地", "ex": "leads consistently to a better performance on K400", "lv": "四级", "sec": "词元与位置"}, {"w": "benchmark", "ipa": "/ˈbentʃmɑːk/", "pos": "n.", "m": "基准", "ex": "major action recognition benchmarks", "lv": "考博", "sec": "SOTA对比"}, {"w": "validation", "ipa": "/ˌvælɪˈdeɪʃn/", "pos": "n.", "m": "验证", "ex": "we present our results on the validation set of K400", "lv": "六级", "sec": "SOTA对比"}, {"w": "inference", "ipa": "/ˈɪnfərəns/", "pos": "n.", "m": "推理", "ex": "during inference we sample a single temporal clip in the middle of the video", "lv": "四级", "sec": "SOTA对比"}, {"w": "multiple", "ipa": "/ˈmʌltɪpl/", "pos": "adj.", "m": "多个的", "ex": "we study the effect of using multiple temporal clips during inference", "lv": "四级", "sec": "SOTA对比"}, {"w": "spatial", "ipa": "/ˈspeɪʃl/", "pos": "adj.", "m": "空间的", "ex": "we use 3 spatial crops from the temporal clip", "lv": "六级", "sec": "SOTA对比"}, {"w": "accuracy", "ipa": "/ˈækjərəsi/", "pos": "n.", "m": "准确率", "ex": "TimeSformer achieves solid accuracy with only 3 views", "lv": "四级", "sec": "SOTA对比"}, {"w": "runtime", "ipa": "/ˈrʌntaɪm/", "pos": "n.", "m": "运行时间", "ex": "we also measured the actual inference runtime on 20K validation videos", "lv": "考博", "sec": "SOTA对比"}, {"w": "comparable", "ipa": "/kəmˈpærəbl/", "pos": "adj.", "m": "可比较的", "ex": "SlowFast and TimeSformer-L have comparable cost in terms of TFLOPs", "lv": "四级", "sec": "SOTA对比"}, {"w": "substantial", "ipa": "/səbˈstænʃl/", "pos": "adj.", "m": "大量的", "ex": "TimeSformer outperforms SlowFast by a substantial margin", "lv": "四级", "sec": "SOTA对比"}, {"w": "margin", "ipa": "/ˈmɑːdʒɪn/", "pos": "n.", "m": "差距", "ex": "outperforms SlowFast by a substantial margin", "lv": "四级", "sec": "SOTA对比"}, {"w": "instructional", "ipa": "/ɪnˈstrʌkʃənl/", "pos": "adj.", "m": "教学的", "ex": "HowTo100M is an instructional video dataset", "lv": "六级", "sec": "长期建模"}, {"w": "duration", "ipa": "/djuˈreɪʃn/", "pos": "n.", "m": "时长", "ex": "the average duration of these videos is around 7 minutes", "lv": "四级", "sec": "长期建模"}, {"w": "magnitude", "ipa": "/ˈmæɡnɪtjuːd/", "pos": "n.", "m": "量级", "ex": "orders of magnitude longer than the duration of videos in standard benchmarks", "lv": "六级", "sec": "长期建模"}, {"w": "demonstrated", "ipa": "/ˈdemənstreɪtɪd/", "pos": "v.", "m": "展示的", "ex": "each HowTo100M video has a label indicating the task demonstrated in the video", "lv": "考博", "sec": "长期建模"}, {"w": "categories", "ipa": "/ˈkætəɡəriz/", "pos": "n.", "m": "类别", "ex": "spanning 1059 task categories", "lv": "四级", "sec": "长期建模"}, {"w": "partition", "ipa": "/pɑːˈtɪʃn/", "pos": "v.", "m": "划分", "ex": "we randomly partition this collection into 85K training videos and 35K testing videos", "lv": "六级", "sec": "长期建模"}, {"w": "coverage", "ipa": "/ˈkʌvərɪdʒ/", "pos": "n.", "m": "覆盖范围", "ex": "Single Clip Coverage denotes the number of seconds spanned by a single clip", "lv": "六级", "sec": "长期建模"}, {"w": "non-overlapping", "ipa": "/ˌnɒn ˌəʊvəˈlæpɪŋ/", "pos": "adj.", "m": "不重叠的", "ex": "we sample as many non-overlapping temporal clips as needed", "lv": "考博", "sec": "长期建模"}, {"w": "span", "ipa": "/spæn/", "pos": "v.", "m": "跨越", "ex": "it is able to span about 12 seconds of a Kinetics video with a single clip", "lv": "四级", "sec": "长期建模"}, {"w": "relevant", "ipa": "/ˈreləvənt/", "pos": "adj.", "m": "相关的", "ex": "TimeSformer learns to attend to the relevant regions in the video", "lv": "四级", "sec": "长期建模"}, {"w": "suitable", "ipa": "/ˈsuːtəbl/", "pos": "adj.", "m": "适合的", "ex": "our model is highly suitable for tasks that require long-term video modeling", "lv": "考研", "sec": "长期建模"}, {"w": "effectively", "ipa": "/ɪˈfektɪvli/", "pos": "adv.", "m": "有效地", "ex": "our model can effectively exploit long-range temporal dependencies", "lv": "四级", "sec": "长期建模"}, {"w": "ablation", "ipa": "/əˈbleɪʃn/", "pos": "n.", "m": "消融（实验）", "ex": "Additional Ablations", "lv": "考博", "sec": "消融实验"}, {"w": "granularity", "ipa": "/ˌɡrænjuˈlærəti/", "pos": "n.", "m": "粒度", "ex": "the performance decrease with P=32 is due to the reduced spatial granularity", "lv": "考博", "sec": "消融实验"}, {"w": "reversed", "ipa": "/rɪˈvɜːst/", "pos": "v.", "m": "反转", "ex": "we investigate whether reversing the order of time-space attention has an impact", "lv": "考博", "sec": "消融实验"}, {"w": "parallel", "ipa": "/ˈpærəlel/", "pos": "adj.", "m": "并行的", "ex": "we also tried a parallel space-time self-attention", "lv": "四级", "sec": "消融实验"}, {"w": "configurations", "ipa": "/kənˌfɪɡəˈreɪʃnz/", "pos": "n.", "m": "配置", "ex": "three configurations of our model", "lv": "六级", "sec": "消融实验"}, {"w": "separable", "ipa": "/ˈseprəbl/", "pos": "adj.", "m": "可分离的", "ex": "TimeSformer learns semantically more separable features", "lv": "考博", "sec": "消融实验"}, {"w": "semantically", "ipa": "/sɪˈmæntɪkli/", "pos": "adv.", "m": "语义上地", "ex": "learns semantically more separable features", "lv": "考博", "sec": "消融实验"}, {"w": "dropout", "ipa": "/ˈdrɒpaʊt/", "pos": "n.", "m": "丢弃法", "ex": "A dropout of 0.5 is used before the final classification layer", "lv": "四级", "sec": "消融实验"}, {"w": "momentum", "ipa": "/məˈmentəm/", "pos": "n.", "m": "动量", "ex": "the momentum is set to 0.9", "lv": "六级", "sec": "消融实验"}, {"w": "conjecture", "ipa": "/kənˈdʒektʃər/", "pos": "v.", "m": "推测", "ex": "we conjecture that the performance decrease is due to reduced spatial granularity", "lv": "考博", "sec": "消融实验"}, {"w": "qualitative", "ipa": "/ˈkwɒlɪtətɪv/", "pos": "adj.", "m": "定性的", "ex": "Qualitative Results", "lv": "六级", "sec": "定性结果"}, {"w": "visualize", "ipa": "/ˈvɪʒuəlaɪz/", "pos": "v.", "m": "可视化", "ex": "we present space-time attention visualizations", "lv": "六级", "sec": "定性结果"}, {"w": "visualization", "ipa": "/ˌvɪʒuəlaɪˈzeɪʃn/", "pos": "n.", "m": "可视化", "ex": "Visualization of Learned Space-Time Attention", "lv": "考博", "sec": "定性结果"}, {"w": "configure", "ipa": "/kənˈfɪɡər/", "pos": "v.", "m": "配置", "ex": "the model focuses on the configuration of the hand when visible", "lv": "考博", "sec": "定性结果"}, {"w": "configuration", "ipa": "/kənˌfɪɡəˈreɪʃn/", "pos": "n.", "m": "配置", "ex": "the model focuses on the configuration of the hand", "lv": "六级", "sec": "定性结果"}, {"w": "depicting", "ipa": "/dɪˈpɪktɪŋ/", "pos": "v.", "m": "描绘", "ex": "different colors depict different action categories", "lv": "六级", "sec": "定性结果"}, {"w": "demonstrating", "ipa": "/ˈdemənstreɪtɪŋ/", "pos": "v.", "m": "展示", "ex": "recognizing activities exhibited over very long temporal extents", "lv": "四级", "sec": "定性结果"}, {"w": "exhibited", "ipa": "/ɪɡˈzɪbɪtɪd/", "pos": "v.", "m": "表现出的", "ex": "recognizing activities exhibited over very long temporal extents", "lv": "四级", "sec": "定性结果"}, {"w": "distinct", "ipa": "/dɪˈstɪŋkt/", "pos": "adj.", "m": "明显的", "ex": "time, width and height are three distinct steps", "lv": "四级", "sec": "定性结果"}, {"w": "trajectory", "ipa": "/trəˈdʒektəri/", "pos": "n.", "m": "轨迹", "ex": "following the trajectory of objects in the video", "lv": "考博", "sec": "定性结果"}, {"w": "established", "ipa": "/ɪˈstæblɪʃt/", "pos": "adj.", "m": "已确立的", "ex": "compared to the established paradigm of convolution-based video networks", "lv": "四级", "sec": "结论"}, {"w": "fundamentally", "ipa": "/ˌfʌndəˈmentəli/", "pos": "adv.", "m": "根本上地", "ex": "a fundamentally different approach to video modeling", "lv": "四级", "sec": "结论"}, {"w": "introduced", "ipa": "/ˌɪntrəˈdjuːst/", "pos": "v.", "m": "引入的", "ex": "In this work, we introduced TimeSformer", "lv": "考博", "sec": "结论"}, {"w": "conceptually", "ipa": "/kənˈseptʃuəli/", "pos": "adv.", "m": "概念上地", "ex": "our method is conceptually simple", "lv": "考博", "sec": "结论"}, {"w": "achieving", "ipa": "/əˈtʃiːvɪŋ/", "pos": "v.", "m": "取得", "ex": "achieves state-of-the-art results on major action recognition benchmarks", "lv": "四级", "sec": "结论"}, {"w": "applying", "ipa": "/əˈplaɪɪŋ/", "pos": "v.", "m": "应用", "ex": "can be applied to clips of over one minute", "lv": "四级", "sec": "结论"}, {"w": "enable", "ipa": "/ɪˈneɪbl/", "pos": "v.", "m": "使能够", "ex": "enabling long-term video modeling", "lv": "四级", "sec": "结论"}, {"w": "localization", "ipa": "/ˌləʊkəlaɪˈzeɪʃn/", "pos": "n.", "m": "定位", "ex": "we plan to extend our method to action localization", "lv": "考博", "sec": "结论"}, {"w": "captioning", "ipa": "/ˈkæpʃənɪŋ/", "pos": "n.", "m": "描述生成", "ex": "video captioning and question-answering", "lv": "六级", "sec": "结论"}, {"w": "extend", "ipa": "/ɪkˈstend/", "pos": "v.", "m": "扩展", "ex": "we plan to extend our method to other video analysis tasks", "lv": "四级", "sec": "结论"}, {"w": "implementation", "ipa": "/ˌɪmplɪmenˈteɪʃn/", "pos": "n.", "m": "实现", "ex": "Implementation Details", "lv": "四级", "sec": "附录"}, {"w": "synchronized", "ipa": "/ˈsɪŋkrənaɪzd/", "pos": "adj.", "m": "同步的", "ex": "we train all our models using synchronized SGD across 32 GPUs", "lv": "考博", "sec": "附录"}, {"w": "augmentation", "ipa": "/ˌɔːɡmenˈteɪʃn/", "pos": "n.", "m": "数据增强", "ex": "using more data augmentations", "lv": "考博", "sec": "附录"}, {"w": "cosine", "ipa": "/ˈkəʊzaɪn/", "pos": "n.", "m": "余弦", "ex": "we use a cosine learning rate schedule", "lv": "考博", "sec": "附录"}, {"w": "schedule", "ipa": "/ˈʃedjuːl/", "pos": "n.", "m": "调度", "ex": "a cosine learning rate schedule", "lv": "四级", "sec": "附录"}, {"w": "finetuning", "ipa": "/ˈfaɪntjuːnɪŋ/", "pos": "n.", "m": "微调", "ex": "before finetuning on HowTo100M", "lv": "考博", "sec": "附录"}, {"w": "configuring", "ipa": "/kənˈfɪɡjʊərɪŋ/", "pos": "v.", "m": "配置", "ex": "configuring the model for different tasks", "lv": "考博", "sec": "附录"}, {"w": "containing", "ipa": "/kənˈteɪnɪŋ/", "pos": "v.", "m": "包含", "ex": "Kinetics-400 consists of 240K training videos", "lv": "四级", "sec": "附录"}, {"w": "spanning", "ipa": "/ˈspænɪŋ/", "pos": "v.", "m": "跨越", "ex": "spanning 400 human action categories", "lv": "考博", "sec": "附录"}, {"w": "metrics", "ipa": "/ˈmetrɪks/", "pos": "n.", "m": "指标", "ex": "we also include inference cost metrics", "lv": "四级", "sec": "附录"}];
+const ITEMS=[{"w": "exclusively", "ipa": "/ɪkˈskluːsɪvli/", "pos": "adv.", "m": "专门地，仅仅", "ex": "a scalable video architecture built exclusively on space-time self-attention", "lv": "四级", "ov": "", "sec": "摘要"}, {"w": "scalable", "ipa": "/ˈskeɪləbl/", "pos": "adj.", "m": "可扩展的", "ex": "a fundamentally different approach to video modeling compared to the established paradigm", "lv": "考博", "ov": "", "sec": "摘要"}, {"w": "paradigm", "ipa": "/ˈpærədaɪm/", "pos": "n.", "m": "范式，典范", "ex": "a fundamentally different approach to video modeling compared to the established paradigm of convolution-based video networks", "lv": "考研", "ov": "", "sec": "摘要"}, {"w": "effectively", "ipa": "/ɪˈfektɪvli/", "pos": "adv.", "m": "有效地", "ex": "it is possible to design an effective, and scalable video architecture", "lv": "四级", "ov": "", "sec": "摘要"}, {"w": "attention", "ipa": "/əˈtenʃn/", "pos": "n.", "m": "注意力", "ex": "Is Space-Time Attention All You Need for Video Understanding?", "lv": "四级", "ov": "", "sec": "摘要"}, {"w": "dominant", "ipa": "/ˈdɒmɪnənt/", "pos": "adj.", "m": "占主导地位的", "ex": "CNN-based architectures have been the dominant paradigm for video understanding", "lv": "四级", "ov": "", "sec": "引言"}, {"w": "emerging", "ipa": "/ɪˈmɜːdʒɪŋ/", "pos": "adj.", "m": "新兴的", "ex": "vision Transformers have recently emerged as powerful models for image recognition", "lv": "四级", "ov": "", "sec": "引言"}, {"w": "succinct", "ipa": "/səkˈsɪŋkt/", "pos": "adj.", "m": "简洁的", "ex": "a succinct formulation of the video space-time self-attention mechanism", "lv": "考博", "ov": "GRE", "sec": "引言"}, {"w": "revolution", "ipa": "/ˌrevəˈluːʃn/", "pos": "n.", "m": "革命", "ex": "a revolution in the natural language processing field", "lv": "四级", "ov": "", "sec": "引言"}, {"w": "computationally", "ipa": "/ˌkɒmpjuˈteɪʃənəli/", "pos": "adv.", "m": "计算上地", "ex": "computationally prohibitive for video understanding", "lv": "考博", "ov": "GRE", "sec": "引言"}, {"w": "prohibitive", "ipa": "/prəˈhɪbɪtɪv/", "pos": "adj.", "m": "令人望而却步的", "ex": "the computational complexity is prohibitive for video", "lv": "考博", "ov": "GRE", "sec": "引言"}, {"w": "sequence", "ipa": "/ˈsiːkwəns/", "pos": "n.", "m": "序列", "ex": "video as a sequence of frame-level patches", "lv": "四级", "ov": "", "sec": "引言"}, {"w": "treating", "ipa": "/ˈtriːtɪŋ/", "pos": "v.", "m": "将…视为", "ex": "by treating a video as a sequence of images", "lv": "四级", "ov": "", "sec": "引言"}, {"w": "conceptually", "ipa": "/kənˈseptʃuəli/", "pos": "adv.", "m": "概念上地", "ex": "our method is conceptually simple", "lv": "考博", "ov": "", "sec": "引言"}, {"w": "simplicity", "ipa": "/sɪmˈplɪsəti/", "pos": "n.", "m": "简洁", "ex": "our method is conceptually simple", "lv": "四级", "ov": "", "sec": "引言"}, {"w": "outperform", "ipa": "/ˌaʊtpəˈfɔːm/", "pos": "v.", "m": "优于，胜过", "ex": "recent works have shown that vision Transformers can outperform convolutional networks on image classification", "lv": "六级", "ov": "", "sec": "相关工作"}, {"w": "convolutional", "ipa": "/kənˈvɒljuːʃənl/", "pos": "adj.", "m": "卷积的", "ex": "CNN-based architectures have been the dominant paradigm", "lv": "考博", "ov": "", "sec": "相关工作"}, {"w": "exploiting", "ipa": "/ɪkˈsplɔɪtɪŋ/", "pos": "v.", "m": "利用，开发", "ex": "3D CNNs for video understanding by exploiting spatiotemporal convolutions", "lv": "四级", "ov": "", "sec": "相关工作"}, {"w": "spatiotemporal", "ipa": "/ˌspeɪʃiəʊˈtempərəl/", "pos": "adj.", "m": "时空的", "ex": "exploiting spatiotemporal convolutions for video understanding", "lv": "考博", "ov": "", "sec": "相关工作"}, {"w": "convolutions", "ipa": "/ˌkɒnvəˈluːʃnz/", "pos": "n.", "m": "卷积", "ex": "spatiotemporal convolutions for video understanding", "lv": "考博", "ov": "", "sec": "相关工作"}, {"w": "transferred", "ipa": "/trænsˈfɜːd/", "pos": "v.", "m": "迁移的", "ex": "weights transferred from 2D image models", "lv": "考博", "ov": "", "sec": "相关工作"}, {"w": "modifications", "ipa": "/ˌmɒdɪfɪˈkeɪʃnz/", "pos": "n.", "m": "修改", "ex": "with minor modifications to the architecture", "lv": "六级", "ov": "", "sec": "相关工作"}, {"w": "synthesizing", "ipa": "/ˈsɪnθəsaɪzɪŋ/", "pos": "v.", "m": "合成", "ex": "different modalities such as language and vision are represented as a sequence of vectors", "lv": "六级", "ov": "", "sec": "相关工作"}, {"w": "predecessors", "ipa": "/ˈpriːdɪsesəz/", "pos": "n.", "m": "前身", "ex": "our predecessors in this field", "lv": "六级", "ov": "", "sec": "相关工作"}, {"w": "depict", "ipa": "/dɪˈpɪkt/", "pos": "v.", "m": "描绘，描述", "ex": "depict different spatial and temporal neighborhoods", "lv": "六级", "ov": "", "sec": "相关工作"}, {"w": "architecture", "ipa": "/ˈɑːkɪtektʃə/", "pos": "n.", "m": "架构", "ex": "a video is viewed as a sequence of frame-level patches", "lv": "四级", "ov": "", "sec": "模型"}, {"w": "analogy", "ipa": "/əˈnælədʒi/", "pos": "n.", "m": "类比", "ex": "plays a role similar to the sequences of embedded words fed to text Transformers in NLP", "lv": "六级", "ov": "", "sec": "模型"}, {"w": "embedded", "ipa": "/ɪmˈbedɪd/", "pos": "adj.", "m": "嵌入的", "ex": "the sequences of embedded words fed to text Transformers", "lv": "考博", "ov": "", "sec": "模型"}, {"w": "dimensionality", "ipa": "/dɪˌmenʃəˈnæləti/", "pos": "n.", "m": "维度", "ex": "the latent dimensionality for each attention head", "lv": "考博", "ov": "", "sec": "模型"}, {"w": "concatenation", "ipa": "/kənˌtæɡɪˈneɪʃn/", "pos": "n.", "m": "拼接", "ex": "the concatenation of these vectors from all heads is projected", "lv": "考博", "ov": "GRE", "sec": "模型"}, {"w": "classification", "ipa": "/ˌklæsɪfɪˈkeɪʃn/", "pos": "n.", "m": "分类", "ex": "the final clip embedding is obtained for the classification token", "lv": "四级", "ov": "", "sec": "模型"}, {"w": "prediction", "ipa": "/prɪˈdɪkʃn/", "pos": "n.", "m": "预测", "ex": "append a 1-hidden-layer MLP which is used to predict the final video classes", "lv": "六级", "ov": "", "sec": "模型"}, {"w": "representations", "ipa": "/ˌreprɪzenˈteɪʃnz/", "pos": "n.", "m": "表示", "ex": "encode each video frame as a sequence of patch embeddings", "lv": "六级", "ov": "", "sec": "模型"}, {"w": "preceding", "ipa": "/prɪˈsiːdɪŋ/", "pos": "adj.", "m": "前面的", "ex": "from the representation z encoded by the preceding block", "lv": "四级", "ov": "", "sec": "模型"}, {"w": "projection", "ipa": "/prəˈdʒekʃn/", "pos": "n.", "m": "投影", "ex": "the concatenation of these vectors from all heads is projected", "lv": "考博", "ov": "", "sec": "模型"}, {"w": "patch", "ipa": "/pætʃ/", "pos": "n.", "m": "图像块", "ex": "a video is viewed as a sequence of frame-level patches with a size of 16 × 16 pixels", "lv": "四级", "ov": "", "sec": "视频表示"}, {"w": "token", "ipa": "/ˈtoʊkən/", "pos": "n.", "m": "令牌，标记", "ex": "each video frame is encoded as a sequence of patch embeddings", "lv": "六级", "ov": "", "sec": "视频表示"}, {"w": "vector", "ipa": "/ˈvektər/", "pos": "n.", "m": "向量", "ex": "a query/key/value vector is computed for each patch", "lv": "六级", "ov": "", "sec": "视频表示"}, {"w": "embed", "ipa": "/ɪmˈbed/", "pos": "v.", "m": "嵌入", "ex": "encode each video frame as a sequence of patch embeddings", "lv": "六级", "ov": "", "sec": "视频表示"}, {"w": "learnable", "ipa": "/ˈlɜːnəbl/", "pos": "adj.", "m": "可学习的", "ex": "we add a special learnable vector representing the embedding of the classification token", "lv": "考博", "ov": "", "sec": "视频表示"}, {"w": "temporal", "ipa": "/ˈtempərəl/", "pos": "adj.", "m": "时间的", "ex": "temporal attention and spatial attention are separately applied", "lv": "考博", "ov": "", "sec": "视频表示"}, {"w": "spatial", "ipa": "/ˈspeɪʃl/", "pos": "adj.", "m": "空间的", "ex": "spatial attention within each frame only", "lv": "六级", "ov": "", "sec": "视频表示"}, {"w": "locational", "ipa": "/ləʊˈkeɪʃənl/", "pos": "adj.", "m": "位置的", "ex": "add learnable position embeddings to the patch sequence", "lv": "考博", "ov": "", "sec": "视频表示"}, {"w": "initialize", "ipa": "/ɪˈnɪʃəlaɪz/", "pos": "v.", "m": "初始化", "ex": "initialize with weights learned from ImageNet", "lv": "考博", "ov": "", "sec": "视频表示"}, {"w": "sampling", "ipa": "/ˈsɑːmplɪŋ/", "pos": "n.", "m": "采样", "ex": "with frames sampled at a rate of 1/32", "lv": "四级", "ov": "", "sec": "视频表示"}, {"w": "self-attention", "ipa": "/ˌself əˈtenʃn/", "pos": "n.", "m": "自注意力", "ex": "a succinct formulation of the video space-time self-attention mechanism", "lv": "考博", "ov": "", "sec": "自注意力"}, {"w": "mechanism", "ipa": "/ˈmekənɪzəm/", "pos": "n.", "m": "机制", "ex": "the video space-time self-attention mechanism", "lv": "四级", "ov": "", "sec": "自注意力"}, {"w": "query", "ipa": "/ˈkwɪəri/", "pos": "n.", "m": "查询", "ex": "a query/key/value vector is computed for each patch", "lv": "六级", "ov": "", "sec": "自注意力"}, {"w": "key", "ipa": "/kiː/", "pos": "n.", "m": "键", "ex": "a query/key/value vector is computed for each patch", "lv": "四级", "ov": "", "sec": "自注意力"}, {"w": "value", "ipa": "/ˈvæljuː/", "pos": "n.", "m": "值", "ex": "a query/key/value vector is computed for each patch", "lv": "四级", "ov": "", "sec": "自注意力"}, {"w": "dot-product", "ipa": "/dɒt ˈprɒdʌkt/", "pos": "n.", "m": "点积", "ex": "self-attention weights are computed via dot-product", "lv": "考博", "ov": "", "sec": "自注意力"}, {"w": "softmax", "ipa": "/sɒftˈmæks/", "pos": "n.", "m": "softmax函数", "ex": "SM denotes the softmax activation function", "lv": "考博", "ov": "", "sec": "自注意力"}, {"w": "coefficients", "ipa": "/ˌkəʊɪˈfɪʃnts/", "pos": "n.", "m": "系数", "ex": "self-attention coefficients from each attention head", "lv": "六级", "ov": "", "sec": "自注意力"}, {"w": "activation", "ipa": "/ˌæktɪˈveɪʃn/", "pos": "n.", "m": "激活", "ex": "the softmax activation function", "lv": "考博", "ov": "", "sec": "自注意力"}, {"w": "latent", "ipa": "/ˈleɪtnt/", "pos": "adj.", "m": "潜在的", "ex": "the latent dimensionality for each attention head is set to Dh = D/A", "lv": "六级", "ov": "", "sec": "自注意力"}, {"w": "reduced", "ipa": "/rɪˈdjuːst/", "pos": "adj.", "m": "减少的", "ex": "the computation is significantly reduced for spatial attention", "lv": "考博", "ov": "", "sec": "自注意力"}, {"w": "normalized", "ipa": "/ˈnɔːməlaɪzd/", "pos": "adj.", "m": "归一化的", "ex": "LN denotes LayerNorm", "lv": "考博", "ov": "", "sec": "自注意力"}, {"w": "divided", "ipa": "/dɪˈvaɪdɪd/", "pos": "adj.", "m": "分离的", "ex": "Divided Space-Time Attention where temporal attention and spatial attention are separately applied", "lv": "考博", "ov": "", "sec": "注意力方案"}, {"w": "factorization", "ipa": "/ˌfæktəraɪˈzeɪʃn/", "pos": "n.", "m": "分解", "ex": "this space-time factorization is not only more efficient but also leads to improved accuracy", "lv": "考博", "ov": "", "sec": "注意力方案"}, {"w": "approximation", "ipa": "/əˌprɒksɪˈmeɪʃn/", "pos": "n.", "m": "近似", "ex": "a faster approximation of full spatiotemporal attention using a local-global decomposition", "lv": "考博", "ov": "雅思托福", "sec": "注意力方案"}, {"w": "decomposition", "ipa": "/ˌdiːkɒmpəˈzɪʃn/", "pos": "n.", "m": "分解", "ex": "a local-global decomposition and a sparsity pattern", "lv": "考博", "ov": "GRE", "sec": "注意力方案"}, {"w": "sparsity", "ipa": "/spəˈrɪsəti/", "pos": "n.", "m": "稀疏性", "ex": "a sparsity pattern similar to that used in sparse transformers", "lv": "考博", "ov": "", "sec": "注意力方案"}, {"w": "neighboring", "ipa": "/ˈneɪbərɪŋ/", "pos": "adj.", "m": "相邻的", "ex": "considering the neighboring patches", "lv": "考研", "ov": "", "sec": "注意力方案"}, {"w": "stride", "ipa": "/straɪd/", "pos": "n.", "m": "步幅", "ex": "using a stride of 2 patches along the temporal dimension", "lv": "六级", "ov": "", "sec": "注意力方案"}, {"w": "axial", "ipa": "/ˈæksiəl/", "pos": "adj.", "m": "轴的", "ex": "Axial attention decomposes the attention computation in three distinct steps", "lv": "六级", "ov": "", "sec": "注意力方案"}, {"w": "decomposes", "ipa": "/diːˈkɒmpəʊzɪz/", "pos": "v.", "m": "分解", "ex": "Axial attention decomposes the attention computation in three distinct steps", "lv": "六级", "ov": "", "sec": "注意力方案"}, {"w": "efficient", "ipa": "/ɪˈfɪʃnt/", "pos": "adj.", "m": "高效的", "ex": "a more efficient architecture for spatiotemporal attention", "lv": "四级", "ov": "", "sec": "注意力方案"}, {"w": "separately", "ipa": "/ˈseprətli/", "pos": "adv.", "m": "分别地", "ex": "temporal attention and spatial attention are separately applied one after the other", "lv": "四级", "ov": "", "sec": "注意力方案"}, {"w": "distinct", "ipa": "/dɪˈstɪŋkt/", "pos": "adj.", "m": "不同的", "ex": "we learn distinct query/key/value matrices over the time and space dimensions", "lv": "四级", "ov": "", "sec": "注意力方案"}, {"w": "matrices", "ipa": "/ˈmeɪtrɪsiːz/", "pos": "n.", "m": "矩阵（复数）", "ex": "we learn distinct query/key/value matrices over the time and space dimensions", "lv": "考博", "ov": "", "sec": "注意力方案"}, {"w": "capacity", "ipa": "/ˈkæpəsəti/", "pos": "n.", "m": "容量，能力", "ex": "divided space-time attention has a larger learning capacity", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "deprecated", "ipa": "/ˈdeprɪkeɪtɪd/", "pos": "adj.", "m": "已废弃的", "ex": "the fitz API is deprecated", "lv": "考博", "ov": "", "sec": "注意力分析"}, {"w": "gracefully", "ipa": "/ˈɡreɪsfəli/", "pos": "adv.", "m": "优雅地", "ex": "the scheme of divided space-time scales gracefully", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "dramatically", "ipa": "/drəˈmætɪkli/", "pos": "adv.", "m": "戏剧性地", "ex": "joint space-time attention leads to a dramatically higher cost", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "practically", "ipa": "/ˈpræktɪkli/", "pos": "adv.", "m": "实际上", "ex": "joint space-time attention is effectively not applicable to large frames", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "effective", "ipa": "/ɪˈfektɪv/", "pos": "adj.", "m": "有效的", "ex": "joint space-time attention is effectively not applicable", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "applicable", "ipa": "/əˈplɪkəbl/", "pos": "adj.", "m": "可应用的", "ex": "joint space-time attention is effectively not applicable to large frames or long videos", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "overwhelmingly", "ipa": "/ˌoʊvəˈwelmɪŋli/", "pos": "adv.", "m": "压倒性地", "ex": "spatial cues are more important than temporal information", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "degraded", "ipa": "/dɪˈɡreɪdɪd/", "pos": "adj.", "m": "退化的", "ex": "this approach leads to degraded classification accuracy", "lv": "考博", "ov": "", "sec": "注意力分析"}, {"w": "scalability", "ipa": "/ˌskeɪləˈbɪləti/", "pos": "n.", "m": "可扩展性", "ex": "the scalability of our model allows it to operate at higher spatial resolution", "lv": "考博", "ov": "", "sec": "注意力分析"}, {"w": "resolution", "ipa": "/ˌrezəˈluːʃn/", "pos": "n.", "m": "分辨率", "ex": "increasing the spatial resolution results in a higher number of patches", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "comparisons", "ipa": "/kəmˈpærɪsnz/", "pos": "n.", "m": "比较", "ex": "only N+1 query-key comparisons are made for spatial attention", "lv": "四级", "ov": "", "sec": "注意力分析"}, {"w": "distinguishing", "ipa": "/dɪˈstɪŋɡwɪʃɪŋ/", "pos": "adj.", "m": "有区别的", "ex": "understanding the distinguishing properties of TimeSformer", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "convolutional", "ipa": "/kənˈvɒljuːʃənl/", "pos": "adj.", "m": "卷积的", "ex": "3D convolutional architectures have been the prominent approach", "lv": "考博", "ov": "", "sec": "3D CNN对比"}, {"w": "prominent", "ipa": "/ˈprɒmɪnənt/", "pos": "adj.", "m": "突出的", "ex": "3D convolutional architectures have been the prominent approach", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "conversely", "ipa": "/ˈkɒnvɜːsli/", "pos": "adv.", "m": "相反地", "ex": "conversely, state-of-the-art 3D CNNs are much more expensive to train", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "expensive", "ipa": "/ɪkˈspensɪv/", "pos": "adj.", "m": "昂贵的", "ex": "3D CNNs are much more expensive to train", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "suggested", "ipa": "/səˈdʒestɪd/", "pos": "v.", "m": "表明", "ex": "this suggests that TimeSformer is better suited for settings that involve large-scale learning", "lv": "考博", "ov": "", "sec": "3D CNN对比"}, {"w": "suitable", "ipa": "/ˈsuːtəbl/", "pos": "adj.", "m": "合适的", "ex": "TimeSformer is better suited for settings that involve large-scale learning", "lv": "考研", "ov": "", "sec": "3D CNN对比"}, {"w": "maintaining", "ipa": "/meɪnˈteɪnɪŋ/", "pos": "v.", "m": "保持", "ex": "further increase their model capacity while also maintaining efficiency", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "constrain", "ipa": "/kənˈstreɪn/", "pos": "v.", "m": "限制", "ex": "if we constrain SlowFast to be trained under a somewhat similar computational budget", "lv": "六级", "ov": "", "sec": "3D CNN对比"}, {"w": "optimization", "ipa": "/ˌɒptɪmaɪˈzeɪʃn/", "pos": "n.", "m": "优化", "ex": "some 3D CNNs require a very long optimization schedule", "lv": "考博", "ov": "雅思托福", "sec": "3D CNN对比"}, {"w": "highlighting", "ipa": "/ˈhaɪlɪtɪŋ/", "pos": "v.", "m": "突出显示", "ex": "highlighting the fact that some 3D CNNs require a very long optimization schedule", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "alternative", "ipa": "/ɔːlˈtɜːnətɪv/", "pos": "n.", "m": "替代方案", "ex": "TimeSformer provides a more efficient alternative to labs", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "numerous", "ipa": "/ˈnjuːmərəs/", "pos": "adj.", "m": "许多的", "ex": "numerous recent works", "lv": "四级", "ov": "", "sec": "3D CNN对比"}, {"w": "position", "ipa": "/pəˈzɪʃn/", "pos": "n.", "m": "位置", "ex": "the importance of positional embeddings", "lv": "四级", "ov": "", "sec": "词元与位置"}, {"w": "embedding", "ipa": "/ɪmˈbedɪŋ/", "pos": "n.", "m": "嵌入", "ex": "the importance of our learned spatiotemporal positional embeddings", "lv": "考博", "ov": "", "sec": "词元与位置"}, {"w": "positional", "ipa": "/pəˈzɪʃənl/", "pos": "adj.", "m": "位置的", "ex": "the importance of positional embeddings", "lv": "考博", "ov": "", "sec": "词元与位置"}, {"w": "variant", "ipa": "/ˈveəriənt/", "pos": "n.", "m": "变体", "ex": "we experimented with a few variants of TimeSformer", "lv": "考博", "ov": "", "sec": "词元与位置"}, {"w": "consistent", "ipa": "/kənˈsɪstənt/", "pos": "adj.", "m": "一致的", "ex": "ImageNet-21K pretraining leads consistently to a better performance", "lv": "四级", "ov": "", "sec": "词元与位置"}, {"w": "spatially", "ipa": "/ˈspeɪʃəli/", "pos": "adv.", "m": "空间上", "ex": "Kinetics-400 is more spatially biased", "lv": "六级", "ov": "", "sec": "词元与位置"}, {"w": "biased", "ipa": "/ˈbaɪəst/", "pos": "adj.", "m": "有偏见的", "ex": "Kinetics-400 is more spatially biased", "lv": "六级", "ov": "", "sec": "词元与位置"}, {"w": "reasoning", "ipa": "/ˈriːzənɪŋ/", "pos": "n.", "m": "推理", "ex": "SSv2 requires complex spatiotemporal reasoning", "lv": "四级", "ov": "", "sec": "词元与位置"}, {"w": "intuition", "ipa": "/ˌɪntjuˈɪʃn/", "pos": "n.", "m": "直觉", "ex": "this makes sense as SSv2 requires complex spatiotemporal reasoning", "lv": "六级", "ov": "", "sec": "词元与位置"}, {"w": "consistently", "ipa": "/kənˈsɪstəntli/", "pos": "adv.", "m": "一贯地", "ex": "leads consistently to a better performance on K400", "lv": "四级", "ov": "", "sec": "词元与位置"}, {"w": "benchmark", "ipa": "/ˈbentʃmɑːk/", "pos": "n.", "m": "基准", "ex": "major action recognition benchmarks", "lv": "考博", "ov": "", "sec": "SOTA对比"}, {"w": "validation", "ipa": "/ˌvælɪˈdeɪʃn/", "pos": "n.", "m": "验证", "ex": "we present our results on the validation set of K400", "lv": "六级", "ov": "", "sec": "SOTA对比"}, {"w": "inference", "ipa": "/ˈɪnfərəns/", "pos": "n.", "m": "推理", "ex": "during inference we sample a single temporal clip in the middle of the video", "lv": "四级", "ov": "", "sec": "SOTA对比"}, {"w": "multiple", "ipa": "/ˈmʌltɪpl/", "pos": "adj.", "m": "多个的", "ex": "we study the effect of using multiple temporal clips during inference", "lv": "四级", "ov": "", "sec": "SOTA对比"}, {"w": "spatial", "ipa": "/ˈspeɪʃl/", "pos": "adj.", "m": "空间的", "ex": "we use 3 spatial crops from the temporal clip", "lv": "六级", "ov": "", "sec": "SOTA对比"}, {"w": "accuracy", "ipa": "/ˈækjərəsi/", "pos": "n.", "m": "准确率", "ex": "TimeSformer achieves solid accuracy with only 3 views", "lv": "四级", "ov": "", "sec": "SOTA对比"}, {"w": "runtime", "ipa": "/ˈrʌntaɪm/", "pos": "n.", "m": "运行时间", "ex": "we also measured the actual inference runtime on 20K validation videos", "lv": "考博", "ov": "", "sec": "SOTA对比"}, {"w": "comparable", "ipa": "/kəmˈpærəbl/", "pos": "adj.", "m": "可比较的", "ex": "SlowFast and TimeSformer-L have comparable cost in terms of TFLOPs", "lv": "四级", "ov": "", "sec": "SOTA对比"}, {"w": "substantial", "ipa": "/səbˈstænʃl/", "pos": "adj.", "m": "大量的", "ex": "TimeSformer outperforms SlowFast by a substantial margin", "lv": "四级", "ov": "", "sec": "SOTA对比"}, {"w": "margin", "ipa": "/ˈmɑːdʒɪn/", "pos": "n.", "m": "差距", "ex": "outperforms SlowFast by a substantial margin", "lv": "四级", "ov": "", "sec": "SOTA对比"}, {"w": "instructional", "ipa": "/ɪnˈstrʌkʃənl/", "pos": "adj.", "m": "教学的", "ex": "HowTo100M is an instructional video dataset", "lv": "六级", "ov": "", "sec": "长期建模"}, {"w": "duration", "ipa": "/djuˈreɪʃn/", "pos": "n.", "m": "时长", "ex": "the average duration of these videos is around 7 minutes", "lv": "四级", "ov": "", "sec": "长期建模"}, {"w": "magnitude", "ipa": "/ˈmæɡnɪtjuːd/", "pos": "n.", "m": "量级", "ex": "orders of magnitude longer than the duration of videos in standard benchmarks", "lv": "六级", "ov": "", "sec": "长期建模"}, {"w": "demonstrated", "ipa": "/ˈdemənstreɪtɪd/", "pos": "v.", "m": "展示的", "ex": "each HowTo100M video has a label indicating the task demonstrated in the video", "lv": "考博", "ov": "", "sec": "长期建模"}, {"w": "categories", "ipa": "/ˈkætəɡəriz/", "pos": "n.", "m": "类别", "ex": "spanning 1059 task categories", "lv": "四级", "ov": "", "sec": "长期建模"}, {"w": "partition", "ipa": "/pɑːˈtɪʃn/", "pos": "v.", "m": "划分", "ex": "we randomly partition this collection into 85K training videos and 35K testing videos", "lv": "六级", "ov": "", "sec": "长期建模"}, {"w": "coverage", "ipa": "/ˈkʌvərɪdʒ/", "pos": "n.", "m": "覆盖范围", "ex": "Single Clip Coverage denotes the number of seconds spanned by a single clip", "lv": "六级", "ov": "", "sec": "长期建模"}, {"w": "non-overlapping", "ipa": "/ˌnɒn ˌəʊvəˈlæpɪŋ/", "pos": "adj.", "m": "不重叠的", "ex": "we sample as many non-overlapping temporal clips as needed", "lv": "考博", "ov": "", "sec": "长期建模"}, {"w": "span", "ipa": "/spæn/", "pos": "v.", "m": "跨越", "ex": "it is able to span about 12 seconds of a Kinetics video with a single clip", "lv": "四级", "ov": "", "sec": "长期建模"}, {"w": "relevant", "ipa": "/ˈreləvənt/", "pos": "adj.", "m": "相关的", "ex": "TimeSformer learns to attend to the relevant regions in the video", "lv": "四级", "ov": "", "sec": "长期建模"}, {"w": "suitable", "ipa": "/ˈsuːtəbl/", "pos": "adj.", "m": "适合的", "ex": "our model is highly suitable for tasks that require long-term video modeling", "lv": "考研", "ov": "", "sec": "长期建模"}, {"w": "effectively", "ipa": "/ɪˈfektɪvli/", "pos": "adv.", "m": "有效地", "ex": "our model can effectively exploit long-range temporal dependencies", "lv": "四级", "ov": "", "sec": "长期建模"}, {"w": "ablation", "ipa": "/əˈbleɪʃn/", "pos": "n.", "m": "消融（实验）", "ex": "Additional Ablations", "lv": "考博", "ov": "", "sec": "消融实验"}, {"w": "granularity", "ipa": "/ˌɡrænjuˈlærəti/", "pos": "n.", "m": "粒度", "ex": "the performance decrease with P=32 is due to the reduced spatial granularity", "lv": "考博", "ov": "", "sec": "消融实验"}, {"w": "reversed", "ipa": "/rɪˈvɜːst/", "pos": "v.", "m": "反转", "ex": "we investigate whether reversing the order of time-space attention has an impact", "lv": "考博", "ov": "", "sec": "消融实验"}, {"w": "parallel", "ipa": "/ˈpærəlel/", "pos": "adj.", "m": "并行的", "ex": "we also tried a parallel space-time self-attention", "lv": "四级", "ov": "", "sec": "消融实验"}, {"w": "configurations", "ipa": "/kənˌfɪɡəˈreɪʃnz/", "pos": "n.", "m": "配置", "ex": "three configurations of our model", "lv": "六级", "ov": "", "sec": "消融实验"}, {"w": "separable", "ipa": "/ˈseprəbl/", "pos": "adj.", "m": "可分离的", "ex": "TimeSformer learns semantically more separable features", "lv": "考博", "ov": "雅思托福", "sec": "消融实验"}, {"w": "semantically", "ipa": "/sɪˈmæntɪkli/", "pos": "adv.", "m": "语义上地", "ex": "learns semantically more separable features", "lv": "考博", "ov": "", "sec": "消融实验"}, {"w": "dropout", "ipa": "/ˈdrɒpaʊt/", "pos": "n.", "m": "丢弃法", "ex": "A dropout of 0.5 is used before the final classification layer", "lv": "四级", "ov": "", "sec": "消融实验"}, {"w": "momentum", "ipa": "/məˈmentəm/", "pos": "n.", "m": "动量", "ex": "the momentum is set to 0.9", "lv": "六级", "ov": "", "sec": "消融实验"}, {"w": "conjecture", "ipa": "/kənˈdʒektʃər/", "pos": "v.", "m": "推测", "ex": "we conjecture that the performance decrease is due to reduced spatial granularity", "lv": "考博", "ov": "", "sec": "消融实验"}, {"w": "qualitative", "ipa": "/ˈkwɒlɪtətɪv/", "pos": "adj.", "m": "定性的", "ex": "Qualitative Results", "lv": "六级", "ov": "", "sec": "定性结果"}, {"w": "visualize", "ipa": "/ˈvɪʒuəlaɪz/", "pos": "v.", "m": "可视化", "ex": "we present space-time attention visualizations", "lv": "六级", "ov": "", "sec": "定性结果"}, {"w": "visualization", "ipa": "/ˌvɪʒuəlaɪˈzeɪʃn/", "pos": "n.", "m": "可视化", "ex": "Visualization of Learned Space-Time Attention", "lv": "考博", "ov": "", "sec": "定性结果"}, {"w": "configure", "ipa": "/kənˈfɪɡər/", "pos": "v.", "m": "配置", "ex": "the model focuses on the configuration of the hand when visible", "lv": "考博", "ov": "", "sec": "定性结果"}, {"w": "configuration", "ipa": "/kənˌfɪɡəˈreɪʃn/", "pos": "n.", "m": "配置", "ex": "the model focuses on the configuration of the hand", "lv": "六级", "ov": "", "sec": "定性结果"}, {"w": "depicting", "ipa": "/dɪˈpɪktɪŋ/", "pos": "v.", "m": "描绘", "ex": "different colors depict different action categories", "lv": "六级", "ov": "", "sec": "定性结果"}, {"w": "demonstrating", "ipa": "/ˈdemənstreɪtɪŋ/", "pos": "v.", "m": "展示", "ex": "recognizing activities exhibited over very long temporal extents", "lv": "四级", "ov": "", "sec": "定性结果"}, {"w": "exhibited", "ipa": "/ɪɡˈzɪbɪtɪd/", "pos": "v.", "m": "表现出的", "ex": "recognizing activities exhibited over very long temporal extents", "lv": "四级", "ov": "", "sec": "定性结果"}, {"w": "distinct", "ipa": "/dɪˈstɪŋkt/", "pos": "adj.", "m": "明显的", "ex": "time, width and height are three distinct steps", "lv": "四级", "ov": "", "sec": "定性结果"}, {"w": "trajectory", "ipa": "/trəˈdʒektəri/", "pos": "n.", "m": "轨迹", "ex": "following the trajectory of objects in the video", "lv": "考博", "ov": "GRE", "sec": "定性结果"}, {"w": "established", "ipa": "/ɪˈstæblɪʃt/", "pos": "adj.", "m": "已确立的", "ex": "compared to the established paradigm of convolution-based video networks", "lv": "四级", "ov": "", "sec": "结论"}, {"w": "fundamentally", "ipa": "/ˌfʌndəˈmentəli/", "pos": "adv.", "m": "根本上地", "ex": "a fundamentally different approach to video modeling", "lv": "四级", "ov": "", "sec": "结论"}, {"w": "introduced", "ipa": "/ˌɪntrəˈdjuːst/", "pos": "v.", "m": "引入的", "ex": "In this work, we introduced TimeSformer", "lv": "考博", "ov": "", "sec": "结论"}, {"w": "conceptually", "ipa": "/kənˈseptʃuəli/", "pos": "adv.", "m": "概念上地", "ex": "our method is conceptually simple", "lv": "考博", "ov": "", "sec": "结论"}, {"w": "achieving", "ipa": "/əˈtʃiːvɪŋ/", "pos": "v.", "m": "取得", "ex": "achieves state-of-the-art results on major action recognition benchmarks", "lv": "四级", "ov": "", "sec": "结论"}, {"w": "applying", "ipa": "/əˈplaɪɪŋ/", "pos": "v.", "m": "应用", "ex": "can be applied to clips of over one minute", "lv": "四级", "ov": "", "sec": "结论"}, {"w": "enable", "ipa": "/ɪˈneɪbl/", "pos": "v.", "m": "使能够", "ex": "enabling long-term video modeling", "lv": "四级", "ov": "", "sec": "结论"}, {"w": "localization", "ipa": "/ˌləʊkəlaɪˈzeɪʃn/", "pos": "n.", "m": "定位", "ex": "we plan to extend our method to action localization", "lv": "考博", "ov": "雅思托福", "sec": "结论"}, {"w": "captioning", "ipa": "/ˈkæpʃənɪŋ/", "pos": "n.", "m": "描述生成", "ex": "video captioning and question-answering", "lv": "六级", "ov": "", "sec": "结论"}, {"w": "extend", "ipa": "/ɪkˈstend/", "pos": "v.", "m": "扩展", "ex": "we plan to extend our method to other video analysis tasks", "lv": "四级", "ov": "", "sec": "结论"}, {"w": "implementation", "ipa": "/ˌɪmplɪmenˈteɪʃn/", "pos": "n.", "m": "实现", "ex": "Implementation Details", "lv": "四级", "ov": "", "sec": "附录"}, {"w": "synchronized", "ipa": "/ˈsɪŋkrənaɪzd/", "pos": "adj.", "m": "同步的", "ex": "we train all our models using synchronized SGD across 32 GPUs", "lv": "考博", "ov": "", "sec": "附录"}, {"w": "augmentation", "ipa": "/ˌɔːɡmenˈteɪʃn/", "pos": "n.", "m": "数据增强", "ex": "using more data augmentations", "lv": "考博", "ov": "GRE", "sec": "附录"}, {"w": "cosine", "ipa": "/ˈkəʊzaɪn/", "pos": "n.", "m": "余弦", "ex": "we use a cosine learning rate schedule", "lv": "考博", "ov": "", "sec": "附录"}, {"w": "schedule", "ipa": "/ˈʃedjuːl/", "pos": "n.", "m": "调度", "ex": "a cosine learning rate schedule", "lv": "四级", "ov": "", "sec": "附录"}, {"w": "finetuning", "ipa": "/ˈfaɪntjuːnɪŋ/", "pos": "n.", "m": "微调", "ex": "before finetuning on HowTo100M", "lv": "考博", "ov": "", "sec": "附录"}, {"w": "configuring", "ipa": "/kənˈfɪɡjʊərɪŋ/", "pos": "v.", "m": "配置", "ex": "configuring the model for different tasks", "lv": "考博", "ov": "", "sec": "附录"}, {"w": "containing", "ipa": "/kənˈteɪnɪŋ/", "pos": "v.", "m": "包含", "ex": "Kinetics-400 consists of 240K training videos", "lv": "四级", "ov": "", "sec": "附录"}, {"w": "spanning", "ipa": "/ˈspænɪŋ/", "pos": "v.", "m": "跨越", "ex": "spanning 400 human action categories", "lv": "考博", "ov": "", "sec": "附录"}, {"w": "metrics", "ipa": "/ˈmetrɪks/", "pos": "n.", "m": "指标", "ex": "we also include inference cost metrics", "lv": "四级", "ov": "", "sec": "附录"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"capacity": "../listen-audio/w_brian_capacity.mp3", "dominant": "../listen-audio/w_brian_dominant.mp3", "benchmark": "../listen-audio/w_brian_benchmark.mp3", "sequence": "../listen-audio/w_brian_sequence.mp3", "magnitude": "../listen-audio/w_brian_magnitude.mp3", "inference": "../listen-audio/w_brian_inference.mp3", "granularity": "../listen-audio/w_brian_granularity.mp3", "architecture": "../listen-audio/w_brian_architecture.mp3", "validation": "../listen-audio/w_brian_validation.mp3", "approximation": "../listen-audio/w_brian_approximation.mp3", "resolution": "../listen-audio/w_brian_resolution.mp3", "qualitative": "../listen-audio/w_brian_qualitative.mp3", "degraded": "../listen-audio/w_brian_degraded.mp3", "normalized": "../listen-audio/w_brian_normalized.mp3", "representations": "../listen-audio/w_brian_representations.mp3", "numerous": "../listen-audio/w_brian_numerous.mp3", "initialize": "../listen-audio/w_brian_initialize.mp3", "mechanism": "../listen-audio/w_brian_mechanism.mp3", "factorization": "../listen-audio/w_brian_factorization.mp3", "embedding": "../listen-audio/w_brian_embedding.mp3", "token": "../listen-audio/w_brian_token.mp3", "dot-product": "../listen-audio/w_brian_dot_product.mp3", "softmax": "../listen-audio/w_brian_softmax.mp3", "projection": "../listen-audio/w_brian_projection.mp3", "positional": "../listen-audio/w_brian_positional.mp3", "activation": "../listen-audio/w_brian_activation.mp3", "dimensionality": "../listen-audio/w_brian_dimensionality.mp3", "separable": "../listen-audio/w_brian_separable.mp3", "dropout": "../listen-audio/w_brian_dropout.mp3", "outperform": "../listen-audio/w_brian_outperform.mp3", "configuration": "../listen-audio/w_brian_configuration.mp3", "ablation": "../listen-audio/w_brian_ablation.mp3", "temporal": "../listen-audio/w_brian_temporal.mp3", "computationally": "../listen-audio/w_brian_computationally.mp3", "comparable": "../listen-audio/w_brian_comparable.mp3", "variant": "../listen-audio/w_brian_variant.mp3", "biased": "../listen-audio/w_brian_biased.mp3", "convolutional": "../listen-audio/w_brian_convolutional.mp3", "augmentation": "../listen-audio/w_brian_augmentation.mp3", "momentum": "../listen-audio/w_brian_momentum.mp3", "effective": "../listen-audio/w_brian_effective.mp3", "substantial": "../listen-audio/w_brian_substantial.mp3", "sparsity": "../listen-audio/w_brian_sparsity.mp3", "reasoning": "../listen-audio/w_brian_reasoning.mp3", "coverage": "../listen-audio/w_brian_coverage.mp3", "scalable": "../listen-audio/w_brian_scalable.mp3", "axial": "../listen-audio/w_brian_axial.mp3", "trajectory": "../listen-audio/w_brian_trajectory.mp3", "conceptually": "../listen-audio/w_brian_conceptually.mp3", "concatenation": "../listen-audio/w_brian_concatenation.mp3", "implementation": "../listen-audio/w_brian_implementation.mp3", "margin": "../listen-audio/w_brian_margin.mp3", "span": "../listen-audio/w_brian_span.mp3", "self-attention": "../listen-audio/w_brian_self_attention.mp3", "constrain": "../listen-audio/w_brian_constrain.mp3", "accuracy": "../listen-audio/w_brian_accuracy.mp3", "extend": "../listen-audio/w_brian_extend.mp3", "classification": "../listen-audio/w_brian_classification.mp3", "spatial": "../listen-audio/w_brian_spatial.mp3", "introduced": "../listen-audio/w_brian_introduced.mp3", "paradigm": "../listen-audio/w_brian_paradigm.mp3", "applicable": "../listen-audio/w_brian_applicable.mp3", "spatiotemporal": "../listen-audio/w_brian_spatiotemporal.mp3", "emerging": "../listen-audio/w_brian_emerging.mp3", "relevant": "../listen-audio/w_brian_relevant.mp3", "spanning": "../listen-audio/w_brian_spanning.mp3", "cosine": "../listen-audio/w_brian_cosine.mp3", "scalability": "../listen-audio/w_brian_scalability.mp3", "depict": "../listen-audio/w_brian_depict.mp3", "conjecture": "../listen-audio/w_brian_conjecture.mp3", "latent": "../listen-audio/w_brian_latent.mp3", "distinct": "../listen-audio/w_brian_distinct.mp3", "intuition": "../listen-audio/w_brian_intuition.mp3", "dramatically": "../listen-audio/w_brian_dramatically.mp3", "prohibitive": "../listen-audio/w_brian_prohibitive.mp3", "sampling": "../listen-audio/w_brian_sampling.mp3", "spatially": "../listen-audio/w_brian_spatially.mp3", "consistent": "../listen-audio/w_brian_consistent.mp3", "stride": "../listen-audio/w_brian_stride.mp3", "semantically": "../listen-audio/w_brian_semantically.mp3", "exhibited": "../listen-audio/w_brian_exhibited.mp3", "schedule": "../listen-audio/w_brian_schedule.mp3", "parallel": "../listen-audio/w_brian_parallel.mp3", "optimization": "../listen-audio/w_brian_optimization.mp3", "visualization": "../listen-audio/w_brian_visualization.mp3", "attention": "../listen-audio/w_brian_attention.mp3", "alternative": "../listen-audio/w_brian_alternative.mp3", "synchronized": "../listen-audio/w_brian_synchronized.mp3", "patch": "../listen-audio/w_brian_patch.mp3", "efficient": "../listen-audio/w_brian_efficient.mp3", "decomposition": "../listen-audio/w_brian_decomposition.mp3", "partition": "../listen-audio/w_brian_partition.mp3", "prominent": "../listen-audio/w_brian_prominent.mp3", "fundamentally": "../listen-audio/w_brian_fundamentally.mp3", "analogy": "../listen-audio/w_brian_analogy.mp3", "consistently": "../listen-audio/w_brian_consistently.mp3", "conversely": "../listen-audio/w_brian_conversely.mp3", "embed": "../listen-audio/w_brian_embed.mp3", "localization": "../listen-audio/w_brian_localization.mp3", "prediction": "../listen-audio/w_brian_prediction.mp3", "comparisons": "../listen-audio/w_brian_comparisons.mp3", "finetuning": "../listen-audio/w_brian_finetuning.mp3", "vector": "../listen-audio/w_brian_vector.mp3", "exclusively": "../listen-audio/w_brian_exclusively.mp3", "embedded": "../listen-audio/w_brian_embedded.mp3", "reduced": "../listen-audio/w_brian_reduced.mp3", "preceding": "../listen-audio/w_brian_preceding.mp3", "visualize": "../listen-audio/w_brian_visualize.mp3", "containing": "../listen-audio/w_brian_containing.mp3", "modifications": "../listen-audio/w_brian_modifications.mp3", "depicting": "../listen-audio/w_brian_depicting.mp3", "effectively": "../listen-audio/w_brian_effectively.mp3", "succinct": "../listen-audio/w_brian_succinct.mp3", "revolution": "../listen-audio/w_brian_revolution.mp3", "treating": "../listen-audio/w_brian_treating.mp3", "simplicity": "../listen-audio/w_brian_simplicity.mp3", "exploiting": "../listen-audio/w_brian_exploiting.mp3", "convolutions": "../listen-audio/w_brian_convolutions.mp3", "transferred": "../listen-audio/w_brian_transferred.mp3", "synthesizing": "../listen-audio/w_brian_synthesizing.mp3", "predecessors": "../listen-audio/w_brian_predecessors.mp3", "learnable": "../listen-audio/w_brian_learnable.mp3", "locational": "../listen-audio/w_brian_locational.mp3", "query": "../listen-audio/w_brian_query.mp3", "key": "../listen-audio/w_brian_key.mp3", "value": "../listen-audio/w_brian_value.mp3", "coefficients": "../listen-audio/w_brian_coefficients.mp3", "divided": "../listen-audio/w_brian_divided.mp3", "neighboring": "../listen-audio/w_brian_neighboring.mp3", "decomposes": "../listen-audio/w_brian_decomposes.mp3", "separately": "../listen-audio/w_brian_separately.mp3", "matrices": "../listen-audio/w_brian_matrices.mp3", "deprecated": "../listen-audio/w_brian_deprecated.mp3", "gracefully": "../listen-audio/w_brian_gracefully.mp3", "practically": "../listen-audio/w_brian_practically.mp3", "overwhelmingly": "../listen-audio/w_brian_overwhelmingly.mp3", "distinguishing": "../listen-audio/w_brian_distinguishing.mp3", "expensive": "../listen-audio/w_brian_expensive.mp3", "suggested": "../listen-audio/w_brian_suggested.mp3", "suitable": "../listen-audio/w_brian_suitable.mp3", "maintaining": "../listen-audio/w_brian_maintaining.mp3", "highlighting": "../listen-audio/w_brian_highlighting.mp3", "position": "../listen-audio/w_brian_position.mp3", "multiple": "../listen-audio/w_brian_multiple.mp3", "runtime": "../listen-audio/w_brian_runtime.mp3", "instructional": "../listen-audio/w_brian_instructional.mp3", "duration": "../listen-audio/w_brian_duration.mp3", "demonstrated": "../listen-audio/w_brian_demonstrated.mp3", "categories": "../listen-audio/w_brian_categories.mp3", "non-overlapping": "../listen-audio/w_brian_non_overlapping.mp3", "reversed": "../listen-audio/w_brian_reversed.mp3", "configurations": "../listen-audio/w_brian_configurations.mp3", "configure": "../listen-audio/w_brian_configure.mp3", "demonstrating": "../listen-audio/w_brian_demonstrating.mp3", "established": "../listen-audio/w_brian_established.mp3", "achieving": "../listen-audio/w_brian_achieving.mp3", "applying": "../listen-audio/w_brian_applying.mp3", "enable": "../listen-audio/w_brian_enable.mp3", "captioning": "../listen-audio/w_brian_captioning.mp3", "configuring": "../listen-audio/w_brian_configuring.mp3", "metrics": "../listen-audio/w_brian_metrics.mp3"}, "e": {"a scalable video architecture built exclusively on space-time self-attention": "../listen-audio/e_brian_7fc47d9f7a6d.mp3", "a fundamentally different approach to video modeling compared to the established paradigm": "../listen-audio/e_brian_ae22a97084c1.mp3", "a fundamentally different approach to video modeling compared to the established paradigm of convolution-based video networks": "../listen-audio/e_brian_781421722bff.mp3", "it is possible to design an effective, and scalable video architecture": "../listen-audio/e_brian_b9b3d05e8186.mp3", "Is Space-Time Attention All You Need for Video Understanding?": "../listen-audio/e_brian_625f8590dc6e.mp3", "CNN-based architectures have been the dominant paradigm for video understanding": "../listen-audio/e_brian_b57acd7860d8.mp3", "vision Transformers have recently emerged as powerful models for image recognition": "../listen-audio/e_brian_609e31e4ed4b.mp3", "a succinct formulation of the video space-time self-attention mechanism": "../listen-audio/e_brian_5a2ec271675c.mp3", "a revolution in the natural language processing field": "../listen-audio/e_brian_f567f7d82907.mp3", "computationally prohibitive for video understanding": "../listen-audio/e_brian_ad451a9f2207.mp3", "the computational complexity is prohibitive for video": "../listen-audio/e_brian_40761c36c2e4.mp3", "video as a sequence of frame-level patches": "../listen-audio/e_brian_39bb6d29f688.mp3", "by treating a video as a sequence of images": "../listen-audio/e_brian_a829066be253.mp3", "our method is conceptually simple": "../listen-audio/e_brian_8942075e8039.mp3", "recent works have shown that vision Transformers can outperform convolutional networks on image classification": "../listen-audio/e_brian_cf9742454655.mp3", "CNN-based architectures have been the dominant paradigm": "../listen-audio/e_brian_e21902e7f699.mp3", "3D CNNs for video understanding by exploiting spatiotemporal convolutions": "../listen-audio/e_brian_87d642f754f7.mp3", "exploiting spatiotemporal convolutions for video understanding": "../listen-audio/e_brian_1a7f1a00ae49.mp3", "spatiotemporal convolutions for video understanding": "../listen-audio/e_brian_724f1ce87033.mp3", "weights transferred from 2D image models": "../listen-audio/e_brian_c3ecbda078f8.mp3", "with minor modifications to the architecture": "../listen-audio/e_brian_96e5f9a7fbd6.mp3", "different modalities such as language and vision are represented as a sequence of vectors": "../listen-audio/e_brian_89fb1a2fb6cc.mp3", "our predecessors in this field": "../listen-audio/e_brian_15efbdd40dbc.mp3", "depict different spatial and temporal neighborhoods": "../listen-audio/e_brian_636804b2a8d2.mp3", "a video is viewed as a sequence of frame-level patches": "../listen-audio/e_brian_72c767aaaf78.mp3", "plays a role similar to the sequences of embedded words fed to text Transformers in NLP": "../listen-audio/e_brian_eabac06afe4e.mp3", "the sequences of embedded words fed to text Transformers": "../listen-audio/e_brian_bc98b511379f.mp3", "the latent dimensionality for each attention head": "../listen-audio/e_brian_333490eded70.mp3", "the concatenation of these vectors from all heads is projected": "../listen-audio/e_brian_08c4a6c22a63.mp3", "the final clip embedding is obtained for the classification token": "../listen-audio/e_brian_1e5d6dcf7e91.mp3", "append a 1-hidden-layer MLP which is used to predict the final video classes": "../listen-audio/e_brian_209015740329.mp3", "encode each video frame as a sequence of patch embeddings": "../listen-audio/e_brian_915052c7ffb5.mp3", "from the representation z encoded by the preceding block": "../listen-audio/e_brian_1c9675911cdd.mp3", "a video is viewed as a sequence of frame-level patches with a size of 16 × 16 pixels": "../listen-audio/e_brian_2e0754bb6811.mp3", "each video frame is encoded as a sequence of patch embeddings": "../listen-audio/e_brian_6e49a57fffc5.mp3", "a query/key/value vector is computed for each patch": "../listen-audio/e_brian_ddc26de5774c.mp3", "we add a special learnable vector representing the embedding of the classification token": "../listen-audio/e_brian_e888824e2781.mp3", "temporal attention and spatial attention are separately applied": "../listen-audio/e_brian_6732041488d1.mp3", "spatial attention within each frame only": "../listen-audio/e_brian_6511b3087ab4.mp3", "add learnable position embeddings to the patch sequence": "../listen-audio/e_brian_58c4d99a9ba9.mp3", "initialize with weights learned from ImageNet": "../listen-audio/e_brian_07f55ff84256.mp3", "with frames sampled at a rate of 1/32": "../listen-audio/e_brian_a90ed5fe744f.mp3", "the video space-time self-attention mechanism": "../listen-audio/e_brian_65b0d80c07d6.mp3", "self-attention weights are computed via dot-product": "../listen-audio/e_brian_7cb7ff85828b.mp3", "SM denotes the softmax activation function": "../listen-audio/e_brian_8032eb690910.mp3", "self-attention coefficients from each attention head": "../listen-audio/e_brian_98c7360c5374.mp3", "the softmax activation function": "../listen-audio/e_brian_26a7d8a52022.mp3", "the latent dimensionality for each attention head is set to Dh = D/A": "../listen-audio/e_brian_61b632fdf7d2.mp3", "the computation is significantly reduced for spatial attention": "../listen-audio/e_brian_96f52f5d80c0.mp3", "LN denotes LayerNorm": "../listen-audio/e_brian_6aa0ea456bc0.mp3", "Divided Space-Time Attention where temporal attention and spatial attention are separately applied": "../listen-audio/e_brian_8e6f2b821564.mp3", "this space-time factorization is not only more efficient but also leads to improved accuracy": "../listen-audio/e_brian_b97cd66a308a.mp3", "a faster approximation of full spatiotemporal attention using a local-global decomposition": "../listen-audio/e_brian_81d548c40141.mp3", "a local-global decomposition and a sparsity pattern": "../listen-audio/e_brian_b8a2d77cb074.mp3", "a sparsity pattern similar to that used in sparse transformers": "../listen-audio/e_brian_73745cb44dd0.mp3", "considering the neighboring patches": "../listen-audio/e_brian_87a13e93e5ba.mp3", "using a stride of 2 patches along the temporal dimension": "../listen-audio/e_brian_5343f6d8f098.mp3", "Axial attention decomposes the attention computation in three distinct steps": "../listen-audio/e_brian_d015ab1cf0d2.mp3", "a more efficient architecture for spatiotemporal attention": "../listen-audio/e_brian_058162791c8e.mp3", "temporal attention and spatial attention are separately applied one after the other": "../listen-audio/e_brian_80621b4e8038.mp3", "we learn distinct query/key/value matrices over the time and space dimensions": "../listen-audio/e_brian_ade89577a3e1.mp3", "divided space-time attention has a larger learning capacity": "../listen-audio/e_brian_b5d7b9a5e485.mp3", "the fitz API is deprecated": "../listen-audio/e_brian_242f30bc8f66.mp3", "the scheme of divided space-time scales gracefully": "../listen-audio/e_brian_8e444472dcea.mp3", "joint space-time attention leads to a dramatically higher cost": "../listen-audio/e_brian_d287e7496029.mp3", "joint space-time attention is effectively not applicable to large frames": "../listen-audio/e_brian_57925b1b8e57.mp3", "joint space-time attention is effectively not applicable": "../listen-audio/e_brian_781401bb2fad.mp3", "joint space-time attention is effectively not applicable to large frames or long videos": "../listen-audio/e_brian_71cafe39568e.mp3", "spatial cues are more important than temporal information": "../listen-audio/e_brian_61ed6c0ef0b4.mp3", "this approach leads to degraded classification accuracy": "../listen-audio/e_brian_d38814fffe83.mp3", "the scalability of our model allows it to operate at higher spatial resolution": "../listen-audio/e_brian_22f1fb2ad9ac.mp3", "increasing the spatial resolution results in a higher number of patches": "../listen-audio/e_brian_c65441ccca94.mp3", "only N+1 query-key comparisons are made for spatial attention": "../listen-audio/e_brian_178f3155bc77.mp3", "understanding the distinguishing properties of TimeSformer": "../listen-audio/e_brian_7a8ffe903f80.mp3", "3D convolutional architectures have been the prominent approach": "../listen-audio/e_brian_5fcc76cf1a17.mp3", "conversely, state-of-the-art 3D CNNs are much more expensive to train": "../listen-audio/e_brian_bd8bd9b8df0e.mp3", "3D CNNs are much more expensive to train": "../listen-audio/e_brian_bb3f6e318903.mp3", "this suggests that TimeSformer is better suited for settings that involve large-scale learning": "../listen-audio/e_brian_55796638e20a.mp3", "TimeSformer is better suited for settings that involve large-scale learning": "../listen-audio/e_brian_afdca4c70c30.mp3", "further increase their model capacity while also maintaining efficiency": "../listen-audio/e_brian_493cbc6531e5.mp3", "if we constrain SlowFast to be trained under a somewhat similar computational budget": "../listen-audio/e_brian_d1b8f3b2ff8d.mp3", "some 3D CNNs require a very long optimization schedule": "../listen-audio/e_brian_3966625a1d38.mp3", "highlighting the fact that some 3D CNNs require a very long optimization schedule": "../listen-audio/e_brian_41a2b5e6cc23.mp3", "TimeSformer provides a more efficient alternative to labs": "../listen-audio/e_brian_f39bc2c1e0cc.mp3", "numerous recent works": "../listen-audio/e_brian_d7a5c9673dcf.mp3", "the importance of positional embeddings": "../listen-audio/e_brian_a2cfa017c2c2.mp3", "the importance of our learned spatiotemporal positional embeddings": "../listen-audio/e_brian_52c3b33430cc.mp3", "we experimented with a few variants of TimeSformer": "../listen-audio/e_brian_6aa9ad8b5a9b.mp3", "ImageNet-21K pretraining leads consistently to a better performance": "../listen-audio/e_brian_b3eba2e61644.mp3", "Kinetics-400 is more spatially biased": "../listen-audio/e_brian_a7b3258d53e7.mp3", "SSv2 requires complex spatiotemporal reasoning": "../listen-audio/e_brian_e0c904d79bf1.mp3", "this makes sense as SSv2 requires complex spatiotemporal reasoning": "../listen-audio/e_brian_8d5f138bd922.mp3", "leads consistently to a better performance on K400": "../listen-audio/e_brian_4a905dd73583.mp3", "major action recognition benchmarks": "../listen-audio/e_brian_7cecd43f4114.mp3", "we present our results on the validation set of K400": "../listen-audio/e_brian_738c8c3f70a8.mp3", "during inference we sample a single temporal clip in the middle of the video": "../listen-audio/e_brian_7a8ff9a05ea1.mp3", "we study the effect of using multiple temporal clips during inference": "../listen-audio/e_brian_757edb2dcbdd.mp3", "we use 3 spatial crops from the temporal clip": "../listen-audio/e_brian_a1e28420fdec.mp3", "TimeSformer achieves solid accuracy with only 3 views": "../listen-audio/e_brian_2c3739c13ee1.mp3", "we also measured the actual inference runtime on 20K validation videos": "../listen-audio/e_brian_5fdb3ffd4cbd.mp3", "SlowFast and TimeSformer-L have comparable cost in terms of TFLOPs": "../listen-audio/e_brian_7d39f1a1471b.mp3", "TimeSformer outperforms SlowFast by a substantial margin": "../listen-audio/e_brian_ab7166846844.mp3", "outperforms SlowFast by a substantial margin": "../listen-audio/e_brian_45a74d2c1b42.mp3", "HowTo100M is an instructional video dataset": "../listen-audio/e_brian_bcef022607a8.mp3", "the average duration of these videos is around 7 minutes": "../listen-audio/e_brian_9f5639679cbb.mp3", "orders of magnitude longer than the duration of videos in standard benchmarks": "../listen-audio/e_brian_15bbe94a4fed.mp3", "each HowTo100M video has a label indicating the task demonstrated in the video": "../listen-audio/e_brian_5e1b7654c79d.mp3", "spanning 1059 task categories": "../listen-audio/e_brian_f308e9764acd.mp3", "we randomly partition this collection into 85K training videos and 35K testing videos": "../listen-audio/e_brian_6621fe21d87a.mp3", "Single Clip Coverage denotes the number of seconds spanned by a single clip": "../listen-audio/e_brian_dbb0d52be024.mp3", "we sample as many non-overlapping temporal clips as needed": "../listen-audio/e_brian_cadbfc1ee0dc.mp3", "it is able to span about 12 seconds of a Kinetics video with a single clip": "../listen-audio/e_brian_f9b428ed5c35.mp3", "TimeSformer learns to attend to the relevant regions in the video": "../listen-audio/e_brian_a9a711d985f9.mp3", "our model is highly suitable for tasks that require long-term video modeling": "../listen-audio/e_brian_7d0a9afe5972.mp3", "our model can effectively exploit long-range temporal dependencies": "../listen-audio/e_brian_7cf28c0b00e8.mp3", "Additional Ablations": "../listen-audio/e_brian_390288320a6f.mp3", "the performance decrease with P=32 is due to the reduced spatial granularity": "../listen-audio/e_brian_0d5adb288fde.mp3", "we investigate whether reversing the order of time-space attention has an impact": "../listen-audio/e_brian_649e93e02a24.mp3", "we also tried a parallel space-time self-attention": "../listen-audio/e_brian_e77b408d7bba.mp3", "three configurations of our model": "../listen-audio/e_brian_9215aa5aae32.mp3", "TimeSformer learns semantically more separable features": "../listen-audio/e_brian_bdb70c637558.mp3", "learns semantically more separable features": "../listen-audio/e_brian_c104d04fbf21.mp3", "A dropout of 0.5 is used before the final classification layer": "../listen-audio/e_brian_b93fcdfd25dc.mp3", "the momentum is set to 0.9": "../listen-audio/e_brian_fa9e4566a827.mp3", "we conjecture that the performance decrease is due to reduced spatial granularity": "../listen-audio/e_brian_ac5fb368326f.mp3", "Qualitative Results": "../listen-audio/e_brian_ac7b7768615c.mp3", "we present space-time attention visualizations": "../listen-audio/e_brian_2b0431660ef0.mp3", "Visualization of Learned Space-Time Attention": "../listen-audio/e_brian_6d780cce8cc2.mp3", "the model focuses on the configuration of the hand when visible": "../listen-audio/e_brian_87f71bb87579.mp3", "the model focuses on the configuration of the hand": "../listen-audio/e_brian_78446aa30e29.mp3", "different colors depict different action categories": "../listen-audio/e_brian_ad96ab061392.mp3", "recognizing activities exhibited over very long temporal extents": "../listen-audio/e_brian_6283f4f43a83.mp3", "time, width and height are three distinct steps": "../listen-audio/e_brian_1a5fdeb6392a.mp3", "following the trajectory of objects in the video": "../listen-audio/e_brian_7781a9a79e68.mp3", "compared to the established paradigm of convolution-based video networks": "../listen-audio/e_brian_f2ed267c6381.mp3", "a fundamentally different approach to video modeling": "../listen-audio/e_brian_b5ac6e1d4edb.mp3", "In this work, we introduced TimeSformer": "../listen-audio/e_brian_27d3a1305faf.mp3", "achieves state-of-the-art results on major action recognition benchmarks": "../listen-audio/e_brian_4f15de596082.mp3", "can be applied to clips of over one minute": "../listen-audio/e_brian_0d98ee95b475.mp3", "enabling long-term video modeling": "../listen-audio/e_brian_dea538091072.mp3", "we plan to extend our method to action localization": "../listen-audio/e_brian_2bf01e4f6a31.mp3", "video captioning and question-answering": "../listen-audio/e_brian_67e0c57e5773.mp3", "we plan to extend our method to other video analysis tasks": "../listen-audio/e_brian_126d3ff12c49.mp3", "Implementation Details": "../listen-audio/e_brian_c2b2b81b0d67.mp3", "we train all our models using synchronized SGD across 32 GPUs": "../listen-audio/e_brian_93e4da1acab8.mp3", "using more data augmentations": "../listen-audio/e_brian_706501c335e9.mp3", "we use a cosine learning rate schedule": "../listen-audio/e_brian_fd8171103b11.mp3", "a cosine learning rate schedule": "../listen-audio/e_brian_9905692d940f.mp3", "before finetuning on HowTo100M": "../listen-audio/e_brian_e0d167bdb2b3.mp3", "configuring the model for different tasks": "../listen-audio/e_brian_2a533217169a.mp3", "Kinetics-400 consists of 240K training videos": "../listen-audio/e_brian_66d6a4332dcb.mp3", "spanning 400 human action categories": "../listen-audio/e_brian_d7fe71da248c.mp3", "we also include inference cost metrics": "../listen-audio/e_brian_f8c07c585abe.mp3"}}, "en-US-AndrewNeural": {"w": {"capacity": "../listen-audio/w_andrew_capacity.mp3", "dominant": "../listen-audio/w_andrew_dominant.mp3", "benchmark": "../listen-audio/w_andrew_benchmark.mp3", "sequence": "../listen-audio/w_andrew_sequence.mp3", "magnitude": "../listen-audio/w_andrew_magnitude.mp3", "inference": "../listen-audio/w_andrew_inference.mp3", "granularity": "../listen-audio/w_andrew_granularity.mp3", "architecture": "../listen-audio/w_andrew_architecture.mp3", "validation": "../listen-audio/w_andrew_validation.mp3", "approximation": "../listen-audio/w_andrew_approximation.mp3", "resolution": "../listen-audio/w_andrew_resolution.mp3", "qualitative": "../listen-audio/w_andrew_qualitative.mp3", "degraded": "../listen-audio/w_andrew_degraded.mp3", "normalized": "../listen-audio/w_andrew_normalized.mp3", "representations": "../listen-audio/w_andrew_representations.mp3", "numerous": "../listen-audio/w_andrew_numerous.mp3", "initialize": "../listen-audio/w_andrew_initialize.mp3", "mechanism": "../listen-audio/w_andrew_mechanism.mp3", "factorization": "../listen-audio/w_andrew_factorization.mp3", "embedding": "../listen-audio/w_andrew_embedding.mp3", "token": "../listen-audio/w_andrew_token.mp3", "dot-product": "../listen-audio/w_andrew_dot_product.mp3", "softmax": "../listen-audio/w_andrew_softmax.mp3", "projection": "../listen-audio/w_andrew_projection.mp3", "positional": "../listen-audio/w_andrew_positional.mp3", "activation": "../listen-audio/w_andrew_activation.mp3", "dimensionality": "../listen-audio/w_andrew_dimensionality.mp3", "separable": "../listen-audio/w_andrew_separable.mp3", "dropout": "../listen-audio/w_andrew_dropout.mp3", "outperform": "../listen-audio/w_andrew_outperform.mp3", "configuration": "../listen-audio/w_andrew_configuration.mp3", "ablation": "../listen-audio/w_andrew_ablation.mp3"}}, "zh-CN-YunyangNeural": {"m": {"占主导地位的": "../listen-audio/m_yunyang_18eacd4b1870.mp3", "微调": "../listen-audio/m_yunyang_58fd75c1b689.mp3", "序列": "../listen-audio/m_yunyang_e024d2921e1f.mp3", "限制": "../listen-audio/m_yunyang_df9c9706d4cb.mp3", "初始化": "../listen-audio/m_yunyang_2cb472ff9cad.mp3", "粒度": "../listen-audio/m_yunyang_c1c28c960a4a.mp3", "架构": "../listen-audio/m_yunyang_0eaa6af97d68.mp3", "类别": "../listen-audio/m_yunyang_383a6d166f8f.mp3", "指标": "../listen-audio/m_yunyang_7e687515fc56.mp3", "验证": "../listen-audio/m_yunyang_cd8992b644e6.mp3", "近似": "../listen-audio/m_yunyang_df2c1a40c27b.mp3", "展示": "../listen-audio/m_yunyang_027446c2f907.mp3", "定性的": "../listen-audio/m_yunyang_5c07844ed255.mp3", "退化的": "../listen-audio/m_yunyang_28c3dd368def.mp3", "归一化的": "../listen-audio/m_yunyang_db30a2522a57.mp3", "表示": "../listen-audio/m_yunyang_3d7dfbd2db5a.mp3", "卷积": "../listen-audio/m_yunyang_3cf7f2346f6e.mp3", "机制": "../listen-audio/m_yunyang_779ca1eeadb7.mp3", "分辨率": "../listen-audio/m_yunyang_874a58161898.mp3", "维度": "../listen-audio/m_yunyang_f29c543fffb9.mp3", "嵌入": "../listen-audio/m_yunyang_6ac6e33876b4.mp3", "点积": "../listen-audio/m_yunyang_8ad7080efae3.mp3", "投影": "../listen-audio/m_yunyang_16ad4ad54911.mp3", "拼接": "../listen-audio/m_yunyang_a6b363bb757d.mp3", "位置的": "../listen-audio/m_yunyang_bd46e526e46e.mp3", "可分离的": "../listen-audio/m_yunyang_7b68fb87e5b6.mp3", "丢弃法": "../listen-audio/m_yunyang_da41710ba30f.mp3", "配置": "../listen-audio/m_yunyang_224e2ccda861.mp3", "变体": "../listen-audio/m_yunyang_6c835fb0cfc9.mp3", "卷积的": "../listen-audio/m_yunyang_809e5695d16b.mp3", "softmax函数": "../listen-audio/m_yunyang_462ddf35df31.mp3", "激活": "../listen-audio/m_yunyang_83a991d77ce3.mp3", "有效的": "../listen-audio/m_yunyang_75f5a9deae84.mp3", "相邻的": "../listen-audio/m_yunyang_f13a30188fee.mp3", "动量": "../listen-audio/m_yunyang_1ef123bcc985.mp3", "稀疏性": "../listen-audio/m_yunyang_6e5e5d59f76f.mp3", "高效的": "../listen-audio/m_yunyang_c1f77a4f0e5d.mp3", "推理": "../listen-audio/m_yunyang_ed6f7ed808c4.mp3", "大量的": "../listen-audio/m_yunyang_9a843382b3ff.mp3", "合成": "../listen-audio/m_yunyang_c29e4097806f.mp3", "优化": "../listen-audio/m_yunyang_aa84ec947f0a.mp3", "实现": "../listen-audio/m_yunyang_38164c8be942.mp3", "可扩展的": "../listen-audio/m_yunyang_2fbf536cb396.mp3", "数据增强": "../listen-audio/m_yunyang_e4fc36e3fc4b.mp3", "轨迹": "../listen-audio/m_yunyang_4e690898eb20.mp3", "前身": "../listen-audio/m_yunyang_734bb56c5601.mp3", "分类": "../listen-audio/m_yunyang_d0771a42bbc4.mp3", "自注意力": "../listen-audio/m_yunyang_2d8b0c52518f.mp3", "准确率": "../listen-audio/m_yunyang_3c7d9eedb98d.mp3", "扩展": "../listen-audio/m_yunyang_2dc90225b803.mp3", "空间的": "../listen-audio/m_yunyang_496cad5b2806.mp3", "有偏见的": "../listen-audio/m_yunyang_3bc6ecd139c8.mp3", "可应用的": "../listen-audio/m_yunyang_3e63b30903e5.mp3", "时空的": "../listen-audio/m_yunyang_fc989e893e35.mp3", "新兴的": "../listen-audio/m_yunyang_2c8d3f53ed75.mp3", "相关的": "../listen-audio/m_yunyang_df96859af810.mp3", "余弦": "../listen-audio/m_yunyang_8e1b7b495c69.mp3", "可扩展性": "../listen-audio/m_yunyang_b32dde5c01f0.mp3", "推测": "../listen-audio/m_yunyang_9ee15f594952.mp3", "描绘": "../listen-audio/m_yunyang_5b16f9baa162.mp3", "不同的": "../listen-audio/m_yunyang_bdc3d63eea13.mp3", "分解": "../listen-audio/m_yunyang_54e63f844254.mp3", "直觉": "../listen-audio/m_yunyang_2476e13a300e.mp3", "范式，典范": "../listen-audio/m_yunyang_71d213b59add.mp3", "采样": "../listen-audio/m_yunyang_42ac9be904e4.mp3", "空间上": "../listen-audio/m_yunyang_d8828f9b623f.mp3", "一致的": "../listen-audio/m_yunyang_4f449fdf47d4.mp3", "语义上地": "../listen-audio/m_yunyang_a38463f8b372.mp3", "潜在的": "../listen-audio/m_yunyang_5a1aa2405192.mp3", "消融（实验）": "../listen-audio/m_yunyang_47e413cf4298.mp3", "基准": "../listen-audio/m_yunyang_5133c587cfbb.mp3", "并行的": "../listen-audio/m_yunyang_c18e9217f146.mp3", "可学习的": "../listen-audio/m_yunyang_2c73a37bf5cc.mp3", "查询": "../listen-audio/m_yunyang_bee912d79eef.mp3", "步幅": "../listen-audio/m_yunyang_6b5102d14290.mp3", "定位": "../listen-audio/m_yunyang_a10fa763d201.mp3", "可视化": "../listen-audio/m_yunyang_5f0eec58f368.mp3", "注意力": "../listen-audio/m_yunyang_a17b6e9422ff.mp3", "可比较的": "../listen-audio/m_yunyang_dc6268a0c866.mp3", "同步的": "../listen-audio/m_yunyang_755ff91aa51d.mp3", "系数": "../listen-audio/m_yunyang_4d8e599dd03a.mp3", "量级": "../listen-audio/m_yunyang_c331fcd9e2ae.mp3", "戏剧性地": "../listen-audio/m_yunyang_e7654e33d5fc.mp3", "容量，能力": "../listen-audio/m_yunyang_d1d6129e6216.mp3", "划分": "../listen-audio/m_yunyang_4540ad4b8939.mp3", "类比": "../listen-audio/m_yunyang_2143897f463d.mp3", "反转": "../listen-audio/m_yunyang_4977b4588701.mp3", "差距": "../listen-audio/m_yunyang_d94217c238c8.mp3", "应用": "../listen-audio/m_yunyang_5b0520a9bf5e.mp3", "相反地": "../listen-audio/m_yunyang_aeb48f8cccab.mp3", "利用，开发": "../listen-audio/m_yunyang_1da08854bb03.mp3", "预测": "../listen-audio/m_yunyang_fbee26a17a1f.mp3", "描绘，描述": "../listen-audio/m_yunyang_06553e5daa03.mp3", "分离的": "../listen-audio/m_yunyang_508f5285345c.mp3", "简洁": "../listen-audio/m_yunyang_e7e07e58639b.mp3", "比较": "../listen-audio/m_yunyang_d7650ece361a.mp3", "图像块": "../listen-audio/m_yunyang_0b2ef2805dc0.mp3", "令牌，标记": "../listen-audio/m_yunyang_a70ce1cb3777.mp3", "向量": "../listen-audio/m_yunyang_97005534e999.mp3", "替代方案": "../listen-audio/m_yunyang_20d2024b6359.mp3", "分别地": "../listen-audio/m_yunyang_5e0a5f62d5e8.mp3", "一贯地": "../listen-audio/m_yunyang_ae1fe6cafd40.mp3", "修改": "../listen-audio/m_yunyang_8347a927c09a.mp3", "保持": "../listen-audio/m_yunyang_5f0c0bf32dc1.mp3", "包含": "../listen-audio/m_yunyang_e13556bb3580.mp3", "时间的": "../listen-audio/m_yunyang_829990ea40f3.mp3", "嵌入的": "../listen-audio/m_yunyang_4b9f4a39d327.mp3", "明显的": "../listen-audio/m_yunyang_91e429abd86b.mp3", "专门地，仅仅": "../listen-audio/m_yunyang_48feeb855371.mp3", "有效地": "../listen-audio/m_yunyang_3189cecbf96b.mp3", "简洁的": "../listen-audio/m_yunyang_e17f351631e2.mp3", "革命": "../listen-audio/m_yunyang_84987897eb53.mp3", "计算上地": "../listen-audio/m_yunyang_55b9aab1cdf9.mp3", "令人望而却步的": "../listen-audio/m_yunyang_8f0f5f9b5992.mp3", "将…视为": "../listen-audio/m_yunyang_d6c0f8050727.mp3", "概念上地": "../listen-audio/m_yunyang_5b4c1b06efd6.mp3", "优于，胜过": "../listen-audio/m_yunyang_c936942c6195.mp3", "迁移的": "../listen-audio/m_yunyang_26402b63c349.mp3", "前面的": "../listen-audio/m_yunyang_8fab952f9f00.mp3", "键": "../listen-audio/m_yunyang_f72c6ffa9298.mp3", "值": "../listen-audio/m_yunyang_fe7509e0ed08.mp3", "减少的": "../listen-audio/m_yunyang_e9d0c24e2c3b.mp3", "轴的": "../listen-audio/m_yunyang_5ede472c44a7.mp3", "矩阵（复数）": "../listen-audio/m_yunyang_49dbd791a7d2.mp3", "已废弃的": "../listen-audio/m_yunyang_1eb29a1e7c38.mp3", "优雅地": "../listen-audio/m_yunyang_8a1a96f2efdb.mp3", "实际上": "../listen-audio/m_yunyang_9af09e244bc6.mp3", "压倒性地": "../listen-audio/m_yunyang_ba9d141bada4.mp3", "有区别的": "../listen-audio/m_yunyang_eb6e3e1e116b.mp3", "突出的": "../listen-audio/m_yunyang_a5e4efb21655.mp3", "昂贵的": "../listen-audio/m_yunyang_67709e572041.mp3", "表明": "../listen-audio/m_yunyang_a300f681174f.mp3", "合适的": "../listen-audio/m_yunyang_9b2d3c26beeb.mp3", "突出显示": "../listen-audio/m_yunyang_dc2d3869a216.mp3", "许多的": "../listen-audio/m_yunyang_99c21f5295d3.mp3", "位置": "../listen-audio/m_yunyang_d4d2a66820d3.mp3", "多个的": "../listen-audio/m_yunyang_0b9e2d05b15f.mp3", "运行时间": "../listen-audio/m_yunyang_9f70e40e043d.mp3", "教学的": "../listen-audio/m_yunyang_afb7736f8df3.mp3", "时长": "../listen-audio/m_yunyang_5bdfd7ee4dce.mp3", "展示的": "../listen-audio/m_yunyang_5f9cbb483d41.mp3", "覆盖范围": "../listen-audio/m_yunyang_c6ec0c8624f1.mp3", "不重叠的": "../listen-audio/m_yunyang_5d7fe59122ce.mp3", "跨越": "../listen-audio/m_yunyang_72287ab8e7aa.mp3", "适合的": "../listen-audio/m_yunyang_4702dd84ad7c.mp3", "表现出的": "../listen-audio/m_yunyang_d127dc9f1105.mp3", "已确立的": "../listen-audio/m_yunyang_5824a9e5d8de.mp3", "根本上地": "../listen-audio/m_yunyang_0850dc248882.mp3", "引入的": "../listen-audio/m_yunyang_c4eda8a8c0b1.mp3", "取得": "../listen-audio/m_yunyang_6137d5eefa8c.mp3", "使能够": "../listen-audio/m_yunyang_a05269937519.mp3", "描述生成": "../listen-audio/m_yunyang_31008705ff97.mp3", "调度": "../listen-audio/m_yunyang_b088138c7dda.mp3"}}, "zh-CN-YunjianNeural": {"m": {"占主导地位的": "../listen-audio/m_yunjian_18eacd4b1870.mp3", "微调": "../listen-audio/m_yunjian_58fd75c1b689.mp3", "序列": "../listen-audio/m_yunjian_e024d2921e1f.mp3", "限制": "../listen-audio/m_yunjian_df9c9706d4cb.mp3", "初始化": "../listen-audio/m_yunjian_2cb472ff9cad.mp3", "粒度": "../listen-audio/m_yunjian_c1c28c960a4a.mp3", "架构": "../listen-audio/m_yunjian_0eaa6af97d68.mp3", "类别": "../listen-audio/m_yunjian_383a6d166f8f.mp3", "指标": "../listen-audio/m_yunjian_7e687515fc56.mp3", "验证": "../listen-audio/m_yunjian_cd8992b644e6.mp3", "近似": "../listen-audio/m_yunjian_df2c1a40c27b.mp3", "展示": "../listen-audio/m_yunjian_027446c2f907.mp3", "定性的": "../listen-audio/m_yunjian_5c07844ed255.mp3", "退化的": "../listen-audio/m_yunjian_28c3dd368def.mp3", "归一化的": "../listen-audio/m_yunjian_db30a2522a57.mp3", "表示": "../listen-audio/m_yunjian_3d7dfbd2db5a.mp3", "卷积": "../listen-audio/m_yunjian_3cf7f2346f6e.mp3", "机制": "../listen-audio/m_yunjian_779ca1eeadb7.mp3", "分辨率": "../listen-audio/m_yunjian_874a58161898.mp3", "维度": "../listen-audio/m_yunjian_f29c543fffb9.mp3", "嵌入": "../listen-audio/m_yunjian_6ac6e33876b4.mp3", "点积": "../listen-audio/m_yunjian_8ad7080efae3.mp3", "投影": "../listen-audio/m_yunjian_16ad4ad54911.mp3", "拼接": "../listen-audio/m_yunjian_a6b363bb757d.mp3", "位置的": "../listen-audio/m_yunjian_bd46e526e46e.mp3", "可分离的": "../listen-audio/m_yunjian_7b68fb87e5b6.mp3", "丢弃法": "../listen-audio/m_yunjian_da41710ba30f.mp3", "配置": "../listen-audio/m_yunjian_224e2ccda861.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -464,11 +637,20 @@ const SKINS=[
   {id:"netease",n:"网易云黑",p:"linear-gradient(135deg,#3a2429,#150d10)"},
   {id:"vinyl",n:"黑胶原色",p:"linear-gradient(135deg,#e6e9f2,#161616)"},
   {id:"gold",n:"香槟金",p:"linear-gradient(135deg,#f2dfbd,#3a2a14)"},
+  {id:"sakura",n:"樱花粉",p:"linear-gradient(135deg,#fdeef3,#f2b9cd)"},
+  {id:"matcha",n:"抹茶",p:"linear-gradient(135deg,#eef3e6,#a9c489)"},
+  {id:"mint",n:"薄荷",p:"linear-gradient(135deg,#eefaf7,#8fd8c8)"},
+  {id:"ocean",n:"海盐蓝",p:"linear-gradient(135deg,#eef5fc,#7fb3e6)"},
+  {id:"grape",n:"星空紫",p:"linear-gradient(135deg,#f2eefa,#b39ade)"},
+  {id:"amusic",n:"Apple红",p:"linear-gradient(135deg,#fff4f4,#fa5c74)"},
+  {id:"mocha",n:"摩卡",p:"linear-gradient(135deg,#f7f1ea,#b08d6d)"},
+  {id:"spotify",n:"Spotify",p:"linear-gradient(135deg,#1d2420,#1db954)"},
+  {id:"midnight",n:"深夜蓝",p:"linear-gradient(135deg,#1e2740,#4a9eff)"},
   {id:"vinylx",n:"悬浮黑胶",p:"radial-gradient(circle at 50% 50%,#5b5bd6 0 30%,#17171a 31%)"}
 ];
 const $=id=>document.getElementById(id);
 const app=$("app");
-let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0};
+let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0,rate:1,enVoice:"",zhVoice:""};
 try{const c=JSON.parse(localStorage.getItem("listen_qq_cfg")||"{}");Object.assign(S,c)}catch(e){}
 const save=()=>{try{localStorage.setItem("listen_qq_cfg",JSON.stringify(S))}catch(e){}};
 
@@ -480,16 +662,26 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
+let pendingRebuild=false;    /* 播放中改了标记：等当前词念完再重建队列，绝不中途掐断 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
-  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过不读的 */
-  if(S.source!=="all")       list=list.filter(i=>!skips.has(i.w));   /* 专背模式下「不读」依然生效 */
+  else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
+  else if(S.source==="new")  list=list.filter(i=>!skips.has(i.w));   /* 仅新词：只读还没标已掌握的 */
+  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过已划掉的 */
+  /* 专背模式不再二次排除已跳过的：否则「星标+已跳过」的词根本读不到，没法取消误点 */
   if(S.order==="rand"){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
   queue=list;
   if(qi>=queue.length)qi=0;
@@ -498,6 +690,19 @@ function rebuild(keep){
   const cur=queue[qi];
   buildQueue();
   if(keep&&cur){const k=queue.findIndex(x=>x.w===cur.w);qi=k>=0?k:0}
+  pendingRebuild=false;                       /* 这里已经重建过了，撤掉待办的延迟重建 */
+}
+/* 延迟重建：等到"当前这个词念完"再生效（给 pendingRebuild 用） */
+function rebuildKeepPos(){
+  const oldLen=queue.length, oldQi=qi, cur=queue[qi], key=cur?cur.w:null;
+  buildQueue();
+  if(!queue.length){qi=0;return}
+  if(!key){if(qi>=queue.length)qi=0;return}
+  const k=queue.findIndex(x=>x.w===key);
+  if(k>=0){qi=k;return}                       /* 当前词还在队列里：原地不动 */
+  /* 当前词已被排除（刚标了跳过 / 取消了星标）：把指针放到"下一个该读的词"的前一位，
+     goNext 再 +1，正好接到原位置上的那个词——不会漏读，也不会重读 */
+  qi = (oldQi>=oldLen-1) ? -1 : Math.min(oldQi,queue.length-1)-1;
 }
 function updateBtns(){
   const w=queue[qi];
@@ -507,13 +712,33 @@ function updateBtns(){
 }
 function updateCounts(){
   $("skipCnt").textContent="已跳过 "+skips.size+" 词";
-  $("markCnt").textContent="⭐ "+stars.size+" · ❤ "+favs.size+" · ✓ "+skips.size;
+  /* 和「词库来源」同一套图标：星标 / 收藏 / 跳过（原先是 ⭐❤✓ emoji 混搭） */
+  $("markCnt").innerHTML="<b>"+IC.star+stars.size+"</b><b>"+IC.heart+favs.size+"</b><b>"+IC.skip+skips.size+"</b>";
 }
-/* 标记后统一收尾：重建队列，空了就提示，否则接着播 */
+/* 当前词的标记：只显示「跳过」（星标/收藏看顶栏图标即可，不重复占地方） */
+function renderMarks(w){
+  const box=$("mkBadge"); if(!box)return;
+  if(!w||!skips.has(w.w)){box.style.display="none";return}
+  box.innerHTML='<i class="mk" data-cancel="skip" title="此词已跳过 · 点一下恢复朗读">'+IC.skip+'<i>✕</i></i>';
+  box.style.display="flex";
+}
+$("mkBadge").onclick=e=>{
+  const el=e.target.closest("[data-cancel]"); if(!el)return;
+  const w=queue[qi]; if(!w)return;
+  const k=el.dataset.cancel;
+  if(k==="star"){stars.delete(w.w);wr("listen_qq_star",stars);wordTip("已取消星标「"+w.w+"」")}
+  else if(k==="fav"){favs.delete(w.w);wr("listen_qq_fav",favs);wordTip("已取消收藏「"+w.w+"」")}
+  else if(k==="skip"){skips.delete(w.w);wr("listen_qq_skip",skips);wordTip("已恢复朗读「"+w.w+"」")}
+  afterMark();
+};
+/* 标记后收尾：正在朗读时不打断——当前词照常念完，队列等这个词结束时才重建。
+   （以前是立刻重建+重播，等于一点 ✓ 这个词就被掐掉，这次白学了） */
 function afterMark(){
-  updateBtns(); updateCounts(); rebuild(true);   /* 保留当前词：随机模式下重排也不会跳走 */
+  updateBtns(); updateCounts(); renderMarks(queue[qi]);
+  if(playing){ pendingRebuild=true; return }
+  rebuild(true);
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
-  if(playing)playCurrent(); else render(queue[qi],true);
+  render(queue[qi],true);
 }
 function renderRange(){
   const box=$("rangeBox"); box.innerHTML="";
@@ -525,6 +750,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -545,11 +791,23 @@ $("skinBtn").onclick=()=>{ skinIdx=(skinIdx+1)%SKINS.length; applySkin(SKINS[ski
 try{const sv=localStorage.getItem("listen_qq_skin"); if(sv)applySkin(sv,false)}catch(e){}
 
 // 设置段
+/* 小图标库：星标 / 收藏 / 跳过（用户提供）/ 加号（新词）/ 全部 */
+const IC={
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
+  skip:'<svg class="fill" viewBox="0 0 1024 1024"><path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/></svg>',
+  news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 13.6 9.4l4.9 1.6-4.9 1.6L12 17.5l-1.6-4.9-4.9-1.6 4.9-1.6Z"/></svg>',
+  all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>'
+};
 function seg(box,opts,get,set,after){
   box.innerHTML="";
   opts.forEach(o=>{
-    const b=document.createElement("b"); b.textContent=o.t; b.dataset.v=o.v;
-    b.className=get()===o.v?"on":"";
+    const b=document.createElement("b");
+    if(o.svg){ b.innerHTML=o.svg; b.className="icn" } else { b.textContent=o.t }
+    b.dataset.v=o.v;
+    if(o.tip) b.title=o.tip;
+    if(get()===o.v) b.classList.add("on");
     b.onclick=()=>{set(o.v);box.querySelectorAll("b").forEach(x=>x.classList.remove("on"));b.classList.add("on");save();after&&after(o.v)};
     box.appendChild(b);
   });
@@ -565,6 +823,9 @@ seg($("segVoice"),[{t:"美音",v:"us"},{t:"英音",v:"uk"}],()=>S.voice,v=>S.voi
   ()=>refreshCurrent("发音： "+(S.voice==="uk"?"英音":"美音")));
 seg($("segPause"),[{t:"2s",v:2000},{t:"4s",v:4000},{t:"6s",v:6000}],()=>S.pause,v=>S.pause=v,
   ()=>refreshCurrent("每词停顿： "+(S.pause/1000)+" 秒"));
+/* 语速：直接改 audio.playbackRate（对有道/百度/系统语音都生效，不改音调） */
+seg($("segRate"),[{t:"0.75x",v:.75},{t:"1x",v:1},{t:"1.25x",v:1.25},{t:"1.5x",v:1.5}],()=>+S.rate||1,v=>S.rate=v,
+  ()=>refreshCurrent("语速： "+S.rate+"x"));
 /* 单词重复次数：1/3/5 快捷 + 右侧输入框自定义（1–20） */
 function setRepeat(v,persist){
   v=Math.max(1,Math.min(20,Math.round(+v||1)));
@@ -581,15 +842,25 @@ seg($("segReveal"),[{t:"开",v:true},{t:"关",v:false}],()=>S.reveal,v=>S.reveal
   ()=>refreshCurrent("先听后现： "+(S.reveal?"开":"关")));
 seg($("segZh"),[{t:"开",v:true},{t:"关",v:false}],()=>S.zh,v=>S.zh=v,
   ()=>refreshCurrent("朗读中文： "+(S.zh?"开":"关")));
+/* 朗读例句：沿用老版方案 = 百度在线合成（lan=en，spd=5，source=web）。
+   本篇若预生成了例句音频则用本地微软音，没有就走百度在线 */
 seg($("segEx"),[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
   ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
 // 单词字体：选项本身就用自己的字体渲染，所见即所得
 const FONTS=[
-  {v:"sans", t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
-  {v:"serif",t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
-  {v:"round",t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
-  {v:"kai",  t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
-  {v:"mono", t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'}
+  {v:"sans",    t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
+  {v:"serif",   t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
+  {v:"round",   t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
+  {v:"kai",     t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
+  {v:"mono",    t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'},
+  {v:"xingkai", t:"行楷", f:'"Xingkai SC","STXingkai","Snell Roundhand",cursive'},
+  {v:"weibei",  t:"魏碑", f:'"Weibei SC","STWeibei","Kaiti SC",serif'},
+  {v:"wawati",  t:"娃娃", f:'"Wawati SC","STWawati","Comic Sans MS",cursive'},
+  {v:"lanting", t:"兰亭", f:'"Lantinghei SC","FZLanTingHei-S-GB","PingFang SC",sans-serif'},
+  {v:"futura",  t:"几何", f:'Futura,"Avenir Next","Century Gothic",sans-serif'},
+  {v:"georgia", t:"书卷", f:'Georgia,"Times New Roman","Songti SC",serif'},
+  {v:"rounded", t:"圆润", f:'"Arial Rounded MT Bold","Hiragino Maru Gothic ProN","Yuanti SC",sans-serif'},
+  {v:"marker",  t:"手写", f:'"Marker Felt","Chalkboard SE","Comic Sans MS",cursive'}
 ];
 function applyFont(v){
   const f=FONTS.find(x=>x.v===v)||FONTS[0];
@@ -631,32 +902,160 @@ function applySource(){
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
   if(playing)playCurrent(); else render(queue[qi],true);
 }
-seg($("segSource"),[{t:"全部",v:"all"},{t:"仅⭐",v:"star"},{t:"仅❤",v:"fav"}],()=>S.source,v=>S.source=v,applySource);
+/* 词库来源：纯图标（全部 / 星标 / 收藏 / 跳过 / 新词），鼠标悬停有说明 */
+seg($("segSource"),[
+  {v:"all", svg:IC.all,  tip:"全部词"},
+  {v:"star",svg:IC.star, tip:"只看星标词"},
+  {v:"fav", svg:IC.heart,tip:"只看收藏词"},
+  {v:"skip",svg:IC.skip, tip:"只看已跳过的词（点标记可取消）"},
+  {v:"new", svg:IC.news, tip:"只看还没跳过的词"}
+],()=>S.source,v=>S.source=v,applySource);
 
 seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.order=v,
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}
-  if(favs.has(w.w)){favs.delete(w.w);toast("已取消收藏「"+w.w+"」")}else{favs.add(w.w);toast("已收藏「"+w.w+"」")}
+  if(favs.has(w.w)){favs.delete(w.w);wordTip("已取消收藏「"+w.w+"」")}else{favs.add(w.w);wordTip("已收藏「"+w.w+"」")}
   wr("listen_qq_fav",favs); afterMark();
 };
 $("starBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标星");return}
-  if(stars.has(w.w)){stars.delete(w.w);toast("已取消星标「"+w.w+"」")}else{stars.add(w.w);toast("已标星「"+w.w+"」，可只背星标")}
+  if(stars.has(w.w)){stars.delete(w.w);wordTip("已取消星标「"+w.w+"」")}else{stars.add(w.w);wordTip("已标星「"+w.w+"」，可只背星标")}
   wr("listen_qq_star",stars); afterMark();
 };
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
-  if(skips.has(w.w)){skips.delete(w.w);toast("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);toast("此词不再朗读「"+w.w+"」")}
+  if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
+  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
   wr("listen_qq_skip",skips); afterMark();
 };
-$("clearSkip").onclick=()=>{skips.clear();wr("listen_qq_skip",skips);updateCounts();rebuild(true);toast("已清空「不读」列表")};
-$("clearStar").onclick=()=>{stars.clear();wr("listen_qq_star",stars);updateCounts();rebuild(true);toast("已清空星标")};
+/* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
+$("clearBox").innerHTML=[["star",IC.star,"清空所有星标"],["fav",IC.heart,"清空所有收藏"],["skip",IC.skip,"清空所有跳过（恢复朗读）"]]
+  .map(x=>'<b data-clr="'+x[0]+'" title="'+x[2]+'">'+x[1]+'<i>✕</i></b>').join("");
+/* 清空按钮：每次点击都必须有反馈——原先星标本来就是 0 时点「清空星标」毫无反应，像坏了 */
+$("clearSkip").onclick=()=>{
+  if(!skips.size){toast("本来就没有跳过的词");return}
+  const n=skips.size; skips.clear(); wr("listen_qq_skip",skips); afterMark(); toast("已清空 "+n+" 个跳过词");
+};
+$("clearBox").onclick=e=>{
+  const b=e.target.closest("[data-clr]"); if(!b)return;
+  const k=b.dataset.clr;
+  const set = k==="star"?stars : k==="fav"?favs : skips;
+  const key = k==="star"?"listen_qq_star" : k==="fav"?"listen_qq_fav" : "listen_qq_skip";
+  const name= k==="star"?"星标" : k==="fav"?"收藏" : "跳过";
+  const n=set.size;
+  if(!n){ toast("本来就没有"+name+"的词"); return }
+  set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
+};
+const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
+/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
+const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
+const LKEY="listen_qq_links";
+const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
+const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
+let LINKS=rdLinks();
+const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+
+function renderLinkPop(){
+  const box=$("linkList"),btns=$("linkPopBtns");
+  if(!LINKS.length){
+    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
+    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
+    $("lpCfg").onclick=openLinkCfg;
+    return;
+  }
+  const multi=LINKS.length>1;
+  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
+    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
+    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
+    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
+  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
+    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
+  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
+  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
+    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
+  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
+  $("lpOpenAll").onclick=()=>openMany(LINKS);
+  $("lpCfg").onclick=openLinkCfg;
+}
+function openLinkCfg(){
+  $("linkPop").classList.remove("on");
+  const box=$("linkRows");
+  const row=l=>'<div class="lkrow">'
+    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
+    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
+    +'<span class="del" title="删除此行">✕</span></div>';
+  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
+  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
+  bindDel();
+  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
+  $("linkCfg").classList.add("on");
+}
+$("linkSave").onclick=()=>{
+  const out=[];
+  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
+    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
+    if(!raw)return;
+    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
+  });
+  LINKS=out; wrLinks(out);
+  $("linkCfg").classList.remove("on");
+  toast("已保存 "+out.length+" 个链接");
+};
+$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
+$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
+
+/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+$("backupBox").onclick=e=>{
+  const b=e.target.closest("[data-bk]");if(!b)return;
+  if(b.dataset.bk==="cfg")openLinkCfg();
+  else if(b.dataset.bk==="out")doExport();
+  else $("importFile").click();
+};
+function doExport(){
+  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
+    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+}
+$("importFile").onchange=e=>{
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const d=JSON.parse(r.result);
+      if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
+      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
+      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
+        const cur=new Set((links[k]||[]).map(l=>l.url));
+        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
+      });
+      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
+      (d.favs||[]).forEach(w=>favs.add(w));
+      (d.skips||[]).forEach(w=>skips.add(w));
+      wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
+      if(d.cfg){Object.assign(S,d.cfg);save()}
+      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      LINKS=rdLinks();updateCounts();afterMark();
+      toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
+      setTimeout(()=>location.reload(),1200);
+    }catch(err){toast("导入失败："+err.message)}
+    e.target.value="";
+  };
+  r.readAsText(f);
+};
+
 /* 弯箭头：沿用旧设计语义 = 重听当前词（不想启用时删掉这三行即可） */
 $("replayBtn").onclick=()=>{
   if(!queue[qi])return;
@@ -667,6 +1066,10 @@ $("replayBtn").onclick=()=>{
 // 颜色/封面
 function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1600)}
+/* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方 */
+function wordTip(m){const t=$("wordTip");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1300)}
+/* 标记点亮：图标动一下，短促、不挡视线（和收藏/星标同一手感） */
+function pulse(id){const el=$(id);if(!el)return;el.classList.remove("pulse");void el.offsetWidth;el.classList.add("pulse");setTimeout(()=>el.classList.remove("pulse"),360)}
 
 // 唱臂：静止垂直在盘右 → 播放落到盘面 → 随队列进度内移
 const armBar=document.querySelector(".arm .bar");
@@ -684,6 +1087,8 @@ function updateArm(){
 
 function render(w,reveal){
   app.style.setProperty("--h",hue(w.w));
+  updateBtns();                                      /* 顶栏 ❤/★/✓ 跟随当前词（原先切词不刷新，显示的是上一个词的状态） */
+  renderMarks(w);                                    /* 跳过标记（仅被跳过的词显示） */
   $("art").style.opacity=(S.reveal&&!reveal)?.42:1;   /* 先听后现：未揭晓时封面变暗 */
   $("wsec").textContent=w.sec+" · "+w.lv+" · 第 "+(qi+1)+"/"+queue.length+" 词";
   $("wbig").textContent=w.w;
@@ -702,32 +1107,158 @@ function render(w,reveal){
   updateBtns();
 }
 
+/* 音源（全部实测过）：
+   · 单词 → 有道词典音（只有一个英文词时可靠）
+   · 中文/例句 → 百度 gettts，必须带 spd + **source=web**，否则返回错误页（200 但播不出）
+   · 每个都带兜底 + 开播看门狗，最后一层用系统语音 */
+/* ===== 本地微软语音：按音色取音频，缺失自动回退其它音色 → 再回退在线 TTS ===== */
+const VNAME={
+  "en-US-BrianNeural":"Brian","en-US-AndrewNeural":"Andrew","en-US-GuyNeural":"Guy",
+  "en-US-AriaNeural":"Aria","en-US-JennyNeural":"Jenny","en-US-AvaNeural":"Ava",
+  "en-US-EmmaNeural":"Emma","en-US-ChristopherNeural":"Christopher","en-US-EricNeural":"Eric",
+  "en-US-RogerNeural":"Roger","en-US-SteffanNeural":"Steffan","en-US-AnaNeural":"Ana",
+  "en-US-MichelleNeural":"Michelle","en-GB-SoniaNeural":"Sonia","en-GB-RyanNeural":"Ryan",
+  "en-GB-LibbyNeural":"Libby","en-GB-ThomasNeural":"Thomas","en-GB-MaisieNeural":"Maisie",
+  "zh-CN-YunyangNeural":"云扬","zh-CN-YunjianNeural":"云健","zh-CN-YunxiNeural":"云希",
+  "zh-CN-XiaoxiaoNeural":"晓晓","zh-CN-XiaoyiNeural":"晓伊","zh-CN-YunxiaNeural":"云夏",
+  "zh-CN-liaoning-XiaobeiNeural":"晓北","zh-CN-shaanxi-XiaoniNeural":"晓妮"
+};
+const voiceLabel=id=>VNAME[id]||String(id).replace(/Neural$/,"").split("-").pop();
+/* 本篇已生成哪些音色：w/e = 英文音色，m = 中文音色 */
+function audioVoices(kind){ try{ return AUDIO?Object.keys(AUDIO).filter(v=>AUDIO[v]&&AUDIO[v][kind]):[] }catch(e){ return [] } }
+function localAudio(t,kind){
+  try{
+    if(!AUDIO)return "";
+    const map = kind==="word"?"w" : kind==="zh"?"m" : kind==="sent"?"e" : null;
+    if(!map)return "";
+    const key = kind==="word" ? String(t).toLowerCase()
+              : kind==="zh"   ? String(t).replace(/^[a-z]+\.\s*/i,"")
+              : String(t);
+    const all = audioVoices(map);
+    const want = kind==="zh" ? S.zhVoice : S.enVoice;
+    const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    for(let i=0;i<order.length;i++){
+      const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
+      if(m&&m[key])return m[key];
+    }
+  }catch(e){}
+  return "";
+}
+/* 中文朗读文本：去掉词性前缀 + 去掉括号里的英文注释。
+   否则中文音色会把括号里的英文也念出来，中英混读听着就是"机器音" */
+function zhText(w){
+  return String((w&&w.m)||"")
+    .replace(/^[a-z]+\.\s*/i,"")
+    .replace(/[（(][^）)]*[A-Za-z][^）)]*[）)]/g,"")
+    .replace(/\s+/g," ").trim();
+}
 function ttsURL(t,kind){
-  if(kind==="zh")return "https://fanyi.baidu.com/gettts?lan=zh&text="+encodeURIComponent(t);
-  if(kind==="sent")return "https://fanyi.baidu.com/gettts?lan=en&text="+encodeURIComponent(t);
-  return "https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+encodeURIComponent(t);
+  const e=encodeURIComponent(t);
+  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
+  const L=localAudio(t,kind); if(L)return L;
+  if(kind==="zh")return bd("zh");
+  if(kind==="sent")return bd("en");
+  return yd;
+}
+function ttsURLs(t,kind){
+  const e=encodeURIComponent(t);
+  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
+  const urls=[];
+  const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
+  if(kind==="zh")urls.push(bd("zh"));
+  else if(kind==="sent")urls.push(bd("en"));
+  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  return urls;
+}
+
+/* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
+(function voiceRows(){
+  const en=audioVoices("w"), zh=audioVoices("m");
+  const rowOf=id=>{const e=$(id); return e?e.closest(".srow"):null};
+  const rEn=rowOf("segEnVoice"), rZh=rowOf("segZhVoice");
+  if(en.length){
+    if(!S.enVoice||en.indexOf(S.enVoice)<0)S.enVoice=(en.find(v=>/brian/i.test(v))||en[0]);
+    seg($("segEnVoice"),en.map(v=>({t:voiceLabel(v),v})),()=>S.enVoice,v=>{S.enVoice=v},
+        ()=>refreshCurrent("单词音色： "+voiceLabel(S.enVoice)));
+    const vr=$("segVoice")&&$("segVoice").closest(".srow"); if(vr)vr.style.display="none";  /* 有微软音后，美音/英音已无意义 */
+  }else if(rEn){ rEn.style.display="none" }
+  if(zh.length){
+    if(!S.zhVoice||zh.indexOf(S.zhVoice)<0)S.zhVoice=(zh.find(v=>/yunyang/i.test(v))||zh[0]);
+    seg($("segZhVoice"),zh.map(v=>({t:voiceLabel(v),v})),()=>S.zhVoice,v=>{S.zhVoice=v},
+        ()=>refreshCurrent("中文音色： "+voiceLabel(S.zhVoice)));
+  }else if(rZh){ rZh.style.display="none" }
+})();
+let failStreak=0;   /* 连续失败计数：防止音源全挂时疯狂空转刷完词表 */
+/* 系统语音兜底：在线音源都不可用时，用浏览器自带语音朗读，保证有声音 */
+function speakLocal(text,lang,cb){
+  try{
+    if(!window.speechSynthesis){ cb&&cb(false); return }
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang=lang; u.rate=Math.max(.5,Math.min(2,(+S.rate||1)*.95));   /* 系统语音也跟着语速 */
+    let done=false; const fin=ok=>{ if(done)return; done=true; cb&&cb(ok) };
+    u.onend=()=>fin(true); u.onerror=()=>fin(false);
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    setTimeout(()=>fin(true),Math.min(12000,1200+String(text).length*90));  /* 无 onend 时按字长估算收尾 */
+  }catch(e){ cb&&cb(false) }
 }
 function say(text,kind,cb){
-  stopAudio();
-  audio=new Audio(ttsURL(text,kind));
-  let done=false;
-  const fin=ok=>{if(done)return;done=true;cb&&cb(ok)};
-  audio.onended=()=>fin(true);
-  audio.onerror=()=>fin(false);
-  audio.play().catch(err=>{ if(err&&err.name==="NotAllowedError")autoplayBlocked=true; fin(false) });
-  setTimeout(()=>fin(false),9000);
+  const urls=ttsURLs(text,kind);
+  const t0=Date.now();
+  let i=0, done=false, local=false;
+  const finish=ok=>{
+    if(done)return; done=true;
+    failStreak=ok?0:failStreak+1;
+    if(!ok&&failStreak>=3){                 /* 连续 3 次完全没声：停下来告诉用户，别静默刷词 */
+      clearT(); stopAudio(); setPlaying(false);
+      toast("⚠️ 朗读音源暂时不可用，已暂停。检查网络后点 ▶ 继续");
+      return;
+    }
+    const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
+    setTimeout(()=>cb&&cb(ok),wait);
+  };
+  const tryNext=()=>{
+    if(done)return;
+    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+      if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
+      local=true;
+      speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
+      return;
+    }
+    stopAudio();
+    const a=new Audio(urls[i++]);
+    audio=a;
+    try{a.playbackRate=+S.rate||1}catch(e){}      /* 语速（preservesPitch 默认开，不改音调） */
+    let started=false;
+    a.addEventListener("playing",()=>{ started=true });
+    a.addEventListener("ended",()=>{ if(started)finish(true); else tryNext() });
+    a.addEventListener("error",()=>{ if(!started)tryNext(); else finish(true) });
+    a.play().catch(err=>{
+      if(err&&err.name==="NotAllowedError"){ autoplayBlocked=true; finish(false) }
+      else tryNext();
+    });
+    setTimeout(()=>{ if(!started&&!done)tryNext() },2500);   /* 2.5s 没出声 → 换下一个音源 */
+    setTimeout(()=>{ if(!done)finish(!!started) },15000);
+  };
+  tryNext();
 }
 function stopAudio(){try{if(audio){audio.pause();audio=null}}catch(e){}}
 function clearT(){if(timer){clearTimeout(timer);timer=null}}
 
 /* 池子为空（比如「只背星标」但一个都没标）时的提示 */
 function emptyHint(){
-  const star=S.source==="star";
+  const src=S.source;
   $("wsec").textContent="";
   $("wbig").textContent="—";
   $("wipa").textContent="";
-  $("wmean").textContent=star?"还没有 ⭐ 星标词":"还没有 ❤ 收藏词";
-  $("wex").textContent="点右上角 "+(star?"☆":"❤")+" 标记后，这里会自动连播";
+  $("wmean").textContent = src==="star"?"还没有 ⭐ 星标词"
+    : src==="fav"?"还没有 ❤ 收藏词"
+    : src==="skip"?"还没有 ✓ 跳过的词"
+    : "这里还没有可读的词";
+  $("wex").textContent = src==="skip"?"在词上点「✓ 跳过」标记后，这里能集中回看并一键取消"
+    : "点右上角 "+(src==="fav"?"❤":"☆")+" 标记后，这里会自动连播";
+  renderMarks(null);
   $("wav").style.display="none";
   $("wtxt").style.display="";
   $("art").style.opacity=1;
@@ -735,25 +1266,37 @@ function emptyHint(){
   $("fill").style.width="0%"; $("knob").style.left="0%";
 }
 
+/* 播放代际：每次 playCurrent 换代，上一代残留的延时/回执一律作废。
+   否则旧链的 420/450ms 延时会插进新链 → 开关关了还在读、中文被顶掉、读串词 */
+let gen=0;
 function playCurrent(){
+  const g=++gen;
   clearT();stopAudio();
   const w=queue[qi]; if(!w)return;
+  const live=fn=>(...a)=>{ if(g!==gen)return; return fn(...a) };
   render(w,!(S.reveal));
   updateArm();
   if(!playing)return;
-  const goNext=()=>{
+  const goNext=live(()=>{
     if(S.reveal)render(w,true);
-    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent()},S.pause);
-  };
-  const afterEx=()=>{ if(S.ex){say(w.ex,"sent",()=>goNext())} else goNext(); };
-  const afterZh=()=>{ if(S.zh){setTimeout(()=>say(w.m.replace(/^[a-z]+\.\s*/i,""),"zh",afterEx),450)} else afterEx(); };
+    timer=setTimeout(live(()=>{
+      if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}   /* 这个词念完了，标记此刻才生效 */
+      qi=(qi+1+queue.length)%queue.length;playCurrent();
+    }),S.pause);
+  });
+  /* 例句：有本地微软音频就播本地，没有就走百度在线（老版方案） */
+  const afterEx=live(()=>{ if(S.ex){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
+  const afterZh=live(()=>{
+    if(S.zh){ timer=setTimeout(live(()=>say(zhText(w),"zh",afterEx)),450) }
+    else afterEx();
+  });
   /* 单词可重复朗读 N 次（默认 1），全部读完再走中文/例句 */
   let left=Math.max(1,Math.min(20,Math.round(+S.repeat||1)));
-  const again=()=>{
+  const again=live(()=>{
     left--;
-    if(left>0){ timer=setTimeout(()=>say(w.w,"word",again),420) }
+    if(left>0){ timer=setTimeout(live(()=>say(w.w,"word",again)),420) }
     else afterZh();
-  };
+  });
   say(w.w,"word",again);
 }
 
@@ -763,8 +1306,13 @@ function setPlaying(on){
   updateArm();
 }
 $("play").onclick=()=>{ setPlaying(!playing); if(playing)playCurrent(); else {clearT();stopAudio();} };
-$("prevBtn").onclick=()=>{if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
-$("nextBtn").onclick=()=>{if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
+/* 上一词/下一词：抽成函数——它们是 <svg>，没有 .click()，键盘里点会直接抛异常 */
+function prevWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
+  qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+function nextWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
+  qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+$("prevBtn").onclick=prevWord;
+$("nextBtn").onclick=nextWord;
 $("moreBtn").onclick=()=>$("sheet").classList.add("on");
 $("listBtn").onclick=()=>$("sheet").classList.add("on");
 $("sheetBack").onclick=()=>{$("sheet").classList.remove("on");if(!playing){setPlaying(true);playCurrent()}};
@@ -789,9 +1337,9 @@ $("bar").onclick=e=>{
 };
 document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
-  else if(e.key==="ArrowRight")$("nextBtn").click();
-  else if(e.key==="ArrowLeft")$("prevBtn").click();
-  else if(e.key==="Escape")$("sheet").classList.remove("on");
+  else if(e.key==="ArrowRight")nextWord();
+  else if(e.key==="ArrowLeft")prevWord();
+  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中
@@ -822,9 +1370,10 @@ addEventListener("resize",()=>{
   if(innerWidth<760 && !localStorage.getItem("listen_qq_zoom")) initZoom();
 });
 function initZoom(){
-  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏：双栏布局，不叠加缩放
   const saved=+(localStorage.getItem("listen_qq_zoom")||0);
+  /* 用户手动选过档位：任何屏幕都尊重，别再被自动逻辑覆盖 */
   if(saved&&ZOOMS.indexOf(saved)>=0){ setZ(saved,false); return }
+  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏默认 1x（双栏本来就够大）
   app.style.setProperty("--z","1");
   const dh=Math.max(measureDesign(),640);
   const fit=Math.min(2,(innerWidth-20)/430,(innerHeight-20)/dh);

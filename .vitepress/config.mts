@@ -83,9 +83,8 @@ function linkCardPlugin(md: any) {
 
 export default defineConfig({
   lang: 'zh-CN',
-  base: BASE,
-  title: '深读馆',
-  titleTemplate: ':title · 深读馆 DeepRead',
+  title: 'Deep Reading',
+  titleTemplate: ':title · Deep Reading',
   description: '一篇论文，四种读法 —— 单词 · 听力 · 朗读 · 讲解',
   base: BASE,
   cleanUrls: false,
@@ -108,7 +107,8 @@ export default defineConfig({
   },
 
   themeConfig: {
-    siteTitle: '深读馆',
+    logo: `${BASE}favicon.svg`,
+    siteTitle: 'Deep Reading',
     outline: false,
     docFooter: { prev: false, next: false },
     lastUpdatedText: '最后更新',
@@ -126,7 +126,7 @@ export default defineConfig({
 
     footer: {
       message: '让科研像聊天一样简单。',
-      copyright: '深读馆 DeepRead · Built with VitePress'
+      copyright: 'Deep Reading · Built with VitePress'
     }
   }
 })
