@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SwinTransformer_论文词汇_听力 · 单词连播</title>
+<title>SwinTransformer_听力 · 单词连播</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{min-height:100vh;display:flex;justify-content:center;font-family:"PingFang SC",-apple-system,sans-serif;background:#111}
@@ -94,6 +94,87 @@
     --bar-bg:rgba(80,55,20,.22); --bar-fill:#4a3418;
     --sheet-bg:rgba(255,250,240,.97); --accent:#b8860b;
   }
+  .app[data-skin="sakura"]{         /* 樱花粉 */
+    --bg-a:#fdeef3; --bg-b:#f9d7e2; --bg-c:#f4c2d4;
+    --card-bg:rgba(255,255,255,.42); --card-br:rgba(255,255,255,.9);
+    --disc-a:#f08cb2; --disc-b:#e0618f;
+    --groove:rgba(160,50,90,.10); --dshadow:rgba(210,90,140,.35);
+    --tx:#3d1f2b; --tx2:#7a4f61; --tx3:#9b7486;
+    --bar-bg:rgba(140,60,95,.2); --bar-fill:#e0618f;
+    --sheet-bg:rgba(255,247,250,.97); --accent:#e8638c;
+  }
+  .app[data-skin="matcha"]{         /* 抹茶（同全站主题色） */
+    --bg-a:#f1f4ea; --bg-b:#e4ecd7; --bg-c:#d5e2c2;
+    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.92);
+    --disc-a:#93b073; --disc-b:#66854a;
+    --groove:rgba(70,100,40,.10); --dshadow:rgba(100,130,70,.32);
+    --tx:#2c3a1e; --tx2:#5d7247; --tx3:#84976d;
+    --bar-bg:rgba(80,110,50,.2); --bar-fill:#5f7d46;
+    --sheet-bg:rgba(250,252,246,.97); --accent:#6b8e4e;
+  }
+  .app[data-skin="mint"]{           /* 薄荷 */
+    --bg-a:#eefaf7; --bg-b:#daf2ec; --bg-c:#c2e8df;
+    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
+    --disc-a:#55c7b2; --disc-b:#2ba58f;
+    --groove:rgba(20,110,95,.10); --dshadow:rgba(40,150,130,.3);
+    --tx:#12332c; --tx2:#4a7368; --tx3:#7a998f;
+    --bar-bg:rgba(30,110,95,.2); --bar-fill:#2ba58f;
+    --sheet-bg:rgba(247,253,251,.97); --accent:#2bbfa3;
+  }
+  .app[data-skin="ocean"]{          /* 海盐蓝 */
+    --bg-a:#eef5fc; --bg-b:#dcebf9; --bg-c:#c5ddf3;
+    --card-bg:rgba(255,255,255,.48); --card-br:rgba(255,255,255,.92);
+    --disc-a:#63a1dd; --disc-b:#3a6fb8;
+    --groove:rgba(30,80,150,.10); --dshadow:rgba(60,110,180,.32);
+    --tx:#122a44; --tx2:#4a6886; --tx3:#7a93ab;
+    --bar-bg:rgba(40,90,150,.2); --bar-fill:#3a6fb8;
+    --sheet-bg:rgba(247,251,255,.97); --accent:#3a7bd5;
+  }
+  .app[data-skin="grape"]{          /* 星空紫 */
+    --bg-a:#f2eefa; --bg-b:#e5dcf6; --bg-c:#d4c6ee;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.9);
+    --disc-a:#9a7fda; --disc-b:#7257bd;
+    --groove:rgba(80,50,150,.10); --dshadow:rgba(120,90,190,.32);
+    --tx:#2c2144; --tx2:#5f4f80; --tx3:#8677a3;
+    --bar-bg:rgba(90,60,160,.2); --bar-fill:#7257bd;
+    --sheet-bg:rgba(251,249,255,.97); --accent:#7c5cd6;
+  }
+  .app[data-skin="amusic"]{         /* Apple Music 红 */
+    --bg-a:#fff4f4; --bg-b:#ffe3e5; --bg-c:#ffd2d6;
+    --card-bg:rgba(255,255,255,.5); --card-br:rgba(255,255,255,.95);
+    --disc-a:#fb5c74; --disc-b:#e11d3f;
+    --groove:rgba(170,20,50,.10); --dshadow:rgba(230,50,80,.32);
+    --tx:#3d1420; --tx2:#844a58; --tx3:#a87581;
+    --bar-bg:rgba(150,30,60,.2); --bar-fill:#e11d3f;
+    --sheet-bg:rgba(255,248,248,.97); --accent:#fa233b;
+  }
+  .app[data-skin="mocha"]{          /* 摩卡棕 */
+    --bg-a:#f7f1ea; --bg-b:#eee1d3; --bg-c:#e0cdb8;
+    --card-bg:rgba(255,255,255,.45); --card-br:rgba(255,255,255,.88);
+    --disc-a:#7d5c42; --disc-b:#553a28;
+    --groove:rgba(90,60,35,.10); --dshadow:rgba(120,85,55,.35);
+    --tx:#38271a; --tx2:#6e5540; --tx3:#93795f;
+    --bar-bg:rgba(110,75,45,.2); --bar-fill:#5d4128;
+    --sheet-bg:rgba(253,250,246,.97); --accent:#8b5e3c;
+  }
+  .app[data-skin="spotify"]{        /* Spotify 黑绿 */
+    --bg-a:#1d2420; --bg-b:#121713; --bg-c:#0b0e0c;
+    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
+    --disc-a:#181d18; --disc-b:#0c0f0c;
+    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
+    --tx:#f0f5f0; --tx2:rgba(235,245,235,.72); --tx3:rgba(235,245,235,.5);
+    --bar-bg:rgba(255,255,255,.2); --bar-fill:#f0f5f0;
+    --sheet-bg:rgba(18,23,19,.96); --accent:#1db954;
+  }
+  .app[data-skin="midnight"]{       /* 深夜蓝（暗色） */
+    --bg-a:#1e2740; --bg-b:#151c30; --bg-c:#0d1220;
+    --card-bg:rgba(255,255,255,.06); --card-br:rgba(255,255,255,.15);
+    --disc-a:#141a2b; --disc-b:#090c15;
+    --groove:rgba(255,255,255,.05); --dshadow:rgba(0,0,0,.6);
+    --tx:#eef2fb; --tx2:rgba(235,240,250,.72); --tx3:rgba(235,240,250,.5);
+    --bar-bg:rgba(255,255,255,.2); --bar-fill:#eef2fb;
+    --sheet-bg:rgba(18,24,40,.96); --accent:#4a9eff;
+  }
   .app[data-skin="vinylx"]{          /* 悬浮黑胶（参照网易云图标：黑盘+大蓝标+顶部细针） */
     --bg-a:#e9e8f0; --bg-b:#e9e8f0; --bg-c:#e2e1ec;
     --card-bg:transparent; --card-br:transparent;
@@ -133,14 +214,42 @@
   .top .ic.neutral.on svg{stroke:var(--accent)}
   .top .ic.on svg{stroke:var(--accent)}
   .top .ic.on svg .fillable{fill:var(--accent)}
-  .top .ic svg .slash{opacity:1;transition:opacity .2s}   /* 未收藏：心上有斜线 */
-  .top .ic.on svg .slash{opacity:0}                        /* 已收藏：斜线消失、心填色 */
+  /* 「跳过/已掌握」新图标是实心路径（无描边）：中性灰 → 点亮用强调色 */
+  .top .ic svg.solid{stroke:none;fill:rgba(118,124,134,.92)}
+  .top .ic.on svg.solid{fill:var(--accent)}
+  /* 标记点亮瞬间的微动效：和收藏/星标一个手感，点到就有反馈 */
+  @keyframes mkpulse{0%{transform:scale(1)}38%{transform:scale(1.26)}100%{transform:scale(1)}}
+  .top .ic.pulse svg{animation:mkpulse .32s ease}
+  /* 斜线 = 「已划掉」标记：默认不显示，点了 ✓ 之后才划掉 */
+  .top .ic svg .slash{opacity:0;transition:opacity .2s}
+  .top .ic.on svg .slash{opacity:1}
   .top{gap:9px}
   .top .ic{width:30px;height:30px}
   .top .ic svg{width:19px;height:19px}
   .srow.col{flex-direction:column;align-items:stretch;gap:9px}
   .seg.wrap{flex-wrap:wrap;justify-content:flex-start}
   .clr{font-size:11.5px;color:var(--accent);cursor:pointer;font-weight:600}
+  /* 自定义链接面板 + 备份 */
+  .sheet.lks{z-index:26}
+  .lk{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bar-bg)}
+  .lk input[type=checkbox]{flex:none;width:16px;height:16px;accent-color:var(--accent)}
+  .lk .lkn{font-size:13.5px;font-weight:600;color:var(--tx);cursor:pointer;flex:1;min-width:0;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lk .lkn:hover{color:var(--accent)}
+  .lk .lku{font-size:10.5px;color:var(--tx3);max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lkrow{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--bar-bg);align-items:center}
+  .lkrow input{flex:1;min-width:0;padding:7px 10px;border-radius:9px;border:1px solid var(--bar-bg);
+    background:transparent;color:var(--tx);font-size:12.5px}
+  .lkrow input.nm{flex:0 0 96px}
+  .lkrow input:focus{outline:none;border-color:var(--accent)}
+  .lkrow .del{flex:none;font-size:13px;color:var(--accent);cursor:pointer;padding:4px 7px;user-select:none}
+  .lkbtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .lkbtns b{font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:99px;
+    border:1px solid var(--bar-bg);color:var(--tx2);cursor:pointer}
+  .lkbtns b:hover{border-color:var(--accent);color:var(--accent)}
+  .lkbtns b.pri{border-color:var(--accent);color:var(--accent)}
+  .lkempty{padding:16px 0;color:var(--tx3);font-size:12.5px;line-height:1.8}
+  .bktip{font-size:11px;color:var(--tx3);line-height:1.6;margin-top:8px}
   .repin{width:56px;padding:4px 6px;border-radius:8px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:12px;text-align:center;font-variant-numeric:tabular-nums}
   .repin:focus{outline:none;border-color:var(--accent)}
@@ -205,11 +314,35 @@
   .side{flex:1;display:flex;flex-direction:column;min-width:0;position:relative}
   .timerChip{position:absolute;right:0;top:0;font-size:11px;color:var(--tx3);opacity:.9;
     letter-spacing:.4px;font-variant-numeric:tabular-nums;pointer-events:none}
+  /* 当前词的来源标记（星标/收藏/已跳过）：点一下即取消，专门救误点 */
+  .mkbadge{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0}
+  .mkbadge .mk{font-style:normal;display:flex;align-items:center;font-size:11px;line-height:1;
+    padding:5px 8px;border-radius:99px;
+    border:1px solid var(--accent);color:var(--accent);cursor:pointer;user-select:none;
+    background:transparent;transition:opacity .15s,transform .15s}
+  .mkbadge .mk svg{width:14px;height:14px;display:block}
+  .mkbadge .mk svg.fill{fill:currentColor}
+  /* 标记统计：和「词库来源」用同一套图标，不再用 ⭐❤✓ 这种混搭 */
+  #markCnt{display:flex;align-items:center;gap:13px}
+  #markCnt b{display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;color:var(--tx2)}
+  #markCnt b svg{width:14px;height:14px;display:block}
+  #markCnt b svg.fill{fill:currentColor}
+  #clearBox{display:flex;gap:6px}
+  #clearBox b{display:flex;align-items:center;gap:3px;padding:5px 9px;font-size:12px}
+  #clearBox b svg{width:13px;height:13px;display:block}
+  #clearBox b svg.fill{fill:currentColor}
+  #clearBox b i{font-style:normal;font-size:10px;opacity:.65}
+  .mkbadge .mk:hover{opacity:.6}
+  .mkbadge .mk:active{transform:scale(.94)}
+  .mkbadge .mk::after{content:" ✕"}
   @media (min-width:760px){
-    .app{width:min(1280px,96vw);max-width:none;zoom:1;min-height:auto;margin:auto;padding-bottom:8px}
+    /* 宽屏：定成横向矩形（16:10）并随缩放等比，别再被 100vh 拉成竖长方形 */
+    body{align-items:center}
+    .app{width:min(1280px,calc(96vw / var(--z,1)));max-width:none;zoom:var(--z,1);
+      aspect-ratio:16/10;min-height:0;max-height:calc(96vh / var(--z,1));margin:auto;padding-bottom:8px}
     .main{flex-direction:row;align-items:center;gap:40px;padding:8px 30px 0}
-    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕 */
-    .main>.card{margin:0;flex:0 0 clamp(400px,min(40vw,66vh),640px);align-self:center}
+    /* 唱片按视口宽高的较小者放大：既大又不至于撑出屏幕；宽屏接近方形（1:1），宽度够、高度也够长 */
+    .main>.card{margin:0;flex:0 0 calc(clamp(460px,min(50vw,58vh),780px) / var(--z,1));aspect-ratio:1/1;align-self:center}
     .side{align-self:stretch;justify-content:flex-start}
     /* 单词区在「角标」与「底部控制」之间的剩余空间里垂直居中 → 整体下移到中间 */
     .side .word{padding:0;min-height:0;text-align:center;margin-top:auto;margin-bottom:auto}
@@ -241,6 +374,13 @@
 
   /* 单词区 */
   .word{padding:20px 26px 0;text-align:center;min-height:150px}
+  /* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方，不挡底部 */
+  .wordTip{font-size:13px;font-weight:600;color:var(--accent);margin:2px auto 12px;padding:6px 15px;
+    border-radius:99px;display:inline-block;line-height:1.2;
+    background:color-mix(in srgb,var(--accent) 13%,transparent);
+    border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);
+    opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s;pointer-events:none}
+  .wordTip.on{opacity:1;transform:translateY(0)}
   /* 章节/级别/进度：左上角角标，弱化处理不抢单词（小字 + 拉开距离 + 降透明度） */
   .side .sec{font-size:10px;color:var(--tx3);opacity:.72;margin:0 0 10px;text-align:left;letter-spacing:.3px}
   .word .wrow{display:inline-flex;align-items:flex-end;justify-content:center;gap:9px}
@@ -287,20 +427,31 @@
 
   /* 设置面板 */
   .sheet{position:absolute;left:0;right:0;bottom:0;z-index:20;background:var(--sheet-bg);backdrop-filter:blur(14px);
-    border-radius:22px 22px 0 0;padding:16px 22px 28px;transform:translateY(105%);
+    border-radius:22px 22px 0 0;padding:0 22px 28px;transform:translateY(105%);
+    /* 关键：面板必须限高且可滚动，否则顶部选项会被顶出屏幕点不到 */
+    max-height:calc(100% - 12px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
     transition:transform .35s cubic-bezier(.3,1,.4,1);box-shadow:0 -10px 30px rgba(0,0,0,.2)}
   .sheet.on{transform:translateY(0)}
+  .sheet::-webkit-scrollbar{width:6px}
+  .sheet::-webkit-scrollbar-thumb{background:var(--bar-bg);border-radius:3px}
   .sheet h3{font-size:14px;color:var(--tx);margin-bottom:0}
-  .shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  /* 标题行吸顶：滚动时「返回播放」始终可见 */
+  .shd{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;
+    background:var(--sheet-bg);padding:16px 0 12px}
   .shb{font-size:12.5px;font-weight:600;color:var(--accent);cursor:pointer;user-select:none}
   .shb:hover{opacity:.75}
   .top .ic{flex:none}
-  .srow{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bar-bg)}
+  .srow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;
+    padding:10px 0;border-bottom:1px solid var(--bar-bg)}
   .srow:last-of-type{border-bottom:none}
-  .srow span{font-size:13.5px;color:var(--tx)}
-  .seg{display:flex;gap:6px}
+  .srow span{font-size:13.5px;color:var(--tx);white-space:nowrap}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
   .seg b{font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;cursor:pointer;
-    border:1px solid var(--bar-bg);color:var(--tx2)}
+    border:1px solid var(--bar-bg);color:var(--tx2);display:flex;align-items:center;justify-content:center}
+  .seg b svg{width:15px;height:15px;display:block}
+  .seg b.icn{padding:5px 10px;min-width:34px}
+  .seg b.off{opacity:.5;cursor:not-allowed;border-style:dashed}
+  .seg b svg.fill{fill:currentColor}
   .seg b.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .sback{margin-top:14px;width:100%;padding:11px;border-radius:12px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:14px;font-weight:600;cursor:pointer}
@@ -319,16 +470,12 @@
       <svg viewBox="0 0 24 24" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>
     </div>
     <div class="pt" id="ptitle">Swin Transformer: Hierarchical Vision Transformer using Shifted Windows · Ze Liu et al., ICCV 2021</div>
+    <div class="ic" id="replayBtn" title="重听当前词">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
+    </div>
     <div class="ic neutral" id="favBtn" title="收藏（再点取消）">
       <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linejoin="round">
-        <defs>
-          <clipPath id="favClip">
-            <path transform="translate(12 12) scale(.86) translate(-12 -12)"
-                  d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-          </clipPath>
-        </defs>
         <path class="fillable heart" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-        <path class="slash" d="M4 4 20 20" clip-path="url(#favClip)"/>
       </svg>
     </div>
     <div class="ic neutral" id="starBtn" title="标星（重点词，可只背星标）">
@@ -336,14 +483,13 @@
         <path class="fillable star" d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/>
       </svg>
     </div>
-    <div class="ic" id="okBtn" title="认识，之后不再朗读">
-      <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>
-    </div>
-    <div class="ic" id="replayBtn" title="重听当前词">
-      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19C8 12.5 12.5 8.5 18.6 6"/><path d="M13 5.4l6.2-.1-.1 6.2"/></svg>
+    <div class="ic neutral" id="okBtn" title="标为已掌握（跳过=不再朗读，再点恢复）">
+      <svg viewBox="0 0 1024 1024" class="solid">
+        <path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/>
+      </svg>
     </div>
     <div class="ic" id="skinBtn" title="换皮肤（点一下换下一套）">
-      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 3.2 3.4 5.9l2 3.6 1.9-1V20.8h9.4V8.5l1.9 1 2-3.6L15.8 3.2a3.8 3.8 0 0 1-7.6 0Z"/></svg>
+      <svg viewBox="0 0 24 24" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.8 3.4c0 2 1.4 3.6 3.2 3.6s3.2-1.6 3.2-3.6l6.2 2.7-1.8 4.1-2.6-1.1v10.7H6.8V9.1L4.2 10.2 2.4 6.1Z"/></svg>
     </div>
     <div class="ic" id="moreBtn" title="设置">
       <svg class="dot" viewBox="0 0 24 24" stroke="none"><circle cx="12" cy="5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="19" r="1.9"/></svg>
@@ -389,7 +535,9 @@
   <div class="side">
   <div class="sec" id="wsec">准备中…</div>
   <div class="timerChip" id="timerChip" style="display:none">⏱ 0:00</div>
+  <div class="mkbadge" id="mkBadge" style="display:none"></div>
   <div class="word">
+    <div class="wordTip" id="wordTip"></div>
     <div class="wrow">
       <span class="big" id="wbig">—</span>
       <span class="ipa" id="wipa"></span>
@@ -427,6 +575,8 @@
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
+    <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
+    <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
     <div class="srow"><span>单词重复</span>
       <div style="display:flex;align-items:center;gap:8px">
         <div class="seg" id="segRepeat"></div>
@@ -434,6 +584,7 @@
       </div>
     </div>
     <div class="srow"><span>每词停顿</span><div class="seg" id="segPause"></div></div>
+    <div class="srow"><span>语速</span><div class="seg" id="segRate"></div></div>
     <div class="srow"><span>先听后现</span><div class="seg" id="segReveal"></div></div>
     <div class="srow"><span>朗读中文</span><div class="seg" id="segZh"></div></div>
     <div class="srow"><span>朗读例句</span><div class="seg" id="segEx"></div></div>
@@ -441,19 +592,41 @@
     <div class="srow"><span>单词字体</span><div class="seg" id="segFont"></div></div>
     <div class="srow"><span>定时停止</span><div class="seg" id="segTimer"></div></div>
     <div class="srow"><span>词库来源</span><div class="seg" id="segSource"></div></div>
-    <div class="srow"><span id="markCnt">⭐ 0 · ❤ 0 · ✓ 0</span><span class="clr" id="clearStar">清空星标</span></div>
+    <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
+    <div class="srow col"><span>链接与备份</span>
+      <div class="seg wrap" id="backupBox"></div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+    </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
+    <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
     <div class="srow col"><span>范围（章节，点选）</span><div class="seg wrap" id="rangeBox"></div></div>
     <div class="srow"><span id="skipCnt">已跳过 0 词</span><span class="clr" id="clearSkip">清空</span></div>
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
+  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
+  <div class="sheet lks" id="linkPop">
+    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
+    <div id="linkList"></div>
+    <div class="lkbtns" id="linkPopBtns"></div>
+  </div>
+  <!-- 链接配置面板：增删改本篇的链接 -->
+  <div class="sheet lks" id="linkCfg">
+    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
+    <div id="linkRows"></div>
+    <div class="lkbtns">
+      <b id="linkAddRow">＋ 添加一行</b>
+      <b id="linkSave" class="pri">保存</b>
+    </div>
+  </div>
+  <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
-const ITEMS=[{"w": "hierarchical", "ipa": "/ˌhaɪəˈrɑːrkɪkl/", "pos": "adj.", "m": "分层的，等级制的", "ex": "we propose a hierarchical Transformer whose representation is computed with Shifted windows", "lv": "考博", "sec": "Abstract"}, {"w": "backbone", "ipa": "/ˈbækboʊn/", "pos": "n.", "m": "骨干网络，主干结构", "ex": "that capably serves as a general-purpose backbone for computer vision", "lv": "六级", "sec": "Abstract"}, {"w": "adapt", "ipa": "/əˈdæpt/", "pos": "v.", "m": "适应，改编", "ex": "Challenges in adapting Transformer from language to vision", "lv": "四级", "sec": "Abstract"}, {"w": "entity", "ipa": "/ˈentəti/", "pos": "n.", "m": "实体，存在", "ex": "large variations in the scale of visual entities", "lv": "六级", "sec": "Abstract"}, {"w": "resolution", "ipa": "/ˌrezəˈluːʃn/", "pos": "n.", "m": "分辨率，解决", "ex": "the high resolution of pixels in images compared to words in text", "lv": "四级", "sec": "Abstract"}, {"w": "efficiency", "ipa": "/ɪˈfɪʃnsi/", "pos": "n.", "m": "效率，效能", "ex": "The shifted windowing scheme brings greater efficiency", "lv": "四级", "sec": "Abstract"}, {"w": "complexity", "ipa": "/kəmˈpleksəti/", "pos": "n.", "m": "复杂性，复杂度", "ex": "has linear computational complexity with respect to image size", "lv": "六级", "sec": "Abstract"}, {"w": "surpass", "ipa": "/sərˈpæs/", "pos": "v.", "m": "超越，胜过", "ex": "Its performance surpasses the previous state-of-the-art", "lv": "四级", "sec": "Abstract"}, {"w": "demonstrate", "ipa": "/ˈdemənstreɪt/", "pos": "v.", "m": "证明，演示", "ex": "demonstrating the potential of Transformer-based models", "lv": "四级", "sec": "Abstract"}, {"w": "compatible", "ipa": "/kəmˈpætəbl/", "pos": "adj.", "m": "兼容的，可共存的", "ex": "These qualities make Swin Transformer compatible with a broad range of vision tasks", "lv": "六级", "sec": "Abstract"}, {"w": "dominate", "ipa": "/ˈdɑːmɪneɪt/", "pos": "v.", "m": "主导，支配", "ex": "Modeling in computer vision has long been dominated by convolutional neural networks", "lv": "四级", "sec": "Intro"}, {"w": "revolutionary", "ipa": "/ˌrevəˈluːʃəneri/", "pos": "adj.", "m": "革命性的，突破性的", "ex": "its revolutionary performance on the ImageNet image classification challenge", "lv": "四级", "sec": "Intro"}, {"w": "evolution", "ipa": "/ˌevəˈluːʃn/", "pos": "n.", "m": "进化，演变", "ex": "CNN architectures have evolved to become increasingly powerful", "lv": "四级", "sec": "Intro"}, {"w": "sophisticated", "ipa": "/səˈfɪstɪkeɪtɪd/", "pos": "adj.", "m": "复杂的，精密的", "ex": "more sophisticated forms of convolution", "lv": "四级", "sec": "Intro"}, {"w": "prevalent", "ipa": "/ˈprevələnt/", "pos": "adj.", "m": "流行的，普遍的", "ex": "the prevalent architecture today is instead the Transformer", "lv": "六级", "sec": "Intro"}, {"w": "tremendous", "ipa": "/trəˈmendəs/", "pos": "adj.", "m": "巨大的，极大的", "ex": "Its tremendous success in the language domain", "lv": "四级", "sec": "Intro"}, {"w": "applicability", "ipa": "/ˌæplɪkəˈbɪləti/", "pos": "n.", "m": "适用性，应用性", "ex": "we seek to expand the applicability of Transformer", "lv": "考博", "sec": "Intro"}, {"w": "modality", "ipa": "/moʊˈdæləti/", "pos": "n.", "m": "模态，形态", "ex": "differences between the two modalities", "lv": "考博", "sec": "Intro"}, {"w": "intractable", "ipa": "/ɪnˈtræktəbl/", "pos": "adj.", "m": "棘手的，难解的", "ex": "this would be intractable for Transformer on high-resolution images", "lv": "考博", "sec": "Intro"}, {"w": "quadratic", "ipa": "/kwɑːˈdrætɪk/", "pos": "adj.", "m": "二次的，平方的", "ex": "the computational complexity of its self-attention is quadratic to image size", "lv": "考博", "sec": "Intro"}, {"w": "convolutional", "ipa": "/kənˈvɑːljuːʃənl/", "pos": "adj.", "m": "卷积的", "ex": "CNNs serve as the standard network model throughout computer vision", "lv": "考博", "sec": "Related"}, {"w": "variant", "ipa": "/ˈveriənt/", "pos": "n.", "m": "变体，变形", "ex": "deeper and more effective convolutional neural architectures have been proposed", "lv": "考博", "sec": "Related"}, {"w": "propel", "ipa": "/prəˈpel/", "pos": "v.", "m": "推动，推进", "ex": "to further propel the deep learning wave in computer vision", "lv": "六级", "sec": "Related"}, {"w": "complement", "ipa": "/ˈkɑːmplɪment/", "pos": "v.", "m": "补充，完善", "ex": "self-attention layers can complement backbones", "lv": "四级", "sec": "Related"}, {"w": "heterogeneous", "ipa": "/ˌhetərəˈdʒiːniəs/", "pos": "adj.", "m": "异构的，不同种类的", "ex": "providing the capability to encode distant dependencies or heterogeneous interactions", "lv": "考博", "sec": "Related"}, {"w": "pioneering", "ipa": "/ˌpaɪəˈnɪrɪŋ/", "pos": "adj.", "m": "开创性的，先驱的", "ex": "The pioneering work of ViT directly applies a Transformer architecture", "lv": "四级", "sec": "Related"}, {"w": "unsuitable", "ipa": "/ʌnˈsuːtəbl/", "pos": "adj.", "m": "不合适的，不适宜的", "ex": "its architecture is unsuitable for use as a general-purpose backbone", "lv": "考博", "sec": "Related"}, {"w": "upsampling", "ipa": "/ʌpˈsæmplɪŋ/", "pos": "n.", "m": "上采样", "ex": "applying ViT models to dense vision tasks by direct upsampling", "lv": "考博", "sec": "Related"}, {"w": "concurrent", "ipa": "/kənˈkɜːrənt/", "pos": "adj.", "m": "并发的，同时发生的", "ex": "Concurrent to our work are some that modify the ViT architecture", "lv": "考博", "sec": "Related"}, {"w": "correlation", "ipa": "/ˌkɔːrəˈleɪʃn/", "pos": "n.", "m": "相关性，关联", "ex": "operating locally which has proven beneficial in modeling the high correlation in visual signals", "lv": "六级", "sec": "Related"}, {"w": "architecture", "ipa": "/ˈɑːrkɪtektʃər/", "pos": "n.", "m": "架构，体系结构", "ex": "An overview of the Swin Transformer architecture is presented in Figure 3", "lv": "四级", "sec": "Method"}, {"w": "concatenation", "ipa": "/kənˌtæktəˈneɪʃn/", "pos": "n.", "m": "连接，拼接", "ex": "its feature is set as a concatenation of the raw pixel RGB values", "lv": "考博", "sec": "Method"}, {"w": "embedding", "ipa": "/ɪmˈbedɪŋ/", "pos": "n.", "m": "嵌入，嵌入层", "ex": "A linear embedding layer is applied on this raw-valued feature", "lv": "考博", "sec": "Method"}, {"w": "dimension", "ipa": "/daɪˈmenʃn/", "pos": "n.", "m": "维度，尺寸", "ex": "to project it to an arbitrary dimension (denoted as C)", "lv": "四级", "sec": "Method"}, {"w": "representation", "ipa": "/ˌreprɪzenˈteɪʃn/", "pos": "n.", "m": "表示，表征", "ex": "To produce a hierarchical representation", "lv": "六级", "sec": "Method"}, {"w": "downsampling", "ipa": "/daʊnˈsæmplɪŋ/", "pos": "n.", "m": "下采样", "ex": "This reduces the number of tokens by a multiple of 2×2 = 4 (2× downsampling of resolution)", "lv": "考博", "sec": "Method"}, {"w": "residual", "ipa": "/ˈrezɪdʒuəl/", "pos": "adj.", "m": "残差的，剩余的", "ex": "a residual connection is applied after each module", "lv": "六级", "sec": "Method"}, {"w": "nonlinearity", "ipa": "/ˌnɑːnlɪnɪˈærəti/", "pos": "n.", "m": "非线性", "ex": "a 2-layer MLP with GELU non-linearity in between", "lv": "考博", "sec": "Method"}, {"w": "partitioning", "ipa": "/pɑːrˈtɪʃənɪŋ/", "pos": "n.", "m": "分区，划分", "ex": "The windows are arranged to evenly partition the image in a non-overlapping manner", "lv": "六级", "sec": "Method"}, {"w": "scalable", "ipa": "/ˈskeɪləbl/", "pos": "adj.", "m": "可扩展的", "ex": "the window based self-attention is scalable", "lv": "考博", "sec": "Method"}, {"w": "alternating", "ipa": "/ɔːlˈtɜːrneɪtɪŋ/", "pos": "v.", "m": "交替，轮流", "ex": "which alternates between two partitioning configurations", "lv": "六级", "sec": "WindowAttn"}, {"w": "displacement", "ipa": "/dɪsˈpleɪsmənt/", "pos": "n.", "m": "位移，取代", "ex": "by displacing the windows by (⌊M/2⌋, ⌊M/2⌋) pixels", "lv": "六级", "sec": "WindowAttn"}, {"w": "cyclic", "ipa": "/ˈsɪklɪk/", "pos": "adj.", "m": "循环的，周期的", "ex": "we propose a more efficient batch computation approach by cyclic-shifting", "lv": "考博", "sec": "WindowAttn"}, {"w": "adjacent", "ipa": "/əˈdʒeɪsnt/", "pos": "adj.", "m": "相邻的，邻近的", "ex": "a batched window may be composed of several sub-windows that are not adjacent", "lv": "六级", "sec": "WindowAttn"}, {"w": "masking", "ipa": "/ˈmæskɪŋ/", "pos": "n.", "m": "掩码，遮罩", "ex": "a masking mechanism is employed to limit self-attention computation", "lv": "四级", "sec": "WindowAttn"}, {"w": "interpolation", "ipa": "/ɪnˌtɜːrpəˈleɪʃn/", "pos": "n.", "m": "插值", "ex": "through bi-cubic interpolation", "lv": "考博", "sec": "WindowAttn"}, {"w": "parameterize", "ipa": "/pəˈræmətəraɪz/", "pos": "v.", "m": "参数化", "ex": "we parameterize a smaller-sized bias matrix", "lv": "考博", "sec": "WindowAttn"}, {"w": "similarity", "ipa": "/ˌsɪməˈlærəti/", "pos": "n.", "m": "相似性，类似", "ex": "to each head in computing similarity", "lv": "六级", "sec": "WindowAttn"}, {"w": "latency", "ipa": "/ˈleɪtnsi/", "pos": "n.", "m": "延迟，潜伏", "ex": "This strategy is also efficient in regards to real-world latency", "lv": "考博", "sec": "WindowAttn"}, {"w": "hardware", "ipa": "/ˈhɑːrdwer/", "pos": "n.", "m": "硬件", "ex": "which facilitates memory access in hardware", "lv": "四级", "sec": "WindowAttn"}, {"w": "benchmark", "ipa": "/ˈbentʃmɑːrk/", "pos": "n.", "m": "基准，基准测试", "ex": "we benchmark the proposed Swin Transformer on ImageNet-1K", "lv": "考博", "sec": "ImgClass"}, {"w": "optimizer", "ipa": "/ˈɑːptɪmaɪzər/", "pos": "n.", "m": "优化器", "ex": "We employ an AdamW optimizer for 300 epochs", "lv": "考博", "sec": "ImgClass"}, {"w": "cosine", "ipa": "/ˈkoʊsaɪn/", "pos": "n.", "m": "余弦", "ex": "using a cosine decay learning rate scheduler", "lv": "考博", "sec": "ImgClass"}, {"w": "augmentation", "ipa": "/ˌɔːɡmenˈteɪʃn/", "pos": "n.", "m": "增强，扩充", "ex": "We include most of the augmentation and regularization strategies", "lv": "考博", "sec": "ImgClass"}, {"w": "regularization", "ipa": "/ˌreɡjələraɪˈzeɪʃn/", "pos": "n.", "m": "正则化", "ex": "augmentation and regularization strategies of [63] in training", "lv": "考博", "sec": "ImgClass"}, {"w": "stochastic", "ipa": "/stəˈkæstɪk/", "pos": "adj.", "m": "随机的", "ex": "random erasing and stochastic depth", "lv": "考博", "sec": "ImgClass"}, {"w": "crucial", "ipa": "/ˈkruːʃl/", "pos": "adj.", "m": "关键的，至关重要的", "ex": "repeated augmentation is crucial to stabilize the training of ViT", "lv": "四级", "sec": "ImgClass"}, {"w": "surpass", "ipa": "/sərˈpæs/", "pos": "v.", "m": "超越，胜过", "ex": "Swin Transformers noticeably surpass the counterpart DeiT architectures", "lv": "四级", "sec": "ImgClass"}, {"w": "throughput", "ipa": "/ˈθruːpʊt/", "pos": "n.", "m": "吞吐量，产量", "ex": "with similar inference throughput", "lv": "考博", "sec": "ImgClass"}, {"w": "inference", "ipa": "/ˈɪnfərəns/", "pos": "n.", "m": "推理，推断", "ex": "with similar inference throughput (84.7 vs. 85.9 images/sec)", "lv": "四级", "sec": "ImgClass"}, {"w": "cascade", "ipa": "/kæˈskeɪd/", "pos": "n.", "m": "级联，串联", "ex": "Cascade Mask R-CNN on COCO object detection", "lv": "考博", "sec": "ObjDetect"}, {"w": "framework", "ipa": "/ˈfreɪmwɜːrk/", "pos": "n.", "m": "框架，体系", "ex": "we consider four typical object detection frameworks", "lv": "四级", "sec": "ObjDetect"}, {"w": "ablation", "ipa": "/æˈbleɪʃn/", "pos": "n.", "m": "消融，切除", "ex": "For an ablation study, we consider four typical object detection frameworks", "lv": "考博", "sec": "ObjDetect"}, {"w": "outperform", "ipa": "/ˌaʊtpərˈfɔːrm/", "pos": "v.", "m": "胜过，优于", "ex": "Swin-T with the shifted window partitioning outperforms the counterpart", "lv": "六级", "sec": "ObjDetect"}, {"w": "effectiveness", "ipa": "/ɪˈfektɪvnəs/", "pos": "n.", "m": "有效性，效力", "ex": "indicating the effectiveness of using shifted windows", "lv": "考博", "sec": "ObjDetect"}, {"w": "overhead", "ipa": "/ˈoʊvərhed/", "pos": "n.", "m": "开销，额外负担", "ex": "The latency overhead by shifted window is also small", "lv": "四级", "sec": "ObjDetect"}, {"w": "yield", "ipa": "/jiːld/", "pos": "v.", "m": "产生，带来", "ex": "Swin-T with relative position bias yields +1.2%/+0.8% top-1 accuracy", "lv": "四级", "sec": "ObjDetect"}, {"w": "translation", "ipa": "/trænzˈleɪʃn/", "pos": "n.", "m": "翻译，平移", "ex": "ViT/DeiT models abandon translation invariance", "lv": "四级", "sec": "ObjDetect"}, {"w": "invariance", "ipa": "/ˌɪnˈveriəns/", "pos": "n.", "m": "不变性", "ex": "abandon translation invariance in image classification", "lv": "考博", "sec": "ObjDetect"}, {"w": "inductive", "ipa": "/ɪnˈdʌktɪv/", "pos": "adj.", "m": "归纳的，诱导的", "ex": "inductive bias that encourages certain translation invariance", "lv": "考博", "sec": "ObjDetect"}, {"w": "segmentation", "ipa": "/ˌseɡmenˈteɪʃn/", "pos": "n.", "m": "分割，切分", "ex": "semantic segmentation on ADE20K", "lv": "考博", "sec": "SemSeg"}, {"w": "semantic", "ipa": "/sɪˈmæntɪk/", "pos": "adj.", "m": "语义的", "ex": "semantic segmentation on ADE20K", "lv": "考博", "sec": "SemSeg"}, {"w": "feature", "ipa": "/ˈfiːtʃər/", "pos": "n.", "m": "特征，特点", "ex": "produces a hierarchical feature representation", "lv": "四级", "sec": "SemSeg"}, {"w": "pyramid", "ipa": "/ˈpɪrəmɪd/", "pos": "n.", "m": "金字塔", "ex": "feature pyramid networks (FPN)", "lv": "六级", "sec": "SemSeg"}, {"w": "computation", "ipa": "/ˌkɑːmpjuˈteɪʃn/", "pos": "n.", "m": "计算，运算", "ex": "has linear computational complexity with respect to input image size", "lv": "考博", "sec": "SemSeg"}, {"w": "ablate", "ipa": "/æˈbleɪt/", "pos": "v.", "m": "消融，切除", "ex": "we ablate important design elements in the proposed Swin Transformer", "lv": "考博", "sec": "SemSeg"}, {"w": "design", "ipa": "/dɪˈzaɪn/", "pos": "n.", "m": "设计，构思", "ex": "we ablate important design elements in the proposed Swin Transformer", "lv": "四级", "sec": "SemSeg"}, {"w": "element", "ipa": "/ˈelɪmənt/", "pos": "n.", "m": "元素，要素", "ex": "we ablate important design elements in the proposed Swin Transformer", "lv": "四级", "sec": "SemSeg"}, {"w": "efficiency", "ipa": "/ɪˈfɪʃnsi/", "pos": "n.", "m": "效率，效能", "ex": "indicating the effectiveness of using shifted windows", "lv": "四级", "sec": "SemSeg"}, {"w": "approach", "ipa": "/əˈproʊtʃ/", "pos": "n.", "m": "方法，途径", "ex": "The shifted window approach has much lower latency", "lv": "四级", "sec": "SemSeg"}, {"w": "ablation", "ipa": "/æˈbleɪʃn/", "pos": "n.", "m": "消融实验，切除实验", "ex": "In this section, we ablate important design elements", "lv": "考博", "sec": "Ablation"}, {"w": "counterpart", "ipa": "/ˈkaʊntərpɑːrt/", "pos": "n.", "m": "对应物，副本", "ex": "outperforms the counterpart built on a single window partitioning", "lv": "六级", "sec": "Ablation"}, {"w": "overhead", "ipa": "/ˈoʊvərhed/", "pos": "n.", "m": "开销，额外负担", "ex": "The latency overhead by shifted window is also small", "lv": "四级", "sec": "Ablation"}, {"w": "hardware", "ipa": "/ˈhɑːrdwer/", "pos": "n.", "m": "硬件", "ex": "which facilitates memory access in hardware", "lv": "四级", "sec": "Ablation"}, {"w": "efficient", "ipa": "/ɪˈfɪʃnt/", "pos": "adj.", "m": "高效的，有效率的", "ex": "Our cyclic implementation is more hardware efficient", "lv": "四级", "sec": "Ablation"}, {"w": "speedup", "ipa": "/ˈspiːdʌp/", "pos": "n.", "m": "加速，加速比", "ex": "it brings a 13%, 18% and 18% speed-up on Swin-T, Swin-S and Swin-B", "lv": "考博", "sec": "Ablation"}, {"w": "implementation", "ipa": "/ˌɪmpləmenˈteɪʃn/", "pos": "n.", "m": "实现，实施", "ex": "Our cyclic implementation is more hardware efficient", "lv": "四级", "sec": "Ablation"}, {"w": "accuracy", "ipa": "/ˈækjərəsi/", "pos": "n.", "m": "准确率，精确度", "ex": "showing that they are similarly accurate in visual modeling", "lv": "四级", "sec": "Ablation"}, {"w": "latency", "ipa": "/ˈleɪtnsi/", "pos": "n.", "m": "延迟，潜伏", "ex": "The latency overhead by shifted window is also small", "lv": "考博", "sec": "Ablation"}, {"w": "tradeoff", "ipa": "/ˈtreɪdɔːf/", "pos": "n.", "m": "权衡，折衷", "ex": "achieves a slightly better speed-accuracy trade-off", "lv": "六级", "sec": "Ablation"}, {"w": "present", "ipa": "/prɪˈzent/", "pos": "v.", "m": "呈现，提出", "ex": "This paper presents Swin Transformer", "lv": "四级", "sec": "Conclusion"}, {"w": "surpass", "ipa": "/sərˈpæs/", "pos": "v.", "m": "超越，胜过", "ex": "significantly surpassing previous best methods", "lv": "四级", "sec": "Conclusion"}, {"w": "encourage", "ipa": "/ɪnˈkɜːrɪdʒ/", "pos": "v.", "m": "鼓励，激励", "ex": "will encourage unified modeling of vision and language signals", "lv": "四级", "sec": "Conclusion"}, {"w": "unified", "ipa": "/ˈjuːnɪfaɪd/", "pos": "adj.", "m": "统一的，一体的", "ex": "encourage unified modeling of vision and language signals", "lv": "六级", "sec": "Conclusion"}, {"w": "investigate", "ipa": "/ɪnˈvestɪɡeɪt/", "pos": "v.", "m": "调查，研究", "ex": "we look forward to investigating its use in natural language processing", "lv": "四级", "sec": "Conclusion"}, {"w": "effective", "ipa": "/ɪˈfektɪv/", "pos": "adj.", "m": "有效的，生效的", "ex": "the shifted window based self-attention is shown to be effective", "lv": "四级", "sec": "Conclusion"}, {"w": "hierarchical", "ipa": "/ˌhaɪəˈrɑːrkɪkl/", "pos": "adj.", "m": "分层的，等级制的", "ex": "produces a hierarchical feature representation", "lv": "考博", "sec": "Conclusion"}, {"w": "representation", "ipa": "/ˌreprɪzenˈteɪʃn/", "pos": "n.", "m": "表示，表征", "ex": "produces a hierarchical feature representation", "lv": "六级", "sec": "Conclusion"}, {"w": "complexity", "ipa": "/kəmˈpleksəti/", "pos": "n.", "m": "复杂性，复杂度", "ex": "has linear computational complexity with respect to input image size", "lv": "六级", "sec": "Conclusion"}, {"w": "performance", "ipa": "/pərˈfɔːrməns/", "pos": "n.", "m": "性能，表现", "ex": "Swin Transformer achieves the state-of-the-art performance", "lv": "四级", "sec": "Conclusion"}];
+const ITEMS=[{"w": "hierarchical", "ipa": "/ˌhaɪəˈrɑːrkɪkl/", "pos": "adj.", "m": "分层的，等级制的", "ex": "we propose a hierarchical Transformer whose representation is computed with Shifted windows", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "backbone", "ipa": "/ˈbækboʊn/", "pos": "n.", "m": "骨干网络，主干结构", "ex": "that capably serves as a general-purpose backbone for computer vision", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "adapt", "ipa": "/əˈdæpt/", "pos": "v.", "m": "适应，改编", "ex": "Challenges in adapting Transformer from language to vision", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "entity", "ipa": "/ˈentəti/", "pos": "n.", "m": "实体，存在", "ex": "large variations in the scale of visual entities", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "resolution", "ipa": "/ˌrezəˈluːʃn/", "pos": "n.", "m": "分辨率，解决", "ex": "the high resolution of pixels in images compared to words in text", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "efficiency", "ipa": "/ɪˈfɪʃnsi/", "pos": "n.", "m": "效率，效能", "ex": "The shifted windowing scheme brings greater efficiency", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "complexity", "ipa": "/kəmˈpleksəti/", "pos": "n.", "m": "复杂性，复杂度", "ex": "has linear computational complexity with respect to image size", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "surpass", "ipa": "/sərˈpæs/", "pos": "v.", "m": "超越，胜过", "ex": "Its performance surpasses the previous state-of-the-art", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "demonstrate", "ipa": "/ˈdemənstreɪt/", "pos": "v.", "m": "证明，演示", "ex": "demonstrating the potential of Transformer-based models", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "compatible", "ipa": "/kəmˈpætəbl/", "pos": "adj.", "m": "兼容的，可共存的", "ex": "These qualities make Swin Transformer compatible with a broad range of vision tasks", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "dominate", "ipa": "/ˈdɑːmɪneɪt/", "pos": "v.", "m": "主导，支配", "ex": "Modeling in computer vision has long been dominated by convolutional neural networks", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "revolutionary", "ipa": "/ˌrevəˈluːʃəneri/", "pos": "adj.", "m": "革命性的，突破性的", "ex": "its revolutionary performance on the ImageNet image classification challenge", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "evolution", "ipa": "/ˌevəˈluːʃn/", "pos": "n.", "m": "进化，演变", "ex": "CNN architectures have evolved to become increasingly powerful", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "sophisticated", "ipa": "/səˈfɪstɪkeɪtɪd/", "pos": "adj.", "m": "复杂的，精密的", "ex": "more sophisticated forms of convolution", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "prevalent", "ipa": "/ˈprevələnt/", "pos": "adj.", "m": "流行的，普遍的", "ex": "the prevalent architecture today is instead the Transformer", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "tremendous", "ipa": "/trəˈmendəs/", "pos": "adj.", "m": "巨大的，极大的", "ex": "Its tremendous success in the language domain", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "applicability", "ipa": "/ˌæplɪkəˈbɪləti/", "pos": "n.", "m": "适用性，应用性", "ex": "we seek to expand the applicability of Transformer", "lv": "考博", "ov": "GRE", "sec": "Intro"}, {"w": "modality", "ipa": "/moʊˈdæləti/", "pos": "n.", "m": "模态，形态", "ex": "differences between the two modalities", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "intractable", "ipa": "/ɪnˈtræktəbl/", "pos": "adj.", "m": "棘手的，难解的", "ex": "this would be intractable for Transformer on high-resolution images", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "quadratic", "ipa": "/kwɑːˈdrætɪk/", "pos": "adj.", "m": "二次的，平方的", "ex": "the computational complexity of its self-attention is quadratic to image size", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "convolutional", "ipa": "/kənˈvɑːljuːʃənl/", "pos": "adj.", "m": "卷积的", "ex": "CNNs serve as the standard network model throughout computer vision", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "variant", "ipa": "/ˈveriənt/", "pos": "n.", "m": "变体，变形", "ex": "deeper and more effective convolutional neural architectures have been proposed", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "propel", "ipa": "/prəˈpel/", "pos": "v.", "m": "推动，推进", "ex": "to further propel the deep learning wave in computer vision", "lv": "六级", "ov": "", "sec": "Related"}, {"w": "complement", "ipa": "/ˈkɑːmplɪment/", "pos": "v.", "m": "补充，完善", "ex": "self-attention layers can complement backbones", "lv": "四级", "ov": "", "sec": "Related"}, {"w": "heterogeneous", "ipa": "/ˌhetərəˈdʒiːniəs/", "pos": "adj.", "m": "异构的，不同种类的", "ex": "providing the capability to encode distant dependencies or heterogeneous interactions", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "pioneering", "ipa": "/ˌpaɪəˈnɪrɪŋ/", "pos": "adj.", "m": "开创性的，先驱的", "ex": "The pioneering work of ViT directly applies a Transformer architecture", "lv": "四级", "ov": "", "sec": "Related"}, {"w": "unsuitable", "ipa": "/ʌnˈsuːtəbl/", "pos": "adj.", "m": "不合适的，不适宜的", "ex": "its architecture is unsuitable for use as a general-purpose backbone", "lv": "考博", "ov": "雅思托福", "sec": "Related"}, {"w": "upsampling", "ipa": "/ʌpˈsæmplɪŋ/", "pos": "n.", "m": "上采样", "ex": "applying ViT models to dense vision tasks by direct upsampling", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "concurrent", "ipa": "/kənˈkɜːrənt/", "pos": "adj.", "m": "并发的，同时发生的", "ex": "Concurrent to our work are some that modify the ViT architecture", "lv": "考博", "ov": "", "sec": "Related"}, {"w": "correlation", "ipa": "/ˌkɔːrəˈleɪʃn/", "pos": "n.", "m": "相关性，关联", "ex": "operating locally which has proven beneficial in modeling the high correlation in visual signals", "lv": "六级", "ov": "", "sec": "Related"}, {"w": "architecture", "ipa": "/ˈɑːrkɪtektʃər/", "pos": "n.", "m": "架构，体系结构", "ex": "An overview of the Swin Transformer architecture is presented in Figure 3", "lv": "四级", "ov": "", "sec": "Method"}, {"w": "concatenation", "ipa": "/kənˌtæktəˈneɪʃn/", "pos": "n.", "m": "连接，拼接", "ex": "its feature is set as a concatenation of the raw pixel RGB values", "lv": "考博", "ov": "GRE", "sec": "Method"}, {"w": "embedding", "ipa": "/ɪmˈbedɪŋ/", "pos": "n.", "m": "嵌入，嵌入层", "ex": "A linear embedding layer is applied on this raw-valued feature", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "dimension", "ipa": "/daɪˈmenʃn/", "pos": "n.", "m": "维度，尺寸", "ex": "to project it to an arbitrary dimension (denoted as C)", "lv": "四级", "ov": "", "sec": "Method"}, {"w": "representation", "ipa": "/ˌreprɪzenˈteɪʃn/", "pos": "n.", "m": "表示，表征", "ex": "To produce a hierarchical representation", "lv": "六级", "ov": "", "sec": "Method"}, {"w": "downsampling", "ipa": "/daʊnˈsæmplɪŋ/", "pos": "n.", "m": "下采样", "ex": "This reduces the number of tokens by a multiple of 2×2 = 4 (2× downsampling of resolution)", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "residual", "ipa": "/ˈrezɪdʒuəl/", "pos": "adj.", "m": "残差的，剩余的", "ex": "a residual connection is applied after each module", "lv": "六级", "ov": "", "sec": "Method"}, {"w": "nonlinearity", "ipa": "/ˌnɑːnlɪnɪˈærəti/", "pos": "n.", "m": "非线性", "ex": "a 2-layer MLP with GELU non-linearity in between", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "partitioning", "ipa": "/pɑːrˈtɪʃənɪŋ/", "pos": "n.", "m": "分区，划分", "ex": "The windows are arranged to evenly partition the image in a non-overlapping manner", "lv": "六级", "ov": "", "sec": "Method"}, {"w": "scalable", "ipa": "/ˈskeɪləbl/", "pos": "adj.", "m": "可扩展的", "ex": "the window based self-attention is scalable", "lv": "考博", "ov": "", "sec": "Method"}, {"w": "alternating", "ipa": "/ɔːlˈtɜːrneɪtɪŋ/", "pos": "v.", "m": "交替，轮流", "ex": "which alternates between two partitioning configurations", "lv": "六级", "ov": "", "sec": "WindowAttn"}, {"w": "displacement", "ipa": "/dɪsˈpleɪsmənt/", "pos": "n.", "m": "位移，取代", "ex": "by displacing the windows by (⌊M/2⌋, ⌊M/2⌋) pixels", "lv": "六级", "ov": "", "sec": "WindowAttn"}, {"w": "cyclic", "ipa": "/ˈsɪklɪk/", "pos": "adj.", "m": "循环的，周期的", "ex": "we propose a more efficient batch computation approach by cyclic-shifting", "lv": "考博", "ov": "雅思托福", "sec": "WindowAttn"}, {"w": "adjacent", "ipa": "/əˈdʒeɪsnt/", "pos": "adj.", "m": "相邻的，邻近的", "ex": "a batched window may be composed of several sub-windows that are not adjacent", "lv": "六级", "ov": "", "sec": "WindowAttn"}, {"w": "masking", "ipa": "/ˈmæskɪŋ/", "pos": "n.", "m": "掩码，遮罩", "ex": "a masking mechanism is employed to limit self-attention computation", "lv": "四级", "ov": "", "sec": "WindowAttn"}, {"w": "interpolation", "ipa": "/ɪnˌtɜːrpəˈleɪʃn/", "pos": "n.", "m": "插值", "ex": "through bi-cubic interpolation", "lv": "考博", "ov": "GRE", "sec": "WindowAttn"}, {"w": "parameterize", "ipa": "/pəˈræmətəraɪz/", "pos": "v.", "m": "参数化", "ex": "we parameterize a smaller-sized bias matrix", "lv": "考博", "ov": "", "sec": "WindowAttn"}, {"w": "similarity", "ipa": "/ˌsɪməˈlærəti/", "pos": "n.", "m": "相似性，类似", "ex": "to each head in computing similarity", "lv": "六级", "ov": "", "sec": "WindowAttn"}, {"w": "latency", "ipa": "/ˈleɪtnsi/", "pos": "n.", "m": "延迟，潜伏", "ex": "This strategy is also efficient in regards to real-world latency", "lv": "考博", "ov": "GRE", "sec": "WindowAttn"}, {"w": "hardware", "ipa": "/ˈhɑːrdwer/", "pos": "n.", "m": "硬件", "ex": "which facilitates memory access in hardware", "lv": "四级", "ov": "", "sec": "WindowAttn"}, {"w": "benchmark", "ipa": "/ˈbentʃmɑːrk/", "pos": "n.", "m": "基准，基准测试", "ex": "we benchmark the proposed Swin Transformer on ImageNet-1K", "lv": "考博", "ov": "", "sec": "ImgClass"}, {"w": "optimizer", "ipa": "/ˈɑːptɪmaɪzər/", "pos": "n.", "m": "优化器", "ex": "We employ an AdamW optimizer for 300 epochs", "lv": "考博", "ov": "", "sec": "ImgClass"}, {"w": "cosine", "ipa": "/ˈkoʊsaɪn/", "pos": "n.", "m": "余弦", "ex": "using a cosine decay learning rate scheduler", "lv": "考博", "ov": "", "sec": "ImgClass"}, {"w": "augmentation", "ipa": "/ˌɔːɡmenˈteɪʃn/", "pos": "n.", "m": "增强，扩充", "ex": "We include most of the augmentation and regularization strategies", "lv": "考博", "ov": "GRE", "sec": "ImgClass"}, {"w": "regularization", "ipa": "/ˌreɡjələraɪˈzeɪʃn/", "pos": "n.", "m": "正则化", "ex": "augmentation and regularization strategies of [63] in training", "lv": "考博", "ov": "", "sec": "ImgClass"}, {"w": "stochastic", "ipa": "/stəˈkæstɪk/", "pos": "adj.", "m": "随机的", "ex": "random erasing and stochastic depth", "lv": "考博", "ov": "", "sec": "ImgClass"}, {"w": "crucial", "ipa": "/ˈkruːʃl/", "pos": "adj.", "m": "关键的，至关重要的", "ex": "repeated augmentation is crucial to stabilize the training of ViT", "lv": "四级", "ov": "", "sec": "ImgClass"}, {"w": "surpass", "ipa": "/sərˈpæs/", "pos": "v.", "m": "超越，胜过", "ex": "Swin Transformers noticeably surpass the counterpart DeiT architectures", "lv": "四级", "ov": "", "sec": "ImgClass"}, {"w": "throughput", "ipa": "/ˈθruːpʊt/", "pos": "n.", "m": "吞吐量，产量", "ex": "with similar inference throughput", "lv": "考博", "ov": "", "sec": "ImgClass"}, {"w": "inference", "ipa": "/ˈɪnfərəns/", "pos": "n.", "m": "推理，推断", "ex": "with similar inference throughput (84.7 vs. 85.9 images/sec)", "lv": "四级", "ov": "", "sec": "ImgClass"}, {"w": "cascade", "ipa": "/kæˈskeɪd/", "pos": "n.", "m": "级联，串联", "ex": "Cascade Mask R-CNN on COCO object detection", "lv": "考博", "ov": "", "sec": "ObjDetect"}, {"w": "framework", "ipa": "/ˈfreɪmwɜːrk/", "pos": "n.", "m": "框架，体系", "ex": "we consider four typical object detection frameworks", "lv": "四级", "ov": "", "sec": "ObjDetect"}, {"w": "ablation", "ipa": "/æˈbleɪʃn/", "pos": "n.", "m": "消融，切除", "ex": "For an ablation study, we consider four typical object detection frameworks", "lv": "考博", "ov": "", "sec": "ObjDetect"}, {"w": "outperform", "ipa": "/ˌaʊtpərˈfɔːrm/", "pos": "v.", "m": "胜过，优于", "ex": "Swin-T with the shifted window partitioning outperforms the counterpart", "lv": "六级", "ov": "", "sec": "ObjDetect"}, {"w": "effectiveness", "ipa": "/ɪˈfektɪvnəs/", "pos": "n.", "m": "有效性，效力", "ex": "indicating the effectiveness of using shifted windows", "lv": "考博", "ov": "雅思托福", "sec": "ObjDetect"}, {"w": "overhead", "ipa": "/ˈoʊvərhed/", "pos": "n.", "m": "开销，额外负担", "ex": "The latency overhead by shifted window is also small", "lv": "四级", "ov": "", "sec": "ObjDetect"}, {"w": "yield", "ipa": "/jiːld/", "pos": "v.", "m": "产生，带来", "ex": "Swin-T with relative position bias yields +1.2%/+0.8% top-1 accuracy", "lv": "四级", "ov": "", "sec": "ObjDetect"}, {"w": "translation", "ipa": "/trænzˈleɪʃn/", "pos": "n.", "m": "翻译，平移", "ex": "ViT/DeiT models abandon translation invariance", "lv": "四级", "ov": "", "sec": "ObjDetect"}, {"w": "invariance", "ipa": "/ˌɪnˈveriəns/", "pos": "n.", "m": "不变性", "ex": "abandon translation invariance in image classification", "lv": "考博", "ov": "", "sec": "ObjDetect"}, {"w": "inductive", "ipa": "/ɪnˈdʌktɪv/", "pos": "adj.", "m": "归纳的，诱导的", "ex": "inductive bias that encourages certain translation invariance", "lv": "考博", "ov": "雅思托福", "sec": "ObjDetect"}, {"w": "segmentation", "ipa": "/ˌseɡmenˈteɪʃn/", "pos": "n.", "m": "分割，切分", "ex": "semantic segmentation on ADE20K", "lv": "考博", "ov": "", "sec": "SemSeg"}, {"w": "semantic", "ipa": "/sɪˈmæntɪk/", "pos": "adj.", "m": "语义的", "ex": "semantic segmentation on ADE20K", "lv": "考博", "ov": "", "sec": "SemSeg"}, {"w": "feature", "ipa": "/ˈfiːtʃər/", "pos": "n.", "m": "特征，特点", "ex": "produces a hierarchical feature representation", "lv": "四级", "ov": "", "sec": "SemSeg"}, {"w": "pyramid", "ipa": "/ˈpɪrəmɪd/", "pos": "n.", "m": "金字塔", "ex": "feature pyramid networks (FPN)", "lv": "六级", "ov": "", "sec": "SemSeg"}, {"w": "computation", "ipa": "/ˌkɑːmpjuˈteɪʃn/", "pos": "n.", "m": "计算，运算", "ex": "has linear computational complexity with respect to input image size", "lv": "考博", "ov": "GRE", "sec": "SemSeg"}, {"w": "ablate", "ipa": "/æˈbleɪt/", "pos": "v.", "m": "消融，切除", "ex": "we ablate important design elements in the proposed Swin Transformer", "lv": "考博", "ov": "GRE", "sec": "SemSeg"}, {"w": "design", "ipa": "/dɪˈzaɪn/", "pos": "n.", "m": "设计，构思", "ex": "we ablate important design elements in the proposed Swin Transformer", "lv": "四级", "ov": "", "sec": "SemSeg"}, {"w": "element", "ipa": "/ˈelɪmənt/", "pos": "n.", "m": "元素，要素", "ex": "we ablate important design elements in the proposed Swin Transformer", "lv": "四级", "ov": "", "sec": "SemSeg"}, {"w": "efficiency", "ipa": "/ɪˈfɪʃnsi/", "pos": "n.", "m": "效率，效能", "ex": "indicating the effectiveness of using shifted windows", "lv": "四级", "ov": "", "sec": "SemSeg"}, {"w": "approach", "ipa": "/əˈproʊtʃ/", "pos": "n.", "m": "方法，途径", "ex": "The shifted window approach has much lower latency", "lv": "四级", "ov": "", "sec": "SemSeg"}, {"w": "ablation", "ipa": "/æˈbleɪʃn/", "pos": "n.", "m": "消融实验，切除实验", "ex": "In this section, we ablate important design elements", "lv": "考博", "ov": "", "sec": "Ablation"}, {"w": "counterpart", "ipa": "/ˈkaʊntərpɑːrt/", "pos": "n.", "m": "对应物，副本", "ex": "outperforms the counterpart built on a single window partitioning", "lv": "六级", "ov": "", "sec": "Ablation"}, {"w": "overhead", "ipa": "/ˈoʊvərhed/", "pos": "n.", "m": "开销，额外负担", "ex": "The latency overhead by shifted window is also small", "lv": "四级", "ov": "", "sec": "Ablation"}, {"w": "hardware", "ipa": "/ˈhɑːrdwer/", "pos": "n.", "m": "硬件", "ex": "which facilitates memory access in hardware", "lv": "四级", "ov": "", "sec": "Ablation"}, {"w": "efficient", "ipa": "/ɪˈfɪʃnt/", "pos": "adj.", "m": "高效的，有效率的", "ex": "Our cyclic implementation is more hardware efficient", "lv": "四级", "ov": "", "sec": "Ablation"}, {"w": "speedup", "ipa": "/ˈspiːdʌp/", "pos": "n.", "m": "加速，加速比", "ex": "it brings a 13%, 18% and 18% speed-up on Swin-T, Swin-S and Swin-B", "lv": "考博", "ov": "", "sec": "Ablation"}, {"w": "implementation", "ipa": "/ˌɪmpləmenˈteɪʃn/", "pos": "n.", "m": "实现，实施", "ex": "Our cyclic implementation is more hardware efficient", "lv": "四级", "ov": "", "sec": "Ablation"}, {"w": "accuracy", "ipa": "/ˈækjərəsi/", "pos": "n.", "m": "准确率，精确度", "ex": "showing that they are similarly accurate in visual modeling", "lv": "四级", "ov": "", "sec": "Ablation"}, {"w": "latency", "ipa": "/ˈleɪtnsi/", "pos": "n.", "m": "延迟，潜伏", "ex": "The latency overhead by shifted window is also small", "lv": "考博", "ov": "GRE", "sec": "Ablation"}, {"w": "tradeoff", "ipa": "/ˈtreɪdɔːf/", "pos": "n.", "m": "权衡，折衷", "ex": "achieves a slightly better speed-accuracy trade-off", "lv": "六级", "ov": "", "sec": "Ablation"}, {"w": "present", "ipa": "/prɪˈzent/", "pos": "v.", "m": "呈现，提出", "ex": "This paper presents Swin Transformer", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "surpass", "ipa": "/sərˈpæs/", "pos": "v.", "m": "超越，胜过", "ex": "significantly surpassing previous best methods", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "encourage", "ipa": "/ɪnˈkɜːrɪdʒ/", "pos": "v.", "m": "鼓励，激励", "ex": "will encourage unified modeling of vision and language signals", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "unified", "ipa": "/ˈjuːnɪfaɪd/", "pos": "adj.", "m": "统一的，一体的", "ex": "encourage unified modeling of vision and language signals", "lv": "六级", "ov": "", "sec": "Conclusion"}, {"w": "investigate", "ipa": "/ɪnˈvestɪɡeɪt/", "pos": "v.", "m": "调查，研究", "ex": "we look forward to investigating its use in natural language processing", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "effective", "ipa": "/ɪˈfektɪv/", "pos": "adj.", "m": "有效的，生效的", "ex": "the shifted window based self-attention is shown to be effective", "lv": "四级", "ov": "", "sec": "Conclusion"}, {"w": "hierarchical", "ipa": "/ˌhaɪəˈrɑːrkɪkl/", "pos": "adj.", "m": "分层的，等级制的", "ex": "produces a hierarchical feature representation", "lv": "考博", "ov": "", "sec": "Conclusion"}, {"w": "representation", "ipa": "/ˌreprɪzenˈteɪʃn/", "pos": "n.", "m": "表示，表征", "ex": "produces a hierarchical feature representation", "lv": "六级", "ov": "", "sec": "Conclusion"}, {"w": "complexity", "ipa": "/kəmˈpleksəti/", "pos": "n.", "m": "复杂性，复杂度", "ex": "has linear computational complexity with respect to input image size", "lv": "六级", "ov": "", "sec": "Conclusion"}, {"w": "performance", "ipa": "/pərˈfɔːrməns/", "pos": "n.", "m": "性能，表现", "ex": "Swin Transformer achieves the state-of-the-art performance", "lv": "四级", "ov": "", "sec": "Conclusion"}];
+const AUDIO={"en-US-BrianNeural": {"w": {"benchmark": "../listen-audio/w_brian_benchmark.mp3", "framework": "../listen-audio/w_brian_framework.mp3", "inference": "../listen-audio/w_brian_inference.mp3", "residual": "../listen-audio/w_brian_residual.mp3", "regularization": "../listen-audio/w_brian_regularization.mp3", "architecture": "../listen-audio/w_brian_architecture.mp3", "entity": "../listen-audio/w_brian_entity.mp3", "resolution": "../listen-audio/w_brian_resolution.mp3", "prevalent": "../listen-audio/w_brian_prevalent.mp3", "translation": "../listen-audio/w_brian_translation.mp3", "representation": "../listen-audio/w_brian_representation.mp3", "complement": "../listen-audio/w_brian_complement.mp3", "dimension": "../listen-audio/w_brian_dimension.mp3", "embedding": "../listen-audio/w_brian_embedding.mp3", "masking": "../listen-audio/w_brian_masking.mp3", "yield": "../listen-audio/w_brian_yield.mp3", "complexity": "../listen-audio/w_brian_complexity.mp3", "semantic": "../listen-audio/w_brian_semantic.mp3", "optimizer": "../listen-audio/w_brian_optimizer.mp3", "outperform": "../listen-audio/w_brian_outperform.mp3", "surpass": "../listen-audio/w_brian_surpass.mp3", "sophisticated": "../listen-audio/w_brian_sophisticated.mp3", "ablation": "../listen-audio/w_brian_ablation.mp3", "modality": "../listen-audio/w_brian_modality.mp3", "similarity": "../listen-audio/w_brian_similarity.mp3", "stochastic": "../listen-audio/w_brian_stochastic.mp3", "variant": "../listen-audio/w_brian_variant.mp3", "convolutional": "../listen-audio/w_brian_convolutional.mp3", "nonlinearity": "../listen-audio/w_brian_nonlinearity.mp3", "augmentation": "../listen-audio/w_brian_augmentation.mp3", "effective": "../listen-audio/w_brian_effective.mp3", "adjacent": "../listen-audio/w_brian_adjacent.mp3", "demonstrate": "../listen-audio/w_brian_demonstrate.mp3", "scalable": "../listen-audio/w_brian_scalable.mp3", "backbone": "../listen-audio/w_brian_backbone.mp3", "applicability": "../listen-audio/w_brian_applicability.mp3", "quadratic": "../listen-audio/w_brian_quadratic.mp3", "unified": "../listen-audio/w_brian_unified.mp3", "intractable": "../listen-audio/w_brian_intractable.mp3", "compatible": "../listen-audio/w_brian_compatible.mp3", "crucial": "../listen-audio/w_brian_crucial.mp3", "concatenation": "../listen-audio/w_brian_concatenation.mp3", "implementation": "../listen-audio/w_brian_implementation.mp3", "accuracy": "../listen-audio/w_brian_accuracy.mp3", "computation": "../listen-audio/w_brian_computation.mp3", "invariance": "../listen-audio/w_brian_invariance.mp3", "segmentation": "../listen-audio/w_brian_segmentation.mp3", "interpolation": "../listen-audio/w_brian_interpolation.mp3", "adapt": "../listen-audio/w_brian_adapt.mp3", "investigate": "../listen-audio/w_brian_investigate.mp3", "counterpart": "../listen-audio/w_brian_counterpart.mp3", "cosine": "../listen-audio/w_brian_cosine.mp3", "hierarchical": "../listen-audio/w_brian_hierarchical.mp3", "downsampling": "../listen-audio/w_brian_downsampling.mp3", "upsampling": "../listen-audio/w_brian_upsampling.mp3", "inductive": "../listen-audio/w_brian_inductive.mp3", "parameterize": "../listen-audio/w_brian_parameterize.mp3", "throughput": "../listen-audio/w_brian_throughput.mp3", "dominate": "../listen-audio/w_brian_dominate.mp3", "tradeoff": "../listen-audio/w_brian_tradeoff.mp3", "encourage": "../listen-audio/w_brian_encourage.mp3", "approach": "../listen-audio/w_brian_approach.mp3", "effectiveness": "../listen-audio/w_brian_effectiveness.mp3", "efficiency": "../listen-audio/w_brian_efficiency.mp3", "latency": "../listen-audio/w_brian_latency.mp3", "efficient": "../listen-audio/w_brian_efficient.mp3", "alternating": "../listen-audio/w_brian_alternating.mp3", "hardware": "../listen-audio/w_brian_hardware.mp3", "correlation": "../listen-audio/w_brian_correlation.mp3", "overhead": "../listen-audio/w_brian_overhead.mp3", "performance": "../listen-audio/w_brian_performance.mp3", "heterogeneous": "../listen-audio/w_brian_heterogeneous.mp3", "pyramid": "../listen-audio/w_brian_pyramid.mp3", "concurrent": "../listen-audio/w_brian_concurrent.mp3", "element": "../listen-audio/w_brian_element.mp3", "feature": "../listen-audio/w_brian_feature.mp3", "revolutionary": "../listen-audio/w_brian_revolutionary.mp3", "evolution": "../listen-audio/w_brian_evolution.mp3", "tremendous": "../listen-audio/w_brian_tremendous.mp3", "propel": "../listen-audio/w_brian_propel.mp3", "pioneering": "../listen-audio/w_brian_pioneering.mp3", "unsuitable": "../listen-audio/w_brian_unsuitable.mp3", "partitioning": "../listen-audio/w_brian_partitioning.mp3", "displacement": "../listen-audio/w_brian_displacement.mp3", "cyclic": "../listen-audio/w_brian_cyclic.mp3", "cascade": "../listen-audio/w_brian_cascade.mp3", "ablate": "../listen-audio/w_brian_ablate.mp3", "design": "../listen-audio/w_brian_design.mp3", "speedup": "../listen-audio/w_brian_speedup.mp3", "present": "../listen-audio/w_brian_present.mp3"}, "e": {"we propose a hierarchical Transformer whose representation is computed with Shifted windows": "../listen-audio/e_brian_ccd8d8206f13.mp3", "that capably serves as a general-purpose backbone for computer vision": "../listen-audio/e_brian_981a630418c7.mp3", "Challenges in adapting Transformer from language to vision": "../listen-audio/e_brian_bb4606fb2aef.mp3", "large variations in the scale of visual entities": "../listen-audio/e_brian_355dce8bc34f.mp3", "the high resolution of pixels in images compared to words in text": "../listen-audio/e_brian_3fe930bca988.mp3", "The shifted windowing scheme brings greater efficiency": "../listen-audio/e_brian_7288be291f04.mp3", "has linear computational complexity with respect to image size": "../listen-audio/e_brian_36e56c03cb08.mp3", "Its performance surpasses the previous state-of-the-art": "../listen-audio/e_brian_6562a8703453.mp3", "demonstrating the potential of Transformer-based models": "../listen-audio/e_brian_6540373312c2.mp3", "These qualities make Swin Transformer compatible with a broad range of vision tasks": "../listen-audio/e_brian_04a61350e144.mp3", "Modeling in computer vision has long been dominated by convolutional neural networks": "../listen-audio/e_brian_891931624b8f.mp3", "its revolutionary performance on the ImageNet image classification challenge": "../listen-audio/e_brian_bfb94d1d0cf4.mp3", "CNN architectures have evolved to become increasingly powerful": "../listen-audio/e_brian_b010623ce624.mp3", "more sophisticated forms of convolution": "../listen-audio/e_brian_532726e80cbe.mp3", "the prevalent architecture today is instead the Transformer": "../listen-audio/e_brian_70793ece34ec.mp3", "Its tremendous success in the language domain": "../listen-audio/e_brian_d93fa839130f.mp3", "we seek to expand the applicability of Transformer": "../listen-audio/e_brian_588f37482646.mp3", "differences between the two modalities": "../listen-audio/e_brian_cea7b63e6cc1.mp3", "this would be intractable for Transformer on high-resolution images": "../listen-audio/e_brian_b0bdf2fd05a1.mp3", "the computational complexity of its self-attention is quadratic to image size": "../listen-audio/e_brian_48d3d64761be.mp3", "CNNs serve as the standard network model throughout computer vision": "../listen-audio/e_brian_52c69dff4c9e.mp3", "deeper and more effective convolutional neural architectures have been proposed": "../listen-audio/e_brian_10156e8c6b0b.mp3", "to further propel the deep learning wave in computer vision": "../listen-audio/e_brian_5ceb183fca81.mp3", "self-attention layers can complement backbones": "../listen-audio/e_brian_5078e5b7dc61.mp3", "providing the capability to encode distant dependencies or heterogeneous interactions": "../listen-audio/e_brian_fd19942e552c.mp3", "The pioneering work of ViT directly applies a Transformer architecture": "../listen-audio/e_brian_c0f1a1f1ef22.mp3", "its architecture is unsuitable for use as a general-purpose backbone": "../listen-audio/e_brian_40938b16a95e.mp3", "applying ViT models to dense vision tasks by direct upsampling": "../listen-audio/e_brian_89c7b8705f56.mp3", "Concurrent to our work are some that modify the ViT architecture": "../listen-audio/e_brian_c583278aeaaa.mp3", "operating locally which has proven beneficial in modeling the high correlation in visual signals": "../listen-audio/e_brian_2b45dbc314b0.mp3", "An overview of the Swin Transformer architecture is presented in Figure 3": "../listen-audio/e_brian_1d1b950751a6.mp3", "its feature is set as a concatenation of the raw pixel RGB values": "../listen-audio/e_brian_c0e00028d9cd.mp3", "A linear embedding layer is applied on this raw-valued feature": "../listen-audio/e_brian_fc9bbd8e9001.mp3", "to project it to an arbitrary dimension (denoted as C)": "../listen-audio/e_brian_998b9314d7de.mp3", "To produce a hierarchical representation": "../listen-audio/e_brian_e26adaeeefc1.mp3", "This reduces the number of tokens by a multiple of 2×2 = 4 (2× downsampling of resolution)": "../listen-audio/e_brian_7f7df3330e54.mp3", "a residual connection is applied after each module": "../listen-audio/e_brian_0c14ca364c01.mp3", "a 2-layer MLP with GELU non-linearity in between": "../listen-audio/e_brian_88d75063e72e.mp3", "The windows are arranged to evenly partition the image in a non-overlapping manner": "../listen-audio/e_brian_2ea0f39377c8.mp3", "the window based self-attention is scalable": "../listen-audio/e_brian_224af8a7805a.mp3", "which alternates between two partitioning configurations": "../listen-audio/e_brian_15914686e5c6.mp3", "by displacing the windows by (⌊M/2⌋, ⌊M/2⌋) pixels": "../listen-audio/e_brian_52c24ba10196.mp3", "we propose a more efficient batch computation approach by cyclic-shifting": "../listen-audio/e_brian_cab73d66f6cf.mp3", "a batched window may be composed of several sub-windows that are not adjacent": "../listen-audio/e_brian_e9fe902d2ba5.mp3", "a masking mechanism is employed to limit self-attention computation": "../listen-audio/e_brian_640cce47c7d5.mp3", "through bi-cubic interpolation": "../listen-audio/e_brian_825c33730127.mp3", "we parameterize a smaller-sized bias matrix": "../listen-audio/e_brian_3a849f9bed0e.mp3", "to each head in computing similarity": "../listen-audio/e_brian_e5723dfccb55.mp3", "This strategy is also efficient in regards to real-world latency": "../listen-audio/e_brian_109c5ad51286.mp3", "which facilitates memory access in hardware": "../listen-audio/e_brian_643522166944.mp3", "we benchmark the proposed Swin Transformer on ImageNet-1K": "../listen-audio/e_brian_7cd7b0274cad.mp3", "We employ an AdamW optimizer for 300 epochs": "../listen-audio/e_brian_12335f197bce.mp3", "using a cosine decay learning rate scheduler": "../listen-audio/e_brian_064ea32a4024.mp3", "We include most of the augmentation and regularization strategies": "../listen-audio/e_brian_05c7734c4f02.mp3", "augmentation and regularization strategies of [63] in training": "../listen-audio/e_brian_bf9b458c7487.mp3", "random erasing and stochastic depth": "../listen-audio/e_brian_324cf075c311.mp3", "repeated augmentation is crucial to stabilize the training of ViT": "../listen-audio/e_brian_e3033becee52.mp3", "Swin Transformers noticeably surpass the counterpart DeiT architectures": "../listen-audio/e_brian_9648c058a1ea.mp3", "with similar inference throughput": "../listen-audio/e_brian_4bb4632f1aa9.mp3", "with similar inference throughput (84.7 vs. 85.9 images/sec)": "../listen-audio/e_brian_37c301fd8bc6.mp3", "Cascade Mask R-CNN on COCO object detection": "../listen-audio/e_brian_f56613898f0b.mp3", "we consider four typical object detection frameworks": "../listen-audio/e_brian_0f5303f879c8.mp3", "For an ablation study, we consider four typical object detection frameworks": "../listen-audio/e_brian_83428a2a7b81.mp3", "Swin-T with the shifted window partitioning outperforms the counterpart": "../listen-audio/e_brian_d26fa382646c.mp3", "indicating the effectiveness of using shifted windows": "../listen-audio/e_brian_4f9db2f71e58.mp3", "The latency overhead by shifted window is also small": "../listen-audio/e_brian_fdb6b7d69f2c.mp3", "Swin-T with relative position bias yields +1.2%/+0.8% top-1 accuracy": "../listen-audio/e_brian_63093ec1e6d5.mp3", "ViT/DeiT models abandon translation invariance": "../listen-audio/e_brian_1a776c2d4c02.mp3", "abandon translation invariance in image classification": "../listen-audio/e_brian_370a422509bd.mp3", "inductive bias that encourages certain translation invariance": "../listen-audio/e_brian_09da9335c1cd.mp3", "semantic segmentation on ADE20K": "../listen-audio/e_brian_8883fdf9523a.mp3", "produces a hierarchical feature representation": "../listen-audio/e_brian_25dceca42bb5.mp3", "feature pyramid networks (FPN)": "../listen-audio/e_brian_351b98d4089f.mp3", "has linear computational complexity with respect to input image size": "../listen-audio/e_brian_6ef39a27c089.mp3", "we ablate important design elements in the proposed Swin Transformer": "../listen-audio/e_brian_01673414c720.mp3", "The shifted window approach has much lower latency": "../listen-audio/e_brian_3eb2689a3727.mp3", "In this section, we ablate important design elements": "../listen-audio/e_brian_c767c8d2f5ca.mp3", "outperforms the counterpart built on a single window partitioning": "../listen-audio/e_brian_8dd3343d4477.mp3", "Our cyclic implementation is more hardware efficient": "../listen-audio/e_brian_25bb9fa892f9.mp3", "it brings a 13%, 18% and 18% speed-up on Swin-T, Swin-S and Swin-B": "../listen-audio/e_brian_8d7f94eb1862.mp3", "showing that they are similarly accurate in visual modeling": "../listen-audio/e_brian_87feac9d96d4.mp3", "achieves a slightly better speed-accuracy trade-off": "../listen-audio/e_brian_9b7ba05760a1.mp3", "This paper presents Swin Transformer": "../listen-audio/e_brian_ab3e3d348bea.mp3", "significantly surpassing previous best methods": "../listen-audio/e_brian_d70629759400.mp3", "will encourage unified modeling of vision and language signals": "../listen-audio/e_brian_ca69c2ab312d.mp3", "encourage unified modeling of vision and language signals": "../listen-audio/e_brian_8ee4554d5ebc.mp3", "we look forward to investigating its use in natural language processing": "../listen-audio/e_brian_cbcf2fc6fd96.mp3", "the shifted window based self-attention is shown to be effective": "../listen-audio/e_brian_77a569a35a84.mp3", "Swin Transformer achieves the state-of-the-art performance": "../listen-audio/e_brian_b0ba1863e582.mp3"}}, "en-US-AndrewNeural": {"w": {"benchmark": "../listen-audio/w_andrew_benchmark.mp3", "framework": "../listen-audio/w_andrew_framework.mp3", "inference": "../listen-audio/w_andrew_inference.mp3", "residual": "../listen-audio/w_andrew_residual.mp3", "regularization": "../listen-audio/w_andrew_regularization.mp3", "architecture": "../listen-audio/w_andrew_architecture.mp3", "entity": "../listen-audio/w_andrew_entity.mp3", "resolution": "../listen-audio/w_andrew_resolution.mp3", "prevalent": "../listen-audio/w_andrew_prevalent.mp3", "translation": "../listen-audio/w_andrew_translation.mp3", "representation": "../listen-audio/w_andrew_representation.mp3", "complement": "../listen-audio/w_andrew_complement.mp3", "dimension": "../listen-audio/w_andrew_dimension.mp3", "embedding": "../listen-audio/w_andrew_embedding.mp3", "masking": "../listen-audio/w_andrew_masking.mp3", "yield": "../listen-audio/w_andrew_yield.mp3", "complexity": "../listen-audio/w_andrew_complexity.mp3", "semantic": "../listen-audio/w_andrew_semantic.mp3", "optimizer": "../listen-audio/w_andrew_optimizer.mp3", "outperform": "../listen-audio/w_andrew_outperform.mp3", "surpass": "../listen-audio/w_andrew_surpass.mp3", "sophisticated": "../listen-audio/w_andrew_sophisticated.mp3", "ablation": "../listen-audio/w_andrew_ablation.mp3", "modality": "../listen-audio/w_andrew_modality.mp3"}}, "zh-CN-YunyangNeural": {"m": {"推理，推断": "../listen-audio/m_yunyang_3cea14beee0a.mp3", "插值": "../listen-audio/m_yunyang_83ddead03021.mp3", "残差的，剩余的": "../listen-audio/m_yunyang_a4144438c311.mp3", "参数化": "../listen-audio/m_yunyang_d27f1135c6e3.mp3", "正则化": "../listen-audio/m_yunyang_4bd7c8e0b175.mp3", "表示，表征": "../listen-audio/m_yunyang_a3551d56cb9f.mp3", "语义的": "../listen-audio/m_yunyang_77eaf7dfc7b0.mp3", "优化器": "../listen-audio/m_yunyang_2dcc2a9e9492.mp3", "胜过，优于": "../listen-audio/m_yunyang_04ce62ec4834.mp3", "复杂的，精密的": "../listen-audio/m_yunyang_1cfb661498eb.mp3", "随机的": "../listen-audio/m_yunyang_74a339468c12.mp3", "卷积的": "../listen-audio/m_yunyang_809e5695d16b.mp3", "下采样": "../listen-audio/m_yunyang_8afd53a44331.mp3", "非线性": "../listen-audio/m_yunyang_2997c8e005c6.mp3", "增强，扩充": "../listen-audio/m_yunyang_228773005a2e.mp3", "可扩展的": "../listen-audio/m_yunyang_2fbf536cb396.mp3", "超越，胜过": "../listen-audio/m_yunyang_df9209a27993.mp3", "不变性": "../listen-audio/m_yunyang_a916edad8219.mp3", "调查，研究": "../listen-audio/m_yunyang_fe1373e2c314.mp3", "余弦": "../listen-audio/m_yunyang_8e1b7b495c69.mp3", "基准，基准测试": "../listen-audio/m_yunyang_abf247b373ca.mp3", "上采样": "../listen-audio/m_yunyang_ffdb0dc13727.mp3", "模态，形态": "../listen-audio/m_yunyang_5104777c686e.mp3", "架构，体系结构": "../listen-audio/m_yunyang_91b9fa3cf78e.mp3", "掩码，遮罩": "../listen-audio/m_yunyang_550b309dae9f.mp3", "连接，拼接": "../listen-audio/m_yunyang_da5ccd4c48dd.mp3", "主导，支配": "../listen-audio/m_yunyang_fec2c93e3a34.mp3", "框架，体系": "../listen-audio/m_yunyang_daf4abbd97d8.mp3", "硬件": "../listen-audio/m_yunyang_ed9bebaba92a.mp3", "适应，改编": "../listen-audio/m_yunyang_e41ea5383f70.mp3", "流行的，普遍的": "../listen-audio/m_yunyang_28fd0bc92470.mp3", "方法，途径": "../listen-audio/m_yunyang_53da447629be.mp3", "产生，带来": "../listen-audio/m_yunyang_d95276de6982.mp3", "实现，实施": "../listen-audio/m_yunyang_6ba71e90c346.mp3", "分割，切分": "../listen-audio/m_yunyang_824da3a53086.mp3", "维度，尺寸": "../listen-audio/m_yunyang_d92229d62b9c.mp3", "补充，完善": "../listen-audio/m_yunyang_131b16679bdb.mp3", "分辨率，解决": "../listen-audio/m_yunyang_4d493153ba3a.mp3", "高效的，有效率的": "../listen-audio/m_yunyang_2de7aa9b340d.mp3", "金字塔": "../listen-audio/m_yunyang_9d7bf62166dc.mp3", "准确率，精确度": "../listen-audio/m_yunyang_0f8542258e54.mp3", "分层的，等级制的": "../listen-audio/m_yunyang_ba1ad38358ba.mp3", "骨干网络，主干结构": "../listen-audio/m_yunyang_b37d1e15c601.mp3", "实体，存在": "../listen-audio/m_yunyang_f10906303ecc.mp3", "效率，效能": "../listen-audio/m_yunyang_dc40ec90a3cd.mp3", "复杂性，复杂度": "../listen-audio/m_yunyang_1a1a3770f2f9.mp3", "证明，演示": "../listen-audio/m_yunyang_6aee38ba75b3.mp3", "兼容的，可共存的": "../listen-audio/m_yunyang_87d92f8b5c41.mp3", "革命性的，突破性的": "../listen-audio/m_yunyang_b4156a01d0ce.mp3", "进化，演变": "../listen-audio/m_yunyang_6f7cdc8101fc.mp3", "巨大的，极大的": "../listen-audio/m_yunyang_7652cec5ca94.mp3", "适用性，应用性": "../listen-audio/m_yunyang_7eef6df18718.mp3", "棘手的，难解的": "../listen-audio/m_yunyang_832a60a91bb0.mp3", "二次的，平方的": "../listen-audio/m_yunyang_1d289a112d18.mp3", "变体，变形": "../listen-audio/m_yunyang_6066ec5dd04e.mp3", "推动，推进": "../listen-audio/m_yunyang_6f324242abc7.mp3", "异构的，不同种类的": "../listen-audio/m_yunyang_75f9ae2f1684.mp3", "开创性的，先驱的": "../listen-audio/m_yunyang_8d2f679fb3db.mp3", "不合适的，不适宜的": "../listen-audio/m_yunyang_b1e94195a2b4.mp3", "并发的，同时发生的": "../listen-audio/m_yunyang_c29c793efbe7.mp3", "相关性，关联": "../listen-audio/m_yunyang_cc9a5ebb724c.mp3", "嵌入，嵌入层": "../listen-audio/m_yunyang_c49ed1bb43d7.mp3", "分区，划分": "../listen-audio/m_yunyang_8ca3419c7ceb.mp3", "交替，轮流": "../listen-audio/m_yunyang_2dfd76c26b2e.mp3", "位移，取代": "../listen-audio/m_yunyang_f9235f6c935b.mp3", "循环的，周期的": "../listen-audio/m_yunyang_74b7b8624854.mp3", "相邻的，邻近的": "../listen-audio/m_yunyang_d1756cd113f2.mp3", "相似性，类似": "../listen-audio/m_yunyang_7de7319221bb.mp3", "延迟，潜伏": "../listen-audio/m_yunyang_e3a3c05e9747.mp3", "关键的，至关重要的": "../listen-audio/m_yunyang_2369f560ea24.mp3", "吞吐量，产量": "../listen-audio/m_yunyang_c619204f06af.mp3", "级联，串联": "../listen-audio/m_yunyang_484adc373de1.mp3", "消融，切除": "../listen-audio/m_yunyang_f98493168a5f.mp3", "有效性，效力": "../listen-audio/m_yunyang_524c7105c98a.mp3", "开销，额外负担": "../listen-audio/m_yunyang_6befe765917c.mp3", "翻译，平移": "../listen-audio/m_yunyang_d313b0f1b7d3.mp3", "归纳的，诱导的": "../listen-audio/m_yunyang_de190de2f884.mp3", "特征，特点": "../listen-audio/m_yunyang_683a12aa29f0.mp3", "计算，运算": "../listen-audio/m_yunyang_18a69ed11c71.mp3", "设计，构思": "../listen-audio/m_yunyang_44895e493fa8.mp3", "元素，要素": "../listen-audio/m_yunyang_460312a6b60b.mp3", "消融实验，切除实验": "../listen-audio/m_yunyang_b7817b384aad.mp3", "对应物，副本": "../listen-audio/m_yunyang_58a5fe55721e.mp3", "加速，加速比": "../listen-audio/m_yunyang_403c68cc5ed9.mp3", "权衡，折衷": "../listen-audio/m_yunyang_5b972614d15a.mp3", "呈现，提出": "../listen-audio/m_yunyang_0f14a052a474.mp3", "鼓励，激励": "../listen-audio/m_yunyang_0c6a15cd9b97.mp3", "统一的，一体的": "../listen-audio/m_yunyang_06edc1f1d3e0.mp3", "有效的，生效的": "../listen-audio/m_yunyang_6cfe8d8b98e0.mp3", "性能，表现": "../listen-audio/m_yunyang_e33d6f38f24f.mp3"}}, "zh-CN-YunjianNeural": {"m": {"推理，推断": "../listen-audio/m_yunjian_3cea14beee0a.mp3", "插值": "../listen-audio/m_yunjian_83ddead03021.mp3", "残差的，剩余的": "../listen-audio/m_yunjian_a4144438c311.mp3", "参数化": "../listen-audio/m_yunjian_d27f1135c6e3.mp3", "正则化": "../listen-audio/m_yunjian_4bd7c8e0b175.mp3", "表示，表征": "../listen-audio/m_yunjian_a3551d56cb9f.mp3", "语义的": "../listen-audio/m_yunjian_77eaf7dfc7b0.mp3", "优化器": "../listen-audio/m_yunjian_2dcc2a9e9492.mp3", "胜过，优于": "../listen-audio/m_yunjian_04ce62ec4834.mp3", "复杂的，精密的": "../listen-audio/m_yunjian_1cfb661498eb.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -464,11 +637,20 @@ const SKINS=[
   {id:"netease",n:"网易云黑",p:"linear-gradient(135deg,#3a2429,#150d10)"},
   {id:"vinyl",n:"黑胶原色",p:"linear-gradient(135deg,#e6e9f2,#161616)"},
   {id:"gold",n:"香槟金",p:"linear-gradient(135deg,#f2dfbd,#3a2a14)"},
+  {id:"sakura",n:"樱花粉",p:"linear-gradient(135deg,#fdeef3,#f2b9cd)"},
+  {id:"matcha",n:"抹茶",p:"linear-gradient(135deg,#eef3e6,#a9c489)"},
+  {id:"mint",n:"薄荷",p:"linear-gradient(135deg,#eefaf7,#8fd8c8)"},
+  {id:"ocean",n:"海盐蓝",p:"linear-gradient(135deg,#eef5fc,#7fb3e6)"},
+  {id:"grape",n:"星空紫",p:"linear-gradient(135deg,#f2eefa,#b39ade)"},
+  {id:"amusic",n:"Apple红",p:"linear-gradient(135deg,#fff4f4,#fa5c74)"},
+  {id:"mocha",n:"摩卡",p:"linear-gradient(135deg,#f7f1ea,#b08d6d)"},
+  {id:"spotify",n:"Spotify",p:"linear-gradient(135deg,#1d2420,#1db954)"},
+  {id:"midnight",n:"深夜蓝",p:"linear-gradient(135deg,#1e2740,#4a9eff)"},
   {id:"vinylx",n:"悬浮黑胶",p:"radial-gradient(circle at 50% 50%,#5b5bd6 0 30%,#17171a 31%)"}
 ];
 const $=id=>document.getElementById(id);
 const app=$("app");
-let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0};
+let S={voice:"us",pause:2000,reveal:true,zh:true,ex:true,order:"seq",skipOn:true,font:"sans",repeat:1,source:"all",timer:0,rate:1,enVoice:"",zhVoice:""};
 try{const c=JSON.parse(localStorage.getItem("listen_qq_cfg")||"{}");Object.assign(S,c)}catch(e){}
 const save=()=>{try{localStorage.setItem("listen_qq_cfg",JSON.stringify(S))}catch(e){}};
 
@@ -480,16 +662,26 @@ const SECS=[...new Set(ITEMS.map(i=>i.sec))];
 let range={};
 try{const r=JSON.parse(localStorage.getItem("listen_qq_range")||"null");if(r)range=r}catch(e){}
 SECS.forEach(s=>{if(!(s in range))range[s]=true});
+/* 词汇级别筛选（老版功能，之前搬新模板时漏掉了）：默认全开，点一下关掉该级 */
+const LVORDER=["四级","六级","考研","考博","雅思托福","GRE"];
+const LVS=LVORDER.filter(k=>ITEMS.some(i=>i.lv===k||i.ov===k));
+let lvOff=new Set();
+try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.isArray(s))lvOff=new Set(s)}catch(e){}
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
+let pendingRebuild=false;    /* 播放中改了标记：等当前词念完再重建队列，绝不中途掐断 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
+  /* 词汇级别筛选（四级/六级/考研/考博/雅思托福/GRE） */
+  if(lvOff&&lvOff.size) list=list.filter(i=>!lvOff.has(i.lv)&&!(i.ov&&lvOff.has(i.ov)));
   if(S.source==="star")      list=list.filter(i=>stars.has(i.w));    /* 只背星标词 */
   else if(S.source==="fav")  list=list.filter(i=>favs.has(i.w));     /* 只读收藏词 */
-  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过不读的 */
-  if(S.source!=="all")       list=list.filter(i=>!skips.has(i.w));   /* 专背模式下「不读」依然生效 */
+  else if(S.source==="skip") list=list.filter(i=>skips.has(i.w));    /* 仅跳过：回看被跳过的，方便取消 */
+  else if(S.source==="new")  list=list.filter(i=>!skips.has(i.w));   /* 仅新词：只读还没标已掌握的 */
+  else if(S.skipOn)          list=list.filter(i=>!skips.has(i.w));   /* 全部：按开关跳过已划掉的 */
+  /* 专背模式不再二次排除已跳过的：否则「星标+已跳过」的词根本读不到，没法取消误点 */
   if(S.order==="rand"){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
   queue=list;
   if(qi>=queue.length)qi=0;
@@ -498,6 +690,19 @@ function rebuild(keep){
   const cur=queue[qi];
   buildQueue();
   if(keep&&cur){const k=queue.findIndex(x=>x.w===cur.w);qi=k>=0?k:0}
+  pendingRebuild=false;                       /* 这里已经重建过了，撤掉待办的延迟重建 */
+}
+/* 延迟重建：等到"当前这个词念完"再生效（给 pendingRebuild 用） */
+function rebuildKeepPos(){
+  const oldLen=queue.length, oldQi=qi, cur=queue[qi], key=cur?cur.w:null;
+  buildQueue();
+  if(!queue.length){qi=0;return}
+  if(!key){if(qi>=queue.length)qi=0;return}
+  const k=queue.findIndex(x=>x.w===key);
+  if(k>=0){qi=k;return}                       /* 当前词还在队列里：原地不动 */
+  /* 当前词已被排除（刚标了跳过 / 取消了星标）：把指针放到"下一个该读的词"的前一位，
+     goNext 再 +1，正好接到原位置上的那个词——不会漏读，也不会重读 */
+  qi = (oldQi>=oldLen-1) ? -1 : Math.min(oldQi,queue.length-1)-1;
 }
 function updateBtns(){
   const w=queue[qi];
@@ -507,13 +712,33 @@ function updateBtns(){
 }
 function updateCounts(){
   $("skipCnt").textContent="已跳过 "+skips.size+" 词";
-  $("markCnt").textContent="⭐ "+stars.size+" · ❤ "+favs.size+" · ✓ "+skips.size;
+  /* 和「词库来源」同一套图标：星标 / 收藏 / 跳过（原先是 ⭐❤✓ emoji 混搭） */
+  $("markCnt").innerHTML="<b>"+IC.star+stars.size+"</b><b>"+IC.heart+favs.size+"</b><b>"+IC.skip+skips.size+"</b>";
 }
-/* 标记后统一收尾：重建队列，空了就提示，否则接着播 */
+/* 当前词的标记：只显示「跳过」（星标/收藏看顶栏图标即可，不重复占地方） */
+function renderMarks(w){
+  const box=$("mkBadge"); if(!box)return;
+  if(!w||!skips.has(w.w)){box.style.display="none";return}
+  box.innerHTML='<i class="mk" data-cancel="skip" title="此词已跳过 · 点一下恢复朗读">'+IC.skip+'<i>✕</i></i>';
+  box.style.display="flex";
+}
+$("mkBadge").onclick=e=>{
+  const el=e.target.closest("[data-cancel]"); if(!el)return;
+  const w=queue[qi]; if(!w)return;
+  const k=el.dataset.cancel;
+  if(k==="star"){stars.delete(w.w);wr("listen_qq_star",stars);wordTip("已取消星标「"+w.w+"」")}
+  else if(k==="fav"){favs.delete(w.w);wr("listen_qq_fav",favs);wordTip("已取消收藏「"+w.w+"」")}
+  else if(k==="skip"){skips.delete(w.w);wr("listen_qq_skip",skips);wordTip("已恢复朗读「"+w.w+"」")}
+  afterMark();
+};
+/* 标记后收尾：正在朗读时不打断——当前词照常念完，队列等这个词结束时才重建。
+   （以前是立刻重建+重播，等于一点 ✓ 这个词就被掐掉，这次白学了） */
 function afterMark(){
-  updateBtns(); updateCounts(); rebuild(true);   /* 保留当前词：随机模式下重排也不会跳走 */
+  updateBtns(); updateCounts(); renderMarks(queue[qi]);
+  if(playing){ pendingRebuild=true; return }
+  rebuild(true);
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
-  if(playing)playCurrent(); else render(queue[qi],true);
+  render(queue[qi],true);
 }
 function renderRange(){
   const box=$("rangeBox"); box.innerHTML="";
@@ -525,6 +750,27 @@ function renderRange(){
       range[s]=!range[s];
       try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(e){}
       renderRange(); rebuild(true); updateArm();
+      if(!playing&&queue[qi])render(queue[qi],true);
+    };
+    box.appendChild(c);
+  });
+}
+/* 词汇级别：点一下关掉该级（再点开回来），和「范围」同一套交互 */
+function renderLv(){
+  const box=$("lvBox"); if(!box)return;
+  const row=box.closest(".srow");
+  if(!LVS.length){ if(row)row.style.display="none"; return }
+  box.innerHTML="";
+  LVS.forEach(k=>{
+    const c=document.createElement("b");
+    c.textContent=k+" "+ITEMS.filter(i=>i.lv===k||i.ov===k).length;
+    c.className=lvOff.has(k)?"":"on";
+    c.title="点一下"+(lvOff.has(k)?"恢复":"关掉")+"朗读「"+k+"」的词";
+    c.onclick=()=>{
+      if(lvOff.has(k))lvOff.delete(k); else lvOff.add(k);
+      try{localStorage.setItem("listen_qq_lvoff",JSON.stringify([...lvOff]))}catch(e){}
+      renderLv(); rebuild(true); updateArm(); updateCounts();
+      if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
       if(!playing&&queue[qi])render(queue[qi],true);
     };
     box.appendChild(c);
@@ -545,11 +791,23 @@ $("skinBtn").onclick=()=>{ skinIdx=(skinIdx+1)%SKINS.length; applySkin(SKINS[ski
 try{const sv=localStorage.getItem("listen_qq_skin"); if(sv)applySkin(sv,false)}catch(e){}
 
 // 设置段
+/* 小图标库：星标 / 收藏 / 跳过（用户提供）/ 加号（新词）/ 全部 */
+const IC={
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3.8 2.6 5.3 5.8.85-4.2 4.1 1 5.8-5.2-2.75-5.2 2.75 1-5.8-4.2-4.1 5.8-.85Z"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
+  skip:'<svg class="fill" viewBox="0 0 1024 1024"><path d="M921.6 356.266667c-14.933333-8.533333-34.133333-4.266667-42.666667 12.8L829.866667 448c-51.2-157.866667-200.533333-266.666667-369.066667-266.666667-172.8 0-324.266667 115.2-373.333333 277.333334-4.266667 17.066667 4.266667 34.133333 21.333333 40.533333 17.066667 4.266667 34.133333-4.266667 40.533333-21.333333 40.533333-136.533333 166.4-232.533333 311.466667-232.533334 140.8 0 264.533333 89.6 307.2 219.733334l-81.066667-46.933334c-14.933333-8.533333-34.133333-4.266667-42.666666 10.666667-8.533333 14.933333-4.266667 34.133333 10.666666 42.666667l147.2 85.333333c4.266667 2.133333 10.666667 4.266667 17.066667 4.266667 2.133333 0 6.4 0 8.533333-2.133334 8.533333-2.133333 14.933333-8.533333 19.2-14.933333l85.333334-147.2c8.533333-12.8 4.266667-32-10.666667-40.533333zM896 757.333333H128c-17.066667 0-32 14.933333-32 32s14.933333 32 32 32h768c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z"/></svg>',
+  news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 13.6 9.4l4.9 1.6-4.9 1.6L12 17.5l-1.6-4.9-4.9-1.6 4.9-1.6Z"/></svg>',
+  all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>'
+};
 function seg(box,opts,get,set,after){
   box.innerHTML="";
   opts.forEach(o=>{
-    const b=document.createElement("b"); b.textContent=o.t; b.dataset.v=o.v;
-    b.className=get()===o.v?"on":"";
+    const b=document.createElement("b");
+    if(o.svg){ b.innerHTML=o.svg; b.className="icn" } else { b.textContent=o.t }
+    b.dataset.v=o.v;
+    if(o.tip) b.title=o.tip;
+    if(get()===o.v) b.classList.add("on");
     b.onclick=()=>{set(o.v);box.querySelectorAll("b").forEach(x=>x.classList.remove("on"));b.classList.add("on");save();after&&after(o.v)};
     box.appendChild(b);
   });
@@ -565,6 +823,9 @@ seg($("segVoice"),[{t:"美音",v:"us"},{t:"英音",v:"uk"}],()=>S.voice,v=>S.voi
   ()=>refreshCurrent("发音： "+(S.voice==="uk"?"英音":"美音")));
 seg($("segPause"),[{t:"2s",v:2000},{t:"4s",v:4000},{t:"6s",v:6000}],()=>S.pause,v=>S.pause=v,
   ()=>refreshCurrent("每词停顿： "+(S.pause/1000)+" 秒"));
+/* 语速：直接改 audio.playbackRate（对有道/百度/系统语音都生效，不改音调） */
+seg($("segRate"),[{t:"0.75x",v:.75},{t:"1x",v:1},{t:"1.25x",v:1.25},{t:"1.5x",v:1.5}],()=>+S.rate||1,v=>S.rate=v,
+  ()=>refreshCurrent("语速： "+S.rate+"x"));
 /* 单词重复次数：1/3/5 快捷 + 右侧输入框自定义（1–20） */
 function setRepeat(v,persist){
   v=Math.max(1,Math.min(20,Math.round(+v||1)));
@@ -581,15 +842,25 @@ seg($("segReveal"),[{t:"开",v:true},{t:"关",v:false}],()=>S.reveal,v=>S.reveal
   ()=>refreshCurrent("先听后现： "+(S.reveal?"开":"关")));
 seg($("segZh"),[{t:"开",v:true},{t:"关",v:false}],()=>S.zh,v=>S.zh=v,
   ()=>refreshCurrent("朗读中文： "+(S.zh?"开":"关")));
+/* 朗读例句：沿用老版方案 = 百度在线合成（lan=en，spd=5，source=web）。
+   本篇若预生成了例句音频则用本地微软音，没有就走百度在线 */
 seg($("segEx"),[{t:"开",v:true},{t:"关",v:false}],()=>S.ex,v=>S.ex=v,
   ()=>refreshCurrent("朗读例句： "+(S.ex?"开":"关")));
 // 单词字体：选项本身就用自己的字体渲染，所见即所得
 const FONTS=[
-  {v:"sans", t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
-  {v:"serif",t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
-  {v:"round",t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
-  {v:"kai",  t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
-  {v:"mono", t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'}
+  {v:"sans",    t:"黑体", f:'"PingFang SC",-apple-system,"Helvetica Neue",sans-serif'},
+  {v:"serif",   t:"宋体", f:'"Songti SC","SimSun",Georgia,serif'},
+  {v:"round",   t:"圆体", f:'"Yuanti SC","Hiragino Sans GB","PingFang SC",sans-serif'},
+  {v:"kai",     t:"楷体", f:'"Kaiti SC","STKaiti","楷体",serif'},
+  {v:"mono",    t:"等宽", f:'"SF Mono",Menlo,Consolas,monospace'},
+  {v:"xingkai", t:"行楷", f:'"Xingkai SC","STXingkai","Snell Roundhand",cursive'},
+  {v:"weibei",  t:"魏碑", f:'"Weibei SC","STWeibei","Kaiti SC",serif'},
+  {v:"wawati",  t:"娃娃", f:'"Wawati SC","STWawati","Comic Sans MS",cursive'},
+  {v:"lanting", t:"兰亭", f:'"Lantinghei SC","FZLanTingHei-S-GB","PingFang SC",sans-serif'},
+  {v:"futura",  t:"几何", f:'Futura,"Avenir Next","Century Gothic",sans-serif'},
+  {v:"georgia", t:"书卷", f:'Georgia,"Times New Roman","Songti SC",serif'},
+  {v:"rounded", t:"圆润", f:'"Arial Rounded MT Bold","Hiragino Maru Gothic ProN","Yuanti SC",sans-serif'},
+  {v:"marker",  t:"手写", f:'"Marker Felt","Chalkboard SE","Comic Sans MS",cursive'}
 ];
 function applyFont(v){
   const f=FONTS.find(x=>x.v===v)||FONTS[0];
@@ -631,32 +902,160 @@ function applySource(){
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
   if(playing)playCurrent(); else render(queue[qi],true);
 }
-seg($("segSource"),[{t:"全部",v:"all"},{t:"仅⭐",v:"star"},{t:"仅❤",v:"fav"}],()=>S.source,v=>S.source=v,applySource);
+/* 词库来源：纯图标（全部 / 星标 / 收藏 / 跳过 / 新词），鼠标悬停有说明 */
+seg($("segSource"),[
+  {v:"all", svg:IC.all,  tip:"全部词"},
+  {v:"star",svg:IC.star, tip:"只看星标词"},
+  {v:"fav", svg:IC.heart,tip:"只看收藏词"},
+  {v:"skip",svg:IC.skip, tip:"只看已跳过的词（点标记可取消）"},
+  {v:"new", svg:IC.news, tip:"只看还没跳过的词"}
+],()=>S.source,v=>S.source=v,applySource);
 
 seg($("segOrder"),[{t:"顺序",v:"seq"},{t:"随机",v:"rand"}],()=>S.order,v=>S.order=v,
   ()=>{rebuild(true);updateArm();if(!playing&&queue[qi])render(queue[qi],true)});
 seg($("segSkip"),[{t:"开",v:true},{t:"关",v:false}],()=>S.skipOn,v=>S.skipOn=v,
   ()=>{rebuild(true);updateArm()});
-renderRange(); updateCounts();
+renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}
-  if(favs.has(w.w)){favs.delete(w.w);toast("已取消收藏「"+w.w+"」")}else{favs.add(w.w);toast("已收藏「"+w.w+"」")}
+  if(favs.has(w.w)){favs.delete(w.w);wordTip("已取消收藏「"+w.w+"」")}else{favs.add(w.w);wordTip("已收藏「"+w.w+"」")}
   wr("listen_qq_fav",favs); afterMark();
 };
 $("starBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标星");return}
-  if(stars.has(w.w)){stars.delete(w.w);toast("已取消星标「"+w.w+"」")}else{stars.add(w.w);toast("已标星「"+w.w+"」，可只背星标")}
+  if(stars.has(w.w)){stars.delete(w.w);wordTip("已取消星标「"+w.w+"」")}else{stars.add(w.w);wordTip("已标星「"+w.w+"」，可只背星标")}
   wr("listen_qq_star",stars); afterMark();
 };
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
-  if(skips.has(w.w)){skips.delete(w.w);toast("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);toast("此词不再朗读「"+w.w+"」")}
+  if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
+  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
   wr("listen_qq_skip",skips); afterMark();
 };
-$("clearSkip").onclick=()=>{skips.clear();wr("listen_qq_skip",skips);updateCounts();rebuild(true);toast("已清空「不读」列表")};
-$("clearStar").onclick=()=>{stars.clear();wr("listen_qq_star",stars);updateCounts();rebuild(true);toast("已清空星标")};
+/* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
+$("clearBox").innerHTML=[["star",IC.star,"清空所有星标"],["fav",IC.heart,"清空所有收藏"],["skip",IC.skip,"清空所有跳过（恢复朗读）"]]
+  .map(x=>'<b data-clr="'+x[0]+'" title="'+x[2]+'">'+x[1]+'<i>✕</i></b>').join("");
+/* 清空按钮：每次点击都必须有反馈——原先星标本来就是 0 时点「清空星标」毫无反应，像坏了 */
+$("clearSkip").onclick=()=>{
+  if(!skips.size){toast("本来就没有跳过的词");return}
+  const n=skips.size; skips.clear(); wr("listen_qq_skip",skips); afterMark(); toast("已清空 "+n+" 个跳过词");
+};
+$("clearBox").onclick=e=>{
+  const b=e.target.closest("[data-clr]"); if(!b)return;
+  const k=b.dataset.clr;
+  const set = k==="star"?stars : k==="fav"?favs : skips;
+  const key = k==="star"?"listen_qq_star" : k==="fav"?"listen_qq_fav" : "listen_qq_skip";
+  const name= k==="star"?"星标" : k==="fav"?"收藏" : "跳过";
+  const n=set.size;
+  if(!n){ toast("本来就没有"+name+"的词"); return }
+  set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
+};
+const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
+/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
+const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
+const LKEY="listen_qq_links";
+const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
+const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
+let LINKS=rdLinks();
+const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+
+function renderLinkPop(){
+  const box=$("linkList"),btns=$("linkPopBtns");
+  if(!LINKS.length){
+    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
+    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
+    $("lpCfg").onclick=openLinkCfg;
+    return;
+  }
+  const multi=LINKS.length>1;
+  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
+    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
+    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
+    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
+  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
+    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
+  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
+  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
+    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
+  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
+  $("lpOpenAll").onclick=()=>openMany(LINKS);
+  $("lpCfg").onclick=openLinkCfg;
+}
+function openLinkCfg(){
+  $("linkPop").classList.remove("on");
+  const box=$("linkRows");
+  const row=l=>'<div class="lkrow">'
+    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
+    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
+    +'<span class="del" title="删除此行">✕</span></div>';
+  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
+  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
+  bindDel();
+  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
+  $("linkCfg").classList.add("on");
+}
+$("linkSave").onclick=()=>{
+  const out=[];
+  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
+    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
+    if(!raw)return;
+    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
+  });
+  LINKS=out; wrLinks(out);
+  $("linkCfg").classList.remove("on");
+  toast("已保存 "+out.length+" 个链接");
+};
+$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
+$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
+
+/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+$("backupBox").onclick=e=>{
+  const b=e.target.closest("[data-bk]");if(!b)return;
+  if(b.dataset.bk==="cfg")openLinkCfg();
+  else if(b.dataset.bk==="out")doExport();
+  else $("importFile").click();
+};
+function doExport(){
+  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
+    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+}
+$("importFile").onchange=e=>{
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const d=JSON.parse(r.result);
+      if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
+      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
+      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
+        const cur=new Set((links[k]||[]).map(l=>l.url));
+        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
+      });
+      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
+      (d.favs||[]).forEach(w=>favs.add(w));
+      (d.skips||[]).forEach(w=>skips.add(w));
+      wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
+      if(d.cfg){Object.assign(S,d.cfg);save()}
+      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      LINKS=rdLinks();updateCounts();afterMark();
+      toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
+      setTimeout(()=>location.reload(),1200);
+    }catch(err){toast("导入失败："+err.message)}
+    e.target.value="";
+  };
+  r.readAsText(f);
+};
+
 /* 弯箭头：沿用旧设计语义 = 重听当前词（不想启用时删掉这三行即可） */
 $("replayBtn").onclick=()=>{
   if(!queue[qi])return;
@@ -667,6 +1066,10 @@ $("replayBtn").onclick=()=>{
 // 颜色/封面
 function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1600)}
+/* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方 */
+function wordTip(m){const t=$("wordTip");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1300)}
+/* 标记点亮：图标动一下，短促、不挡视线（和收藏/星标同一手感） */
+function pulse(id){const el=$(id);if(!el)return;el.classList.remove("pulse");void el.offsetWidth;el.classList.add("pulse");setTimeout(()=>el.classList.remove("pulse"),360)}
 
 // 唱臂：静止垂直在盘右 → 播放落到盘面 → 随队列进度内移
 const armBar=document.querySelector(".arm .bar");
@@ -684,6 +1087,8 @@ function updateArm(){
 
 function render(w,reveal){
   app.style.setProperty("--h",hue(w.w));
+  updateBtns();                                      /* 顶栏 ❤/★/✓ 跟随当前词（原先切词不刷新，显示的是上一个词的状态） */
+  renderMarks(w);                                    /* 跳过标记（仅被跳过的词显示） */
   $("art").style.opacity=(S.reveal&&!reveal)?.42:1;   /* 先听后现：未揭晓时封面变暗 */
   $("wsec").textContent=w.sec+" · "+w.lv+" · 第 "+(qi+1)+"/"+queue.length+" 词";
   $("wbig").textContent=w.w;
@@ -702,32 +1107,158 @@ function render(w,reveal){
   updateBtns();
 }
 
+/* 音源（全部实测过）：
+   · 单词 → 有道词典音（只有一个英文词时可靠）
+   · 中文/例句 → 百度 gettts，必须带 spd + **source=web**，否则返回错误页（200 但播不出）
+   · 每个都带兜底 + 开播看门狗，最后一层用系统语音 */
+/* ===== 本地微软语音：按音色取音频，缺失自动回退其它音色 → 再回退在线 TTS ===== */
+const VNAME={
+  "en-US-BrianNeural":"Brian","en-US-AndrewNeural":"Andrew","en-US-GuyNeural":"Guy",
+  "en-US-AriaNeural":"Aria","en-US-JennyNeural":"Jenny","en-US-AvaNeural":"Ava",
+  "en-US-EmmaNeural":"Emma","en-US-ChristopherNeural":"Christopher","en-US-EricNeural":"Eric",
+  "en-US-RogerNeural":"Roger","en-US-SteffanNeural":"Steffan","en-US-AnaNeural":"Ana",
+  "en-US-MichelleNeural":"Michelle","en-GB-SoniaNeural":"Sonia","en-GB-RyanNeural":"Ryan",
+  "en-GB-LibbyNeural":"Libby","en-GB-ThomasNeural":"Thomas","en-GB-MaisieNeural":"Maisie",
+  "zh-CN-YunyangNeural":"云扬","zh-CN-YunjianNeural":"云健","zh-CN-YunxiNeural":"云希",
+  "zh-CN-XiaoxiaoNeural":"晓晓","zh-CN-XiaoyiNeural":"晓伊","zh-CN-YunxiaNeural":"云夏",
+  "zh-CN-liaoning-XiaobeiNeural":"晓北","zh-CN-shaanxi-XiaoniNeural":"晓妮"
+};
+const voiceLabel=id=>VNAME[id]||String(id).replace(/Neural$/,"").split("-").pop();
+/* 本篇已生成哪些音色：w/e = 英文音色，m = 中文音色 */
+function audioVoices(kind){ try{ return AUDIO?Object.keys(AUDIO).filter(v=>AUDIO[v]&&AUDIO[v][kind]):[] }catch(e){ return [] } }
+function localAudio(t,kind){
+  try{
+    if(!AUDIO)return "";
+    const map = kind==="word"?"w" : kind==="zh"?"m" : kind==="sent"?"e" : null;
+    if(!map)return "";
+    const key = kind==="word" ? String(t).toLowerCase()
+              : kind==="zh"   ? String(t).replace(/^[a-z]+\.\s*/i,"")
+              : String(t);
+    const all = audioVoices(map);
+    const want = kind==="zh" ? S.zhVoice : S.enVoice;
+    const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    for(let i=0;i<order.length;i++){
+      const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
+      if(m&&m[key])return m[key];
+    }
+  }catch(e){}
+  return "";
+}
+/* 中文朗读文本：去掉词性前缀 + 去掉括号里的英文注释。
+   否则中文音色会把括号里的英文也念出来，中英混读听着就是"机器音" */
+function zhText(w){
+  return String((w&&w.m)||"")
+    .replace(/^[a-z]+\.\s*/i,"")
+    .replace(/[（(][^）)]*[A-Za-z][^）)]*[）)]/g,"")
+    .replace(/\s+/g," ").trim();
+}
 function ttsURL(t,kind){
-  if(kind==="zh")return "https://fanyi.baidu.com/gettts?lan=zh&text="+encodeURIComponent(t);
-  if(kind==="sent")return "https://fanyi.baidu.com/gettts?lan=en&text="+encodeURIComponent(t);
-  return "https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+encodeURIComponent(t);
+  const e=encodeURIComponent(t);
+  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
+  const L=localAudio(t,kind); if(L)return L;
+  if(kind==="zh")return bd("zh");
+  if(kind==="sent")return bd("en");
+  return yd;
+}
+function ttsURLs(t,kind){
+  const e=encodeURIComponent(t);
+  const yd="https://dict.youdao.com/dictvoice?type="+(S.voice==="uk"?0:1)+"&audio="+e;
+  const bd=lan=>"https://fanyi.baidu.com/gettts?lan="+lan+"&spd=5&source=web&text="+e;   /* 老版参数：spd=5 */
+  const urls=[];
+  const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
+  if(kind==="zh")urls.push(bd("zh"));
+  else if(kind==="sent")urls.push(bd("en"));
+  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  return urls;
+}
+
+/* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
+(function voiceRows(){
+  const en=audioVoices("w"), zh=audioVoices("m");
+  const rowOf=id=>{const e=$(id); return e?e.closest(".srow"):null};
+  const rEn=rowOf("segEnVoice"), rZh=rowOf("segZhVoice");
+  if(en.length){
+    if(!S.enVoice||en.indexOf(S.enVoice)<0)S.enVoice=(en.find(v=>/brian/i.test(v))||en[0]);
+    seg($("segEnVoice"),en.map(v=>({t:voiceLabel(v),v})),()=>S.enVoice,v=>{S.enVoice=v},
+        ()=>refreshCurrent("单词音色： "+voiceLabel(S.enVoice)));
+    const vr=$("segVoice")&&$("segVoice").closest(".srow"); if(vr)vr.style.display="none";  /* 有微软音后，美音/英音已无意义 */
+  }else if(rEn){ rEn.style.display="none" }
+  if(zh.length){
+    if(!S.zhVoice||zh.indexOf(S.zhVoice)<0)S.zhVoice=(zh.find(v=>/yunyang/i.test(v))||zh[0]);
+    seg($("segZhVoice"),zh.map(v=>({t:voiceLabel(v),v})),()=>S.zhVoice,v=>{S.zhVoice=v},
+        ()=>refreshCurrent("中文音色： "+voiceLabel(S.zhVoice)));
+  }else if(rZh){ rZh.style.display="none" }
+})();
+let failStreak=0;   /* 连续失败计数：防止音源全挂时疯狂空转刷完词表 */
+/* 系统语音兜底：在线音源都不可用时，用浏览器自带语音朗读，保证有声音 */
+function speakLocal(text,lang,cb){
+  try{
+    if(!window.speechSynthesis){ cb&&cb(false); return }
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang=lang; u.rate=Math.max(.5,Math.min(2,(+S.rate||1)*.95));   /* 系统语音也跟着语速 */
+    let done=false; const fin=ok=>{ if(done)return; done=true; cb&&cb(ok) };
+    u.onend=()=>fin(true); u.onerror=()=>fin(false);
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    setTimeout(()=>fin(true),Math.min(12000,1200+String(text).length*90));  /* 无 onend 时按字长估算收尾 */
+  }catch(e){ cb&&cb(false) }
 }
 function say(text,kind,cb){
-  stopAudio();
-  audio=new Audio(ttsURL(text,kind));
-  let done=false;
-  const fin=ok=>{if(done)return;done=true;cb&&cb(ok)};
-  audio.onended=()=>fin(true);
-  audio.onerror=()=>fin(false);
-  audio.play().catch(err=>{ if(err&&err.name==="NotAllowedError")autoplayBlocked=true; fin(false) });
-  setTimeout(()=>fin(false),9000);
+  const urls=ttsURLs(text,kind);
+  const t0=Date.now();
+  let i=0, done=false, local=false;
+  const finish=ok=>{
+    if(done)return; done=true;
+    failStreak=ok?0:failStreak+1;
+    if(!ok&&failStreak>=3){                 /* 连续 3 次完全没声：停下来告诉用户，别静默刷词 */
+      clearT(); stopAudio(); setPlaying(false);
+      toast("⚠️ 朗读音源暂时不可用，已暂停。检查网络后点 ▶ 继续");
+      return;
+    }
+    const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
+    setTimeout(()=>cb&&cb(ok),wait);
+  };
+  const tryNext=()=>{
+    if(done)return;
+    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+      if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
+      local=true;
+      speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
+      return;
+    }
+    stopAudio();
+    const a=new Audio(urls[i++]);
+    audio=a;
+    try{a.playbackRate=+S.rate||1}catch(e){}      /* 语速（preservesPitch 默认开，不改音调） */
+    let started=false;
+    a.addEventListener("playing",()=>{ started=true });
+    a.addEventListener("ended",()=>{ if(started)finish(true); else tryNext() });
+    a.addEventListener("error",()=>{ if(!started)tryNext(); else finish(true) });
+    a.play().catch(err=>{
+      if(err&&err.name==="NotAllowedError"){ autoplayBlocked=true; finish(false) }
+      else tryNext();
+    });
+    setTimeout(()=>{ if(!started&&!done)tryNext() },2500);   /* 2.5s 没出声 → 换下一个音源 */
+    setTimeout(()=>{ if(!done)finish(!!started) },15000);
+  };
+  tryNext();
 }
 function stopAudio(){try{if(audio){audio.pause();audio=null}}catch(e){}}
 function clearT(){if(timer){clearTimeout(timer);timer=null}}
 
 /* 池子为空（比如「只背星标」但一个都没标）时的提示 */
 function emptyHint(){
-  const star=S.source==="star";
+  const src=S.source;
   $("wsec").textContent="";
   $("wbig").textContent="—";
   $("wipa").textContent="";
-  $("wmean").textContent=star?"还没有 ⭐ 星标词":"还没有 ❤ 收藏词";
-  $("wex").textContent="点右上角 "+(star?"☆":"❤")+" 标记后，这里会自动连播";
+  $("wmean").textContent = src==="star"?"还没有 ⭐ 星标词"
+    : src==="fav"?"还没有 ❤ 收藏词"
+    : src==="skip"?"还没有 ✓ 跳过的词"
+    : "这里还没有可读的词";
+  $("wex").textContent = src==="skip"?"在词上点「✓ 跳过」标记后，这里能集中回看并一键取消"
+    : "点右上角 "+(src==="fav"?"❤":"☆")+" 标记后，这里会自动连播";
+  renderMarks(null);
   $("wav").style.display="none";
   $("wtxt").style.display="";
   $("art").style.opacity=1;
@@ -735,25 +1266,37 @@ function emptyHint(){
   $("fill").style.width="0%"; $("knob").style.left="0%";
 }
 
+/* 播放代际：每次 playCurrent 换代，上一代残留的延时/回执一律作废。
+   否则旧链的 420/450ms 延时会插进新链 → 开关关了还在读、中文被顶掉、读串词 */
+let gen=0;
 function playCurrent(){
+  const g=++gen;
   clearT();stopAudio();
   const w=queue[qi]; if(!w)return;
+  const live=fn=>(...a)=>{ if(g!==gen)return; return fn(...a) };
   render(w,!(S.reveal));
   updateArm();
   if(!playing)return;
-  const goNext=()=>{
+  const goNext=live(()=>{
     if(S.reveal)render(w,true);
-    timer=setTimeout(()=>{qi=(qi+1)%queue.length;playCurrent()},S.pause);
-  };
-  const afterEx=()=>{ if(S.ex){say(w.ex,"sent",()=>goNext())} else goNext(); };
-  const afterZh=()=>{ if(S.zh){setTimeout(()=>say(w.m.replace(/^[a-z]+\.\s*/i,""),"zh",afterEx),450)} else afterEx(); };
+    timer=setTimeout(live(()=>{
+      if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}   /* 这个词念完了，标记此刻才生效 */
+      qi=(qi+1+queue.length)%queue.length;playCurrent();
+    }),S.pause);
+  });
+  /* 例句：有本地微软音频就播本地，没有就走百度在线（老版方案） */
+  const afterEx=live(()=>{ if(S.ex){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
+  const afterZh=live(()=>{
+    if(S.zh){ timer=setTimeout(live(()=>say(zhText(w),"zh",afterEx)),450) }
+    else afterEx();
+  });
   /* 单词可重复朗读 N 次（默认 1），全部读完再走中文/例句 */
   let left=Math.max(1,Math.min(20,Math.round(+S.repeat||1)));
-  const again=()=>{
+  const again=live(()=>{
     left--;
-    if(left>0){ timer=setTimeout(()=>say(w.w,"word",again),420) }
+    if(left>0){ timer=setTimeout(live(()=>say(w.w,"word",again)),420) }
     else afterZh();
-  };
+  });
   say(w.w,"word",again);
 }
 
@@ -763,8 +1306,13 @@ function setPlaying(on){
   updateArm();
 }
 $("play").onclick=()=>{ setPlaying(!playing); if(playing)playCurrent(); else {clearT();stopAudio();} };
-$("prevBtn").onclick=()=>{if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
-$("nextBtn").onclick=()=>{if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)};
+/* 上一词/下一词：抽成函数——它们是 <svg>，没有 .click()，键盘里点会直接抛异常 */
+function prevWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
+  qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+function nextWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
+  qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+$("prevBtn").onclick=prevWord;
+$("nextBtn").onclick=nextWord;
 $("moreBtn").onclick=()=>$("sheet").classList.add("on");
 $("listBtn").onclick=()=>$("sheet").classList.add("on");
 $("sheetBack").onclick=()=>{$("sheet").classList.remove("on");if(!playing){setPlaying(true);playCurrent()}};
@@ -789,9 +1337,9 @@ $("bar").onclick=e=>{
 };
 document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
-  else if(e.key==="ArrowRight")$("nextBtn").click();
-  else if(e.key==="ArrowLeft")$("prevBtn").click();
-  else if(e.key==="Escape")$("sheet").classList.remove("on");
+  else if(e.key==="ArrowRight")nextWord();
+  else if(e.key==="ArrowLeft")prevWord();
+  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中
@@ -822,9 +1370,10 @@ addEventListener("resize",()=>{
   if(innerWidth<760 && !localStorage.getItem("listen_qq_zoom")) initZoom();
 });
 function initZoom(){
-  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏：双栏布局，不叠加缩放
   const saved=+(localStorage.getItem("listen_qq_zoom")||0);
+  /* 用户手动选过档位：任何屏幕都尊重，别再被自动逻辑覆盖 */
   if(saved&&ZOOMS.indexOf(saved)>=0){ setZ(saved,false); return }
+  if(innerWidth>=760){ setZ(1,false); return }      // 宽屏默认 1x（双栏本来就够大）
   app.style.setProperty("--z","1");
   const dh=Math.max(measureDesign(),640);
   const fit=Math.min(2,(innerWidth-20)/430,(innerHeight-20)/dh);
