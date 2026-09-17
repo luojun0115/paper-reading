@@ -309,3 +309,57 @@ body {
   .dr-grid, .dr-zones { grid-template-columns: 1fr; }
   .dr-switch-panel { width: min(268px, calc(100vw - 32px)); }
 }
+
+/* ---------- 笔记区：单独一行的链接 → 卡片 ---------- */
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.link-card:hover {
+  border-color: var(--vp-c-brand);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+}
+.link-card .lc-icon { font-size: 20px; line-height: 1; }
+.link-card .lc-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+.link-card .lc-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link-card .lc-url {
+  margin-top: 2px;
+  font-size: 12px;
+  opacity: .6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link-card .lc-arrow { opacity: .5; }
+
+/* 视频 / 嵌入卡片（16:9 自适应） */
+.note-embed { margin: 16px 0; }
+.note-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  background: #000;
+}
+.note-embed figcaption { margin-top: 6px; font-size: 13px; }
+.note-embed figcaption a { color: var(--vp-c-brand); }
