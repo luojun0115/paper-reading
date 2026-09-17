@@ -217,6 +217,9 @@
   /* 「跳过/已掌握」新图标是实心路径（无描边）：中性灰 → 点亮用强调色 */
   .top .ic svg.solid{stroke:none;fill:rgba(118,124,134,.92)}
   .top .ic.on svg.solid{fill:var(--accent)}
+  /* 标记点亮瞬间的微动效：和收藏/星标一个手感，点到就有反馈 */
+  @keyframes mkpulse{0%{transform:scale(1)}38%{transform:scale(1.26)}100%{transform:scale(1)}}
+  .top .ic.pulse svg{animation:mkpulse .32s ease}
   /* 斜线 = 「已划掉」标记：默认不显示，点了 ✓ 之后才划掉 */
   .top .ic svg .slash{opacity:0;transition:opacity .2s}
   .top .ic.on svg .slash{opacity:1}
@@ -226,6 +229,27 @@
   .srow.col{flex-direction:column;align-items:stretch;gap:9px}
   .seg.wrap{flex-wrap:wrap;justify-content:flex-start}
   .clr{font-size:11.5px;color:var(--accent);cursor:pointer;font-weight:600}
+  /* 自定义链接面板 + 备份 */
+  .sheet.lks{z-index:26}
+  .lk{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bar-bg)}
+  .lk input[type=checkbox]{flex:none;width:16px;height:16px;accent-color:var(--accent)}
+  .lk .lkn{font-size:13.5px;font-weight:600;color:var(--tx);cursor:pointer;flex:1;min-width:0;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lk .lkn:hover{color:var(--accent)}
+  .lk .lku{font-size:10.5px;color:var(--tx3);max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lkrow{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--bar-bg);align-items:center}
+  .lkrow input{flex:1;min-width:0;padding:7px 10px;border-radius:9px;border:1px solid var(--bar-bg);
+    background:transparent;color:var(--tx);font-size:12.5px}
+  .lkrow input.nm{flex:0 0 96px}
+  .lkrow input:focus{outline:none;border-color:var(--accent)}
+  .lkrow .del{flex:none;font-size:13px;color:var(--accent);cursor:pointer;padding:4px 7px;user-select:none}
+  .lkbtns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .lkbtns b{font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:99px;
+    border:1px solid var(--bar-bg);color:var(--tx2);cursor:pointer}
+  .lkbtns b:hover{border-color:var(--accent);color:var(--accent)}
+  .lkbtns b.pri{border-color:var(--accent);color:var(--accent)}
+  .lkempty{padding:16px 0;color:var(--tx3);font-size:12.5px;line-height:1.8}
+  .bktip{font-size:11px;color:var(--tx3);line-height:1.6;margin-top:8px}
   .repin{width:56px;padding:4px 6px;border-radius:8px;border:1px solid var(--bar-bg);
     background:transparent;color:var(--tx);font-size:12px;text-align:center;font-variant-numeric:tabular-nums}
   .repin:focus{outline:none;border-color:var(--accent)}
@@ -350,6 +374,13 @@
 
   /* 单词区 */
   .word{padding:20px 26px 0;text-align:center;min-height:150px}
+  /* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方，不挡底部 */
+  .wordTip{font-size:13px;font-weight:600;color:var(--accent);margin:2px auto 12px;padding:6px 15px;
+    border-radius:99px;display:inline-block;line-height:1.2;
+    background:color-mix(in srgb,var(--accent) 13%,transparent);
+    border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);
+    opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .25s;pointer-events:none}
+  .wordTip.on{opacity:1;transform:translateY(0)}
   /* 章节/级别/进度：左上角角标，弱化处理不抢单词（小字 + 拉开距离 + 降透明度） */
   .side .sec{font-size:10px;color:var(--tx3);opacity:.72;margin:0 0 10px;text-align:left;letter-spacing:.3px}
   .word .wrow{display:inline-flex;align-items:flex-end;justify-content:center;gap:9px}
@@ -506,6 +537,7 @@
   <div class="timerChip" id="timerChip" style="display:none">⏱ 0:00</div>
   <div class="mkbadge" id="mkBadge" style="display:none"></div>
   <div class="word">
+    <div class="wordTip" id="wordTip"></div>
     <div class="wrow">
       <span class="big" id="wbig">—</span>
       <span class="ipa" id="wipa"></span>
@@ -542,7 +574,6 @@
 
   <div class="sheet" id="sheet">
     <div class="shd"><h3>播放设置</h3><span class="shb" id="sheetBack">← 返回播放</span></div>
-    <div class="srow" id="videoRow" style="display:none"><span title="">李沐老师讲解</span><div class="seg" id="videoBox"></div></div>
     <div class="srow"><span>发音</span><div class="seg" id="segVoice"></div></div>
     <div class="srow"><span>单词音色</span><div class="seg" id="segEnVoice"></div></div>
     <div class="srow"><span>中文音色</span><div class="seg" id="segZhVoice"></div></div>
@@ -562,6 +593,10 @@
     <div class="srow"><span>定时停止</span><div class="seg" id="segTimer"></div></div>
     <div class="srow"><span>词库来源</span><div class="seg" id="segSource"></div></div>
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
+    <div class="srow col"><span>链接与备份</span>
+      <div class="seg wrap" id="backupBox"></div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+    </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
     <div class="srow col"><span>词汇级别（点选，点一下关掉该级）</span><div class="seg wrap" id="lvBox"></div></div>
@@ -570,13 +605,28 @@
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
+  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
+  <div class="sheet lks" id="linkPop">
+    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
+    <div id="linkList"></div>
+    <div class="lkbtns" id="linkPopBtns"></div>
+  </div>
+  <!-- 链接配置面板：增删改本篇的链接 -->
+  <div class="sheet lks" id="linkCfg">
+    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
+    <div id="linkRows"></div>
+    <div class="lkbtns">
+      <b id="linkAddRow">＋ 添加一行</b>
+      <b id="linkSave" class="pri">保存</b>
+    </div>
+  </div>
+  <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
 const ITEMS=[{"w": "employ", "ipa": "ɪmˈplɔɪ", "pos": "v.", "m": "采用", "ex": "Fast R-CNN employs several innovations to improve training and testing speed", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "innovation", "ipa": "ˌɪnəˈveɪʃn", "pos": "n.", "m": "创新", "ex": "Fast R-CNN employs several innovations", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "accuracy", "ipa": "ˈækjərəsi", "pos": "n.", "m": "准确率", "ex": "while also increasing detection accuracy", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "implement", "ipa": "ɪmˈplɪment", "pos": "v.", "m": "实现", "ex": "Fast R-CNN is implemented in Python and C++", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "license", "ipa": "ˈlaɪsns", "pos": "n.", "m": "许可（证）", "ex": "available under the open-source MIT License", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "challenging", "ipa": "ˈtʃælɪndʒɪŋ", "pos": "adj.", "m": "有挑战性的", "ex": "object detection is a more challenging task", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "complexity", "ipa": "kəmˈpleksəti", "pos": "n.", "m": "复杂度", "ex": "Due to this complexity, current approaches train models in multi-stage pipelines", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "pipeline", "ipa": "ˈpaɪplaɪn", "pos": "n.", "m": "流水线", "ex": "train models in multi-stage pipelines that are slow and inelegant", "lv": "考博", "ov": "雅思托福", "sec": "Intro"}, {"w": "inelegant", "ipa": "ɪnˈelɪɡənt", "pos": "adj.", "m": "不优雅的", "ex": "multi-stage pipelines that are slow and inelegant", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "numerous", "ipa": "ˈnuːmərəs", "pos": "adj.", "m": "众多的", "ex": "numerous candidate object locations must be processed", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "rough", "ipa": "rʌf", "pos": "adj.", "m": "粗略的", "ex": "these candidates provide only rough localization", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "reﬁne", "ipa": "rɪˈfaɪn", "pos": "v.", "m": "精修，改进", "ex": "must be reﬁned to achieve precise localization", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "precise", "ipa": "prɪˈsaɪs", "pos": "adj.", "m": "精确的", "ex": "must be reﬁned to achieve precise localization", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "compromise", "ipa": "ˈkɑːmprəmaɪz", "pos": "v.", "m": "牺牲，损害", "ex": "Solutions to these problems often compromise speed, accuracy, or simplicity", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "streamline", "ipa": "ˈstriːmlaɪn", "pos": "v.", "m": "精简，使流畅", "ex": "we streamline the training process for state-of-the-art ConvNet-based object detectors", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "jointly", "ipa": "ˈdʒɔɪntli", "pos": "adv.", "m": "联合地", "ex": "a single-stage training algorithm that jointly learns to classify object proposals", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "spatial", "ipa": "ˈspeɪʃl", "pos": "adj.", "m": "空间的", "ex": "reﬁne their spatial locations", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "notable", "ipa": "ˈnoʊtəbl", "pos": "adj.", "m": "显著的", "ex": "R-CNN, however, has notable drawbacks", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "drawback", "ipa": "ˈdrɔːbæk", "pos": "n.", "m": "缺点", "ex": "R-CNN, however, has notable drawbacks", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "truncated", "ipa": "ˈtrʌŋkeɪtɪd", "pos": "adj.", "m": "截断的", "ex": "the truncated SVD speed-up", "lv": "考博", "ov": "", "sec": "Arch"}, {"w": "singular", "ipa": "ˈsɪŋɡjələr", "pos": "adj.", "m": "奇异的（SVD 奇异值分解）", "ex": "truncated singular value decomposition (SVD)", "lv": "四级", "ov": "", "sec": "Arch"}, {"w": "decomposition", "ipa": "ˌdekɑːmpəˈzɪʃn", "pos": "n.", "m": "分解", "ex": "truncated singular value decomposition (SVD)", "lv": "考博", "ov": "GRE", "sec": "Arch"}, {"w": "compress", "ipa": "kəmˈpres", "pos": "v.", "m": "压缩", "ex": "fully connected layers are easily accelerated by compressing them with truncated SVD", "lv": "四级", "ov": "", "sec": "Arch"}];
 const AUDIO={"en-US-BrianNeural": {"w": {"compress": "../listen-audio/w_brian_compress.mp3", "numerous": "../listen-audio/w_brian_numerous.mp3", "employ": "../listen-audio/w_brian_employ.mp3", "complexity": "../listen-audio/w_brian_complexity.mp3", "pipeline": "../listen-audio/w_brian_pipeline.mp3", "jointly": "../listen-audio/w_brian_jointly.mp3", "accuracy": "../listen-audio/w_brian_accuracy.mp3", "spatial": "../listen-audio/w_brian_spatial.mp3", "innovation": "../listen-audio/w_brian_innovation.mp3", "implement": "../listen-audio/w_brian_implement.mp3", "license": "../listen-audio/w_brian_license.mp3", "challenging": "../listen-audio/w_brian_challenging.mp3", "inelegant": "../listen-audio/w_brian_inelegant.mp3", "rough": "../listen-audio/w_brian_rough.mp3", "reﬁne": "../listen-audio/w_brian_reﬁne.mp3", "precise": "../listen-audio/w_brian_precise.mp3", "compromise": "../listen-audio/w_brian_compromise.mp3", "streamline": "../listen-audio/w_brian_streamline.mp3", "notable": "../listen-audio/w_brian_notable.mp3", "drawback": "../listen-audio/w_brian_drawback.mp3", "truncated": "../listen-audio/w_brian_truncated.mp3", "singular": "../listen-audio/w_brian_singular.mp3", "decomposition": "../listen-audio/w_brian_decomposition.mp3"}, "e": {"Fast R-CNN employs several innovations to improve training and testing speed": "../listen-audio/e_brian_e0604042aecd.mp3", "Fast R-CNN employs several innovations": "../listen-audio/e_brian_a331316e360f.mp3", "while also increasing detection accuracy": "../listen-audio/e_brian_98b09cd3207f.mp3", "Fast R-CNN is implemented in Python and C++": "../listen-audio/e_brian_26d6f55af64d.mp3", "available under the open-source MIT License": "../listen-audio/e_brian_952e2f75ca81.mp3", "object detection is a more challenging task": "../listen-audio/e_brian_87b07cf2c683.mp3", "Due to this complexity, current approaches train models in multi-stage pipelines": "../listen-audio/e_brian_f32997f54df9.mp3", "train models in multi-stage pipelines that are slow and inelegant": "../listen-audio/e_brian_0ef9cc6e3421.mp3", "multi-stage pipelines that are slow and inelegant": "../listen-audio/e_brian_da06576a0c95.mp3", "numerous candidate object locations must be processed": "../listen-audio/e_brian_9616ab033bcb.mp3", "these candidates provide only rough localization": "../listen-audio/e_brian_7e107d710a24.mp3", "must be reﬁned to achieve precise localization": "../listen-audio/e_brian_53bcf013e512.mp3", "Solutions to these problems often compromise speed, accuracy, or simplicity": "../listen-audio/e_brian_d14808680b80.mp3", "we streamline the training process for state-of-the-art ConvNet-based object detectors": "../listen-audio/e_brian_653e0e659b58.mp3", "a single-stage training algorithm that jointly learns to classify object proposals": "../listen-audio/e_brian_7084f568aeb9.mp3", "reﬁne their spatial locations": "../listen-audio/e_brian_fb117ef1049f.mp3", "R-CNN, however, has notable drawbacks": "../listen-audio/e_brian_1efe467e4938.mp3", "the truncated SVD speed-up": "../listen-audio/e_brian_64fd5be795d0.mp3", "truncated singular value decomposition (SVD)": "../listen-audio/e_brian_e8ce64b49107.mp3", "fully connected layers are easily accelerated by compressing them with truncated SVD": "../listen-audio/e_brian_d0921f791a9b.mp3"}}, "en-US-AndrewNeural": {"w": {"compress": "../listen-audio/w_andrew_compress.mp3", "numerous": "../listen-audio/w_andrew_numerous.mp3", "employ": "../listen-audio/w_andrew_employ.mp3", "complexity": "../listen-audio/w_andrew_complexity.mp3"}}, "zh-CN-YunyangNeural": {"m": {"压缩": "../listen-audio/m_yunyang_6612548ad85b.mp3", "众多的": "../listen-audio/m_yunyang_c91fa43bb76e.mp3", "采用": "../listen-audio/m_yunyang_7b4eb56b0375.mp3", "复杂度": "../listen-audio/m_yunyang_f13c3e0717ea.mp3", "实现": "../listen-audio/m_yunyang_38164c8be942.mp3", "显著的": "../listen-audio/m_yunyang_93815af37b5c.mp3", "创新": "../listen-audio/m_yunyang_03a944c034dd.mp3", "联合地": "../listen-audio/m_yunyang_433cb3b898e4.mp3", "准确率": "../listen-audio/m_yunyang_3c7d9eedb98d.mp3", "空间的": "../listen-audio/m_yunyang_496cad5b2806.mp3", "粗略的": "../listen-audio/m_yunyang_413e81e8732f.mp3", "分解": "../listen-audio/m_yunyang_54e63f844254.mp3", "许可（证）": "../listen-audio/m_yunyang_b8f26c3e3e07.mp3", "有挑战性的": "../listen-audio/m_yunyang_bbf713876518.mp3", "流水线": "../listen-audio/m_yunyang_27ffcb357e72.mp3", "不优雅的": "../listen-audio/m_yunyang_e2f4c64bbf51.mp3", "精修，改进": "../listen-audio/m_yunyang_38a09b10c2c4.mp3", "精确的": "../listen-audio/m_yunyang_af8b91052f6c.mp3", "牺牲，损害": "../listen-audio/m_yunyang_db5b8de8afd5.mp3", "精简，使流畅": "../listen-audio/m_yunyang_3f3b2c5a906a.mp3", "缺点": "../listen-audio/m_yunyang_2e769a755109.mp3", "截断的": "../listen-audio/m_yunyang_a7f8230faa18.mp3", "奇异的": "../listen-audio/m_yunyang_dd753340d4a9.mp3"}}, "zh-CN-YunjianNeural": {"m": {"压缩": "../listen-audio/m_yunjian_6612548ad85b.mp3", "众多的": "../listen-audio/m_yunjian_c91fa43bb76e.mp3", "采用": "../listen-audio/m_yunjian_7b4eb56b0375.mp3", "复杂度": "../listen-audio/m_yunjian_f13c3e0717ea.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
-const VIDEO={};      /* 李沐老师讲解视频：{title,bili,yt,zhihu}；无匹配则为空对象 */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -620,6 +670,7 @@ try{const s=JSON.parse(localStorage.getItem("listen_qq_lvoff")||"[]");if(Array.i
 
 let queue=[], qi=0, playing=false, timer=null, audio=null;
 let autoplayBlocked=false;   /* 只有浏览器明确拒绝播放（NotAllowedError）才置位 */
+let pendingRebuild=false;    /* 播放中改了标记：等当前词念完再重建队列，绝不中途掐断 */
 
 function buildQueue(){
   let list=ITEMS.filter(i=>range[i.sec]!==false);
@@ -639,6 +690,19 @@ function rebuild(keep){
   const cur=queue[qi];
   buildQueue();
   if(keep&&cur){const k=queue.findIndex(x=>x.w===cur.w);qi=k>=0?k:0}
+  pendingRebuild=false;                       /* 这里已经重建过了，撤掉待办的延迟重建 */
+}
+/* 延迟重建：等到"当前这个词念完"再生效（给 pendingRebuild 用） */
+function rebuildKeepPos(){
+  const oldLen=queue.length, oldQi=qi, cur=queue[qi], key=cur?cur.w:null;
+  buildQueue();
+  if(!queue.length){qi=0;return}
+  if(!key){if(qi>=queue.length)qi=0;return}
+  const k=queue.findIndex(x=>x.w===key);
+  if(k>=0){qi=k;return}                       /* 当前词还在队列里：原地不动 */
+  /* 当前词已被排除（刚标了跳过 / 取消了星标）：把指针放到"下一个该读的词"的前一位，
+     goNext 再 +1，正好接到原位置上的那个词——不会漏读，也不会重读 */
+  qi = (oldQi>=oldLen-1) ? -1 : Math.min(oldQi,queue.length-1)-1;
 }
 function updateBtns(){
   const w=queue[qi];
@@ -662,16 +726,19 @@ $("mkBadge").onclick=e=>{
   const el=e.target.closest("[data-cancel]"); if(!el)return;
   const w=queue[qi]; if(!w)return;
   const k=el.dataset.cancel;
-  if(k==="star"){stars.delete(w.w);wr("listen_qq_star",stars);toast("已取消星标「"+w.w+"」")}
-  else if(k==="fav"){favs.delete(w.w);wr("listen_qq_fav",favs);toast("已取消收藏「"+w.w+"」")}
-  else if(k==="skip"){skips.delete(w.w);wr("listen_qq_skip",skips);toast("已恢复朗读「"+w.w+"」")}
+  if(k==="star"){stars.delete(w.w);wr("listen_qq_star",stars);wordTip("已取消星标「"+w.w+"」")}
+  else if(k==="fav"){favs.delete(w.w);wr("listen_qq_fav",favs);wordTip("已取消收藏「"+w.w+"」")}
+  else if(k==="skip"){skips.delete(w.w);wr("listen_qq_skip",skips);wordTip("已恢复朗读「"+w.w+"」")}
   afterMark();
 };
-/* 标记后统一收尾：重建队列，空了就提示，否则接着播 */
+/* 标记后收尾：正在朗读时不打断——当前词照常念完，队列等这个词结束时才重建。
+   （以前是立刻重建+重播，等于一点 ✓ 这个词就被掐掉，这次白学了） */
 function afterMark(){
-  updateBtns(); updateCounts(); rebuild(true);   /* 保留当前词：随机模式下重排也不会跳走 */
+  updateBtns(); updateCounts(); renderMarks(queue[qi]);
+  if(playing){ pendingRebuild=true; return }
+  rebuild(true);
   if(!queue.length){ clearT(); stopAudio(); setPlaying(false); emptyHint(); return }
-  if(playing)playCurrent(); else render(queue[qi],true);
+  render(queue[qi],true);
 }
 function renderRange(){
   const box=$("rangeBox"); box.innerHTML="";
@@ -852,18 +919,18 @@ renderRange(); renderLv(); updateCounts();
 
 $("favBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再收藏");return}
-  if(favs.has(w.w)){favs.delete(w.w);toast("已取消收藏「"+w.w+"」")}else{favs.add(w.w);toast("已收藏「"+w.w+"」")}
+  if(favs.has(w.w)){favs.delete(w.w);wordTip("已取消收藏「"+w.w+"」")}else{favs.add(w.w);wordTip("已收藏「"+w.w+"」")}
   wr("listen_qq_fav",favs); afterMark();
 };
 $("starBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标星");return}
-  if(stars.has(w.w)){stars.delete(w.w);toast("已取消星标「"+w.w+"」")}else{stars.add(w.w);toast("已标星「"+w.w+"」，可只背星标")}
+  if(stars.has(w.w)){stars.delete(w.w);wordTip("已取消星标「"+w.w+"」")}else{stars.add(w.w);wordTip("已标星「"+w.w+"」，可只背星标")}
   wr("listen_qq_star",stars); afterMark();
 };
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
-  if(skips.has(w.w)){skips.delete(w.w);toast("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);toast("此词不再朗读「"+w.w+"」")}
+  if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
+  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -885,6 +952,110 @@ $("clearBox").onclick=e=>{
   set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
 };
 const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
+/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
+const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
+const LKEY="listen_qq_links";
+const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
+const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
+let LINKS=rdLinks();
+const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+
+function renderLinkPop(){
+  const box=$("linkList"),btns=$("linkPopBtns");
+  if(!LINKS.length){
+    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
+    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
+    $("lpCfg").onclick=openLinkCfg;
+    return;
+  }
+  const multi=LINKS.length>1;
+  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
+    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
+    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
+    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
+  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
+    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
+  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
+  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
+    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
+  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
+  $("lpOpenAll").onclick=()=>openMany(LINKS);
+  $("lpCfg").onclick=openLinkCfg;
+}
+function openLinkCfg(){
+  $("linkPop").classList.remove("on");
+  const box=$("linkRows");
+  const row=l=>'<div class="lkrow">'
+    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
+    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
+    +'<span class="del" title="删除此行">✕</span></div>';
+  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
+  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
+  bindDel();
+  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
+  $("linkCfg").classList.add("on");
+}
+$("linkSave").onclick=()=>{
+  const out=[];
+  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
+    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
+    if(!raw)return;
+    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
+  });
+  LINKS=out; wrLinks(out);
+  $("linkCfg").classList.remove("on");
+  toast("已保存 "+out.length+" 个链接");
+};
+$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
+$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
+
+/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+$("backupBox").onclick=e=>{
+  const b=e.target.closest("[data-bk]");if(!b)return;
+  if(b.dataset.bk==="cfg")openLinkCfg();
+  else if(b.dataset.bk==="out")doExport();
+  else $("importFile").click();
+};
+function doExport(){
+  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
+    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
+  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+}
+$("importFile").onchange=e=>{
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const d=JSON.parse(r.result);
+      if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
+      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
+      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
+        const cur=new Set((links[k]||[]).map(l=>l.url));
+        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
+      });
+      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
+      (d.favs||[]).forEach(w=>favs.add(w));
+      (d.skips||[]).forEach(w=>skips.add(w));
+      wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
+      if(d.cfg){Object.assign(S,d.cfg);save()}
+      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      LINKS=rdLinks();updateCounts();afterMark();
+      toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
+      setTimeout(()=>location.reload(),1200);
+    }catch(err){toast("导入失败："+err.message)}
+    e.target.value="";
+  };
+  r.readAsText(f);
+};
+
 /* 弯箭头：沿用旧设计语义 = 重听当前词（不想启用时删掉这三行即可） */
 $("replayBtn").onclick=()=>{
   if(!queue[qi])return;
@@ -895,6 +1066,10 @@ $("replayBtn").onclick=()=>{
 // 颜色/封面
 function hue(w){let h=7;for(const c of w)h=(h*31+c.charCodeAt(0))%360;return h}
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1600)}
+/* 当前词的标记反馈（已收藏/已跳过/已标星）：显示在单词正上方 */
+function wordTip(m){const t=$("wordTip");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),1300)}
+/* 标记点亮：图标动一下，短促、不挡视线（和收藏/星标同一手感） */
+function pulse(id){const el=$(id);if(!el)return;el.classList.remove("pulse");void el.offsetWidth;el.classList.add("pulse");setTimeout(()=>el.classList.remove("pulse"),360)}
 
 // 唱臂：静止垂直在盘右 → 播放落到盘面 → 随队列进度内移
 const armBar=document.querySelector(".arm .bar");
@@ -997,24 +1172,6 @@ function ttsURLs(t,kind){
   else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
   return urls;
 }
-
-/* ===== 李沐老师讲解视频（构建时按篇匹配注入；没匹配到就隐藏整行）===== */
-(function videoRow(){
-  try{
-    if(!VIDEO||(!VIDEO.bili&&!VIDEO.yt&&!VIDEO.zhihu))return;
-    const row=$("videoRow"), box=$("videoBox"); if(!row||!box)return;
-    row.style.display="";
-    const sp=row.querySelector("span");
-    if(sp){ sp.title="李沐《深度学习论文精读》：" + (VIDEO.title||""); sp.textContent="李沐老师讲解"; }
-    [["B站",VIDEO.bili],["YouTube",VIDEO.yt],["知乎",VIDEO.zhihu]].forEach(x=>{
-      if(!x[1])return;
-      const b=document.createElement("b");
-      b.textContent=x[0]; b.title=(VIDEO.title||"")+"（新窗口打开）";
-      b.onclick=()=>window.open(x[1],"_blank","noopener");
-      box.appendChild(b);
-    });
-  }catch(e){}
-})();
 
 /* ===== 音色选择器：只列本篇已生成的音色（在设置里切换，立即重播当前词）===== */
 (function voiceRows(){
@@ -1122,7 +1279,10 @@ function playCurrent(){
   if(!playing)return;
   const goNext=live(()=>{
     if(S.reveal)render(w,true);
-    timer=setTimeout(live(()=>{qi=(qi+1)%queue.length;playCurrent()}),S.pause);
+    timer=setTimeout(live(()=>{
+      if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}   /* 这个词念完了，标记此刻才生效 */
+      qi=(qi+1+queue.length)%queue.length;playCurrent();
+    }),S.pause);
   });
   /* 例句：有本地微软音频就播本地，没有就走百度在线（老版方案） */
   const afterEx=live(()=>{ if(S.ex){say(w.ex,"sent",live(()=>goNext()))} else goNext(); });
@@ -1147,8 +1307,10 @@ function setPlaying(on){
 }
 $("play").onclick=()=>{ setPlaying(!playing); if(playing)playCurrent(); else {clearT();stopAudio();} };
 /* 上一词/下一词：抽成函数——它们是 <svg>，没有 .click()，键盘里点会直接抛异常 */
-function prevWord(){if(!queue.length)return;qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
-function nextWord(){if(!queue.length)return;qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+function prevWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
+  qi=(qi-1+queue.length)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
+function nextWord(){if(!queue.length)return;if(pendingRebuild){pendingRebuild=false;rebuildKeepPos()}
+  qi=(qi+1)%queue.length;if(playing)playCurrent();else render(queue[qi],true)}
 $("prevBtn").onclick=prevWord;
 $("nextBtn").onclick=nextWord;
 $("moreBtn").onclick=()=>$("sheet").classList.add("on");
@@ -1177,7 +1339,7 @@ document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
   else if(e.key==="ArrowRight")nextWord();
   else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape")$("sheet").classList.remove("on");
+  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中
