@@ -23,7 +23,7 @@ export default defineConfig({
   lastUpdated: false,
   appearance: false, // 关闭 VitePress 自带的明暗开关，改用自有主题切换器（数量见 theme-defs.mjs）
   ignoreDeadLinks: true,
-  srcExclude: ['README.md', 'docs/**', 'design/**', 'scripts/**', 'data/**', 'agent.md', 'AGENTS.md', 'CLAUDE.md'],
+  srcExclude: ['README.md', 'docs/**', 'design/**', 'scripts/**', 'data/**', 'agent.md', 'AGENTS.md', 'CLAUDE.md', 'public/**'],
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${BASE}favicon.svg` }],
