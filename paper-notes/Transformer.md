@@ -9,5 +9,7 @@ title: Transformer (2017) · 笔记区
 
 ## 拓展学习
 
-https://www.bilibili.com/video/BV1xoJwzDESD/?spm_id_from=333.337.search-card.all.click&vd_source=79ba851497c8e90aa94caa1d502a472b
+[B 站·Transformer 精讲](https://www.bilibili.com/video/BV1xoJwzDESD/)
+
+
 

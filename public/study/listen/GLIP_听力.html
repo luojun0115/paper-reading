@@ -625,7 +625,7 @@
 
 <script>
 const ITEMS=[{"w": "grounded", "ipa": "ˈɡraʊndɪd", "pos": "adj.", "m": "接地（grounding 指代定位）", "ex": "a grounded language-image pre-training (GLIP) model", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "language-aware", "ipa": "ˈlæŋɡwɪdʒ əˈwer", "pos": "adj.", "m": "语言感知的", "ex": "learning object-level, language-aware, and semantic-rich visual representations", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "unify", "ipa": "ˈjuːnɪfaɪ", "pos": "v.", "m": "统一", "ex": "GLIP uniﬁes object detection and phrase grounding for pre-training", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "beneﬁt", "ipa": "ˈbenɪfɪt", "pos": "n.", "m": "好处", "ex": "The uniﬁcation brings two beneﬁts", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "bootstrap", "ipa": "ˈbuːtstræp", "pos": "v.", "m": "自举，冷启动", "ex": "improve both tasks and bootstrap a good grounding model", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "leverage", "ipa": "ˈlevərɪdʒ", "pos": "v.", "m": "利用", "ex": "GLIP can leverage massive image-text pairs", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "massive", "ipa": "ˈmæsɪv", "pos": "adj.", "m": "海量的", "ex": "leverage massive image-text pairs", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "self-training", "ipa": "self ˈtreɪnɪŋ", "pos": "n.", "m": "自训练", "ex": "generating grounding boxes in a self-training fashion", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "fashion", "ipa": "ˈfæʃn", "pos": "n.", "m": "方式", "ex": "in a self-training fashion", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "annotated", "ipa": "ˈænəteɪtɪd", "pos": "adj.", "m": "人工标注的", "ex": "3M human-annotated and 24M web-crawled image-text pairs", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "crawl", "ipa": "krɔːl", "pos": "v.", "m": "爬取", "ex": "24M web-crawled image-text pairs", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "determined", "ipa": "dɪˈtɜːrmɪnd", "pos": "adj.", "m": "预先确定的", "ex": "trained to predict a ﬁxed set of pre-determined object categories", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "usability", "ipa": "ˌjuːzəˈbɪləti", "pos": "n.", "m": "可用性", "ex": "which limits their usability in real-world applications", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "raw", "ipa": "rɔː", "pos": "adj.", "m": "原始的", "ex": "learned effectively on large amounts of raw image-text pairs", "lv": "四级", "ov": "", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"leverage": "../listen-audio/w_brian_leverage.mp3", "unify": "../listen-audio/w_brian_unify.mp3", "grounded": "../listen-audio/w_brian_grounded.mp3", "bootstrap": "../listen-audio/w_brian_bootstrap.mp3", "language-aware": "../listen-audio/w_brian_language_aware.mp3", "massive": "../listen-audio/w_brian_massive.mp3", "self-training": "../listen-audio/w_brian_self_training.mp3", "fashion": "../listen-audio/w_brian_fashion.mp3", "annotated": "../listen-audio/w_brian_annotated.mp3", "crawl": "../listen-audio/w_brian_crawl.mp3", "determined": "../listen-audio/w_brian_determined.mp3", "usability": "../listen-audio/w_brian_usability.mp3", "raw": "../listen-audio/w_brian_raw.mp3"}, "e": {"a grounded language-image pre-training (GLIP) model": "../listen-audio/e_brian_65882b9a1d00.mp3", "learning object-level, language-aware, and semantic-rich visual representations": "../listen-audio/e_brian_07e52befd637.mp3", "GLIP uniﬁes object detection and phrase grounding for pre-training": "../listen-audio/e_brian_a19d641368db.mp3", "The uniﬁcation brings two beneﬁts": "../listen-audio/e_brian_7d0b823b4ba4.mp3", "improve both tasks and bootstrap a good grounding model": "../listen-audio/e_brian_8ab377088be7.mp3", "GLIP can leverage massive image-text pairs": "../listen-audio/e_brian_9b761a1fdc9f.mp3", "leverage massive image-text pairs": "../listen-audio/e_brian_7ad90af9da49.mp3", "generating grounding boxes in a self-training fashion": "../listen-audio/e_brian_44f20a6eb495.mp3", "in a self-training fashion": "../listen-audio/e_brian_347e5dbadbe4.mp3", "3M human-annotated and 24M web-crawled image-text pairs": "../listen-audio/e_brian_46e003516190.mp3", "24M web-crawled image-text pairs": "../listen-audio/e_brian_604a586f3708.mp3", "trained to predict a ﬁxed set of pre-determined object categories": "../listen-audio/e_brian_f53e9d575805.mp3", "which limits their usability in real-world applications": "../listen-audio/e_brian_d1e1035433d3.mp3", "learned effectively on large amounts of raw image-text pairs": "../listen-audio/e_brian_ea2fc64bf8d7.mp3"}}, "en-US-AndrewNeural": {"w": {"leverage": "../listen-audio/w_andrew_leverage.mp3"}}, "zh-CN-YunyangNeural": {"m": {"利用": "../listen-audio/m_yunyang_c0d076b90724.mp3", "统一": "../listen-audio/m_yunyang_95bee12d7dc8.mp3", "预先确定的": "../listen-audio/m_yunyang_29345266b270.mp3", "接地": "../listen-audio/m_yunyang_b96df002d9db.mp3", "语言感知的": "../listen-audio/m_yunyang_6c7aafc2fcbf.mp3", "好处": "../listen-audio/m_yunyang_6ebf1cbe44c4.mp3", "自举，冷启动": "../listen-audio/m_yunyang_a6f6ff767c59.mp3", "海量的": "../listen-audio/m_yunyang_01b200be32c2.mp3", "自训练": "../listen-audio/m_yunyang_fc3bde3b36d7.mp3", "方式": "../listen-audio/m_yunyang_7220e4d5f9f6.mp3", "人工标注的": "../listen-audio/m_yunyang_89301eb1d44a.mp3", "爬取": "../listen-audio/m_yunyang_5d2846d077a2.mp3", "可用性": "../listen-audio/m_yunyang_97b835a4fed6.mp3", "原始的": "../listen-audio/m_yunyang_d405b6c612fe.mp3"}}, "zh-CN-YunjianNeural": {"m": {"利用": "../listen-audio/m_yunjian_c0d076b90724.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const AUDIO={"en-US-BrianNeural":{"w":{"leverage":"../listen-audio/w_brian_leverage.mp3","unify":"../listen-audio/w_brian_unify.mp3","grounded":"../listen-audio/w_brian_grounded.mp3","bootstrap":"../listen-audio/w_brian_bootstrap.mp3","language-aware":"../listen-audio/w_brian_language_aware.mp3","massive":"../listen-audio/w_brian_massive.mp3","self-training":"../listen-audio/w_brian_self_training.mp3","fashion":"../listen-audio/w_brian_fashion.mp3","annotated":"../listen-audio/w_brian_annotated.mp3","crawl":"../listen-audio/w_brian_crawl.mp3","determined":"../listen-audio/w_brian_determined.mp3","usability":"../listen-audio/w_brian_usability.mp3","raw":"../listen-audio/w_brian_raw.mp3","beneﬁt":"../listen-audio/w_brian_benefit.mp3"},"e":{"a grounded language-image pre-training (GLIP) model":"../listen-audio/e_brian_65882b9a1d00.mp3","learning object-level, language-aware, and semantic-rich visual representations":"../listen-audio/e_brian_07e52befd637.mp3","GLIP uniﬁes object detection and phrase grounding for pre-training":"../listen-audio/e_brian_a19d641368db.mp3","The uniﬁcation brings two beneﬁts":"../listen-audio/e_brian_7d0b823b4ba4.mp3","improve both tasks and bootstrap a good grounding model":"../listen-audio/e_brian_8ab377088be7.mp3","GLIP can leverage massive image-text pairs":"../listen-audio/e_brian_9b761a1fdc9f.mp3","leverage massive image-text pairs":"../listen-audio/e_brian_7ad90af9da49.mp3","generating grounding boxes in a self-training fashion":"../listen-audio/e_brian_44f20a6eb495.mp3","in a self-training fashion":"../listen-audio/e_brian_347e5dbadbe4.mp3","3M human-annotated and 24M web-crawled image-text pairs":"../listen-audio/e_brian_46e003516190.mp3","24M web-crawled image-text pairs":"../listen-audio/e_brian_604a586f3708.mp3","trained to predict a ﬁxed set of pre-determined object categories":"../listen-audio/e_brian_f53e9d575805.mp3","which limits their usability in real-world applications":"../listen-audio/e_brian_d1e1035433d3.mp3","learned effectively on large amounts of raw image-text pairs":"../listen-audio/e_brian_ea2fc64bf8d7.mp3"}},"en-US-AndrewNeural":{"w":{"leverage":"../listen-audio/w_andrew_leverage.mp3"}},"zh-CN-YunyangNeural":{"m":{"利用":"../listen-audio/m_yunyang_c0d076b90724.mp3","统一":"../listen-audio/m_yunyang_95bee12d7dc8.mp3","预先确定的":"../listen-audio/m_yunyang_29345266b270.mp3","接地":"../listen-audio/m_yunyang_b96df002d9db.mp3","语言感知的":"../listen-audio/m_yunyang_6c7aafc2fcbf.mp3","好处":"../listen-audio/m_yunyang_6ebf1cbe44c4.mp3","自举，冷启动":"../listen-audio/m_yunyang_a6f6ff767c59.mp3","海量的":"../listen-audio/m_yunyang_01b200be32c2.mp3","自训练":"../listen-audio/m_yunyang_fc3bde3b36d7.mp3","方式":"../listen-audio/m_yunyang_7220e4d5f9f6.mp3","人工标注的":"../listen-audio/m_yunyang_89301eb1d44a.mp3","爬取":"../listen-audio/m_yunyang_5d2846d077a2.mp3","可用性":"../listen-audio/m_yunyang_97b835a4fed6.mp3","原始的":"../listen-audio/m_yunyang_d405b6c612fe.mp3"}},"zh-CN-YunjianNeural":{"m":{"利用":"../listen-audio/m_yunjian_c0d076b90724.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -928,7 +928,7 @@ $("starBtn").onclick=()=>{
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
   if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  else{skips.add(w.w);pulse("okBtn");wordTip("已跳过「"+w.w+"」· 下次不再读")}   /* 跳过：✓ 动一下 + 顶部提示 */
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -1130,9 +1130,13 @@ function localAudio(t,kind){
     const all = audioVoices(map);
     const want = kind==="zh" ? S.zhVoice : S.enVoice;
     const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    const nf=s=>{try{return String(s).normalize("NFKC").toLowerCase()}catch(e){return String(s).toLowerCase()}};
+    const nk=nf(key);
     for(let i=0;i<order.length;i++){
       const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
+      if(!m)continue;
+      if(m[key])return m[key];
+      for(const k in m){ if(nf(k)===nk)return m[k] }   /* 连字 ﬁ/ﬂ ↔ 普通 fi/fl 互通 */
     }
   }catch(e){}
   return "";
@@ -1162,7 +1166,7 @@ function ttsURLs(t,kind){
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
   else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  /* 单词：只用本地真人音频；读不到 → 提示「网络错误」并跳过，不回退在线/系统机械音 */
   return urls;
 }
 
@@ -1211,9 +1215,24 @@ function say(text,kind,cb){
     const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
     setTimeout(()=>cb&&cb(ok),wait);
   };
+  /* 单词读不到（缺音频 / 加载失败）：显示「网络错误」，短暂停留后跳过这个词。
+     不再回退有道/百度/系统语音——那些就是机械音 */
+  const g0=gen;
+  const netFail=()=>{
+    if(done)return; done=true;
+    stopAudio();
+    wordTip("网络错误");
+    setTimeout(()=>{
+      if(g0!==gen)return;            /* 期间用户手动切过词：这次作废 */
+      if(!playing)return;
+      qi=(qi+1+queue.length)%queue.length; playCurrent();
+    },1100);
+  };
+
   const tryNext=()=>{
     if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+    if(i>=urls.length){
+      if(kind==="word"){ netFail(); return }   /* 单词：不回退机械音 */                            /* 在线音源都不行 → 系统语音兜底 */
       if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
       local=true;
       speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);

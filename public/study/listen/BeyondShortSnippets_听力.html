@@ -625,7 +625,7 @@
 
 <script>
 const ITEMS=[{"w": "snippet", "ipa": "ˈsnɪpɪt", "pos": "n.", "m": "片段", "ex": "Beyond Short Snippets: Deep Networks for Video Classiﬁcation", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "extensively", "ipa": "ɪkˈstensɪvli", "pos": "adv.", "m": "广泛地", "ex": "CNNs have been extensively applied for image recognition problems", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "evaluate", "ipa": "ɪˈvæljueɪt", "pos": "v.", "m": "评估", "ex": "we propose and evaluate several deep neural network architectures", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "attempt", "ipa": "əˈtempt", "pos": "v.", "m": "尝试", "ex": "over longer time periods than previously attempted", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "pooling", "ipa": "ˈpuːlɪŋ", "pos": "n.", "m": "池化", "ex": "explores various convolutional temporal feature pooling architectures", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "examine", "ipa": "ɪɡˈzæmɪn", "pos": "v.", "m": "检验", "ex": "examining the various design choices which need to be made", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "adapt", "ipa": "əˈdæpt", "pos": "v.", "m": "改造以适应", "ex": "when adapting a CNN for this task", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "explicitly", "ipa": "ɪkˈsplɪsɪtli", "pos": "adv.", "m": "显式地", "ex": "explicitly models the video as an ordered sequence of frames", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "recurrent", "ipa": "rɪˈkɜːrənt", "pos": "adj.", "m": "循环的（RNN）", "ex": "we employ a recurrent neural network that uses Long Short-Term Memory (LSTM) cells", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "underlying", "ipa": "ˌʌndərˈlaɪɪŋ", "pos": "adj.", "m": "底层的", "ex": "connected to the output of the underlying CNN", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "exhibit", "ipa": "ɪɡˈzɪbɪt", "pos": "v.", "m": "表现出", "ex": "Our best networks exhibit signiﬁcant performance improvements", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "signiﬁcant", "ipa": "sɪɡˈnɪfɪkənt", "pos": "adj.", "m": "显著的", "ex": "exhibit signiﬁcant performance improvements over previously published results", "lv": "考博", "ov": "", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"explicitly": "../listen-audio/w_brian_explicitly.mp3", "recurrent": "../listen-audio/w_brian_recurrent.mp3", "exhibit": "../listen-audio/w_brian_exhibit.mp3", "pooling": "../listen-audio/w_brian_pooling.mp3", "snippet": "../listen-audio/w_brian_snippet.mp3", "extensively": "../listen-audio/w_brian_extensively.mp3", "evaluate": "../listen-audio/w_brian_evaluate.mp3", "attempt": "../listen-audio/w_brian_attempt.mp3", "examine": "../listen-audio/w_brian_examine.mp3", "adapt": "../listen-audio/w_brian_adapt.mp3", "underlying": "../listen-audio/w_brian_underlying.mp3"}, "e": {"Beyond Short Snippets: Deep Networks for Video Classiﬁcation": "../listen-audio/e_brian_c4baf94f3ef5.mp3", "CNNs have been extensively applied for image recognition problems": "../listen-audio/e_brian_5e701fe86e38.mp3", "we propose and evaluate several deep neural network architectures": "../listen-audio/e_brian_65a17dbb3e62.mp3", "over longer time periods than previously attempted": "../listen-audio/e_brian_62e7ef6f9357.mp3", "explores various convolutional temporal feature pooling architectures": "../listen-audio/e_brian_917ba160fc55.mp3", "examining the various design choices which need to be made": "../listen-audio/e_brian_f26da8bbe89d.mp3", "when adapting a CNN for this task": "../listen-audio/e_brian_22419bff34f6.mp3", "explicitly models the video as an ordered sequence of frames": "../listen-audio/e_brian_fa11f1582909.mp3", "we employ a recurrent neural network that uses Long Short-Term Memory (LSTM) cells": "../listen-audio/e_brian_40833a501d49.mp3", "connected to the output of the underlying CNN": "../listen-audio/e_brian_f33592a5bc99.mp3", "Our best networks exhibit signiﬁcant performance improvements": "../listen-audio/e_brian_272611dcbdbf.mp3", "exhibit signiﬁcant performance improvements over previously published results": "../listen-audio/e_brian_96f8d8c86e8a.mp3"}}, "en-US-AndrewNeural": {"w": {"explicitly": "../listen-audio/w_andrew_explicitly.mp3", "recurrent": "../listen-audio/w_andrew_recurrent.mp3", "exhibit": "../listen-audio/w_andrew_exhibit.mp3"}}, "zh-CN-YunyangNeural": {"m": {"循环的": "../listen-audio/m_yunyang_08d8701e7597.mp3", "表现出": "../listen-audio/m_yunyang_84d4fc5d28de.mp3", "池化": "../listen-audio/m_yunyang_63a87cded21c.mp3", "评估": "../listen-audio/m_yunyang_26b9c15a5211.mp3", "显著的": "../listen-audio/m_yunyang_93815af37b5c.mp3", "片段": "../listen-audio/m_yunyang_f15261b960ab.mp3", "广泛地": "../listen-audio/m_yunyang_0664285b9cbe.mp3", "尝试": "../listen-audio/m_yunyang_fa8f026e933d.mp3", "检验": "../listen-audio/m_yunyang_ccc9d4b32429.mp3", "改造以适应": "../listen-audio/m_yunyang_b093578476aa.mp3", "显式地": "../listen-audio/m_yunyang_1fb884639b5a.mp3", "底层的": "../listen-audio/m_yunyang_98ec7208f855.mp3"}}, "zh-CN-YunjianNeural": {"m": {"循环的": "../listen-audio/m_yunjian_08d8701e7597.mp3", "表现出": "../listen-audio/m_yunjian_84d4fc5d28de.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const AUDIO={"en-US-BrianNeural":{"w":{"explicitly":"../listen-audio/w_brian_explicitly.mp3","recurrent":"../listen-audio/w_brian_recurrent.mp3","exhibit":"../listen-audio/w_brian_exhibit.mp3","pooling":"../listen-audio/w_brian_pooling.mp3","snippet":"../listen-audio/w_brian_snippet.mp3","extensively":"../listen-audio/w_brian_extensively.mp3","evaluate":"../listen-audio/w_brian_evaluate.mp3","attempt":"../listen-audio/w_brian_attempt.mp3","examine":"../listen-audio/w_brian_examine.mp3","adapt":"../listen-audio/w_brian_adapt.mp3","underlying":"../listen-audio/w_brian_underlying.mp3","signiﬁcant":"../listen-audio/w_brian_significant.mp3"},"e":{"Beyond Short Snippets: Deep Networks for Video Classiﬁcation":"../listen-audio/e_brian_c4baf94f3ef5.mp3","CNNs have been extensively applied for image recognition problems":"../listen-audio/e_brian_5e701fe86e38.mp3","we propose and evaluate several deep neural network architectures":"../listen-audio/e_brian_65a17dbb3e62.mp3","over longer time periods than previously attempted":"../listen-audio/e_brian_62e7ef6f9357.mp3","explores various convolutional temporal feature pooling architectures":"../listen-audio/e_brian_917ba160fc55.mp3","examining the various design choices which need to be made":"../listen-audio/e_brian_f26da8bbe89d.mp3","when adapting a CNN for this task":"../listen-audio/e_brian_22419bff34f6.mp3","explicitly models the video as an ordered sequence of frames":"../listen-audio/e_brian_fa11f1582909.mp3","we employ a recurrent neural network that uses Long Short-Term Memory (LSTM) cells":"../listen-audio/e_brian_40833a501d49.mp3","connected to the output of the underlying CNN":"../listen-audio/e_brian_f33592a5bc99.mp3","Our best networks exhibit signiﬁcant performance improvements":"../listen-audio/e_brian_272611dcbdbf.mp3","exhibit signiﬁcant performance improvements over previously published results":"../listen-audio/e_brian_96f8d8c86e8a.mp3"}},"en-US-AndrewNeural":{"w":{"explicitly":"../listen-audio/w_andrew_explicitly.mp3","recurrent":"../listen-audio/w_andrew_recurrent.mp3","exhibit":"../listen-audio/w_andrew_exhibit.mp3"}},"zh-CN-YunyangNeural":{"m":{"循环的":"../listen-audio/m_yunyang_08d8701e7597.mp3","表现出":"../listen-audio/m_yunyang_84d4fc5d28de.mp3","池化":"../listen-audio/m_yunyang_63a87cded21c.mp3","评估":"../listen-audio/m_yunyang_26b9c15a5211.mp3","显著的":"../listen-audio/m_yunyang_93815af37b5c.mp3","片段":"../listen-audio/m_yunyang_f15261b960ab.mp3","广泛地":"../listen-audio/m_yunyang_0664285b9cbe.mp3","尝试":"../listen-audio/m_yunyang_fa8f026e933d.mp3","检验":"../listen-audio/m_yunyang_ccc9d4b32429.mp3","改造以适应":"../listen-audio/m_yunyang_b093578476aa.mp3","显式地":"../listen-audio/m_yunyang_1fb884639b5a.mp3","底层的":"../listen-audio/m_yunyang_98ec7208f855.mp3"}},"zh-CN-YunjianNeural":{"m":{"循环的":"../listen-audio/m_yunjian_08d8701e7597.mp3","表现出":"../listen-audio/m_yunjian_84d4fc5d28de.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -928,7 +928,7 @@ $("starBtn").onclick=()=>{
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
   if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  else{skips.add(w.w);pulse("okBtn");wordTip("已跳过「"+w.w+"」· 下次不再读")}   /* 跳过：✓ 动一下 + 顶部提示 */
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -1130,9 +1130,13 @@ function localAudio(t,kind){
     const all = audioVoices(map);
     const want = kind==="zh" ? S.zhVoice : S.enVoice;
     const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    const nf=s=>{try{return String(s).normalize("NFKC").toLowerCase()}catch(e){return String(s).toLowerCase()}};
+    const nk=nf(key);
     for(let i=0;i<order.length;i++){
       const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
+      if(!m)continue;
+      if(m[key])return m[key];
+      for(const k in m){ if(nf(k)===nk)return m[k] }   /* 连字 ﬁ/ﬂ ↔ 普通 fi/fl 互通 */
     }
   }catch(e){}
   return "";
@@ -1162,7 +1166,7 @@ function ttsURLs(t,kind){
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
   else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  /* 单词：只用本地真人音频；读不到 → 提示「网络错误」并跳过，不回退在线/系统机械音 */
   return urls;
 }
 
@@ -1211,9 +1215,24 @@ function say(text,kind,cb){
     const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
     setTimeout(()=>cb&&cb(ok),wait);
   };
+  /* 单词读不到（缺音频 / 加载失败）：显示「网络错误」，短暂停留后跳过这个词。
+     不再回退有道/百度/系统语音——那些就是机械音 */
+  const g0=gen;
+  const netFail=()=>{
+    if(done)return; done=true;
+    stopAudio();
+    wordTip("网络错误");
+    setTimeout(()=>{
+      if(g0!==gen)return;            /* 期间用户手动切过词：这次作废 */
+      if(!playing)return;
+      qi=(qi+1+queue.length)%queue.length; playCurrent();
+    },1100);
+  };
+
   const tryNext=()=>{
     if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+    if(i>=urls.length){
+      if(kind==="word"){ netFail(); return }   /* 单词：不回退机械音 */                            /* 在线音源都不行 → 系统语音兜底 */
       if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
       local=true;
       speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);

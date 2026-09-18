@@ -6,11 +6,3 @@ editLink: false
 ---
 
 # AlphaFold 2 (2021) · 笔记区
-
-> 这一页由你自己填写。编辑源文件 `paper-reading/paper-notes/AlphaFold2.md`，重新生成网站（运行 `tools_build_explain.py` 或直接 `npm run build`）后这里就会更新。
-
-（待补充）
-
----
-
-[← 返回讲解区](/explain/)
