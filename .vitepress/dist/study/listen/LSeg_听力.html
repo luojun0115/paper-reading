@@ -595,7 +595,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow col"><span>链接与备份</span>
       <div class="seg wrap" id="backupBox"></div>
-      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
     </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
@@ -604,28 +604,13 @@
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
-  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
-  <div class="sheet lks" id="linkPop">
-    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
-    <div id="linkList"></div>
-    <div class="lkbtns" id="linkPopBtns"></div>
-  </div>
-  <!-- 链接配置面板：增删改本篇的链接 -->
-  <div class="sheet lks" id="linkCfg">
-    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
-    <div id="linkRows"></div>
-    <div class="lkbtns">
-      <b id="linkAddRow">＋ 添加一行</b>
-      <b id="linkSave" class="pri">保存</b>
-    </div>
-  </div>
   <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
 const ITEMS=[{"w": "novel", "ipa": "ˈnɑːvl", "pos": "adj.", "m": "新颖的", "ex": "We present LSeg, a novel model for language-driven semantic image segmentation", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "encoder", "ipa": "ɪnˈkoʊdər", "pos": "n.", "m": "编码器", "ex": "LSeg uses a text encoder to compute embeddings of descriptive input labels", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "descriptive", "ipa": "dɪˈskrɪptɪv", "pos": "adj.", "m": "描述性的", "ex": "embeddings of descriptive input labels (e.g., grass or building)", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "embedding", "ipa": "ɪmˈbedɪŋ", "pos": "n.", "m": "嵌入（向量）", "ex": "compute embeddings of descriptive input labels", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "dense", "ipa": "dens", "pos": "adj.", "m": "稠密的", "ex": "computes dense per-pixel embeddings of the input image", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "contrastive", "ipa": "kənˈtræstɪv", "pos": "adj.", "m": "对比的", "ex": "trained with a contrastive objective to align pixel embeddings", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "objective", "ipa": "əbˈdʒektɪv", "pos": "n.", "m": "目标（函数）", "ex": "trained with a contrastive objective", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "align", "ipa": "əˈlaɪn", "pos": "v.", "m": "对齐", "ex": "to align pixel embeddings to the text embedding of the corresponding semantic class", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "corresponding", "ipa": "ˌkɔːrəˈspɑːndɪŋ", "pos": "adj.", "m": "对应的", "ex": "the text embedding of the corresponding semantic class", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "ﬂexible", "ipa": "ˈfleksəbl", "pos": "adj.", "m": "灵活的", "ex": "The text embeddings provide a ﬂexible label representation", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "furry", "ipa": "ˈfɜːri", "pos": "adj.", "m": "毛茸茸的", "ex": "semantically similar labels map to similar regions (e.g., cat and furry)", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "generalize", "ipa": "ˈdʒenrəlaɪz", "pos": "v.", "m": "泛化", "ex": "This allows LSeg to generalize to previously unseen categories at test time", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "unseen", "ipa": "ˌʌnˈsiːn", "pos": "adj.", "m": "未见过的", "ex": "generalize to previously unseen categories", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "retraining", "ipa": "ˌriːˈtreɪnɪŋ", "pos": "n.", "m": "重新训练", "ex": "without retraining or even requiring a single additional training sample", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "competitive", "ipa": "kəmˈpetətɪv", "pos": "adj.", "m": "有竞争力的", "ex": "achieves highly competitive zero-shot performance", "lv": "四级", "ov": "", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"competitive": "../listen-audio/w_brian_competitive.mp3", "unseen": "../listen-audio/w_brian_unseen.mp3", "generalize": "../listen-audio/w_brian_generalize.mp3", "encoder": "../listen-audio/w_brian_encoder.mp3", "embedding": "../listen-audio/w_brian_embedding.mp3", "corresponding": "../listen-audio/w_brian_corresponding.mp3", "objective": "../listen-audio/w_brian_objective.mp3", "contrastive": "../listen-audio/w_brian_contrastive.mp3", "retraining": "../listen-audio/w_brian_retraining.mp3", "dense": "../listen-audio/w_brian_dense.mp3", "align": "../listen-audio/w_brian_align.mp3", "novel": "../listen-audio/w_brian_novel.mp3", "descriptive": "../listen-audio/w_brian_descriptive.mp3", "furry": "../listen-audio/w_brian_furry.mp3"}, "e": {"We present LSeg, a novel model for language-driven semantic image segmentation": "../listen-audio/e_brian_78512c550e58.mp3", "LSeg uses a text encoder to compute embeddings of descriptive input labels": "../listen-audio/e_brian_67746d393601.mp3", "embeddings of descriptive input labels (e.g., grass or building)": "../listen-audio/e_brian_7c9e21676027.mp3", "compute embeddings of descriptive input labels": "../listen-audio/e_brian_6f8ab3c49704.mp3", "computes dense per-pixel embeddings of the input image": "../listen-audio/e_brian_3cd18ba815b1.mp3", "trained with a contrastive objective to align pixel embeddings": "../listen-audio/e_brian_ec26c70ee907.mp3", "trained with a contrastive objective": "../listen-audio/e_brian_d0656e069ce5.mp3", "to align pixel embeddings to the text embedding of the corresponding semantic class": "../listen-audio/e_brian_a2c16b25d7f6.mp3", "the text embedding of the corresponding semantic class": "../listen-audio/e_brian_00a3e7998042.mp3", "The text embeddings provide a ﬂexible label representation": "../listen-audio/e_brian_6a4411716d31.mp3", "semantically similar labels map to similar regions (e.g., cat and furry)": "../listen-audio/e_brian_da9c9e0a08c4.mp3", "This allows LSeg to generalize to previously unseen categories at test time": "../listen-audio/e_brian_d9b4d45de793.mp3", "generalize to previously unseen categories": "../listen-audio/e_brian_f26c579349cb.mp3", "without retraining or even requiring a single additional training sample": "../listen-audio/e_brian_7a9828efaa94.mp3", "achieves highly competitive zero-shot performance": "../listen-audio/e_brian_c50e92bdbee0.mp3"}}, "en-US-AndrewNeural": {"w": {"competitive": "../listen-audio/w_andrew_competitive.mp3", "unseen": "../listen-audio/w_andrew_unseen.mp3", "generalize": "../listen-audio/w_andrew_generalize.mp3", "encoder": "../listen-audio/w_andrew_encoder.mp3", "embedding": "../listen-audio/w_andrew_embedding.mp3", "corresponding": "../listen-audio/w_andrew_corresponding.mp3"}}, "zh-CN-YunyangNeural": {"m": {"灵活的": "../listen-audio/m_yunyang_104b571de153.mp3", "有竞争力的": "../listen-audio/m_yunyang_c53390cb3bdc.mp3", "泛化": "../listen-audio/m_yunyang_fb99b6ed20af.mp3", "编码器": "../listen-audio/m_yunyang_b1dfa093b0cf.mp3", "对应的": "../listen-audio/m_yunyang_a7c3fdddb504.mp3", "目标（函数）": "../listen-audio/m_yunyang_3b0b76e2cc95.mp3", "对比的": "../listen-audio/m_yunyang_2ba45d606144.mp3", "未见过的": "../listen-audio/m_yunyang_67b5c5f64c4a.mp3", "对齐": "../listen-audio/m_yunyang_5ee8bf302c6b.mp3", "稠密的": "../listen-audio/m_yunyang_b40d31eee417.mp3", "新颖的": "../listen-audio/m_yunyang_3e3646cca515.mp3", "描述性的": "../listen-audio/m_yunyang_9a77b97e1ec8.mp3", "嵌入（向量）": "../listen-audio/m_yunyang_24ed1dd6f17e.mp3", "毛茸茸的": "../listen-audio/m_yunyang_c5fd6161ade6.mp3", "重新训练": "../listen-audio/m_yunyang_686335159978.mp3"}}, "zh-CN-YunjianNeural": {"m": {"灵活的": "../listen-audio/m_yunjian_104b571de153.mp3", "有竞争力的": "../listen-audio/m_yunjian_c53390cb3bdc.mp3", "泛化": "../listen-audio/m_yunjian_fb99b6ed20af.mp3", "编码器": "../listen-audio/m_yunjian_b1dfa093b0cf.mp3", "对应的": "../listen-audio/m_yunjian_a7c3fdddb504.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const AUDIO={"en-US-BrianNeural":{"w":{"competitive":"../listen-audio/w_brian_competitive.mp3","unseen":"../listen-audio/w_brian_unseen.mp3","generalize":"../listen-audio/w_brian_generalize.mp3","encoder":"../listen-audio/w_brian_encoder.mp3","embedding":"../listen-audio/w_brian_embedding.mp3","corresponding":"../listen-audio/w_brian_corresponding.mp3","objective":"../listen-audio/w_brian_objective.mp3","contrastive":"../listen-audio/w_brian_contrastive.mp3","retraining":"../listen-audio/w_brian_retraining.mp3","dense":"../listen-audio/w_brian_dense.mp3","align":"../listen-audio/w_brian_align.mp3","novel":"../listen-audio/w_brian_novel.mp3","descriptive":"../listen-audio/w_brian_descriptive.mp3","furry":"../listen-audio/w_brian_furry.mp3","ﬂexible":"../listen-audio/w_brian_flexible.mp3"},"e":{"We present LSeg, a novel model for language-driven semantic image segmentation":"../listen-audio/e_brian_78512c550e58.mp3","LSeg uses a text encoder to compute embeddings of descriptive input labels":"../listen-audio/e_brian_67746d393601.mp3","embeddings of descriptive input labels (e.g., grass or building)":"../listen-audio/e_brian_7c9e21676027.mp3","compute embeddings of descriptive input labels":"../listen-audio/e_brian_6f8ab3c49704.mp3","computes dense per-pixel embeddings of the input image":"../listen-audio/e_brian_3cd18ba815b1.mp3","trained with a contrastive objective to align pixel embeddings":"../listen-audio/e_brian_ec26c70ee907.mp3","trained with a contrastive objective":"../listen-audio/e_brian_d0656e069ce5.mp3","to align pixel embeddings to the text embedding of the corresponding semantic class":"../listen-audio/e_brian_a2c16b25d7f6.mp3","the text embedding of the corresponding semantic class":"../listen-audio/e_brian_00a3e7998042.mp3","The text embeddings provide a ﬂexible label representation":"../listen-audio/e_brian_6a4411716d31.mp3","semantically similar labels map to similar regions (e.g., cat and furry)":"../listen-audio/e_brian_da9c9e0a08c4.mp3","This allows LSeg to generalize to previously unseen categories at test time":"../listen-audio/e_brian_d9b4d45de793.mp3","generalize to previously unseen categories":"../listen-audio/e_brian_f26c579349cb.mp3","without retraining or even requiring a single additional training sample":"../listen-audio/e_brian_7a9828efaa94.mp3","achieves highly competitive zero-shot performance":"../listen-audio/e_brian_c50e92bdbee0.mp3"}},"en-US-AndrewNeural":{"w":{"competitive":"../listen-audio/w_andrew_competitive.mp3","unseen":"../listen-audio/w_andrew_unseen.mp3","generalize":"../listen-audio/w_andrew_generalize.mp3","encoder":"../listen-audio/w_andrew_encoder.mp3","embedding":"../listen-audio/w_andrew_embedding.mp3","corresponding":"../listen-audio/w_andrew_corresponding.mp3"}},"zh-CN-YunyangNeural":{"m":{"灵活的":"../listen-audio/m_yunyang_104b571de153.mp3","有竞争力的":"../listen-audio/m_yunyang_c53390cb3bdc.mp3","泛化":"../listen-audio/m_yunyang_fb99b6ed20af.mp3","编码器":"../listen-audio/m_yunyang_b1dfa093b0cf.mp3","对应的":"../listen-audio/m_yunyang_a7c3fdddb504.mp3","目标（函数）":"../listen-audio/m_yunyang_3b0b76e2cc95.mp3","对比的":"../listen-audio/m_yunyang_2ba45d606144.mp3","未见过的":"../listen-audio/m_yunyang_67b5c5f64c4a.mp3","对齐":"../listen-audio/m_yunyang_5ee8bf302c6b.mp3","稠密的":"../listen-audio/m_yunyang_b40d31eee417.mp3","新颖的":"../listen-audio/m_yunyang_3e3646cca515.mp3","描述性的":"../listen-audio/m_yunyang_9a77b97e1ec8.mp3","嵌入（向量）":"../listen-audio/m_yunyang_24ed1dd6f17e.mp3","毛茸茸的":"../listen-audio/m_yunyang_c5fd6161ade6.mp3","重新训练":"../listen-audio/m_yunyang_686335159978.mp3"}},"zh-CN-YunjianNeural":{"m":{"灵活的":"../listen-audio/m_yunjian_104b571de153.mp3","有竞争力的":"../listen-audio/m_yunjian_c53390cb3bdc.mp3","泛化":"../listen-audio/m_yunjian_fb99b6ed20af.mp3","编码器":"../listen-audio/m_yunjian_b1dfa093b0cf.mp3","对应的":"../listen-audio/m_yunjian_a7c3fdddb504.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -928,7 +913,7 @@ $("starBtn").onclick=()=>{
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
   if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  else{skips.add(w.w);pulse("okBtn");wordTip("已跳过「"+w.w+"」· 下次不再读")}   /* 跳过：✓ 动一下 + 顶部提示 */
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -945,81 +930,27 @@ $("clearBox").onclick=e=>{
   set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
 };
 const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
-/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
 const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
-const LKEY="listen_qq_links";
-const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
-const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
-let LINKS=rdLinks();
-const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
-const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 
-function renderLinkPop(){
-  const box=$("linkList"),btns=$("linkPopBtns");
-  if(!LINKS.length){
-    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
-    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
-    $("lpCfg").onclick=openLinkCfg;
-    return;
-  }
-  const multi=LINKS.length>1;
-  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
-    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
-    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
-    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
-  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
-    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
-  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
-  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
-    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
-  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
-  $("lpOpenAll").onclick=()=>openMany(LINKS);
-  $("lpCfg").onclick=openLinkCfg;
-}
-function openLinkCfg(){
-  $("linkPop").classList.remove("on");
-  const box=$("linkRows");
-  const row=l=>'<div class="lkrow">'
-    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
-    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
-    +'<span class="del" title="删除此行">✕</span></div>';
-  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
-  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
-  bindDel();
-  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
-  $("linkCfg").classList.add("on");
-}
-$("linkSave").onclick=()=>{
-  const out=[];
-  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
-    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
-    if(!raw)return;
-    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
-  });
-  LINKS=out; wrLinks(out);
-  $("linkCfg").classList.remove("on");
-  toast("已保存 "+out.length+" 个链接");
-};
-$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
-$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
 
-/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
-$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+/* ===== 备份与恢复：星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
 $("backupBox").onclick=e=>{
   const b=e.target.closest("[data-bk]");if(!b)return;
-  if(b.dataset.bk==="cfg")openLinkCfg();
-  else if(b.dataset.bk==="out")doExport();
+  if(b.dataset.bk==="out")doExport();
   else $("importFile").click();
 };
 function doExport(){
-  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
-  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
-    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  let stars=rd("listen_qq_star"), favs=rd("listen_qq_fav"), skips=rd("listen_qq_skip");
+  let range={};try{range=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),
+    scope:"all",from:PKEY,
+    stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
   const a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
-  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.download="听力全站备份_"+new Date().toISOString().slice(0,10)+".json";
   a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+  toast("已导出全站备份 · ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size);
 }
 $("importFile").onchange=e=>{
   const f=e.target.files[0];if(!f)return;
@@ -1028,19 +959,15 @@ $("importFile").onchange=e=>{
     try{
       const d=JSON.parse(r.result);
       if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
-      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
-      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
-        const cur=new Set((links[k]||[]).map(l=>l.url));
-        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
-      });
-      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      /* 先实时重读最新 localStorage（含其它标签页改动），再与备份取并集，绝不覆盖已有 */
+      stars=rd("listen_qq_star");favs=rd("listen_qq_fav");skips=rd("listen_qq_skip");
       (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
       (d.favs||[]).forEach(w=>favs.add(w));
       (d.skips||[]).forEach(w=>skips.add(w));
       wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
       if(d.cfg){Object.assign(S,d.cfg);save()}
-      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
-      LINKS=rdLinks();updateCounts();afterMark();
+      if(d.range){let fr={};try{fr=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(_){}range=Object.assign({},fr,d.range);try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      updateCounts();afterMark();
       toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
       setTimeout(()=>location.reload(),1200);
     }catch(err){toast("导入失败："+err.message)}
@@ -1130,9 +1057,13 @@ function localAudio(t,kind){
     const all = audioVoices(map);
     const want = kind==="zh" ? S.zhVoice : S.enVoice;
     const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    const nf=s=>{try{return String(s).normalize("NFKC").toLowerCase()}catch(e){return String(s).toLowerCase()}};
+    const nk=nf(key);
     for(let i=0;i<order.length;i++){
       const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
+      if(!m)continue;
+      if(m[key])return m[key];
+      for(const k in m){ if(nf(k)===nk)return m[k] }   /* 连字 ﬁ/ﬂ ↔ 普通 fi/fl 互通 */
     }
   }catch(e){}
   return "";
@@ -1162,7 +1093,7 @@ function ttsURLs(t,kind){
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
   else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  /* 单词：只用本地真人音频；读不到 → 提示「网络错误」并跳过，不回退在线/系统机械音 */
   return urls;
 }
 
@@ -1211,9 +1142,24 @@ function say(text,kind,cb){
     const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
     setTimeout(()=>cb&&cb(ok),wait);
   };
+  /* 单词读不到（缺音频 / 加载失败）：显示「网络错误」，短暂停留后跳过这个词。
+     不再回退有道/百度/系统语音——那些就是机械音 */
+  const g0=gen;
+  const netFail=()=>{
+    if(done)return; done=true;
+    stopAudio();
+    wordTip("网络错误");
+    setTimeout(()=>{
+      if(g0!==gen)return;            /* 期间用户手动切过词：这次作废 */
+      if(!playing)return;
+      qi=(qi+1+queue.length)%queue.length; playCurrent();
+    },1100);
+  };
+
   const tryNext=()=>{
     if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+    if(i>=urls.length){
+      if(kind==="word"){ netFail(); return }   /* 单词：不回退机械音 */                            /* 在线音源都不行 → 系统语音兜底 */
       if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
       local=true;
       speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
@@ -1332,7 +1278,7 @@ document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
   else if(e.key==="ArrowRight")nextWord();
   else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
+  else if(e.key==="Escape"){$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中

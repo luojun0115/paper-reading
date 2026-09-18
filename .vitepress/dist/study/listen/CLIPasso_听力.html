@@ -595,7 +595,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow col"><span>链接与备份</span>
       <div class="seg wrap" id="backupBox"></div>
-      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
     </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
@@ -604,28 +604,13 @@
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
-  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
-  <div class="sheet lks" id="linkPop">
-    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
-    <div id="linkList"></div>
-    <div class="lkbtns" id="linkPopBtns"></div>
-  </div>
-  <!-- 链接配置面板：增删改本篇的链接 -->
-  <div class="sheet lks" id="linkCfg">
-    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
-    <div id="linkRows"></div>
-    <div class="lkbtns">
-      <b id="linkAddRow">＋ 添加一行</b>
-      <b id="linkSave" class="pri">保存</b>
-    </div>
-  </div>
   <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
 const ITEMS=[{"w": "abstraction", "ipa": "æbˈstrækʃn", "pos": "n.", "m": "抽象", "ex": "Abstraction is at the heart of sketching", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "sketch", "ipa": "sketʃ", "pos": "n./v.", "m": "素描，简笔画", "ex": "Abstraction is at the heart of sketching", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "minimal", "ipa": "ˈmɪnɪml", "pos": "adj.", "m": "极简的", "ex": "the simple and minimal nature of line drawings", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "entail", "ipa": "ɪnˈteɪl", "pos": "v.", "m": "需要，包含", "ex": "Abstraction entails identifying the essential visual properties", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "essential", "ipa": "ɪˈsenʃl", "pos": "adj.", "m": "本质的，必不可少的", "ex": "identifying the essential visual properties of an object", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "semantic", "ipa": "sɪˈmæntɪk", "pos": "adj.", "m": "语义的", "ex": "which requires semantic understanding and prior knowledge of high-level concepts", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "depict", "ipa": "dɪˈpɪkt", "pos": "v.", "m": "描绘", "ex": "Abstract depictions are therefore challenging for artists", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "geometric", "ipa": "ˌdʒiːəˈmetrɪk", "pos": "adj.", "m": "几何的", "ex": "guided by geometric and semantic simpliﬁcations", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "simpliﬁcation", "ipa": "ˌsɪmpləfɪˈkeɪʃn", "pos": "n.", "m": "简化", "ex": "guided by geometric and semantic simpliﬁcations", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "remarkable", "ipa": "rɪˈmɑːrkəbl", "pos": "adj.", "m": "非凡的", "ex": "we utilize the remarkable ability of CLIP to distill semantic concepts", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "distill", "ipa": "dɪˈstɪl", "pos": "v.", "m": "提炼", "ex": "the remarkable ability of CLIP to distill semantic concepts from sketches and images", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "differentiable", "ipa": "ˌdɪfəˈrenʃəbl", "pos": "adj.", "m": "可微的", "ex": "use a differentiable rasterizer to optimize the parameters of the curves", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "rasterizer", "ipa": "ˈræstəraɪzər", "pos": "n.", "m": "光栅化器", "ex": "a differentiable rasterizer", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "optimize", "ipa": "ˈɑːptɪmaɪz", "pos": "v.", "m": "优化", "ex": "optimize the parameters of the curves directly", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "perceptual", "ipa": "pərˈseptʃuəl", "pos": "adj.", "m": "感知的", "ex": "with respect to a CLIP-based perceptual loss", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "stroke", "ipa": "stroʊk", "pos": "n.", "m": "笔画", "ex": "The abstraction degree is controlled by varying the number of strokes", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "recognizability", "ipa": "ˌrekəɡnaɪzəˈbɪləti", "pos": "n.", "m": "可识别性", "ex": "while maintaining recognizability, underlying structure", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "underlying", "ipa": "ˌʌndərˈlaɪɪŋ", "pos": "adj.", "m": "底层的", "ex": "maintaining underlying structure and essential visual components", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "express", "ipa": "ɪkˈspres", "pos": "v.", "m": "表达", "ex": "Free-hand sketching is a valuable visual tool for expressing ideas, concepts, and actions", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "valuable", "ipa": "ˈvæljuəbl", "pos": "adj.", "m": "宝贵的", "ex": "a valuable visual tool for expressing ideas", "lv": "六级", "ov": "", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"essential": "../listen-audio/w_brian_essential.mp3", "geometric": "../listen-audio/w_brian_geometric.mp3", "semantic": "../listen-audio/w_brian_semantic.mp3", "differentiable": "../listen-audio/w_brian_differentiable.mp3", "minimal": "../listen-audio/w_brian_minimal.mp3", "underlying": "../listen-audio/w_brian_underlying.mp3", "abstraction": "../listen-audio/w_brian_abstraction.mp3", "sketch": "../listen-audio/w_brian_sketch.mp3", "entail": "../listen-audio/w_brian_entail.mp3", "depict": "../listen-audio/w_brian_depict.mp3", "remarkable": "../listen-audio/w_brian_remarkable.mp3", "distill": "../listen-audio/w_brian_distill.mp3", "rasterizer": "../listen-audio/w_brian_rasterizer.mp3", "optimize": "../listen-audio/w_brian_optimize.mp3", "perceptual": "../listen-audio/w_brian_perceptual.mp3", "stroke": "../listen-audio/w_brian_stroke.mp3", "recognizability": "../listen-audio/w_brian_recognizability.mp3", "express": "../listen-audio/w_brian_express.mp3", "valuable": "../listen-audio/w_brian_valuable.mp3"}, "e": {"Abstraction is at the heart of sketching": "../listen-audio/e_brian_6b9e557b5df9.mp3", "the simple and minimal nature of line drawings": "../listen-audio/e_brian_3d4ae658409a.mp3", "Abstraction entails identifying the essential visual properties": "../listen-audio/e_brian_0ebc1e3b2b45.mp3", "identifying the essential visual properties of an object": "../listen-audio/e_brian_82d55a9eb8d3.mp3", "which requires semantic understanding and prior knowledge of high-level concepts": "../listen-audio/e_brian_a86c03361551.mp3", "Abstract depictions are therefore challenging for artists": "../listen-audio/e_brian_27bdfceacc08.mp3", "guided by geometric and semantic simpliﬁcations": "../listen-audio/e_brian_55e8f0a95dca.mp3", "we utilize the remarkable ability of CLIP to distill semantic concepts": "../listen-audio/e_brian_b7013ef0d467.mp3", "the remarkable ability of CLIP to distill semantic concepts from sketches and images": "../listen-audio/e_brian_5d86712ae1f7.mp3", "use a differentiable rasterizer to optimize the parameters of the curves": "../listen-audio/e_brian_23e1fde302dc.mp3", "a differentiable rasterizer": "../listen-audio/e_brian_84ea15f2bde2.mp3", "optimize the parameters of the curves directly": "../listen-audio/e_brian_e6226f974a7d.mp3", "with respect to a CLIP-based perceptual loss": "../listen-audio/e_brian_8403d2aa9b70.mp3", "The abstraction degree is controlled by varying the number of strokes": "../listen-audio/e_brian_09de3e285ac7.mp3", "while maintaining recognizability, underlying structure": "../listen-audio/e_brian_1e56196e1d1c.mp3", "maintaining underlying structure and essential visual components": "../listen-audio/e_brian_316a6999e6a9.mp3", "Free-hand sketching is a valuable visual tool for expressing ideas, concepts, and actions": "../listen-audio/e_brian_e955345538a4.mp3", "a valuable visual tool for expressing ideas": "../listen-audio/e_brian_bf279a2cfca3.mp3"}}, "en-US-AndrewNeural": {"w": {"essential": "../listen-audio/w_andrew_essential.mp3", "geometric": "../listen-audio/w_andrew_geometric.mp3", "semantic": "../listen-audio/w_andrew_semantic.mp3"}}, "zh-CN-YunyangNeural": {"m": {"几何的": "../listen-audio/m_yunyang_350c7e20aced.mp3", "语义的": "../listen-audio/m_yunyang_77eaf7dfc7b0.mp3", "可微的": "../listen-audio/m_yunyang_1cfca9ae528a.mp3", "优化": "../listen-audio/m_yunyang_aa84ec947f0a.mp3", "底层的": "../listen-audio/m_yunyang_98ec7208f855.mp3", "简化": "../listen-audio/m_yunyang_5816979fbd16.mp3", "抽象": "../listen-audio/m_yunyang_d8f114358b86.mp3", "素描，简笔画": "../listen-audio/m_yunyang_9a520eca0358.mp3", "极简的": "../listen-audio/m_yunyang_17aa44ecd8fc.mp3", "需要，包含": "../listen-audio/m_yunyang_fa8c5e091e09.mp3", "本质的，必不可少的": "../listen-audio/m_yunyang_90ec0f5c9e8c.mp3", "描绘": "../listen-audio/m_yunyang_5b16f9baa162.mp3", "非凡的": "../listen-audio/m_yunyang_6b8eb2901295.mp3", "提炼": "../listen-audio/m_yunyang_d57800cb8694.mp3", "光栅化器": "../listen-audio/m_yunyang_7900315e0207.mp3", "感知的": "../listen-audio/m_yunyang_00af7bec1c1b.mp3", "笔画": "../listen-audio/m_yunyang_818ef30f5970.mp3", "可识别性": "../listen-audio/m_yunyang_13ef48781f66.mp3", "表达": "../listen-audio/m_yunyang_4c454216db3f.mp3", "宝贵的": "../listen-audio/m_yunyang_676e2ace6056.mp3"}}, "zh-CN-YunjianNeural": {"m": {"几何的": "../listen-audio/m_yunjian_350c7e20aced.mp3", "语义的": "../listen-audio/m_yunjian_77eaf7dfc7b0.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const AUDIO={"en-US-BrianNeural":{"w":{"essential":"../listen-audio/w_brian_essential.mp3","geometric":"../listen-audio/w_brian_geometric.mp3","semantic":"../listen-audio/w_brian_semantic.mp3","differentiable":"../listen-audio/w_brian_differentiable.mp3","minimal":"../listen-audio/w_brian_minimal.mp3","underlying":"../listen-audio/w_brian_underlying.mp3","abstraction":"../listen-audio/w_brian_abstraction.mp3","sketch":"../listen-audio/w_brian_sketch.mp3","entail":"../listen-audio/w_brian_entail.mp3","depict":"../listen-audio/w_brian_depict.mp3","remarkable":"../listen-audio/w_brian_remarkable.mp3","distill":"../listen-audio/w_brian_distill.mp3","rasterizer":"../listen-audio/w_brian_rasterizer.mp3","optimize":"../listen-audio/w_brian_optimize.mp3","perceptual":"../listen-audio/w_brian_perceptual.mp3","stroke":"../listen-audio/w_brian_stroke.mp3","recognizability":"../listen-audio/w_brian_recognizability.mp3","express":"../listen-audio/w_brian_express.mp3","valuable":"../listen-audio/w_brian_valuable.mp3","simpliﬁcation":"../listen-audio/w_brian_simplification.mp3"},"e":{"Abstraction is at the heart of sketching":"../listen-audio/e_brian_6b9e557b5df9.mp3","the simple and minimal nature of line drawings":"../listen-audio/e_brian_3d4ae658409a.mp3","Abstraction entails identifying the essential visual properties":"../listen-audio/e_brian_0ebc1e3b2b45.mp3","identifying the essential visual properties of an object":"../listen-audio/e_brian_82d55a9eb8d3.mp3","which requires semantic understanding and prior knowledge of high-level concepts":"../listen-audio/e_brian_a86c03361551.mp3","Abstract depictions are therefore challenging for artists":"../listen-audio/e_brian_27bdfceacc08.mp3","guided by geometric and semantic simpliﬁcations":"../listen-audio/e_brian_55e8f0a95dca.mp3","we utilize the remarkable ability of CLIP to distill semantic concepts":"../listen-audio/e_brian_b7013ef0d467.mp3","the remarkable ability of CLIP to distill semantic concepts from sketches and images":"../listen-audio/e_brian_5d86712ae1f7.mp3","use a differentiable rasterizer to optimize the parameters of the curves":"../listen-audio/e_brian_23e1fde302dc.mp3","a differentiable rasterizer":"../listen-audio/e_brian_84ea15f2bde2.mp3","optimize the parameters of the curves directly":"../listen-audio/e_brian_e6226f974a7d.mp3","with respect to a CLIP-based perceptual loss":"../listen-audio/e_brian_8403d2aa9b70.mp3","The abstraction degree is controlled by varying the number of strokes":"../listen-audio/e_brian_09de3e285ac7.mp3","while maintaining recognizability, underlying structure":"../listen-audio/e_brian_1e56196e1d1c.mp3","maintaining underlying structure and essential visual components":"../listen-audio/e_brian_316a6999e6a9.mp3","Free-hand sketching is a valuable visual tool for expressing ideas, concepts, and actions":"../listen-audio/e_brian_e955345538a4.mp3","a valuable visual tool for expressing ideas":"../listen-audio/e_brian_bf279a2cfca3.mp3"}},"en-US-AndrewNeural":{"w":{"essential":"../listen-audio/w_andrew_essential.mp3","geometric":"../listen-audio/w_andrew_geometric.mp3","semantic":"../listen-audio/w_andrew_semantic.mp3"}},"zh-CN-YunyangNeural":{"m":{"几何的":"../listen-audio/m_yunyang_350c7e20aced.mp3","语义的":"../listen-audio/m_yunyang_77eaf7dfc7b0.mp3","可微的":"../listen-audio/m_yunyang_1cfca9ae528a.mp3","优化":"../listen-audio/m_yunyang_aa84ec947f0a.mp3","底层的":"../listen-audio/m_yunyang_98ec7208f855.mp3","简化":"../listen-audio/m_yunyang_5816979fbd16.mp3","抽象":"../listen-audio/m_yunyang_d8f114358b86.mp3","素描，简笔画":"../listen-audio/m_yunyang_9a520eca0358.mp3","极简的":"../listen-audio/m_yunyang_17aa44ecd8fc.mp3","需要，包含":"../listen-audio/m_yunyang_fa8c5e091e09.mp3","本质的，必不可少的":"../listen-audio/m_yunyang_90ec0f5c9e8c.mp3","描绘":"../listen-audio/m_yunyang_5b16f9baa162.mp3","非凡的":"../listen-audio/m_yunyang_6b8eb2901295.mp3","提炼":"../listen-audio/m_yunyang_d57800cb8694.mp3","光栅化器":"../listen-audio/m_yunyang_7900315e0207.mp3","感知的":"../listen-audio/m_yunyang_00af7bec1c1b.mp3","笔画":"../listen-audio/m_yunyang_818ef30f5970.mp3","可识别性":"../listen-audio/m_yunyang_13ef48781f66.mp3","表达":"../listen-audio/m_yunyang_4c454216db3f.mp3","宝贵的":"../listen-audio/m_yunyang_676e2ace6056.mp3"}},"zh-CN-YunjianNeural":{"m":{"几何的":"../listen-audio/m_yunjian_350c7e20aced.mp3","语义的":"../listen-audio/m_yunjian_77eaf7dfc7b0.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -928,7 +913,7 @@ $("starBtn").onclick=()=>{
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
   if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  else{skips.add(w.w);pulse("okBtn");wordTip("已跳过「"+w.w+"」· 下次不再读")}   /* 跳过：✓ 动一下 + 顶部提示 */
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -945,81 +930,27 @@ $("clearBox").onclick=e=>{
   set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
 };
 const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
-/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
 const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
-const LKEY="listen_qq_links";
-const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
-const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
-let LINKS=rdLinks();
-const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
-const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 
-function renderLinkPop(){
-  const box=$("linkList"),btns=$("linkPopBtns");
-  if(!LINKS.length){
-    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
-    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
-    $("lpCfg").onclick=openLinkCfg;
-    return;
-  }
-  const multi=LINKS.length>1;
-  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
-    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
-    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
-    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
-  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
-    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
-  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
-  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
-    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
-  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
-  $("lpOpenAll").onclick=()=>openMany(LINKS);
-  $("lpCfg").onclick=openLinkCfg;
-}
-function openLinkCfg(){
-  $("linkPop").classList.remove("on");
-  const box=$("linkRows");
-  const row=l=>'<div class="lkrow">'
-    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
-    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
-    +'<span class="del" title="删除此行">✕</span></div>';
-  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
-  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
-  bindDel();
-  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
-  $("linkCfg").classList.add("on");
-}
-$("linkSave").onclick=()=>{
-  const out=[];
-  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
-    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
-    if(!raw)return;
-    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
-  });
-  LINKS=out; wrLinks(out);
-  $("linkCfg").classList.remove("on");
-  toast("已保存 "+out.length+" 个链接");
-};
-$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
-$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
 
-/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
-$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+/* ===== 备份与恢复：星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
 $("backupBox").onclick=e=>{
   const b=e.target.closest("[data-bk]");if(!b)return;
-  if(b.dataset.bk==="cfg")openLinkCfg();
-  else if(b.dataset.bk==="out")doExport();
+  if(b.dataset.bk==="out")doExport();
   else $("importFile").click();
 };
 function doExport(){
-  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
-  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
-    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  let stars=rd("listen_qq_star"), favs=rd("listen_qq_fav"), skips=rd("listen_qq_skip");
+  let range={};try{range=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),
+    scope:"all",from:PKEY,
+    stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
   const a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
-  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.download="听力全站备份_"+new Date().toISOString().slice(0,10)+".json";
   a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+  toast("已导出全站备份 · ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size);
 }
 $("importFile").onchange=e=>{
   const f=e.target.files[0];if(!f)return;
@@ -1028,19 +959,15 @@ $("importFile").onchange=e=>{
     try{
       const d=JSON.parse(r.result);
       if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
-      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
-      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
-        const cur=new Set((links[k]||[]).map(l=>l.url));
-        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
-      });
-      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      /* 先实时重读最新 localStorage（含其它标签页改动），再与备份取并集，绝不覆盖已有 */
+      stars=rd("listen_qq_star");favs=rd("listen_qq_fav");skips=rd("listen_qq_skip");
       (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
       (d.favs||[]).forEach(w=>favs.add(w));
       (d.skips||[]).forEach(w=>skips.add(w));
       wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
       if(d.cfg){Object.assign(S,d.cfg);save()}
-      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
-      LINKS=rdLinks();updateCounts();afterMark();
+      if(d.range){let fr={};try{fr=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(_){}range=Object.assign({},fr,d.range);try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      updateCounts();afterMark();
       toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
       setTimeout(()=>location.reload(),1200);
     }catch(err){toast("导入失败："+err.message)}
@@ -1130,9 +1057,13 @@ function localAudio(t,kind){
     const all = audioVoices(map);
     const want = kind==="zh" ? S.zhVoice : S.enVoice;
     const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    const nf=s=>{try{return String(s).normalize("NFKC").toLowerCase()}catch(e){return String(s).toLowerCase()}};
+    const nk=nf(key);
     for(let i=0;i<order.length;i++){
       const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
+      if(!m)continue;
+      if(m[key])return m[key];
+      for(const k in m){ if(nf(k)===nk)return m[k] }   /* 连字 ﬁ/ﬂ ↔ 普通 fi/fl 互通 */
     }
   }catch(e){}
   return "";
@@ -1162,7 +1093,7 @@ function ttsURLs(t,kind){
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
   else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  /* 单词：只用本地真人音频；读不到 → 提示「网络错误」并跳过，不回退在线/系统机械音 */
   return urls;
 }
 
@@ -1211,9 +1142,24 @@ function say(text,kind,cb){
     const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
     setTimeout(()=>cb&&cb(ok),wait);
   };
+  /* 单词读不到（缺音频 / 加载失败）：显示「网络错误」，短暂停留后跳过这个词。
+     不再回退有道/百度/系统语音——那些就是机械音 */
+  const g0=gen;
+  const netFail=()=>{
+    if(done)return; done=true;
+    stopAudio();
+    wordTip("网络错误");
+    setTimeout(()=>{
+      if(g0!==gen)return;            /* 期间用户手动切过词：这次作废 */
+      if(!playing)return;
+      qi=(qi+1+queue.length)%queue.length; playCurrent();
+    },1100);
+  };
+
   const tryNext=()=>{
     if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+    if(i>=urls.length){
+      if(kind==="word"){ netFail(); return }   /* 单词：不回退机械音 */                            /* 在线音源都不行 → 系统语音兜底 */
       if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
       local=true;
       speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
@@ -1332,7 +1278,7 @@ document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
   else if(e.key==="ArrowRight")nextWord();
   else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
+  else if(e.key==="Escape"){$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中

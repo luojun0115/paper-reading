@@ -595,7 +595,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow col"><span>链接与备份</span>
       <div class="seg wrap" id="backupBox"></div>
-      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
     </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
@@ -604,28 +604,13 @@
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
-  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
-  <div class="sheet lks" id="linkPop">
-    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
-    <div id="linkList"></div>
-    <div class="lkbtns" id="linkPopBtns"></div>
-  </div>
-  <!-- 链接配置面板：增删改本篇的链接 -->
-  <div class="sheet lks" id="linkCfg">
-    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
-    <div id="linkRows"></div>
-    <div class="lkbtns">
-      <b id="linkAddRow">＋ 添加一行</b>
-      <b id="linkSave" class="pri">保存</b>
-    </div>
-  </div>
   <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
 const ITEMS=[{"w": "momentum", "ipa": "moʊˈmentəm", "pos": "n.", "m": "动量", "ex": "Improved Baselines with Momentum Contrastive Learning", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "encouraging", "ipa": "ɪnˈkɜːrɪdʒɪŋ", "pos": "adj.", "m": "令人鼓舞的", "ex": "Contrastive unsupervised learning has recently shown encouraging progress", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "verify", "ipa": "ˈverɪfaɪ", "pos": "v.", "m": "验证", "ex": "we verify the effectiveness of two of SimCLR's design improvements", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "effectiveness", "ipa": "ɪˈfektɪvnəs", "pos": "n.", "m": "有效性", "ex": "we verify the effectiveness", "lv": "考博", "ov": "雅思托福", "sec": "Abstract"}, {"w": "framework", "ipa": "ˈfreɪmwɜːrk", "pos": "n.", "m": "框架", "ex": "implementing them in the MoCo framework", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "modiﬁcation", "ipa": "ˌmɑːdɪfɪˈkeɪʃn", "pos": "n.", "m": "修改", "ex": "With simple modiﬁcations to MoCo", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "projection", "ipa": "prəˈdʒekʃn", "pos": "n.", "m": "投影", "ex": "using an MLP projection head", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "establish", "ipa": "ɪˈstæblɪʃ", "pos": "v.", "m": "确立", "ex": "This note establishes stronger and more feasible baselines", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "feasible", "ipa": "ˈfiːzəbl", "pos": "adj.", "m": "可行的", "ex": "stronger and more feasible baselines", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "orthogonal", "ipa": "ɔːrˈθɑːɡənl", "pos": "adj.", "m": "正交的（互不依赖）", "ex": "are orthogonal to the frameworks of MoCo and SimCLR", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "batch", "ipa": "bætʃ", "pos": "n.", "m": "批次", "ex": "do not require large training batches", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "accessible", "ipa": "əkˈsesəbl", "pos": "adj.", "m": "门槛低的", "ex": "make state-of-the-art unsupervised learning research more accessible", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "converge", "ipa": "kənˈvɜːrdʒ", "pos": "v.", "m": "汇聚于", "ex": "Recent studies are converging on a central concept", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "promising", "ipa": "ˈprɑːmɪsɪŋ", "pos": "adj.", "m": "有前景的", "ex": "The results are promising", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "surpass", "ipa": "sərˈpæs", "pos": "v.", "m": "超过", "ex": "unsupervised pre-training can surpass its ImageNet-supervised counterpart", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "counterpart", "ipa": "ˈkaʊntərpɑːrt", "pos": "n.", "m": "对照版本", "ex": "its ImageNet-supervised counterpart", "lv": "六级", "ov": "", "sec": "Abstract"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"promising": "../listen-audio/w_brian_promising.mp3", "framework": "../listen-audio/w_brian_framework.mp3", "verify": "../listen-audio/w_brian_verify.mp3", "establish": "../listen-audio/w_brian_establish.mp3", "projection": "../listen-audio/w_brian_projection.mp3", "surpass": "../listen-audio/w_brian_surpass.mp3", "converge": "../listen-audio/w_brian_converge.mp3", "momentum": "../listen-audio/w_brian_momentum.mp3", "accessible": "../listen-audio/w_brian_accessible.mp3", "batch": "../listen-audio/w_brian_batch.mp3", "counterpart": "../listen-audio/w_brian_counterpart.mp3", "orthogonal": "../listen-audio/w_brian_orthogonal.mp3", "feasible": "../listen-audio/w_brian_feasible.mp3", "effectiveness": "../listen-audio/w_brian_effectiveness.mp3", "encouraging": "../listen-audio/w_brian_encouraging.mp3"}, "e": {"Improved Baselines with Momentum Contrastive Learning": "../listen-audio/e_brian_e1c439ca39a0.mp3", "Contrastive unsupervised learning has recently shown encouraging progress": "../listen-audio/e_brian_d1bcc5042dc4.mp3", "we verify the effectiveness of two of SimCLR's design improvements": "../listen-audio/e_brian_d9a1825ae83c.mp3", "we verify the effectiveness": "../listen-audio/e_brian_35f1bcfe6171.mp3", "implementing them in the MoCo framework": "../listen-audio/e_brian_c004d661b7aa.mp3", "With simple modiﬁcations to MoCo": "../listen-audio/e_brian_19418ae308cf.mp3", "using an MLP projection head": "../listen-audio/e_brian_89a78f9087a9.mp3", "This note establishes stronger and more feasible baselines": "../listen-audio/e_brian_23e96eb64698.mp3", "stronger and more feasible baselines": "../listen-audio/e_brian_e2107230fdb6.mp3", "are orthogonal to the frameworks of MoCo and SimCLR": "../listen-audio/e_brian_cad8c4d6ee90.mp3", "do not require large training batches": "../listen-audio/e_brian_02f2ac950ecb.mp3", "make state-of-the-art unsupervised learning research more accessible": "../listen-audio/e_brian_f02600872946.mp3", "Recent studies are converging on a central concept": "../listen-audio/e_brian_b68c9c7fd654.mp3", "The results are promising": "../listen-audio/e_brian_5de7a392cd83.mp3", "unsupervised pre-training can surpass its ImageNet-supervised counterpart": "../listen-audio/e_brian_65db7f123a0f.mp3", "its ImageNet-supervised counterpart": "../listen-audio/e_brian_f343b76c949b.mp3"}}, "en-US-AndrewNeural": {"w": {"promising": "../listen-audio/w_andrew_promising.mp3", "framework": "../listen-audio/w_andrew_framework.mp3", "verify": "../listen-audio/w_andrew_verify.mp3", "establish": "../listen-audio/w_andrew_establish.mp3", "projection": "../listen-audio/w_andrew_projection.mp3", "surpass": "../listen-audio/w_andrew_surpass.mp3"}}, "zh-CN-YunyangNeural": {"m": {"有前景的": "../listen-audio/m_yunyang_bf9b2e3ef6bc.mp3", "框架": "../listen-audio/m_yunyang_41f1d2b62436.mp3", "验证": "../listen-audio/m_yunyang_cd8992b644e6.mp3", "投影": "../listen-audio/m_yunyang_16ad4ad54911.mp3", "超过": "../listen-audio/m_yunyang_41c5ecd68dd1.mp3", "动量": "../listen-audio/m_yunyang_1ef123bcc985.mp3", "批次": "../listen-audio/m_yunyang_e683517f148c.mp3", "确立": "../listen-audio/m_yunyang_18e56bca82f2.mp3", "有效性": "../listen-audio/m_yunyang_4457266820ae.mp3", "可行的": "../listen-audio/m_yunyang_56faab128f6c.mp3", "令人鼓舞的": "../listen-audio/m_yunyang_0eeedb896d51.mp3", "修改": "../listen-audio/m_yunyang_8347a927c09a.mp3", "正交的（互不依赖）": "../listen-audio/m_yunyang_75607d81ec50.mp3", "门槛低的": "../listen-audio/m_yunyang_af76d65d38ff.mp3", "汇聚于": "../listen-audio/m_yunyang_80dd5db931dc.mp3", "对照版本": "../listen-audio/m_yunyang_2ad0e27b4e29.mp3"}}, "zh-CN-YunjianNeural": {"m": {"有前景的": "../listen-audio/m_yunjian_bf9b2e3ef6bc.mp3", "框架": "../listen-audio/m_yunjian_41f1d2b62436.mp3", "验证": "../listen-audio/m_yunjian_cd8992b644e6.mp3", "投影": "../listen-audio/m_yunjian_16ad4ad54911.mp3", "超过": "../listen-audio/m_yunjian_41c5ecd68dd1.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const AUDIO={"en-US-BrianNeural":{"w":{"promising":"../listen-audio/w_brian_promising.mp3","framework":"../listen-audio/w_brian_framework.mp3","verify":"../listen-audio/w_brian_verify.mp3","establish":"../listen-audio/w_brian_establish.mp3","projection":"../listen-audio/w_brian_projection.mp3","surpass":"../listen-audio/w_brian_surpass.mp3","converge":"../listen-audio/w_brian_converge.mp3","momentum":"../listen-audio/w_brian_momentum.mp3","accessible":"../listen-audio/w_brian_accessible.mp3","batch":"../listen-audio/w_brian_batch.mp3","counterpart":"../listen-audio/w_brian_counterpart.mp3","orthogonal":"../listen-audio/w_brian_orthogonal.mp3","feasible":"../listen-audio/w_brian_feasible.mp3","effectiveness":"../listen-audio/w_brian_effectiveness.mp3","encouraging":"../listen-audio/w_brian_encouraging.mp3","modiﬁcation":"../listen-audio/w_brian_modification.mp3"},"e":{"Improved Baselines with Momentum Contrastive Learning":"../listen-audio/e_brian_e1c439ca39a0.mp3","Contrastive unsupervised learning has recently shown encouraging progress":"../listen-audio/e_brian_d1bcc5042dc4.mp3","we verify the effectiveness of two of SimCLR's design improvements":"../listen-audio/e_brian_d9a1825ae83c.mp3","we verify the effectiveness":"../listen-audio/e_brian_35f1bcfe6171.mp3","implementing them in the MoCo framework":"../listen-audio/e_brian_c004d661b7aa.mp3","With simple modiﬁcations to MoCo":"../listen-audio/e_brian_19418ae308cf.mp3","using an MLP projection head":"../listen-audio/e_brian_89a78f9087a9.mp3","This note establishes stronger and more feasible baselines":"../listen-audio/e_brian_23e96eb64698.mp3","stronger and more feasible baselines":"../listen-audio/e_brian_e2107230fdb6.mp3","are orthogonal to the frameworks of MoCo and SimCLR":"../listen-audio/e_brian_cad8c4d6ee90.mp3","do not require large training batches":"../listen-audio/e_brian_02f2ac950ecb.mp3","make state-of-the-art unsupervised learning research more accessible":"../listen-audio/e_brian_f02600872946.mp3","Recent studies are converging on a central concept":"../listen-audio/e_brian_b68c9c7fd654.mp3","The results are promising":"../listen-audio/e_brian_5de7a392cd83.mp3","unsupervised pre-training can surpass its ImageNet-supervised counterpart":"../listen-audio/e_brian_65db7f123a0f.mp3","its ImageNet-supervised counterpart":"../listen-audio/e_brian_f343b76c949b.mp3"}},"en-US-AndrewNeural":{"w":{"promising":"../listen-audio/w_andrew_promising.mp3","framework":"../listen-audio/w_andrew_framework.mp3","verify":"../listen-audio/w_andrew_verify.mp3","establish":"../listen-audio/w_andrew_establish.mp3","projection":"../listen-audio/w_andrew_projection.mp3","surpass":"../listen-audio/w_andrew_surpass.mp3"}},"zh-CN-YunyangNeural":{"m":{"有前景的":"../listen-audio/m_yunyang_bf9b2e3ef6bc.mp3","框架":"../listen-audio/m_yunyang_41f1d2b62436.mp3","验证":"../listen-audio/m_yunyang_cd8992b644e6.mp3","投影":"../listen-audio/m_yunyang_16ad4ad54911.mp3","超过":"../listen-audio/m_yunyang_41c5ecd68dd1.mp3","动量":"../listen-audio/m_yunyang_1ef123bcc985.mp3","批次":"../listen-audio/m_yunyang_e683517f148c.mp3","确立":"../listen-audio/m_yunyang_18e56bca82f2.mp3","有效性":"../listen-audio/m_yunyang_4457266820ae.mp3","可行的":"../listen-audio/m_yunyang_56faab128f6c.mp3","令人鼓舞的":"../listen-audio/m_yunyang_0eeedb896d51.mp3","修改":"../listen-audio/m_yunyang_8347a927c09a.mp3","正交的（互不依赖）":"../listen-audio/m_yunyang_75607d81ec50.mp3","门槛低的":"../listen-audio/m_yunyang_af76d65d38ff.mp3","汇聚于":"../listen-audio/m_yunyang_80dd5db931dc.mp3","对照版本":"../listen-audio/m_yunyang_2ad0e27b4e29.mp3"}},"zh-CN-YunjianNeural":{"m":{"有前景的":"../listen-audio/m_yunjian_bf9b2e3ef6bc.mp3","框架":"../listen-audio/m_yunjian_41f1d2b62436.mp3","验证":"../listen-audio/m_yunjian_cd8992b644e6.mp3","投影":"../listen-audio/m_yunjian_16ad4ad54911.mp3","超过":"../listen-audio/m_yunjian_41c5ecd68dd1.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -928,7 +913,7 @@ $("starBtn").onclick=()=>{
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
   if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  else{skips.add(w.w);pulse("okBtn");wordTip("已跳过「"+w.w+"」· 下次不再读")}   /* 跳过：✓ 动一下 + 顶部提示 */
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -945,81 +930,27 @@ $("clearBox").onclick=e=>{
   set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
 };
 const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
-/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
 const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
-const LKEY="listen_qq_links";
-const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
-const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
-let LINKS=rdLinks();
-const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
-const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 
-function renderLinkPop(){
-  const box=$("linkList"),btns=$("linkPopBtns");
-  if(!LINKS.length){
-    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
-    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
-    $("lpCfg").onclick=openLinkCfg;
-    return;
-  }
-  const multi=LINKS.length>1;
-  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
-    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
-    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
-    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
-  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
-    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
-  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
-  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
-    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
-  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
-  $("lpOpenAll").onclick=()=>openMany(LINKS);
-  $("lpCfg").onclick=openLinkCfg;
-}
-function openLinkCfg(){
-  $("linkPop").classList.remove("on");
-  const box=$("linkRows");
-  const row=l=>'<div class="lkrow">'
-    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
-    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
-    +'<span class="del" title="删除此行">✕</span></div>';
-  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
-  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
-  bindDel();
-  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
-  $("linkCfg").classList.add("on");
-}
-$("linkSave").onclick=()=>{
-  const out=[];
-  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
-    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
-    if(!raw)return;
-    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
-  });
-  LINKS=out; wrLinks(out);
-  $("linkCfg").classList.remove("on");
-  toast("已保存 "+out.length+" 个链接");
-};
-$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
-$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
 
-/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
-$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+/* ===== 备份与恢复：星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
 $("backupBox").onclick=e=>{
   const b=e.target.closest("[data-bk]");if(!b)return;
-  if(b.dataset.bk==="cfg")openLinkCfg();
-  else if(b.dataset.bk==="out")doExport();
+  if(b.dataset.bk==="out")doExport();
   else $("importFile").click();
 };
 function doExport(){
-  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
-  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
-    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  let stars=rd("listen_qq_star"), favs=rd("listen_qq_fav"), skips=rd("listen_qq_skip");
+  let range={};try{range=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),
+    scope:"all",from:PKEY,
+    stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
   const a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
-  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.download="听力全站备份_"+new Date().toISOString().slice(0,10)+".json";
   a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+  toast("已导出全站备份 · ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size);
 }
 $("importFile").onchange=e=>{
   const f=e.target.files[0];if(!f)return;
@@ -1028,19 +959,15 @@ $("importFile").onchange=e=>{
     try{
       const d=JSON.parse(r.result);
       if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
-      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
-      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
-        const cur=new Set((links[k]||[]).map(l=>l.url));
-        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
-      });
-      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      /* 先实时重读最新 localStorage（含其它标签页改动），再与备份取并集，绝不覆盖已有 */
+      stars=rd("listen_qq_star");favs=rd("listen_qq_fav");skips=rd("listen_qq_skip");
       (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
       (d.favs||[]).forEach(w=>favs.add(w));
       (d.skips||[]).forEach(w=>skips.add(w));
       wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
       if(d.cfg){Object.assign(S,d.cfg);save()}
-      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
-      LINKS=rdLinks();updateCounts();afterMark();
+      if(d.range){let fr={};try{fr=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(_){}range=Object.assign({},fr,d.range);try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      updateCounts();afterMark();
       toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
       setTimeout(()=>location.reload(),1200);
     }catch(err){toast("导入失败："+err.message)}
@@ -1130,9 +1057,13 @@ function localAudio(t,kind){
     const all = audioVoices(map);
     const want = kind==="zh" ? S.zhVoice : S.enVoice;
     const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    const nf=s=>{try{return String(s).normalize("NFKC").toLowerCase()}catch(e){return String(s).toLowerCase()}};
+    const nk=nf(key);
     for(let i=0;i<order.length;i++){
       const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
+      if(!m)continue;
+      if(m[key])return m[key];
+      for(const k in m){ if(nf(k)===nk)return m[k] }   /* 连字 ﬁ/ﬂ ↔ 普通 fi/fl 互通 */
     }
   }catch(e){}
   return "";
@@ -1162,7 +1093,7 @@ function ttsURLs(t,kind){
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
   else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  /* 单词：只用本地真人音频；读不到 → 提示「网络错误」并跳过，不回退在线/系统机械音 */
   return urls;
 }
 
@@ -1211,9 +1142,24 @@ function say(text,kind,cb){
     const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
     setTimeout(()=>cb&&cb(ok),wait);
   };
+  /* 单词读不到（缺音频 / 加载失败）：显示「网络错误」，短暂停留后跳过这个词。
+     不再回退有道/百度/系统语音——那些就是机械音 */
+  const g0=gen;
+  const netFail=()=>{
+    if(done)return; done=true;
+    stopAudio();
+    wordTip("网络错误");
+    setTimeout(()=>{
+      if(g0!==gen)return;            /* 期间用户手动切过词：这次作废 */
+      if(!playing)return;
+      qi=(qi+1+queue.length)%queue.length; playCurrent();
+    },1100);
+  };
+
   const tryNext=()=>{
     if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+    if(i>=urls.length){
+      if(kind==="word"){ netFail(); return }   /* 单词：不回退机械音 */                            /* 在线音源都不行 → 系统语音兜底 */
       if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
       local=true;
       speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
@@ -1332,7 +1278,7 @@ document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
   else if(e.key==="ArrowRight")nextWord();
   else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
+  else if(e.key==="Escape"){$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中

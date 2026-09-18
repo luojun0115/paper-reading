@@ -595,7 +595,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow col"><span>链接与备份</span>
       <div class="seg wrap" id="backupBox"></div>
-      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
     </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
@@ -604,28 +604,13 @@
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
-  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
-  <div class="sheet lks" id="linkPop">
-    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
-    <div id="linkList"></div>
-    <div class="lkbtns" id="linkPopBtns"></div>
-  </div>
-  <!-- 链接配置面板：增删改本篇的链接 -->
-  <div class="sheet lks" id="linkCfg">
-    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
-    <div id="linkRows"></div>
-    <div class="lkbtns">
-      <b id="linkAddRow">＋ 添加一行</b>
-      <b id="linkSave" class="pri">保存</b>
-    </div>
-  </div>
   <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
 const ITEMS=[{"w": "density", "ipa": "ˈdensəti", "pos": "n.", "m": "密度（概率密度）", "ex": "The classical answer to this is to learn a probability density", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "parametric", "ipa": "ˌpærəˈmetrɪk", "pos": "adj.", "m": "参数化的", "ex": "deﬁning a parametric family of densities", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "likelihood", "ipa": "ˈlaɪklihʊd", "pos": "n.", "m": "似然", "ex": "ﬁnding the one that maximized the likelihood on our data", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "asymptotically", "ipa": "ˌæsɪmpˈtɑːtɪkli", "pos": "adv.", "m": "渐近地", "ex": "asymptotically, this amounts to minimizing the KL divergence", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "divergence", "ipa": "daɪˈvɜːrdʒəns", "pos": "n.", "m": "散度", "ex": "minimizing the Kullback-Leibler divergence", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "manifold", "ipa": "ˈmænɪfoʊld", "pos": "n.", "m": "流形", "ex": "distributions supported by low dimensional manifolds", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "negligible", "ipa": "ˈneɡlɪdʒəbl", "pos": "adj.", "m": "可忽略的", "ex": "a non-negligible intersection", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "inﬁnite", "ipa": "ˈɪnfɪnət", "pos": "adj.", "m": "无穷的", "ex": "the KL distance is not deﬁned (or simply inﬁnite)", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "remedy", "ipa": "ˈremədi", "pos": "n.", "m": "补救办法", "ex": "The typical remedy is to add a noise term", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "virtually", "ipa": "ˈvɜːrtʃuəli", "pos": "adv.", "m": "几乎", "ex": "virtually all generative models", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "bandwidth", "ipa": "ˈbændwɪdθ", "pos": "n.", "m": "带宽", "ex": "a Gaussian noise with relatively high bandwidth", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "degrade", "ipa": "dɪˈɡreɪd", "pos": "v.", "m": "使变差", "ex": "this noise degrades the quality of the samples", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "blurry", "ipa": "ˈblɜːri", "pos": "adj.", "m": "模糊的", "ex": "makes them blurry", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "deviation", "ipa": "ˌdiːviˈeɪʃn", "pos": "n.", "m": "偏差（标准差）", "ex": "the optimal standard deviation of the noise", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "optimal", "ipa": "ˈɑːptɪml", "pos": "adj.", "m": "最优的", "ex": "This shows that D∗ is optimal", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "attain", "ipa": "əˈteɪn", "pos": "v.", "m": "达到", "ex": "f∗ that attains the value of the inﬁmum", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "inﬁmum", "ipa": "ˈɪnfɪməm", "pos": "n.", "m": "下确界", "ex": "the value of the inﬁmum", "lv": "考博", "ov": "", "sec": "Intro"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"optimal": "../listen-audio/w_brian_optimal.mp3", "likelihood": "../listen-audio/w_brian_likelihood.mp3", "attain": "../listen-audio/w_brian_attain.mp3", "degrade": "../listen-audio/w_brian_degrade.mp3", "asymptotically": "../listen-audio/w_brian_asymptotically.mp3", "manifold": "../listen-audio/w_brian_manifold.mp3", "parametric": "../listen-audio/w_brian_parametric.mp3", "blurry": "../listen-audio/w_brian_blurry.mp3", "divergence": "../listen-audio/w_brian_divergence.mp3", "density": "../listen-audio/w_brian_density.mp3", "deviation": "../listen-audio/w_brian_deviation.mp3", "negligible": "../listen-audio/w_brian_negligible.mp3", "remedy": "../listen-audio/w_brian_remedy.mp3", "virtually": "../listen-audio/w_brian_virtually.mp3", "bandwidth": "../listen-audio/w_brian_bandwidth.mp3"}, "e": {"The classical answer to this is to learn a probability density": "../listen-audio/e_brian_495b88f03b41.mp3", "deﬁning a parametric family of densities": "../listen-audio/e_brian_2e35e305c8e3.mp3", "ﬁnding the one that maximized the likelihood on our data": "../listen-audio/e_brian_cac0eb847b70.mp3", "asymptotically, this amounts to minimizing the KL divergence": "../listen-audio/e_brian_68ee6b75faef.mp3", "minimizing the Kullback-Leibler divergence": "../listen-audio/e_brian_77940a28fa87.mp3", "distributions supported by low dimensional manifolds": "../listen-audio/e_brian_2a34337cb54f.mp3", "a non-negligible intersection": "../listen-audio/e_brian_950737f4ecb0.mp3", "the KL distance is not deﬁned (or simply inﬁnite)": "../listen-audio/e_brian_217534386500.mp3", "The typical remedy is to add a noise term": "../listen-audio/e_brian_479a193f8891.mp3", "virtually all generative models": "../listen-audio/e_brian_9e1f43a866d6.mp3", "a Gaussian noise with relatively high bandwidth": "../listen-audio/e_brian_cb32fedee2d2.mp3", "this noise degrades the quality of the samples": "../listen-audio/e_brian_ee3f53e4699d.mp3", "makes them blurry": "../listen-audio/e_brian_54efc3859c7f.mp3", "the optimal standard deviation of the noise": "../listen-audio/e_brian_1c89ae078218.mp3", "This shows that D∗ is optimal": "../listen-audio/e_brian_7d54284f62e2.mp3", "f∗ that attains the value of the inﬁmum": "../listen-audio/e_brian_3aeb780cb470.mp3", "the value of the inﬁmum": "../listen-audio/e_brian_494f246237b3.mp3"}}, "en-US-AndrewNeural": {"w": {"optimal": "../listen-audio/w_andrew_optimal.mp3", "likelihood": "../listen-audio/w_andrew_likelihood.mp3", "attain": "../listen-audio/w_andrew_attain.mp3"}}, "zh-CN-YunyangNeural": {"m": {"最优的": "../listen-audio/m_yunyang_1b2f28d4f2b0.mp3", "达到": "../listen-audio/m_yunyang_4ca6c947d55f.mp3", "参数化的": "../listen-audio/m_yunyang_cdb4b1180369.mp3", "渐近地": "../listen-audio/m_yunyang_57968fe9feed.mp3", "流形": "../listen-audio/m_yunyang_b9b7bd4a5479.mp3", "模糊的": "../listen-audio/m_yunyang_9112dfa02544.mp3", "似然": "../listen-audio/m_yunyang_dfa3ebecf8f8.mp3", "可忽略的": "../listen-audio/m_yunyang_163798ba39f2.mp3", "密度（概率密度）": "../listen-audio/m_yunyang_00beadc3bb67.mp3", "散度": "../listen-audio/m_yunyang_7288710469a3.mp3", "无穷的": "../listen-audio/m_yunyang_0b828ee2c86f.mp3", "补救办法": "../listen-audio/m_yunyang_86e3106fc649.mp3", "几乎": "../listen-audio/m_yunyang_77fda9fd244a.mp3", "带宽": "../listen-audio/m_yunyang_0a21779ccb79.mp3", "使变差": "../listen-audio/m_yunyang_0b2552a2345c.mp3", "偏差（标准差）": "../listen-audio/m_yunyang_c99c020fa316.mp3", "下确界": "../listen-audio/m_yunyang_7e3bdf5cc92d.mp3"}}, "zh-CN-YunjianNeural": {"m": {"最优的": "../listen-audio/m_yunjian_1b2f28d4f2b0.mp3", "达到": "../listen-audio/m_yunjian_4ca6c947d55f.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const AUDIO={"en-US-BrianNeural":{"w":{"optimal":"../listen-audio/w_brian_optimal.mp3","likelihood":"../listen-audio/w_brian_likelihood.mp3","attain":"../listen-audio/w_brian_attain.mp3","degrade":"../listen-audio/w_brian_degrade.mp3","asymptotically":"../listen-audio/w_brian_asymptotically.mp3","manifold":"../listen-audio/w_brian_manifold.mp3","parametric":"../listen-audio/w_brian_parametric.mp3","blurry":"../listen-audio/w_brian_blurry.mp3","divergence":"../listen-audio/w_brian_divergence.mp3","density":"../listen-audio/w_brian_density.mp3","deviation":"../listen-audio/w_brian_deviation.mp3","negligible":"../listen-audio/w_brian_negligible.mp3","remedy":"../listen-audio/w_brian_remedy.mp3","virtually":"../listen-audio/w_brian_virtually.mp3","bandwidth":"../listen-audio/w_brian_bandwidth.mp3","inﬁnite":"../listen-audio/w_brian_infinite.mp3","inﬁmum":"../listen-audio/w_brian_infimum.mp3"},"e":{"The classical answer to this is to learn a probability density":"../listen-audio/e_brian_495b88f03b41.mp3","deﬁning a parametric family of densities":"../listen-audio/e_brian_2e35e305c8e3.mp3","ﬁnding the one that maximized the likelihood on our data":"../listen-audio/e_brian_cac0eb847b70.mp3","asymptotically, this amounts to minimizing the KL divergence":"../listen-audio/e_brian_68ee6b75faef.mp3","minimizing the Kullback-Leibler divergence":"../listen-audio/e_brian_77940a28fa87.mp3","distributions supported by low dimensional manifolds":"../listen-audio/e_brian_2a34337cb54f.mp3","a non-negligible intersection":"../listen-audio/e_brian_950737f4ecb0.mp3","the KL distance is not deﬁned (or simply inﬁnite)":"../listen-audio/e_brian_217534386500.mp3","The typical remedy is to add a noise term":"../listen-audio/e_brian_479a193f8891.mp3","virtually all generative models":"../listen-audio/e_brian_9e1f43a866d6.mp3","a Gaussian noise with relatively high bandwidth":"../listen-audio/e_brian_cb32fedee2d2.mp3","this noise degrades the quality of the samples":"../listen-audio/e_brian_ee3f53e4699d.mp3","makes them blurry":"../listen-audio/e_brian_54efc3859c7f.mp3","the optimal standard deviation of the noise":"../listen-audio/e_brian_1c89ae078218.mp3","This shows that D∗ is optimal":"../listen-audio/e_brian_7d54284f62e2.mp3","f∗ that attains the value of the inﬁmum":"../listen-audio/e_brian_3aeb780cb470.mp3","the value of the inﬁmum":"../listen-audio/e_brian_494f246237b3.mp3"}},"en-US-AndrewNeural":{"w":{"optimal":"../listen-audio/w_andrew_optimal.mp3","likelihood":"../listen-audio/w_andrew_likelihood.mp3","attain":"../listen-audio/w_andrew_attain.mp3"}},"zh-CN-YunyangNeural":{"m":{"最优的":"../listen-audio/m_yunyang_1b2f28d4f2b0.mp3","达到":"../listen-audio/m_yunyang_4ca6c947d55f.mp3","参数化的":"../listen-audio/m_yunyang_cdb4b1180369.mp3","渐近地":"../listen-audio/m_yunyang_57968fe9feed.mp3","流形":"../listen-audio/m_yunyang_b9b7bd4a5479.mp3","模糊的":"../listen-audio/m_yunyang_9112dfa02544.mp3","似然":"../listen-audio/m_yunyang_dfa3ebecf8f8.mp3","可忽略的":"../listen-audio/m_yunyang_163798ba39f2.mp3","密度（概率密度）":"../listen-audio/m_yunyang_00beadc3bb67.mp3","散度":"../listen-audio/m_yunyang_7288710469a3.mp3","无穷的":"../listen-audio/m_yunyang_0b828ee2c86f.mp3","补救办法":"../listen-audio/m_yunyang_86e3106fc649.mp3","几乎":"../listen-audio/m_yunyang_77fda9fd244a.mp3","带宽":"../listen-audio/m_yunyang_0a21779ccb79.mp3","使变差":"../listen-audio/m_yunyang_0b2552a2345c.mp3","偏差（标准差）":"../listen-audio/m_yunyang_c99c020fa316.mp3","下确界":"../listen-audio/m_yunyang_7e3bdf5cc92d.mp3"}},"zh-CN-YunjianNeural":{"m":{"最优的":"../listen-audio/m_yunjian_1b2f28d4f2b0.mp3","达到":"../listen-audio/m_yunjian_4ca6c947d55f.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -928,7 +913,7 @@ $("starBtn").onclick=()=>{
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
   if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  else{skips.add(w.w);pulse("okBtn");wordTip("已跳过「"+w.w+"」· 下次不再读")}   /* 跳过：✓ 动一下 + 顶部提示 */
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -945,81 +930,27 @@ $("clearBox").onclick=e=>{
   set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
 };
 const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
-/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
 const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
-const LKEY="listen_qq_links";
-const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
-const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
-let LINKS=rdLinks();
-const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
-const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 
-function renderLinkPop(){
-  const box=$("linkList"),btns=$("linkPopBtns");
-  if(!LINKS.length){
-    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
-    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
-    $("lpCfg").onclick=openLinkCfg;
-    return;
-  }
-  const multi=LINKS.length>1;
-  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
-    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
-    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
-    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
-  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
-    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
-  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
-  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
-    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
-  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
-  $("lpOpenAll").onclick=()=>openMany(LINKS);
-  $("lpCfg").onclick=openLinkCfg;
-}
-function openLinkCfg(){
-  $("linkPop").classList.remove("on");
-  const box=$("linkRows");
-  const row=l=>'<div class="lkrow">'
-    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
-    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
-    +'<span class="del" title="删除此行">✕</span></div>';
-  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
-  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
-  bindDel();
-  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
-  $("linkCfg").classList.add("on");
-}
-$("linkSave").onclick=()=>{
-  const out=[];
-  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
-    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
-    if(!raw)return;
-    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
-  });
-  LINKS=out; wrLinks(out);
-  $("linkCfg").classList.remove("on");
-  toast("已保存 "+out.length+" 个链接");
-};
-$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
-$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
 
-/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
-$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+/* ===== 备份与恢复：星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
 $("backupBox").onclick=e=>{
   const b=e.target.closest("[data-bk]");if(!b)return;
-  if(b.dataset.bk==="cfg")openLinkCfg();
-  else if(b.dataset.bk==="out")doExport();
+  if(b.dataset.bk==="out")doExport();
   else $("importFile").click();
 };
 function doExport(){
-  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
-  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
-    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  let stars=rd("listen_qq_star"), favs=rd("listen_qq_fav"), skips=rd("listen_qq_skip");
+  let range={};try{range=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),
+    scope:"all",from:PKEY,
+    stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
   const a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
-  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.download="听力全站备份_"+new Date().toISOString().slice(0,10)+".json";
   a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+  toast("已导出全站备份 · ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size);
 }
 $("importFile").onchange=e=>{
   const f=e.target.files[0];if(!f)return;
@@ -1028,19 +959,15 @@ $("importFile").onchange=e=>{
     try{
       const d=JSON.parse(r.result);
       if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
-      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
-      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
-        const cur=new Set((links[k]||[]).map(l=>l.url));
-        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
-      });
-      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      /* 先实时重读最新 localStorage（含其它标签页改动），再与备份取并集，绝不覆盖已有 */
+      stars=rd("listen_qq_star");favs=rd("listen_qq_fav");skips=rd("listen_qq_skip");
       (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
       (d.favs||[]).forEach(w=>favs.add(w));
       (d.skips||[]).forEach(w=>skips.add(w));
       wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
       if(d.cfg){Object.assign(S,d.cfg);save()}
-      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
-      LINKS=rdLinks();updateCounts();afterMark();
+      if(d.range){let fr={};try{fr=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(_){}range=Object.assign({},fr,d.range);try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      updateCounts();afterMark();
       toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
       setTimeout(()=>location.reload(),1200);
     }catch(err){toast("导入失败："+err.message)}
@@ -1130,9 +1057,13 @@ function localAudio(t,kind){
     const all = audioVoices(map);
     const want = kind==="zh" ? S.zhVoice : S.enVoice;
     const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    const nf=s=>{try{return String(s).normalize("NFKC").toLowerCase()}catch(e){return String(s).toLowerCase()}};
+    const nk=nf(key);
     for(let i=0;i<order.length;i++){
       const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
+      if(!m)continue;
+      if(m[key])return m[key];
+      for(const k in m){ if(nf(k)===nk)return m[k] }   /* 连字 ﬁ/ﬂ ↔ 普通 fi/fl 互通 */
     }
   }catch(e){}
   return "";
@@ -1162,7 +1093,7 @@ function ttsURLs(t,kind){
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
   else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  /* 单词：只用本地真人音频；读不到 → 提示「网络错误」并跳过，不回退在线/系统机械音 */
   return urls;
 }
 
@@ -1211,9 +1142,24 @@ function say(text,kind,cb){
     const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
     setTimeout(()=>cb&&cb(ok),wait);
   };
+  /* 单词读不到（缺音频 / 加载失败）：显示「网络错误」，短暂停留后跳过这个词。
+     不再回退有道/百度/系统语音——那些就是机械音 */
+  const g0=gen;
+  const netFail=()=>{
+    if(done)return; done=true;
+    stopAudio();
+    wordTip("网络错误");
+    setTimeout(()=>{
+      if(g0!==gen)return;            /* 期间用户手动切过词：这次作废 */
+      if(!playing)return;
+      qi=(qi+1+queue.length)%queue.length; playCurrent();
+    },1100);
+  };
+
   const tryNext=()=>{
     if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+    if(i>=urls.length){
+      if(kind==="word"){ netFail(); return }   /* 单词：不回退机械音 */                            /* 在线音源都不行 → 系统语音兜底 */
       if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
       local=true;
       speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
@@ -1332,7 +1278,7 @@ document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
   else if(e.key==="ArrowRight")nextWord();
   else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
+  else if(e.key==="Escape"){$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中

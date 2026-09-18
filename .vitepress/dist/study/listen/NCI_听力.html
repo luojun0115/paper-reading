@@ -595,7 +595,7 @@
     <div class="srow"><span id="markCnt"></span><div class="seg" id="clearBox" style="margin-left:auto"></div></div>
     <div class="srow col"><span>链接与备份</span>
       <div class="seg wrap" id="backupBox"></div>
-      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录和链接配置。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
+      <div class="bktip">清除浏览器数据（缓存/站点数据）会丢失 星标、收藏、跳过 记录。建议先「导出备份」保存到本地；换设备或清缓存后用「导入备份」一键恢复。</div>
     </div>
     <div class="srow"><span>顺序</span><div class="seg" id="segOrder"></div></div>
     <div class="srow"><span>跳过已掌握</span><div class="seg" id="segSkip"></div></div>
@@ -604,28 +604,13 @@
     <button class="sback" id="setupBack">← 返回播放</button>
   </div>
 
-  <!-- 链接选择面板：多个链接时勾选多开，单个直接点名称 -->
-  <div class="sheet lks" id="linkPop">
-    <div class="shd"><h3>朗读 / 讲解链接</h3><span class="shb" id="linkPopBack">← 返回</span></div>
-    <div id="linkList"></div>
-    <div class="lkbtns" id="linkPopBtns"></div>
-  </div>
-  <!-- 链接配置面板：增删改本篇的链接 -->
-  <div class="sheet lks" id="linkCfg">
-    <div class="shd"><h3>配置链接（本篇）</h3><span class="shb" id="linkCfgBack">← 返回</span></div>
-    <div id="linkRows"></div>
-    <div class="lkbtns">
-      <b id="linkAddRow">＋ 添加一行</b>
-      <b id="linkSave" class="pri">保存</b>
-    </div>
-  </div>
   <input type="file" id="importFile" accept=".json,application/json" style="display:none">
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
 const ITEMS=[{"w": "retrieval", "ipa": "rɪˈtriːvl", "pos": "n.", "m": "检索", "ex": "Current state-of-the-art document retrieval solutions", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "paradigm", "ipa": "ˈpærədaɪm", "pos": "n.", "m": "范式", "ex": "mainly follow an index-retrieve paradigm", "lv": "考研", "ov": "", "sec": "Abstract"}, {"w": "unify", "ipa": "ˈjuːnɪfaɪ", "pos": "v.", "m": "统一", "ex": "an end-to-end deep neural network unifying training and indexing stages", "lv": "六级", "ov": "", "sec": "Abstract"}, {"w": "recall", "ipa": "rɪˈkɔːl", "pos": "n.", "m": "召回率", "ex": "can signiﬁcantly improve the recall", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "semantic", "ipa": "sɪˈmæntɪk", "pos": "adj.", "m": "语义的", "ex": "semantic-rich visual representations", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "designated", "ipa": "ˈdezɪɡneɪtɪd", "pos": "adj.", "m": "指定的", "ex": "generates relevant document identiﬁers directly for a designated query", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "tailored", "ipa": "ˈteɪlərd", "pos": "adj.", "m": "定制的", "ex": "leverage tailored techniques including query generation", "lv": "四级", "ov": "", "sec": "Abstract"}, {"w": "consistency", "ipa": "kənˈsɪstənsi", "pos": "n.", "m": "一致性", "ex": "consistency-based regularization", "lv": "考博", "ov": "", "sec": "Abstract"}, {"w": "candidate", "ipa": "ˈkændɪdət", "pos": "n.", "m": "候选", "ex": "retrieves candidate documents relevant to the query", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "precise", "ipa": "prɪˈsaɪs", "pos": "adj.", "m": "精确的", "ex": "the ranking stage gives a more precise ranking score", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "fulﬁll", "ipa": "fʊlˈfɪl", "pos": "v.", "m": "实现，承担", "ex": "The ranking stage is often fulﬁlled by a deep neural network", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "relevance", "ipa": "ˈreləvəns", "pos": "n.", "m": "相关性", "ex": "predicting their relevance score", "lv": "考博", "ov": "", "sec": "Intro"}, {"w": "nevertheless", "ipa": "ˌnevərðəˈles", "pos": "adv.", "m": "然而", "ex": "Nevertheless, a precise ranking model is very costly", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "affordable", "ipa": "əˈfɔːrdəbl", "pos": "adj.", "m": "可承受的", "ex": "only a hundred or thousand candidates per query are affordable", "lv": "六级", "ov": "", "sec": "Intro"}, {"w": "crucial", "ipa": "ˈkruːʃl", "pos": "adj.", "m": "至关重要的", "ex": "the recall performance is very crucial to the effectiveness of web search engines", "lv": "四级", "ov": "", "sec": "Intro"}, {"w": "category", "ipa": "ˈkætəɡɔːri", "pos": "n.", "m": "类别", "ex": "can be divided into two categories, namely term-based and...", "lv": "四级", "ov": "", "sec": "Intro"}];
-const AUDIO={"en-US-BrianNeural": {"w": {"category": "../listen-audio/w_brian_category.mp3", "retrieval": "../listen-audio/w_brian_retrieval.mp3", "recall": "../listen-audio/w_brian_recall.mp3", "semantic": "../listen-audio/w_brian_semantic.mp3", "consistency": "../listen-audio/w_brian_consistency.mp3", "crucial": "../listen-audio/w_brian_crucial.mp3", "unify": "../listen-audio/w_brian_unify.mp3", "candidate": "../listen-audio/w_brian_candidate.mp3", "paradigm": "../listen-audio/w_brian_paradigm.mp3", "precise": "../listen-audio/w_brian_precise.mp3", "designated": "../listen-audio/w_brian_designated.mp3", "tailored": "../listen-audio/w_brian_tailored.mp3", "relevance": "../listen-audio/w_brian_relevance.mp3", "nevertheless": "../listen-audio/w_brian_nevertheless.mp3", "affordable": "../listen-audio/w_brian_affordable.mp3"}, "e": {"Current state-of-the-art document retrieval solutions": "../listen-audio/e_brian_b72f466c78b4.mp3", "mainly follow an index-retrieve paradigm": "../listen-audio/e_brian_6f8884c77015.mp3", "an end-to-end deep neural network unifying training and indexing stages": "../listen-audio/e_brian_1ea1b4ef5979.mp3", "can signiﬁcantly improve the recall": "../listen-audio/e_brian_ad42c46ec3ec.mp3", "semantic-rich visual representations": "../listen-audio/e_brian_ee1875c6c04c.mp3", "generates relevant document identiﬁers directly for a designated query": "../listen-audio/e_brian_511c3a0b74a3.mp3", "leverage tailored techniques including query generation": "../listen-audio/e_brian_a053c9fc47f6.mp3", "consistency-based regularization": "../listen-audio/e_brian_b5dcd93acecc.mp3", "retrieves candidate documents relevant to the query": "../listen-audio/e_brian_db92bdb79b9b.mp3", "the ranking stage gives a more precise ranking score": "../listen-audio/e_brian_abf9226bc992.mp3", "The ranking stage is often fulﬁlled by a deep neural network": "../listen-audio/e_brian_7194f44fde18.mp3", "predicting their relevance score": "../listen-audio/e_brian_5619bf829cea.mp3", "Nevertheless, a precise ranking model is very costly": "../listen-audio/e_brian_7fee3ef6b08b.mp3", "only a hundred or thousand candidates per query are affordable": "../listen-audio/e_brian_bbc2647abf41.mp3", "the recall performance is very crucial to the effectiveness of web search engines": "../listen-audio/e_brian_03f0748764ab.mp3", "can be divided into two categories, namely term-based and...": "../listen-audio/e_brian_6b6e78d37b05.mp3"}}, "en-US-AndrewNeural": {"w": {"category": "../listen-audio/w_andrew_category.mp3", "retrieval": "../listen-audio/w_andrew_retrieval.mp3", "recall": "../listen-audio/w_andrew_recall.mp3", "semantic": "../listen-audio/w_andrew_semantic.mp3"}}, "zh-CN-YunyangNeural": {"m": {"检索": "../listen-audio/m_yunyang_8bedce4e54ba.mp3", "类别": "../listen-audio/m_yunyang_383a6d166f8f.mp3", "语义的": "../listen-audio/m_yunyang_77eaf7dfc7b0.mp3", "一致性": "../listen-audio/m_yunyang_4d61e000c546.mp3", "至关重要的": "../listen-audio/m_yunyang_32af847319e5.mp3", "统一": "../listen-audio/m_yunyang_95bee12d7dc8.mp3", "候选": "../listen-audio/m_yunyang_f21434beef4a.mp3", "范式": "../listen-audio/m_yunyang_23393b4292f3.mp3", "定制的": "../listen-audio/m_yunyang_dd6698efc1cd.mp3", "精确的": "../listen-audio/m_yunyang_af8b91052f6c.mp3", "召回率": "../listen-audio/m_yunyang_2d446a698895.mp3", "指定的": "../listen-audio/m_yunyang_05d3130d566f.mp3", "实现，承担": "../listen-audio/m_yunyang_8202b9d220ab.mp3", "相关性": "../listen-audio/m_yunyang_326c88b2e40b.mp3", "然而": "../listen-audio/m_yunyang_5552b4ea2195.mp3", "可承受的": "../listen-audio/m_yunyang_3936b6fcd650.mp3"}}, "zh-CN-YunjianNeural": {"m": {"检索": "../listen-audio/m_yunjian_8bedce4e54ba.mp3", "类别": "../listen-audio/m_yunjian_383a6d166f8f.mp3", "语义的": "../listen-audio/m_yunjian_77eaf7dfc7b0.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
+const AUDIO={"en-US-BrianNeural":{"w":{"category":"../listen-audio/w_brian_category.mp3","retrieval":"../listen-audio/w_brian_retrieval.mp3","recall":"../listen-audio/w_brian_recall.mp3","semantic":"../listen-audio/w_brian_semantic.mp3","consistency":"../listen-audio/w_brian_consistency.mp3","crucial":"../listen-audio/w_brian_crucial.mp3","unify":"../listen-audio/w_brian_unify.mp3","candidate":"../listen-audio/w_brian_candidate.mp3","paradigm":"../listen-audio/w_brian_paradigm.mp3","precise":"../listen-audio/w_brian_precise.mp3","designated":"../listen-audio/w_brian_designated.mp3","tailored":"../listen-audio/w_brian_tailored.mp3","relevance":"../listen-audio/w_brian_relevance.mp3","nevertheless":"../listen-audio/w_brian_nevertheless.mp3","affordable":"../listen-audio/w_brian_affordable.mp3","fulﬁll":"../listen-audio/w_brian_fulfill.mp3"},"e":{"Current state-of-the-art document retrieval solutions":"../listen-audio/e_brian_b72f466c78b4.mp3","mainly follow an index-retrieve paradigm":"../listen-audio/e_brian_6f8884c77015.mp3","an end-to-end deep neural network unifying training and indexing stages":"../listen-audio/e_brian_1ea1b4ef5979.mp3","can signiﬁcantly improve the recall":"../listen-audio/e_brian_ad42c46ec3ec.mp3","semantic-rich visual representations":"../listen-audio/e_brian_ee1875c6c04c.mp3","generates relevant document identiﬁers directly for a designated query":"../listen-audio/e_brian_511c3a0b74a3.mp3","leverage tailored techniques including query generation":"../listen-audio/e_brian_a053c9fc47f6.mp3","consistency-based regularization":"../listen-audio/e_brian_b5dcd93acecc.mp3","retrieves candidate documents relevant to the query":"../listen-audio/e_brian_db92bdb79b9b.mp3","the ranking stage gives a more precise ranking score":"../listen-audio/e_brian_abf9226bc992.mp3","The ranking stage is often fulﬁlled by a deep neural network":"../listen-audio/e_brian_7194f44fde18.mp3","predicting their relevance score":"../listen-audio/e_brian_5619bf829cea.mp3","Nevertheless, a precise ranking model is very costly":"../listen-audio/e_brian_7fee3ef6b08b.mp3","only a hundred or thousand candidates per query are affordable":"../listen-audio/e_brian_bbc2647abf41.mp3","the recall performance is very crucial to the effectiveness of web search engines":"../listen-audio/e_brian_03f0748764ab.mp3","can be divided into two categories, namely term-based and...":"../listen-audio/e_brian_6b6e78d37b05.mp3"}},"en-US-AndrewNeural":{"w":{"category":"../listen-audio/w_andrew_category.mp3","retrieval":"../listen-audio/w_andrew_retrieval.mp3","recall":"../listen-audio/w_andrew_recall.mp3","semantic":"../listen-audio/w_andrew_semantic.mp3"}},"zh-CN-YunyangNeural":{"m":{"检索":"../listen-audio/m_yunyang_8bedce4e54ba.mp3","类别":"../listen-audio/m_yunyang_383a6d166f8f.mp3","语义的":"../listen-audio/m_yunyang_77eaf7dfc7b0.mp3","一致性":"../listen-audio/m_yunyang_4d61e000c546.mp3","至关重要的":"../listen-audio/m_yunyang_32af847319e5.mp3","统一":"../listen-audio/m_yunyang_95bee12d7dc8.mp3","候选":"../listen-audio/m_yunyang_f21434beef4a.mp3","范式":"../listen-audio/m_yunyang_23393b4292f3.mp3","定制的":"../listen-audio/m_yunyang_dd6698efc1cd.mp3","精确的":"../listen-audio/m_yunyang_af8b91052f6c.mp3","召回率":"../listen-audio/m_yunyang_2d446a698895.mp3","指定的":"../listen-audio/m_yunyang_05d3130d566f.mp3","实现，承担":"../listen-audio/m_yunyang_8202b9d220ab.mp3","相关性":"../listen-audio/m_yunyang_326c88b2e40b.mp3","然而":"../listen-audio/m_yunyang_5552b4ea2195.mp3","可承受的":"../listen-audio/m_yunyang_3936b6fcd650.mp3"}},"zh-CN-YunjianNeural":{"m":{"检索":"../listen-audio/m_yunjian_8bedce4e54ba.mp3","类别":"../listen-audio/m_yunjian_383a6d166f8f.mp3","语义的":"../listen-audio/m_yunjian_77eaf7dfc7b0.mp3"}}};      /* 预生成的微软语音清单：{w:{单词:路径},m:{释义:路径}}；空则全部走在线 TTS */
 const SKINS=[
   {id:"lemon",n:"柠檬黄",p:"linear-gradient(135deg,#fbf3cd,#e3c878)"},
   {id:"qq",n:"蜜桃粉",p:"linear-gradient(135deg,#f9b8bb,#ef8f92)"},
@@ -928,7 +913,7 @@ $("starBtn").onclick=()=>{
 $("okBtn").onclick=()=>{
   const w=queue[qi]; if(!w){toast("先进入一个词再标记");return}
   if(skips.has(w.w)){skips.delete(w.w);wordTip("已恢复朗读「"+w.w+"」")}
-  else{skips.add(w.w);wordTip("已跳过「"+w.w+"」");pulse("okBtn")}
+  else{skips.add(w.w);pulse("okBtn");wordTip("已跳过「"+w.w+"」· 下次不再读")}   /* 跳过：✓ 动一下 + 顶部提示 */
   wr("listen_qq_skip",skips); afterMark();
 };
 /* 清空按钮：图标+✕（不写汉字，和「词库来源」一致），每次点击都必须有反馈 */
@@ -945,81 +930,27 @@ $("clearBox").onclick=e=>{
   set.clear(); wr(key,set); afterMark(); toast("已清空 "+n+" 个"+name+"词");
 };
 const _cs=$("clearStar"); if(_cs)_cs.onclick=()=>{stars.clear();wr("listen_qq_star",stars);afterMark();toast("已清空星标")};
-/* ===== 自定义链接（朗读/讲解）：按篇独立存，多链接可勾选多开 ===== */
 const PKEY=(document.title||"").replace(/\s*·\s*单词连播\s*$/,"").trim();
-const LKEY="listen_qq_links";
-const rdLinks=()=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");return Array.isArray(L[PKEY])?L[PKEY]:[]}catch(e){return []}};
-const wrLinks=arr=>{try{const L=JSON.parse(localStorage.getItem(LKEY)||"{}");L[PKEY]=arr;localStorage.setItem(LKEY,JSON.stringify(L))}catch(e){}};
-let LINKS=rdLinks();
-const linkHost=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch(e){return u}};
-const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 
-function renderLinkPop(){
-  const box=$("linkList"),btns=$("linkPopBtns");
-  if(!LINKS.length){
-    box.innerHTML='<div class="lkempty">本篇还没有配置链接。<br>点下方「配置链接」，把朗读音频或讲解视频的网址加进来（B站 / YouTube / 网页等），可以加多个。</div>';
-    btns.innerHTML='<b id="lpCfg" class="pri">配置链接</b>';
-    $("lpCfg").onclick=openLinkCfg;
-    return;
-  }
-  const multi=LINKS.length>1;
-  box.innerHTML=LINKS.map((l,i)=>'<div class="lk">'
-    +'<input type="checkbox" data-i="'+i+'"'+(multi?"":" checked")+' title="勾选后可批量打开">'
-    +'<span class="lkn" data-open="'+i+'" title="'+esc(l.url)+'">'+esc(l.n||("链接"+(i+1)))+'</span>'
-    +'<span class="lku">'+esc(linkHost(l.url))+'</span></div>').join("");
-  btns.innerHTML=(multi?'<b id="lpOpenSel" class="pri">打开所选</b>':"")
-    +'<b id="lpOpenAll">全部打开</b><b id="lpCfg">配置链接</b>';
-  box.querySelectorAll(".lkn").forEach(el=>el.onclick=()=>window.open(LINKS[+el.dataset.open].url,"_blank","noopener"));
-  const openMany=ls=>{if(!ls.length){toast("先勾选要打开的链接");return}
-    ls.forEach(l=>window.open(l.url,"_blank","noopener"));toast("已打开 "+ls.length+" 个（若被拦截请允许弹出窗口）")};
-  if(multi)$("lpOpenSel").onclick=()=>openMany([...box.querySelectorAll("input:checked")].map(c=>LINKS[+c.dataset.i]));
-  $("lpOpenAll").onclick=()=>openMany(LINKS);
-  $("lpCfg").onclick=openLinkCfg;
-}
-function openLinkCfg(){
-  $("linkPop").classList.remove("on");
-  const box=$("linkRows");
-  const row=l=>'<div class="lkrow">'
-    +'<input class="nm" placeholder="名称" value="'+esc(l.n)+'">'
-    +'<input class="ul" placeholder="https:// 网址" value="'+esc(l.url)+'">'
-    +'<span class="del" title="删除此行">✕</span></div>';
-  box.innerHTML=(LINKS.length?LINKS:[{}]).map(row).join("");
-  const bindDel=()=>box.querySelectorAll(".del").forEach(d=>d.onclick=()=>d.closest(".lkrow").remove());
-  bindDel();
-  $("linkAddRow").onclick=()=>{box.insertAdjacentHTML("beforeend",row({}));bindDel();box.lastElementChild.querySelector(".nm").focus()};
-  $("linkCfg").classList.add("on");
-}
-$("linkSave").onclick=()=>{
-  const out=[];
-  $("linkRows").querySelectorAll(".lkrow").forEach(r=>{
-    const n=r.querySelector(".nm").value.trim(), raw=r.querySelector(".ul").value.trim();
-    if(!raw)return;
-    out.push({n:n||("链接"+(out.length+1)), url:/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:"https://"+raw});
-  });
-  LINKS=out; wrLinks(out);
-  $("linkCfg").classList.remove("on");
-  toast("已保存 "+out.length+" 个链接");
-};
-$("linkCfgBack").onclick=()=>{$("linkCfg").classList.remove("on");renderLinkPop();$("linkPop").classList.add("on")};
-$("linkPopBack").onclick=()=>$("linkPop").classList.remove("on");
 
-/* ===== 备份与恢复：链接 + 星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
-$("backupBox").innerHTML='<b data-bk="cfg">配置链接</b><b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
+/* ===== 备份与恢复：星标/收藏/跳过 + 设置 一并导出/导入（清缓存不怕丢）===== */
+$("backupBox").innerHTML='<b data-bk="out">导出备份</b><b data-bk="in">导入备份</b>';
 $("backupBox").onclick=e=>{
   const b=e.target.closest("[data-bk]");if(!b)return;
-  if(b.dataset.bk==="cfg")openLinkCfg();
-  else if(b.dataset.bk==="out")doExport();
+  if(b.dataset.bk==="out")doExport();
   else $("importFile").click();
 };
 function doExport(){
-  let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){}
-  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),paper:PKEY,
-    links,stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
+  let stars=rd("listen_qq_star"), favs=rd("listen_qq_fav"), skips=rd("listen_qq_skip");
+  let range={};try{range=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(e){}
+  const data={app:"listen_qq_backup",v:1,time:new Date().toISOString(),
+    scope:"all",from:PKEY,
+    stars:[...stars],favs:[...favs],skips:[...skips],cfg:S,range};
   const a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));
-  a.download="听力记录备份_"+new Date().toISOString().slice(0,10)+".json";
+  a.download="听力全站备份_"+new Date().toISOString().slice(0,10)+".json";
   a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast("已导出 ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size+" + 链接配置");
+  toast("已导出全站备份 · ⭐"+stars.size+" ❤"+favs.size+" ✓"+skips.size);
 }
 $("importFile").onchange=e=>{
   const f=e.target.files[0];if(!f)return;
@@ -1028,19 +959,15 @@ $("importFile").onchange=e=>{
     try{
       const d=JSON.parse(r.result);
       if(d.app!=="listen_qq_backup")throw new Error("这不是本播放器的备份文件");
-      let links={};try{links=JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(_){}
-      Object.keys(d.links||{}).forEach(k=>{                        /* 链接按篇合并，同网址不重复 */
-        const cur=new Set((links[k]||[]).map(l=>l.url));
-        (d.links[k]||[]).forEach(l=>{if(l&&l.url&&!cur.has(l.url)){(links[k]=links[k]||[]).push(l);cur.add(l.url)}});
-      });
-      try{localStorage.setItem(LKEY,JSON.stringify(links))}catch(_){}
+      /* 先实时重读最新 localStorage（含其它标签页改动），再与备份取并集，绝不覆盖已有 */
+      stars=rd("listen_qq_star");favs=rd("listen_qq_fav");skips=rd("listen_qq_skip");
       (d.stars||[]).forEach(w=>stars.add(w));                      /* 标记取并集，绝不覆盖已有 */
       (d.favs||[]).forEach(w=>favs.add(w));
       (d.skips||[]).forEach(w=>skips.add(w));
       wr("listen_qq_star",stars);wr("listen_qq_fav",favs);wr("listen_qq_skip",skips);
       if(d.cfg){Object.assign(S,d.cfg);save()}
-      if(d.range){range=d.range;try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
-      LINKS=rdLinks();updateCounts();afterMark();
+      if(d.range){let fr={};try{fr=JSON.parse(localStorage.getItem("listen_qq_range")||"null")||{}}catch(_){}range=Object.assign({},fr,d.range);try{localStorage.setItem("listen_qq_range",JSON.stringify(range))}catch(_){}}
+      updateCounts();afterMark();
       toast("导入成功 ⭐"+(d.stars||[]).length+" ❤"+(d.favs||[]).length+" ✓"+(d.skips||[]).length+"，即将刷新");
       setTimeout(()=>location.reload(),1200);
     }catch(err){toast("导入失败："+err.message)}
@@ -1130,9 +1057,13 @@ function localAudio(t,kind){
     const all = audioVoices(map);
     const want = kind==="zh" ? S.zhVoice : S.enVoice;
     const order = (want&&all.indexOf(want)>=0) ? [want].concat(all.filter(v=>v!==want)) : all;
+    const nf=s=>{try{return String(s).normalize("NFKC").toLowerCase()}catch(e){return String(s).toLowerCase()}};
+    const nk=nf(key);
     for(let i=0;i<order.length;i++){
       const m=AUDIO[order[i]]&&AUDIO[order[i]][map];
-      if(m&&m[key])return m[key];
+      if(!m)continue;
+      if(m[key])return m[key];
+      for(const k in m){ if(nf(k)===nk)return m[k] }   /* 连字 ﬁ/ﬂ ↔ 普通 fi/fl 互通 */
     }
   }catch(e){}
   return "";
@@ -1162,7 +1093,7 @@ function ttsURLs(t,kind){
   const L=localAudio(t,kind); if(L)urls.push(L);   /* 1) 微软预生成音频（有就用） */
   if(kind==="zh")urls.push(bd("zh"));
   else if(kind==="sent")urls.push(bd("en"));
-  else urls.push(yd,bd("en"));                     /* 单词：有道 → 百度 */
+  /* 单词：只用本地真人音频；读不到 → 提示「网络错误」并跳过，不回退在线/系统机械音 */
   return urls;
 }
 
@@ -1211,9 +1142,24 @@ function say(text,kind,cb){
     const wait=Math.max(0,700-(Date.now()-t0));   /* 最短停留 0.7s，杜绝秒刷 */
     setTimeout(()=>cb&&cb(ok),wait);
   };
+  /* 单词读不到（缺音频 / 加载失败）：显示「网络错误」，短暂停留后跳过这个词。
+     不再回退有道/百度/系统语音——那些就是机械音 */
+  const g0=gen;
+  const netFail=()=>{
+    if(done)return; done=true;
+    stopAudio();
+    wordTip("网络错误");
+    setTimeout(()=>{
+      if(g0!==gen)return;            /* 期间用户手动切过词：这次作废 */
+      if(!playing)return;
+      qi=(qi+1+queue.length)%queue.length; playCurrent();
+    },1100);
+  };
+
   const tryNext=()=>{
     if(done)return;
-    if(i>=urls.length){                            /* 在线音源都不行 → 系统语音兜底 */
+    if(i>=urls.length){
+      if(kind==="word"){ netFail(); return }   /* 单词：不回退机械音 */                            /* 在线音源都不行 → 系统语音兜底 */
       if(local)return;                             /* 防重入：重复调用会把上一句 cancel 掉，等于没声 */
       local=true;
       speakLocal(text, kind==="zh"?"zh-CN":"en-US", finish);
@@ -1332,7 +1278,7 @@ document.addEventListener("keydown",e=>{
   if(e.code==="Space"){e.preventDefault();$("play").click()}
   else if(e.key==="ArrowRight")nextWord();
   else if(e.key==="ArrowLeft")prevWord();
-  else if(e.key==="Escape"){$("linkCfg").classList.remove("on");$("linkPop").classList.remove("on");$("sheet").classList.remove("on")}
+  else if(e.key==="Escape"){$("sheet").classList.remove("on")}
 });
 
 // 释义/例句位置的律动波浪：恢复原来的固定 26 根、紧凑居中
