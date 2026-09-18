@@ -29,8 +29,7 @@ export const STATS = {
   listenPages: PAPERS.filter(p => p.listen).length
 }
 
-/** 学习页 URL（静态页放在 public/study 下，保留原页全部交互）
- *  必须用 withBase 补上站点 base（如 /paper-reading/），否则 GitHub Pages 项目页会 404 */
+/** 学习页 URL（静态页放在 public/study 下，保留原页全部交互） */
 export const vocabUrl = (slug: string) => withBase(`/study/vocab/${slug}_论文词汇.html`)
 export const listenUrl = (slug: string) => withBase(`/study/listen/${slug}_听力.html`)
 

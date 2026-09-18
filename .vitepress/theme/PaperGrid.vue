@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { withBase } from 'vitepress'
 import { GROUPS, PAPERS, vocabUrl, listenUrl, type Paper } from './papers'
 
 const props = withDefaults(defineProps<{
@@ -82,8 +83,8 @@ function openCard(p: Paper, e: MouseEvent) {
           <a class="dr-pill" :class="{ pri: mode === 'vocab' }" :href="vocabUrl(p.slug)" target="_self">📖 词表</a>
           <a v-if="p.listen" class="dr-pill" :class="{ pri: mode === 'listen' }" :href="listenUrl(p.slug)" target="_self">🎧 听力</a>
           <span v-else class="dr-pill off">🎧 听力</span>
-          <span class="dr-pill off" title="内容筹备中">🎬 朗读</span>
-          <span class="dr-pill off" title="内容筹备中">🎓 讲解</span>
+          <a class="dr-pill" :href="withBase('/reading/')" target="_self">🎬 朗读</a>
+          <a class="dr-pill" :href="withBase('/explain/')" target="_self">🎓 讲解</a>
         </div>
       </article>
     </div>
