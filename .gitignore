@@ -6,4 +6,4 @@ convert.sh
 node_modules/
 .vitepress/dist/
 .vitepress/cache/
-# work 分支放行：public/study 数据入分支
+# code 分支放行：public/study 构建页入分支
