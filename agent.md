@@ -15,36 +15,49 @@
 | 分支 | 职责 | 内容 |
 |---|---|---|
 | main | 受保护基线 | 永不提交/合并/推送（远程 main 仅含 imgs + README） |
-| work | 数据分支 | 词汇页/听力页/词表，落 `public/study/vocab`、`public/study/listen`、`public/study/vocab-words`；`.gitignore` 放行 `public/study/` |
-| code | 项目分支 | VitePress 项目源码 + 把 work 数据整合进来 + `data/papers.json` 清单；`.gitignore` 放行 `public/study/` |
-| build | 产物分支 | 仅存 `.vitepress/dist`，用于部署 |
+| work | 原始内容分支 | 笔记源 `pages/paper-notes/*.md`；论文原文/PDF 在仓库外 `paper-lm/`；`imgs/`、`agent.md` 等 |
+| code | 代码/构建页分支 | VitePress 项目源码 + 生成页 `public/study/**`（词汇页/听力页/词表/听力音频）+ `data/` + `scripts/` |
+| build | 渲染产物分支 | **只放渲染产物** `.vitepress/dist/`（外加必需的工作流 `.github/` 与 `.gitignore`）；**源码一律不入库** |
 
 ### 禁止
 - 禁止 push main（本地 pre-push 钩子拒绝；远程 main 也设了分支保护，见第八节）。
 - 跨分支取内容用 `git checkout <分支> -- <路径>` 取快照；禁止 `git merge work` / `git merge code`（避免草稿历史污染）。
+- ⚠️ **build 分支禁止提交源码**；构建后只 `git add -f .vitepress/dist .github .gitignore`，源码用 `git rm -r --cached --ignore-unmatch .` 取消跟踪。
 
-## 三、日常流程（新增一篇论文 + 单词表 + 词汇页）
+## 三、日常流程
+
+### A. 笔记（paper-notes）——归 work
 ```bash
-# ① work：放数据
 git switch work
+#   编辑 pages/paper-notes/XX.md（对外 URL 仍是 /paper-notes/XX.html，靠 code 的 rewrites 映射，见第十三节）
+git add pages/paper-notes/XX.md && git commit -m "notes: XX"
+```
+
+### B. 词汇页 / 听力页 / 音频——归 code
+生成工具产出在仓库外 `../vocab-html`、`../vocab-listen`、`../vocab-words`，拷进 code 的 `public/study/**` 后提交。
+```bash
+git switch code
+rm -rf public/study/vocab public/study/listen public/study/vocab-words   # 先清残留，避免死页
 cp -r ../vocab-html/* public/study/vocab/
 cp -r ../vocab-listen/* public/study/listen/
 cp -r ../vocab-words/* public/study/vocab-words/
-git add public/study/ && git commit -m "data: 论文XX"
+#   如需要，编辑 data/papers.json 加条目（slug 与文件名一致，listen:true）
+git add public/study data/papers.json && git commit -m "site: 论文XX 入站"
+```
 
-# ② code：整合 + 更新清单
-git switch code
-git checkout work -- public/study
-#   编辑 data/papers.json 加条目（slug 与文件名一致，listen:true）
-git add public/study/ data/papers.json && git commit -m "site: 论文XX 入站"
-
-# ③ build：构建产物（推送即触发自动部署）
+### C. 构建部署——build 分支只提交渲染产物
+```bash
 git switch build
-git checkout code -- .
-rm -rf public/study && git checkout code -- public/study   # 清残留，避免死页
-npm run build
-git add -f .vitepress/dist && git commit -m "build: 论文XX"
-git push -u origin build     # 触发 GitHub Actions 部署
+git reset --hard origin/build        # 起点（build 分支只有 dist）
+git checkout code -- .               # 源码 + public/study 生成页/音频
+git checkout work -- pages           # 笔记源 pages/paper-notes
+rm -rf paper-notes                   # ⚠️ 清掉 reset 残留的旧根目录 paper-notes/，否则与 rewrites 目标冲突 → 渲染崩溃（见第十三节）
+CODEBUDDY_SAFE_DELETE_ENABLED=0 NODE_OPTIONS= npm run build
+# 校验：ls .vitepress/dist/paper-notes/*.html | wc -l ≈ 99；dist/index.html、dist/assets 存在
+git rm -r --cached --ignore-unmatch .          # 去掉所有源码的跟踪
+git add -f .vitepress/dist .github .gitignore  # 只留渲染产物 + 工作流
+git commit -m "build: 论文XX"
+git push origin build                # 触发 GitHub Actions 部署
 ```
 
 ## 四、目录命名约定
@@ -108,3 +121,15 @@ git push -u origin build     # 触发 GitHub Actions 部署
   - `.vitepress/config.mts` —— favicon 用 `` `${BASE}favicon.svg` ``
 - 生成的静态学习页（`public/study/**`）内部用**相对链接**，不受 base 影响，无需处理。
 - 一句话：站点里任何 `/` 开头的绝对链接，先问自己"加 withBase 了吗"。
+
+## 十三、笔记源路径与 URL 映射（rewrites）+ 构建陷阱
+
+- 笔记源在 `work` 分支的 `pages/paper-notes/*.md`；`code` 分支的 `.vitepress/config.mts` 用
+  `rewrites: { 'pages/paper-notes/:name': 'paper-notes/:name' }` 把 URL 映射回 `/paper-notes/*.html`
+  （讲解区那 99 条 `[📝 笔记区](/paper-notes/X.html)` 链接无需改动）。
+- 构建时源目录里的 `pages/paper-notes/` 经 rewrites 落到 `paper-notes/`。
+- ⚠️ **渲染崩溃陷阱**：若构建源里同时存在**根目录旧 `paper-notes/`** 与 **`pages/paper-notes/`（rewrites 目标 `paper-notes/:name`）**，
+  两条路径映射到同一路由 → VitePress 在 renderPage 阶段抛
+  `Cannot read properties of undefined (reading 'imports')` 并中止。**务必在 build 前 `rm -rf paper-notes`**。
+- ⚠️ **构建失败绝不推送**：`npm run build` 非 0 退出时 `.vitepress/dist` 已被清空/残缺，此时再 `git add -f .vitepress/dist`
+  会把残缺产物推上线 → 线上大面积 404。必须先校验 `dist/paper-notes/*.html` 数量、`dist/index.html`、`dist/assets` 都正常，再提交。
