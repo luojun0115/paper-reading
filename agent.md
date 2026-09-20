@@ -7,7 +7,7 @@
 ## 一、仓库身份
 - 深读馆 DeepRead（paper-reading，npm name: deepread），VitePress 论文带读站。
 - 构建：`npm run build` → `.vitepress/dist/`。
-- 站点只发布 `public/` 下静态文件；论文 PDF 在外层 `paper-lm/`，不进本仓库。
+- 站点只发布 `public/` 下静态文件；论文/paper notes（PDF 原文）在外层 `papers/paper-lm/` 目录，不进本仓库。
 - 数据由生成工具产出到外层 `papers/vocab-html`、`papers/vocab-listen`（sync 脚本原读取位置）。
 - **站点子路径**：因托管在 GitHub Pages 项目页，`.vitepress/config.mts` 已设 `base: '/paper-reading/'`；改仓库名时同步改 base。
 
@@ -15,7 +15,7 @@
 | 分支 | 职责 | 内容 |
 |---|---|---|
 | main | 受保护基线 | 永不提交/合并/推送（远程 main 仅含 imgs + README） |
-| work | 原始内容分支 | 笔记源 `pages/paper-notes/*.md`；论文原文/PDF 在仓库外 `paper-lm/`；`imgs/`、`agent.md` 等 |
+| work | 原始内容分支 | 笔记源 `papers/paper-notes/*.md`（即 **page-notes**，对外 URL `/paper-notes/*.html`，见第十三节）；论文/paper notes（PDF 原文）在外层 `papers/paper-lm/`，不进本仓库；`imgs/`、`agent.md` 等 |
 | code | 代码/构建页分支 | VitePress 项目源码 + 生成页 `public/study/**`（词汇页/听力页/词表/听力音频）+ `data/` + `scripts/` |
 | build | 渲染产物分支 | **只放渲染产物** `.vitepress/dist/`（外加必需的工作流 `.github/` 与 `.gitignore`）；**源码一律不入库** |
 
@@ -29,8 +29,8 @@
 ### A. 笔记（paper-notes）——归 work
 ```bash
 git switch work
-#   编辑 pages/paper-notes/XX.md（对外 URL 仍是 /paper-notes/XX.html，靠 code 的 rewrites 映射，见第十三节）
-git add pages/paper-notes/XX.md && git commit -m "notes: XX"
+#   编辑 papers/paper-notes/XX.md（对外 URL 仍是 /paper-notes/XX.html，靠 code 的 rewrites 映射，见第十三节）
+git add papers/paper-notes/XX.md && git commit -m "notes: XX"
 ```
 
 ### B. 词汇页 / 听力页 / 音频——归 code
@@ -50,7 +50,7 @@ git add public/study data/papers.json && git commit -m "site: 论文XX 入站"
 git switch build
 git reset --hard origin/build        # 起点（build 分支只有 dist）
 git checkout code -- .               # 源码 + public/study 生成页/音频
-git checkout work -- pages           # 笔记源 pages/paper-notes
+git checkout work -- papers          # 笔记源 papers/paper-notes
 rm -rf paper-notes                   # ⚠️ 清掉 reset 残留的旧根目录 paper-notes/，否则与 rewrites 目标冲突 → 渲染崩溃（见第十三节）
 CODEBUDDY_SAFE_DELETE_ENABLED=0 NODE_OPTIONS= npm run build
 # 校验：ls .vitepress/dist/paper-notes/*.html | wc -l ≈ 99；dist/index.html、dist/assets 存在
@@ -124,11 +124,11 @@ git push origin build                # 触发 GitHub Actions 部署
 
 ## 十三、笔记源路径与 URL 映射（rewrites）+ 构建陷阱
 
-- 笔记源在 `work` 分支的 `pages/paper-notes/*.md`；`code` 分支的 `.vitepress/config.mts` 用
-  `rewrites: { 'pages/paper-notes/:name': 'paper-notes/:name' }` 把 URL 映射回 `/paper-notes/*.html`
+- 笔记源在 `work` 分支的 `papers/paper-notes/*.md`；`code` 分支的 `.vitepress/config.mts` 用
+  `rewrites: { 'papers/paper-notes/:name': 'paper-notes/:name' }` 把 URL 映射回 `/paper-notes/*.html`
   （讲解区那 99 条 `[📝 笔记区](/paper-notes/X.html)` 链接无需改动）。
-- 构建时源目录里的 `pages/paper-notes/` 经 rewrites 落到 `paper-notes/`。
-- ⚠️ **渲染崩溃陷阱**：若构建源里同时存在**根目录旧 `paper-notes/`** 与 **`pages/paper-notes/`（rewrites 目标 `paper-notes/:name`）**，
+- 构建时源目录里的 `papers/paper-notes/` 经 rewrites 落到 `paper-notes/`。
+- ⚠️ **渲染崩溃陷阱**：若构建源里同时存在**根目录旧 `paper-notes/`** 与 **`papers/paper-notes/`（rewrites 目标 `paper-notes/:name`）**，
   两条路径映射到同一路由 → VitePress 在 renderPage 阶段抛
   `Cannot read properties of undefined (reading 'imports')` 并中止。**务必在 build 前 `rm -rf paper-notes`**。
 - ⚠️ **构建失败绝不推送**：`npm run build` 非 0 退出时 `.vitepress/dist` 已被清空/残缺，此时再 `git add -f .vitepress/dist`

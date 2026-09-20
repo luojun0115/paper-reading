@@ -93,11 +93,11 @@ export default defineConfig({
   ignoreDeadLinks: true,
   srcExclude: ['README.md', 'docs/**', 'design/**', 'scripts/**', 'data/**', 'agent.md', 'AGENTS.md', 'CLAUDE.md', 'public/**'],
 
-  // 笔记源归 work 分支，路径是 pages/paper-notes/（构建时执行 `git checkout work -- pages` 取过来）。
+  // 笔记源归 work 分支，路径是 papers/paper-notes/（构建时执行 `git checkout work -- papers` 取过来）。
   // 这里把 URL 映射回 /paper-notes/*.html —— 保持讲解区那 99 条 [📝 笔记区](/paper-notes/X.html) 链接不变，
   // 也保证线上已发布的旧链接不会 404。改路径时务必同步这里。
   rewrites: {
-    'pages/paper-notes/:name': 'paper-notes/:name'
+    'papers/paper-notes/:name': 'paper-notes/:name'
   },
 
   head: [
