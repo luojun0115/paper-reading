@@ -134,3 +134,22 @@ git push origin build                # 触发 GitHub Actions 部署
   `Cannot read properties of undefined (reading 'imports')` 并中止。**务必在 build 前 `rm -rf paper-notes`**。
 - ⚠️ **构建失败绝不推送**：`npm run build` 非 0 退出时 `.vitepress/dist` 已被清空/残缺，此时再 `git add -f .vitepress/dist`
   会把残缺产物推上线 → 线上大面积 404。必须先校验 `dist/paper-notes/*.html` 数量、`dist/index.html`、`dist/assets` 都正常，再提交。
+
+## 十四、素材生成工作流（temp 目录，用完即删）
+
+当用户往 `paper-lm/` 目录（放论文 PDF 的目录）放入文件，并要求生成「单词表 / 听力表」等内容时，**一律按下面流程**：
+
+1. **先建 temp**：在外层建临时目录 `papers/temp/`（仓库外，不进 git、不影响构建）。
+2. **所有产物先落到 temp**：本次任务生成的中间素材一律写到 `papers/temp/` 下，例如
+   `temp/vocab-html/`、`temp/vocab-listen/`、`temp/vocab-words/`、`temp/listen-audio/`。
+   —— temp 里随便生成、随便试错，不用管最终仓位。
+3. **构建前「搬家」**：进入构建/部署时，把 temp 里确定要发布的产物**移动**到正式目录：
+   - `temp/vocab-html/*`   → `papers/vocab-html/`
+   - `temp/vocab-listen/*` → `papers/vocab-listen/`
+   - `temp/vocab-words/*`  → `papers/vocab-words/`
+   - `temp/listen-audio/*` → `papers/listen-audio/`
+   再按第三节 B（同步进 `code:public/study/**`）与 C（构建部署）。
+4. **构建成功后清理**：线上部署核验通过后，删除 `papers/temp/`。
+   （构建失败则**保留** temp 便于排查，不要提前删。）
+
+一句话：**生成物先全放 `papers/temp/`，构建前搬到正式目录，部署成功后删掉 temp。**
