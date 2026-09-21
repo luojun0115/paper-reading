@@ -1,7 +1,7 @@
 // 截取顶栏「收藏/星标」两种状态的放大图，用于目视核对图标
 // 运行：NODE_PATH=/Users/milong/.workbuddy/binaries/node/workspace/node_modules node verify-icons.js
 let pw; try{ pw=require('playwright'); }catch(e){ pw=require('playwright-core'); }
-const F='file:///Users/milong/Desktop/code/zcode-test/papers/listen-new/GPT2_%E5%90%AC%E5%8A%9B.html';
+const F='file://'+require('path').resolve(__dirname,'..')+'/public/study/listen/GPT2_%E5%90%AC%E5%8A%9B.html';
 (async()=>{
   const b=await pw.chromium.launch();
   const p=await b.newPage({viewport:{width:1280,height:820},deviceScaleFactor:2});

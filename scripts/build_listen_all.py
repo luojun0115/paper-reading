@@ -7,13 +7,13 @@
 """
 import json, os, re, sys
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))          # papers/
-PAPERS_JSON = os.path.join(HERE, "paper-reading", "data", "papers.json")
-WORDS_DIR = os.path.join(HERE, "vocab-words")
-MAN = os.path.join(HERE, "listen-audio", "manifest.json")
-TPL = os.path.join(HERE, "listen-qq-template.html")
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))          # 仓库根 paper-reading/
+PAPERS_JSON = os.path.join(HERE, "data", "papers.json")
+WORDS_DIR = os.path.join(HERE, "public", "study", "vocab-words")
+MAN = os.path.join(HERE, "public", "study", "listen-audio", "manifest.json")
+TPL = os.path.join(HERE, "scripts", "listen-qq-template.html")
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
-    HERE, "paper-reading", "public", "study", "listen", "index.html")
+    HERE, "public", "study", "listen", "index.html")
 
 LVN = {"4": "四级", "6": "六级", "k": "考研", "p": "考博"}
 OVN = {"t": "雅思托福", "g": "GRE"}

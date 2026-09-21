@@ -7,3 +7,6 @@ node_modules/
 .vitepress/dist/
 .vitepress/cache/
 # code 分支放行：public/study 构建页入分支
+
+# 生成物临时区（用完即删，不入库）
+temp/

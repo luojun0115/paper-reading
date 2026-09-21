@@ -1,7 +1,8 @@
 // 线上审计：多视口、关键状态截图 + 横向溢出/元素越界/面板行溢出/JS报错
 let pw; try{ pw=require('playwright'); }catch(e){ pw=require('playwright-core'); }
-const URL='file:///Users/milong/Desktop/code/zcode-test/papers/listen-new/GPT2_%E5%90%AC%E5%8A%9B.html';
-const OUT='/Users/milong/Desktop/code/zcode-test/papers/audit/';
+const ROOT=require('path').resolve(__dirname,'..');
+const URL='file://'+ROOT+'/public/study/listen/GPT2_%E5%90%AC%E5%8A%9B.html';
+const OUT=ROOT+'/temp/audit/';
 const fs=require('fs'); fs.mkdirSync(OUT,{recursive:true});
 
 (async()=>{

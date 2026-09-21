@@ -2,7 +2,7 @@
 # 批量生成微软 Edge(Azure) 神经语音试听样本：中文音色 + 英文音色，各一条中文、一条英文
 import asyncio, os, json, edge_tts
 
-OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "edge-voices")
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp", "edge-voices")
 os.makedirs(OUT, exist_ok=True)
 
 TXT_ZH = "监督学习。以条件概率建模，效果明确。"

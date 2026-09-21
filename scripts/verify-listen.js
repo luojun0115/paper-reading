@@ -1,5 +1,5 @@
 let pw; try{ pw=require('playwright'); }catch(e){ pw=require('playwright-core'); }
-const FILE='file:///Users/milong/Desktop/code/zcode-test/papers/listen-new/GPT2_%E5%90%AC%E5%8A%9B.html';
+const FILE='file://'+require('path').resolve(__dirname,'..')+'/public/study/listen/GPT2_%E5%90%AC%E5%8A%9B.html';
 
 (async()=>{
   const b=await pw.chromium.launch();

@@ -1,6 +1,6 @@
 import os, asyncio, edge_tts
 
-out_dir = "/Users/milong/Desktop/code/zcode-test/papers/edge-voices"
+out_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp", "edge-voices")
 os.makedirs(out_dir, exist_ok=True)
 
 text = "欢迎使用深读馆。下面用微软 Edge 同款神经网络声音，为你朗读这篇论文。"

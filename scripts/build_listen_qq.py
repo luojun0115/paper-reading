@@ -31,11 +31,11 @@ for s in data:
             "sec": s.get("short") or s.get("sec", ""),
         })
 
-tpl_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "listen-qq-template.html")
+tpl_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "listen-qq-template.html")
 tpl = open(tpl_path, encoding="utf-8").read()
 
 # 预生成的微软语音清单（只注入本篇用得到的条目，保持 HTML 精简）
-man_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "listen-audio", "manifest.json")
+man_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "public", "study", "listen-audio", "manifest.json")
 audio = {}      # 按音色分组: {voiceId: {w:{}, m:{}, e:{}}}
 if os.path.exists(man_path):
     try:

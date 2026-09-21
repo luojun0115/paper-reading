@@ -2,7 +2,7 @@
 // 运行：NODE_PATH=/Users/milong/.workbuddy/binaries/node/workspace/node_modules node verify-batch.js [样本数]
 let pw; try{ pw=require('playwright'); }catch(e){ pw=require('playwright-core'); }
 const fs=require('fs'), path=require('path');
-const DIR='/Users/milong/Desktop/code/zcode-test/papers/listen-new/';
+const DIR=path.resolve(__dirname,'../public/study/listen')+'/';
 const N=parseInt(process.argv[2]||'8',10);
 (async()=>{
   const files=fs.readdirSync(DIR).filter(f=>f.endsWith('.html')).sort();

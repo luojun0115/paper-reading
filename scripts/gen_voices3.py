@@ -4,7 +4,7 @@
 import asyncio, os, json, glob, edge_tts
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(BASE, "edge-voices")
+OUT = os.path.join(BASE, "temp", "edge-voices")
 os.makedirs(OUT, exist_ok=True)
 
 TXT_ZH = "监督学习。以条件概率建模，效果明确。"
@@ -55,14 +55,14 @@ async def main():
 
     # --- 体积实测：拿 GPT2 的 120 个词，用 Brian 预生成 ---
     words = []
-    for f in glob.glob(os.path.join(BASE, "vocab-words", "*GPT2*.json")):
+    for f in glob.glob(os.path.join(BASE, "public", "study", "vocab-words", "*GPT2*.json")):
         data = json.load(open(f, encoding="utf-8"))
         items = data if isinstance(data, list) else data.get("words", [])
         for it in items:
             w = it.get("w") or it.get("word")
             if w: words.append(w)
     words = words[:120]
-    tmp = os.path.join(BASE, "edge-voices", "_costtest")
+    tmp = os.path.join(BASE, "temp", "edge-voices", "_costtest")
     os.makedirs(tmp, exist_ok=True)
     await asyncio.gather(*[synth("en-US-BrianNeural", "w", w, tmp) for w in words])
     files = [p for p in glob.glob(os.path.join(tmp, "*.mp3"))]
