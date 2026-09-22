@@ -15,14 +15,14 @@
 ## 二、分支模型（必须遵守）
 | 分支 | 职责 | 内容 |
 |---|---|---|
-| main | 受保护基线 | 永不提交/合并/推送（远程 main 仅含 imgs + README） |
-| work | 原始内容分支 | `imgs/`、`agent.md` 等；**笔记源已移出仓库**（在外层 `papers/paper-notes/`，构建时拷入，见第十三节） |
+| main | 受保护基线 | 永不提交/合并/推送（远程 main 仅含 README；`imgs/` 已删） |
+| ~~work~~ | **已删除** | 该分支已废弃删除（原内容全部并入 `code`）；笔记源在外层 `papers/paper-notes/`，构建时拷入（见第十三节） |
 | code | 代码/构建页分支 | VitePress 项目源码 + 生成页 `public/study/**`（词汇页/听力页/词表/听力音频）+ `data/` + `scripts/` |
 | build | 渲染产物分支 | **只放渲染产物** `.vitepress/dist/`（外加必需的工作流 `.github/` 与 `.gitignore`）；**源码一律不入库** |
 
 ### 禁止
 - 禁止 push main（本地 pre-push 钩子拒绝；远程 main 也设了分支保护，见第八节）。
-- 跨分支取内容用 `git checkout <分支> -- <路径>` 取快照；禁止 `git merge work` / `git merge code`（避免草稿历史污染）。
+- 跨分支取内容用 `git checkout <分支> -- <路径>` 取快照；禁止 `git merge` 把 `code` 的内容混进 `build`（避免源码污染产物分支）。
 - ⚠️ **build 分支禁止提交源码**；构建后只 `git add -f .vitepress/dist .github .gitignore`，源码用 `git rm -r --cached --ignore-unmatch .` 取消跟踪。
 
 ## 三、日常流程
