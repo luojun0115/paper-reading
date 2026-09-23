@@ -64,8 +64,8 @@ git add public/study data/papers.json && git commit -m "site: 更新学习页"
 git switch build
 git reset --hard origin/build        # 起点（build 分支只有 dist）
 git checkout code -- .               # 源码 + public/study 生成页/音频
-mkdir -p papers/paper-notes && cp -R ../paper-notes/. papers/paper-notes/   # 从外层 papers/paper-notes 拷入笔记源
-rm -rf paper-notes                   # ⚠️ 清掉 reset 残留的旧根目录 paper-notes/，否则与 rewrites 目标冲突 → 渲染崩溃（见第十三节）
+mkdir -p papers/paper-notes && cp -R ../paper-notes/. papers/paper-notes/   # 从外层 papers/paper-notes 只读拷入笔记源
+#   🚫 不要写 rm -rf paper-notes：外层 papers/paper-notes 是用户原文件；产物里的 paper-notes/ 是渲染出的 HTML，均无需删除。
 CODEBUDDY_SAFE_DELETE_ENABLED=0 NODE_OPTIONS= npm run build
 # 校验：dist/paper-notes/*.html ≈ 99；dist/index.html、dist/assets 存在
 git rm -r --cached --ignore-unmatch .                  # 去掉所有源码的跟踪
@@ -145,9 +145,11 @@ git push origin build                                  # 触发 GitHub Actions �
   （讲解区那 99 条 `[📝 笔记区](/paper-notes/X.html)` 链接无需改动）。
 - 构建时源目录里的 `papers/paper-notes/` 经 rewrites 落到 `paper-notes/`。
 - **更新检测**：`scripts/tools_deploy.sh` 会对外层 `paper-notes` 计算指纹并存到 `.paper-notes.sha`，与上次构建比对，有更新则提示并纳入本次构建。
-- ⚠️ **渲染崩溃陷阱**：若构建源里同时存在**根目录旧 `paper-notes/`** 与 **`papers/paper-notes/`（rewrites 目标 `paper-notes/:name`）**，
-  两条路径映射到同一路由 → VitePress 在 renderPage 阶段抛
-  `Cannot read properties of undefined (reading 'imports')` 并中止。**务必在 build 前 `rm -rf paper-notes`**。
+- ℹ️ **历史坑（已填平，勿再动刀）**：早年笔记曾放在仓库**根目录** `paper-notes/`，与 `papers/paper-notes/`（rewrites 目标同为 `/paper-notes/:name`）**撞路由**，
+  导致 VitePress 在 renderPage 抛 `Cannot read properties of undefined (reading 'imports')`。
+  现状：`build` 分支只含 `.vitepress/dist`，**根目录 `paper-notes/` 已不存在**（实测 0 个），该冲突不会再发生。
+- 🚫 **绝对禁止**：对外层 `papers/paper-notes/`（**用户原文件**）执行任何 `rm` / 修改 / 移动 —— 构建只**读取并拷贝**它。
+  同理，构建流程里**不要再加** `rm -rf paper-notes` 这类删除动作：构建产物中的 `paper-notes/` 是渲染出来的 HTML，与笔记源无关。
 - ⚠️ **构建失败绝不推送**：`npm run build` 非 0 退出时 `.vitepress/dist` 已被清空/残缺，此时再 `git add -f .vitepress/dist`
   会把残缺产物推上线 → 线上大面积 404。必须先校验 `dist/paper-notes/*.html` 数量、`dist/index.html`、`dist/assets` 都正常，再提交。
 

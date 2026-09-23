@@ -20,11 +20,11 @@ if [ -z "$H" ]; then echo "    !! 取不到 paper-notes 指纹，检查：$NOTES
 OLD="$(cat .paper-notes.sha 2>/dev/null || echo -)"
 if [ "$H" = "$OLD" ]; then echo "    paper-notes 无更新"; else echo "    paper-notes 有更新 → 纳入本次构建"; fi
 
-echo "[3/6] 纳入笔记源 ..."
+echo "[3/6] 纳入笔记源（只读拷贝）..."
 mkdir -p papers/paper-notes
 cp -R "$NOTES"/. papers/paper-notes/ || exit 1
-rm -rf paper-notes     # 清掉可能与 rewrites 目标冲突的根目录旧 paper-notes
 echo "    笔记 $(ls papers/paper-notes/*.md 2>/dev/null | wc -l) 篇"
+# 注意：外层 $NOTES（papers/paper-notes）是用户原文件，只读，禁止 rm/修改/移动。
 
 echo "[4/6] VitePress 构建 ..."
 env NODE_OPTIONS= CODEBUDDY_SAFE_DELETE_ENABLED=0 npm run build 2>&1 | tail -3
