@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""确保 paper-reading/paper-notes/<slug>.md（你自己写的笔记）存在。
+"""确保笔记 papers/paper-notes/<slug>.md 存在（缺失则建占位 stub）。
 
 - 笔记由 VitePress 直接构建成 /paper-notes/<slug>.html，无需本脚本生成 HTML。
 - 缺失或仍是占位 stub → 生成/重建 stub 供你填写；你已改过的内容不会被覆盖。
+- ⚠️ 笔记源文件在外层 papers/paper-notes/（用户原文件）。本脚本只**新建缺失的 stub**，
+  不覆盖已填写内容。若不希望脚本写入原文件目录，请勿运行本脚本，改为手动新建 md。
 用法: python3 tools_build_notes.py
 """
 import os, json
 
-BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-papers = json.load(open(os.path.join(BASE, "paper-reading", "data", "papers.json"), encoding="utf-8"))
-SRC = os.path.join(BASE, "paper-reading", "paper-notes")
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))          # 仓库根 paper-reading/
+papers = json.load(open(os.path.join(BASE, "data", "papers.json"), encoding="utf-8"))
+SRC = os.path.join(BASE, "..", "paper-notes")                                # 外层 papers/paper-notes
 os.makedirs(SRC, exist_ok=True)
 
 PLACEHOLDER = "（待补充）"
@@ -22,7 +24,7 @@ TEMPLATE = (
     "editLink: false\n"
     "---\n\n"
     "# {name} ({year}) · 笔记区\n\n"
-    "> 这一页由你自己填写。编辑源文件 `paper-reading/paper-notes/{slug}.md`，"
+    "> 这一页由你自己填写。编辑源文件 `papers/paper-notes/{slug}.md`，"
     "重新生成网站（运行 `npm run build`）后这里就会更新。\n\n"
     "{placeholder}\n\n"
     "---\n\n"
@@ -42,4 +44,4 @@ for g in papers["groups"]:
             made += 1
         else:
             skipped += 1
-print(f"笔记源文件(paper-reading/paper-notes): 新建/重建 stub {made} 个 · 保留已填 {skipped} 个")
+print(f"笔记源文件(papers/paper-notes): 新建/重建 stub {made} 个 · 保留已填 {skipped} 个")

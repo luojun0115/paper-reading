@@ -149,3 +149,88 @@ VitePress 会把它当页面渲染，并因引用图片报 `Rollup failed to res
 - **护栏**：`scripts/pre-push`（软链到 `.git/hooks/pre-push`）拒绝推 `main`。
 - **GitHub 容量**：单文件 >50 MiB 警告、>100 MiB 硬拒；仓库建议 <1 GB、强烈建议 <5 GB。
   本站音频 `public/study/listen-audio/` 约 1.4 万个 mp3（压缩后约 116 MB），文件数多但体积可控。
+
+---
+
+## 七、实操示例：新增一篇论文（从 PDF 到上线）
+
+以下以新论文 **ViT**（slug `ViT`，2020 年）为例，走完整流程。
+约定仓库根：`R = /Users/milong/Desktop/code/zcode-test/papers/paper-reading`
+
+### 步骤 0：放原文件（用户操作）
+```bash
+cp ~/Downloads/ViT.pdf  /Users/milong/Desktop/code/zcode-test/papers/paper-llm/
+```
+
+### 步骤 1：登记论文（code 分支）
+编辑 `data/papers.json`，在对应分组的 `papers` 数组里加一条：
+```json
+{ "slug": "ViT", "name": "Vision Transformer", "year": 2020, "listen": true }
+```
+> `slug` 必须与后续词表文件名一致 → `ViT_论文词汇.json`
+
+### 步骤 2：生成词表（先落 temp）
+```bash
+cd "$R"
+mkdir -p temp/vocab-words
+# 把生成好的词表放到 temp/vocab-words/ViT_论文词汇.json
+```
+词表结构（章节数组）：
+```json
+[
+  { "sec": "摘要", "words": [
+      { "w": "transformer", "ipa": "/trænsˈfɔːrmər/", "pos": "n.",
+        "m": "变换器；变压器", "ex": "The transformer architecture...", "lv": "6" }
+  ]}
+]
+```
+
+### 步骤 3：生成听力页
+```bash
+python3 scripts/build_listen_qq.py \
+  temp/vocab-words/ViT_论文词汇.json \
+  temp/listen/ViT_听力.html \
+  "Vision Transformer (ViT) · 2020" \
+  --title "ViT_听力"
+```
+
+### 步骤 4：生成音频（可选）
+```bash
+python3 scripts/gen_paper_audio.py \
+  temp/vocab-words/ViT_论文词汇.json \
+  temp/listen-audio \
+  --en en-US-BrianNeural --zh zh-CN-YunyangNeural --rel ../listen-audio
+```
+
+### 步骤 5：写笔记
+在外层 **`papers/paper-notes/ViT.md`** 撰写 —— **用户原文件，AI 不代写、不改动**。
+确需占位 stub 时：`python3 scripts/tools_build_notes.py`（只新建缺失文件，不覆盖已填写内容）。
+
+### 步骤 6：同步进正式目录并提交
+```bash
+node scripts/sync-study-pages.mjs          # temp/* → public/study/*
+git add public/study data/papers.json
+git commit -m "site: ViT 入站"
+```
+
+### 步骤 7：构建部署
+```bash
+bash scripts/tools_deploy.sh
+```
+内部：切 build → 检测外层 `paper-notes` 指纹 → 只读拷笔记 → 构建 → 校验 → 提交 dist → 推 build → Actions 部署。
+任一步失败即中止，不推残缺产物。
+
+### 步骤 8：验收
+```bash
+python3 scripts/tools_audit_coverage.py                    # 检查音频覆盖率
+curl -s -o /dev/null -w "%{http_code}" \
+  https://luojun0115.github.io/paper-reading/paper-notes/ViT.html    # 期望 200
+```
+
+### 步骤 9：清理 temp（必须先问）
+构建成功后 **询问用户**是否删除 `temp/`；**用户未回答 → 默认不删除**。
+
+### 附：批量重建全部听力页
+```bash
+python3 scripts/tools_rebuild_all.py       # 就地重建 public/study/listen/
+```
