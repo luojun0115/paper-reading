@@ -18,6 +18,7 @@
 
 - **生成页 / 词表 / 音频已在仓库内**：`code` 分支的 `public/study/{vocab,listen,vocab-words,listen-audio}/`，随仓库 git 跟踪。
 - **站点子路径**：因托管在 GitHub Pages 项目页，`.vitepress/config.mts` 已设 `base: '/paper-reading/'`；改仓库名时同步改 base。
+- 📘 **详细操作流程见 [`docs/WORKFLOW.md`](docs/WORKFLOW.md)**（三类任务流程、常用命令、已知坑）。该文件在 `docs/` 下，已被 `srcExclude` 排除，不会进站点。
 
 ## 二、分支模型（必须遵守）
 | 分支 | 职责 | 内容 |
