@@ -7,9 +7,16 @@
 ## 一、仓库身份
 - 深读馆 DeepRead（paper-reading，npm name: deepread），VitePress 论文带读站。
 - 构建：`npm run build` → `.vitepress/dist/`。
-- 站点只发布 `public/` 下静态文件；论文/paper notes（PDF 原文）在外层 `papers/paper-lm/` 目录，不进本仓库。
-- 数据由生成工具产出到外层 `papers/vocab-html`、`papers/vocab-listen`（sync 脚本原读取位置）。
-- 笔记源（page-notes，99 篇 md）在外层 `papers/paper-notes/`，**不进本仓库**；构建部署时从该目录拷入（见第三节 C、第十三节）。
+- 站点只发布 `public/` 下静态文件。
+- 仓库位于外层 **`papers/paper-reading/`**。外层 `papers/` 下与仓库并列、由**用户自行管理**的目录：
+
+  | 外层目录 | 内容 | AI 处置 |
+  |---|---|---|
+  | `paper-llm/` | 论文原件（PDF，输入源） | **只读，不擅动** |
+  | `paper-notes/` | 带读笔记（99 篇 md），构建时拷入 | **只读，不擅动** |
+  | `paper-video/` | 视频素材 | **只读，不擅动** |
+
+- **生成页 / 词表 / 音频已在仓库内**：`code` 分支的 `public/study/{vocab,listen,vocab-words,listen-audio}/`，随仓库 git 跟踪。
 - **站点子路径**：因托管在 GitHub Pages 项目页，`.vitepress/config.mts` 已设 `base: '/paper-reading/'`；改仓库名时同步改 base。
 
 ## 二、分支模型（必须遵守）
@@ -17,7 +24,7 @@
 |---|---|---|
 | main | 受保护基线 | 永不提交/合并/推送（远程 main 仅含 README；`imgs/` 已删） |
 | ~~work~~ | **已删除** | 该分支已废弃删除（原内容全部并入 `code`）；笔记源在外层 `papers/paper-notes/`，构建时拷入（见第十三节） |
-| code | 代码/构建页分支 | VitePress 项目源码 + 生成页 `public/study/**`（词汇页/听力页/词表/听力音频）+ `data/` + `scripts/` |
+| code | 代码/构建页分支 | VitePress 项目源码 + 生成页 `public/study/**`（词汇页/听力页/词表/听力音频）+ `data/`（`papers.json`、`wordlists/`）+ `scripts/`（工具链）+ `temp/`（生成物临时区，git 忽略） |
 | build | 渲染产物分支 | **只放渲染产物** `.vitepress/dist/`（外加必需的工作流 `.github/` 与 `.gitignore`）；**源码一律不入库** |
 
 ### 禁止
@@ -34,19 +41,25 @@
 #   对外 URL 仍是 /paper-notes/XX.html（构建时拷入 + code 的 rewrites 映射，见第三节 C、第十三节）
 ```
 
-### B. 词汇页 / 听力页 / 音频——归 code
-生成工具产出在仓库外 `../vocab-html`、`../vocab-listen`、`../vocab-words`，拷进 code 的 `public/study/**` 后提交。
+### B. 词汇页 / 听力页 / 音频——归 code（已入库，新内容走 temp）
+这些内容**已在仓库内**（`public/study/**`），随仓库 git 跟踪。新增/更新时走 temp 流程：
 ```bash
-git switch code
-rm -rf public/study/vocab public/study/listen public/study/vocab-words   # 先清残留，避免死页
-cp -r ../vocab-html/* public/study/vocab/
-cp -r ../vocab-listen/* public/study/listen/
-cp -r ../vocab-words/* public/study/vocab-words/
-#   如需要，编辑 data/papers.json 加条目（slug 与文件名一致，listen:true）
-git add public/study data/papers.json && git commit -m "site: 论文XX 入站"
+# 1) 生成脚本把产物输出到 temp/（git 忽略）
+#    temp/vocab/ · temp/listen/ · temp/vocab-words/ · temp/listen-audio/
+
+# 2) 确认无误后同步进正式目录（源目录缺失会自动跳过）
+node scripts/sync-study-pages.mjs
+
+# 3) 提交（如需新增论文条目，编辑 data/papers.json：slug 与文件名一致，listen:true）
+git add public/study data/papers.json && git commit -m "site: 更新学习页"
 ```
+> 重建听力页：`python3 scripts/tools_rebuild_all.py`（就地重建 `public/study/listen/`）。
 
 ### C. 构建部署——build 分支只提交渲染产物
+**一键**：`bash scripts/tools_deploy.sh`
+（流程：切 build 取源码 → 检测外层 `paper-notes` 指纹 → 拷入笔记 → 构建 → 校验 → 只提交 dist → 推送。任一步失败即中止，绝不推残缺产物。）
+
+等价手动步骤：
 ```bash
 git switch build
 git reset --hard origin/build        # 起点（build 分支只有 dist）
@@ -54,16 +67,18 @@ git checkout code -- .               # 源码 + public/study 生成页/音频
 mkdir -p papers/paper-notes && cp -R ../paper-notes/. papers/paper-notes/   # 从外层 papers/paper-notes 拷入笔记源
 rm -rf paper-notes                   # ⚠️ 清掉 reset 残留的旧根目录 paper-notes/，否则与 rewrites 目标冲突 → 渲染崩溃（见第十三节）
 CODEBUDDY_SAFE_DELETE_ENABLED=0 NODE_OPTIONS= npm run build
-# 校验：ls .vitepress/dist/paper-notes/*.html | wc -l ≈ 99；dist/index.html、dist/assets 存在
-git rm -r --cached --ignore-unmatch .          # 去掉所有源码的跟踪
-git add -f .vitepress/dist .github .gitignore  # 只留渲染产物 + 工作流
-git commit -m "build: 论文XX"
-git push origin build                # 触发 GitHub Actions 部署
+# 校验：dist/paper-notes/*.html ≈ 99；dist/index.html、dist/assets 存在
+git rm -r --cached --ignore-unmatch .                  # 去掉所有源码的跟踪
+git add -f .vitepress/dist .github .gitignore .paper-notes.sha
+git commit -m "build: 站点更新"
+git push origin build                                  # 触发 GitHub Actions 部署
 ```
 
 ## 四、目录命名约定
-- 用 `vocab` / `listen` / `vocab-words`（非 `vocab-html`），兼容现有站点 URL（`/study/vocab/`、`/study/listen/`），免改 `papers.ts`。
-- 每次搬数据前先 `rm -rf` 目标目录再 `cp`，避免已下架论文残留死页。
+- 正式目录：`public/study/` 下的 `vocab` / `listen` / `vocab-words` / `listen-audio`，对应站点 URL `/study/vocab/`、`/study/listen/`，免改 `papers.ts`。
+  （历史上的 `vocab-html` / `vocab-listen` / `listen-new` 等外层目录已废弃删除，**不要再引用**。）
+- 临时目录：仓库内 `temp/`（git 忽略），生成物先落这里。
+- 每次搬数据前先清目标目录再拷，避免已下架论文残留死页。
 
 ## 五、自动部署（GitHub Pages = GitHub Actions 模式）
 - `.github/workflows/deploy.yml` 监听 `build` 分支 push，上传 `.vitepress/dist` 并部署到 GitHub Pages。
@@ -97,14 +112,14 @@ git push origin build                # 触发 GitHub Actions 部署
 
 ## 十一、数据导入位置与构建陷阱（重点，易踩坑）
 
-- 词汇页 / 听力页 / 词表 **不在本仓库内**：生成工具产出在仓库外层同级目录 `papers/vocab-html`、`papers/vocab-listen`、`papers/vocab-words`（本仓库位于 `papers/paper-reading/`，相对即 `../vocab-html` 等）。它们从不会自动进 git，必须按第三节 SOP 手动 `cp` 进 `public/study/vocab|listen|vocab-words` 并 commit，否则仓库里只有空骨架、线上 404。
+- 词汇页 / 听力页 / 词表 / 音频 **已在仓库内**：`code` 分支 `public/study/{vocab,listen,vocab-words,listen-audio}/`，随仓库 git 跟踪。新内容走「temp → `sync-study-pages.mjs` → 提交」（见第三节 B）。
 - ⚠️ 致命陷阱：若 `public/study` 为空就 `npm run build`，生成的 `.vitepress/dist` 不含任何词汇页 → 本地 `dist/index.html` 与线上 GitHub Pages 都打不开词表（404）。**务必先 `cp` 数据、再 build。**
-- ⚠️ 导入时只 `cp *.html` 和 `*.json`，**不要连 `vocab-html` 里的 `README_*.md` 一起搬进 `public/study/vocab`**：VitePress 会把它当页面渲染，并因引用图片（如 `imgs/sora.jpg`）报 `Rollup failed to resolve import` 导致构建失败。
+- ⚠️ 导入时只拷 `*.html` 和 `*.json`，**不要把生成目录里的 `README_*.md` 搬进 `public/study/vocab`**：VitePress 会把它当页面渲染，并因引用图片报 `Rollup failed to resolve import` 导致构建失败。
 - ⚠️ 本机装了腾讯云 Coding Copilot 插件时，`npm run build` 会在清理 `.vitepress/.temp`（800+ 文件）时被 safe-delete 批量删除保护拦截（`SAFE_DELETE_BULK_CONFIRM_REQUIRED`），导致构建报错退出。**解决办法**：构建时禁用该守卫——
   `CODEBUDDY_SAFE_DELETE_ENABLED=0 NODE_OPTIONS= npm run build`
   （`NODE_OPTIONS` 里被注入了 shim，需一并清空；CI 端无此插件，无需处理。）
 - 本地预览构建产物：直接浏览器打开 `.vitepress/dist/index.html`（file://），不是 `npm run dev` 临时地址。
-- 一句话：原始数据从没"丢"过，只是没进库；导入 + 重建即可恢复。
+- 一句话：生成物先进 `temp/`，确认后 sync 进 `public/study/`，再构建。
 
 ## 十二、站点内链接必须带 base 前缀（否则 GitHub Pages 404）
 
@@ -129,27 +144,30 @@ git push origin build                # 触发 GitHub Actions 部署
   `rewrites: { 'papers/paper-notes/:name': 'paper-notes/:name' }` 把 URL 映射回 `/paper-notes/*.html`
   （讲解区那 99 条 `[📝 笔记区](/paper-notes/X.html)` 链接无需改动）。
 - 构建时源目录里的 `papers/paper-notes/` 经 rewrites 落到 `paper-notes/`。
+- **更新检测**：`scripts/tools_deploy.sh` 会对外层 `paper-notes` 计算指纹并存到 `.paper-notes.sha`，与上次构建比对，有更新则提示并纳入本次构建。
 - ⚠️ **渲染崩溃陷阱**：若构建源里同时存在**根目录旧 `paper-notes/`** 与 **`papers/paper-notes/`（rewrites 目标 `paper-notes/:name`）**，
   两条路径映射到同一路由 → VitePress 在 renderPage 阶段抛
   `Cannot read properties of undefined (reading 'imports')` 并中止。**务必在 build 前 `rm -rf paper-notes`**。
 - ⚠️ **构建失败绝不推送**：`npm run build` 非 0 退出时 `.vitepress/dist` 已被清空/残缺，此时再 `git add -f .vitepress/dist`
   会把残缺产物推上线 → 线上大面积 404。必须先校验 `dist/paper-notes/*.html` 数量、`dist/index.html`、`dist/assets` 都正常，再提交。
 
-## 十四、素材生成工作流（temp 目录，用完即删）
+## 十四、素材生成工作流（temp 在仓库内，删前必问）
 
-当用户往 `paper-lm/` 目录（放论文 PDF 的目录）放入文件，并要求生成「单词表 / 听力表」等内容时，**一律按下面流程**：
+当用户往外层 `paper-llm/` 放入论文（PDF / 文章），并要求生成「单词表 / 听力表」等内容时，**一律按下面流程**：
 
-1. **先建 temp**：在外层建临时目录 `papers/temp/`（仓库外，不进 git、不影响构建）。
-2. **所有产物先落到 temp**：本次任务生成的中间素材一律写到 `papers/temp/` 下，例如
-   `temp/vocab-html/`、`temp/vocab-listen/`、`temp/vocab-words/`、`temp/listen-audio/`。
+1. **先建 temp**：在**仓库内**建临时目录 `<repo>/temp/`（已在 `.gitignore` 中，不进 git、不影响构建）。
+2. **所有产物先落到 temp**：生成的中间素材一律写到 `temp/` 下，例如
+   `temp/vocab/`、`temp/listen/`、`temp/vocab-words/`、`temp/listen-audio/`。
    —— temp 里随便生成、随便试错，不用管最终仓位。
-3. **构建前「搬家」**：进入构建/部署时，把 temp 里确定要发布的产物**移动**到正式目录：
-   - `temp/vocab-html/*`   → `papers/vocab-html/`
-   - `temp/vocab-listen/*` → `papers/vocab-listen/`
-   - `temp/vocab-words/*`  → `papers/vocab-words/`
-   - `temp/listen-audio/*` → `papers/listen-audio/`
-   再按第三节 B（同步进 `code:public/study/**`）与 C（构建部署）。
-4. **构建成功后清理**：线上部署核验通过后，删除 `papers/temp/`。
-   （构建失败则**保留** temp 便于排查，不要提前删。）
+3. **构建前「搬家」**：确认无误后执行 `node scripts/sync-study-pages.mjs`，
+   把 `temp/` 里确定要发布的产物搬进正式目录 `public/study/**`（源目录缺失自动跳过）。
+4. **构建部署**：`bash scripts/tools_deploy.sh`（含笔记更新检测 → 构建 → 校验 → 提交 dist → 推送）。
+5. **清理**：构建部署成功后，**先询问用户**是否删除 `temp/`；
+   ⚠️ **用户未回答 → 默认不删除**。（构建失败则保留 temp 便于排查。）
 
-一句话：**生成物先全放 `papers/temp/`，构建前搬到正式目录，部署成功后删掉 temp。**
+一句话：**生成物先全放 `temp/`，确认后 sync 进 `public/study/`，构建成功后问过用户再删 temp。**
+
+### 纪律（必须遵守）
+- **只有 `code`（源码 + `temp/`）和 `build`（产物）承载构建相关内容**，其它目录不放构建文件 / 生成物。
+- 外层 `papers/` 下的 `paper-llm/`、`paper-notes/`、`paper-video/` 由**用户自行管理**，AI **只读不擅动**。
+- 分支只有 `main`（受保护）/ `code`（工作）/ `build`（产物）；`work` 分支已删除。
