@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""批量把 vocab-listen 里的听力页用新版模板重建到 listen-new/。
+"""批量把 public/study/listen 里的听力页用新版模板就地重建。
 
-对应关系：vocab-listen/<名>_听力.html  ←  vocab-words/<名>_论文词汇.json
+对应关系：public/study/listen/<名>_听力.html  ←  public/study/vocab-words/<名>_论文词汇.json
 论文名从旧页的 .ptitle 里提取，标题沿用旧 <title>，保证内容与线上一致。
 """
 import os, re, glob, subprocess, sys
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC  = os.path.join(HERE, "vocab-listen")
-JS   = os.path.join(HERE, "vocab-words")
-OUT  = os.path.join(HERE, "listen-new")
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # 仓库根 paper-reading/
+SRC  = os.path.join(HERE, "public", "study", "listen")               # 现有听力页
+JS   = os.path.join(HERE, "public", "study", "vocab-words")          # 词表 json
+OUT  = os.path.join(HERE, "public", "study", "listen")               # 就地重建
 os.makedirs(OUT, exist_ok=True)
 
 pages = sorted(glob.glob(os.path.join(SRC, "*_听力.html")))
@@ -28,7 +28,7 @@ for h in pages:
     title = t.group(1) if t else base + "_论文词汇_听力"
     out = os.path.join(OUT, name)
     r = subprocess.run(
-        [sys.executable, os.path.join(HERE, "build_listen_qq.py"), j, out, paper, "--title", title],
+        [sys.executable, os.path.join(HERE, "scripts", "build_listen_qq.py"), j, out, paper, "--title", title],
         capture_output=True, text=True)
     if r.returncode != 0:
         skipped.append(base + "(build失败:" + (r.stderr or r.stdout).strip()[:50] + ")")

@@ -3,7 +3,7 @@
 import os, json, glob
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-man = json.load(open(os.path.join(BASE, "listen-audio", "manifest.json"), encoding="utf-8"))
+man = json.load(open(os.path.join(BASE, "public", "study", "listen-audio", "manifest.json"), encoding="utf-8"))
 BRIAN = man.get("en-US-BrianNeural", {})
 W = BRIAN.get("w", {})
 M = man.get("zh-CN-YunyangNeural", {}).get("m", {})
@@ -30,7 +30,7 @@ clean_zh = lambda s: re.sub(r'\s+', ' ', PAREN.sub('', s or "")).strip()
 total = 0
 missW, missM, missE = [], [], []
 per = []
-for vp in sorted(glob.glob(os.path.join(BASE, "vocab-words", "*.json"))):
+for vp in sorted(glob.glob(os.path.join(BASE, "public", "study", "vocab-words", "*.json"))):
     items = words_of(vp)
     if not items:
         continue

@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 /**
- * 把上层的静态学习页同步进站点的 public/study/（VitePress 只发布 public/ 下的静态文件）。
+ * 把「生成物临时区 temp/」的静态学习页同步进站点的 public/study/（VitePress 只发布 public/ 下的静态文件）。
  *
- *   ../vocab-html/*    →  public/study/vocab/*
- *   ../vocab-listen/*  →  public/study/listen/*
+ *   temp/vocab/*         →  public/study/vocab/*
+ *   temp/listen/*        →  public/study/listen/*
+ *   temp/vocab-words/*   →  public/study/vocab-words/*
+ *   temp/listen-audio/*  →  public/study/listen-audio/*
  *
- * 为什么不直接原地引用：VitePress 的构建产物只包含 srcDir 里的 .md 路由 + publicDir。
- * 为什么不重写这些页面：它们各自带 TTS、主题、朗读等完整交互，重写成 VitePress 页面会丢功能。
+ * 新流程：生成脚本先产出到 temp/（git 忽略），确认无误后跑本脚本搬进 public/study/，再构建部署。
+ * 源目录不存在则跳过，不报错。
  *
- * 顺带修掉 5 处跨目录相对链接（原目录布局下本就是断的）。
+ * 顺带修掉跨目录相对链接。
  * 用法：node scripts/sync-study-pages.mjs
  */
 import { cp, rm, readFile, writeFile, readdir, stat, access } from 'node:fs/promises'
@@ -18,12 +20,14 @@ import { fileURLToPath } from 'node:url'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(here, '..')          // paper-reading/
-const SRC = resolve(ROOT, '..')           // papers/
+const SRC = join(ROOT, 'temp')            // 生成物临时区（git 忽略）
 const DST = join(ROOT, 'public', 'study')
 
 const PAIRS = [
-  { from: 'vocab-html', to: 'vocab' },
-  { from: 'vocab-listen', to: 'listen' }
+  { from: 'vocab', to: 'vocab' },
+  { from: 'listen', to: 'listen' },
+  { from: 'vocab-words', to: 'vocab-words' },
+  { from: 'listen-audio', to: 'listen-audio' }
 ]
 
 const SKIP = new Set(['.DS_Store'])
@@ -48,7 +52,7 @@ let copied = 0
 for (const { from, to } of PAIRS) {
   const src = join(SRC, from)
   const dst = join(DST, to)
-  if (!existsSync(src)) throw new Error(`源目录不存在：${src}`)
+  if (!existsSync(src)) { console.log(`  ${from} 无（跳过）`); continue }
   await rm(dst, { recursive: true, force: true })
   await cp(src, dst, {
     recursive: true,

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""用新模板重建 listen-new 下所有听力页（论文名从各自旧页面里取，保证一致）
+"""用新模板重建 public/study/listen 下所有听力页（论文名从各自旧页面里取，保证一致）
 用法: python3 tools_rebuild_all.py
 """
 import os, re, subprocess, glob
 
-BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(BASE, "vocab-words")
-DST = os.path.join(BASE, "listen-new")
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # 仓库根 paper-reading/
+SRC = os.path.join(BASE, "public", "study", "vocab-words")           # 词表 json
+DST = os.path.join(BASE, "public", "study", "listen")                # 听力页（就地重建）
 
 def ptitle_of(html_path):
     try:
