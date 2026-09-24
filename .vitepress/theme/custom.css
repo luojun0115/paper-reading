@@ -98,6 +98,10 @@ body {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+/* 「论文原文」列（最后一列）链接不换行，避免竖着断成三行 */
+.dr-explain .vp-doc td:last-child a {
+  white-space: nowrap;
+}
 
 .VPDoc h1 { font-family: var(--dr-hf); letter-spacing: var(--dr-hlet); }
 .VPDoc .content-container { font-size: 15px; }
