@@ -88,7 +88,11 @@ body {
   让小标题与表格共用同一条左边缘（表格统一占满内容块，宽度不再参差）。
 */
 .dr-explain .vp-doc {
+<<<<<<< HEAD
   max-width: 960px;
+=======
+  max-width: 1120px;
+>>>>>>> 1e45be11 (style: 加宽讲解区内容块至1120px，词汇区/笔记区标签列不换行)
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -98,7 +102,14 @@ body {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+<<<<<<< HEAD
 /* 「论文原文」列（最后一列）链接不换行，避免竖着断成三行 */
+=======
+/* 短标签列（词汇区 / 本站对照 / 论文原文）链接不换行，
+   避免「🗣 听力」「笔记区」被竖着拆成两行 */
+.dr-explain .vp-doc td:nth-child(3) a,
+.dr-explain .vp-doc td:nth-child(4) a,
+>>>>>>> 1e45be11 (style: 加宽讲解区内容块至1120px，词汇区/笔记区标签列不换行)
 .dr-explain .vp-doc td:last-child a {
   white-space: nowrap;
 }

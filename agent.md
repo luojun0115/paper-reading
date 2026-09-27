@@ -5,7 +5,7 @@
 > 本文件放在仓库根目录；`AGENTS.md` 与 `CLAUDE.md` 是其软链接，覆盖更多工具。
 
 ## 一、仓库身份
-- 深读馆 DeepRead（paper-reading，npm name: deepread），VitePress 论文带读站。
+- 深读馆 DeepRead（paper-reading，npm name: deepread），VitePress 论文学习站。
 - 构建：`npm run build` → `.vitepress/dist/`。
 - 站点只发布 `public/` 下静态文件。
 - 仓库位于外层 **`papers/paper-reading/`**。外层 `papers/` 下与仓库并列、由**用户自行管理**的目录：
