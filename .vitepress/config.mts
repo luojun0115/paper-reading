@@ -63,7 +63,6 @@ function linkCardPlugin(md: any) {
                 + `  <span class="lc-icon">🔗</span>\n`
                 + `  <span class="lc-body">\n`
                 + `    <span class="lc-title">${esc(text || host)}</span>\n`
-                + `    <span class="lc-url">${esc(host)}</span>\n`
                 + `  </span>\n`
                 + `  <span class="lc-arrow">↗</span>\n`
                 + `</a>\n`

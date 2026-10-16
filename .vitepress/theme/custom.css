@@ -364,19 +364,12 @@ body {
 .link-card .lc-body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-width: 0;
   flex: 1;
 }
 .link-card .lc-title {
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.link-card .lc-url {
-  margin-top: 2px;
-  font-size: 12px;
-  opacity: .6;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
