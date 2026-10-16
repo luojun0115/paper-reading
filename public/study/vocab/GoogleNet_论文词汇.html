@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoogleNet 论文核心词汇</title>
+<style>
+:root{--c4:#3b82f6;--c6:#8b5cf6;--ckaon:#f59e0b;--cphd:#ef4444;--ct:#0d9488;--cg:#d946ef}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;transition:background .3s,color .3s}
+.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:4px;color:#fff;vertical-align:2px;margin-left:6px;font-style:normal;flex:none;white-space:nowrap}
+.tag.t4{background:var(--c4)}.tag.t6{background:var(--c6)}.tag.tk{background:var(--ckaon)}.tag.tp{background:var(--cphd)}
+.tag.tt{background:var(--ct)}.tag.tg{background:var(--cg)}
+.ipa{font-family:"SF Mono",Menlo,monospace;font-size:.82em;font-weight:400;opacity:.62;margin-left:6px}
+
+
+/* 论文原标题小字 */
+.ptitle{font-size:12.5px;letter-spacing:.3px;margin-top:6px}
+.ptitle i{font-family:Georgia,serif}
+.theme-mag .ptitle{color:#999;text-transform:none}
+.theme-dark .ptitle{color:#6e7681}
+.theme-paper .ptitle{color:#a09578}
+.theme-fresh .ptitle{color:#9ca3af}
+body.lv-mode .ptitle{color:#7d8590}
+
+/* 预览工具条 */
+.toolbar{position:fixed;right:16px;bottom:16px;z-index:99;display:flex;flex-direction:column;gap:8px;background:rgba(20,22,30,.88);padding:12px;border-radius:14px;backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.toolbar .row{display:flex;gap:6px}
+.toolbar button{border:none;cursor:pointer;padding:7px 12px;border-radius:8px;font-size:12.5px;background:#3a3f4d;color:#cbd2e0;transition:.15s}
+.toolbar button:hover{background:#4a5164}
+.toolbar button.on{background:#fff;color:#111;font-weight:600}
+.toolbar .lbl{font-size:10px;color:#8a93a6;text-align:left;margin:2px 0 -2px 2px}
+
+/* ---------- A 纸质阅读 ---------- */
+body.theme-paper{background:#faf6ee;color:#2c2a25}
+.theme-paper .wrap{max-width:880px;margin:0 auto;padding:56px 24px 140px}
+.theme-paper .hero h1{font-family:Georgia,"Songti SC",serif;font-size:34px}
+.theme-paper .hero p{color:#8a8272;margin:10px 0 42px;font-size:14px}
+.theme-paper .sec{margin-bottom:44px}
+.theme-paper .sec>h2{font-family:Georgia,"Songti SC",serif;font-size:20px;padding-left:14px;border-left:4px solid #b08d4f;margin-bottom:18px}
+.theme-paper .word{display:flex;gap:14px;padding:14px 16px;border-bottom:1px dashed #ddd2bc;align-items:baseline}
+.theme-paper .word:hover{background:#f3ecdc}
+.theme-paper .w{font-family:Georgia,serif;font-size:19px;font-weight:700;min-width:250px}
+.theme-paper .pos{color:#a09578;font-size:13px;margin-right:6px}
+.theme-paper .m{color:#4a463c;font-size:15px}
+.theme-paper .ex{margin-left:auto;max-width:270px;font-size:12.5px;color:#9a8f76;font-style:italic;text-align:right}
+.theme-paper .from{display:block;font-size:11px;color:#b3a888;font-style:normal;margin-top:3px}
+
+/* ---------- B 暗色科技 ---------- */
+body.theme-dark{background:#0d1117;color:#e6edf3}
+.theme-dark .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 140px}
+.theme-dark .hero h1{font-family:"SF Mono",Menlo,monospace;font-size:26px}
+.theme-dark .hero h1::before{content:"$ ";color:#3fb950}
+.theme-dark .hero p{color:#7d8590;margin:10px 0 40px;font-size:14px;font-family:Menlo,monospace}
+.theme-dark .sec>h2{font-size:15px;font-family:Menlo,monospace;color:#58a6ff;padding:10px 16px;background:#161b22;border:1px solid #30363d;border-radius:8px 8px 0 0;margin-bottom:-1px}
+.theme-dark .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px;background:#161b22;border:1px solid #30363d;border-radius:0 0 8px 8px}
+.theme-dark .card{background:#0d1117;border:1px solid #30363d;border-left:4px solid #58a6ff;border-radius:6px;padding:15px 17px;transition:.2s;cursor:pointer;font-family:Menlo,monospace}
+.theme-dark .card:hover{border-color:#58a6ff;box-shadow:0 0 14px rgba(88,166,255,.25);transform:translateY(-2px)}
+.theme-dark .w{font-family:Menlo,monospace;font-size:17px;color:#79c0ff}
+.theme-dark .ipa{color:#7ee787;opacity:.9}
+.theme-dark .m{color:#8b949e;font-size:13.5px;margin-top:7px;line-height:1.55}
+.theme-dark .ex{font-size:12px;color:#6e7681;margin-top:8px;border-top:1px solid #21262d;padding-top:8px;font-style:italic}
+.theme-dark .from{color:#484f58;font-size:11px;margin-top:4px}
+
+/* ---------- C 清新卡片 ---------- */
+body.theme-fresh{background:linear-gradient(160deg,#eef4ff 0%,#f6f0ff 50%,#fff7ec 100%);color:#1f2430}
+.theme-fresh .wrap{max-width:1020px;margin:0 auto;padding:56px 24px 140px}
+.theme-fresh .hero h1{font-size:32px;font-weight:800;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.theme-fresh .hero p{color:#6b7280;margin:10px 0 40px;font-size:14px}
+.theme-fresh .sec>h2{font-size:19px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.theme-fresh .sec>h2 .n{width:30px;height:30px;border-radius:10px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.theme-fresh .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.theme-fresh .card{background:rgba(255,255,255,.82);backdrop-filter:blur(6px);border-radius:18px;padding:17px 19px 15px;box-shadow:0 3px 14px rgba(80,80,140,.09);transition:.2s;cursor:pointer;border-top:5px solid #dbe3f5}
+.theme-fresh .card.lv4{border-top-color:#3b82f6}.theme-fresh .card.lv6{border-top-color:#8b5cf6}
+.theme-fresh .card.lvk{border-top-color:#f59e0b}.theme-fresh .card.lvp{border-top-color:#ef4444}
+.theme-fresh .card .w{display:inline-block;background:#f3f5fb;border-radius:8px;padding:2px 10px}
+.theme-fresh .card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(80,80,140,.16)}
+.theme-fresh .w{font-size:18px;font-weight:700}
+.theme-fresh .m{color:#4b5563;font-size:14px;margin-top:6px;line-height:1.55}
+.theme-fresh .ex{color:#9ca3af;font-size:12.5px;margin-top:8px}
+.theme-fresh .from{color:#b6bcc9;font-size:11.5px;margin-top:4px}
+
+/* ---------- D 杂志表格（宽松版） ---------- */
+body.theme-mag{background:#fff;color:#111}
+.theme-mag .wrap{max-width:960px;margin:0 auto;padding:52px 28px 140px}
+.theme-mag .hero{border-bottom:3px solid #111;padding-bottom:16px;margin-bottom:10px}
+.theme-mag .hero h1{font-family:"Songti SC",Georgia,serif;font-size:38px;font-weight:900}
+.theme-mag .hero p{color:#888;font-size:13.5px;margin-top:8px}
+.theme-mag .sec>h2{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#c2410c;margin:44px 0 8px;border-bottom:1px solid #e5e5e5;padding-bottom:8px}
+.theme-mag table{width:100%;border-collapse:collapse}
+.theme-mag td{padding:16px 12px;border-bottom:1px solid #f0f0f0;font-size:15.5px;line-height:1.65;vertical-align:top}
+.theme-mag tr:hover td{background:#fff8f3}
+.theme-mag .w{font-weight:700;font-size:17px;width:300px}
+.theme-mag .lv{width:60px}
+.theme-mag .lv b{font-size:11.5px;padding:3px 0;display:block;text-align:center;border-radius:3px;color:#fff;font-weight:600}
+.theme-mag .m{color:#3d3d3d}
+.theme-mag .ex{color:#9a9a9a;font-size:13px;font-style:italic}
+.theme-mag .from{display:block;color:#c9c9c9;font-size:11.5px;font-style:normal;margin-top:4px}
+
+/* ---------- 按级别：学习模式同款暗色大页 ---------- */
+body.lv-mode{background:#0b0e13 !important}
+body.lv-mode .hero h1,body.lv-mode .hero p{color:#e8ecf3}
+body.lv-mode .hero p{color:#7d8590}
+.lvslide{background:#101318;color:#e8ecf3;border-radius:20px;padding:26px 32px 22px;margin-bottom:26px;border-top:6px solid var(--c4)}
+.lvslide.l6{border-top-color:var(--c6)}.lvslide.lk{border-top-color:var(--ckaon)}.lvslide.lp{border-top-color:var(--cphd)}
+.lvslide.lt{border-top-color:var(--ct)}.lvslide.lg{border-top-color:var(--cg)}
+.lvslide .ltitle{font-size:26px;font-weight:800;font-family:Georgia,serif;display:flex;align-items:baseline;gap:14px}
+.lvslide .ltitle small{font-size:14px;color:#7d8590;font-family:Menlo,monospace;font-weight:400}
+.lvslide .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px 0 8px}
+.lvslide .lcard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:15px 17px;cursor:pointer;transition:.15s}
+.lvslide .lcard:hover{border-color:#79c0ff;transform:translateY(-2px)}
+.lvslide .lcard .w{font-size:19px;font-weight:700;font-family:Georgia,serif}
+.lvslide .lcard .ipa{font-family:Menlo,monospace;font-size:13px;color:#7ee787;margin-left:8px}
+.lvslide .lcard .m{color:#aeb6c4;font-size:14px;margin-top:7px;line-height:1.55}
+.lvslide .lcard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:7px}
+.lvslide .lcard .from{color:#4d5563;font-size:11px;margin-top:6px}
+
+
+/* ---------- 白天 / 夜晚 ---------- */
+body.lv-mode:not(.night){background:#eef1f6 !important}
+body.lv-mode:not(.night) .hero h1{color:#1f2430}
+body.lv-mode:not(.night) .hero p{color:#6b7280}
+body.lv-mode:not(.night) .lvslide{background:#fff;color:#1f2430;box-shadow:0 4px 18px rgba(80,80,140,.10)}
+body.lv-mode:not(.night) .lvslide .lcard{background:#f7f9fd;border-color:#e4e9f3}
+body.lv-mode:not(.night) .lvslide .lcard:hover{border-color:#3b82f6}
+body.lv-mode:not(.night) .lvslide .lcard .m{color:#4b5563}
+body.lv-mode:not(.night) .lvslide .lcard .ex{color:#98a0ae}
+body.lv-mode:not(.night) .lvslide .lcard .from{color:#b3bac6}
+body.lv-mode:not(.night) .lvslide .lcard .ipa{color:#0a7d33}
+body.night.theme-mag{background:#0d1117;color:#e6edf3}
+body.night.theme-mag .hero{border-bottom-color:#e6edf3}
+body.night.theme-mag .hero p{color:#8b949e}
+body.night.theme-mag .sec>h2{color:#fbbf24;border-bottom-color:#30363d}
+body.night.theme-mag td{border-bottom-color:#1c2230}
+body.night.theme-mag tr:hover td{background:#161b22}
+body.night.theme-mag .m{color:#c9d1d9}
+body.night.theme-mag .ex{color:#8b949e}
+body.night.theme-mag .from{color:#57606a}
+body.night.theme-mag .w{color:#e6edf3}
+body.night.theme-mag .ptitle{color:#8b949e}
+body.night.theme-mag .ipa{opacity:.55}
+#study.day{background:#f5f7fa;color:#1f2430}
+#study.day .scard{background:#fff;border-color:#e4e9f3}
+#study.day .scard .m{color:#4b5563}
+#study.day .scard .ex{color:#98a0ae}
+#study.day .scard:hover{border-color:#3b82f6}
+#study.day .sfoot{color:#98a0ae;border-top-color:#e6e9f0}
+#study.day .snav button,#study.day #sClose{background:#fff;color:#1f2430;border-color:#d7dce6}
+#study.day .sfoot kbd{background:#e8ecf3;color:#1f2430}
+
+/* ---------- 学习模式（PPT 按章节翻页） ---------- */
+#study{position:fixed;inset:0;z-index:200;display:none;background:#101318;color:#e8ecf3;flex-direction:column}
+#study.on{display:flex}
+#study .sprog{height:4px;background:#262c38}
+#study .sprog i{display:block;height:100%;background:linear-gradient(90deg,#58a6ff,#8b5cf6);width:0;transition:width .25s}
+#study .sbody{flex:1;overflow:auto;padding:20px 40px}
+#study .stitle{font-size:24px;font-weight:800;font-family:Georgia,serif;padding:6px 4px 2px}
+#study .stitle small{color:#5b6472;font-size:14px;font-family:Menlo,monospace;font-weight:400;margin-left:12px}
+#study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:16px 2px 30px}
+#study .scard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s}
+#study .scard:hover{border-color:#58a6ff;transform:translateY(-2px)}
+#study .scard .w{font-size:22px;font-weight:700;font-family:Georgia,serif}
+#study .scard .ipa{color:#7ee787;font-size:14px;margin-left:8px}
+#study .scard .m{color:#aeb6c4;font-size:14.5px;margin-top:8px;line-height:1.55}
+#study .scard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:6px}
+#study .sfoot{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;color:#5b6472;font-size:13px;border-top:1px solid #1d232e}
+#study .sfoot kbd{background:#262c38;border-radius:5px;padding:2px 8px;margin:0 2px;font-family:Menlo,monospace;font-size:12px}
+#study .snav{display:flex;gap:10px;align-items:center}
+#study .snav button{border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;padding:8px 18px;cursor:pointer;font-size:14px}
+#study .snav button:hover{border-color:#58a6ff}
+#study .snav button:disabled{opacity:.35;cursor:default}
+</style>
+</head>
+<body class="theme-mag">
+<div class="wrap">
+  <div class="hero">
+    <h1>GoogleNet 论文核心词汇</h1>
+    <div class="ptitle"><i>Going Deeper with Convolutions · CVPR 2015</i></div>
+    <p>全篇 12 页 · 192词 · 四级/六级/考研/考博/雅思托福/GRE</p>
+  </div>
+  <div id="app"></div>
+</div>
+
+<div class="toolbar">
+  <div class="lbl">视图</div>
+  <div class="row">
+    <button id="v-sec" class="on">按章节</button>
+    <button id="v-lv">按级别综合</button>
+    <button id="v-study">▶ 学习模式</button>
+  </div>
+  <div class="lbl">白天 / 夜晚</div>
+  <div class="row">
+    <button id="dn-day">☀ 白天</button>
+    <button id="dn-night">🌙 夜晚</button>
+  </div>
+  <div class="lbl">朗读声音 · Polly</div>
+  <div class="row"><select id="voiceSel" style="flex:1;border:none;border-radius:8px;padding:7px 8px;background:#3a3f4d;color:#cbd2e0;font-size:12.5px;outline:none"></select><span id="srcState" style="align-self:center;font-size:10.5px;color:#8a93a6;min-width:34px;text-align:center"></span></div>
+</div>
+
+<div id="study">
+  <div class="sprog"><i id="sbar"></i></div>
+  <button id="sClose" title="退出学习模式 (Esc)" style="position:absolute;top:14px;right:18px;z-index:5;border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;width:34px;height:34px;font-size:16px;cursor:pointer">✕</button>
+  <div class="sbody"><div id="sPage"></div></div>
+  <div class="sfoot">
+    <span><kbd>空格</kbd>/<kbd>→</kbd> 下一页 &nbsp; <kbd>←</kbd> 上一页 &nbsp; 点单词发音 &nbsp; <kbd>Esc</kbd> 退出</span>
+    <div class="snav">
+      <span id="sIdx">0 / 0</span>
+      <button id="sPrev">← 上一页</button>
+      <button id="sNext">下一页 →</button>
+      <button id="sExit" style="border-color:#5b3a3a">退出</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// lv: 4=四级 6=六级 k=考研 p=考博；ipa 为美式音标
+const DATA = [
+ {
+  "sec": "Abstract",
+  "short": "摘要",
+  "icon": "A",
+  "words": [
+   {
+    "w": "architecture",
+    "ipa": "ˈɑːrkɪtektʃər",
+    "pos": "n.",
+    "lv": "4",
+    "m": "架构，体系结构",
+    "ex": "We propose a deep convolutional neural network architecture codenamed Inception."
+   },
+   {
+    "w": "utilization",
+    "ipa": "ˌjuːtəlaɪˈzeɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "利用，使用",
+    "ex": "The main hallmark of this architecture is the improved utilization of the computing resources."
+   },
+   {
+    "w": "computational",
+    "ipa": "ˌkɑːmpjuˈteɪʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "计算的",
+    "ex": "This was achieved by a carefully crafted design that allows for increasing the depth and width while keeping the computational budget constant."
+   },
+   {
+    "w": "budget",
+    "ipa": "ˈbʌdʒɪt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "预算，预算限制",
+    "ex": "The architectural decisions were based on keeping the computational budget constant."
+   },
+   {
+    "w": "intuition",
+    "ipa": "ˌɪntuˈɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "直觉，直觉力",
+    "ex": "To optimize quality, the architectural decisions were based on the Hebbian principle and the intuition of multi-scale processing."
+   },
+   {
+    "w": "craft",
+    "ipa": "kræft",
+    "pos": "v.",
+    "lv": "4",
+    "m": "精心制作",
+    "ex": "This was achieved by a carefully crafted design."
+   },
+   {
+    "w": "quality",
+    "ipa": "ˈkwɑːləti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "质量，品质",
+    "ex": "To optimize quality, the architectural decisions were based on the Hebbian principle."
+   },
+   {
+    "w": "hallmark",
+    "ipa": "ˈhɔːlmɑːrk",
+    "pos": "n.",
+    "lv": "p",
+    "m": "标志，特征",
+    "ex": "The main hallmark of this architecture is the improved utilization of the computing resources."
+   },
+   {
+    "w": "category",
+    "ipa": "ˈkætəɡɔːri",
+    "pos": "n.",
+    "lv": "4",
+    "m": "类别，分类",
+    "ex": "Classifying the image into one of 1000 leaf-node categories."
+   },
+   {
+    "w": "crafted",
+    "ipa": "/ˈkræftɪd/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "精心制作的",
+    "ex": "This was achieved by a carefully crafted design that allows for increasing the depth and width of the network."
+   },
+   {
+    "w": "incarnation",
+    "ipa": "/ˌɪnkɑːrˈneɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "化身，体现",
+    "ex": "One particular incarnation used in our submission for ILSVRC14 is called GoogLeNet."
+   },
+   {
+    "w": "assess",
+    "ipa": "/əˈses/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "评估，评价",
+    "ex": "The quality of which is assessed in the context of classification and detection."
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "引言",
+  "icon": "1",
+  "words": [
+   {
+    "w": "dramatic",
+    "ipa": "drəˈmætɪk",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "戏剧性的，巨大的",
+    "ex": "The quality of image recognition and object detection has been progressing at a dramatic pace."
+   },
+   {
+    "w": "consequence",
+    "ipa": "ˈkɑːnsɪkwens",
+    "pos": "n.",
+    "lv": "4",
+    "m": "结果，后果",
+    "ex": "Most of this progress is mainly a consequence of new ideas, algorithms and improved network architectures."
+   },
+   {
+    "w": "algorithm",
+    "ipa": "ˈælɡərɪðəm",
+    "pos": "n.",
+    "lv": "p",
+    "m": "算法",
+    "ex": "Most of this progress is mainly a consequence of new ideas, algorithms and improved network architectures."
+   },
+   {
+    "w": "efficiency",
+    "ipa": "ɪˈfɪʃnsi",
+    "pos": "n.",
+    "lv": "4",
+    "m": "效率",
+    "ex": "The efficiency of our algorithms — especially their power and memory use — gains importance."
+   },
+   {
+    "w": "accuracy",
+    "ipa": "ˈækjərəsi",
+    "pos": "n.",
+    "lv": "4",
+    "m": "准确性",
+    "ex": "They do not end up to be a purely academic curiosity, but could be put to real world use at a reasonable cost."
+   },
+   {
+    "w": "synergy",
+    "ipa": "ˈsɪnərdʒi",
+    "pos": "n.",
+    "lv": "p",
+    "m": "协同作用，协同效应",
+    "ex": "The biggest gains in object-detection have not come from the utilization of deep networks alone, but from the synergy of deep architectures and classical computer vision."
+   },
+   {
+    "w": "embed",
+    "ipa": "ɪmˈbed",
+    "pos": "v.",
+    "lv": "6",
+    "m": "嵌入",
+    "ex": "The efficiency of our algorithms gains importance with the ongoing traction of mobile and embedded computing."
+   },
+   {
+    "w": "traction",
+    "ipa": "ˈtrækʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "牵引力，影响力",
+    "ex": "With the ongoing traction of mobile and embedded computing, the efficiency of our algorithms gains importance.",
+    "ov": "g"
+   },
+   {
+    "w": "memory",
+    "ipa": "ˈmeməri",
+    "pos": "n.",
+    "lv": "4",
+    "m": "内存，记忆",
+    "ex": "The efficiency of our algorithms — especially their power and memory use — gains importance."
+   },
+   {
+    "w": "academic",
+    "ipa": "ˌækəˈdemɪk",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "学术的",
+    "ex": "They do not end up to be a purely academic curiosity."
+   },
+   {
+    "w": "curiosity",
+    "ipa": "ˌkjʊriˈɑːsəti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "好奇心，新奇事物",
+    "ex": "They do not end up to be a purely academic curiosity, but could be put to real world use."
+   },
+   {
+    "w": "progress",
+    "ipa": "ˈprɑːɡres",
+    "pos": "n.",
+    "lv": "4",
+    "m": "进步，进展",
+    "ex": "Most of this progress is not just the result of more powerful hardware."
+   },
+   {
+    "w": "advancement",
+    "ipa": "ədˈvænsmənt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "进步，发展",
+    "ex": "Mainly due to the advances of deep learning, more concretely convolutional networks."
+   },
+   {
+    "w": "noteworthy",
+    "ipa": "ˈnoʊtwɜːrði",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "值得注意的",
+    "ex": "It is noteworthy that the considerations leading to the design included this factor.",
+    "ov": "t"
+   },
+   {
+    "w": "consideration",
+    "ipa": "kənˌsɪdəˈreɪʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "考虑，考量",
+    "ex": "The considerations leading to the design of the deep architecture included this factor."
+   },
+   {
+    "w": "concretely",
+    "ipa": "kənˈkriːtli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "具体地",
+    "ex": "More concretely convolutional networks."
+   },
+   {
+    "w": "notable",
+    "ipa": "ˈnoʊtəbl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "显著的，值得注意的",
+    "ex": "Another notable factor is with the ongoing traction of mobile and embedded computing."
+   }
+  ]
+ },
+ {
+  "sec": "2. Related Work · 相关工作",
+  "short": "相关工作",
+  "icon": "2",
+  "words": [
+   {
+    "w": "prevalent",
+    "ipa": "ˈprevələnt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "流行的，普遍的",
+    "ex": "Variants of this basic design are prevalent in the image classification literature."
+   },
+   {
+    "w": "localization",
+    "ipa": "ˌloʊkəlaɪˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "定位",
+    "ex": "The same convolutional network architecture has been successfully employed for localization.",
+    "ov": "t"
+   },
+   {
+    "w": "estimation",
+    "ipa": "ˌestɪˈmeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "估计，估算",
+    "ex": "ConvNets have been employed for human pose estimation."
+   },
+   {
+    "w": "representational",
+    "ipa": "ˌreprɪzenˈteɪʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "表征的，表示的",
+    "ex": "Network-in-Network is an approach proposed to increase the representational power of neural networks."
+   },
+   {
+    "w": "dimension",
+    "ipa": "daɪˈmenʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "维度",
+    "ex": "1×1 convolutions have dual purpose: most critically, they are used mainly as dimension reduction modules."
+   },
+   {
+    "w": "bottleneck",
+    "ipa": "ˈbɑːtlnek",
+    "pos": "n.",
+    "lv": "6",
+    "m": "瓶颈",
+    "ex": "1×1 convolutions are used mainly as dimension reduction modules to remove computational bottlenecks."
+   },
+   {
+    "w": "penalty",
+    "ipa": "ˈpenəlti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "惩罚，代价",
+    "ex": "This allows for not just increasing the depth, but also the width without significant performance penalty."
+   },
+   {
+    "w": "overfitting",
+    "ipa": "ˌoʊvərˈfɪtɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "过拟合",
+    "ex": "Using dropout to address the problem of overfitting."
+   },
+   {
+    "w": "dropout",
+    "ipa": "ˈdrɑːpɑːt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "随机失活（神经网络术语）",
+    "ex": "Using dropout to address the problem of overfitting."
+   },
+   {
+    "w": "variant",
+    "ipa": "ˈveriənt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "变体，变种",
+    "ex": "Variants of this basic design are prevalent in the image classification literature."
+   },
+   {
+    "w": "literature",
+    "ipa": "ˈlɪtrətʃər",
+    "pos": "n.",
+    "lv": "4",
+    "m": "文献",
+    "ex": "Variants of this basic design are prevalent in the image classification literature."
+   },
+   {
+    "w": "spatial",
+    "ipa": "ˈspeɪʃl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "空间的",
+    "ex": "Despite concerns that max-pooling layers result in loss of accurate spatial information."
+   },
+   {
+    "w": "employed",
+    "ipa": "ɪmˈplɔɪd",
+    "pos": "v.",
+    "lv": "4",
+    "m": "使用，采用",
+    "ex": "The same convolutional network architecture has been successfully employed for localization."
+   },
+   {
+    "w": "increasingly",
+    "ipa": "ɪnˈkriːsɪŋli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "日益，越来越",
+    "ex": "The recent trend has been to increase the number of layers and layer size."
+   },
+   {
+    "w": "contrary",
+    "ipa": "kənˈtreri",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "相反的",
+    "ex": "However, contrary to the fixed 2-layer deep model, all filters in the Inception model are learned."
+   },
+   {
+    "w": "optimize",
+    "ipa": "/ˈɑːptɪmaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "优化",
+    "ex": "To optimize quality, the architectural decisions were based on the Hebbian principle and the intuition of multi-scale processing."
+   },
+   {
+    "w": "dimensionality",
+    "ipa": "/dɪˌmenʃəˈnæləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "维度",
+    "ex": "If we augment the number of 5×5 convolutions with linear layer, the number of parameters would be greatly reduced."
+   }
+  ]
+ },
+ {
+  "sec": "3. Motivation and High Level Considerations · 动机与高层考量",
+  "short": "动机",
+  "icon": "3",
+  "words": [
+   {
+    "w": "sparse",
+    "ipa": "spɑːrs",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "稀疏的",
+    "ex": "The fundamental way of solving both issues would be by moving from fully connected to sparsely connected architectures."
+   },
+   {
+    "w": "hypothesis",
+    "ipa": "haɪˈpɑːθəsɪs",
+    "pos": "n.",
+    "lv": "6",
+    "m": "假设，假说",
+    "ex": "Despite concerns that max-pooling layers result in loss of accurate spatial information."
+   },
+   {
+    "w": "hierarchical",
+    "ipa": "ˌhaɪəˈrɑːrkɪkəl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "层次化的，分级的",
+    "ex": "These clusters form the units of the next layer and are connected to the units in the previous layer."
+   },
+   {
+    "w": "approximately",
+    "ipa": "əˈprɑːksɪmətli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "大约，近似地",
+    "ex": "The Inception architecture started out as a case study for assessing the hypothetical output."
+   },
+   {
+    "w": "component",
+    "ipa": "kəmˈpoʊnənt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "组件，成分",
+    "ex": "The Inception architecture covers the hypothesized outcome by dense, readily available components."
+   },
+   {
+    "w": "speculative",
+    "ipa": "ˈspekjəleɪtɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "推测性的，投机的",
+    "ex": "Despite being a highly speculative undertaking, the architecture showed modest gains."
+   },
+   {
+    "w": "optimal",
+    "ipa": "ˈɑːptɪməl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "最优的",
+    "ex": "The optimal network topology can be constructed layer by layer."
+   },
+   {
+    "w": "topology",
+    "ipa": "təˈpɑːlədʒi",
+    "pos": "n.",
+    "lv": "p",
+    "m": "拓扑结构",
+    "ex": "The optimal network topology can be constructed layer by layer."
+   },
+   {
+    "w": "correlation",
+    "ipa": "ˌkɔːrəˈleɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "相关，相关性",
+    "ex": "The optimal network topology can be constructed by analyzing the correlation statistics of activations."
+   },
+   {
+    "w": "activation",
+    "ipa": "ˌæktɪˈveɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "激活（值）",
+    "ex": "The optimal network topology can be constructed by analyzing the correlation statistics of activations."
+   },
+   {
+    "w": "cluster",
+    "ipa": "ˈklʌstər",
+    "pos": "n.",
+    "lv": "6",
+    "m": "簇，聚类",
+    "ex": "These clusters form the units of the next layer."
+   },
+   {
+    "w": "clustering",
+    "ipa": "ˈklʌstərɪŋ",
+    "pos": "n.",
+    "lv": "6",
+    "m": "聚类",
+    "ex": "Clustering neurons with highly correlated outputs."
+   },
+   {
+    "w": "Hebbian",
+    "ipa": "ˈhebiən",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "赫布的（神经科学概念）",
+    "ex": "This statement resonates with the well known Hebbian principle — neurons that fire together, wire together."
+   },
+   {
+    "w": "principle",
+    "ipa": "ˈprɪnsəpl",
+    "pos": "n.",
+    "lv": "4",
+    "m": "原则，原理",
+    "ex": "The architectural decisions were based on the Hebbian principle."
+   },
+   {
+    "w": "indiscriminate",
+    "ipa": "ˌɪndɪˈskrɪmɪnət",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "不加区分的，随意的",
+    "ex": "An efficient distribution of computing resources is preferred to an indiscriminate increase of size."
+   },
+   {
+    "w": "inference",
+    "ipa": "ˈɪnfərəns",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推理",
+    "ex": "A computational budget of 1.5 billion multiply-adds at inference time."
+   },
+   {
+    "w": "numerical",
+    "ipa": "nuːˈmerɪkl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "数值的",
+    "ex": "Today's computing infrastructures are very inefficient when it comes to numerical calculation on non-uniform sparse data structures."
+   },
+   {
+    "w": "matrix",
+    "ipa": "ˈmeɪtrɪks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "矩阵",
+    "ex": "Switching to sparse matrices would not pay off."
+   },
+   {
+    "w": "overhead",
+    "ipa": "ˈoʊvərhed",
+    "pos": "n.",
+    "lv": "4",
+    "m": "开销",
+    "ex": "The overhead of lookups and cache misses is so dominant."
+   },
+   {
+    "w": "dominant",
+    "ipa": "ˈdɑːmɪnənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "主导的，占优势的",
+    "ex": "The overhead of lookups and cache misses is so dominant."
+   },
+   {
+    "w": "tuned",
+    "ipa": "tuːnd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "调优的",
+    "ex": "The use of steadily improving, highly tuned, numerical libraries."
+   },
+   {
+    "w": "exploit",
+    "ipa": "ɪkˈsplɔɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "利用，开发",
+    "ex": "Numerical libraries that allow for extremely fast dense matrix multiplication, exploiting the minute details of the underlying CPU or GPU hardware."
+   },
+   {
+    "w": "minute",
+    "ipa": "maɪˈnjuːt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "微小的，细微的",
+    "ex": "Exploiting the minute details of the underlying CPU or GPU hardware."
+   },
+   {
+    "w": "iteration",
+    "ipa": "ˌɪtəˈreɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "迭代",
+    "ex": "Only after two iterations on the exact choice of topology, we could already see modest gains."
+   },
+   {
+    "w": "questioned",
+    "ipa": "ˈkwes.tʃənd",
+    "pos": "v.",
+    "lv": "4",
+    "m": "质疑",
+    "ex": "Most of the original architectural choices have been questioned and tested thoroughly."
+   },
+   {
+    "w": "thoroughly",
+    "ipa": "ˈθɜːroʊli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "彻底地",
+    "ex": "Most of the original architectural choices have been questioned and tested thoroughly."
+   },
+   {
+    "w": "locally",
+    "ipa": "ˈloʊkəli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "局部地",
+    "ex": "They turned out to be at least locally optimal."
+   },
+   {
+    "w": "underpinning",
+    "ipa": "ˌʌndərˈpɪnɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "基础，支撑",
+    "ex": "This would also have the advantage of firmer theoretical underpinnings due to the ground-breaking work of Arora et al."
+   },
+   {
+    "w": "optimizer",
+    "ipa": "/ˈɑːptɪmaɪzər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "优化器",
+    "ex": "We used stochastic gradient descent with momentum."
+   },
+   {
+    "w": "initialization",
+    "ipa": "/ɪˌnɪʃəlaɪˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "初始化",
+    "ex": "The weights were initialized from a zero-mean Gaussian distribution."
+   }
+  ]
+ },
+ {
+  "sec": "4. Architectural Details · 架构细节",
+  "short": "架构细节",
+  "icon": "4",
+  "words": [
+   {
+    "w": "approximate",
+    "ipa": "əˈprɑːksɪmeɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "近似，逼近",
+    "ex": "The main idea is based on finding out how an optimal local sparse structure can be approximated."
+   },
+   {
+    "w": "convolution",
+    "ipa": "ˌkɑːnvəˈluːʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "卷积",
+    "ex": "Assuming translation invariance means that our network will be built from convolutional building blocks."
+   },
+   {
+    "w": "projection",
+    "ipa": "prəˈdʒekʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "投影，投射",
+    "ex": "1×1 convolutions are used to compute reductions before the expensive 3×3 and 5×5 convolutions."
+   },
+   {
+    "w": "aggregation",
+    "ipa": "ˌæɡrɪˈɡeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "聚合，汇总",
+    "ex": "We compress the signals only whenever they have to be aggregated en masse.",
+    "ov": "g"
+   },
+   {
+    "w": "ubiquitous",
+    "ipa": "juːˈbɪkwɪtəs",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无处不在的",
+    "ex": "The ubiquitous use of dimension reduction allows for shielding the large number of input filters."
+   },
+   {
+    "w": "shield",
+    "ipa": "ʃiːld",
+    "pos": "v.",
+    "lv": "4",
+    "m": "保护，屏蔽",
+    "ex": "The ubiquitous use of dimension reduction allows for shielding the large number of input filters."
+   },
+   {
+    "w": "abstract",
+    "ipa": "ˈæbstrækt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "抽象，提取",
+    "ex": "Visual information should be processed at various scales and then aggregated so that the next stage can abstract features."
+   },
+   {
+    "w": "simultaneously",
+    "ipa": "ˌsaɪməlˈteɪniəsli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "同时地",
+    "ex": "The next stage can abstract features from different scales simultaneously."
+   },
+   {
+    "w": "convolve",
+    "ipa": "kənˈvɑːlv",
+    "pos": "v.",
+    "lv": "p",
+    "m": "卷积运算",
+    "ex": "Reducing their dimension before convolving over them with a large patch size."
+   },
+   {
+    "w": "stride",
+    "ipa": "straɪd",
+    "pos": "n.",
+    "lv": "6",
+    "m": "步幅（卷积术语）",
+    "ex": "An Inception network consists of modules stacked upon each other with occasional max-pooling layers with stride 2."
+   },
+   {
+    "w": "resolution",
+    "ipa": "ˌrezəˈluːʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分辨率",
+    "ex": "Max-pooling layers with stride 2 to halve the resolution of the grid."
+   },
+   {
+    "w": "rectified",
+    "ipa": "ˈrektɪfaɪd",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "修正的（rectified linear activation = ReLU）",
+    "ex": "All the convolutions use rectified linear activation."
+   },
+   {
+    "w": "receptive",
+    "ipa": "rɪˈseptɪv",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "感受的",
+    "ex": "The size of the receptive field in our network is 224×224."
+   },
+   {
+    "w": "ensemble",
+    "ipa": "ɪnˈsɛmbəl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "集成（模型）",
+    "ex": "The exact same topology was used for 6 out of the 7 models in our ensemble."
+   },
+   {
+    "w": "module",
+    "ipa": "ˈmɑːdjuːl",
+    "pos": "n.",
+    "lv": "6",
+    "m": "模块",
+    "ex": "The Inception network consists of modules of the above type stacked upon each other."
+   },
+   {
+    "w": "concatenation",
+    "ipa": "kənˌtænəˈneɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "拼接，连接",
+    "ex": "Filter concatenation merges the outputs of different filter sizes.",
+    "ov": "g"
+   },
+   {
+    "w": "embedding",
+    "ipa": "ɪmˈbedɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "嵌入，嵌入向量",
+    "ex": "Even low dimensional embeddings might contain a lot of information about a relatively large image patch."
+   },
+   {
+    "w": "stacked",
+    "ipa": "stækt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "堆叠",
+    "ex": "An Inception network is a network consisting of modules stacked upon each other."
+   },
+   {
+    "w": "occasional",
+    "ipa": "əˈkeɪʒənl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "偶尔的",
+    "ex": "With occasional max-pooling layers with stride 2 to halve the resolution."
+   },
+   {
+    "w": "technical",
+    "ipa": "ˈteknɪkl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "技术的",
+    "ex": "For technical reasons, it seemed beneficial to start using Inception modules only at higher layers."
+   },
+   {
+    "w": "beneficial",
+    "ipa": "ˌbenɪˈfɪʃl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有益的，有利的",
+    "ex": "For technical reasons, it seemed beneficial to start using Inception modules only at higher layers."
+   },
+   {
+    "w": "inception",
+    "ipa": "ɪnˈsɛpʃən",
+    "pos": "n.",
+    "lv": "p",
+    "m": "开端，Inception（本文架构名称）",
+    "ex": "The Inception architecture started out as a case study."
+   },
+   {
+    "w": "classification",
+    "ipa": "/ˌklæsɪfɪˈkeɪʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分类",
+    "ex": "We trained a classifier to classify each region proposal."
+   }
+  ]
+ },
+ {
+  "sec": "5. GoogLeNet · GoogLeNet架构",
+  "short": "GoogLeNet",
+  "icon": "5",
+  "words": [
+   {
+    "w": "propagation",
+    "ipa": "ˌprɑːpəˈɡeɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "传播",
+    "ex": "Given the relatively large depth of the network, the ability to propagate gradients back through all the layers was a concern."
+   },
+   {
+    "w": "gradient",
+    "ipa": "ˈɡreɪdiənt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "梯度",
+    "ex": "The ability to propagate gradients back through all the layers in an effective manner was a concern."
+   },
+   {
+    "w": "auxiliary",
+    "ipa": "ɔːɡˈzɪleri",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "辅助的",
+    "ex": "An auxiliary classifier was attached to the intermediate inception layer."
+   },
+   {
+    "w": "classifier",
+    "ipa": "ˈklæsɪfaɪər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "分类器",
+    "ex": "A linear layer with softmax loss as the classifier."
+   },
+   {
+    "w": "logits",
+    "ipa": "ˈlɑːɡɪts",
+    "pos": "n.",
+    "lv": "p",
+    "m": "logits（未经归一化的分类得分）",
+    "ex": "A 1×1 convolution with 128 filters for dimension reduction and rectified linear activation."
+   },
+   {
+    "w": "fully connected",
+    "ipa": "ˈfʊli kəˈnektɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "全连接的",
+    "ex": "A fully connected layer with 1024 units and rectified linear activation."
+   },
+   {
+    "w": "softmax",
+    "ipa": "ˈsɑːftmɑːks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "softmax（归一化指数函数）",
+    "ex": "A linear layer with softmax loss as the classifier."
+   },
+   {
+    "w": "attached",
+    "ipa": "əˈtætʃt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "附加，连接",
+    "ex": "An auxiliary classifier was attached to the intermediate inception layer."
+   },
+   {
+    "w": "intermediate",
+    "ipa": "ˌɪntərˈmiːdiət",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "中间的，过渡的",
+    "ex": "An auxiliary classifier was attached to the intermediate inception layer."
+   },
+   {
+    "w": "effective",
+    "ipa": "ɪˈfektɪv",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有效的",
+    "ex": "The ability to propagate gradients back through all the layers in an effective manner was a concern."
+   },
+   {
+    "w": "manner",
+    "ipa": "ˈmænər",
+    "pos": "n.",
+    "lv": "4",
+    "m": "方式，方法",
+    "ex": "The ability to propagate gradients back through all the layers in an effective manner was a concern."
+   },
+   {
+    "w": "concern",
+    "ipa": "kənˈsɜːrn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "担忧，关注",
+    "ex": "Given the relatively large depth of the network, the ability to propagate gradients back was a concern."
+   },
+   {
+    "w": "insight",
+    "ipa": "ˈɪnsaɪt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "见解，洞察",
+    "ex": "One interesting insight is the strong performance of the deeper networks."
+   },
+   {
+    "w": "depth",
+    "ipa": "depθ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "深度",
+    "ex": "Given the relatively large depth of the network, the ability to propagate gradients back through all the layers was a concern."
+   },
+   {
+    "w": "state-of-the-art",
+    "ipa": "/ˌsteɪt əv ði ˈɑːrt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "最先进的",
+    "ex": "Our architecture achieves state-of-the-art performance on the ImageNet dataset."
+   }
+  ]
+ },
+ {
+  "sec": "6. Training Methodology · 训练方法",
+  "short": "训练方法",
+  "icon": "6",
+  "words": [
+   {
+    "w": "distributed",
+    "ipa": "dɪˈstrɪbjuːtɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "分布式的",
+    "ex": "Our networks were trained using the DistBelief distributed machine learning system."
+   },
+   {
+    "w": "asynchronous",
+    "ipa": "eɪˈsɪŋkrənəs",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "异步的",
+    "ex": "Our training used asynchronous stochastic gradient descent with 0.9 momentum."
+   },
+   {
+    "w": "stochastic",
+    "ipa": "stəˈkæstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "随机的",
+    "ex": "Our training used asynchronous stochastic gradient descent with 0.9 momentum."
+   },
+   {
+    "w": "momentum",
+    "ipa": "moʊˈmentəm",
+    "pos": "n.",
+    "lv": "6",
+    "m": "动量",
+    "ex": "Our training used asynchronous stochastic gradient descent with 0.9 momentum."
+   },
+   {
+    "w": "convergence",
+    "ipa": "kənˈvɜːrdʒəns",
+    "pos": "n.",
+    "lv": "p",
+    "m": "收敛",
+    "ex": "A rough estimate suggests that the GoogLeNet network could be trained to convergence using few high-end GPUs within a week."
+   },
+   {
+    "w": "schedule",
+    "ipa": "ˈskedʒuːl",
+    "pos": "n.",
+    "lv": "4",
+    "m": "调度，计划表",
+    "ex": "Fixed learning rate schedule (decreasing the learning rate by 4% every 8 epochs)."
+   },
+   {
+    "w": "averaging",
+    "ipa": "ˈævərɪdʒɪŋ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "平均化",
+    "ex": "Polyak averaging was used to create the final model used at inference time."
+   },
+   {
+    "w": "photometric",
+    "ipa": "ˌfoʊtoʊˈmetrɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "光度学的",
+    "ex": "We found that the photometric distortions were useful to combat overfitting."
+   },
+   {
+    "w": "distortion",
+    "ipa": "dɪˈstɔːrkʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "变形，失真",
+    "ex": "We found that the photometric distortions were useful to combat overfitting."
+   },
+   {
+    "w": "hyperparameter",
+    "ipa": "ˌhaɪpərpəˈræmɪtər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超参数",
+    "ex": "Already converged models were trained with other options, sometimes in conjunction with changed hyperparameters."
+   },
+   {
+    "w": "conjunction",
+    "ipa": "kənˈdʒʌŋkʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "结合，联合",
+    "ex": "Sometimes in conjunction with changed hyperparameters, like dropout and learning rate."
+   },
+   {
+    "w": "interpolation",
+    "ipa": "ɪnˌtɜːrpəˈleɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "插值",
+    "ex": "We started to use random interpolation methods for resizing.",
+    "ov": "g"
+   },
+   {
+    "w": "bilinear",
+    "ipa": "baɪˈlɪniər",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "双线性的",
+    "ex": "We started to use random interpolation methods (bilinear, area, nearest neighbor and cubic)."
+   },
+   {
+    "w": "combat",
+    "ipa": "ˈkɑːmbæt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "对抗，打击",
+    "ex": "We found that the photometric distortions were useful to combat overfitting to some extent."
+   },
+   {
+    "w": "epoch",
+    "ipa": "ˈiːpɑːk",
+    "pos": "n.",
+    "lv": "6",
+    "m": "训练轮次",
+    "ex": "Decreasing the learning rate by 4% every 8 epochs."
+   },
+   {
+    "w": "sampling",
+    "ipa": "ˈsæmplɪŋ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "采样",
+    "ex": "Our image sampling methods have changed substantially over the months leading to the competition."
+   },
+   {
+    "w": "augmentation",
+    "ipa": "ˌɔːɡmenˈteɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "数据增强",
+    "ex": "Our image sampling methods have changed substantially over the months.",
+    "ov": "g"
+   },
+   {
+    "w": "aspect ratio",
+    "ipa": "ˈæspekt ˈreɪʃioʊ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "纵横比",
+    "ex": "The aspect ratio is chosen randomly between 3/4 and 4/3."
+   },
+   {
+    "w": "crop",
+    "ipa": "krɑːp",
+    "pos": "n.",
+    "lv": "4",
+    "m": "裁剪（图像）",
+    "ex": "Sampling of various sized patches of the image."
+   },
+   {
+    "w": "rough",
+    "ipa": "rʌf",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "粗略的",
+    "ex": "A rough estimate suggests that the GoogLeNet network could be trained to convergence."
+   },
+   {
+    "w": "modest",
+    "ipa": "ˈmɑːdɪst",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "适度的，谦虚的",
+    "ex": "Only after two iterations we could already see modest gains against the reference architecture."
+   },
+   {
+    "w": "complicate",
+    "ipa": "ˈkɑːmplɪkeɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "使复杂化",
+    "ex": "To complicate matters further, some of the models were mainly trained on smaller relative crops."
+   },
+   {
+    "w": "prescription",
+    "ipa": "prɪˈskrɪpʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "处方，方案",
+    "ex": "One prescription that was verified to work very well after the competition includes sampling of various sized patches."
+   },
+   {
+    "w": "substantially",
+    "ipa": "səbˈstænʃəli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "显著地，大量地",
+    "ex": "Our image sampling methods have changed substantially over the months leading to the competition."
+   }
+  ]
+ },
+ {
+  "sec": "7. Classification Challenge · 分类挑战",
+  "short": "分类挑战",
+  "icon": "7",
+  "words": [
+   {
+    "w": "classify",
+    "ipa": "ˈklæsɪfaɪ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "分类",
+    "ex": "The ILSVRC 2014 classification challenge involves the task of classifying the image into one of 1000 leaf-node categories."
+   },
+   {
+    "w": "hierarchy",
+    "ipa": "haɪˈerɑːrki",
+    "pos": "n.",
+    "lv": "6",
+    "m": "层次结构",
+    "ex": "Classifying the image into one of 1000 leaf-node categories in the ImageNet hierarchy."
+   },
+   {
+    "w": "ground truth",
+    "ipa": "ɡraʊnd truːθ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "真实标签，标准答案",
+    "ex": "Each image is associated with one ground truth category."
+   },
+   {
+    "w": "prediction",
+    "ipa": "prɪˈdɪkʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "预测",
+    "ex": "Performance is measured based on the highest scoring classifier predictions."
+   },
+   {
+    "w": "validation",
+    "ipa": "ˌvælɪˈdeɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "验证",
+    "ex": "All numbers are reported on the validation dataset."
+   },
+   {
+    "w": "overfit",
+    "ipa": "ˌoʊvərˈfɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "过拟合",
+    "ex": "To not overfit to the testing data statistics."
+   },
+   {
+    "w": "superpixel",
+    "ipa": "ˈsuːpərpɪksəl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超像素",
+    "ex": "The superpixel size was increased by 2× to cut down the number of false positives."
+   },
+   {
+    "w": "proposal",
+    "ipa": "prəˈpoʊzl",
+    "pos": "n.",
+    "lv": "4",
+    "m": "候选区域（检测术语）",
+    "ex": "Combining the Selective Search approach with multi-box predictions for higher object bounding box recall."
+   },
+   {
+    "w": "recall",
+    "ipa": "rɪˈkɔːl",
+    "pos": "n.",
+    "lv": "4",
+    "m": "召回率",
+    "ex": "Multi-box predictions for higher object bounding box recall."
+   },
+   {
+    "w": "overlap",
+    "ipa": "ˈoʊvərlæp",
+    "pos": "n.",
+    "lv": "6",
+    "m": "重叠",
+    "ex": "Detected objects count as correct if their bounding boxes overlap by at least 50%."
+   },
+   {
+    "w": "precision",
+    "ipa": "prɪˈsɪʒn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "精确率",
+    "ex": "Results are reported using the mean average precision (mAP)."
+   },
+   {
+    "w": "regression",
+    "ipa": "rɪˈɡreʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "回归",
+    "ex": "We did not use bounding box regression due to lack of time."
+   },
+   {
+    "w": "deem",
+    "ipa": "diːm",
+    "pos": "v.",
+    "lv": "6",
+    "m": "认为，视为",
+    "ex": "An image is deemed correctly classified if the ground truth is among the top-5."
+   },
+   {
+    "w": "regardless",
+    "ipa": "rɪˈɡɑːrdləs",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "不管，不顾",
+    "ex": "An image is deemed correctly classified if the ground truth is among the top-5, regardless of its rank."
+   },
+   {
+    "w": "aggressive",
+    "ipa": "əˈɡresɪv",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "激进的，积极的",
+    "ex": "We adopted a more aggressive cropping approach than that of Krizhevsky et al."
+   }
+  ]
+ },
+ {
+  "sec": "8. Detection Challenge · 检测挑战",
+  "short": "检测挑战",
+  "icon": "8",
+  "words": [
+   {
+    "w": "detection",
+    "ipa": "dɪˈtekʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "检测",
+    "ex": "The ILSVRC detection task is to produce bounding boxes around objects in images."
+   },
+   {
+    "w": "bounding box",
+    "ipa": "ˈbaʊndɪŋ bɑːks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "边界框",
+    "ex": "The ILSVRC detection task is to produce bounding boxes around objects in images among 200 possible classes."
+   },
+   {
+    "w": "extraneous",
+    "ipa": "ɪkˈstreɪniəs",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无关的，多余的",
+    "ex": "Extraneous detections count as false positives and are penalized."
+   },
+   {
+    "w": "penalize",
+    "ipa": "ˈpiːnəlaɪz",
+    "pos": "v.",
+    "lv": "p",
+    "m": "惩罚，处罚",
+    "ex": "Extraneous detections count as false positives and are penalized."
+   },
+   {
+    "w": "augmented",
+    "ipa": "ɔːɡˈmentɪd",
+    "pos": "adj.",
+    "lv": "k",
+    "m": "增强的",
+    "ex": "The approach is augmented with the Inception model as the region classifier."
+   },
+   {
+    "w": "coverage",
+    "ipa": "ˈkʌvərɪdʒ",
+    "pos": "n.",
+    "lv": "6",
+    "m": "覆盖率",
+    "ex": "While increasing the coverage from 92% to 93%."
+   },
+   {
+    "w": "external data",
+    "ipa": "ɪkˈstɜːrnl ˈdeɪtə",
+    "pos": "n.",
+    "lv": "p",
+    "m": "外部数据",
+    "ex": "Both used external data for training the classifiers."
+   },
+   {
+    "w": "pretrain",
+    "ipa": "priːˈtreɪn",
+    "pos": "v.",
+    "lv": "p",
+    "m": "预训练",
+    "ex": "The external data is typically used for pre-training a model."
+   },
+   {
+    "w": "refine",
+    "ipa": "rɪˈfaɪn",
+    "pos": "v.",
+    "lv": "4",
+    "m": "精炼，微调",
+    "ex": "A model that is later refined on the detection data."
+   },
+   {
+    "w": "localize",
+    "ipa": "ˈloʊkəlaɪz",
+    "pos": "v.",
+    "lv": "p",
+    "m": "定位",
+    "ex": "The GoogLeNet entry did not use the localization data for pretraining.",
+    "ov": "t"
+   },
+   {
+    "w": "regressor",
+    "ipa": "rɪˈɡresər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "回归器",
+    "ex": "One can pre-train a general bounding box regressor with this data."
+   },
+   {
+    "w": "scale",
+    "ipa": "skeɪl",
+    "pos": "n.",
+    "lv": "4",
+    "m": "尺度，规模",
+    "ex": "Their scale may vary from large to tiny."
+   },
+   {
+    "w": "approach",
+    "ipa": "əˈproʊtʃ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "方法，途径",
+    "ex": "The approach taken by GoogLeNet for detection is similar to the R-CNN."
+   },
+   {
+    "w": "selective",
+    "ipa": "sɪˈlektɪv",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "选择性的",
+    "ex": "Combining the Selective Search approach with multi-box predictions."
+   },
+   {
+    "w": "halves",
+    "ipa": "hævz",
+    "pos": "v.",
+    "lv": "6",
+    "m": "减半",
+    "ex": "This halves the proposals coming from the selective search algorithm."
+   },
+   {
+    "w": "object detection",
+    "ipa": "ˈɑːbdʒekt dɪˈtekʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "目标检测",
+    "ex": "The ILSVRC detection task is to produce bounding boxes around objects in images."
+   },
+   {
+    "w": "segmentation",
+    "ipa": "ˌseɡmenˈteɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "分割",
+    "ex": "Rich feature hierarchies for accurate object detection and semantic segmentation."
+   },
+   {
+    "w": "semantic",
+    "ipa": "səˈmæntɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "语义的",
+    "ex": "Rich feature hierarchies for accurate object detection and semantic segmentation."
+   }
+  ]
+ },
+ {
+  "sec": "9. Conclusions · 结论",
+  "short": "结论",
+  "icon": "9",
+  "words": [
+   {
+    "w": "feasible",
+    "ipa": "ˈfiːzəbl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "可行的",
+    "ex": "Our approach yields solid evidence that moving to sparser architectures is feasible and useful idea in general."
+   },
+   {
+    "w": "promising",
+    "ipa": "ˈprɑːmɪsɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有前途的",
+    "ex": "This suggests promising future work towards creating sparser and more refined structures."
+   },
+   {
+    "w": "refined",
+    "ipa": "rɪˈfaɪnd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "精炼的，改进的",
+    "ex": "Promising future work towards creating sparser and more refined structures."
+   },
+   {
+    "w": "automated",
+    "ipa": "ˈɔːtəmeɪtɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "自动化的",
+    "ex": "Future work towards creating structures in automated ways.",
+    "ov": "g"
+   },
+   {
+    "w": "viable",
+    "ipa": "ˈvaɪəbl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可行的，有效的",
+    "ex": "Approximating the expected optimal sparse structure by readily available dense building blocks is a viable method."
+   },
+   {
+    "w": "quadratic",
+    "ipa": "kwɑːˈdrætɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "二次的，二次方的",
+    "ex": "Any uniform increase in the number of their filters results in a quadratic increase of computation."
+   },
+   {
+    "w": "inefficient",
+    "ipa": "ˌɪnɪˈfɪʃnt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "低效的",
+    "ex": "If the added capacity is used inefficiently, then a lot of computation is wasted."
+   },
+   {
+    "w": "wasted",
+    "ipa": "ˈweɪstɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "浪费的",
+    "ex": "If the added capacity is used inefficiently, then a lot of computation is wasted."
+   },
+   {
+    "w": "disparity",
+    "ipa": "dɪˈspærəti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "差距，差异",
+    "ex": "The gap is widened even further by the use of steadily improving numerical libraries."
+   },
+   {
+    "w": "evidence",
+    "ipa": "ˈevɪdəns",
+    "pos": "n.",
+    "lv": "4",
+    "m": "证据",
+    "ex": "Our results seem to yield a solid evidence that approximating the expected optimal sparse structure is a viable method."
+   },
+   {
+    "w": "solid",
+    "ipa": "ˈsɑːlɪd",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "坚实的，可靠的",
+    "ex": "Our results seem to yield a solid evidence."
+   },
+   {
+    "w": "yield",
+    "ipa": "jiːld",
+    "pos": "v.",
+    "lv": "4",
+    "m": "产生，带来",
+    "ex": "Our approach yields solid evidence that moving to sparser architectures is feasible."
+   },
+   {
+    "w": "strength",
+    "ipa": "streŋθ",
+    "pos": "n.",
+    "lv": "6",
+    "m": "强度，力量",
+    "ex": "This fact provides further evidence of the strength of the Inception architecture."
+   },
+   {
+    "w": "furthermore",
+    "ipa": "ˈfɜːrðərmɔːr",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "此外，而且",
+    "ex": "Furthermore, this fact provides further evidence of the strength of the Inception architecture."
+   },
+   {
+    "w": "improve",
+    "ipa": "ɪmˈpruːv",
+    "pos": "v.",
+    "lv": "4",
+    "m": "改善，改进",
+    "ex": "This fact provides further evidence of the strength of the Inception architecture."
+   }
+  ]
+ },
+ {
+  "sec": "10. Acknowledgements · 致谢",
+  "short": "致谢",
+  "icon": "10",
+  "words": [
+   {
+    "w": "acknowledgement",
+    "ipa": "əkˈnɑːlɪdʒmənt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "致谢",
+    "ex": "We would like to thank Sanjeev Arora for fruitful discussions."
+   },
+   {
+    "w": "fruitful",
+    "ipa": "ˈfruːtfl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "富有成效的",
+    "ex": "We would like to thank Sanjeev Arora for fruitful discussions."
+   },
+   {
+    "w": "indebted",
+    "ipa": "ɪnˈdetɪd",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "感激的，负债的",
+    "ex": "We are indebted to the DistBelief team for their support."
+   },
+   {
+    "w": "infrastructure",
+    "ipa": "ˈɪnfrəstrʌktʃər",
+    "pos": "n.",
+    "lv": "k",
+    "m": "基础设施",
+    "ex": "Today's computing infrastructures are very inefficient."
+   },
+   {
+    "w": "implementation",
+    "ipa": "ˌɪmplɪmenˈteɪʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "实现，实施",
+    "ex": "Our implementation differs in that we use an extra linear layer."
+   },
+   {
+    "w": "convex",
+    "ipa": "ˈkɑːnveks",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "凸的",
+    "ex": "Non-uniform sparse models require more sophisticated engineering and computing infrastructure."
+   }
+  ]
+ }
+];
+const LVCLS={"4":"t4","6":"t6","k":"tk","p":"tp","t":"tt","g":"tg"};
+const LVNAME={"4":"四级","6":"六级","k":"考研","p":"考博","t":"雅思 · 托福","g":"GRE"};
+const LVSHORT={"4":"4","6":"6","k":"考研","p":"考博","t":"托福","g":"GRE"};
+const LVORDER=["4","6","k","p","t","g"];
+
+let mode="sec";
+let theme="theme-mag"; // 章节视图固定杂志风；按级别视图固定暗色大页
+
+function cardHTML(x,sec){
+  const from = mode==="lv" ? `<div class="from">出自 ${sec}</div>` : "";
+  if(theme==="theme-paper"){
+    return `<div class="word"><span class="w">${x.w}<span class="ipa">/${x.ipa}/</span><i class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</i></span>
+      <span><span class="pos">${x.pos}</span><span class="m">${x.m}</span>${from}</span>
+      <span class="ex">${x.ex}</span></div>`;
+  }
+  if(theme==="theme-mag") return "";
+  return `<div class="card lv${x.lv}" data-say="${x.w}"><span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</span>
+    <div class="m">${x.pos} ${x.m}</div><div class="ex">${x.ex}</div>${from}</div>`;
+}
+function magRow(x,sec){
+  return `<tr data-say="${x.w}"><td class="w">${x.w}<span class="ipa">/${x.ipa}/</span></td>
+    <td class="lv"><b class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</b></td>
+    <td class="m">${x.pos} ${x.m}${mode==="lv"?`<span class="from">出自 ${sec}</span>`:""}</td>
+    <td class="ex">${x.ex}</td></tr>`;
+}
+function groupHTML(title,icon,inner){
+  if(theme==="theme-mag") return `<div class="sec"><h2>${title}</h2><table>${inner}</table></div>`;
+  if(theme==="theme-dark"||theme==="theme-fresh")
+    return `<div class="sec"><h2>${theme==="theme-dark"?"":"<span class='n'>"+icon+"</span>"}${title}</h2><div class="grid">${inner}</div></div>`;
+  return `<div class="sec"><h2>${title}</h2>${inner}</div>`;
+}
+function render(){
+  document.body.classList.toggle("lv-mode",mode==="lv");
+  if(mode==="sec")document.body.className="theme-mag";
+  const app=document.getElementById("app");
+  let html="";
+  if(mode==="sec"){
+    for(const s of DATA){
+      html += theme==="theme-mag"
+        ? groupHTML(s.sec,s.icon,s.words.map(x=>magRow(x,s.short)).join(""))
+        : groupHTML(s.sec,s.icon,s.words.map(x=>cardHTML(x,s.short)).join(""));
+    }
+  }else{
+    // 学习模式同款暗色大页：每个级别一块
+    const dot={4:"var(--c4)",6:"var(--c6)",k:"var(--ckaon)",p:"var(--cphd)",t:"var(--ct)",g:"var(--cg)"};
+    html=LVORDER.map(lv=>{
+      const items=[];
+      DATA.forEach(s=>s.words.forEach(x=>{if(x.lv===lv||x.ov===lv)items.push([x.ov===lv?{...x,lv:x.ov}:x,s.short])}));
+      items.sort((a,b)=>a[0].w.localeCompare(b[0].w));
+      const cls={4:"",6:"l6",k:"lk",p:"lp",t:"lt",g:"lg"}[lv];
+      return `<div class="lvslide ${cls}">
+        <div class="ltitle"><span style="color:${dot[lv]}">${LVNAME[lv]}</span>词汇<small>${items.length} words · 按字母排序 · 悬停看原文例句 · 点击发音</small></div>
+        <div class="sgrid">${items.map(([x,sec])=>`
+          <div class="lcard" data-say="${x.w}">
+            <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span>
+            <div class="m">${x.pos} ${x.m}</div>
+            <div class="ex">${x.ex}</div>
+            <div class="from">出自 ${sec}</div>
+          </div>`).join("")}</div></div>`;
+    }).join("");
+  }
+  app.innerHTML=html;
+}
+function syncToolbar(){
+  document.getElementById("v-sec").classList.toggle("on",mode==="sec");
+  document.getElementById("v-lv").classList.toggle("on",mode==="lv");
+}
+document.getElementById("v-sec").onclick=()=>{mode="sec";theme="theme-mag";document.body.className="theme-mag";syncToolbar();render();};
+document.getElementById("v-lv").onclick=()=>{mode="lv";syncToolbar();render();};
+
+// 朗读：在线 TTS 多源自动降级（Polly → 百度 → 谷歌），选音色只对 Polly 源生效
+const ALL_SRC=["yd1","yd0","bd","gg"];
+const ONLINE_VOICES=[["yd1","美式 · 有道（推荐）"],["yd0","英式 · 有道"],["bd","百度翻译 · 女声"],["mute","🔇 不朗读"]];
+let ONLINE="yd1";try{const sv=localStorage.getItem("vocab_voice");if(sv&&["yd1","yd0","bd","gg","mute"].includes(sv))ONLINE=sv;}catch(e){}
+let SRC_ORDER=["yd1","yd0","bd","gg"],srcIdx=0; // 当前可用的源
+function applyVoiceOrder(){const i=ALL_SRC.indexOf(ONLINE);SRC_ORDER=i<0?ALL_SRC.slice():ALL_SRC.slice(i).concat(ALL_SRC.slice(0,i));}
+applyVoiceOrder();
+let audio=null;
+function ttsURL(src,t){
+  const q=encodeURIComponent(t);
+  if(src==="yd1")return `https://dict.youdao.com/dictvoice?type=1&audio=${q}`;
+  if(src==="yd0")return `https://dict.youdao.com/dictvoice?type=0&audio=${q}`;
+  if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=en&text=${q}&spd=5&source=web`;
+  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${q}`;
+}
+function fillVoiceSel(){
+  const sel=document.getElementById("voiceSel");if(!sel)return;
+  sel.innerHTML=`<option value="mute" ${ONLINE==="mute"?"selected":""}>🔇 不朗读</option>`+ONLINE_VOICES.map(([v,l])=>`<option value="${v}" ${ONLINE===v?"selected":""}>${l}</option>`).join("");
+  const st=document.getElementById("srcState");
+  if(st)st.textContent={yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[SRC_ORDER[srcIdx]]||"";
+}
+fillVoiceSel();
+let saying=0; // 防并发
+function say(t){
+  if(ONLINE==="mute"){try{if(audio){audio.pause();audio=null}}catch(e){}return}
+  const my=++saying;
+  trySrc(0,t,my);
+}
+function trySrc(i,t,my){
+  if(my!==saying)return;
+  if(i>=SRC_ORDER.length){const st=document.getElementById("srcState");if(st)st.textContent="无可用源";return}
+  const src=SRC_ORDER[i];
+  const st=document.getElementById("srcState");
+  if(st)st.textContent="尝试"+({yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[src]);
+  try{if(audio){audio.pause();audio=null}}catch(e){}
+  const a=new Audio(ttsURL(src,t));
+  let ok=false,advanced=false;
+  const advance=()=>{ if(!ok&&!advanced&&my===saying){advanced=true;trySrc(i+1,t,my);} };
+  a.addEventListener("playing",()=>{ok=true;
+    if(srcIdx!==i){srcIdx=i;fillVoiceSel();} // 记住能用的源
+  });
+  a.addEventListener("error",advance);
+  audio=a;
+  a.play().catch(advance);
+  setTimeout(()=>{ if(!ok&&my===saying&&a.paused)advance(); },2500);
+}
+document.getElementById("voiceSel").addEventListener("change",e=>{
+  ONLINE=e.target.value; applyVoiceOrder(); // 换音色重新从头试源
+  if(ONLINE!=="mute") say("Hello, let us learn new words together.");
+});
+/* ---- 白天 / 夜晚 ---- */
+let night=false;
+try{night=(localStorage.getItem("vocab_dn")||"day")==="night"}catch(e){night=false}
+function applyDN(){
+  document.body.classList.toggle("night",night);
+  document.getElementById("dn-day").classList.toggle("on",!night);
+  document.getElementById("dn-night").classList.toggle("on",night);
+  if(typeof studyEl!=="undefined"&&studyEl)studyEl.classList.toggle("day",!night);
+}
+document.getElementById("dn-day").onclick=()=>{night=false;try{localStorage.setItem("vocab_dn","day")}catch(e){};applyDN();};
+document.getElementById("dn-night").onclick=()=>{night=true;try{localStorage.setItem("vocab_dn","night")}catch(e){};applyDN();};
+document.getElementById("app").addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+
+/* ---------- 学习模式：按章节分页的 PPT 翻页 ---------- */
+const PER_PAGE = 12; // 每页最多词数，放不下自动续页
+let slides=[],si=0;
+function buildSlides(){
+  slides=[];
+  for(const s of DATA){
+    for(let i=0;i<s.words.length;i+=PER_PAGE){
+      slides.push({sec:s.sec,page:Math.floor(i/PER_PAGE)+1,
+        pages:Math.ceil(s.words.length/PER_PAGE),words:s.words.slice(i,i+PER_PAGE)});
+    }
+  }
+}
+const studyEl=document.getElementById("study");
+let open=false;
+function showSlide(){
+  const sl=slides[si];
+  const title=sl.pages>1 ? `${sl.sec}（第 ${sl.page}/${sl.pages} 页）` : sl.sec;
+  document.getElementById("sPage").innerHTML =
+    `<div class="stitle">${title}<small>${sl.words.length} words</small></div>
+     <div class="sgrid">${sl.words.map(x=>`
+       <div class="scard" data-say="${x.w}">
+         <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}" style="font-size:11px;padding:2px 8px">${LVSHORT[x.lv]}</span>
+         <div class="m">${x.pos} ${x.m}</div>
+         <div class="ex">${x.ex}</div>
+       </div>`).join("")}</div>`;
+  document.getElementById("sIdx").textContent=(si+1)+" / "+slides.length;
+  document.getElementById("sbar").style.width=((si+1)/slides.length*100)+"%";
+  document.getElementById("sPrev").disabled=si===0;
+  document.getElementById("sNext").disabled=si===slides.length-1;
+  studyEl.querySelector(".sbody").scrollTop=0;
+}
+function studyOpen(){ buildSlides(); si=0; open=true; studyEl.classList.add("on"); applyDN(); showSlide(); }
+function studyClose(){ open=false; studyEl.classList.remove("on"); }
+function next(){ if(si<slides.length-1){ si++; showSlide(); } }
+function prev(){ if(si>0){ si--; showSlide(); } }
+document.getElementById("v-study").onclick=()=>open?studyClose():studyOpen();
+document.getElementById("sClose").onclick=studyClose;
+document.getElementById("sExit").onclick=studyClose;
+document.getElementById("sNext").onclick=next;
+document.getElementById("sPrev").onclick=prev;
+studyEl.addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+document.addEventListener("keydown",e=>{
+  if(!open) return;
+  if(e.code==="Space"||e.key==="ArrowRight"||e.key==="PageDown"){ e.preventDefault(); next(); }
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){ prev(); }
+  else if(e.key==="Escape"){ studyClose(); }
+});
+applyDN(); syncToolbar(); render();
+</script>
+</body>
+</html>

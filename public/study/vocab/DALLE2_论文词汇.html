@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DALL·E 2 论文核心词汇</title>
+<style>
+:root{--c4:#3b82f6;--c6:#8b5cf6;--ckaon:#f59e0b;--cphd:#ef4444;--ct:#0d9488;--cg:#d946ef}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;transition:background .3s,color .3s}
+.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:4px;color:#fff;vertical-align:2px;margin-left:6px;font-style:normal;flex:none;white-space:nowrap}
+.tag.t4{background:var(--c4)}.tag.t6{background:var(--c6)}.tag.tk{background:var(--ckaon)}.tag.tp{background:var(--cphd)}
+.tag.tt{background:var(--ct)}.tag.tg{background:var(--cg)}
+.ipa{font-family:"SF Mono",Menlo,monospace;font-size:.82em;font-weight:400;opacity:.62;margin-left:6px}
+
+
+/* 论文原标题小字 */
+.ptitle{font-size:12.5px;letter-spacing:.3px;margin-top:6px}
+.ptitle i{font-family:Georgia,serif}
+.theme-mag .ptitle{color:#999;text-transform:none}
+.theme-dark .ptitle{color:#6e7681}
+.theme-paper .ptitle{color:#a09578}
+.theme-fresh .ptitle{color:#9ca3af}
+body.lv-mode .ptitle{color:#7d8590}
+
+/* 预览工具条 */
+.toolbar{position:fixed;right:16px;bottom:16px;z-index:99;display:flex;flex-direction:column;gap:8px;background:rgba(20,22,30,.88);padding:12px;border-radius:14px;backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.toolbar .row{display:flex;gap:6px}
+.toolbar button{border:none;cursor:pointer;padding:7px 12px;border-radius:8px;font-size:12.5px;background:#3a3f4d;color:#cbd2e0;transition:.15s}
+.toolbar button:hover{background:#4a5164}
+.toolbar button.on{background:#fff;color:#111;font-weight:600}
+.toolbar .lbl{font-size:10px;color:#8a93a6;text-align:left;margin:2px 0 -2px 2px}
+
+/* ---------- A 纸质阅读 ---------- */
+body.theme-paper{background:#faf6ee;color:#2c2a25}
+.theme-paper .wrap{max-width:880px;margin:0 auto;padding:56px 24px 140px}
+.theme-paper .hero h1{font-family:Georgia,"Songti SC",serif;font-size:34px}
+.theme-paper .hero p{color:#8a8272;margin:10px 0 42px;font-size:14px}
+.theme-paper .sec{margin-bottom:44px}
+.theme-paper .sec>h2{font-family:Georgia,"Songti SC",serif;font-size:20px;padding-left:14px;border-left:4px solid #b08d4f;margin-bottom:18px}
+.theme-paper .word{display:flex;gap:14px;padding:14px 16px;border-bottom:1px dashed #ddd2bc;align-items:baseline}
+.theme-paper .word:hover{background:#f3ecdc}
+.theme-paper .w{font-family:Georgia,serif;font-size:19px;font-weight:700;min-width:250px}
+.theme-paper .pos{color:#a09578;font-size:13px;margin-right:6px}
+.theme-paper .m{color:#4a463c;font-size:15px}
+.theme-paper .ex{margin-left:auto;max-width:270px;font-size:12.5px;color:#9a8f76;font-style:italic;text-align:right}
+.theme-paper .from{display:block;font-size:11px;color:#b3a888;font-style:normal;margin-top:3px}
+
+/* ---------- B 暗色科技 ---------- */
+body.theme-dark{background:#0d1117;color:#e6edf3}
+.theme-dark .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 140px}
+.theme-dark .hero h1{font-family:"SF Mono",Menlo,monospace;font-size:26px}
+.theme-dark .hero h1::before{content:"$ ";color:#3fb950}
+.theme-dark .hero p{color:#7d8590;margin:10px 0 40px;font-size:14px;font-family:Menlo,monospace}
+.theme-dark .sec>h2{font-size:15px;font-family:Menlo,monospace;color:#58a6ff;padding:10px 16px;background:#161b22;border:1px solid #30363d;border-radius:8px 8px 0 0;margin-bottom:-1px}
+.theme-dark .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px;background:#161b22;border:1px solid #30363d;border-radius:0 0 8px 8px}
+.theme-dark .card{background:#0d1117;border:1px solid #30363d;border-left:4px solid #58a6ff;border-radius:6px;padding:15px 17px;transition:.2s;cursor:pointer;font-family:Menlo,monospace}
+.theme-dark .card:hover{border-color:#58a6ff;box-shadow:0 0 14px rgba(88,166,255,.25);transform:translateY(-2px)}
+.theme-dark .w{font-family:Menlo,monospace;font-size:17px;color:#79c0ff}
+.theme-dark .ipa{color:#7ee787;opacity:.9}
+.theme-dark .m{color:#8b949e;font-size:13.5px;margin-top:7px;line-height:1.55}
+.theme-dark .ex{font-size:12px;color:#6e7681;margin-top:8px;border-top:1px solid #21262d;padding-top:8px;font-style:italic}
+.theme-dark .from{color:#484f58;font-size:11px;margin-top:4px}
+
+/* ---------- C 清新卡片 ---------- */
+body.theme-fresh{background:linear-gradient(160deg,#eef4ff 0%,#f6f0ff 50%,#fff7ec 100%);color:#1f2430}
+.theme-fresh .wrap{max-width:1020px;margin:0 auto;padding:56px 24px 140px}
+.theme-fresh .hero h1{font-size:32px;font-weight:800;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.theme-fresh .hero p{color:#6b7280;margin:10px 0 40px;font-size:14px}
+.theme-fresh .sec>h2{font-size:19px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.theme-fresh .sec>h2 .n{width:30px;height:30px;border-radius:10px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.theme-fresh .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.theme-fresh .card{background:rgba(255,255,255,.82);backdrop-filter:blur(6px);border-radius:18px;padding:17px 19px 15px;box-shadow:0 3px 14px rgba(80,80,140,.09);transition:.2s;cursor:pointer;border-top:5px solid #dbe3f5}
+.theme-fresh .card.lv4{border-top-color:#3b82f6}.theme-fresh .card.lv6{border-top-color:#8b5cf6}
+.theme-fresh .card.lvk{border-top-color:#f59e0b}.theme-fresh .card.lvp{border-top-color:#ef4444}
+.theme-fresh .card .w{display:inline-block;background:#f3f5fb;border-radius:8px;padding:2px 10px}
+.theme-fresh .card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(80,80,140,.16)}
+.theme-fresh .w{font-size:18px;font-weight:700}
+.theme-fresh .m{color:#4b5563;font-size:14px;margin-top:6px;line-height:1.55}
+.theme-fresh .ex{color:#9ca3af;font-size:12.5px;margin-top:8px}
+.theme-fresh .from{color:#b6bcc9;font-size:11.5px;margin-top:4px}
+
+/* ---------- D 杂志表格（宽松版） ---------- */
+body.theme-mag{background:#fff;color:#111}
+.theme-mag .wrap{max-width:960px;margin:0 auto;padding:52px 28px 140px}
+.theme-mag .hero{border-bottom:3px solid #111;padding-bottom:16px;margin-bottom:10px}
+.theme-mag .hero h1{font-family:"Songti SC",Georgia,serif;font-size:38px;font-weight:900}
+.theme-mag .hero p{color:#888;font-size:13.5px;margin-top:8px}
+.theme-mag .sec>h2{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#c2410c;margin:44px 0 8px;border-bottom:1px solid #e5e5e5;padding-bottom:8px}
+.theme-mag table{width:100%;border-collapse:collapse}
+.theme-mag td{padding:16px 12px;border-bottom:1px solid #f0f0f0;font-size:15.5px;line-height:1.65;vertical-align:top}
+.theme-mag tr:hover td{background:#fff8f3}
+.theme-mag .w{font-weight:700;font-size:17px;width:300px}
+.theme-mag .lv{width:60px}
+.theme-mag .lv b{font-size:11.5px;padding:3px 0;display:block;text-align:center;border-radius:3px;color:#fff;font-weight:600}
+.theme-mag .m{color:#3d3d3d}
+.theme-mag .ex{color:#9a9a9a;font-size:13px;font-style:italic}
+.theme-mag .from{display:block;color:#c9c9c9;font-size:11.5px;font-style:normal;margin-top:4px}
+
+/* ---------- 按级别：学习模式同款暗色大页 ---------- */
+body.lv-mode{background:#0b0e13 !important}
+body.lv-mode .hero h1,body.lv-mode .hero p{color:#e8ecf3}
+body.lv-mode .hero p{color:#7d8590}
+.lvslide{background:#101318;color:#e8ecf3;border-radius:20px;padding:26px 32px 22px;margin-bottom:26px;border-top:6px solid var(--c4)}
+.lvslide.l6{border-top-color:var(--c6)}.lvslide.lk{border-top-color:var(--ckaon)}.lvslide.lp{border-top-color:var(--cphd)}
+.lvslide.lt{border-top-color:var(--ct)}.lvslide.lg{border-top-color:var(--cg)}
+.lvslide .ltitle{font-size:26px;font-weight:800;font-family:Georgia,serif;display:flex;align-items:baseline;gap:14px}
+.lvslide .ltitle small{font-size:14px;color:#7d8590;font-family:Menlo,monospace;font-weight:400}
+.lvslide .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px 0 8px}
+.lvslide .lcard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:15px 17px;cursor:pointer;transition:.15s}
+.lvslide .lcard:hover{border-color:#79c0ff;transform:translateY(-2px)}
+.lvslide .lcard .w{font-size:19px;font-weight:700;font-family:Georgia,serif}
+.lvslide .lcard .ipa{font-family:Menlo,monospace;font-size:13px;color:#7ee787;margin-left:8px}
+.lvslide .lcard .m{color:#aeb6c4;font-size:14px;margin-top:7px;line-height:1.55}
+.lvslide .lcard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:7px}
+.lvslide .lcard .from{color:#4d5563;font-size:11px;margin-top:6px}
+
+
+/* ---------- 白天 / 夜晚 ---------- */
+body.lv-mode:not(.night){background:#eef1f6 !important}
+body.lv-mode:not(.night) .hero h1{color:#1f2430}
+body.lv-mode:not(.night) .hero p{color:#6b7280}
+body.lv-mode:not(.night) .lvslide{background:#fff;color:#1f2430;box-shadow:0 4px 18px rgba(80,80,140,.10)}
+body.lv-mode:not(.night) .lvslide .lcard{background:#f7f9fd;border-color:#e4e9f3}
+body.lv-mode:not(.night) .lvslide .lcard:hover{border-color:#3b82f6}
+body.lv-mode:not(.night) .lvslide .lcard .m{color:#4b5563}
+body.lv-mode:not(.night) .lvslide .lcard .ex{color:#98a0ae}
+body.lv-mode:not(.night) .lvslide .lcard .from{color:#b3bac6}
+body.lv-mode:not(.night) .lvslide .lcard .ipa{color:#0a7d33}
+body.night.theme-mag{background:#0d1117;color:#e6edf3}
+body.night.theme-mag .hero{border-bottom-color:#e6edf3}
+body.night.theme-mag .hero p{color:#8b949e}
+body.night.theme-mag .sec>h2{color:#fbbf24;border-bottom-color:#30363d}
+body.night.theme-mag td{border-bottom-color:#1c2230}
+body.night.theme-mag tr:hover td{background:#161b22}
+body.night.theme-mag .m{color:#c9d1d9}
+body.night.theme-mag .ex{color:#8b949e}
+body.night.theme-mag .from{color:#57606a}
+body.night.theme-mag .w{color:#e6edf3}
+body.night.theme-mag .ptitle{color:#8b949e}
+body.night.theme-mag .ipa{opacity:.55}
+#study.day{background:#f5f7fa;color:#1f2430}
+#study.day .scard{background:#fff;border-color:#e4e9f3}
+#study.day .scard .m{color:#4b5563}
+#study.day .scard .ex{color:#98a0ae}
+#study.day .scard:hover{border-color:#3b82f6}
+#study.day .sfoot{color:#98a0ae;border-top-color:#e6e9f0}
+#study.day .snav button,#study.day #sClose{background:#fff;color:#1f2430;border-color:#d7dce6}
+#study.day .sfoot kbd{background:#e8ecf3;color:#1f2430}
+
+/* ---------- 学习模式（PPT 按章节翻页） ---------- */
+#study{position:fixed;inset:0;z-index:200;display:none;background:#101318;color:#e8ecf3;flex-direction:column}
+#study.on{display:flex}
+#study .sprog{height:4px;background:#262c38}
+#study .sprog i{display:block;height:100%;background:linear-gradient(90deg,#58a6ff,#8b5cf6);width:0;transition:width .25s}
+#study .sbody{flex:1;overflow:auto;padding:20px 40px}
+#study .stitle{font-size:24px;font-weight:800;font-family:Georgia,serif;padding:6px 4px 2px}
+#study .stitle small{color:#5b6472;font-size:14px;font-family:Menlo,monospace;font-weight:400;margin-left:12px}
+#study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:16px 2px 30px}
+#study .scard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s}
+#study .scard:hover{border-color:#58a6ff;transform:translateY(-2px)}
+#study .scard .w{font-size:22px;font-weight:700;font-family:Georgia,serif}
+#study .scard .ipa{color:#7ee787;font-size:14px;margin-left:8px}
+#study .scard .m{color:#aeb6c4;font-size:14.5px;margin-top:8px;line-height:1.55}
+#study .scard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:6px}
+#study .sfoot{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;color:#5b6472;font-size:13px;border-top:1px solid #1d232e}
+#study .sfoot kbd{background:#262c38;border-radius:5px;padding:2px 8px;margin:0 2px;font-family:Menlo,monospace;font-size:12px}
+#study .snav{display:flex;gap:10px;align-items:center}
+#study .snav button{border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;padding:8px 18px;cursor:pointer;font-size:14px}
+#study .snav button:hover{border-color:#58a6ff}
+#study .snav button:disabled{opacity:.35;cursor:default}
+</style>
+</head>
+<body class="theme-mag">
+<div class="wrap">
+  <div class="hero">
+    <h1>DALL·E 2 论文核心词汇</h1>
+    <div class="ptitle"><i>Hierarchical Text-Conditional Image Generation with CLIP Latents · DALL·E 2 · OpenAI, 2022</i></div>
+    <p>全篇 27 页 · 159词 · 四级/六级/考研/考博/雅思托福/GRE</p>
+  </div>
+  <div id="app"></div>
+</div>
+
+<div class="toolbar">
+  <div class="lbl">视图</div>
+  <div class="row">
+    <button id="v-sec" class="on">按章节</button>
+    <button id="v-lv">按级别综合</button>
+    <button id="v-study">▶ 学习模式</button>
+  </div>
+  <div class="lbl">白天 / 夜晚</div>
+  <div class="row">
+    <button id="dn-day">☀ 白天</button>
+    <button id="dn-night">🌙 夜晚</button>
+  </div>
+  <div class="lbl">朗读声音 · Polly</div>
+  <div class="row"><select id="voiceSel" style="flex:1;border:none;border-radius:8px;padding:7px 8px;background:#3a3f4d;color:#cbd2e0;font-size:12.5px;outline:none"></select><span id="srcState" style="align-self:center;font-size:10.5px;color:#8a93a6;min-width:34px;text-align:center"></span></div>
+</div>
+
+<div id="study">
+  <div class="sprog"><i id="sbar"></i></div>
+  <button id="sClose" title="退出学习模式 (Esc)" style="position:absolute;top:14px;right:18px;z-index:5;border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;width:34px;height:34px;font-size:16px;cursor:pointer">✕</button>
+  <div class="sbody"><div id="sPage"></div></div>
+  <div class="sfoot">
+    <span><kbd>空格</kbd>/<kbd>→</kbd> 下一页 &nbsp; <kbd>←</kbd> 上一页 &nbsp; 点单词发音 &nbsp; <kbd>Esc</kbd> 退出</span>
+    <div class="snav">
+      <span id="sIdx">0 / 0</span>
+      <button id="sPrev">← 上一页</button>
+      <button id="sNext">下一页 →</button>
+      <button id="sExit" style="border-color:#5b3a3a">退出</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// lv: 4=四级 6=六级 k=考研 p=考博；ipa 为美式音标
+const DATA = [
+ {
+  "sec": "Abstract · 摘要",
+  "short": "Abstract",
+  "icon": "A",
+  "words": [
+   {
+    "w": "contrastive",
+    "ipa": "kənˈtræstɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "对比的",
+    "ex": "Contrastive models like CLIP have been shown to learn robust representations of images."
+   },
+   {
+    "w": "robust",
+    "ipa": "roʊˈbʌst",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "稳健的，鲁棒的",
+    "ex": "CLIP learns robust representations of images that capture both semantics and style."
+   },
+   {
+    "w": "representation",
+    "ipa": "ˌreprɪzenˈteɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "表示，表征",
+    "ex": "CLIP learns robust representations of images that capture both semantics and style."
+   },
+   {
+    "w": "semantics",
+    "ipa": "sɪˈmæntɪks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "语义，语义学",
+    "ex": "CLIP representations capture both semantics and style."
+   },
+   {
+    "w": "diversity",
+    "ipa": "daɪˈvɜːrsəti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "多样性，多样化",
+    "ex": "Explicitly generating image representations improves image diversity."
+   },
+   {
+    "w": "photorealism",
+    "ipa": "ˌfoʊtoʊˈriːəlɪzəm",
+    "pos": "n.",
+    "lv": "p",
+    "m": "照片写实主义",
+    "ex": "Improves image diversity with minimal loss in photorealism."
+   },
+   {
+    "w": "manipulation",
+    "ipa": "məˌnɪpjuˈleɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "操纵，操作",
+    "ex": "CLIP enables language-guided image manipulations in a zero-shot fashion."
+   },
+   {
+    "w": "zero-shot",
+    "ipa": "ˈzɪroʊ ʃɒt",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "零样本的",
+    "ex": "Language-guided image manipulations in a zero-shot fashion."
+   },
+   {
+    "w": "autoregressive",
+    "ipa": "ˌɔːtoʊrɪˈɡresɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "自回归的",
+    "ex": "We experiment with both autoregressive and diffusion models for the prior."
+   },
+   {
+    "w": "diffusion",
+    "ipa": "dɪˈfjuːʒn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "扩散",
+    "ex": "We use diffusion models for the decoder.",
+    "ov": "g"
+   },
+   {
+    "w": "prior",
+    "ipa": "praɪˈɔːr",
+    "pos": "n.",
+    "lv": "4",
+    "m": "先验模型",
+    "ex": "A prior that generates a CLIP image embedding given a text caption."
+   },
+   {
+    "w": "caption",
+    "ipa": "ˈkæpʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "标题，说明文字",
+    "ex": "Given a text caption."
+   },
+   {
+    "w": "leveraging",
+    "ipa": "ˈlevərɪdʒɪŋ",
+    "pos": "v.",
+    "lv": "p",
+    "m": "利用，借助",
+    "ex": "To leverage these representations for image generation."
+   },
+   {
+    "w": "minimal",
+    "ipa": "ˈmɪnɪml",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "最小的，极少的",
+    "ex": "With minimal loss in photorealism and caption similarity."
+   },
+   {
+    "w": "variation",
+    "ipa": "ˌveriˈeɪʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "变体，变化",
+    "ex": "Produce variations of an image that preserve both its semantics and style."
+   },
+   {
+    "w": "absent",
+    "ipa": "ˈæbsənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "缺失的，不存在的",
+    "ex": "While varying the non-essential details absent from the image representation."
+   },
+   {
+    "w": "frozen",
+    "ipa": "ˈfroʊzn",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "冻结的",
+    "ex": "The CLIP model is frozen during training of the prior and decoder."
+   }
+  ]
+ },
+ {
+  "sec": "2. Method · 方法",
+  "short": "Method",
+  "icon": "2",
+  "words": [
+   {
+    "w": "embedding",
+    "ipa": "ɪmˈbedɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "嵌入，嵌入向量",
+    "ex": "A prior that produces CLIP image embeddings zi conditioned on captions y."
+   },
+   {
+    "w": "deterministic",
+    "ipa": "dɪˌtɜːrməˈnɪstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "确定性的",
+    "ex": "zi is a deterministic function of x."
+   },
+   {
+    "w": "conditioned",
+    "ipa": "kənˈdɪʃnd",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有条件的，受条件制约的",
+    "ex": "A decoder that produces images x conditioned on CLIP image embeddings."
+   },
+   {
+    "w": "hierarchical",
+    "ipa": "ˌhaɪəˈrɑːrkɪkl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "层次化的，分级的",
+    "ex": "Hierarchical Text-Conditional Image Generation with CLIP Latents."
+   },
+   {
+    "w": "latent",
+    "ipa": "ˈleɪtnt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "潜在的，隐变量",
+    "ex": "A bipartite latent representation (zi, xT)."
+   },
+   {
+    "w": "bipartite",
+    "ipa": "baɪˈpɑːrtaɪt",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "双部分的，二部图的",
+    "ex": "A bipartite latent representation (zi, xT)."
+   },
+   {
+    "w": "reconstruction",
+    "ipa": "ˌriːkənˈstrʌkʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "重建，重构",
+    "ex": "The decoder to produce an accurate reconstruction.",
+    "ov": "t"
+   },
+   {
+    "w": "chain rule",
+    "ipa": "tʃeɪn ruːl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "链式法则",
+    "ex": "The second equality holds because of the chain rule."
+   },
+   {
+    "w": "invert",
+    "ipa": "ɪnˈvɜːrt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "反转，逆变换",
+    "ex": "The decoder allows us to invert images given their CLIP image embeddings."
+   },
+   {
+    "w": "stack",
+    "ipa": "stæk",
+    "pos": "n.",
+    "lv": "4",
+    "m": "堆叠，技术栈",
+    "ex": "We refer to our full text-conditional image generation stack as unCLIP."
+   },
+   {
+    "w": "sample",
+    "ipa": "ˈsæmpl",
+    "pos": "v.",
+    "lv": "4",
+    "m": "采样",
+    "ex": "We can sample from the true conditional distribution P(x|y)."
+   },
+   {
+    "w": "equality",
+    "ipa": "ɪˈkwɒləti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "等式，等价性",
+    "ex": "The first equality holds because zi is a deterministic function of x."
+   }
+  ]
+ },
+ {
+  "sec": "2.1 Decoder · 解码器",
+  "short": "Decoder",
+  "icon": "2.1",
+  "words": [
+   {
+    "w": "classifier-free",
+    "ipa": "ˈklæsɪfaɪər friː",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无分类器的",
+    "ex": "We enable classifier-free guidance by randomly setting the CLIP embeddings to zero."
+   },
+   {
+    "w": "guidance",
+    "ipa": "ˈɡaɪdns",
+    "pos": "n.",
+    "lv": "4",
+    "m": "引导，指导",
+    "ex": "Using guidance on the conditioning information improves sample quality a lot."
+   },
+   {
+    "w": "upsample",
+    "ipa": "ʌpˈsæmpl",
+    "pos": "v.",
+    "lv": "p",
+    "m": "上采样",
+    "ex": "We train two diffusion upsampler models."
+   },
+   {
+    "w": "corrupt",
+    "ipa": "kəˈrʌpt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "损坏，破坏",
+    "ex": "We slightly corrupt the conditioning images during training."
+   },
+   {
+    "w": "gaussian blur",
+    "ipa": "ˈɡɔːʃn blɜːr",
+    "pos": "n.",
+    "lv": "p",
+    "m": "高斯模糊",
+    "ex": "For the first upsampling stage, we use gaussian blur."
+   },
+   {
+    "w": "degradation",
+    "ipa": "ˌdeɡrəˈdeɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "退化，降质",
+    "ex": "For the second, we use a more diverse BSR degradation."
+   },
+   {
+    "w": "numerical stability",
+    "ipa": "njuːˈmerɪkl steɪˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "数值稳定性",
+    "ex": "To reduce training compute and improve numerical stability."
+   },
+   {
+    "w": "generalize",
+    "ipa": "dʒenˈerəlaɪz",
+    "pos": "v.",
+    "lv": "6",
+    "m": "泛化，推广",
+    "ex": "It readily generalizes to the higher resolution."
+   },
+   {
+    "w": "concatenated",
+    "ipa": "kənˈkætəneɪtɪd",
+    "pos": "v.",
+    "lv": "p",
+    "m": "连接，串联",
+    "ex": "Four extra tokens of context that are concatenated to the sequence."
+   },
+   {
+    "w": "hypothesizing",
+    "ipa": "haɪˈpɒθəsaɪzɪŋ",
+    "pos": "v.",
+    "lv": "p",
+    "m": "假设，假定",
+    "ex": "Hypothesizing that it could allow the diffusion model to learn aspects of natural language."
+   },
+   {
+    "w": "projecting",
+    "ipa": "prəˈdʒektɪŋ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "投影，投射",
+    "ex": "By projecting and adding CLIP embeddings to the existing timestep embedding."
+   },
+   {
+    "w": "timestep",
+    "ipa": "ˈtaɪmstep",
+    "pos": "n.",
+    "lv": "p",
+    "m": "时间步",
+    "ex": "Adding CLIP embeddings to the existing timestep embedding."
+   },
+   {
+    "w": "context",
+    "ipa": "ˈkɒntekst",
+    "pos": "n.",
+    "lv": "4",
+    "m": "上下文，语境",
+    "ex": "Four extra tokens of context."
+   },
+   {
+    "w": "unconditional",
+    "ipa": "ʌnkənˈdɪʃənl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无条件的",
+    "ex": "Use unconditional ADMNets with no guidance."
+   },
+   {
+    "w": "unlearning",
+    "ipa": "ʌnˈlɜːrnɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "遗忘，去学习",
+    "ex": "Preventing unwanted memorization."
+   },
+   {
+    "w": "inpainting",
+    "ipa": "ˈɪnpeɪntɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "图像修复",
+    "ex": "Changes to accommodate product and safety requirements (e.g. inpainting)."
+   },
+   {
+    "w": "robustness",
+    "ipa": "roʊˈbʌstnəs",
+    "pos": "n.",
+    "lv": "p",
+    "m": "鲁棒性，稳健性",
+    "ex": "To improve the robustness of our upsamplers."
+   }
+  ]
+ },
+ {
+  "sec": "2.2 Prior · 先验",
+  "short": "Prior",
+  "icon": "2.2",
+  "words": [
+   {
+    "w": "quantized",
+    "ipa": "ˈkwɒntaɪzd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "量化的",
+    "ex": "A token indicating the quantized dot product between the text and image embedding."
+   },
+   {
+    "w": "causal attention mask",
+    "ipa": "ˈkɔːzl əˈtenʃn mæsk",
+    "pos": "n.",
+    "lv": "p",
+    "m": "因果注意力掩码",
+    "ex": "A Transformer model with a causal attention mask."
+   },
+   {
+    "w": "prefix",
+    "ipa": "ˈpriːfɪks",
+    "pos": "n.",
+    "lv": "6",
+    "m": "前缀",
+    "ex": "We condition the AR prior on the text caption by encoding them as a prefix."
+   },
+   {
+    "w": "dot product",
+    "ipa": "dɒt ˈprɒdʌkt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "点积",
+    "ex": "The dot product between the text and image embedding."
+   },
+   {
+    "w": "mean-squared error",
+    "ipa": "miːn skweərd ˈerər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "均方误差",
+    "ex": "We use a mean-squared error loss on this prediction."
+   },
+   {
+    "w": "inference",
+    "ipa": "ˈɪnfərəns",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推理，推断",
+    "ex": "The number of tokens predicted during inference."
+   },
+   {
+    "w": "stability",
+    "ipa": "steɪˈbɪləti",
+    "pos": "n.",
+    "lv": "4",
+    "m": "稳定性",
+    "ex": "This improves training stability."
+   },
+   {
+    "w": "epsilon-prediction",
+    "ipa": "ˈepsɪlən prɪˈdɪkʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "ε-预测",
+    "ex": "Instead of using the ε-prediction formulation."
+   },
+   {
+    "w": "stride",
+    "ipa": "straɪd",
+    "pos": "n.",
+    "lv": "6",
+    "m": "步长",
+    "ex": "Sample with Analytic DPM with 64 strided sampling steps."
+   },
+   {
+    "w": "threefold",
+    "ipa": "ˈθriːfoʊld",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "三倍的",
+    "ex": "This results in a threefold reduction in the number of tokens."
+   },
+   {
+    "w": "percentile",
+    "ipa": "pərˈsentaɪl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "百分位数",
+    "ex": "We swept over percentiles 50%, 70%, 85%, 95%."
+   },
+   {
+    "w": "noise schedule",
+    "ipa": "nɔɪz ˈʃedjuːl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "噪声调度",
+    "ex": "Noise schedule: cosine."
+   },
+   {
+    "w": "analytic",
+    "ipa": "ˌænəˈlɪtɪk",
+    "pos": "adj.",
+    "lv": "k",
+    "m": "解析的",
+    "ex": "Sample with Analytic DPM."
+   },
+   {
+    "w": "prepending",
+    "ipa": "priːˈpendɪŋ",
+    "pos": "v.",
+    "lv": "p",
+    "m": "前置，添加到前面",
+    "ex": "Additionally, we prepend a token indicating the dot product."
+   },
+   {
+    "w": "sweeping",
+    "ipa": "ˈswiːpɪŋ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "扫描，遍历",
+    "ex": "We swept over percentiles 50%, 70%, 85%, 95%."
+   }
+  ]
+ },
+ {
+  "sec": "3. Image Manipulations · 图像操作",
+  "short": "Manipulations",
+  "icon": "3",
+  "words": [
+   {
+    "w": "spherical interpolation",
+    "ipa": "ˈsferɪkl ɪntərˈpleɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "球面插值",
+    "ex": "We rotate between their CLIP embeddings using spherical interpolation."
+   },
+   {
+    "w": "stochasticity",
+    "ipa": "ˌstɒkəˈstɪsəti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "随机性",
+    "ex": "Larger values of η introduce stochasticity into successive sampling steps."
+   },
+   {
+    "w": "residual",
+    "ipa": "rɪˈzɪdʒuəl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "残差的，剩余的",
+    "ex": "The latent xT encodes all of the residual information necessary for the decoder to reconstruct x."
+   },
+   {
+    "w": "traverse",
+    "ipa": "trəˈvɜːrs",
+    "pos": "v.",
+    "lv": "6",
+    "m": "遍历，横穿",
+    "ex": "Traversing all of the concepts in CLIP's embedding space that occur between them."
+   },
+   {
+    "w": "normalize",
+    "ipa": "ˈnɔːrməlaɪz",
+    "pos": "v.",
+    "lv": "p",
+    "m": "归一化，标准化",
+    "ex": "Computing a text diff vector by taking their difference and normalizing."
+   },
+   {
+    "w": "intermediate",
+    "ipa": "ˌɪntərˈmiːdiət",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "中间的",
+    "ex": "Yielding intermediate CLIP representations."
+   },
+   {
+    "w": "trajectory",
+    "ipa": "trəˈdʒektəri",
+    "pos": "n.",
+    "lv": "p",
+    "m": "轨迹",
+    "ex": "This results in an infinite number of trajectories between x1 and x2.",
+    "ov": "g"
+   },
+   {
+    "w": "coincide",
+    "ipa": "ˌkoʊɪnˈsaɪd",
+    "pos": "v.",
+    "lv": "6",
+    "m": "一致，重合",
+    "ex": "The endpoints of these trajectories will generally no longer coincide with the original images."
+   },
+   {
+    "w": "endpoint",
+    "ipa": "ˈendpoint",
+    "pos": "n.",
+    "lv": "p",
+    "m": "端点",
+    "ex": "The endpoints of these trajectories will generally no longer coincide.",
+    "ov": "t"
+   },
+   {
+    "w": "slerp",
+    "ipa": "slɜːrp",
+    "pos": "n.",
+    "lv": "p",
+    "m": "球面线性插值",
+    "ex": "Yielding intermediate CLIP representations ziθ = slerp(zi1, zi2, θ)."
+   },
+   {
+    "w": "diff vector",
+    "ipa": "dɪf ˈvektər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "差异向量",
+    "ex": "We compute a text diff vector zd = norm(zt − zt0)."
+   },
+   {
+    "w": "rotate",
+    "ipa": "ˈroʊteɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "旋转，轮换",
+    "ex": "We rotate between the image CLIP embedding zi and the text diff vector zd."
+   },
+   {
+    "w": "linearly",
+    "ipa": "ˈlɪniərli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "线性地",
+    "ex": "θ is increased linearly from 0 to a maximum value."
+   },
+   {
+    "w": "η",
+    "ipa": "ˈiːtə",
+    "pos": "n.",
+    "lv": "p",
+    "m": "η（希腊字母，控制随机性的参数）",
+    "ex": "We apply the decoder with η > 0 for sampling."
+   },
+   {
+    "w": "successive",
+    "ipa": "səkˈsesɪv",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "连续的，依次的",
+    "ex": "Larger values of η introduce stochasticity into successive sampling steps."
+   },
+   {
+    "w": "centered",
+    "ipa": "ˈsentərd",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "居中的，集中于的",
+    "ex": "Resulting in variations that are perceptually centered around the original image."
+   }
+  ]
+ },
+ {
+  "sec": "4. Probing the CLIP Latent Space · 探测CLIP潜在空间",
+  "short": "Probing",
+  "icon": "4",
+  "words": [
+   {
+    "w": "typographic",
+    "ipa": "ˌtaɪpəˈɡræfɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "排版的，字体的",
+    "ex": "Cases where CLIP makes incorrect predictions, such as typographic attacks."
+   },
+   {
+    "w": "adversarial",
+    "ipa": "ˌædvərˈseriəl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "对抗性的",
+    "ex": "In these adversarial images, a piece of text is overlayed on top of an object."
+   },
+   {
+    "w": "misclassified",
+    "ipa": "mɪsˈklæsɪfaɪd",
+    "pos": "v.",
+    "lv": "p",
+    "m": "误分类",
+    "ex": "An apple can be misclassified as an iPod."
+   },
+   {
+    "w": "susceptible",
+    "ipa": "səˈseptəbl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "易受影响的",
+    "ex": "Our CLIP model is slightly less susceptible to the 'pizza' attack."
+   },
+   {
+    "w": "PCA",
+    "ipa": "piː siː eɪ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "主成分分析",
+    "ex": "PCA reconstructions offer another tool for probing the structure."
+   },
+   {
+    "w": "coarse-grained",
+    "ipa": "kɔːrs ɡreɪnd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "粗粒度的",
+    "ex": "The early PCA dimensions preserve coarse-grained semantic information."
+   },
+   {
+    "w": "finer-grained",
+    "ipa": "ˈfaɪnər ɡreɪnd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "细粒度的",
+    "ex": "The later PCA dimensions encode finer-grained detail."
+   },
+   {
+    "w": "principal component",
+    "ipa": "ˈprɪnsəpl kəmˈpoʊnənt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "主成分",
+    "ex": "The AR prior is trained to explicitly predict these principal components."
+   },
+   {
+    "w": "overlayed",
+    "ipa": "ˌoʊvərˈleɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "覆盖的，叠加的",
+    "ex": "A piece of text is overlayed on top of an object."
+   },
+   {
+    "w": "probe",
+    "ipa": "proʊb",
+    "pos": "v.",
+    "lv": "6",
+    "m": "探测，探查",
+    "ex": "Probing the structure of the CLIP latent space."
+   },
+   {
+    "w": "dimension",
+    "ipa": "daɪˈmenʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "维度",
+    "ex": "The early PCA dimensions preserve coarse-grained semantic information."
+   },
+   {
+    "w": "reconstruct",
+    "ipa": "ˌriːkənˈstrʌkt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "重建",
+    "ex": "Reconstruct them with progressively more PCA dimensions."
+   },
+   {
+    "w": "progressively",
+    "ipa": "prəˈɡresɪvli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "逐渐地，渐进地",
+    "ex": "Reconstruct them with progressively more PCA dimensions."
+   },
+   {
+    "w": "susceptibility",
+    "ipa": "səˌseptəˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "易感性，敏感性",
+    "ex": "Our CLIP model is slightly less susceptible to attacks."
+   }
+  ]
+ },
+ {
+  "sec": "5. Text-to-Image Generation · 文本到图像生成",
+  "short": "T2I Gen",
+  "icon": "5",
+  "words": [
+   {
+    "w": "underperform",
+    "ipa": "ˌʌndərpərˈfɔːrm",
+    "pos": "v.",
+    "lv": "p",
+    "m": "表现不佳",
+    "ex": "This underperforms a model trained fully in this way."
+   },
+   {
+    "w": "sweep",
+    "ipa": "swiːp",
+    "pos": "v.",
+    "lv": "4",
+    "m": "扫描，遍历",
+    "ex": "We sweep across guidance scales for all models."
+   },
+   {
+    "w": "aesthetic",
+    "ipa": "esˈθetɪk",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "审美的",
+    "ex": "To automate aesthetic quality evaluations."
+   },
+   {
+    "w": "photorealistic",
+    "ipa": "ˌfoʊtoʊriːˈælɪstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "照片写实的",
+    "ex": "Samples from unCLIP improve in quality."
+   },
+   {
+    "w": "diverse",
+    "ipa": "daɪˈvɜːrs",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "多样的",
+    "ex": "Preserving semantic diversity even at high decoder guidance scales."
+   },
+   {
+    "w": "semantically",
+    "ipa": "sɪˈmæntɪkli",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "语义上地",
+    "ex": "UnCLIP preserves semantic diversity."
+   },
+   {
+    "w": "logistic regression",
+    "ipa": "ləˈdʒɪstɪk rɪˈɡreʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "逻辑回归",
+    "ex": "We train a logistic regression model to predict win probabilities."
+   },
+   {
+    "w": "synthesis",
+    "ipa": "ˈsɪnθəsɪs",
+    "pos": "n.",
+    "lv": "6",
+    "m": "合成，综合",
+    "ex": "Text-conditional image synthesis."
+   },
+   {
+    "w": "albeit",
+    "ipa": "ɔːlˈbiːɪt",
+    "pos": "conj.",
+    "lv": "p",
+    "m": "尽管，虽然",
+    "ex": "Our samples are comparable in quality to GLIDE, albeit with greater diversity."
+   },
+   {
+    "w": "grid",
+    "ipa": "ɡrɪd",
+    "pos": "n.",
+    "lv": "4",
+    "m": "网格，格子",
+    "ex": "Humans are presented with two 4×4 grids of samples."
+   },
+   {
+    "w": "win probability",
+    "ipa": "wɪn ˌprɒbəˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "胜出概率",
+    "ex": "A logistic regression model to predict win probabilities."
+   },
+   {
+    "w": "proxy",
+    "ipa": "ˈprɒksi",
+    "pos": "n.",
+    "lv": "p",
+    "m": "代理，替代",
+    "ex": "Using our human evaluation proxy model.",
+    "ov": "t"
+   },
+   {
+    "w": "elevation",
+    "ipa": "ˌelɪˈveɪʃn",
+    "pos": "n.",
+    "lv": "6",
+    "m": "提升，提高",
+    "ex": "FID elevation as a function of guidance scale."
+   },
+   {
+    "w": "prefer",
+    "ipa": "prɪˈfɜːr",
+    "pos": "v.",
+    "lv": "4",
+    "m": "偏好，更喜欢",
+    "ex": "Humans prefer the full unCLIP stack for photorealism."
+   },
+   {
+    "w": "caption similarity",
+    "ipa": "ˈkæpʃn sɪˈmɪlərəti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "标题相似度",
+    "ex": "Humans prefer the full unCLIP stack for caption similarity."
+   },
+   {
+    "w": "filter",
+    "ipa": "ˈfɪltər",
+    "pos": "v.",
+    "lv": "4",
+    "m": "过滤，筛选",
+    "ex": "Filtered for aesthetic quality and safety."
+   }
+  ]
+ },
+ {
+  "sec": "6. Related Work · 相关工作",
+  "short": "Related",
+  "icon": "6",
+  "words": [
+   {
+    "w": "perturbed",
+    "ipa": "pərˈtɜːrbd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "扰动的",
+    "ex": "Condition GAN models on randomly perturbed CLIP image embeddings."
+   },
+   {
+    "w": "perturbation",
+    "ipa": "pərˈtɜːrˈbeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "扰动",
+    "ex": "The perturbations are applied independently by the replicas.",
+    "ov": "g"
+   },
+   {
+    "w": "contrastive learning",
+    "ipa": "kənˈtræstɪv ˈlɜːrnɪŋ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "对比学习",
+    "ex": "Cross-Modal Contrastive Learning for Text-to-Image Generation."
+   },
+   {
+    "w": "modal",
+    "ipa": "ˈmɒdl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "模态的",
+    "ex": "Cross-Modal Contrastive Learning.",
+    "ov": "t"
+   },
+   {
+    "w": "multimodal",
+    "ipa": "ˌmʌltiˈmɒdl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "多模态的",
+    "ex": "Multimodal Neurons in Artificial Neural Networks."
+   },
+   {
+    "w": "natural language supervision",
+    "ipa": "ˈnætʃrəl ˈlæŋɡwɪdʒ səˈpɜːrvɪʒn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "自然语言监督",
+    "ex": "Learning Transferable Visual Models From Natural Language Supervision."
+   },
+   {
+    "w": "generative",
+    "ipa": "ˈdʒenərətɪv",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "生成式的",
+    "ex": "A generative model of images x given captions y."
+   },
+   {
+    "w": "discriminative",
+    "ipa": "dɪˈskrɪmɪnətɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "判别式的",
+    "ex": "Score-based Generative Modeling in Latent Space."
+   },
+   {
+    "w": "hierarchy",
+    "ipa": "haɪˈrɑːrki",
+    "pos": "n.",
+    "lv": "6",
+    "m": "层次结构，层级",
+    "ex": "The generation hierarchy."
+   },
+   {
+    "w": "kernel density estimation",
+    "ipa": "ˈkɜːrnl ˈdensəti ɪˈsteɪmɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "核密度估计",
+    "ex": "Employing Kernel Density Estimation to sample image representations."
+   },
+   {
+    "w": "end-to-end",
+    "ipa": "end tuː end",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "端到端的",
+    "ex": "Generate images end-to-end in a way similar to our proposed technique."
+   },
+   {
+    "w": "stochastic",
+    "ipa": "stəˈkæstɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "随机的",
+    "ex": "Score-based Generative Modeling in Latent Space."
+   },
+   {
+    "w": "implicitly",
+    "ipa": "ɪmˈplɪsɪtli",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "隐式地",
+    "ex": "Implicitly from the predictions of the model with and without the conditioning information."
+   }
+  ]
+ },
+ {
+  "sec": "7. Limitations and Risks · 局限与风险",
+  "short": "Limitations",
+  "icon": "7",
+  "words": [
+   {
+    "w": "binding",
+    "ipa": "ˈbaɪndɪŋ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "绑定，结合",
+    "ex": "UnCLIP is worse at binding attributes to objects."
+   },
+   {
+    "w": "attribute",
+    "ipa": "əˈtrɪbjuːt",
+    "pos": "n.",
+    "lv": "4",
+    "m": "属性，特性",
+    "ex": "UnCLIP struggles with binding attributes to objects."
+   },
+   {
+    "w": "alleviate",
+    "ipa": "əˈliːvieɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "减轻，缓解",
+    "ex": "Training at a higher base resolution should be able to alleviate this."
+   },
+   {
+    "w": "coherent",
+    "ipa": "koʊˈhɪrənt",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "连贯的，一致的",
+    "ex": "UnCLIP struggles at producing coherent text."
+   },
+   {
+    "w": "deceptive",
+    "ipa": "dɪˈseptɪv",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "欺骗性的",
+    "ex": "Image generation models carry risks related to deceptive content."
+   },
+   {
+    "w": "guardrail",
+    "ipa": "ˈɡɑːrdræl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "防护栏，安全措施",
+    "ex": "The deployment context includes training data, guardrails in place."
+   },
+   {
+    "w": "spurious",
+    "ipa": "ˈspjʊriəs",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "虚假的，谬误的",
+    "ex": "Spurious correlations in training data."
+   },
+   {
+    "w": "obscure",
+    "ipa": "əbˈskjʊr",
+    "pos": "v.",
+    "lv": "6",
+    "m": "使模糊，掩盖",
+    "ex": "The BPE encoding obscures the spelling of the words."
+   },
+   {
+    "w": "render",
+    "ipa": "ˈrendər",
+    "pos": "v.",
+    "lv": "4",
+    "m": "渲染，生成",
+    "ex": "The model needs to learn to render each token."
+   },
+   {
+    "w": "harmful",
+    "ipa": "ˈhɑːrmfl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有害的",
+    "ex": "Risks related to deceptive and otherwise harmful content."
+   },
+   {
+    "w": "degrade",
+    "ipa": "dɪˈɡreɪd",
+    "pos": "v.",
+    "lv": "6",
+    "m": "退化，降级",
+    "ex": "A more diverse BSR degradation."
+   },
+   {
+    "w": "memorization",
+    "ipa": "ˌmemərəˈzeɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "记忆化",
+    "ex": "Preventing unwanted memorization."
+   },
+   {
+    "w": "bias",
+    "ipa": "ˈbaɪəs",
+    "pos": "n.",
+    "lv": "6",
+    "m": "偏差，偏见",
+    "ex": "How the model learns biases in training data."
+   },
+   {
+    "w": "infer",
+    "ipa": "ɪnˈfɜːr",
+    "pos": "v.",
+    "lv": "4",
+    "m": "推断，推论",
+    "ex": "We can infer information from the decoder's predictions."
+   },
+   {
+    "w": "trace",
+    "ipa": "treɪs",
+    "pos": "n.",
+    "lv": "4",
+    "m": "痕迹，线索",
+    "ex": "It leaves fewer traces and indicators that outputs are AI-generated."
+   },
+   {
+    "w": "indicator",
+    "ipa": "ˈɪndɪkeɪtər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "指标，指示物",
+    "ex": "Fewer indicators that outputs are AI-generated."
+   },
+   {
+    "w": "authentic",
+    "ipa": "ɔːˈθentɪk",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "真实的，真正的",
+    "ex": "Making it easier to mistake generated images for authentic ones."
+   },
+   {
+    "w": "vulnerability",
+    "ipa": "ˌvʌlnərəˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "脆弱性，弱点",
+    "ex": "The model is vulnerable to typographic attacks.",
+    "ov": "t"
+   }
+  ]
+ },
+ {
+  "sec": "Appendix · 附录",
+  "short": "Appendix",
+  "icon": "App",
+  "words": [
+   {
+    "w": "empirical",
+    "ipa": "ɪmˈpɪrɪkl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "经验的，实证的",
+    "ex": "We scale the CLIP embedding inputs to match the empirical variance."
+   },
+   {
+    "w": "variance",
+    "ipa": "ˈveriəns",
+    "pos": "n.",
+    "lv": "6",
+    "m": "方差，差异",
+    "ex": "To match the empirical variance of RGB pixel values."
+   },
+   {
+    "w": "momentum",
+    "ipa": "məˈmentəm",
+    "pos": "n.",
+    "lv": "6",
+    "m": "动量",
+    "ex": "All models were trained using Adam with momentum β1 = 0.9."
+   },
+   {
+    "w": "replica",
+    "ipa": "rɪˈplɪkə",
+    "pos": "n.",
+    "lv": "p",
+    "m": "副本，复制品",
+    "ex": "The perturbations are applied independently by the replicas."
+   },
+   {
+    "w": "hyperparameter",
+    "ipa": "ˌhaɪpərpəˈræmɪtər",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超参数",
+    "ex": "We report model and training hyperparameters for the paper models."
+   },
+   {
+    "w": "cosine schedule",
+    "ipa": "ˈkɒksaɪn ˈʃedjuːl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "余弦调度",
+    "ex": "Noise schedule: cosine."
+   },
+   {
+    "w": "linear schedule",
+    "ipa": "ˈlɪniər ˈʃedjuːl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "线性调度",
+    "ex": "Noise schedule: linear."
+   },
+   {
+    "w": "conditional probability",
+    "ipa": "kənˈdɪʃənl prɒˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "条件概率",
+    "ex": "We can sample from the true conditional distribution P(x|y)."
+   },
+   {
+    "w": "joint embedding space",
+    "ipa": "dʒɔɪnt ɪmˈbedɪŋ speɪs",
+    "pos": "n.",
+    "lv": "p",
+    "m": "联合嵌入空间",
+    "ex": "The joint embedding space of CLIP enables language-guided manipulations."
+   },
+   {
+    "w": "text diff",
+    "ipa": "tekst dɪf",
+    "pos": "n.",
+    "lv": "p",
+    "m": "文本差异向量",
+    "ex": "We compute a text diff vector from the two CLIP text embeddings."
+   },
+   {
+    "w": "batch size",
+    "ipa": "bætʃ saɪz",
+    "pos": "n.",
+    "lv": "p",
+    "m": "批大小",
+    "ex": "Each replica uses batch size 64."
+   },
+   {
+    "w": "weight decay",
+    "ipa": "weɪt dɪˈkeɪ",
+    "pos": "n.",
+    "lv": "p",
+    "m": "权重衰减",
+    "ex": "Trained using Adam with corrected weight decay."
+   },
+   {
+    "w": "learning rate",
+    "ipa": "ˈlɜːrnɪŋ reɪt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "学习率",
+    "ex": "Both models are trained with learning rate 3 × 10⁻⁴."
+   },
+   {
+    "w": "pixel",
+    "ipa": "ˈpɪksl",
+    "pos": "n.",
+    "lv": "p",
+    "m": "像素",
+    "ex": "RGB pixel values of ImageNet images scaled to [−1, 1]."
+   },
+   {
+    "w": "scaled",
+    "ipa": "skeld",
+    "pos": "v.",
+    "lv": "p",
+    "m": "缩放，调整大小",
+    "ex": "We scale the CLIP embedding inputs by 17.2 to match the empirical variance."
+   },
+   {
+    "w": "architectures",
+    "ipa": "ˈɑːrkɪtektʃərz",
+    "pos": "n.",
+    "lv": "4",
+    "m": "架构",
+    "ex": "With modified architectures and trained for longer."
+   },
+   {
+    "w": "accommodate",
+    "ipa": "əˈkɒmədeɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "适应，满足",
+    "ex": "Changes to accommodate product and safety requirements."
+   },
+   {
+    "w": "safety",
+    "ipa": "ˈseɪfti",
+    "pos": "n.",
+    "lv": "6",
+    "m": "安全性",
+    "ex": "Changes to accommodate product and safety requirements."
+   },
+   {
+    "w": "deployment",
+    "ipa": "dɪˈplɔɪmənt",
+    "pos": "n.",
+    "lv": "p",
+    "m": "部署",
+    "ex": "The deployment context includes training data, guardrails in place."
+   },
+   {
+    "w": "inferior",
+    "ipa": "ɪnˈfɪriər",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "较差的，次等的",
+    "ex": "This underperforms a model trained fully in this way."
+   },
+   {
+    "w": "superior",
+    "ipa": "suːˈpɪriər",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "优越的，更好的",
+    "ex": "UnCLIP achieves superior diversity."
+   }
+  ]
+ }
+];
+const LVCLS={"4":"t4","6":"t6","k":"tk","p":"tp","t":"tt","g":"tg"};
+const LVNAME={"4":"四级","6":"六级","k":"考研","p":"考博","t":"雅思 · 托福","g":"GRE"};
+const LVSHORT={"4":"4","6":"6","k":"考研","p":"考博","t":"托福","g":"GRE"};
+const LVORDER=["4","6","k","p","t","g"];
+
+let mode="sec";
+let theme="theme-mag"; // 章节视图固定杂志风；按级别视图固定暗色大页
+
+function cardHTML(x,sec){
+  const from = mode==="lv" ? `<div class="from">出自 ${sec}</div>` : "";
+  if(theme==="theme-paper"){
+    return `<div class="word"><span class="w">${x.w}<span class="ipa">/${x.ipa}/</span><i class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</i></span>
+      <span><span class="pos">${x.pos}</span><span class="m">${x.m}</span>${from}</span>
+      <span class="ex">${x.ex}</span></div>`;
+  }
+  if(theme==="theme-mag") return "";
+  return `<div class="card lv${x.lv}" data-say="${x.w}"><span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</span>
+    <div class="m">${x.pos} ${x.m}</div><div class="ex">${x.ex}</div>${from}</div>`;
+}
+function magRow(x,sec){
+  return `<tr data-say="${x.w}"><td class="w">${x.w}<span class="ipa">/${x.ipa}/</span></td>
+    <td class="lv"><b class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</b></td>
+    <td class="m">${x.pos} ${x.m}${mode==="lv"?`<span class="from">出自 ${sec}</span>`:""}</td>
+    <td class="ex">${x.ex}</td></tr>`;
+}
+function groupHTML(title,icon,inner){
+  if(theme==="theme-mag") return `<div class="sec"><h2>${title}</h2><table>${inner}</table></div>`;
+  if(theme==="theme-dark"||theme==="theme-fresh")
+    return `<div class="sec"><h2>${theme==="theme-dark"?"":"<span class='n'>"+icon+"</span>"}${title}</h2><div class="grid">${inner}</div></div>`;
+  return `<div class="sec"><h2>${title}</h2>${inner}</div>`;
+}
+function render(){
+  document.body.classList.toggle("lv-mode",mode==="lv");
+  if(mode==="sec")document.body.className="theme-mag";
+  const app=document.getElementById("app");
+  let html="";
+  if(mode==="sec"){
+    for(const s of DATA){
+      html += theme==="theme-mag"
+        ? groupHTML(s.sec,s.icon,s.words.map(x=>magRow(x,s.short)).join(""))
+        : groupHTML(s.sec,s.icon,s.words.map(x=>cardHTML(x,s.short)).join(""));
+    }
+  }else{
+    // 学习模式同款暗色大页：每个级别一块
+    const dot={4:"var(--c4)",6:"var(--c6)",k:"var(--ckaon)",p:"var(--cphd)",t:"var(--ct)",g:"var(--cg)"};
+    html=LVORDER.map(lv=>{
+      const items=[];
+      DATA.forEach(s=>s.words.forEach(x=>{if(x.lv===lv||x.ov===lv)items.push([x.ov===lv?{...x,lv:x.ov}:x,s.short])}));
+      items.sort((a,b)=>a[0].w.localeCompare(b[0].w));
+      const cls={4:"",6:"l6",k:"lk",p:"lp",t:"lt",g:"lg"}[lv];
+      return `<div class="lvslide ${cls}">
+        <div class="ltitle"><span style="color:${dot[lv]}">${LVNAME[lv]}</span>词汇<small>${items.length} words · 按字母排序 · 悬停看原文例句 · 点击发音</small></div>
+        <div class="sgrid">${items.map(([x,sec])=>`
+          <div class="lcard" data-say="${x.w}">
+            <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span>
+            <div class="m">${x.pos} ${x.m}</div>
+            <div class="ex">${x.ex}</div>
+            <div class="from">出自 ${sec}</div>
+          </div>`).join("")}</div></div>`;
+    }).join("");
+  }
+  app.innerHTML=html;
+}
+function syncToolbar(){
+  document.getElementById("v-sec").classList.toggle("on",mode==="sec");
+  document.getElementById("v-lv").classList.toggle("on",mode==="lv");
+}
+document.getElementById("v-sec").onclick=()=>{mode="sec";theme="theme-mag";document.body.className="theme-mag";syncToolbar();render();};
+document.getElementById("v-lv").onclick=()=>{mode="lv";syncToolbar();render();};
+
+// 朗读：在线 TTS 多源自动降级（Polly → 百度 → 谷歌），选音色只对 Polly 源生效
+const ALL_SRC=["yd1","yd0","bd","gg"];
+const ONLINE_VOICES=[["yd1","美式 · 有道（推荐）"],["yd0","英式 · 有道"],["bd","百度翻译 · 女声"],["mute","🔇 不朗读"]];
+let ONLINE="yd1";try{const sv=localStorage.getItem("vocab_voice");if(sv&&["yd1","yd0","bd","gg","mute"].includes(sv))ONLINE=sv;}catch(e){}
+let SRC_ORDER=["yd1","yd0","bd","gg"],srcIdx=0; // 当前可用的源
+function applyVoiceOrder(){const i=ALL_SRC.indexOf(ONLINE);SRC_ORDER=i<0?ALL_SRC.slice():ALL_SRC.slice(i).concat(ALL_SRC.slice(0,i));}
+applyVoiceOrder();
+let audio=null;
+function ttsURL(src,t){
+  const q=encodeURIComponent(t);
+  if(src==="yd1")return `https://dict.youdao.com/dictvoice?type=1&audio=${q}`;
+  if(src==="yd0")return `https://dict.youdao.com/dictvoice?type=0&audio=${q}`;
+  if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=en&text=${q}&spd=5&source=web`;
+  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${q}`;
+}
+function fillVoiceSel(){
+  const sel=document.getElementById("voiceSel");if(!sel)return;
+  sel.innerHTML=`<option value="mute" ${ONLINE==="mute"?"selected":""}>🔇 不朗读</option>`+ONLINE_VOICES.map(([v,l])=>`<option value="${v}" ${ONLINE===v?"selected":""}>${l}</option>`).join("");
+  const st=document.getElementById("srcState");
+  if(st)st.textContent={yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[SRC_ORDER[srcIdx]]||"";
+}
+fillVoiceSel();
+let saying=0; // 防并发
+function say(t){
+  if(ONLINE==="mute"){try{if(audio){audio.pause();audio=null}}catch(e){}return}
+  const my=++saying;
+  trySrc(0,t,my);
+}
+function trySrc(i,t,my){
+  if(my!==saying)return;
+  if(i>=SRC_ORDER.length){const st=document.getElementById("srcState");if(st)st.textContent="无可用源";return}
+  const src=SRC_ORDER[i];
+  const st=document.getElementById("srcState");
+  if(st)st.textContent="尝试"+({yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[src]);
+  try{if(audio){audio.pause();audio=null}}catch(e){}
+  const a=new Audio(ttsURL(src,t));
+  let ok=false,advanced=false;
+  const advance=()=>{ if(!ok&&!advanced&&my===saying){advanced=true;trySrc(i+1,t,my);} };
+  a.addEventListener("playing",()=>{ok=true;
+    if(srcIdx!==i){srcIdx=i;fillVoiceSel();} // 记住能用的源
+  });
+  a.addEventListener("error",advance);
+  audio=a;
+  a.play().catch(advance);
+  setTimeout(()=>{ if(!ok&&my===saying&&a.paused)advance(); },2500);
+}
+document.getElementById("voiceSel").addEventListener("change",e=>{
+  ONLINE=e.target.value; applyVoiceOrder(); // 换音色重新从头试源
+  if(ONLINE!=="mute") say("Hello, let us learn new words together.");
+});
+/* ---- 白天 / 夜晚 ---- */
+let night=false;
+try{night=(localStorage.getItem("vocab_dn")||"day")==="night"}catch(e){night=false}
+function applyDN(){
+  document.body.classList.toggle("night",night);
+  document.getElementById("dn-day").classList.toggle("on",!night);
+  document.getElementById("dn-night").classList.toggle("on",night);
+  if(typeof studyEl!=="undefined"&&studyEl)studyEl.classList.toggle("day",!night);
+}
+document.getElementById("dn-day").onclick=()=>{night=false;try{localStorage.setItem("vocab_dn","day")}catch(e){};applyDN();};
+document.getElementById("dn-night").onclick=()=>{night=true;try{localStorage.setItem("vocab_dn","night")}catch(e){};applyDN();};
+document.getElementById("app").addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+
+/* ---------- 学习模式：按章节分页的 PPT 翻页 ---------- */
+const PER_PAGE = 12; // 每页最多词数，放不下自动续页
+let slides=[],si=0;
+function buildSlides(){
+  slides=[];
+  for(const s of DATA){
+    for(let i=0;i<s.words.length;i+=PER_PAGE){
+      slides.push({sec:s.sec,page:Math.floor(i/PER_PAGE)+1,
+        pages:Math.ceil(s.words.length/PER_PAGE),words:s.words.slice(i,i+PER_PAGE)});
+    }
+  }
+}
+const studyEl=document.getElementById("study");
+let open=false;
+function showSlide(){
+  const sl=slides[si];
+  const title=sl.pages>1 ? `${sl.sec}（第 ${sl.page}/${sl.pages} 页）` : sl.sec;
+  document.getElementById("sPage").innerHTML =
+    `<div class="stitle">${title}<small>${sl.words.length} words</small></div>
+     <div class="sgrid">${sl.words.map(x=>`
+       <div class="scard" data-say="${x.w}">
+         <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}" style="font-size:11px;padding:2px 8px">${LVSHORT[x.lv]}</span>
+         <div class="m">${x.pos} ${x.m}</div>
+         <div class="ex">${x.ex}</div>
+       </div>`).join("")}</div>`;
+  document.getElementById("sIdx").textContent=(si+1)+" / "+slides.length;
+  document.getElementById("sbar").style.width=((si+1)/slides.length*100)+"%";
+  document.getElementById("sPrev").disabled=si===0;
+  document.getElementById("sNext").disabled=si===slides.length-1;
+  studyEl.querySelector(".sbody").scrollTop=0;
+}
+function studyOpen(){ buildSlides(); si=0; open=true; studyEl.classList.add("on"); applyDN(); showSlide(); }
+function studyClose(){ open=false; studyEl.classList.remove("on"); }
+function next(){ if(si<slides.length-1){ si++; showSlide(); } }
+function prev(){ if(si>0){ si--; showSlide(); } }
+document.getElementById("v-study").onclick=()=>open?studyClose():studyOpen();
+document.getElementById("sClose").onclick=studyClose;
+document.getElementById("sExit").onclick=studyClose;
+document.getElementById("sNext").onclick=next;
+document.getElementById("sPrev").onclick=prev;
+studyEl.addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+document.addEventListener("keydown",e=>{
+  if(!open) return;
+  if(e.code==="Space"||e.key==="ArrowRight"||e.key==="PageDown"){ e.preventDefault(); next(); }
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){ prev(); }
+  else if(e.key==="Escape"){ studyClose(); }
+});
+applyDN(); syncToolbar(); render();
+</script>
+</body>
+</html>

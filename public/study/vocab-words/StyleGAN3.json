@@ -1,0 +1,20 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"aliasing","ipa":"ˈeɪliəsɪŋ","pos":"n.","lv":"p","m":"混叠（信号处理伪像）","ex":"careless signal processing that causes aliasing in the generator network"},
+ {"w":"hierarchical","ipa":"ˌhaɪəˈrɑːrkɪkl","pos":"adj.","lv":"p","m":"分层的","ex":"despite their hierarchical convolutional nature"},
+ {"w":"synthesis","ipa":"ˈsɪnθəsɪs","pos":"n.","lv":"k","m":"合成","ex":"the synthesis process of typical generative adversarial networks"},
+ {"w":"unhealthy","ipa":"ʌnˈhelθi","pos":"adj.","lv":"6","m":"不健康的（不合理的）","ex":"depends on absolute pixel coordinates in an unhealthy manner"},
+ {"w":"manifest","ipa":"ˈmænɪfest","pos":"v.","lv":"p","ov":"g","m":"显现","ex":"This manifests itself as detail appearing to be glued to image coordinates"},
+ {"w":"depict","ipa":"dɪˈpɪkt","pos":"v.","lv":"6","ov":"t","m":"描绘","ex":"instead of the surfaces of depicted objects"},
+ {"w":"trace","ipa":"treɪs","pos":"v.","lv":"6","m":"追溯","ex":"We trace the root cause to careless signal processing"},
+ {"w":"careless","ipa":"ˈkerləs","pos":"adj.","lv":"4","m":"疏忽的","ex":"We trace the root cause to careless signal processing"},
+ {"w":"continuous","ipa":"kənˈtɪnjuəs","pos":"adj.","lv":"4","m":"连续的","ex":"Interpreting all signals in the network as continuous"},
+ {"w":"applicable","ipa":"əˈplɪkəbl","pos":"adj.","lv":"6","m":"适用的","ex":"we derive generally applicable, small architectural changes"},
+ {"w":"guarantee","ipa":"ˌɡærənˈtiː","pos":"v.","lv":"6","m":"保证","ex":"architectural changes that guarantee that unwanted information cannot leak"},
+ {"w":"leak","ipa":"liːk","pos":"v.","lv":"4","m":"泄漏","ex":"unwanted information cannot leak into the hierarchical synthesis process"},
+ {"w":"dramatically","ipa":"drəˈmætɪkli","pos":"adv.","lv":"6","m":"显著地","ex":"differ dramatically in their internal representations"},
+ {"w":"equivariant","ipa":"ɪˈkweɪvəriənt","pos":"adj.","lv":"p","m":"等变的","ex":"fully equivariant to translation and rotation even at subpixel scales"},
+ {"w":"subpixel","ipa":"ˈsʌbˌpɪksl","pos":"n.","lv":"p","m":"亚像素","ex":"even at subpixel scales"},
+ {"w":"pave the way","ipa":"peɪv ðə weɪ","pos":"phr.","lv":"6","m":"为…铺平道路","ex":"Our results pave the way for generative models better suited for video and animation"}
+]}
+]

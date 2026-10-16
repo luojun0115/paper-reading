@@ -1,0 +1,22 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"embedded","ipa":"ɪmˈbedɪd","pos":"adj.","lv":"6","m":"嵌入式的","ex":"MobileNets for mobile and embedded vision applications"},
+ {"w":"streamlined","ipa":"ˈstriːmlaɪnd","pos":"adj.","lv":"p","m":"精简的","ex":"based on a streamlined architecture"},
+ {"w":"depthwise","ipa":"ˈdepθwaɪz","pos":"adj.","lv":"p","m":"逐深度的（深度方向）","ex":"uses depth-wise separable convolutions"},
+ {"w":"separable","ipa":"ˈsepərəbl","pos":"adj.","lv":"p","m":"可分离的","ex":"depth-wise separable convolutions to build light weight deep neural networks"},
+ {"w":"hyperparameter","ipa":"ˌhaɪpərpəˈræmɪtər","pos":"n.","lv":"k","m":"超参数","ex":"We introduce two simple global hyper-parameters"},
+ {"w":"latency","ipa":"ˈleɪtnsi","pos":"n.","lv":"p","m":"延迟","ex":"efﬁciently trade off between latency and accuracy"},
+ {"w":"constraint","ipa":"kənˈstreɪnt","pos":"n.","lv":"k","ov":"t","m":"约束，限制","ex":"choose the right sized model based on the constraints of the problem"},
+ {"w":"extensive","ipa":"ɪkˈstensɪv","pos":"adj.","lv":"4","m":"大量的","ex":"We present extensive experiments on resource and accuracy tradeoffs"},
+ {"w":"tradeoff","ipa":"ˈtreɪdɔːf","pos":"n.","lv":"k","m":"权衡","ex":"experiments on resource and accuracy tradeoffs"},
+ {"w":"effectiveness","ipa":"ɪˈfektɪvnəs","pos":"n.","lv":"6","m":"有效性","ex":"demonstrate the effectiveness of MobileNets across a wide range of applications"},
+ {"w":"ubiquitous","ipa":"juːˈbɪkwɪtəs","pos":"adj.","lv":"p","ov":"g","m":"无处不在的","ex":"Convolutional neural networks have become ubiquitous in computer vision"},
+ {"w":"popularize","ipa":"ˈpɑːpjələraɪz","pos":"v.","lv":"p","m":"推广，普及","ex":"AlexNet popularized deep convolutional neural networks by winning the ImageNet Challenge"},
+ {"w":"complicated","ipa":"ˈkɑːmplɪkeɪtɪd","pos":"adj.","lv":"4","m":"复杂的","ex":"make deeper and more complicated networks"},
+ {"w":"necessarily","ipa":"ˌnesəˈserəli","pos":"adv.","lv":"4","m":"必定","ex":"these advances are not necessarily making networks more efﬁcient"},
+ {"w":"respect","ipa":"rɪˈspekt","pos":"n.","lv":"6","m":"方面（with respect to 在…方面）","ex":"more efﬁcient with respect to size and speed"},
+ {"w":"ﬁnegrain","ipa":"ˈfaɪn ɡreɪn","pos":"adj.","lv":"p","m":"细粒度的","ex":"use cases including object detection, ﬁnegrain classiﬁcation"},
+ {"w":"attribute","ipa":"ˈætrɪbjuːt","pos":"n.","lv":"6","m":"属性","ex":"face attributes and large scale geo-localization"},
+ {"w":"localization","ipa":"ˌloʊkəlaɪˈzeɪʃn","pos":"n.","lv":"k","m":"定位（geo-localization 地理定位）","ex":"large scale geo-localization"}
+]}
+]

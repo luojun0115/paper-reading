@@ -1,0 +1,1599 @@
+[
+ {
+  "sec": "Abstract · 摘要",
+  "short": "Abstract",
+  "icon": "Ab",
+  "words": [
+   {
+    "w": "pre-training",
+    "ipa": "/ˌpriːˈtreɪnɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "预训练",
+    "ex": "Vision-and-Language Pre-training (VLP) has improved performance on various joint vision-and-language downstream tasks."
+   },
+   {
+    "w": "downstream",
+    "ipa": "/ˌdaʊnˈstriːm/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "下游的",
+    "ex": "VLP has improved performance on various joint vision-and-language downstream tasks."
+   },
+   {
+    "w": "rely",
+    "ipa": "/rɪˈlaɪ/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "依赖，依靠",
+    "ex": "Current approaches to VLP heavily rely on image feature extraction processes."
+   },
+   {
+    "w": "regional",
+    "ipa": "/ˈriːdʒənl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "区域的",
+    "ex": "Most approaches involve region supervision such as object detection.",
+    "ov": "t"
+   },
+   {
+    "w": "convolutional",
+    "ipa": "/kənˈvɑːlʃənl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "卷积的",
+    "ex": "The convolutional architecture such as ResNet is commonly used."
+   },
+   {
+    "w": "efficiency",
+    "ipa": "/ɪˈfɪʃnsi/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "效率",
+    "ex": "We find it problematic in terms of both efficiency and speed."
+   },
+   {
+    "w": "computation",
+    "ipa": "/ˌkɑːmpjuˈteɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "计算",
+    "ex": "Extracting input features requires much more computation than the multimodal interaction steps.",
+    "ov": "g"
+   },
+   {
+    "w": "expressive",
+    "ipa": "/ɪkˈspresɪv/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有表现力的",
+    "ex": "It is upper bounded to the expressive power of the visual embedder."
+   },
+   {
+    "w": "monolithic",
+    "ipa": "/ˌmɑːnəˈlɪθɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "单体的，整体的",
+    "ex": "ViLT is monolithic in the sense that the processing of visual inputs is drastically simplified.",
+    "ov": "g"
+   },
+   {
+    "w": "drastically",
+    "ipa": "/ˈdræstɪkli/",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "彻底地，大幅度地",
+    "ex": "The processing of visual inputs is drastically simplified."
+   },
+   {
+    "w": "competitive",
+    "ipa": "/kəmˈpetətɪv/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有竞争力的",
+    "ex": "ViLT is competitive or better in downstream task performance."
+   },
+   {
+    "w": "supervision",
+    "ipa": "ˌsuːpərˈvɪʒn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "监督",
+    "ex": "Current approaches to VLP heavily rely on image feature extraction processes, most of which involve region supervision"
+   },
+   {
+    "w": "problematic",
+    "ipa": "ˌprɑːbləˈmætɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有问题的",
+    "ex": "we ﬁnd it problematic in terms of both efﬁciency/speed and expressive power"
+   },
+   {
+    "w": "minimal",
+    "ipa": "ˈmɪnɪml",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "极简的",
+    "ex": "we present a minimal VLP model, Vision-and-Language Transformer (ViLT)"
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "Intro",
+  "icon": "1",
+  "words": [
+   {
+    "w": "scheme",
+    "ipa": "/skiːm/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "方案，体系",
+    "ex": "The pre-train-and-fine-tune scheme has been expanded to a joint domain of vision and language."
+   },
+   {
+    "w": "fine-tune",
+    "ipa": "/ˌfaɪnˈtuːn/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "微调",
+    "ex": "The pre-train-and-fine-tune scheme has been expanded."
+   },
+   {
+    "w": "embedder",
+    "ipa": "/ɪmˈbɛdər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "嵌入器，编码器",
+    "ex": "The visual embedder accounts for most of the computation."
+   },
+   {
+    "w": "bottleneck",
+    "ipa": "/ˈbɑːtlnek/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "瓶颈",
+    "ex": "Visual embedding is the bottleneck of existing VLP models."
+   },
+   {
+    "w": "incorporate",
+    "ipa": "/ɪnˈkɔːrpəreɪt/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "包含，合并",
+    "ex": "The detection components incorporate region proposals."
+   },
+   {
+    "w": "disregard",
+    "ipa": "/ˌdɪsrɪˈɡɑːrd/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "忽视，忽略",
+    "ex": "Although disregarded in the literature, we find it problematic."
+   },
+   {
+    "w": "predefined",
+    "ipa": "/ˌpriːdɪˈfaɪnd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "预定义的",
+    "ex": "It is upper bounded to the predefined visual vocabulary."
+   },
+   {
+    "w": "bolster",
+    "ipa": "/ˈboʊlstər/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "支持，加强",
+    "ex": "This bolsters the need for a more rigorous inter-modal interaction scheme."
+   },
+   {
+    "w": "rigorous",
+    "ipa": "/ˈrɪɡərəs/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "严格的，严谨的",
+    "ex": "There is a need for a more rigorous inter-modal interaction scheme."
+   },
+   {
+    "w": "inter-modal",
+    "ipa": "/ˌɪntərˈmɑːdl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "跨模态的",
+    "ex": "There is a need for a more rigorous inter-modal interaction scheme."
+   },
+   {
+    "w": "unimodal",
+    "ipa": "/ˌjuːnɪˈmɑːdl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "单模态的",
+    "ex": "Simple fusion of outputs from unimodal embedders may not be sufficient."
+   },
+   {
+    "w": "fusion",
+    "ipa": "/ˈfjuːʒn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "融合",
+    "ex": "Simple fusion of outputs even from high-performing unimodal embedders may not be sufficient."
+   },
+   {
+    "w": "sufficient",
+    "ipa": "/səˈfɪʃnt/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "足够的",
+    "ex": "Simple fusion may not be sufficient to learn complex vision-and-language tasks."
+   },
+   {
+    "w": "modality",
+    "ipa": "/məˈdæləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "模态",
+    "ex": "ViLT is the first model of type Figure 2d where embedding layers are shallow."
+   },
+   {
+    "w": "allocate",
+    "ipa": "/ˈæləkeɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "分配",
+    "ex": "This architecture concentrates most of the computation on modeling modality interactions."
+   },
+   {
+    "w": "seminal",
+    "ipa": "ˈsemɪnl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "开创性的",
+    "ex": "Since the seminal work of Krizhevsky et al. (2012)"
+   },
+   {
+    "w": "essential",
+    "ipa": "ɪˈsenʃl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "必不可少的",
+    "ex": "deep convolutional networks have been regarded as essential for this visual embedding step"
+   },
+   {
+    "w": "annotated",
+    "ipa": "ˈænəteɪtɪd",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "带标注的",
+    "ex": "an object detector pre-trained on the Visual Genome dataset annotated with 1,600 object classes"
+   },
+   {
+    "w": "shortcoming",
+    "ipa": "ˈʃɔːrtkʌmɪŋ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "缺点，不足",
+    "ex": "The shortcomings of having a heavy visual embedder"
+   },
+   {
+    "w": "burden",
+    "ipa": "ˈbɜːrdn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "负担",
+    "ex": "region features are commonly cached in advance at training time to ease the burden of feature extraction"
+   },
+   {
+    "w": "evident",
+    "ipa": "ˈevɪdənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "明显的",
+    "ex": "the limitations are still evident in real-world applications"
+   },
+   {
+    "w": "undergo",
+    "ipa": "ˌʌndərˈɡoʊ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "经历",
+    "ex": "the queries in the wild have to undergo a slow extraction process"
+   },
+   {
+    "w": "lightweight",
+    "ipa": "ˈlaɪtweɪt",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "轻量的",
+    "ex": "we shift our attention to the lightweight and fast embedding of visual inputs",
+    "ov": "t"
+   },
+   {
+    "w": "presume",
+    "ipa": "prɪˈzuːm",
+    "pos": "v.",
+    "lv": "6",
+    "m": "推测，假定",
+    "ex": "We presume that the transformer module can also manage to process visual features"
+   },
+   {
+    "w": "dedicate",
+    "ipa": "ˈdedɪkeɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "专用于",
+    "ex": "Removing deep embedders solely dedicated to visual inputs"
+   },
+   {
+    "w": "competent",
+    "ipa": "ˈkɑːmpɪtənt",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "胜任的，达标的",
+    "ex": "we achieve competent performance on vision-and-language tasks"
+   },
+   {
+    "w": "unprecedented",
+    "ipa": "ʌnˈpresɪdentɪd",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "前所未有的",
+    "ex": "image augmentations that were unprecedented in VLP training schemes"
+   }
+  ]
+ },
+ {
+  "sec": "2.1 Related Work: VLP Architecture · 相关工作：VLP 架构",
+  "short": "VLP Arch",
+  "icon": "2.1",
+  "words": [
+   {
+    "w": "contemporary",
+    "ipa": "/kənˈtempəreri/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "当代的，同时代的",
+    "ex": "At the very core of contemporary VLP models lie transformers."
+   },
+   {
+    "w": "contextualize",
+    "ipa": "/kənˈtɛkstʃuəlaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "使语境化",
+    "ex": "The output is a contextualized feature sequence."
+   },
+   {
+    "w": "concatenation",
+    "ipa": "/kənˌtænjəˈeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "拼接，连接",
+    "ex": "Single-stream approaches operate on a concatenation of image and text inputs.",
+    "ov": "g"
+   },
+   {
+    "w": "dual-stream",
+    "ipa": "/ˌduːəlˈstriːm/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "双流的",
+    "ex": "Dual-stream approaches do not concatenate the two modalities at the input level."
+   },
+   {
+    "w": "tokenize",
+    "ipa": "/ˈtoʊkənaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "分词，标记化",
+    "ex": "They share the same textual embedder and tokenizer from pre-trained BERT."
+   },
+   {
+    "w": "convolution",
+    "ipa": "/kənˈvɑːlʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "卷积",
+    "ex": "Convolutional neural networks are still involved in extracting image features."
+   },
+   {
+    "w": "architect",
+    "ipa": "/ˈɑːrkɪtekt/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "架构师",
+    "ex": "The architecture concentrates most computation on modeling modality interactions."
+   },
+   {
+    "w": "intra-modal",
+    "ipa": "/ˌɪntrəˈmɑːdl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "模态内的",
+    "ex": "They model inter-modal and optionally intra-modal interactions throughout layers."
+   },
+   {
+    "w": "projection",
+    "ipa": "/prəˈdʒɛkʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "投影",
+    "ex": "Patch projection drastically simplifies the visual embedding step."
+   },
+   {
+    "w": "classify",
+    "ipa": "/ˈklæsɪfaɪ/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "分类",
+    "ex": "Bugliarello et al. classifies interaction schema into two categories."
+   },
+   {
+    "w": "collectively",
+    "ipa": "/kəˈlɛktɪvli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "集体地，共同地",
+    "ex": "Layers collectively operate on a concatenation of image and text inputs."
+   },
+   {
+    "w": "taxonomy",
+    "ipa": "tækˈsɑːnəmi",
+    "pos": "n.",
+    "lv": "p",
+    "m": "分类体系",
+    "ex": "We propose a taxonomy of vision-and-language models",
+    "ov": "g"
+   },
+   {
+    "w": "even",
+    "ipa": "ˈiːvn",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "均等的（even level 同等水平）",
+    "ex": "whether the two modalities have an even level of expressiveness"
+   },
+   {
+    "w": "archetype",
+    "ipa": "ˈɑːrkitaɪp",
+    "pos": "n.",
+    "lv": "p",
+    "m": "原型，典型类型",
+    "ex": "A combination of these points leads to four archetypes"
+   },
+   {
+    "w": "similarity",
+    "ipa": "ˌsɪməˈlærəti",
+    "pos": "n.",
+    "lv": "6",
+    "m": "相似度",
+    "ex": "they represent the similarity of the embedded features from the two modalities"
+   },
+   {
+    "w": "remarkable",
+    "ipa": "rɪˈmɑːrkəbl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "非凡的",
+    "ex": "Despite CLIP's remarkable zero-shot performance on image-to-text retrieval"
+   },
+   {
+    "w": "incapable",
+    "ipa": "ɪnˈkeɪpəbl",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "无能力的",
+    "ex": "we conclude that the representations are incapable of learning this task"
+   },
+   {
+    "w": "speculation",
+    "ipa": "ˌspekjuˈleɪʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "推测",
+    "ex": "This result backs up our speculation",
+    "ov": "g"
+   },
+   {
+    "w": "concentrate",
+    "ipa": "ˈkɑːnsntreɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "集中",
+    "ex": "This architecture thereby concentrates most of the computation on modeling modality interactions"
+   }
+  ]
+ },
+ {
+  "sec": "2.3 Visual Embedding Schema · 视觉嵌入方案",
+  "short": "Vis Embed",
+  "icon": "2.3",
+  "words": [
+   {
+    "w": "feature grid",
+    "ipa": "/ˈfiːtʃər ɡrɪd/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "特征网格",
+    "ex": "The output feature grid of convolutional neural networks can be used as visual features."
+   },
+   {
+    "w": "proposal",
+    "ipa": "/prəˈpoʊzl/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "提议，建议；区域提议",
+    "ex": "X-LXMERT revisited grid features by fixing the region proposals to grids."
+   },
+   {
+    "w": "backbone",
+    "ipa": "/ˈbækboʊn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "骨干网络，主干",
+    "ex": "The backbone of Pixel-BERT is tuned during vision-and-language pre-training."
+   },
+   {
+    "w": "overhead",
+    "ipa": "/ˈoʊvərhɛd/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "开销，额外费用",
+    "ex": "To minimize overhead, we adopt the simplest visual embedding scheme."
+   },
+   {
+    "w": "ignorable",
+    "ipa": "/ɪɡˈnɔːrəbl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可忽略的",
+    "ex": "Its running time is also ignorable as shown in Figure 1."
+   },
+   {
+    "w": "contrast",
+    "ipa": "/ˈkɑːntræst/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "对比，对照",
+    "ex": "This is in sharp contrast to complex ResNe(X)t backbones."
+   },
+   {
+    "w": "detector",
+    "ipa": "/dɪˈtɛktər/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "检测器",
+    "ex": "Frozen detectors in region-feature-based VLP models."
+   },
+   {
+    "w": "inference",
+    "ipa": "/ˈɪnfərəns/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推理",
+    "ex": "The running time is ignorable during inference."
+   },
+   {
+    "w": "caching",
+    "ipa": "/ˈkæʃɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "缓存",
+    "ex": "Their caching of features excluded further tuning of the backbone."
+   },
+   {
+    "w": "tuning",
+    "ipa": "/ˈtuːnɪŋ/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "调优，微调",
+    "ex": "The backbone of Pixel-BERT is tuned during vision-and-language pre-training."
+   },
+   {
+    "w": "dominantly",
+    "ipa": "ˈdɑːmɪnəntli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "占主导地",
+    "ex": "VLP models dominantly utilize region features"
+   },
+   {
+    "w": "lenient",
+    "ipa": "ˈliːniənt",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "宽松的",
+    "ex": "Previous works were lenient with controlling these factors"
+   },
+   {
+    "w": "substantial",
+    "ipa": "səbˈstænʃl",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "大量的",
+    "ex": "they pose a substantial runtime burden"
+   },
+   {
+    "w": "severely",
+    "ipa": "sɪˈvɪrli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "严重地",
+    "ex": "mainly to avoid using severely slow region selection operations"
+   },
+   {
+    "w": "suppression",
+    "ipa": "səˈpreʃn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "抑制（NMS 非极大值抑制）",
+    "ex": "Non-maximum suppression (NMS) then reduces the number of RoIs"
+   },
+   {
+    "w": "freezing",
+    "ipa": "ˈfriːzɪŋ",
+    "pos": "n.",
+    "lv": "4",
+    "m": "冻结（参数）",
+    "ex": "Freezing the visual backbone and caching the region features in advance"
+   }
+  ]
+ },
+ {
+  "sec": "3.1 Model Overview · 模型概述",
+  "short": "Model",
+  "icon": "3.1",
+  "words": [
+   {
+    "w": "succinct",
+    "ipa": "/səŋkˈsɪŋkt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "简洁的，简明的",
+    "ex": "ViLT has a succinct architecture as a VLP model.",
+    "ov": "g"
+   },
+   {
+    "w": "flatten",
+    "ipa": "/ˈflætn/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "展平，压平",
+    "ex": "The input image is sliced into patches and flattened."
+   },
+   {
+    "w": "resolution",
+    "ipa": "/ˌrɛzəˈluːʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分辨率；解决",
+    "ex": "The patch resolution and number of patches are parameters."
+   },
+   {
+    "w": "concatenate",
+    "ipa": "/kənˈtænjəneɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "连接，拼接",
+    "ex": "Text and image embeddings are concatenated into a combined sequence.",
+    "ov": "g"
+   },
+   {
+    "w": "iteratively",
+    "ipa": "/ˈɪtəreɪtɪvli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "迭代地",
+    "ex": "The contextualized vector is iteratively updated through D-depth transformer layers."
+   },
+   {
+    "w": "contextualized",
+    "ipa": "/kənˈtɛkstʃuəlaɪzd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "上下文化的",
+    "ex": "The final contextualized sequence is obtained after all layers."
+   },
+   {
+    "w": "pooler",
+    "ipa": "/ˈpuːlər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "池化器",
+    "ex": "The pooler applies linear projection and hyperbolic tangent."
+   },
+   {
+    "w": "initialize",
+    "ipa": "/ɪˈnɪʃəlaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "初始化",
+    "ex": "We initialize the interaction transformer weights from pre-trained ViT."
+   },
+   {
+    "w": "modal-type",
+    "ipa": "/ˌmɑːdl taɪp/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "模态类型",
+    "ex": "The embeddings are summed with their corresponding modal-type embedding vectors."
+   },
+   {
+    "w": "head",
+    "ipa": "/hɛd/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "头部，（模型）头",
+    "ex": "A single linear layer ITM head projects the pooled output."
+   },
+   {
+    "w": "deviate",
+    "ipa": "ˈdiːvieɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "偏离（常规）",
+    "ex": "We deviate from the literature that we initialize the interaction transformer weights from pre-trained ViT"
+   },
+   {
+    "w": "exploit",
+    "ipa": "ɪkˈsplɔɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "利用",
+    "ex": "Such initialization exploits the power of the interaction layers"
+   },
+   {
+    "w": "slice",
+    "ipa": "slaɪs",
+    "pos": "v.",
+    "lv": "4",
+    "m": "切分",
+    "ex": "The input image is sliced into patches"
+   },
+   {
+    "w": "corresponding",
+    "ipa": "ˌkɔːrəˈspɑːndɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "对应的",
+    "ex": "The text and image embeddings are summed with their corresponding modal-type embedding vectors"
+   },
+   {
+    "w": "hyperbolic",
+    "ipa": "ˌhaɪpərˈbɑːlɪk",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "双曲的（hyperbolic tangent 双曲正切）",
+    "ex": "applying linear projection and hyperbolic tangent upon the ﬁrst index",
+    "ov": "g"
+   }
+  ]
+ },
+ {
+  "sec": "3.2 Pre-training Objectives · 预训练目标",
+  "short": "Objectives",
+  "icon": "3.2",
+  "words": [
+   {
+    "w": "objective",
+    "ipa": "/əbˈdʒɛktɪv/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "目标，目的",
+    "ex": "We train ViLT with two objectives commonly used to train VLP models."
+   },
+   {
+    "w": "log-likelihood",
+    "ipa": "/lɔɡ laɪkliˈhud/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "对数似然",
+    "ex": "We compute negative log-likelihood loss as our ITM loss."
+   },
+   {
+    "w": "masked",
+    "ipa": "/mæskt/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "被掩码的",
+    "ex": "The masked language modeling objective predicts ground truth labels of masked text tokens."
+   },
+   {
+    "w": "heuristic",
+    "ipa": "/hjuːˈrɪstɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "启发式的",
+    "ex": "Following the heuristics of Devlin et al. (2019), we randomly mask tokens."
+   },
+   {
+    "w": "proximal",
+    "ipa": "/ˈprɑːksɪməl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "近似的， proximal",
+    "ex": "We use the inexact proximal point method for optimal transports."
+   },
+   {
+    "w": "optimal",
+    "ipa": "/ˈɑːptɪml/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "最优的",
+    "ex": "We use the inexact proximal point method for optimal transports."
+   },
+   {
+    "w": "transport",
+    "ipa": "/ˈtrænspɔːrt/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "传输，运输",
+    "ex": "The approximate Wasserstein distance is added to the ITM loss."
+   },
+   {
+    "w": "hyperparameter",
+    "ipa": "/ˌhaɪpərpəˈræmɪtər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "超参数",
+    "ex": "We set the hyperparameters of IPOT following Chen et al."
+   },
+   {
+    "w": "vocabulary",
+    "ipa": "/voʊˈkæbjəleri/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "词汇，词表",
+    "ex": "The MLM head outputs logits over vocabulary."
+   },
+   {
+    "w": "consecutive",
+    "ipa": "/kənˈsɛkjətɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "连续的",
+    "ex": "Whole word masking masks all consecutive subword tokens that compose a whole word."
+   },
+   {
+    "w": "subword",
+    "ipa": "/ˈsʌbwɜːrd/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "子词",
+    "ex": "Whole word masking masks all consecutive subword tokens."
+   },
+   {
+    "w": "likelihood",
+    "ipa": "ˈlaɪklihʊd",
+    "pos": "n.",
+    "lv": "6",
+    "m": "似然",
+    "ex": "we compute negative log-likelihood loss as our ITM loss"
+   },
+   {
+    "w": "subset",
+    "ipa": "ˈsʌbset",
+    "pos": "n.",
+    "lv": "p",
+    "m": "子集",
+    "ex": "computes the alignment score between two subsets of zD"
+   },
+   {
+    "w": "approximate",
+    "ipa": "əˈprɑːksɪmət",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "近似的",
+    "ex": "add the approximate wasserstein distance multiplied by 0.1 to the ITM loss"
+   },
+   {
+    "w": "solely",
+    "ipa": "ˈsoʊlli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "仅仅，完全地",
+    "ex": "the model may solely rely on the nearby two language tokens"
+   },
+   {
+    "w": "beneﬁcial",
+    "ipa": "ˌbenɪˈfɪʃl",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "有益的",
+    "ex": "found them beneﬁcial for ViT training"
+   },
+   {
+    "w": "restrain",
+    "ipa": "rɪˈstreɪn",
+    "pos": "v.",
+    "lv": "4",
+    "m": "限制，约束",
+    "ex": "Caching visual features restrains region-feature-based VLP models from using image augmentation"
+   },
+   {
+    "w": "applicability",
+    "ipa": "əˌplɪkəˈbɪləti",
+    "pos": "n.",
+    "lv": "p",
+    "m": "适用性",
+    "ex": "Notwithstanding its applicability, neither did Pixel-BERT study its effects",
+    "ov": "g"
+   },
+   {
+    "w": "inversion",
+    "ipa": "ɪnˈvɜːrʒn",
+    "pos": "n.",
+    "lv": "p",
+    "m": "反转（颜色）",
+    "ex": "we apply all the original policies except two: color inversion",
+    "ov": "t"
+   },
+   {
+    "w": "disperse",
+    "ipa": "dɪˈspɜːrs",
+    "pos": "v.",
+    "lv": "6",
+    "m": "分散",
+    "ex": "small but important objects dispersed throughout the whole image"
+   }
+  ]
+ },
+ {
+  "sec": "4.1 Pre-training Dataset · 预训练数据集",
+  "short": "Dataset",
+  "icon": "4.1",
+  "words": [
+   {
+    "w": "dataset",
+    "ipa": "/ˈdeɪtəset/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "数据集",
+    "ex": "Table 1 reports the pre-training dataset statistics."
+   },
+   {
+    "w": "statistic",
+    "ipa": "/stəˈtɪstɪk/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "统计数据",
+    "ex": "Table 1 reports the dataset statistics."
+   },
+   {
+    "w": "accessible",
+    "ipa": "/əkˈsɛsəbl/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "可访问的",
+    "ex": "GCC and SBU provide only image urls which were still accessible."
+   },
+   {
+    "w": "augmentation",
+    "ipa": "/ˌɔːɡmənˈteɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "增强",
+    "ex": "RandAugment is applied during fine-tuning.",
+    "ov": "g"
+   },
+   {
+    "w": "tokenizer",
+    "ipa": "/ˈtoʊkənaɪzər/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "分词器",
+    "ex": "We use the bert-base-uncased tokenizer to tokenize text inputs."
+   },
+   {
+    "w": "iterate",
+    "ipa": "/ˈɪtəreɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "迭代",
+    "ex": "We further increase training iterations to 200K."
+   },
+   {
+    "w": "decay",
+    "ipa": "/dɪˈkeɪ/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "衰减，衰退",
+    "ex": "The learning rate was decayed linearly to zero for the rest of the training."
+   },
+   {
+    "w": "aspect ratio",
+    "ipa": "/ˈæspɛkt ˈreɪʃioʊ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "纵横比，宽高比",
+    "ex": "We resize while preserving the aspect ratio."
+   },
+   {
+    "w": "interpolate",
+    "ipa": "/ɪnˈtɜːrpəleɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "插值",
+    "ex": "We interpolate V_pos of ViT-B/32 to fit the size of each image.",
+    "ov": "g"
+   },
+   {
+    "w": "pad",
+    "ipa": "/pæd/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "填充",
+    "ex": "We pad the patches for batch training."
+   }
+  ]
+ },
+ {
+  "sec": "4.3 VQAv2 · 视觉问答",
+  "short": "VQA",
+  "icon": "4.3",
+  "words": [
+   {
+    "w": "classification",
+    "ipa": "/ˌklæsɪfɪˈkeɪʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "分类",
+    "ex": "We use VQAv2 and NLVR2 for classification tasks."
+   },
+   {
+    "w": "retrieval",
+    "ipa": "/rɪˈtriːvl/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "检索",
+    "ex": "We use MSCOCO and Flickr30K for retrieval tasks."
+   },
+   {
+    "w": "accuracy",
+    "ipa": "/ˈækjərəsi/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "准确率",
+    "ex": "We report the mean scores for classification tasks."
+   },
+   {
+    "w": "deviation",
+    "ipa": "/ˌdiːviˈeɪʃn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "偏差，标准差",
+    "ex": "We report the standard deviation in Table 5."
+   },
+   {
+    "w": "ablation",
+    "ipa": "/æˈbleɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "消融",
+    "ex": "We report the standard deviation along with ablation studies."
+   },
+   {
+    "w": "capitalize",
+    "ipa": "/ˈkæpɪtəlaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "利用， capitalize",
+    "ex": "We capitalize on the power of the interaction layers."
+   },
+   {
+    "w": "softmax",
+    "ipa": "/ˈsɔːftmæks/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "softmax 函数",
+    "ex": "The ITM head projects the pooled output to logits."
+   },
+   {
+    "w": "zero-shot",
+    "ipa": "/ˌzɪroʊˈʃɑːt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "零样本的",
+    "ex": "We evaluate on zero-shot retrieval tasks."
+   },
+   {
+    "w": "complement",
+    "ipa": "/ˈkɑːmplɪmənt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "补充，补足",
+    "ex": "The visual and textual features complement each other."
+   },
+   {
+    "w": "phenomenon",
+    "ipa": "/fəˈnɑːmɪnɑːn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "现象",
+    "ex": "This phenomenon has been observed across multiple benchmarks."
+   }
+  ]
+ },
+ {
+  "sec": "4.4 NLVR2 · 自然语言视觉推理",
+  "short": "NLVR2",
+  "icon": "4.4",
+  "words": [
+   {
+    "w": "triplet",
+    "ipa": "/ˈtrɪplət/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "三元组",
+    "ex": "The NLVR2 task is given triplets of two images and a question."
+   },
+   {
+    "w": "reformulate",
+    "ipa": "/ˌriːˈfɔːrmjəleɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "重新表述",
+    "ex": "The triplet input is reformulated into two pairs."
+   },
+   {
+    "w": "concatenate",
+    "ipa": "/kənˈtænjəneɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "拼接",
+    "ex": "The head takes the concatenation of two pooled representations.",
+    "ov": "g"
+   },
+   {
+    "w": "benchmark",
+    "ipa": "/ˈbɛntʃmɑːrk/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "基准测试",
+    "ex": "ViLT-B/32 maintains competitive performance on benchmarks."
+   },
+   {
+    "w": "hypothesize",
+    "ipa": "/haɪˈpɑːsəsaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "假设",
+    "ex": "We hypothesize that whole word masking is effective."
+   },
+   {
+    "w": "feasible",
+    "ipa": "/ˈfiːzəbl/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "可行的",
+    "ex": "This approach is feasible for the NLVR2 task."
+   },
+   {
+    "w": "reformulation",
+    "ipa": "/ˌriːfɔːrmjəˈleɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "重新表述",
+    "ex": "The reformulation of the triplet input improves performance."
+   },
+   {
+    "w": "binary",
+    "ipa": "/ˈbaɪnəri/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "二元的，二进制的",
+    "ex": "NLVR2 is a binary classification task."
+   },
+   {
+    "w": "naive",
+    "ipa": "/nɑːˈiːv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "天真的，朴素的",
+    "ex": "A naive variant of MRM on image patches fails."
+   },
+   {
+    "w": "variant",
+    "ipa": "/ˈvɛriənt/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "变体",
+    "ex": "A naive variant of MRM on image patches fails."
+   }
+  ]
+ },
+ {
+  "sec": "4.5–4.6 Retrieval & Runtime · 检索与运行时间",
+  "short": "Retrieval",
+  "icon": "4.5",
+  "words": [
+   {
+    "w": "latency",
+    "ipa": "/ˈlætənsi/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "延迟",
+    "ex": "ViLT-B/32 has significantly lower inference latency.",
+    "ov": "g"
+   },
+   {
+    "w": "FLOPs",
+    "ipa": "/flɑːps/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "浮点运算次数",
+    "ex": "Table 6 compares VLP models in terms of parameter size, FLOPs, and inference latency."
+   },
+   {
+    "w": "scalability",
+    "ipa": "/ˌskeɪləˈbɪləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可扩展性",
+    "ex": "Scalability is discussed as a factor that may add to the ViLT family."
+   },
+   {
+    "w": "superscript",
+    "ipa": "/ˈsuːpərskrɪpt/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "上标",
+    "ex": "We denote the number of input tokens as superscripts."
+   },
+   {
+    "w": "arbitrarily",
+    "ipa": "/ˌɑːrbɪˈtrɛrəli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "任意地",
+    "ex": "We arbitrarily use length 40 for unreported text length."
+   },
+   {
+    "w": "per-class",
+    "ipa": "/pər klæs/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "每类的",
+    "ex": "Per-class NMS for 1,600 classes amounts to more than 500 ms."
+   },
+   {
+    "w": "outperform",
+    "ipa": "/ˌaʊtpərˈfɔːrm/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "优于，胜过",
+    "ex": "ViLT-B/32 outperforms many competitors."
+   },
+   {
+    "w": "converge",
+    "ipa": "/kənˈvɜːrdʒ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "收敛",
+    "ex": "More IPOT iterations help the visualization heatmap converge."
+   },
+   {
+    "w": "heatmap",
+    "ipa": "/ˈhiːtmæp/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "热力图",
+    "ex": "The transportation plan of WPA expresses a heatmap."
+   },
+   {
+    "w": "clamp",
+    "ipa": "/klæmp/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "钳制，夹紧",
+    "ex": "We clamp the values to [1.0, 3.0]."
+   }
+  ]
+ },
+ {
+  "sec": "4.7 Visualization · 可视化",
+  "short": "Visualization",
+  "icon": "4.7",
+  "words": [
+   {
+    "w": "visualization",
+    "ipa": "/ˌvɪʒuələˈzeɪʃn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "可视化",
+    "ex": "Figure 4 is an example of a cross-modal alignment visualization."
+   },
+   {
+    "w": "alignment",
+    "ipa": "/əˈlaɪnmənt/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "对齐",
+    "ex": "Figure 4 is an example of a cross-modal alignment."
+   },
+   {
+    "w": "opacity",
+    "ipa": "/oʊˈpæsəti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "不透明度",
+    "ex": "Its opacity indicates how much mass is transported.",
+    "ov": "g"
+   },
+   {
+    "w": "identifiable",
+    "ipa": "/aɪˈdɛntɪfaɪəbl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可识别的",
+    "ex": "1,000 iterations are sufficient to get a clearly identifiable heatmap."
+   },
+   {
+    "w": "z-normalize",
+    "ipa": "/ziː ˈnɔːrməlaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "Z 标准化",
+    "ex": "We z-normalize the plan for each token."
+   },
+   {
+    "w": "cross-modal",
+    "ipa": "/krɔːs ˈmɑːdl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "跨模态的",
+    "ex": "Figure 4 shows an example of a cross-modal alignment."
+   },
+   {
+    "w": "transportation",
+    "ipa": "/ˌtrænspɔːrˈteɪʃn/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "传输",
+    "ex": "The transportation plan of WPA expresses a heatmap."
+   },
+   {
+    "w": "converge",
+    "ipa": "/kənˈvɜːrdʒ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "收敛",
+    "ex": "More iterations help the visualization heatmap converge."
+   },
+   {
+    "w": "sufficient",
+    "ipa": "/səˈfɪʃnt/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "足够的",
+    "ex": "1,000 iterations are sufficient to get a clearly identifiable heatmap."
+   },
+   {
+    "w": "cluster",
+    "ipa": "/ˈklʌstər/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "簇，聚类",
+    "ex": "The visual vocabulary cluster was fixed during pre-training."
+   }
+  ]
+ },
+ {
+  "sec": "5. Conclusion & Future Work · 结论与未来工作",
+  "short": "Conclusion",
+  "icon": "5",
+  "words": [
+   {
+    "w": "monolithic",
+    "ipa": "/ˌmɑːnəˈlɪθɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "整体的，单一的",
+    "ex": "ViLT is a minimal VLP architecture that is monolithic.",
+    "ov": "g"
+   },
+   {
+    "w": "concept",
+    "ipa": "/ˈkɑːnsɛpt/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "概念",
+    "ex": "ViLT-B/32 is more of a proof of concept."
+   },
+   {
+    "w": "pave",
+    "ipa": "/peɪv/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "铺路",
+    "ex": "This observation paves the way for even better performing ViLT variants."
+   },
+   {
+    "w": "viable",
+    "ipa": "/ˈvaɪəbl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可行的",
+    "ex": "One-time clustering is not a viable option."
+   },
+   {
+    "w": "speculate",
+    "ipa": "/ˈspɛkjəleɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "推测，猜测",
+    "ex": "We speculate that the masked modeling objective helps."
+   },
+   {
+    "w": "alternating",
+    "ipa": "/ɔːlˈtɜːrneɪtɪŋ/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "交替的",
+    "ex": "Alternating clustering methods could be applied."
+   },
+   {
+    "w": "simultaneous",
+    "ipa": "/ˌsaɪmlˈteɪniəs/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "同时的",
+    "ex": "Simultaneous clustering methods could be applied."
+   },
+   {
+    "w": "unsupervised",
+    "ipa": "/ˌʌnsəˈpɜːrvɪzd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "无监督的",
+    "ex": "These methods are studied in visual unsupervised learning research."
+   },
+   {
+    "w": "equipped",
+    "ipa": "/ɪˈkwɪpt/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "配备的，装备的",
+    "ex": "ViLT is competent to competitors which are heavily equipped."
+   },
+   {
+    "w": "end-to-end",
+    "ipa": "/ˌɛnd tuː ɛnd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "端到端的",
+    "ex": "ViLT enables end-to-end training without heavy visual embedders."
+   },
+   {
+    "w": "scarcity",
+    "ipa": "/ˈskɛrsəti/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "稀缺，缺乏",
+    "ex": "Aligned vision-and-language datasets are yet scarce."
+   },
+   {
+    "w": "engage",
+    "ipa": "ɪnˈɡeɪdʒ",
+    "pos": "v.",
+    "lv": "4",
+    "m": "投入，参与",
+    "ex": "rather than engaging in an arms race that merely powers up unimodal embedders"
+   },
+   {
+    "w": "merely",
+    "ipa": "ˈmɪrli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "仅仅",
+    "ex": "an arms race that merely powers up unimodal embedders"
+   },
+   {
+    "w": "scarce",
+    "ipa": "skers",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "稀缺的",
+    "ex": "aligned vision-and-language datasets are yet scarce"
+   },
+   {
+    "w": "appropriate",
+    "ipa": "əˈproʊpriət",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "恰当的",
+    "ex": "scale well given an appropriate amount of data"
+   }
+  ]
+ },
+ {
+  "sec": "Appendix · 附录（综合）",
+  "short": "Appendix",
+  "icon": "A",
+  "words": [
+   {
+    "w": "normalize",
+    "ipa": "/ˈnɔːrməlaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "归一化，标准化",
+    "ex": "We z-normalize the plan for each token."
+   },
+   {
+    "w": "vanilla",
+    "ipa": "/vəˈnɪlə/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "普通的，基础的",
+    "ex": "The vanilla ViLT model achieves competitive results."
+   },
+   {
+    "w": "dropout",
+    "ipa": "/ˈdrɑːpɑːt/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "丢弃法",
+    "ex": "Dropout is applied during pre-training."
+   },
+   {
+    "w": "predecessor",
+    "ipa": "/ˈpriːdɪsɛsər/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "前任，前身",
+    "ex": "ViLT is tens of times faster than previous VLP models."
+   },
+   {
+    "w": "parametric",
+    "ipa": "/ˌpærəˈmɛtrɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "参数的",
+    "ex": "Parameter-efficient model is faster than competitors."
+   },
+   {
+    "w": "efficacy",
+    "ipa": "/ˈɛfɪkəsi/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "功效，效力",
+    "ex": "The efficacy of patch projection is demonstrated."
+   },
+   {
+    "w": "sparse",
+    "ipa": "/spɑːrs/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "稀疏的",
+    "ex": "The attention map shows sparse activation patterns."
+   },
+   {
+    "w": "dense",
+    "ipa": "/dɛns/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "密集的",
+    "ex": "Dense connections improve feature propagation."
+   },
+   {
+    "w": "propagation",
+    "ipa": "/ˌprɑːpəˈɡeɪʃn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "传播",
+    "ex": "Dense connections improve feature propagation."
+   },
+   {
+    "w": "ceiling",
+    "ipa": "/ˈsiːlɪŋ/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "天花板，上限",
+    "ex": "The performance reaches a ceiling on certain benchmarks."
+   }
+  ]
+ }
+]

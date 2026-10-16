@@ -1,0 +1,22 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"constraint","ipa":"kənˈstreɪnt","pos":"n.","lv":"k","ov":"t","m":"约束","ex":"very large models can be quite difﬁcult to train due to memory constraints"},
+ {"w":"intra-layer","ipa":"ˌɪntrə ˈleɪər","pos":"adj.","lv":"p","m":"层内的","ex":"a simple, efﬁcient intra-layer model parallel approach"},
+ {"w":"billions","ipa":"ˈbɪljənz","pos":"num.","lv":"4","m":"数十亿","ex":"enables training transformer models with billions of parameters"},
+ {"w":"compiler","ipa":"kəmˈpaɪlər","pos":"n.","lv":"6","m":"编译器","ex":"does not require a new compiler or library changes"},
+ {"w":"orthogonal","ipa":"ɔːrˈθɑːɡənl","pos":"adj.","lv":"p","m":"正交的，互不干扰的","ex":"is orthogonal and complimentary to pipeline model parallelism"},
+ {"w":"complimentary","ipa":"ˌkɑːmplɪˈmentri","pos":"adj.","lv":"6","m":"互补的","ex":"orthogonal and complimentary to pipeline model parallelism"},
+ {"w":"insertion","ipa":"ɪnˈsɜːrʃn","pos":"n.","lv":"6","m":"插入","ex":"implemented with the insertion of a few communication operations"},
+ {"w":"native","ipa":"ˈneɪtɪv","pos":"adj.","lv":"6","m":"原生的","ex":"communication operations in native PyTorch"},
+ {"w":"converge","ipa":"kənˈvɜːrdʒ","pos":"v.","lv":"6","m":"收敛","ex":"by converging transformer based models up to 8.3 billion parameters"},
+ {"w":"sustain","ipa":"səˈsteɪn","pos":"v.","lv":"6","m":"维持（算力）","ex":"We sustain 15.1 PetaFLOPs across the entire application"},
+ {"w":"scaling","ipa":"ˈskeɪlɪŋ","pos":"n.","lv":"6","m":"扩展（效率）","ex":"76% scaling efﬁciency when compared to a strong single GPU baseline"}
+]},
+{"sec":"1. Introduction · 引言","short":"Intro","icon":"1","words":[
+ {"w":"advancing","ipa":"ədˈvænsɪŋ","pos":"v.","lv":"4","m":"推进","ex":"Natural Language Processing is advancing quickly"},
+ {"w":"abundance","ipa":"əˈbʌndəns","pos":"n.","lv":"6","ov":"g","m":"充裕","ex":"The abundance of compute and data enables training larger models"},
+ {"w":"empirical","ipa":"ɪmˈpɪrɪkl","pos":"adj.","lv":"k","ov":"t","m":"实证的","ex":"Empirical evidence indicates that larger language models are dramatically more useful"},
+ {"w":"dramatically","ipa":"drəˈmætɪkli","pos":"adv.","lv":"6","m":"显著地","ex":"larger language models are dramatically more useful for NLP tasks"},
+ {"w":"inference","ipa":"ˈɪnfərəns","pos":"n.","lv":"k","m":"推断","ex":"natural language inference"}
+]}
+]

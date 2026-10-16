@@ -1,0 +1,27 @@
+[
+{"sec":"Abstract/Intro · 摘要与引言","short":"Intro","icon":"1","words":[
+ {"w":"facilitate","ipa":"fəˈsɪlɪteɪt","pos":"v.","lv":"6","ov":"t","m":"促进","ex":"understanding their structure can facilitate a mechanistic understanding of their function"},
+ {"w":"mechanistic","ipa":"ˌmekəˈnɪstɪk","pos":"adj.","lv":"p","m":"机理的","ex":"a mechanistic understanding of their function"},
+ {"w":"enormous","ipa":"ɪˈnɔːrməs","pos":"adj.","lv":"4","m":"巨大的","ex":"Through an enormous experimental effort"},
+ {"w":"unique","ipa":"juˈniːk","pos":"adj.","lv":"4","m":"独特的","ex":"around 100,000 unique proteins have been determined"},
+ {"w":"fraction","ipa":"ˈfrækʃn","pos":"n.","lv":"4","m":"一小部分","ex":"this represents a small fraction of the billions of known protein sequences"},
+ {"w":"coverage","ipa":"ˈkʌvərɪdʒ","pos":"n.","lv":"6","m":"覆盖度","ex":"Structural coverage is bottlenecked by the months to years of painstaking effort"},
+ {"w":"painstaking","ipa":"ˈpeɪnzteɪkɪŋ","pos":"adj.","lv":"p","ov":"g","m":"艰苦细致的","ex":"months to years of painstaking effort required"},
+ {"w":"bioinformatics","ipa":"ˌbaɪoʊˌɪnfərˈmætɪks","pos":"n.","lv":"p","m":"生物信息学","ex":"enable large-scale structural bioinformatics"},
+ {"w":"adopt","ipa":"əˈdɑːpt","pos":"v.","lv":"4","m":"采取（构象）","ex":"the three-dimensional structure that a protein will adopt"},
+ {"w":"solely","ipa":"ˈsoʊlli","pos":"adv.","lv":"6","m":"仅仅","ex":"based solely on its amino acid sequence"},
+ {"w":"atomic","ipa":"əˈtɑːmɪk","pos":"adj.","lv":"6","m":"原子级的","ex":"existing methods fall far short of atomic accuracy"},
+ {"w":"validate","ipa":"ˈvælɪdeɪt","pos":"v.","lv":"6","m":"验证","ex":"We validated an entirely redesigned version of our neural network-based model"},
+ {"w":"entirely","ipa":"ɪnˈtaɪərli","pos":"adv.","lv":"4","m":"完全地","ex":"an entirely redesigned version of our model"},
+ {"w":"demonstrate","ipa":"ˈdemənstreɪt","pos":"v.","lv":"4","m":"证明，展示","ex":"demonstrating accuracy competitive with experimental structures"},
+ {"w":"underpin","ipa":"ˌʌndərˈpɪn","pos":"v.","lv":"p","ov":"g","m":"支撑，构成基础","ex":"Underpinning the latest version of AlphaFold is a novel machine learning approach"},
+ {"w":"incorporate","ipa":"ɪnˈkɔːrpəreɪt","pos":"v.","lv":"6","ov":"t","m":"融合，纳入","ex":"incorporates physical and biological knowledge about protein structure"},
+ {"w":"alignment","ipa":"əˈlaɪnmənt","pos":"n.","lv":"6","m":"比对（multi-sequence alignment 多序列比对）","ex":"leveraging multi-sequence alignments"},
+ {"w":"complementary","ipa":"ˌkɑːmplɪˈmentri","pos":"adj.","lv":"6","ov":"t","m":"互补的","ex":"has proceeded along two complementary paths"},
+ {"w":"thermodynamic","ipa":"ˌθɜːrmoʊdaɪˈnæmɪk","pos":"adj.","lv":"p","m":"热力学的","ex":"into either thermodynamic or kinetic simulation of protein physics"},
+ {"w":"kinetic","ipa":"kɪˈnetɪk","pos":"adj.","lv":"p","m":"动力学的","ex":"thermodynamic or kinetic simulation of protein physics"},
+ {"w":"appealing","ipa":"əˈpiːlɪŋ","pos":"adj.","lv":"6","m":"吸引人的","ex":"Although theoretically very appealing, this approach has proved highly challenging"},
+ {"w":"intractability","ipa":"ˌɪntrækˈtəbɪləti","pos":"n.","lv":"p","ov":"g","m":"难以处理性","ex":"due to the computational intractability of molecular simulation"},
+ {"w":"stability","ipa":"stəˈbɪləti","pos":"n.","lv":"6","m":"稳定性","ex":"the context dependence of protein stability"}
+]}
+]

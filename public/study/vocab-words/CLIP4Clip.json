@@ -1,0 +1,19 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"retrieval","ipa":"rɪˈtriːvl","pos":"n.","lv":"k","ov":"t","m":"检索","ex":"Video-text retrieval plays an essential role in multi-modal research"},
+ {"w":"multi-modal","ipa":"ˈmʌlti ˈmoʊdl","pos":"adj.","lv":"p","m":"多模态的","ex":"Video-text retrieval plays an essential role in multi-modal research"},
+ {"w":"demonstrate","ipa":"ˈdemənstreɪt","pos":"v.","lv":"4","m":"证明，展示","ex":"has demonstrated the power of visual concepts learning from web collected image-text datasets"},
+ {"w":"transfer","ipa":"trænsˈfɜːr","pos":"v.","lv":"4","ov":"t","m":"迁移","ex":"transfer the knowledge of the CLIP model to video-language retrieval"},
+ {"w":"empirical","ipa":"ɪmˈpɪrɪkl","pos":"adj.","lv":"k","ov":"t","m":"经验的，实证的","ex":"Several questions are investigated via empirical studies"},
+ {"w":"investigate","ipa":"ɪnˈvestɪɡeɪt","pos":"v.","lv":"6","m":"研究，调查","ex":"Several questions are investigated via empirical studies"},
+ {"w":"mechanism","ipa":"ˈmekənɪzəm","pos":"n.","lv":"4","m":"机制","ex":"What is the practical mechanism to model temporal dependency between video frames?"},
+ {"w":"temporal","ipa":"ˈtempərəl","pos":"adj.","lv":"6","m":"时序的","ex":"temporal dependency between video frames"},
+ {"w":"dependency","ipa":"dɪˈpendənsi","pos":"n.","lv":"6","m":"依赖关系","ex":"model temporal dependency between video frames"},
+ {"w":"sensitivity","ipa":"ˌsensəˈtɪvəti","pos":"n.","lv":"6","m":"敏感性","ex":"The Hyper-parameters sensitivity of the model on video-text retrieval task"},
+ {"w":"extensive","ipa":"ɪkˈstensɪv","pos":"adj.","lv":"4","m":"大量的","ex":"Extensive experimental results present that the CLIP4Clip model can achieve SOTA results"},
+ {"w":"emerging","ipa":"ɪˈmɜːrdʒɪŋ","pos":"adj.","lv":"6","m":"新兴的","ex":"video-text retrieval is becoming an emerging requirement"},
+ {"w":"relevant","ipa":"ˈreləvənt","pos":"adj.","lv":"4","m":"相关的","ex":"an emerging requirement for people to ﬁnd relevant videos efﬁciently"},
+ {"w":"distinguish","ipa":"dɪˈstɪŋɡwɪʃ","pos":"v.","lv":"6","m":"区分","ex":"We can distinguish the previous works directly by their input"},
+ {"w":"fundamental","ipa":"ˌfʌndəˈmentl","pos":"adj.","lv":"4","m":"基础的","ex":"video-text retrieval is a fundamental research task for multi-modal visual and language understanding"}
+]}
+]

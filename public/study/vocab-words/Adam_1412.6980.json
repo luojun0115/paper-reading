@@ -1,0 +1,51 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"stochastic","ipa":"stəˈkæstɪk","pos":"adj.","lv":"p","m":"随机的","ex":"an algorithm for ﬁrst-order gradient-based optimization of stochastic objective functions"},
+ {"w":"objective","ipa":"əbˈdʒektɪv","pos":"n.","lv":"6","m":"目标（函数）","ex":"optimization of stochastic objective functions"},
+ {"w":"adaptive","ipa":"əˈdæptɪv","pos":"adj.","lv":"k","m":"自适应的","ex":"based on adaptive estimates of lower-order moments"},
+ {"w":"moment","ipa":"ˈmoʊmənt","pos":"n.","lv":"p","m":"矩（一阶/二阶矩）","ex":"adaptive estimates of lower-order moments"},
+ {"w":"straightforward","ipa":"ˌstreɪtˈfɔːrwərd","pos":"adj.","lv":"6","m":"简单直接的","ex":"The method is straightforward to implement"},
+ {"w":"computationally","ipa":"ˌkɑːmpjuˈteɪʃənəli","pos":"adv.","lv":"k","m":"计算上","ex":"is computationally efﬁcient"},
+ {"w":"invariant","ipa":"ɪnˈveriənt","pos":"adj.","lv":"p","ov":"g","m":"不变的（对…不敏感）","ex":"is invariant to diagonal rescaling of the gradients"},
+ {"w":"rescaling","ipa":"ˌriːˈskeɪlɪŋ","pos":"n.","lv":"p","m":"重新缩放","ex":"invariant to diagonal rescaling of the gradients"},
+ {"w":"intuitive","ipa":"ɪnˈtuːɪtɪv","pos":"adj.","lv":"6","m":"直观的","ex":"The hyper-parameters have intuitive interpretations"},
+ {"w":"convergence","ipa":"kənˈvɜːrdʒəns","pos":"n.","lv":"p","m":"收敛","ex":"we analyze the theoretical convergence properties of the algorithm"},
+ {"w":"regret","ipa":"rɪˈɡret","pos":"n.","lv":"p","ov":"g","m":"遗憾（regret bound 遗憾界）","ex":"provide a regret bound on the convergence rate"},
+ {"w":"comparable","ipa":"ˈkɑːmpərəbl","pos":"adj.","lv":"6","m":"可比的","ex":"comparable to the best known results under the online convex optimization framework"},
+ {"w":"convex","ipa":"ˈkɑːnvexs","pos":"adj.","lv":"p","m":"凸的","ex":"the online convex optimization framework"},
+ {"w":"variant","ipa":"ˈveriənt","pos":"n.","lv":"6","m":"变体","ex":"we discuss AdaMax, a variant of Adam based on the inﬁnity norm"},
+ {"w":"infinity","ipa":"ɪnˈfɪnəti","pos":"n.","lv":"6","m":"无穷（infinity norm 无穷范数）","ex":"a variant of Adam based on the inﬁnity norm"}
+]},
+{"sec":"1. Introduction · 引言","short":"Intro","icon":"1","words":[
+ {"w":"parameterized","ipa":"pəˈræmətaɪzd","pos":"adj.","lv":"p","m":"参数化的","ex":"the optimization of some scalar parameterized objective function"},
+ {"w":"differentiable","ipa":"ˌdɪfəˈrenʃəbl","pos":"adj.","lv":"p","m":"可微的","ex":"If the function is differentiable w.r.t. its parameters"},
+ {"w":"partial","ipa":"ˈpɑːrʃl","pos":"adj.","lv":"6","m":"偏的（partial derivatives 偏导数）","ex":"the computation of ﬁrst-order partial derivatives"},
+ {"w":"subsample","ipa":"ˈsʌbsɑːmpl","pos":"n.","lv":"p","m":"子采样","ex":"a sum of subfunctions evaluated at different subsamples of data"},
+ {"w":"ascent","ipa":"əˈsent","pos":"n.","lv":"p","m":"上升（gradient ascent 梯度上升）","ex":"stochastic gradient descent (SGD) or ascent"},
+ {"w":"regularization","ipa":"ˌreɡjələrəˈzeɪʃn","pos":"n.","lv":"k","m":"正则化","ex":"sources of noise than data subsampling, such as dropout regularization"},
+ {"w":"ill-suited","ipa":"ˌɪl ˈsuːtɪd","pos":"adj.","lv":"p","m":"不适合的","ex":"higher-order optimization methods are ill-suited"},
+ {"w":"derive","ipa":"dɪˈraɪv","pos":"v.","lv":"6","ov":"t","m":"源自","ex":"the name Adam is derived from adaptive moment estimation"},
+ {"w":"estimation","ipa":"ˌestɪˈmeɪʃn","pos":"n.","lv":"6","m":"估计","ex":"the name Adam is derived from adaptive moment estimation"},
+ {"w":"sparse","ipa":"spɑːrs","pos":"adj.","lv":"6","m":"稀疏的","ex":"AdaGrad, which works well with sparse gradients"},
+ {"w":"stationary","ipa":"ˈsteɪʃəneri","pos":"adj.","lv":"p","m":"平稳的","ex":"it does not require a stationary objective"},
+ {"w":"magnitude","ipa":"ˈmæɡnɪtuːd","pos":"n.","lv":"6","ov":"t","m":"幅值，大小","ex":"the magnitudes of parameter updates are invariant to rescaling of the gradient"},
+ {"w":"annealing","ipa":"əˈniːlɪŋ","pos":"n.","lv":"p","m":"退火（逐步减小）","ex":"it naturally performs a form of step size annealing"}
+]},
+{"sec":"2. Algorithm · 算法流程","short":"Algorithm","icon":"2","words":[
+ {"w":"element-wise","ipa":"ˈelɪmənt waɪz","pos":"adj.","lv":"p","m":"逐元素的","ex":"All operations on vectors are element-wise"},
+ {"w":"decay","ipa":"dɪˈkeɪ","pos":"n.","lv":"6","m":"衰减","ex":"Exponential decay rates for the moment estimates"},
+ {"w":"biased","ipa":"ˈbaɪəst","pos":"adj.","lv":"6","m":"有偏的","ex":"Update biased ﬁrst moment estimate"},
+ {"w":"timestep","ipa":"ˈtaɪmstep","pos":"n.","lv":"p","m":"时间步","ex":"Get gradients w.r.t. stochastic objective at timestep t"},
+ {"w":"converge","ipa":"kənˈvɜːrdʒ","pos":"v.","lv":"6","m":"收敛","ex":"while θt not converged"}
+]},
+{"sec":"5. Related Work · 相关工作","short":"Related","icon":"5","words":[
+ {"w":"running average","ipa":"ˈrʌnɪŋ ˈævərɪdʒ","pos":"n.","lv":"p","m":"滑动平均","ex":"directly estimated using a running average of ﬁrst and second moment of the gradient"},
+ {"w":"bias-correction","ipa":"ˈbaɪəs kəˈrekʃn","pos":"n.","lv":"p","m":"偏差修正","ex":"does not hold when removing the bias-correction terms"},
+ {"w":"removal","ipa":"rɪˈmuːvl","pos":"n.","lv":"6","m":"移除","ex":"removal of the bias correction terms results in a version of RMSProp"},
+ {"w":"regardless","ipa":"rɪˈɡɑːrdləs","pos":"adv.","lv":"6","m":"不管，无论如何","ex":"performed equal or better than RMSProp, regardless of hyper-parameter setting"}
+]},
+{"sec":"7. Conclusion · 结论","short":"Conclusion","icon":"7","words":[
+ {"w":"derivation","ipa":"ˌderɪˈveɪʃn","pos":"n.","lv":"p","m":"推导","ex":"spotting an error in the original AdaMax derivation"},
+ {"w":"non-stationary","ipa":"nɑːn ˈsteɪʃəneri","pos":"adj.","lv":"p","m":"非平稳的","ex":"the ability of RMSProp to deal with non-stationary objectives"}
+]}
+]

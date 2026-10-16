@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaFold2 论文核心词汇</title>
+<style>
+:root{--c4:#3b82f6;--c6:#8b5cf6;--ckaon:#f59e0b;--cphd:#ef4444;--ct:#0d9488;--cg:#d946ef}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;transition:background .3s,color .3s}
+.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:4px;color:#fff;vertical-align:2px;margin-left:6px;font-style:normal;flex:none;white-space:nowrap}
+.tag.t4{background:var(--c4)}.tag.t6{background:var(--c6)}.tag.tk{background:var(--ckaon)}.tag.tp{background:var(--cphd)}
+.tag.tt{background:var(--ct)}.tag.tg{background:var(--cg)}
+.ipa{font-family:"SF Mono",Menlo,monospace;font-size:.82em;font-weight:400;opacity:.62;margin-left:6px}
+
+
+/* 论文原标题小字 */
+.ptitle{font-size:12.5px;letter-spacing:.3px;margin-top:6px}
+.ptitle i{font-family:Georgia,serif}
+.theme-mag .ptitle{color:#999;text-transform:none}
+.theme-dark .ptitle{color:#6e7681}
+.theme-paper .ptitle{color:#a09578}
+.theme-fresh .ptitle{color:#9ca3af}
+body.lv-mode .ptitle{color:#7d8590}
+
+/* 预览工具条 */
+.toolbar{position:fixed;right:16px;bottom:16px;z-index:99;display:flex;flex-direction:column;gap:8px;background:rgba(20,22,30,.88);padding:12px;border-radius:14px;backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.toolbar .row{display:flex;gap:6px}
+.toolbar button{border:none;cursor:pointer;padding:7px 12px;border-radius:8px;font-size:12.5px;background:#3a3f4d;color:#cbd2e0;transition:.15s}
+.toolbar button:hover{background:#4a5164}
+.toolbar button.on{background:#fff;color:#111;font-weight:600}
+.toolbar .lbl{font-size:10px;color:#8a93a6;text-align:left;margin:2px 0 -2px 2px}
+
+/* ---------- A 纸质阅读 ---------- */
+body.theme-paper{background:#faf6ee;color:#2c2a25}
+.theme-paper .wrap{max-width:880px;margin:0 auto;padding:56px 24px 140px}
+.theme-paper .hero h1{font-family:Georgia,"Songti SC",serif;font-size:34px}
+.theme-paper .hero p{color:#8a8272;margin:10px 0 42px;font-size:14px}
+.theme-paper .sec{margin-bottom:44px}
+.theme-paper .sec>h2{font-family:Georgia,"Songti SC",serif;font-size:20px;padding-left:14px;border-left:4px solid #b08d4f;margin-bottom:18px}
+.theme-paper .word{display:flex;gap:14px;padding:14px 16px;border-bottom:1px dashed #ddd2bc;align-items:baseline}
+.theme-paper .word:hover{background:#f3ecdc}
+.theme-paper .w{font-family:Georgia,serif;font-size:19px;font-weight:700;min-width:250px}
+.theme-paper .pos{color:#a09578;font-size:13px;margin-right:6px}
+.theme-paper .m{color:#4a463c;font-size:15px}
+.theme-paper .ex{margin-left:auto;max-width:270px;font-size:12.5px;color:#9a8f76;font-style:italic;text-align:right}
+.theme-paper .from{display:block;font-size:11px;color:#b3a888;font-style:normal;margin-top:3px}
+
+/* ---------- B 暗色科技 ---------- */
+body.theme-dark{background:#0d1117;color:#e6edf3}
+.theme-dark .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 140px}
+.theme-dark .hero h1{font-family:"SF Mono",Menlo,monospace;font-size:26px}
+.theme-dark .hero h1::before{content:"$ ";color:#3fb950}
+.theme-dark .hero p{color:#7d8590;margin:10px 0 40px;font-size:14px;font-family:Menlo,monospace}
+.theme-dark .sec>h2{font-size:15px;font-family:Menlo,monospace;color:#58a6ff;padding:10px 16px;background:#161b22;border:1px solid #30363d;border-radius:8px 8px 0 0;margin-bottom:-1px}
+.theme-dark .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px;background:#161b22;border:1px solid #30363d;border-radius:0 0 8px 8px}
+.theme-dark .card{background:#0d1117;border:1px solid #30363d;border-left:4px solid #58a6ff;border-radius:6px;padding:15px 17px;transition:.2s;cursor:pointer;font-family:Menlo,monospace}
+.theme-dark .card:hover{border-color:#58a6ff;box-shadow:0 0 14px rgba(88,166,255,.25);transform:translateY(-2px)}
+.theme-dark .w{font-family:Menlo,monospace;font-size:17px;color:#79c0ff}
+.theme-dark .ipa{color:#7ee787;opacity:.9}
+.theme-dark .m{color:#8b949e;font-size:13.5px;margin-top:7px;line-height:1.55}
+.theme-dark .ex{font-size:12px;color:#6e7681;margin-top:8px;border-top:1px solid #21262d;padding-top:8px;font-style:italic}
+.theme-dark .from{color:#484f58;font-size:11px;margin-top:4px}
+
+/* ---------- C 清新卡片 ---------- */
+body.theme-fresh{background:linear-gradient(160deg,#eef4ff 0%,#f6f0ff 50%,#fff7ec 100%);color:#1f2430}
+.theme-fresh .wrap{max-width:1020px;margin:0 auto;padding:56px 24px 140px}
+.theme-fresh .hero h1{font-size:32px;font-weight:800;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.theme-fresh .hero p{color:#6b7280;margin:10px 0 40px;font-size:14px}
+.theme-fresh .sec>h2{font-size:19px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.theme-fresh .sec>h2 .n{width:30px;height:30px;border-radius:10px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.theme-fresh .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.theme-fresh .card{background:rgba(255,255,255,.82);backdrop-filter:blur(6px);border-radius:18px;padding:17px 19px 15px;box-shadow:0 3px 14px rgba(80,80,140,.09);transition:.2s;cursor:pointer;border-top:5px solid #dbe3f5}
+.theme-fresh .card.lv4{border-top-color:#3b82f6}.theme-fresh .card.lv6{border-top-color:#8b5cf6}
+.theme-fresh .card.lvk{border-top-color:#f59e0b}.theme-fresh .card.lvp{border-top-color:#ef4444}
+.theme-fresh .card .w{display:inline-block;background:#f3f5fb;border-radius:8px;padding:2px 10px}
+.theme-fresh .card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(80,80,140,.16)}
+.theme-fresh .w{font-size:18px;font-weight:700}
+.theme-fresh .m{color:#4b5563;font-size:14px;margin-top:6px;line-height:1.55}
+.theme-fresh .ex{color:#9ca3af;font-size:12.5px;margin-top:8px}
+.theme-fresh .from{color:#b6bcc9;font-size:11.5px;margin-top:4px}
+
+/* ---------- D 杂志表格（宽松版） ---------- */
+body.theme-mag{background:#fff;color:#111}
+.theme-mag .wrap{max-width:960px;margin:0 auto;padding:52px 28px 140px}
+.theme-mag .hero{border-bottom:3px solid #111;padding-bottom:16px;margin-bottom:10px}
+.theme-mag .hero h1{font-family:"Songti SC",Georgia,serif;font-size:38px;font-weight:900}
+.theme-mag .hero p{color:#888;font-size:13.5px;margin-top:8px}
+.theme-mag .sec>h2{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#c2410c;margin:44px 0 8px;border-bottom:1px solid #e5e5e5;padding-bottom:8px}
+.theme-mag table{width:100%;border-collapse:collapse}
+.theme-mag td{padding:16px 12px;border-bottom:1px solid #f0f0f0;font-size:15.5px;line-height:1.65;vertical-align:top}
+.theme-mag tr:hover td{background:#fff8f3}
+.theme-mag .w{font-weight:700;font-size:17px;width:300px}
+.theme-mag .lv{width:60px}
+.theme-mag .lv b{font-size:11.5px;padding:3px 0;display:block;text-align:center;border-radius:3px;color:#fff;font-weight:600}
+.theme-mag .m{color:#3d3d3d}
+.theme-mag .ex{color:#9a9a9a;font-size:13px;font-style:italic}
+.theme-mag .from{display:block;color:#c9c9c9;font-size:11.5px;font-style:normal;margin-top:4px}
+
+/* ---------- 按级别：学习模式同款暗色大页 ---------- */
+body.lv-mode{background:#0b0e13 !important}
+body.lv-mode .hero h1,body.lv-mode .hero p{color:#e8ecf3}
+body.lv-mode .hero p{color:#7d8590}
+.lvslide{background:#101318;color:#e8ecf3;border-radius:20px;padding:26px 32px 22px;margin-bottom:26px;border-top:6px solid var(--c4)}
+.lvslide.l6{border-top-color:var(--c6)}.lvslide.lk{border-top-color:var(--ckaon)}.lvslide.lp{border-top-color:var(--cphd)}
+.lvslide.lt{border-top-color:var(--ct)}.lvslide.lg{border-top-color:var(--cg)}
+.lvslide .ltitle{font-size:26px;font-weight:800;font-family:Georgia,serif;display:flex;align-items:baseline;gap:14px}
+.lvslide .ltitle small{font-size:14px;color:#7d8590;font-family:Menlo,monospace;font-weight:400}
+.lvslide .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:20px 0 8px}
+.lvslide .lcard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:15px 17px;cursor:pointer;transition:.15s}
+.lvslide .lcard:hover{border-color:#79c0ff;transform:translateY(-2px)}
+.lvslide .lcard .w{font-size:19px;font-weight:700;font-family:Georgia,serif}
+.lvslide .lcard .ipa{font-family:Menlo,monospace;font-size:13px;color:#7ee787;margin-left:8px}
+.lvslide .lcard .m{color:#aeb6c4;font-size:14px;margin-top:7px;line-height:1.55}
+.lvslide .lcard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:7px}
+.lvslide .lcard .from{color:#4d5563;font-size:11px;margin-top:6px}
+
+
+/* ---------- 白天 / 夜晚 ---------- */
+body.lv-mode:not(.night){background:#eef1f6 !important}
+body.lv-mode:not(.night) .hero h1{color:#1f2430}
+body.lv-mode:not(.night) .hero p{color:#6b7280}
+body.lv-mode:not(.night) .lvslide{background:#fff;color:#1f2430;box-shadow:0 4px 18px rgba(80,80,140,.10)}
+body.lv-mode:not(.night) .lvslide .lcard{background:#f7f9fd;border-color:#e4e9f3}
+body.lv-mode:not(.night) .lvslide .lcard:hover{border-color:#3b82f6}
+body.lv-mode:not(.night) .lvslide .lcard .m{color:#4b5563}
+body.lv-mode:not(.night) .lvslide .lcard .ex{color:#98a0ae}
+body.lv-mode:not(.night) .lvslide .lcard .from{color:#b3bac6}
+body.lv-mode:not(.night) .lvslide .lcard .ipa{color:#0a7d33}
+body.night.theme-mag{background:#0d1117;color:#e6edf3}
+body.night.theme-mag .hero{border-bottom-color:#e6edf3}
+body.night.theme-mag .hero p{color:#8b949e}
+body.night.theme-mag .sec>h2{color:#fbbf24;border-bottom-color:#30363d}
+body.night.theme-mag td{border-bottom-color:#1c2230}
+body.night.theme-mag tr:hover td{background:#161b22}
+body.night.theme-mag .m{color:#c9d1d9}
+body.night.theme-mag .ex{color:#8b949e}
+body.night.theme-mag .from{color:#57606a}
+body.night.theme-mag .w{color:#e6edf3}
+body.night.theme-mag .ptitle{color:#8b949e}
+body.night.theme-mag .ipa{opacity:.55}
+#study.day{background:#f5f7fa;color:#1f2430}
+#study.day .scard{background:#fff;border-color:#e4e9f3}
+#study.day .scard .m{color:#4b5563}
+#study.day .scard .ex{color:#98a0ae}
+#study.day .scard:hover{border-color:#3b82f6}
+#study.day .sfoot{color:#98a0ae;border-top-color:#e6e9f0}
+#study.day .snav button,#study.day #sClose{background:#fff;color:#1f2430;border-color:#d7dce6}
+#study.day .sfoot kbd{background:#e8ecf3;color:#1f2430}
+
+/* ---------- 学习模式（PPT 按章节翻页） ---------- */
+#study{position:fixed;inset:0;z-index:200;display:none;background:#101318;color:#e8ecf3;flex-direction:column}
+#study.on{display:flex}
+#study .sprog{height:4px;background:#262c38}
+#study .sprog i{display:block;height:100%;background:linear-gradient(90deg,#58a6ff,#8b5cf6);width:0;transition:width .25s}
+#study .sbody{flex:1;overflow:auto;padding:20px 40px}
+#study .stitle{font-size:24px;font-weight:800;font-family:Georgia,serif;padding:6px 4px 2px}
+#study .stitle small{color:#5b6472;font-size:14px;font-family:Menlo,monospace;font-weight:400;margin-left:12px}
+#study .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;padding:16px 2px 30px}
+#study .scard{background:#171c26;border:1px solid #2b3342;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s}
+#study .scard:hover{border-color:#58a6ff;transform:translateY(-2px)}
+#study .scard .w{font-size:22px;font-weight:700;font-family:Georgia,serif}
+#study .scard .ipa{color:#7ee787;font-size:14px;margin-left:8px}
+#study .scard .m{color:#aeb6c4;font-size:14.5px;margin-top:8px;line-height:1.55}
+#study .scard .ex{color:#646d7d;font-size:12px;font-style:italic;margin-top:6px}
+#study .sfoot{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;color:#5b6472;font-size:13px;border-top:1px solid #1d232e}
+#study .sfoot kbd{background:#262c38;border-radius:5px;padding:2px 8px;margin:0 2px;font-family:Menlo,monospace;font-size:12px}
+#study .snav{display:flex;gap:10px;align-items:center}
+#study .snav button{border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;padding:8px 18px;cursor:pointer;font-size:14px}
+#study .snav button:hover{border-color:#58a6ff}
+#study .snav button:disabled{opacity:.35;cursor:default}
+</style>
+</head>
+<body class="theme-mag">
+<div class="wrap">
+  <div class="hero">
+    <h1>AlphaFold2 论文核心词汇</h1>
+    <div class="ptitle"><i>Highly accurate protein structure prediction with AlphaFold · Nature 2021</i></div>
+    <p>全篇 12 页 · 158词 · 四级/六级/考研/考博/雅思托福/GRE</p>
+  </div>
+  <div id="app"></div>
+</div>
+
+<div class="toolbar">
+  <div class="lbl">视图</div>
+  <div class="row">
+    <button id="v-sec" class="on">按章节</button>
+    <button id="v-lv">按级别综合</button>
+    <button id="v-study">▶ 学习模式</button>
+  </div>
+  <div class="lbl">白天 / 夜晚</div>
+  <div class="row">
+    <button id="dn-day">☀ 白天</button>
+    <button id="dn-night">🌙 夜晚</button>
+  </div>
+  <div class="lbl">朗读声音 · Polly</div>
+  <div class="row"><select id="voiceSel" style="flex:1;border:none;border-radius:8px;padding:7px 8px;background:#3a3f4d;color:#cbd2e0;font-size:12.5px;outline:none"></select><span id="srcState" style="align-self:center;font-size:10.5px;color:#8a93a6;min-width:34px;text-align:center"></span></div>
+</div>
+
+<div id="study">
+  <div class="sprog"><i id="sbar"></i></div>
+  <button id="sClose" title="退出学习模式 (Esc)" style="position:absolute;top:14px;right:18px;z-index:5;border:1px solid #333b4a;background:#1a2029;color:#cbd2e0;border-radius:8px;width:34px;height:34px;font-size:16px;cursor:pointer">✕</button>
+  <div class="sbody"><div id="sPage"></div></div>
+  <div class="sfoot">
+    <span><kbd>空格</kbd>/<kbd>→</kbd> 下一页 &nbsp; <kbd>←</kbd> 上一页 &nbsp; 点单词发音 &nbsp; <kbd>Esc</kbd> 退出</span>
+    <div class="snav">
+      <span id="sIdx">0 / 0</span>
+      <button id="sPrev">← 上一页</button>
+      <button id="sNext">下一页 →</button>
+      <button id="sExit" style="border-color:#5b3a3a">退出</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// lv: 4=四级 6=六级 k=考研 p=考博；ipa 为美式音标
+const DATA = [
+ {
+  "sec": "Abstract",
+  "short": "Abstract",
+  "icon": "Abs",
+  "words": [
+   {
+    "w": "mechanistic",
+    "ipa": "/ˌmekəˈnɪstɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "机械的；机制的",
+    "ex": "understanding their structure can facilitate a mechanistic understanding of their function"
+   },
+   {
+    "w": "painstaking",
+    "ipa": "/ˈpeɪnzteɪkɪŋ/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "煞费苦心的；精心的",
+    "ex": "months to years of painstaking effort required to determine a single protein structure"
+   },
+   {
+    "w": "bottleneck",
+    "ipa": "/ˈbɒtlnek/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "瓶颈；障碍",
+    "ex": "Structural coverage is bottlenecked by the months to years of painstaking effort"
+   },
+   {
+    "w": "homologous",
+    "ipa": "/həˈmɒləɡəs/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "同源的",
+    "ex": "especially when no homologous structure is available"
+   },
+   {
+    "w": "computational",
+    "ipa": "/ˌkɒmpjuˈteɪʃənl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "计算的",
+    "ex": "Accurate computational approaches are needed to address this gap"
+   },
+   {
+    "w": "leveraging",
+    "ipa": "/ˈlevərɪdʒɪŋ/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "利用；借助",
+    "ex": "leveraging multi-sequence alignments, into the design of the deep learning algorithm"
+   },
+   {
+    "w": "validated",
+    "ipa": "/ˈvælɪdeɪtɪd/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "验证；确认",
+    "ex": "We validated an entirely redesigned version of our neural network-based model"
+   },
+   {
+    "w": "outperforming",
+    "ipa": "/ˌaʊtpərˈfɔːrmɪŋ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "超越；胜过",
+    "ex": "greatly outperforming other methods"
+   },
+   {
+    "w": "competitive",
+    "ipa": "/kəmˈpetɪtɪv/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "有竞争力的",
+    "ex": "demonstrating accuracy competitive with experimental structures"
+   },
+   {
+    "w": "incorporating",
+    "ipa": "/ɪnˈkɔːrpəreɪtɪŋ/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "包含；整合",
+    "ex": "incorporates physical and biological knowledge about protein structure"
+   },
+   {
+    "w": "facilitate",
+    "ipa": "fəˈsɪlɪteɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "促进",
+    "ex": "understanding their structure can facilitate a mechanistic understanding of their function"
+   },
+   {
+    "w": "enormous",
+    "ipa": "ɪˈnɔːrməs",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "巨大的",
+    "ex": "Through an enormous experimental effort"
+   },
+   {
+    "w": "unique",
+    "ipa": "juˈniːk",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "独特的",
+    "ex": "around 100,000 unique proteins have been determined"
+   },
+   {
+    "w": "fraction",
+    "ipa": "ˈfrækʃn",
+    "pos": "n.",
+    "lv": "4",
+    "m": "一小部分",
+    "ex": "this represents a small fraction of the billions of known protein sequences"
+   },
+   {
+    "w": "coverage",
+    "ipa": "ˈkʌvərɪdʒ",
+    "pos": "n.",
+    "lv": "6",
+    "m": "覆盖度",
+    "ex": "Structural coverage is bottlenecked by the months to years of painstaking effort"
+   },
+   {
+    "w": "bioinformatics",
+    "ipa": "ˌbaɪoʊˌɪnfərˈmætɪks",
+    "pos": "n.",
+    "lv": "p",
+    "m": "生物信息学",
+    "ex": "enable large-scale structural bioinformatics"
+   },
+   {
+    "w": "adopt",
+    "ipa": "əˈdɑːpt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "采取（构象）",
+    "ex": "the three-dimensional structure that a protein will adopt"
+   },
+   {
+    "w": "solely",
+    "ipa": "ˈsoʊlli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "仅仅",
+    "ex": "based solely on its amino acid sequence"
+   },
+   {
+    "w": "atomic",
+    "ipa": "əˈtɑːmɪk",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "原子级的",
+    "ex": "existing methods fall far short of atomic accuracy"
+   },
+   {
+    "w": "validate",
+    "ipa": "ˈvælɪdeɪt",
+    "pos": "v.",
+    "lv": "p",
+    "m": "验证",
+    "ex": "We validated an entirely redesigned version of our neural network-based model"
+   },
+   {
+    "w": "entirely",
+    "ipa": "ɪnˈtaɪərli",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "完全地",
+    "ex": "an entirely redesigned version of our model"
+   },
+   {
+    "w": "demonstrate",
+    "ipa": "ˈdemənstreɪt",
+    "pos": "v.",
+    "lv": "4",
+    "m": "证明，展示",
+    "ex": "demonstrating accuracy competitive with experimental structures"
+   },
+   {
+    "w": "underpin",
+    "ipa": "ˌʌndərˈpɪn",
+    "pos": "v.",
+    "lv": "p",
+    "ov": "t",
+    "m": "支撑，构成基础",
+    "ex": "Underpinning the latest version of AlphaFold is a novel machine learning approach"
+   },
+   {
+    "w": "incorporate",
+    "ipa": "ɪnˈkɔːrpəreɪt",
+    "pos": "v.",
+    "lv": "6",
+    "m": "融合，纳入",
+    "ex": "incorporates physical and biological knowledge about protein structure"
+   },
+   {
+    "w": "alignment",
+    "ipa": "əˈlaɪnmənt",
+    "pos": "n.",
+    "lv": "6",
+    "m": "比对（multi-sequence alignment 多序列比对）",
+    "ex": "leveraging multi-sequence alignments"
+   },
+   {
+    "w": "appealing",
+    "ipa": "əˈpiːlɪŋ",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "吸引人的",
+    "ex": "Although theoretically very appealing, this approach has proved highly challenging"
+   }
+  ]
+ },
+ {
+  "sec": "1. Introduction · 引言",
+  "short": "Intro",
+  "icon": "1",
+  "words": [
+   {
+    "w": "thermodynamic",
+    "ipa": "/ˌθɜːrmoʊdaɪˈnæmɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "热力学的",
+    "ex": "thermodynamic or kinetic simulation of protein physics",
+    "ov": "t"
+   },
+   {
+    "w": "kinetic",
+    "ipa": "/kɪˈnetɪk/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "动力学的；运动的",
+    "ex": "thermodynamic or kinetic simulation of protein physics"
+   },
+   {
+    "w": "intractability",
+    "ipa": "/ɪnˌtræktəˈbɪləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "难处理；棘手",
+    "ex": "the computational intractability of molecular simulation"
+   },
+   {
+    "w": "stability",
+    "ipa": "/stəˈbɪləti/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "稳定性",
+    "ex": "the context dependence of protein stability"
+   },
+   {
+    "w": "homology",
+    "ipa": "/həˈmɒlədʒi/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "同源性",
+    "ex": "homology to solved structures"
+   },
+   {
+    "w": "pairwise",
+    "ipa": "/ˈperwaɪz/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "成对的；逐对的",
+    "ex": "pairwise evolutionary correlations"
+   },
+   {
+    "w": "contemporary",
+    "ipa": "/kənˈtempəreri/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "当代的；同时代的",
+    "ex": "contemporary physical and evolutionary-history-based approaches"
+   },
+   {
+    "w": "utility",
+    "ipa": "/juːˈtɪləti/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "效用；实用性",
+    "ex": "this has limited their utility for many biological applications"
+   },
+   {
+    "w": "biennially",
+    "ipa": "/baɪˈeniəli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "每两年地",
+    "ex": "The CASP assessment is carried out biennially"
+   },
+   {
+    "w": "disclosed",
+    "ipa": "/dɪsˈkloʊzd/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "公开；披露",
+    "ex": "recently solved structures that have not been deposited in the PDB or publicly disclosed"
+   },
+   {
+    "w": "vastly",
+    "ipa": "/ˈvɑːstli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "极大地；广大地",
+    "ex": "AlphaFold structures were vastly more accurate than competing methods"
+   },
+   {
+    "w": "median",
+    "ipa": "/ˈmiːdiən/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "中位数的",
+    "ex": "AlphaFold structures had a median backbone accuracy of 0.96 Å"
+   },
+   {
+    "w": "residue",
+    "ipa": "/ˈrezɪdjuː/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "残基；残留物",
+    "ex": "Cα root-mean-square deviation at 95% residue coverage"
+   },
+   {
+    "w": "scalable",
+    "ipa": "/ˈskeɪləbl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "可扩展的",
+    "ex": "Our methods are scalable to very long proteins"
+   },
+   {
+    "w": "reliability",
+    "ipa": "/rɪˌlaɪəˈbɪləti/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "可靠性",
+    "ex": "precise, per-residue estimates of its reliability"
+   },
+   {
+    "w": "superposition",
+    "ipa": "/ˌsuːrpəˈzɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "叠加；重叠",
+    "ex": "global superposition metric template modelling score"
+   },
+   {
+    "w": "uncurated",
+    "ipa": "/ʌnˈkjʊreɪtɪd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "未经整理的",
+    "ex": "an uncurated collection of recent PDB submissions"
+   },
+   {
+    "w": "intuitive",
+    "ipa": "/ɪnˈtjuːɪtɪv/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "直觉的；直观的",
+    "ex": "this approach has proved highly challenging"
+   }
+  ]
+ },
+ {
+  "sec": "2. The AlphaFold network · 网络架构",
+  "short": "Network",
+  "icon": "2",
+  "words": [
+   {
+    "w": "equivariant",
+    "ipa": "/ɪˈkwɪvəriənt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "等变的",
+    "ex": "a new equivariant attention architecture"
+   },
+   {
+    "w": "iterative",
+    "ipa": "/ˈɪtərətɪv/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "迭代的",
+    "ex": "intermediate losses to achieve iterative refinement of predictions"
+   },
+   {
+    "w": "refinement",
+    "ipa": "/rɪˈfaɪnmənt/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "精炼；改进",
+    "ex": "iterative refinement of predictions"
+   },
+   {
+    "w": "recycling",
+    "ipa": "/riːˈsaɪklɪŋ/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "回收；循环",
+    "ex": "we term 'recycling' and is related to approaches in computer vision"
+   },
+   {
+    "w": "architecture",
+    "ipa": "/ˈɑːrkɪtektʃər/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "架构；结构",
+    "ex": "a novel neural network architecture"
+   },
+   {
+    "w": "representation",
+    "ipa": "/ˌreprɪzenˈteɪʃən/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "表示；表征",
+    "ex": "a new output representation and associated loss"
+   },
+   {
+    "w": "trunk",
+    "ipa": "/trʌŋk/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "主干；躯干",
+    "ex": "The network comprises two main stages. First, the trunk of the network processes the inputs"
+   },
+   {
+    "w": "initialize",
+    "ipa": "/ɪˈnɪʃəlaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "初始化",
+    "ex": "The MSA representation is initialized with the raw MSA"
+   },
+   {
+    "w": "geometric",
+    "ipa": "/ˌdʒiːəˈmetrɪk/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "几何的",
+    "ex": "based on the evolutionary, physical and geometric constraints"
+   },
+   {
+    "w": "hypothesize",
+    "ipa": "/haɪˈpɒsəsaɪz/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "假设；假定",
+    "ex": "We hypothesize that the MSA information is needed"
+   },
+   {
+    "w": "recursively",
+    "ipa": "/rɪˈkɜːrsɪvli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "递归地",
+    "ex": "feeding the outputs recursively into the same modules"
+   },
+   {
+    "w": "constraints",
+    "ipa": "/kənˈstreɪnts/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "约束；限制",
+    "ex": "the evolutionary, physical and geometric constraints of protein structures"
+   },
+   {
+    "w": "innovations",
+    "ipa": "/ˌɪnəˈveɪʃənz/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "创新",
+    "ex": "The key innovations in the Evoformer block"
+   },
+   {
+    "w": "simultaneously",
+    "ipa": "/ˌsaɪmlˈteɪniəsli/",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "同时地",
+    "ex": "allow simultaneous local refinement of all parts of the structure"
+   },
+   {
+    "w": "implicitly",
+    "ipa": "/ɪmˈplɪsɪtli/",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "隐式地",
+    "ex": "to allow the network to implicitly reason about the unrepresented side-chain atoms"
+   }
+  ]
+ },
+ {
+  "sec": "3. Evoformer · Evoformer模块",
+  "short": "Evoformer",
+  "icon": "3",
+  "words": [
+   {
+    "w": "inference",
+    "ipa": "/ˈɪnfərəns/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "推理；推断",
+    "ex": "a graph inference problem in 3D space"
+   },
+   {
+    "w": "proximity",
+    "ipa": "/prɒkˈsɪməti/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "邻近；接近",
+    "ex": "the edges of the graph are defined by residues in proximity"
+   },
+   {
+    "w": "element-wise",
+    "ipa": "/ˈelɪmənt waɪz/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "逐元素的",
+    "ex": "an element-wise outer product that is summed over the MSA sequence dimension"
+   },
+   {
+    "w": "consistency",
+    "ipa": "/kənˈsɪstənsi/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "一致性",
+    "ex": "the necessity of consistency of the pair representation"
+   },
+   {
+    "w": "triangle inequality",
+    "ipa": "/ˈtraɪæŋɡl ˌɪnɪˈkwɒləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "三角不等式",
+    "ex": "the triangle inequality on distances"
+   },
+   {
+    "w": "multiplicative",
+    "ipa": "/ˈmʌltɪplɪkeɪtɪv/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "乘法的",
+    "ex": "triangle multiplicative update",
+    "ov": "t"
+   },
+   {
+    "w": "axial",
+    "ipa": "/ˈæksiəl/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "轴的；轴向的",
+    "ex": "axial attention"
+   },
+   {
+    "w": "logit",
+    "ipa": "/ˈlɒɡɪt/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "对数几率",
+    "ex": "we add an extra logit bias to axial attention"
+   },
+   {
+    "w": "continuous",
+    "ipa": "/kənˈtɪnjuəs/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "连续的",
+    "ex": "enables the continuous communication from the evolving MSA representation"
+   },
+   {
+    "w": "outperform",
+    "ipa": "/ˌaʊtpərˈfɔːrm/",
+    "pos": "v.",
+    "lv": "6",
+    "m": "优于；超过",
+    "ex": "outperforming other methods"
+   }
+  ]
+ },
+ {
+  "sec": "4. End-to-end structure prediction · 端到端结构预测",
+  "short": "Structure",
+  "icon": "4",
+  "words": [
+   {
+    "w": "end-to-end",
+    "ipa": "/end tuː end/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "端到端的",
+    "ex": "End-to-end structure prediction"
+   },
+   {
+    "w": "backbone",
+    "ipa": "/ˈbækbəʊn/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "骨架；主链",
+    "ex": "The structure module operates on a concrete 3D backbone structure"
+   },
+   {
+    "w": "rigid body",
+    "ipa": "/ˈrɪdʒɪd ˈbɒdi/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "刚体",
+    "ex": "each with respect to the global frame (residue gas)"
+   },
+   {
+    "w": "constrained",
+    "ipa": "/kənˈstreɪnd/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "受约束的",
+    "ex": "the location of the side chain of each residue is highly constrained"
+   },
+   {
+    "w": "unconstrained",
+    "ipa": "/ˌʌnkənˈstreɪnd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "不受约束的",
+    "ex": "the peptide bond geometry is completely unconstrained"
+   },
+   {
+    "w": "violation",
+    "ipa": "/ˌvaɪəˈleɪʃən/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "违反；违规",
+    "ex": "breaking this constraint enables the local refinement"
+   },
+   {
+    "w": "relaxation",
+    "ipa": "/ˌriːlækˈseɪʃən/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "松弛；放松",
+    "ex": "post-prediction relaxation of the structure by gradient descent"
+   },
+   {
+    "w": "empirically",
+    "ipa": "/ɪmˈpɪrɪkli/",
+    "pos": "adv.",
+    "lv": "6",
+    "m": "经验地；实证地",
+    "ex": "Empirically, this final relaxation does not improve the accuracy"
+   },
+   {
+    "w": "stereochemical",
+    "ipa": "/ˌsteriəʊˈkemɪkl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "立体化学的",
+    "ex": "remove distracting stereochemical violations"
+   },
+   {
+    "w": "geometry",
+    "ipa": "/dʒiˈɒmətri/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "几何；几何学",
+    "ex": "Satisfaction of the peptide bond geometry is encouraged during fine-tuning"
+   },
+   {
+    "w": "peptide",
+    "ipa": "/ˈpeptaɪd/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "肽",
+    "ex": "the peptide bond geometry is completely unconstrained"
+   },
+   {
+    "w": "enforcement",
+    "ipa": "/ɪnˈfɔːrsmənt/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "执行；强制",
+    "ex": "Exact enforcement of peptide bond geometry"
+   },
+   {
+    "w": "clamped",
+    "ipa": "/klæmpt/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "夹紧的；钳制的",
+    "ex": "penalized with a clamped L1 loss"
+   },
+   {
+    "w": "chirality",
+    "ipa": "/kaɪˈræləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "手性",
+    "ex": "providing the main source of chirality for AlphaFold"
+   }
+  ]
+ },
+ {
+  "sec": "5. IPA module · 不变点注意力",
+  "short": "IPA",
+  "icon": "5",
+  "words": [
+   {
+    "w": "invariant",
+    "ipa": "/ɪnˈveəriənt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "不变的",
+    "ex": "invariant point attention (IPA)"
+   },
+   {
+    "w": "augment",
+    "ipa": "/ɔːɡˈment/",
+    "pos": "v.",
+    "lv": "k",
+    "m": "增强；扩大",
+    "ex": "The IPA augments each of the usual attention queries, keys and values"
+   },
+   {
+    "w": "locality",
+    "ipa": "/loʊˈkæləti/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "局部性",
+    "ex": "a strong spatial/locality bias on the attention"
+   },
+   {
+    "w": "activation",
+    "ipa": "/ˌæktɪˈveɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "激活",
+    "ex": "update an Nres set of neural activations"
+   },
+   {
+    "w": "projection",
+    "ipa": "/prəˈdʒekʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "投影",
+    "ex": "linear projection from the final pair representation"
+   },
+   {
+    "w": "torsion",
+    "ipa": "/ˈtɔːrʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "扭转",
+    "ex": "Predictions of side-chain χ angles"
+   },
+   {
+    "w": "affinities",
+    "ipa": "/əˈfɪnətiz/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "亲和力；亲和性",
+    "ex": "each of these representations contributes affinities to the shared attention weights"
+   },
+   {
+    "w": "coordinate",
+    "ipa": "/koʊˈɔːrdɪneɪt/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "坐标",
+    "ex": "The coordinate transformations ensure the invariance"
+   }
+  ]
+ },
+ {
+  "sec": "6. Training · 训练",
+  "short": "Training",
+  "icon": "6",
+  "words": [
+   {
+    "w": "supervised",
+    "ipa": "/səˈvɜːrvɪzd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "监督的",
+    "ex": "train to high accuracy using only supervised learning on PDB data"
+   },
+   {
+    "w": "distillation",
+    "ipa": "/ˌdɪstɪˈleɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "蒸馏",
+    "ex": "self-distillation procedure makes effective use of the unlabelled sequence data"
+   },
+   {
+    "w": "augmentations",
+    "ipa": "/ˌɔːɡmenˈteɪʃənz/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "数据增强",
+    "ex": "various training data augmentations such as cropping and MSA subsampling",
+    "ov": "g"
+   },
+   {
+    "w": "recapitulate",
+    "ipa": "/ˌriːkəˈpɪtʃuleɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "重述；概括",
+    "ex": "make it challenging for the network to recapitulate the previously predicted structures",
+    "ov": "g"
+   },
+   {
+    "w": "mask",
+    "ipa": "/mæsk/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "遮蔽；掩码",
+    "ex": "we randomly mask out or mutate individual residues"
+   },
+   {
+    "w": "mutate",
+    "ipa": "/ˈmjuːteɪt/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "突变",
+    "ex": "randomly mask out or mutate individual residues within the MSA"
+   },
+   {
+    "w": "phylogenetic",
+    "ipa": "/ˌfaɪlədʒəˈnetɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "系统发育的",
+    "ex": "learn to interpret phylogenetic and covariation relationships"
+   },
+   {
+    "w": "covariation",
+    "ipa": "/ˌkoʊveriˈeɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "协变",
+    "ex": "phylogenetic and covariation relationships"
+   },
+   {
+    "w": "convergence",
+    "ipa": "/kənˈvɜːrdʒəns/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "收敛",
+    "ex": "The model is trained until convergence"
+   },
+   {
+    "w": "substantially",
+    "ipa": "/səbˈstænʃəli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "实质上；大量地",
+    "ex": "considerably improves the accuracy of the resulting network"
+   },
+   {
+    "w": "unequivocally",
+    "ipa": "/ˌʌnɪˈkwɪvəkli/",
+    "pos": "adv.",
+    "lv": "p",
+    "m": "明确地；毫不含糊地",
+    "ex": "unequivocally"
+   },
+   {
+    "w": "fine-tuned",
+    "ipa": "/faɪn tjuːnd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "微调的",
+    "ex": "further fine-tuned using longer crops of 384 residues"
+   },
+   {
+    "w": "crop",
+    "ipa": "/krɒp/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "裁剪",
+    "ex": "randomly crop them to 256 residues"
+   },
+   {
+    "w": "batch",
+    "ipa": "/bætʃ/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "批次",
+    "ex": "assemble into batches of size 128"
+   },
+   {
+    "w": "diversity",
+    "ipa": "/daɪˈvɜːrsəti/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "多样性",
+    "ex": "to encourage diversity in the predictions"
+   }
+  ]
+ },
+ {
+  "sec": "7. Interpreting the neural network · 网络解读",
+  "short": "Interpret",
+  "icon": "7",
+  "words": [
+   {
+    "w": "trajectory",
+    "ipa": "/trəˈdʒektəri/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "轨迹",
+    "ex": "this provides a trajectory of 192 intermediate structures",
+    "ov": "g"
+   },
+   {
+    "w": "incremental",
+    "ipa": "/ˌɪŋkrəˈmentl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "增量的；渐进的",
+    "ex": "AlphaFold makes constant incremental improvements to the structure"
+   },
+   {
+    "w": "ablation",
+    "ipa": "/əˈbleɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "消融",
+    "ex": "Figure 4a contains detailed ablations of the components of AlphaFold"
+   },
+   {
+    "w": "rearrange",
+    "ipa": "/ˌriːəˈreɪndʒ/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "重新排列",
+    "ex": "the network searches and rearranges secondary structure elements"
+   },
+   {
+    "w": "settling",
+    "ipa": "/ˈsetlɪŋ/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "稳定；确定",
+    "ex": "before settling on a good structure"
+   },
+   {
+    "w": "concrete",
+    "ipa": "/ˈkɒŋkriːt/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "具体的；有形的",
+    "ex": "a concrete structural hypothesis arises early within the Evoformer blocks"
+   },
+   {
+    "w": "smooth",
+    "ipa": "/smuːð/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "平滑的",
+    "ex": "The resulting trajectories are surprisingly smooth"
+   },
+   {
+    "w": "illustrate",
+    "ipa": "/ˈɪləstreɪt/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "说明；阐明",
+    "ex": "These trajectories also illustrate the role of network depth"
+   }
+  ]
+ },
+ {
+  "sec": "8. MSA depth & cross-chain contacts · MSA深度与接触",
+  "short": "MSA depth",
+  "icon": "8",
+  "words": [
+   {
+    "w": "threshold",
+    "ipa": "/ˈθreʃhoʊld/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "阈值",
+    "ex": "We observe a threshold effect where improvements in MSA depth"
+   },
+   {
+    "w": "intra-chain",
+    "ipa": "/ˌɪntrəˈtʃeɪn/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "链内的",
+    "ex": "few intra-chain or homotypic contacts"
+   },
+   {
+    "w": "homotypic",
+    "ipa": "/ˌhoʊməˈtɪpɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "同型的",
+    "ex": "few intra-chain or homotypic contacts"
+   },
+   {
+    "w": "heterotypic",
+    "ipa": "/ˌhetərəˈtɪpɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "异型的",
+    "ex": "compared to the number of heterotypic contacts"
+   },
+   {
+    "w": "bridging",
+    "ipa": "/ˈbrɪdʒɪŋ/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "桥接的",
+    "ex": "bridging domains within larger complexes"
+   },
+   {
+    "w": "intertwined",
+    "ipa": "/ˌɪntərˈtaɪnd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "缠绕的",
+    "ex": "even when the chains are substantially intertwined"
+   },
+   {
+    "w": "applicability",
+    "ipa": "/ˌæplɪkəˈbɪləti/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "适用性",
+    "ex": "limit the applicability of the model",
+    "ov": "g"
+   },
+   {
+    "w": "homo-complexes",
+    "ipa": "/ˌhoʊmoʊˈkɒmpleksɪz/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "同源复合物",
+    "ex": "AlphaFold is often able to give high-accuracy predictions for homomers"
+   },
+   {
+    "w": "substantially",
+    "ipa": "/səbˈstænʃəli/",
+    "pos": "adv.",
+    "lv": "4",
+    "m": "显著地",
+    "ex": "the accuracy decreases substantially when the median alignment depth is less than around 30 sequences"
+   }
+  ]
+ },
+ {
+  "sec": "9. Related work · 相关工作",
+  "short": "Related",
+  "icon": "9",
+  "words": [
+   {
+    "w": "leveraging",
+    "ipa": "/ˈlevərɪdʒɪŋ/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "利用",
+    "ex": "These approaches effectively leverage the rapid improvement in computer vision systems"
+   },
+   {
+    "w": "heuristic",
+    "ipa": "/hjuːˈrɪstɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "启发式的",
+    "ex": "a heuristic system that produces the final 3D coordinate prediction"
+   },
+   {
+    "w": "handcrafted",
+    "ipa": "/ˌhændˈkræftɪd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "手工设计的",
+    "ex": "traditional, hand-crafted structure prediction pipelines",
+    "ov": "t"
+   },
+   {
+    "w": "pipeline",
+    "ipa": "/ˈpaɪplaɪn/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "管道；流水线",
+    "ex": "traditional, hand-crafted structure prediction pipelines",
+    "ov": "t"
+   },
+   {
+    "w": "inspired",
+    "ipa": "/ɪnˈspaɪərd/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "启发",
+    "ex": "has inspired the exploration of attention-based methods",
+    "ov": "g"
+   },
+   {
+    "w": "exploration",
+    "ipa": "/ˌekspləˈreɪʃən/",
+    "pos": "n.",
+    "lv": "6",
+    "m": "探索",
+    "ex": "inspired the exploration of attention-based methods for interpreting protein sequences"
+   }
+  ]
+ },
+ {
+  "sec": "10. Discussion · 讨论",
+  "short": "Discuss",
+  "icon": "10",
+  "words": [
+   {
+    "w": "inductive bias",
+    "ipa": "/ɪnˈdʌktɪv ˈbaɪəs/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "归纳偏置",
+    "ex": "we use a physical and geometric inductive bias"
+   },
+   {
+    "w": "minimal",
+    "ipa": "/ˈmɪnɪml/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "最小的",
+    "ex": "learn from PDB data with minimal imposition of handcrafted features"
+   },
+   {
+    "w": "imposition",
+    "ipa": "/ˌɪmpəˈzɪʃən/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "强加；施加",
+    "ex": "with minimal imposition of handcrafted features"
+   },
+   {
+    "w": "cop",
+    "ipa": "/kɒp/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "应付；处理",
+    "ex": "but is able to cope with the complexity and variety of structural data"
+   },
+   {
+    "w": "underspecified",
+    "ipa": "/ˌʌndəˈspesɪfaɪd/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "欠指定的",
+    "ex": "The ability to handle underspecified structural conditions"
+   },
+   {
+    "w": "proteome",
+    "ipa": "/ˈproʊtiːoʊm/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "蛋白质组",
+    "ex": "the exciting possibility of predicting structures at the proteome-scale"
+   },
+   {
+    "w": "revolutionized",
+    "ipa": "/ˌrevəˈluːʃənaɪzd/",
+    "pos": "v.",
+    "lv": "p",
+    "m": "彻底改变",
+    "ex": "The explosion in available genomic sequencing techniques and data has revolutionized bioinformatics"
+   },
+   {
+    "w": "intrinsic",
+    "ipa": "/ɪnˈtrɪnzɪk/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "内在的；固有的",
+    "ex": "the intrinsic challenge of experimental structure determination"
+   },
+   {
+    "w": "pragmatic",
+    "ipa": "/præɡˈmætɪk/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "务实的；实用的",
+    "ex": "pragmatic"
+   },
+   {
+    "w": "albeit",
+    "ipa": "/ɔːlˈbiːɪt/",
+    "pos": "conj.",
+    "lv": "p",
+    "m": "虽然；即使",
+    "ex": "albeit"
+   },
+   {
+    "w": "spurious",
+    "ipa": "/ˈspjʊəriəs/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "虚假的",
+    "ex": "spurious matches will probably appear in the raw MSA"
+   },
+   {
+    "w": "nascent",
+    "ipa": "/ˈnæsnt/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "新生的；初期的",
+    "ex": "nascent",
+    "ov": "g"
+   },
+   {
+    "w": "brittle",
+    "ipa": "/ˈbrɪtl/",
+    "pos": "adj.",
+    "lv": "4",
+    "m": "脆弱的",
+    "ex": "brittle"
+   },
+   {
+    "w": "erratic",
+    "ipa": "/ɪˈrætɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "不稳定的",
+    "ex": "erratic"
+   },
+   {
+    "w": "tractable",
+    "ipa": "/ˈtræktəbl/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "易处理的",
+    "ex": "tractable"
+   }
+  ]
+ },
+ {
+  "sec": "11. Methods · 方法",
+  "short": "Methods",
+  "icon": "11",
+  "words": [
+   {
+    "w": "pseudocode",
+    "ipa": "/ˈsuːdoʊkoʊd/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "伪代码",
+    "ex": "pseudocode is available in Supplementary Information Algorithms"
+   },
+   {
+    "w": "ensembling",
+    "ipa": "/ɪnˈsembəlɪŋ/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "集成",
+    "ex": "the trunk of the network is run multiple times with different random choices"
+   },
+   {
+    "w": "quadratic",
+    "ipa": "/kwəˈdrætɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "二次的",
+    "ex": "The memory usage is approximately quadratic in the number of residues"
+   },
+   {
+    "w": "redundancy",
+    "ipa": "/rɪˈdʌndənsi/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "冗余",
+    "ex": "Further filtering is applied to reduce redundancy"
+   },
+   {
+    "w": "amino acid",
+    "ipa": "/əˌmiːnoʊ ˈæsɪd/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "氨基酸",
+    "ex": "based solely on its amino acid sequence"
+   },
+   {
+    "w": "genomic",
+    "ipa": "/dʒəˈnɒmɪk/",
+    "pos": "adj.",
+    "lv": "p",
+    "m": "基因组的",
+    "ex": "the explosion of genomic sequencing"
+   },
+   {
+    "w": "metagenomics",
+    "ipa": "/ˌmetədʒəˈnɒmɪks/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "宏基因组学",
+    "ex": "metagenomics databases"
+   },
+   {
+    "w": "Markov",
+    "ipa": "/ˈmɑːrkɒv/",
+    "pos": "n.",
+    "lv": "p",
+    "m": "马尔可夫",
+    "ex": "hidden Markov models (HMMs)"
+   },
+   {
+    "w": "profile",
+    "ipa": "/ˈproʊfaɪl/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "配置文件；概况",
+    "ex": "profile HMM searches"
+   },
+   {
+    "w": "optimal",
+    "ipa": "/ˈɒptɪml/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "最优的",
+    "ex": "optimal"
+   },
+   {
+    "w": "complementary",
+    "ipa": "/ˌkɒmplɪˈmentri/",
+    "pos": "adj.",
+    "lv": "k",
+    "m": "互补的",
+    "ex": "two complementary paths that focus on either the physical interactions or the evolutionary history"
+   },
+   {
+    "w": "approaches",
+    "ipa": "/əˈproʊtʃɪz/",
+    "pos": "n.",
+    "lv": "4",
+    "m": "方法；途径",
+    "ex": "computational approaches are needed to address this gap"
+   },
+   {
+    "w": "exceed",
+    "ipa": "/ɪkˈsiːd/",
+    "pos": "v.",
+    "lv": "4",
+    "m": "超过",
+    "ex": "Inferencing large proteins can easily exceed the memory of a single GPU"
+   },
+   {
+    "w": "unified",
+    "ipa": "/ˈjuːnɪfaɪd/",
+    "pos": "adj.",
+    "lv": "6",
+    "m": "统一的",
+    "ex": "using unified memory so that we can greatly exceed the memory of a single V100"
+   }
+  ]
+ }
+];
+const LVCLS={"4":"t4","6":"t6","k":"tk","p":"tp","t":"tt","g":"tg"};
+const LVNAME={"4":"四级","6":"六级","k":"考研","p":"考博","t":"雅思 · 托福","g":"GRE"};
+const LVSHORT={"4":"4","6":"6","k":"考研","p":"考博","t":"托福","g":"GRE"};
+const LVORDER=["4","6","k","p","t","g"];
+
+let mode="sec";
+let theme="theme-mag"; // 章节视图固定杂志风；按级别视图固定暗色大页
+
+function cardHTML(x,sec){
+  const from = mode==="lv" ? `<div class="from">出自 ${sec}</div>` : "";
+  if(theme==="theme-paper"){
+    return `<div class="word"><span class="w">${x.w}<span class="ipa">/${x.ipa}/</span><i class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</i></span>
+      <span><span class="pos">${x.pos}</span><span class="m">${x.m}</span>${from}</span>
+      <span class="ex">${x.ex}</span></div>`;
+  }
+  if(theme==="theme-mag") return "";
+  return `<div class="card lv${x.lv}" data-say="${x.w}"><span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</span>
+    <div class="m">${x.pos} ${x.m}</div><div class="ex">${x.ex}</div>${from}</div>`;
+}
+function magRow(x,sec){
+  return `<tr data-say="${x.w}"><td class="w">${x.w}<span class="ipa">/${x.ipa}/</span></td>
+    <td class="lv"><b class="tag ${LVCLS[x.lv]}">${LVSHORT[x.lv]}</b></td>
+    <td class="m">${x.pos} ${x.m}${mode==="lv"?`<span class="from">出自 ${sec}</span>`:""}</td>
+    <td class="ex">${x.ex}</td></tr>`;
+}
+function groupHTML(title,icon,inner){
+  if(theme==="theme-mag") return `<div class="sec"><h2>${title}</h2><table>${inner}</table></div>`;
+  if(theme==="theme-dark"||theme==="theme-fresh")
+    return `<div class="sec"><h2>${theme==="theme-dark"?"":"<span class='n'>"+icon+"</span>"}${title}</h2><div class="grid">${inner}</div></div>`;
+  return `<div class="sec"><h2>${title}</h2>${inner}</div>`;
+}
+function render(){
+  document.body.classList.toggle("lv-mode",mode==="lv");
+  if(mode==="sec")document.body.className="theme-mag";
+  const app=document.getElementById("app");
+  let html="";
+  if(mode==="sec"){
+    for(const s of DATA){
+      html += theme==="theme-mag"
+        ? groupHTML(s.sec,s.icon,s.words.map(x=>magRow(x,s.short)).join(""))
+        : groupHTML(s.sec,s.icon,s.words.map(x=>cardHTML(x,s.short)).join(""));
+    }
+  }else{
+    // 学习模式同款暗色大页：每个级别一块
+    const dot={4:"var(--c4)",6:"var(--c6)",k:"var(--ckaon)",p:"var(--cphd)",t:"var(--ct)",g:"var(--cg)"};
+    html=LVORDER.map(lv=>{
+      const items=[];
+      DATA.forEach(s=>s.words.forEach(x=>{if(x.lv===lv||x.ov===lv)items.push([x.ov===lv?{...x,lv:x.ov}:x,s.short])}));
+      items.sort((a,b)=>a[0].w.localeCompare(b[0].w));
+      const cls={4:"",6:"l6",k:"lk",p:"lp",t:"lt",g:"lg"}[lv];
+      return `<div class="lvslide ${cls}">
+        <div class="ltitle"><span style="color:${dot[lv]}">${LVNAME[lv]}</span>词汇<small>${items.length} words · 按字母排序 · 悬停看原文例句 · 点击发音</small></div>
+        <div class="sgrid">${items.map(([x,sec])=>`
+          <div class="lcard" data-say="${x.w}">
+            <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span>
+            <div class="m">${x.pos} ${x.m}</div>
+            <div class="ex">${x.ex}</div>
+            <div class="from">出自 ${sec}</div>
+          </div>`).join("")}</div></div>`;
+    }).join("");
+  }
+  app.innerHTML=html;
+}
+function syncToolbar(){
+  document.getElementById("v-sec").classList.toggle("on",mode==="sec");
+  document.getElementById("v-lv").classList.toggle("on",mode==="lv");
+}
+document.getElementById("v-sec").onclick=()=>{mode="sec";theme="theme-mag";document.body.className="theme-mag";syncToolbar();render();};
+document.getElementById("v-lv").onclick=()=>{mode="lv";syncToolbar();render();};
+
+// 朗读：在线 TTS 多源自动降级（Polly → 百度 → 谷歌），选音色只对 Polly 源生效
+const ALL_SRC=["yd1","yd0","bd","gg"];
+const ONLINE_VOICES=[["yd1","美式 · 有道（推荐）"],["yd0","英式 · 有道"],["bd","百度翻译 · 女声"],["mute","🔇 不朗读"]];
+let ONLINE="yd1";try{const sv=localStorage.getItem("vocab_voice");if(sv&&["yd1","yd0","bd","gg","mute"].includes(sv))ONLINE=sv;}catch(e){}
+let SRC_ORDER=["yd1","yd0","bd","gg"],srcIdx=0; // 当前可用的源
+function applyVoiceOrder(){const i=ALL_SRC.indexOf(ONLINE);SRC_ORDER=i<0?ALL_SRC.slice():ALL_SRC.slice(i).concat(ALL_SRC.slice(0,i));}
+applyVoiceOrder();
+let audio=null;
+function ttsURL(src,t){
+  const q=encodeURIComponent(t);
+  if(src==="yd1")return `https://dict.youdao.com/dictvoice?type=1&audio=${q}`;
+  if(src==="yd0")return `https://dict.youdao.com/dictvoice?type=0&audio=${q}`;
+  if(src==="bd")return `https://fanyi.baidu.com/gettts?lan=en&text=${q}&spd=5&source=web`;
+  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${q}`;
+}
+function fillVoiceSel(){
+  const sel=document.getElementById("voiceSel");if(!sel)return;
+  sel.innerHTML=`<option value="mute" ${ONLINE==="mute"?"selected":""}>🔇 不朗读</option>`+ONLINE_VOICES.map(([v,l])=>`<option value="${v}" ${ONLINE===v?"selected":""}>${l}</option>`).join("");
+  const st=document.getElementById("srcState");
+  if(st)st.textContent={yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[SRC_ORDER[srcIdx]]||"";
+}
+fillVoiceSel();
+let saying=0; // 防并发
+function say(t){
+  if(ONLINE==="mute"){try{if(audio){audio.pause();audio=null}}catch(e){}return}
+  const my=++saying;
+  trySrc(0,t,my);
+}
+function trySrc(i,t,my){
+  if(my!==saying)return;
+  if(i>=SRC_ORDER.length){const st=document.getElementById("srcState");if(st)st.textContent="无可用源";return}
+  const src=SRC_ORDER[i];
+  const st=document.getElementById("srcState");
+  if(st)st.textContent="尝试"+({yd1:"有道·美音",yd0:"有道·英音",bd:"百度",gg:"谷歌"}[src]);
+  try{if(audio){audio.pause();audio=null}}catch(e){}
+  const a=new Audio(ttsURL(src,t));
+  let ok=false,advanced=false;
+  const advance=()=>{ if(!ok&&!advanced&&my===saying){advanced=true;trySrc(i+1,t,my);} };
+  a.addEventListener("playing",()=>{ok=true;
+    if(srcIdx!==i){srcIdx=i;fillVoiceSel();} // 记住能用的源
+  });
+  a.addEventListener("error",advance);
+  audio=a;
+  a.play().catch(advance);
+  setTimeout(()=>{ if(!ok&&my===saying&&a.paused)advance(); },2500);
+}
+document.getElementById("voiceSel").addEventListener("change",e=>{
+  ONLINE=e.target.value; applyVoiceOrder(); // 换音色重新从头试源
+  if(ONLINE!=="mute") say("Hello, let us learn new words together.");
+});
+/* ---- 白天 / 夜晚 ---- */
+let night=false;
+try{night=(localStorage.getItem("vocab_dn")||"day")==="night"}catch(e){night=false}
+function applyDN(){
+  document.body.classList.toggle("night",night);
+  document.getElementById("dn-day").classList.toggle("on",!night);
+  document.getElementById("dn-night").classList.toggle("on",night);
+  if(typeof studyEl!=="undefined"&&studyEl)studyEl.classList.toggle("day",!night);
+}
+document.getElementById("dn-day").onclick=()=>{night=false;try{localStorage.setItem("vocab_dn","day")}catch(e){};applyDN();};
+document.getElementById("dn-night").onclick=()=>{night=true;try{localStorage.setItem("vocab_dn","night")}catch(e){};applyDN();};
+document.getElementById("app").addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+
+/* ---------- 学习模式：按章节分页的 PPT 翻页 ---------- */
+const PER_PAGE = 12; // 每页最多词数，放不下自动续页
+let slides=[],si=0;
+function buildSlides(){
+  slides=[];
+  for(const s of DATA){
+    for(let i=0;i<s.words.length;i+=PER_PAGE){
+      slides.push({sec:s.sec,page:Math.floor(i/PER_PAGE)+1,
+        pages:Math.ceil(s.words.length/PER_PAGE),words:s.words.slice(i,i+PER_PAGE)});
+    }
+  }
+}
+const studyEl=document.getElementById("study");
+let open=false;
+function showSlide(){
+  const sl=slides[si];
+  const title=sl.pages>1 ? `${sl.sec}（第 ${sl.page}/${sl.pages} 页）` : sl.sec;
+  document.getElementById("sPage").innerHTML =
+    `<div class="stitle">${title}<small>${sl.words.length} words</small></div>
+     <div class="sgrid">${sl.words.map(x=>`
+       <div class="scard" data-say="${x.w}">
+         <span class="w">${x.w}</span><span class="ipa">/${x.ipa}/</span><span class="tag ${LVCLS[x.lv]}" style="font-size:11px;padding:2px 8px">${LVSHORT[x.lv]}</span>
+         <div class="m">${x.pos} ${x.m}</div>
+         <div class="ex">${x.ex}</div>
+       </div>`).join("")}</div>`;
+  document.getElementById("sIdx").textContent=(si+1)+" / "+slides.length;
+  document.getElementById("sbar").style.width=((si+1)/slides.length*100)+"%";
+  document.getElementById("sPrev").disabled=si===0;
+  document.getElementById("sNext").disabled=si===slides.length-1;
+  studyEl.querySelector(".sbody").scrollTop=0;
+}
+function studyOpen(){ buildSlides(); si=0; open=true; studyEl.classList.add("on"); applyDN(); showSlide(); }
+function studyClose(){ open=false; studyEl.classList.remove("on"); }
+function next(){ if(si<slides.length-1){ si++; showSlide(); } }
+function prev(){ if(si>0){ si--; showSlide(); } }
+document.getElementById("v-study").onclick=()=>open?studyClose():studyOpen();
+document.getElementById("sClose").onclick=studyClose;
+document.getElementById("sExit").onclick=studyClose;
+document.getElementById("sNext").onclick=next;
+document.getElementById("sPrev").onclick=prev;
+studyEl.addEventListener("click",e=>{
+  const el=e.target.closest("[data-say]"); if(el) say(el.dataset.say);
+});
+document.addEventListener("keydown",e=>{
+  if(!open) return;
+  if(e.code==="Space"||e.key==="ArrowRight"||e.key==="PageDown"){ e.preventDefault(); next(); }
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){ prev(); }
+  else if(e.key==="Escape"){ studyClose(); }
+});
+applyDN(); syncToolbar(); render();
+</script>
+</body>
+</html>
