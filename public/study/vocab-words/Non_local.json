@@ -1,0 +1,23 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"non-local","ipa":"nɑːn ˈloʊkl","pos":"adj.","lv":"p","m":"非局部的","ex":"we present non-local operations as a generic family of building blocks"},
+ {"w":"generic","ipa":"dʒəˈnerɪk","pos":"adj.","lv":"6","m":"通用的","ex":"a generic family of building blocks for capturing long-range dependencies"},
+ {"w":"weighted sum","ipa":"ˈweɪtɪd sʌm","pos":"n.","lv":"k","m":"加权和","ex":"computes the response at a position as a weighted sum of the features at all positions"},
+ {"w":"plug","ipa":"plʌɡ","pos":"v.","lv":"4","m":"插入，即插即用","ex":"This building block can be plugged into many computer vision architectures"},
+ {"w":"static","ipa":"ˈstætɪk","pos":"adj.","lv":"4","m":"静态的","ex":"In static image recognition, our non-local models improve object detection"}
+]},
+{"sec":"1. Introduction · 引言","short":"Intro","icon":"1","words":[
+ {"w":"capturing","ipa":"ˈkæptʃərɪŋ","pos":"n.","lv":"4","m":"捕捉","ex":"Capturing long-range dependencies is of central importance"},
+ {"w":"central","ipa":"ˈsentrəl","pos":"adj.","lv":"4","m":"核心的","ex":"of central importance in deep neural networks"},
+ {"w":"sequential","ipa":"sɪˈkwenʃl","pos":"adj.","lv":"k","m":"序列的","ex":"For sequential data (e.g., in speech, language)"},
+ {"w":"dominant","ipa":"ˈdɑːmɪnənt","pos":"adj.","lv":"6","ov":"t","m":"占主导的","ex":"recurrent operations are the dominant solution"},
+ {"w":"receptive field","ipa":"rɪˈseptɪv fiːld","pos":"n.","lv":"p","m":"感受野","ex":"modeled by the large receptive ﬁelds formed by deep stacks"},
+ {"w":"neighborhood","ipa":"ˈneɪbərhʊd","pos":"n.","lv":"4","m":"邻域","ex":"both process a local neighborhood, either in space or time"},
+ {"w":"repeatedly","ipa":"rɪˈpiːtɪdli","pos":"adv.","lv":"4","m":"反复地","ex":"can only be captured when these operations are applied repeatedly"},
+ {"w":"propagate","ipa":"ˈprɑːpəɡeɪt","pos":"v.","lv":"p","m":"传播","ex":"propagating signals progressively through the data"},
+ {"w":"progressively","ipa":"prəˈɡresɪvli","pos":"adv.","lv":"6","m":"逐步地","ex":"propagating signals progressively through the data"},
+ {"w":"computationally","ipa":"ˌkɑːmpjuˈteɪʃənəli","pos":"adv.","lv":"k","m":"计算上","ex":"it is computationally inefﬁcient"},
+ {"w":"multi-hop","ipa":"ˈmʌlti hɑːp","pos":"adj.","lv":"p","m":"多跳的","ex":"these challenges make multi-hop dependency modeling difﬁcult"},
+ {"w":"deliver","ipa":"dɪˈlɪvər","pos":"v.","lv":"4","m":"传递","ex":"messages need to be delivered back and forth between distant positions"}
+]}
+]

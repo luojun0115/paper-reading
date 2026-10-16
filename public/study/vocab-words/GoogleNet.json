@@ -1,0 +1,252 @@
+[
+  {
+    "sec": "Abstract · 摘要",
+    "short": "Abstract",
+    "icon": "A",
+    "words": [
+      {
+        "w": "inception",
+        "ipa": "/ˈɪnsepʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "起源，开端",
+        "ex": "We propose a deep convolutional neural network architecture codenamed Inception."
+      },
+      {
+        "w": "hallmark",
+        "ipa": "/ˈhɔːlmɑːrk/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "特征，标志",
+        "ex": "The main hallmark of this architecture is the improved utilization of the computing resources inside the network."
+      },
+      {
+        "w": "utilization",
+        "ipa": "/ˌjuːtəlaɪˈzeɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "利用，使用",
+        "ex": "The main hallmark of this architecture is the improved utilization of the computing resources inside the network."
+      },
+      {
+        "w": "crafted",
+        "ipa": "/ˈkræftɪd/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "精心制作的",
+        "ex": "This was achieved by a carefully crafted design that allows for increasing the depth and width of the network."
+      },
+      {
+        "w": "incarnation",
+        "ipa": "/ˌɪnkɑːrˈneɪʃn/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "化身，体现",
+        "ex": "One particular incarnation used in our submission for ILSVRC14 is called GoogLeNet."
+      },
+      {
+        "w": "assess",
+        "ipa": "/əˈses/",
+        "pos": "v.",
+        "lv": "k",
+        "m": "评估，评价",
+        "ex": "The quality of which is assessed in the context of classification and detection."
+      }
+    ]
+  },
+  {
+    "sec": "1. Introduction · 引言",
+    "short": "Intro",
+    "icon": "1",
+    "words": [
+      {
+        "w": "dramatic",
+        "ipa": "/drəˈmætɪk/",
+        "pos": "adj.",
+        "lv": "4",
+        "m": "戏剧性的，显著的",
+        "ex": "The quality of image recognition and object detection has been progressing at a dramatic pace."
+      },
+      {
+        "w": "consequence",
+        "ipa": "/ˈkɑːnsəkvens/",
+        "pos": "n.",
+        "lv": "4",
+        "m": "结果，后果",
+        "ex": "Most of this progress is not just the result of more powerful hardware, larger datasets and bigger models, but mainly a consequence of new ideas, algorithms and improved network architectures."
+      },
+      {
+        "w": "algorithm",
+        "ipa": "/ˈælɡərɪðəm/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "算法",
+        "ex": "Most of this progress is not just the result of more powerful hardware, larger datasets and bigger models, but mainly a consequence of new ideas, algorithms and improved network architectures."
+      },
+      {
+        "w": "detection",
+        "ipa": "/dɪˈtekʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "检测",
+        "ex": "The quality of image recognition and object detection has been progressing at a dramatic pace."
+      },
+      {
+        "w": "architecture",
+        "ipa": "/ˈɑːrkɪtektʃər/",
+        "pos": "n.",
+        "lv": "4",
+        "m": "架构，体系结构",
+        "ex": "Most of this progress is not just the result of more powerful hardware, larger datasets and bigger models, but mainly a consequence of new ideas, algorithms and improved network architectures."
+      }
+    ]
+  },
+  {
+    "sec": "2. Architecture · 架构",
+    "short": "Architecture",
+    "icon": "2",
+    "words": [
+      {
+        "w": "principle",
+        "ipa": "/ˈprɪnsəpl/",
+        "pos": "n.",
+        "lv": "4",
+        "m": "原则，原理",
+        "ex": "To optimize quality, the architectural decisions were based on the Hebbian principle and the intuition of multi-scale processing."
+      },
+      {
+        "w": "intuition",
+        "ipa": "/ˌɪntjuˈɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "直觉，直觉知识",
+        "ex": "To optimize quality, the architectural decisions were based on the Hebbian principle and the intuition of multi-scale processing."
+      },
+      {
+        "w": "optimize",
+        "ipa": "/ˈɑːptɪmaɪz/",
+        "pos": "v.",
+        "lv": "k",
+        "m": "优化",
+        "ex": "To optimize quality, the architectural decisions were based on the Hebbian principle and the intuition of multi-scale processing."
+      },
+      {
+        "w": "dimensionality",
+        "ipa": "/dɪˌmenʃəˈnæləti/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "维度",
+        "ex": "If we augment the number of 5×5 convolutions with linear layer, the number of parameters would be greatly reduced."
+      },
+      {
+        "w": "aggregation",
+        "ipa": "/ˌæɡrɪˈɡeɪʃn/",
+        "pos": "n.",
+        "lv": "p",
+        "m": "聚合",
+        "ex": "We use an aggregation layer to concatenate the outputs of all these modules."
+      }
+    ]
+  },
+  {
+    "sec": "3. Classification Training · 分类训练",
+    "short": "Training",
+    "icon": "3",
+    "words": [
+      {
+        "w": "augmentation",
+        "ipa": "/ˌɔːɡmenˈteɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "增强，扩充",
+        "ex": "We used a lot of data augmentation techniques."
+      },
+      {
+        "w": "optimizer",
+        "ipa": "/ˈɑːptɪmaɪzər/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "优化器",
+        "ex": "We used stochastic gradient descent with momentum."
+      },
+      {
+        "w": "momentum",
+        "ipa": "/moʊˈmentəm/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "动量",
+        "ex": "We used stochastic gradient descent with momentum to train the network."
+      },
+      {
+        "w": "initialization",
+        "ipa": "/ɪˌnɪʃəlaɪˈzeɪʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "初始化",
+        "ex": "The weights were initialized from a zero-mean Gaussian distribution."
+      }
+    ]
+  },
+  {
+    "sec": "4. Detection · 检测",
+    "short": "Detection",
+    "icon": "4",
+    "words": [
+      {
+        "w": "proposal",
+        "ipa": "/prəˈpoʊzl/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "提议，建议",
+        "ex": "We used Selective Search to generate region proposals."
+      },
+      {
+        "w": "classification",
+        "ipa": "/ˌklæsɪfɪˈkeɪʃn/",
+        "pos": "n.",
+        "lv": "4",
+        "m": "分类",
+        "ex": "We trained a classifier to classify each region proposal."
+      },
+      {
+        "w": "regression",
+        "ipa": "/rɪˈɡreʃn/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "回归",
+        "ex": "We used a regression model to refine the bounding box coordinates."
+      },
+      {
+        "w": "bounding box",
+        "ipa": "/ˈbaʊndɪŋ bɑːks/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "边界框",
+        "ex": "We used a regression model to refine the bounding box coordinates."
+      }
+    ]
+  },
+  {
+    "sec": "5. Conclusion · 结论",
+    "short": "Conclusion",
+    "icon": "5",
+    "words": [
+      {
+        "w": "state-of-the-art",
+        "ipa": "/ˌsteɪt əv ði ˈɑːrt/",
+        "pos": "adj.",
+        "lv": "k",
+        "m": "最先进的",
+        "ex": "Our architecture achieves state-of-the-art performance on the ImageNet dataset."
+      },
+      {
+        "w": "efficiency",
+        "ipa": "/ɪˈfɪʃnsi/",
+        "pos": "n.",
+        "lv": "k",
+        "m": "效率",
+        "ex": "Our architecture achieves state-of-the-art performance while maintaining computational efficiency."
+      }
+    ]
+  }
+]

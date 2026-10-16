@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>样式稿 · 深读馆 DeepRead</title>
+<style>
+/* ============ 稿纸（外层，固定浅色） ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:#eef0f4;color:#1b2027;padding:28px 20px 80px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto}
+.drafthead{margin-bottom:22px}
+.drafthead h1{font-size:23px;letter-spacing:-.3px}
+.drafthead p{font-size:13.5px;color:#5b6472;margin-top:6px;line-height:1.7}
+.kbd{display:inline-block;padding:1px 7px;border:1px solid #cfd6e0;border-radius:5px;background:#fff;font-size:12px;font-family:"SF Mono",Menlo,monospace;color:#3d4653}
+
+/* ============ 配色卡 ============ */
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 26px}
+.sw{background:#fff;border:1px solid #dde2ea;border-radius:12px;padding:14px 16px}
+.sw h3{font-size:14px;margin-bottom:3px}
+.sw .en{font-size:11px;color:#8b95a4;font-family:"SF Mono",Menlo,monospace;letter-spacing:.4px}
+.sw .note{font-size:12px;color:#5b6472;line-height:1.6;margin:9px 0 11px}
+.chips{display:flex;gap:6px}
+.chips i{width:100%;height:26px;border-radius:6px;display:block;border:1px solid rgba(0,0,0,.07)}
+.sw.pick{border-color:#1b2027;box-shadow:0 0 0 3px rgba(27,32,39,.08)}
+
+/* ============ 切换按钮 ============ */
+.tabs{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.tabs button{
+  font:inherit;font-size:13px;font-weight:600;padding:8px 18px;border-radius:99px;
+  border:1px solid #d3d9e3;background:#fff;color:#3d4653;cursor:pointer;transition:.18s
+}
+.tabs button:hover{border-color:#1b2027}
+.tabs button.on{background:#1b2027;border-color:#1b2027;color:#fff}
+.tabs .hint{font-size:12px;color:#8b95a4;margin-left:4px}
+
+/* ============ 主题变量 ============ */
+.frame{
+  border-radius:14px;overflow:hidden;border:1px solid #dde2ea;
+  background:var(--bg);color:var(--ink);
+  font-family:var(--font);
+  box-shadow:0 10px 34px rgba(20,30,50,.10);
+}
+.frame[data-t="a"]{
+  --bg:#faf8f4; --bg2:#f4eee5; --panel:#fff; --ink:#241f1a; --ink2:#6d6357;
+  --line:#e9e0d2; --accent:#b35400; --asoft:#fdf3e7; --accent2:#1f6f5c;
+  --font:-apple-system,"PingFang SC",sans-serif; --hf:"Songti SC","Source Han Serif SC",Georgia,serif;
+  --r:12px; --hlet:.2px; --shadow:0 1px 2px rgba(80,60,30,.05);
+  --grid:none;
+}
+.frame[data-t="b"]{
+  --bg:#f6f8fc; --bg2:#eaf0fa; --panel:#fff; --ink:#111a2e; --ink2:#5a6b86;
+  --line:#dde5f2; --accent:#2c4f9e; --asoft:#eef2fd; --accent2:#0e7490;
+  --font:-apple-system,"PingFang SC",sans-serif; --hf:-apple-system,"PingFang SC",sans-serif;
+  --r:8px; --hlet:-.4px; --shadow:0 1px 3px rgba(20,40,90,.07);
+  --grid:linear-gradient(rgba(44,79,158,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(44,79,158,.045) 1px,transparent 1px);
+}
+.frame[data-t="c"]{
+  --bg:#0d1117; --bg2:#12181f; --panel:#161d26; --ink:#e6edf3; --ink2:#8b949e;
+  --line:#232c38; --accent:#34d399; --asoft:#10241d; --accent2:#60a5fa;
+  --font:-apple-system,"PingFang SC",sans-serif; --hf:"SF Mono",Menlo,monospace;
+  --r:6px; --hlet:-.2px; --shadow:0 1px 3px rgba(0,0,0,.4);
+  --grid:none;
+}
+.hf{font-family:var(--hf);letter-spacing:var(--hlet)}
+
+/* ============ 顶栏 ============ */
+.tb{
+  display:flex;align-items:center;gap:10px;padding:13px 26px;
+  border-bottom:1px solid var(--line);background:var(--panel);
+}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15.5px}
+.logo .mk{
+  width:26px;height:26px;border-radius:calc(var(--r) - 4px);
+  background:var(--accent);color:#fff;display:grid;place-items:center;
+  font-size:13px;font-weight:800;font-family:var(--hf)
+}
+.frame[data-t="c"] .logo .mk{color:#06231a}
+.logo small{font-size:10.5px;color:var(--ink2);font-weight:500;font-family:"SF Mono",Menlo,monospace;letter-spacing:.5px;margin-left:2px}
+.nav{display:flex;gap:3px;margin-left:20px}
+.nav a{
+  font-size:13.5px;color:var(--ink2);text-decoration:none;padding:6px 12px;
+  border-radius:calc(var(--r) - 3px);font-weight:500;transition:.15s
+}
+.nav a:hover{background:var(--bg2);color:var(--ink)}
+.nav a.on{color:var(--accent);background:var(--asoft);font-weight:700}
+.tbr{margin-left:auto;display:flex;align-items:center;gap:8px}
+.sbox{
+  display:flex;align-items:center;gap:7px;padding:7px 12px;border:1px solid var(--line);
+  border-radius:99px;background:var(--bg2);font-size:12.5px;color:var(--ink2);width:190px
+}
+.sbox span{opacity:.75}
+.iconbtn{
+  width:34px;height:34px;border-radius:99px;border:1px solid var(--line);
+  background:transparent;color:var(--ink2);display:grid;place-items:center;font-size:14px;cursor:pointer
+}
+
+/* ============ Hero ============ */
+.hero{
+  padding:52px 26px 40px;text-align:center;position:relative;
+  background-image:var(--grid);background-size:26px 26px;
+}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
+  color:var(--accent);background:var(--asoft);border:1px solid var(--line);
+  padding:5px 13px;border-radius:99px;margin-bottom:18px;letter-spacing:.3px
+}
+.hero h2{font-size:44px;line-height:1.18;letter-spacing:var(--hlet);font-family:var(--hf);font-weight:800}
+.hero h2 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:15px;color:var(--ink2);margin-top:14px;line-height:1.75}
+.hero .lead b{color:var(--ink);font-weight:600}
+.hstats{display:flex;justify-content:center;gap:30px;margin-top:26px;flex-wrap:wrap}
+.hstats div{text-align:center}
+.hstats b{display:block;font-size:24px;font-family:var(--hf);letter-spacing:var(--hlet);font-weight:800}
+.hstats span{font-size:11.5px;color:var(--ink2);letter-spacing:.3px}
+
+/* ============ 四区入口 ============ */
+.sect{padding:8px 26px 34px}
+.sect > h3{
+  font-size:13px;color:var(--ink2);font-weight:600;letter-spacing:.6px;
+  margin-bottom:14px;display:flex;align-items:center;gap:9px
+}
+.sect > h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.zones{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.zone{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:17px 16px 15px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  transition:.18s;text-decoration:none;color:inherit;display:block
+}
+.zone:hover{transform:translateY(-2px);border-color:var(--accent)}
+.zone .zi{font-size:19px;margin-bottom:9px;display:block}
+.zone .zn{font-size:15.5px;font-weight:700;font-family:var(--hf);letter-spacing:var(--hlet)}
+.zone .ze{font-size:10.5px;color:var(--ink2);font-family:"SF Mono",Menlo,monospace;letter-spacing:.6px;text-transform:uppercase;margin-top:2px}
+.zone .zd{font-size:12px;color:var(--ink2);line-height:1.6;margin-top:9px;min-height:38px}
+.zone .zc{
+  display:inline-block;margin-top:11px;font-size:11px;font-weight:700;
+  color:var(--accent);background:var(--asoft);border-radius:99px;padding:3px 10px
+}
+.zone .zc.soon{color:var(--ink2);background:var(--bg2)}
+.zone .bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);opacity:.85}
+.zone.soon .bar{background:var(--line)}
+
+/* ============ 论文网格 ============ */
+.lib{padding:0 26px 36px}
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin:4px 0 16px}
+.filters button{
+  font:inherit;font-size:12px;font-weight:600;padding:5px 13px;border-radius:99px;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink2);cursor:pointer;transition:.15s
+}
+.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.frame[data-t="c"] .filters button.on{color:#06231a}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px 15px;box-shadow:var(--shadow);transition:.18s;display:block;
+  text-decoration:none;color:inherit
+}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.card .r1{display:flex;align-items:baseline;gap:8px}
+.card .nm{font-size:14.5px;font-weight:700;font-family:var(--hf);letter-spacing:var(--hlet)}
+.card .yr{font-size:11px;color:var(--ink2);font-family:"SF Mono",Menlo,monospace}
+.card .cat{
+  margin-left:auto;font-size:10px;color:var(--ink2);border:1px solid var(--line);
+  border-radius:99px;padding:1.5px 8px;white-space:nowrap
+}
+.card .ttl{
+  font-size:11.5px;color:var(--ink2);line-height:1.5;margin-top:7px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px
+}
+.card .bd{display:flex;gap:5px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.pill{
+  font-size:10.5px;font-weight:600;padding:2.5px 9px;border-radius:99px;
+  background:var(--asoft);color:var(--accent)
+}
+.pill.g{background:var(--bg2);color:var(--ink2)}
+
+/* ============ 页脚 ============ */
+.ft{
+  padding:22px 26px;border-top:1px solid var(--line);background:var(--panel);
+  display:flex;align-items:center;gap:14px;font-size:12px;color:var(--ink2);flex-wrap:wrap
+}
+.ft .sp{margin-left:auto;font-family:"SF Mono",Menlo,monospace;font-size:11px}
+
+/* ============ 详情页小样 ============ */
+.dm{margin-top:26px}
+.dm > h3{font-size:14px;margin-bottom:4px}
+.dm > p{font-size:12.5px;color:#5b6472;margin-bottom:12px;line-height:1.7}
+.dframe{
+  border-radius:14px;overflow:hidden;border:1px solid #dde2ea;background:var(--bg);color:var(--ink);
+  font-family:var(--font);box-shadow:0 10px 34px rgba(20,30,50,.10)
+}
+.dhead{padding:24px 26px 0}
+.dhead .crumb{font-size:11.5px;color:var(--ink2);font-family:"SF Mono",Menlo,monospace}
+.dhead h4{font-size:27px;font-family:var(--hf);letter-spacing:var(--hlet);margin-top:8px;font-weight:800}
+.dhead .sub{font-size:13px;color:var(--ink2);margin-top:7px;font-family:Georgia,serif;font-style:italic}
+.ptabs{display:flex;gap:4px;padding:18px 26px 0;border-bottom:1px solid var(--line);margin-top:16px}
+.ptabs a{
+  font-size:13px;font-weight:600;padding:10px 15px;color:var(--ink2);text-decoration:none;
+  border-bottom:2px solid transparent;margin-bottom:-1px
+}
+.ptabs a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.ptabs a .d2{font-size:10px;opacity:.6;margin-left:5px;font-family:"SF Mono",Menlo,monospace}
+.dbody{padding:18px 26px 26px;display:grid;grid-template-columns:1fr 240px;gap:20px}
+.wlist{display:flex;flex-direction:column;gap:9px}
+.wrow{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px 13px}
+.wrow .w1{display:flex;align-items:center;gap:8px}
+.wrow .wd{font-size:14.5px;font-weight:700;font-family:var(--hf)}
+.wrow .ipa{font-size:11px;color:var(--ink2);font-family:"SF Mono",Menlo,monospace}
+.wtag{font-size:9.5px;font-weight:700;color:#fff;padding:1.5px 6px;border-radius:4px;margin-left:auto}
+.t4{background:#3b82f6}.t6{background:#8b5cf6}.tk{background:#f59e0b}.tp{background:#ef4444}.tg{background:#d946ef}
+.wrow .cn{font-size:12px;color:var(--ink2);margin-top:5px;line-height:1.55}
+.side .box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px;margin-bottom:11px}
+.side h5{font-size:12px;color:var(--ink2);font-weight:600;letter-spacing:.4px;margin-bottom:9px}
+.side .kv{display:flex;justify-content:space-between;font-size:11.5px;padding:4px 0;color:var(--ink2)}
+.side .kv b{color:var(--ink);font-weight:600}
+.side .pl{display:block;font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:calc(var(--r) - 3px);text-decoration:none;margin-bottom:6px;border:1px solid var(--line);color:var(--ink)}
+.side .pl.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.frame[data-t="c"] .side .pl.pri{color:#06231a}
+.side .pl.dis{opacity:.5;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="drafthead">
+    <h1>样式稿 · 「深读馆 DeepRead」</h1>
+    <p>
+      站名提案：<b>深读馆 · DeepRead</b> —— 一篇论文，四种读法。<br>
+      下面三套配色是同一套版式的三种气质，点按钮实时切换，看完整页效果（含论文详情页）。选定一套后我再做微调并落地 VitePress。
+    </p>
+  </div>
+
+  <div class="swatches">
+    <div class="sw pick" data-s="a">
+      <h3>方案 A · 纸墨书房</h3>
+      <div class="en">PAPER STUDY</div>
+      <div class="note">暖米白纸底 + 棕橙主色 + 衬线标题。与现有 vocab 词表页配色同源，整站衔接无裂痕；像一本精装书。</div>
+      <div class="chips"><i style="background:#faf8f4"></i><i style="background:#b35400"></i><i style="background:#1f6f5c"></i><i style="background:#e9e0d2"></i><i style="background:#241f1a"></i></div>
+    </div>
+    <div class="sw" data-s="b">
+      <h3>方案 B · 靛蓝学报</h3>
+      <div class="en">ACADEMIC INDIGO</div>
+      <div class="note">冷白底 + 靛蓝主色 + 细网格纸。信息密度感强、更像 arXiv / 期刊官网，克制、理性、适合长时间阅读。</div>
+      <div class="chips"><i style="background:#f6f8fc"></i><i style="background:#2c4f9e"></i><i style="background:#0e7490"></i><i style="background:#dde5f2"></i><i style="background:#111a2e"></i></div>
+    </div>
+    <div class="sw" data-s="c">
+      <h3>方案 C · 暗夜工坊</h3>
+      <div class="en">DARK LAB</div>
+      <div class="note">深灰蓝底 + 青绿主色 + 等宽标题。硬核工程感，夜里刷视频/听词不刺眼；但与现有浅色词表页反差较大。</div>
+      <div class="chips"><i style="background:#0d1117"></i><i style="background:#34d399"></i><i style="background:#60a5fa"></i><i style="background:#232c38"></i><i style="background:#e6edf3"></i></div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="on" data-t="a">A 纸墨书房</button>
+    <button data-t="b">B 靛蓝学报</button>
+    <button data-t="c">C 暗夜工坊</button>
+    <span class="hint">← 切换配色，版式不变</span>
+  </div>
+
+  <!-- ========== 首页 ========== -->
+  <div class="frame" data-t="a">
+    <div class="tb">
+      <div class="logo"><span class="mk">深</span>深读馆<small>DEEPREAD</small></div>
+      <div class="nav">
+        <a href="#" class="on">首页</a>
+        <a href="#">单词区</a>
+        <a href="#">听力区</a>
+        <a href="#">朗读区</a>
+        <a href="#">讲解区</a>
+      </div>
+      <div class="tbr">
+        <div class="sbox"><span>⌕</span>搜论文 / 英文标题…</div>
+        <button class="iconbtn">◐</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="eyebrow">◆ 99 篇深度学习经典论文 · 10 个研究方向</div>
+      <h2 class="hf">一篇论文，<em>四种读法</em></h2>
+      <div class="lead">先<b>认词</b>，再<b>磨耳</b>，然后<b>跟着读</b>，最后<b>看懂它为什么重要</b>。</div>
+      <div class="hstats">
+        <div><b>99</b><span>论文</span></div>
+        <div><b>10</b><span>研究方向</span></div>
+        <div><b>198</b><span>学习页</span></div>
+        <div><b>4</b><span>种读法</span></div>
+      </div>
+    </div>
+
+    <div class="sect">
+      <h3>四个区</h3>
+      <div class="zones">
+        <a class="zone" href="#"><span class="bar"></span>
+          <span class="zi">📖</span>
+          <div class="zn hf">单词区</div>
+          <div class="ze">Vocabulary</div>
+          <div class="zd">按章节分组的核心词汇，标注四级 / 六级 / 考研 / 考博 / 托福 / GRE。</div>
+          <span class="zc">99 份词表</span>
+        </a>
+        <a class="zone" href="#"><span class="bar"></span>
+          <span class="zi">🎧</span>
+          <div class="zn hf">听力区</div>
+          <div class="ze">Listening</div>
+          <div class="zd">自动逐词连播，先听后现，收藏与自测循环。</div>
+          <span class="zc">99 条连播</span>
+        </a>
+        <a class="zone soon" href="#"><span class="bar"></span>
+          <span class="zi">🎬</span>
+          <div class="zn hf">朗读区</div>
+          <div class="ze">Reading</div>
+          <div class="zd">逐页带读视频：原文高亮 + 逐词跟读 + 章节进度条。</div>
+          <span class="zc soon">筹备中</span>
+        </a>
+        <a class="zone soon" href="#"><span class="bar"></span>
+          <span class="zi">🎓</span>
+          <div class="zn hf">讲解区</div>
+          <div class="ze">Explain</div>
+          <div class="zd">论文精读讲解，逐节拆解动机、方法与结论。</div>
+          <span class="zc soon">筹备中</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lib">
+      <div class="filters">
+        <button class="on">全部 99</button>
+        <button>NLP / 大模型 19</button>
+        <button>目标检测 10</button>
+        <button>视频理解 12</button>
+        <button>生成模型 13</button>
+        <button>对比学习 13</button>
+        <button>CNN 系列 8</button>
+        <button>多模态 CLIP 系 11</button>
+        <button>系统与分布式 4</button>
+        <button>视觉 Transformer 3</button>
+        <button>AI for Science 6</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="ft">
+      <div class="logo" style="font-size:13px"><span class="mk" style="width:20px;height:20px;font-size:11px">深</span>深读馆</div>
+      <div>单词 · 听力 · 朗读 · 讲解</div>
+      <div class="sp">Built with VitePress</div>
+    </div>
+  </div>
+
+  <!-- ========== 论文详情页 ========== -->
+  <div class="dm">
+    <h3>论文详情页 · 同配色下的第二屏</h3>
+    <p>点开任意一篇论文后的样子：顶部是论文身份，下面四个页签对应四个区，右侧是「这篇的四种读法」快捷入口 —— 未上线的区显示为灰色待启用，不隐藏、不误导。</p>
+  </div>
+
+  <div class="dframe" data-t="a" id="dframe">
+    <div class="dhead">
+      <div class="crumb">首页 / NLP 与大模型 / Transformer</div>
+      <h4 class="hf">Transformer</h4>
+      <div class="sub">Attention Is All You Need · 2017</div>
+    </div>
+    <div class="ptabs">
+      <a href="#" class="on">词表 <span class="d2">156</span></a>
+      <a href="#">听力 <span class="d2">156</span></a>
+      <a href="#">朗读 <span class="d2">筹备中</span></a>
+      <a href="#">讲解 <span class="d2">筹备中</span></a>
+    </div>
+    <div class="dbody">
+      <div class="wlist">
+        <div class="wrow">
+          <div class="w1"><span class="wd hf">attention</span><span class="ipa">/əˈtenʃn/</span><span class="wtag t4">四级</span><span class="wtag t6" style="margin-left:0">六级</span></div>
+          <div class="cn">n. 注意力；关注 —— attention mechanism 注意力机制</div>
+        </div>
+        <div class="wrow">
+          <div class="w1"><span class="wd hf">encoder</span><span class="ipa">/ɪnˈkoʊdər/</span><span class="wtag tk">考研</span></div>
+          <div class="cn">n. 编码器 —— 把输入序列映射为隐表示</div>
+        </div>
+        <div class="wrow">
+          <div class="w1"><span class="wd hf">recurrence</span><span class="ipa">/rɪˈkɜːrəns/</span><span class="wtag tp">考博</span></div>
+          <div class="cn">n. 循环；递归 —— 本文主张彻底抛弃循环结构</div>
+        </div>
+        <div class="wrow">
+          <div class="w1"><span class="wd hf">scaled dot-product</span><span class="ipa">/skeɪld/</span><span class="wtag tg">GRE</span></div>
+          <div class="cn">缩放点积 —— 除以 √dₖ 以稳定梯度</div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="box">
+          <h5>这篇的四种读法</h5>
+          <a class="pl pri" href="#">📖 打开词表</a>
+          <a class="pl" href="#">🎧 听力连播</a>
+          <a class="pl dis">🎬 朗读视频 · 筹备中</a>
+          <a class="pl dis">🎓 讲解 · 筹备中</a>
+        </div>
+        <div class="box">
+          <h5>论文信息</h5>
+          <div class="kv"><span>年份</span><b>2017</b></div>
+          <div class="kv"><span>方向</span><b>NLP / 大模型</b></div>
+          <div class="kv"><span>词条</span><b>156</b></div>
+          <div class="kv"><span>原文</span><b>arXiv 1706.03762</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const PAPERS = [
+  ["Transformer","2017","Attention Is All You Need","NLP / 大模型"],
+  ["GPT-3","2020","Language Models are Few-Shot Learners","NLP / 大模型"],
+  ["BERT","2019","BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding","NLP / 大模型"],
+  ["Llama 3","2024","The Llama 3 Herd of Models","NLP / 大模型"],
+  ["ResNet","2016","Deep Residual Learning for Image Recognition","CNN 系列"],
+  ["AlexNet","2012","ImageNet Classification with Deep Convolutional Neural Networks","CNN 系列"],
+  ["ViT","2021","An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale","视觉 Transformer"],
+  ["Swin Transformer","2021","Swin Transformer: Hierarchical Vision Transformer using Shifted Windows","视觉 Transformer"],
+  ["MAE","2022","Masked Autoencoders Are Scalable Vision Learners","视觉 Transformer"],
+  ["DETR","2020","End-to-End Object Detection with Transformers","目标检测"],
+  ["Faster R-CNN","2015","Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks","目标检测"],
+  ["MoCo","2020","Momentum Contrast for Unsupervised Visual Representation Learning","对比学习"],
+  ["ddpm","2020","Denoising Diffusion Probabilistic Models","生成模型"],
+  ["StyleGAN2","2020","Analyzing and Improving the Image Quality of StyleGAN","生成模型"],
+  ["clip","2021","Learning Transferable Visual Models From Natural Language Supervision","多模态 CLIP 系"],
+  ["AlphaFold 2","2021","Highly Accurate Protein Structure Prediction with AlphaFold","AI for Science 与视频生成"],
+  ["sora","2024","Video Generation Models as World Simulators","AI for Science 与视频生成"],
+  ["MegatronLM","2019","Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism","系统与分布式"]
+];
+document.getElementById("grid").innerHTML = PAPERS.map(([n,y,t,c])=>`
+  <a class="card" href="#">
+    <div class="r1"><span class="nm hf">${n}</span><span class="yr">${y}</span><span class="cat">${c.split(" ")[0]}</span></div>
+    <div class="ttl">${t}</div>
+    <div class="bd"><span class="pill">📖 词表</span><span class="pill">🎧 听力</span><span class="pill g">🎬 筹备</span><span class="pill g">🎓 筹备</span></div>
+  </a>`).join("");
+
+document.querySelectorAll(".tabs button").forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+    const t = b.dataset.t;
+    document.querySelector(".frame").dataset.t = t;
+    document.getElementById("dframe").dataset.t = t;
+    document.querySelectorAll(".sw").forEach(s=>s.classList.toggle("pick", s.dataset.s===t));
+  };
+});
+document.querySelectorAll(".sw").forEach(s=>{
+  s.onclick = ()=> document.querySelector(`.tabs button[data-t="${s.dataset.s}"]`).click();
+});
+document.querySelectorAll(".filters button").forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll(".filters button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+  };
+});
+</script>
+</body>
+</html>

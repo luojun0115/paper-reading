@@ -1,0 +1,25 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"widespread","ipa":"ˈwaɪdspred","pos":"adj.","lv":"6","m":"普遍的","ex":"unsupervised learning has not seen such widespread adoption"},
+ {"w":"adoption","ipa":"əˈdɑːpʃn","pos":"n.","lv":"6","m":"采用","ex":"has not seen such widespread adoption"},
+ {"w":"endeavor","ipa":"ɪnˈdevər","pos":"n.","lv":"p","ov":"g","m":"努力，事业","ex":"remains an important and challenging endeavor"},
+ {"w":"universal","ipa":"ˌjuːnɪˈvɜːrsl","pos":"adj.","lv":"4","m":"通用的","ex":"we propose a universal unsupervised learning approach"},
+ {"w":"extract","ipa":"ɪkˈstrækt","pos":"v.","lv":"4","m":"提取","ex":"to extract useful representations from high-dimensional data"},
+ {"w":"insight","ipa":"ˈɪnsaɪt","pos":"n.","lv":"6","m":"关键思路","ex":"The key insight of our model"},
+ {"w":"latent","ipa":"ˈleɪtnt","pos":"adj.","lv":"p","m":"潜空间的","ex":"predicting the future in latent space"},
+ {"w":"autoregressive","ipa":"ˌɔːtoʊrɪˈɡresɪv","pos":"adj.","lv":"p","m":"自回归的","ex":"by using powerful autoregressive models"},
+ {"w":"probabilistic","ipa":"ˌprɑːbəbəˈlɪstɪk","pos":"adj.","lv":"p","m":"概率的","ex":"We use a probabilistic contrastive loss"},
+ {"w":"contrastive","ipa":"kənˈtræstɪv","pos":"adj.","lv":"p","m":"对比的","ex":"Contrastive Predictive Coding"},
+ {"w":"induce","ipa":"ɪnˈduːs","pos":"v.","lv":"6","ov":"t","m":"诱导，使","ex":"which induces the latent space to capture information"},
+ {"w":"tractable","ipa":"ˈtræktəbl","pos":"adj.","lv":"p","ov":"g","m":"可处理的","ex":"It also makes the model tractable by using negative sampling"},
+ {"w":"distinct","ipa":"dɪˈstɪŋkt","pos":"adj.","lv":"6","m":"不同的","ex":"strong performance on four distinct domains"},
+ {"w":"reinforcement","ipa":"ˌriːɪnˈfɔːrsmənt","pos":"n.","lv":"6","m":"强化（RL）","ex":"reinforcement learning in 3D environments"},
+ {"w":"differentiable","ipa":"ˌdɪfəˈrenʃəbl","pos":"adj.","lv":"p","m":"可微的","ex":"layered differentiable models in an end-to-end fashion"}
+]},
+{"sec":"1. Introduction · 引言","short":"Intro","icon":"1","words":[
+ {"w":"redundant","ipa":"rɪˈdʌndənt","pos":"adj.","lv":"p","m":"冗余的","ex":"made manually speciﬁed features largely redundant"},
+ {"w":"specialized","ipa":"ˈspeʃəlaɪzd","pos":"adj.","lv":"6","m":"特化的","ex":"features that are less specialized towards solving a single supervised task"},
+ {"w":"reasonably","ipa":"ˈriːzənəbli","pos":"adv.","lv":"4","m":"相当地","ex":"the induced features transfer reasonably well to other domains"},
+ {"w":"irrelevant","ipa":"ɪˈreləvənt","pos":"adj.","lv":"6","m":"不相关的","ex":"information such as color or the ability to count that are irrelevant"}
+]}
+]

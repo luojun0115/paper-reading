@@ -1,0 +1,21 @@
+[
+{"sec":"Abstract · 摘要","short":"Abstract","icon":"A","words":[
+ {"w":"paradigm","ipa":"ˈpærədaɪm","pos":"n.","lv":"p","ov":"g","m":"范式","ex":"One paradigm for learning from few labeled examples"},
+ {"w":"unlabeled","ipa":"ˌʌnˈleɪbld","pos":"adj.","lv":"k","m":"无标注的","ex":"making best use of a large amount of unlabeled data"},
+ {"w":"pretraining","ipa":"priːˈtreɪnɪŋ","pos":"n.","lv":"k","m":"预训练","ex":"unsupervised pretraining followed by supervised ﬁne-tuning"},
+ {"w":"task-agnostic","ipa":"tɑːsk æɡˈnɑːstɪk","pos":"adj.","lv":"p","m":"任务无关的","ex":"uses unlabeled data in a task-agnostic way"},
+ {"w":"semi-supervised","ipa":"ˌsemi ˈsuːpərvaɪzd","pos":"adj.","lv":"p","m":"半监督的","ex":"surprisingly effective for semi-supervised learning on ImageNet"},
+ {"w":"ingredient","ipa":"ɪnˈɡriːdiənt","pos":"n.","lv":"4","m":"要素","ex":"A key ingredient of our approach"},
+ {"w":"distill","ipa":"dɪˈstɪl","pos":"v.","lv":"p","m":"蒸馏","ex":"the big network can be further improved and distilled into a much smaller one"},
+ {"w":"summarize","ipa":"ˈsʌməraɪz","pos":"v.","lv":"4","m":"概括","ex":"can be summarized in three steps"},
+ {"w":"reﬁne","ipa":"rɪˈfaɪn","pos":"v.","lv":"6","m":"精炼","ex":"for reﬁning and transferring the task-speciﬁc knowledge"},
+ {"w":"transfer","ipa":"trænsˈfɜːr","pos":"v.","lv":"4","ov":"t","m":"迁移","ex":"reﬁning and transferring the task-speciﬁc knowledge"},
+ {"w":"procedure","ipa":"prəˈsiːdʒər","pos":"n.","lv":"4","m":"流程","ex":"This procedure achieves 73.9% ImageNet top-1 accuracy"},
+ {"w":"outperform","ipa":"ˌaʊtpərˈfɔːrm","pos":"v.","lv":"6","m":"表现优于","ex":"outperforming standard supervised training with all of the labels"}
+]},
+{"sec":"1. Introduction · 引言","short":"Intro","icon":"1","words":[
+ {"w":"establish","ipa":"ɪˈstæblɪʃ","pos":"v.","lv":"4","m":"确立","ex":"This note establishes stronger and more feasible baselines"},
+ {"w":"feasible","ipa":"ˈfiːzəbl","pos":"adj.","lv":"6","m":"可行的","ex":"stronger and more feasible baselines built in the MoCo framework"},
+ {"w":"counterpart","ipa":"ˈkaʊntərpɑːrt","pos":"n.","lv":"6","m":"对照版本","ex":"unsupervised pre-training can surpass its ImageNet-supervised counterpart"}
+]}
+]

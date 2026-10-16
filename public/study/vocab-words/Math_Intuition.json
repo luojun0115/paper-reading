@@ -1,0 +1,21 @@
+[
+{"sec":"Abstract/Intro · 摘要与引言","short":"Intro","icon":"1","words":[
+ {"w":"intuition","ipa":"ˌɪntuˈɪʃn","pos":"n.","lv":"6","m":"直觉","ex":"Advancing mathematics by guiding human intuition with AI"},
+ {"w":"formulate","ipa":"ˈfɔːrmjuleɪt","pos":"v.","lv":"6","m":"表述，提出","ex":"discovering patterns and using these to formulate and prove conjectures"},
+ {"w":"conjecture","ipa":"kənˈdʒektʃər","pos":"n.","lv":"p","ov":"g","m":"猜想","ex":"formulate and prove conjectures, resulting in theorems"},
+ {"w":"theorem","ipa":"ˈθiːərəm","pos":"n.","lv":"6","m":"定理","ex":"resulting in theorems"},
+ {"w":"assistance","ipa":"əˈsɪstəns","pos":"n.","lv":"4","m":"协助","ex":"discovered with the assistance of machine learning"},
+ {"w":"attribution","ipa":"ˌætrɪˈbjuːʃn","pos":"n.","lv":"p","m":"归因","ex":"understanding them with attribution techniques"},
+ {"w":"outline","ipa":"ˈaʊtlaɪn","pos":"v.","lv":"4","m":"概述","ex":"We outline this machine-learning-guided framework"},
+ {"w":"distinct","ipa":"dɪˈstɪŋkt","pos":"adj.","lv":"6","m":"不同的","ex":"current research questions in distinct areas of pure mathematics"},
+ {"w":"meaningful","ipa":"ˈmiːnɪŋfl","pos":"adj.","lv":"4","m":"有意义的","ex":"it led to meaningful mathematical contributions"},
+ {"w":"algebraic","ipa":"ˌældʒəˈbreɪɪk","pos":"adj.","lv":"p","m":"代数的","ex":"a new connection between the algebraic and geometric structure of knots"},
+ {"w":"knot","ipa":"nɑːt","pos":"n.","lv":"6","m":"纽结（数学中的 knot）","ex":"the algebraic and geometric structure of knots"},
+ {"w":"combinatorial","ipa":"ˌkɑːmbɪnəˈtɔːriəl","pos":"adj.","lv":"p","m":"组合的","ex":"predicted by the combinatorial invariance conjecture for symmetric groups"},
+ {"w":"invariance","ipa":"ɪnˈveriəns","pos":"n.","lv":"p","m":"不变性","ex":"the combinatorial invariance conjecture"},
+ {"w":"respectively strengths","ipa":"rɪˈspektɪv streŋθs","pos":"phr.","lv":"6","m":"各自的优势","ex":"leveraging the respective strengths of mathematicians and machine learning"},
+ {"w":"suspected","ipa":"səˈspektɪd","pos":"adj.","lv":"6","m":"被怀疑的（尚待证明）","ex":"statements that are suspected to be true but have not been proven"},
+ {"w":"inaccessible","ipa":"ˌɪnækˈsesəbl","pos":"adj.","lv":"p","m":"难以企及的","ex":"a new understanding of problems that were previously inaccessible"},
+ {"w":"consistently","ipa":"kənˈsɪstəntli","pos":"adv.","lv":"6","m":"一贯地","ex":"computational techniques have become consistently useful"}
+]}
+]
