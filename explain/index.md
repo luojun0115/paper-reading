@@ -12,7 +12,7 @@ import { withBase } from 'vitepress'
 <div class="dr-page-head">
   <div class="dr-ph-kicker">EXPLAIN</div>
   <h1>讲解区</h1>
-  <p>论文精读讲解来自 <b>李沐老师</b> 的《深度学习论文精读》系列，逐段拆解动机、方法与结论。下面按研究方向列出本站全部 <b>99</b> 篇论文：有李沐视频的附上讲解链接，没有的标“暂无讲解”；每篇都附 <b>单词区</b> 与 <b>听力区</b> 链接，方便边看讲解边复习；最右侧新增 <b>论文原文</b> 直链，绝大多数指向 arXiv 原文，少数不在 arXiv 的（如 OpenAI 报告、Nature 文章、会议官网）也一并给出卷首出处。</p>
+  <p>论文精读讲解来自 <b>李沐老师</b> 的《深度学习论文精读》系列，逐段拆解动机、方法与结论。下面按研究方向列出本站全部 <b>100</b> 篇论文：有李沐视频的附上讲解链接，没有的标“暂无讲解”；每篇都附 <b>单词区</b> 与 <b>听力区</b> 链接，方便边看讲解边复习；最右侧新增 <b>论文原文</b> 直链，绝大多数指向 arXiv 原文，少数不在 arXiv 的（如 OpenAI 报告、Nature 文章、会议官网）也一并给出卷首出处。</p>
   <div class="dr-ph-actions">
     <a href="https://space.bilibili.com/1567748478" target="_blank" rel="noopener">李沐的 B 站主页 →</a>
     <a :href="withBase('/vocab/')">去单词区 📖</a>
@@ -28,6 +28,7 @@ import { withBase } from 'vitepress'
 
 | 论文 | 视频讲解 | 词汇区 | 本站对照 | 论文原文 |
 | -- | -- | -- | -- | -- |
+| **GPT-1** (2018)<br><span style="opacity:.72;font-size:.9em">Improving Language Understanding by Generative Pre-Training</span> | [B站](https://www.bilibili.com/video/BV1AF411b7xQ/) · [YouTube](https://youtu.be/t70Bl3w7bxY) | [📖 单词](/study/vocab/GPT1_论文词汇.html) · [🎧 听力](/study/listen/GPT1_听力.html) | [📝 笔记区](/paper-notes/GPT1.html) | [📄 论文原文](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf) |
 | **GPT-2** (2019)<br><span style="opacity:.72;font-size:.9em">Language Models are Unsupervised Multitask Learners</span> | [B站](https://www.bilibili.com/video/BV1AF411b7xQ/) · [YouTube](https://youtu.be/t70Bl3w7bxY) | [📖 单词](/study/vocab/GPT2_论文词汇.html) · [🎧 听力](/study/listen/GPT2_听力.html) | [📝 笔记区](/paper-notes/GPT2.html) | [📄 论文原文](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) |
 | **GPT-3** (2020)<br><span style="opacity:.72;font-size:.9em">Language Models are Few-Shot Learners</span> | [B站](https://www.bilibili.com/video/BV1AF411b7xQ/) · [YouTube](https://youtu.be/t70Bl3w7bxY) | [📖 单词](/study/vocab/GPT3_论文词汇.html) · [🎧 听力](/study/listen/GPT3_听力.html) | [📝 笔记区](/paper-notes/GPT3.html) | [📄 论文原文](https://arxiv.org/abs/2005.14165) |
 | **GPT-4** (2023)<br><span style="opacity:.72;font-size:.9em">GPT-4 Technical Report</span> | [B站](https://www.bilibili.com/video/BV1vM4y1U7b5) · [YouTube](https://youtu.be/K0SZ9mdygTw) | [📖 单词](/study/vocab/GPT4_论文词汇.html) · [🎧 听力](/study/listen/GPT4_听力.html) | [📝 笔记区](/paper-notes/GPT4.html) | [📄 论文原文](https://arxiv.org/abs/2303.08774) |

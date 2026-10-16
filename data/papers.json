@@ -1,12 +1,19 @@
 {
   "site": {
-    "vocabCount": 99,
+    "vocabCount": 100,
     "categories": 10
   },
   "groups": [
     {
       "category": "NLP / 大模型",
       "papers": [
+        {
+          "slug": "GPT1",
+          "name": "GPT-1",
+          "year": "2018",
+          "title": "Improving Language Understanding by Generative Pre-Training",
+          "listen": true
+        },
         {
           "slug": "GPT2",
           "name": "GPT-2",
